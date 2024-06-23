@@ -1,0 +1,17 @@
+project:
+  type: book
+  output-dir: doc
+
+book:
+  title: "Linux Vaikams"
+  author: "Justas Mundeikis"
+  chapters:
+    - index.qmd
+    - intro.qmd
+
+format:
+  html:
+    theme: flatly
+
+
+

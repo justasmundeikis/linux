@@ -1,0 +1,132 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Linux Vaikams",
+    "section": "",
+    "text": "1 Slapta žinutė\nLabas! Aš turiu tau slaptą žinutę:\nSmVpZ3UgdGF1IHBhdGlrbywgZ2FsIG5vcmkgdMSZc3RpIGlyIG1va3l0aXMgcHJvZ3JhbXVvdGkg\nbnVvIHJ1ZGVucz8K\nDabar tu galvoji, ką šis kodas gali reikšti? Tavo kompiuteris gali tau padėti dekoduoti šią žinutę!\nBet kad kopiuteris tau padėtų - pirma turi išmokti su juo kalbėtis. Ši pamoka ir bus apie tai kur ir kaip kalbėtis su kompiuteriu.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Slapta žinutė</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#pažink-terminalą",
+    "href": "index.html#pažink-terminalą",
+    "title": "Linux Vaikams",
+    "section": "2.1 Pažink Terminalą",
+    "text": "2.1 Pažink Terminalą\nTau atsidarys toks baisus juodas langas. Bet tau jo visai nereikia bijoti. Čia tik langas, per kurį gali bendrauti su kompiuteriu, pasakant jam, ką tu nori, kad jis padarytų.\n\nTerminalas yra speciali programa tavo kompiuteryje, panaši į žaidimų platformas kaip Roblox ar YouTube. Tačiau vietoje to, kad žaidžiame ar žiūrėtume vaizdo įrašus, į ją rašome komandas - įsakymus kompiuteriui.\nKomandos yra būdas pasakyti kompiuteriui, ką jam daryti. Kadangi kompiuteris negali suprasti lietuviškai arba angliškai, jam reikia specialios kalbos. Viena iš tokių kalbų yra BASH.\nBASH (tariasi beeš) yra speciali kompiuterinė kalba, kurią naudojame bendraudami su terminalo programa. Ji leidžia mums rašyti ir vykdyti įsakymus arba komandas, kad galėtume valdyti kompiuterį. Panašiai kaip žmonės kalba skirtingomis kalbomis (pvz., lietuvių arba anglų), BASH yra mūsų būdas bendrauti su kompiuteriu, leidžiantis mums atlikti daug įvairių veiksmų - nuo paprastų failų valdymo iki sudėtingesnių programų vykdymo.\nKitaip tariant, BASH yra kalba, kuri leidžia mums parašyti ir suprasti komandas, kurios padeda mums dirbti su kompiuteriu ir atlikti norimus veiksmus per terminalą.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Slapta žinutė</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#pirma-komanda---echo",
+    "href": "index.html#pirma-komanda---echo",
+    "title": "Linux Vaikams",
+    "section": "2.2 Pirma Komanda - echo",
+    "text": "2.2 Pirma Komanda - echo\nPasiraitokime rankoves ir kibkime į darbą.\nPirmoji komanda (įsakymas kompiuteriui) bus - echo. Komanda echo atspausdina po jos sekantį tekstą.\nPabandykime pasisveikinti. Atkartok šią komandą terminale:\n\necho \"Labas rytas\"\n\nir tada nuspausk Enter klavišą. iš tiesų jų yra net 2! Ir kartais jie dar vadinami return, nes senovinėse spausdinimo mašinose jie gražindavo (angl. - return) eilutę į praždią.\n\n\nAr pastebėjai, kas nutiko? Kompiuteris tave išgirdo ir pakluso tavo komandai.\n\n\n2.2.1 Kas čia yra Kas?\n\nMatai šitą dolerio ženklą $? Jis angliškai vadinamas prompt ir reiškia, kad kompiuteris yra pasirengęs gauti iš tavęs komandą ir laukia jos.\n\n\n\necho yra programa, kuri priima tekstą ir jį atspausdina. Ji gali atspausdinti čia, ekrane (terminale), bet gali ir atspausdinti kažkur kitur, pvz., nukreipiant tekstą į kokį nors failą. Kaip programa žino, ką spausdinti? Ji priima argumentą. Argumentas – tai, ką tu pasirenki duoti tai komandai. Šiuo atveju argumentas yra tekstas tarp abiejų kabučių \"Labas rytas\".\n\n\n\nArgumentas – tarsi maisto produktas, kurį įdedi į maisto gaminimo įrenginį. O echo – tarsi maisto gaminimo įrenginys, kuris tą produktą apdoroja ir pagamina kažką skanaus.\n\n\nKaip matai, sekančioje eilutėje nėra $ ženklo. Nes toje eilutėje kompiuteris atsakė tau :)\n\nKai jis tai padarė, vėl pasiruošė tavęs klausyti, nes paruošė kitą eilutę, kurioje paliko prompt ženklą - $ ir laukia naujos tavo komandos.\n\n\n2.2.2 Challange:\nDabar visišai savarankiškai atspausdink žemiau pateiktą tekstą:\n\nLabas rytas suraitytas, meškos koja parašytas!\n\nPagalba:\n\nNaudok komandą echo.\nTekstas turi būti apsuptas kabutėmis \"......\".\nKad paleistum komandą – spausk Enter klavišą.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Slapta žinutė</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#teksto-nukreipimas-į-failą--",
+    "href": "index.html#teksto-nukreipimas-į-failą--",
+    "title": "Linux Vaikams",
+    "section": "2.3 Teksto nukreipimas į failą - >",
+    "text": "2.3 Teksto nukreipimas į failą - &gt;\nŠaunu! Judam toliau… Dabar pabandysime tai, ką tau kompiuteris atspausdino į Terminal langą, nukreipti į failą. Ką tai reiškia? Tai reiškia, jog kompiuteris neatspaudins teksto Terminal lange, vietoj to, jis sukurs failą ir patalpins tavo norimą tekstą į jo vidų. Taip tavo tekstas gali būti išsaugotas. Išsaugoti angliškai - save.\nNukreipimas į failą įvyksta naudojant &gt; simbolį. Po šio simbolio seka failo pavadinimas, į kurį nurime nukreipti tekstą. Tačiau šis simbolis yra galingas bet ir pavojingas! Jis sukuria failą, jeigu to failo dar nėra, bet jeigu failas tokiu pat pavadinimu jau yra, jis jį perrašo.\nPabandyk:\n\necho \"Labas rytas, katine\" &gt; pasaka.txt\n\n\necho yra komanda.\n\"Labas rytas, katine\" yra argumentas skirtas echo komandai.\n&gt; nukreipia tai, kas įvyko prieš tai į failą\npasaka.txt yra failo pavadinimas, kurė sukuriame ir į kurį įrašome tekstą.\n\nJeigu viską padarei teisingai, tavo langas turėtų atrodyti taip:\n\nKompiuteris ir vėl laukia tavo komandos. Bet kur atsirado failas?",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Slapta žinutė</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#failų-naršyklė---files",
+    "href": "index.html#failų-naršyklė---files",
+    "title": "Linux Vaikams",
+    "section": "2.4 Failų naršyklė - Files",
+    "text": "2.4 Failų naršyklė - Files\nMatai, kompiuteris įvykdė komandą ir vėl tavęs klauso! Bet kur nuėjo tas “Labas rytas, katine!”? Juk jo nėra Terminal lange? Kad rasti, atsidaryk naują programą, šį kartą paieškoje įvesk „Files“.\n\nTau atsidarė failų naršyklė, angliškai dažnai vadinama „File Explorer“.\nPažiūrėkime, ką čia matome…\n\nMatome daug aplankų: Desktop, Documents, Downloads ir jie atsikaroja dešinėje pusėje\nBet štai ir failas pasaka.txt!\n\n\nPaspausk ant pasaka.txt du kartus su pele, jis tau atsidarys su teksto redagavimo programa.\n\nUždaryk visus visus ir pasiruošk nedideliam challange!\n\n2.4.1 Challange\n\nIš naujo atsidaryk Terminal langą\nNaudojantis echo ir &gt; išsaugok šį tekstą\n\n\nLietuva, Tėvyne mūsų Tu didvyrių žeme, Iš praeities Tavo sūnūs Te stiprybę semia.\n\n\nIšsaugok tekstą faile pavadinimu himnas.txt\nAtsidary Files programą, rask himnas.txt\nAtsidaryk failą ir patvirtink, jog iš tiesų išsaugojai Lietuvos himno pimąją eilutę.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Slapta žinutė</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#komanda---cat",
+    "href": "index.html#komanda---cat",
+    "title": "Linux Vaikams",
+    "section": "2.5 Komanda - cat",
+    "text": "2.5 Komanda - cat\nDabar tau gali kilti klausimas, o kodėl reikėjo atsidaryti šitą failą taip komplikuotai. Negi nėra paprastesnio būdo?\nYRA!\nTerminale įrašyk komandą cat ir perleisk jai argumentą – failo pavadinimą, kurį cat programa turi perskaityti! Paspausk Enter klavišą.\n\ncat pasaka.txt\n\nKą matai?\n\nNieko sau! cat programa perskaitė tavo failą ir jį atspausdino Terminal lange. Tau nereikėjo eiti į Files susirasti ir atsidaryti failo. Tu viską gali padaryti Terminal lange.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Slapta žinutė</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#teksto-nukreipimas-į-failą---1",
+    "href": "index.html#teksto-nukreipimas-į-failą---1",
+    "title": "Linux Vaikams",
+    "section": "2.6 Teksto nukreipimas į failą - >>",
+    "text": "2.6 Teksto nukreipimas į failą - &gt;&gt;\nPameni minėjau, jog &gt; sukuria failą, jeigu jo nėra, o jeigu jis jau yra, tada perrašo jį. Dėl to ši programa yra gana pavojinga.\nPabandyk nusiųsti šį tekstą į pasaka.txt\n\necho \"Labas maužyle\" &gt; pasaka.txt\n\no tada atspausdinti pasaka.txt terminale:\n\ncat pasaka.txt\n\nO ne, dingo prieš tai buves tekstas :(\n\nTam kad neperrašyti failo, o tik pridėti naują eilutę failo apačioje, galima naudoti &gt;&gt; t.y. dvigubas &gt;.\n\n\n2.6.1 Challange\nPraėjusiam challange tu įrašei pirmą Lietuvos himno posmą. Tad dabar antrojo posmo eilė:\n\nTegul Tavo vaikai eina Vien takais dorybės Tegul dirba Tavo naudai Ir žmonių gėrybei.\n\n\nPirma pasitikrink su komanda cat ar tikrai turi failą himnas.txt ir ar jame tik pirmo posmo tekstas?\nNaudojant echo ir &gt;&gt; pridėk antro posmo tekstą\nSu komanda cat pasitikrink ar tikrai abu posmai išsisaugojo.\nJeigu eilutės neatrodo gražiai pasidink terminalo langą ir pakartok komandą",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Slapta žinutė</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#naudingi-klavišų-trumpiniai-shortcuts",
+    "href": "index.html#naudingi-klavišų-trumpiniai-shortcuts",
+    "title": "Linux Vaikams",
+    "section": "2.7 Naudingi klavišų trumpiniai (shortcuts):",
+    "text": "2.7 Naudingi klavišų trumpiniai (shortcuts):\nDvi komandos, kurias turi išmokti čia ir dabar:\n\nPaspaudus du klavišus vienu metu CTRL ir L, Terminal langas išsivalo ir tu nebematai senų komandų.\nKartais tu gali įrašyti kažką neteisingai, padaryti klaidą ir kompiuteris gali nesuprasti. Tada geriausia nuspausti CTRL ir C klavišus. Tai įpareigoja kompiuterį nutraukti tavęs klausymąsi, ištrinti tai, ką dabar darai, ir pradėti klausytis vėl iš naujo.\n\nPabandyk:\nPirma įrašyk echo “Labas rytas bet neužbaik teksto įvedimo, nepadėk kabučių ir spausk Enter. Dabar vietoj atspausdinto teksto arba vietoj prompt $ matai šitą ženklą &gt;. Jis reiškia, kad kompiuteris laukia, kol tu pabaigsi įrašyt tekstą. Spaudžiant Enter – nieko nesigauna.\nNuspaudus CTRL + C nutrūksta komandos įrašymas.\nTaip pat, jeigu žinai ko trūksta, šiuo atveju užaryti tekstą kabutėmis, gali įrašyti ir spausti Enter.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Slapta žinutė</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#slaptos-žinutės-dekodavimas",
+    "href": "index.html#slaptos-žinutės-dekodavimas",
+    "title": "Linux Vaikams",
+    "section": "2.8 Slaptos Žinutės Dekodavimas:",
+    "text": "2.8 Slaptos Žinutės Dekodavimas:\nNa štai, išmokai naudotis terminalu, žinai aks yra komanda, argumentas. Taip pat moki nukreipti tekstą į failą. Moki pakankamai, jog dešifruoti paslaptingą žinutę!\n\nPasinaudok komanda echo ir kaip jos argumentą įrašyk mano slaptą žinutę (su pele pažymėk visą kodą, paspausk dešinį pelės mygtuką ir spausk ant COPY). Tada terminale po echo ” su pele spausk ant terminalo, tada paspausk dešinį mygtuką ir spausk ant PASTE. Tačiau dar nespausk ENTER, nepamiršk, jog čia tekstas, kurį reikia uždaryti su “, kad jis niekur nepabėgtų :)\nIšsaugok visa tai pasinaudodama &gt; ir sukuriant failą pavadinimu kodas.txt.\nGali pasitikrinti, ar kodas.txt tikrai turi slaptą žinutę, pasinaudodama cat programa ir perleisdama jai argumentą kodas.txt.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Slapta žinutė</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#šifravimo-programa---base64",
+    "href": "index.html#šifravimo-programa---base64",
+    "title": "Linux Vaikams",
+    "section": "2.9 Šifravimo programa - base64",
+    "text": "2.9 Šifravimo programa - base64\nNa, o dabar belieka pasinaudoti dar viena komanda:\nPrograma base64 moka koduoti ir dekoduoti. -d yra parametras ir reiškia dekoduoti. kodas.txt yra argumentas, tavo anksčiau sukurtas failas, kurio viduje yra kodas.\n\nParametras yra papildomas nustatymas programai base64. Įsivaizduok programa būtų kaip įsakymas “Kepti orkaitėje”, o paramtetras “nustačius 200 laispnių temperatūrą”.\n\n\nbase64 -d kodas.txt\n\nAr pavyko dekoduoti mano žinutę?\nSėkmės!",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Slapta žinutė</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "2  Linux Mint",
+    "section": "",
+    "text": "2.1 Pirmi žingsniai",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Linux Mint</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#pirmi-žingsniai",
+    "href": "intro.html#pirmi-žingsniai",
+    "title": "2  Linux Mint",
+    "section": "",
+    "text": "2.1.1 Mirrors ir Updates\n\n\n2.1.2 Kalbos paketai ir klaviatūros nustatymai\n\n\n2.1.3 TBD",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Linux Mint</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#programų-instaliavimas",
+    "href": "intro.html#programų-instaliavimas",
+    "title": "2  Linux Mint",
+    "section": "2.2 Programų instaliavimas",
+    "text": "2.2 Programų instaliavimas\n\n2.2.1 Skritingi instaliavimo būdai\n\n2.2.1.1 Software center\n\n\n2.2.1.2 Terminal\n\n\n2.2.1.3 Flathub\n\n\n2.2.1.4 Snap",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Linux Mint</span>"
+    ]
+  }
+]
