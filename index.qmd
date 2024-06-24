@@ -52,7 +52,7 @@ Tau atsidarys toks baisus juodas langas. Bet tau jo visai nereikia bijoti. Čia 
 
 **Komandos** yra būdas pasakyti kompiuteriui, ką jam daryti. Kadangi kompiuteris negali suprasti lietuviškai arba angliškai, jam reikia specialios kalbos. Viena iš tokių kalbų yra BASH.
 
-**BASH** (tariasi **beeš**) yra speciali kompiuterinė kalba, kurią naudojame bendraudami su terminalo programa. Ji leidžia mums rašyti ir vykdyti įsakymus arba komandas, kad galėtume valdyti kompiuterį. Panašiai kaip žmonės kalba skirtingomis kalbomis (pvz., lietuvių arba anglų), BASH yra mūsų būdas bendrauti su kompiuteriu, leidžiantis mums atlikti daug įvairių veiksmų - nuo paprastų failų valdymo iki sudėtingesnių programų vykdymo.
+**BASH** (tariasi **beeš**) yra speciali kompiuterinė kalba, kurią naudojame bendraudami su terminalo programa. Ji leidžia mums rašyti ir vykdyti įsakymus arba komandas, kad galėtume valdyti kompiuterį. Panašiai kaip žmonės kalba skirtingomis kalbomis (pvz., lietuvių arba anglų), BASH yra mūsų būdas bendrauti su kompiuteriu, leidžiantis mums atlikti daug įvairių veiksmų - nuo paprastų failų valdymo iki sudėtingesnių komandų vykdymo.
 
 Kitaip tariant, BASH yra kalba, kuri leidžia mums parašyti ir suprasti komandas, kurios padeda mums dirbti su kompiuteriu ir atlikti norimus veiksmus per terminalą.
 
@@ -89,7 +89,7 @@ Ar pastebėjai, kas nutiko? Kompiuteris tave išgirdo ir pakluso tavo komandai.
 
 ![](img/prompt.png)
 
--   `echo` yra programa, kuri priima tekstą ir jį atspausdina. Ji gali atspausdinti čia, ekrane (terminale), bet gali ir atspausdinti kažkur kitur, pvz., nukreipiant tekstą į kokį nors failą. Kaip programa žino, ką spausdinti? Ji priima `argumentą`. `Argumentas` – tai, ką tu pasirenki duoti tai komandai. Šiuo atveju argumentas yra tekstas tarp abiejų kabučių `"Labas rytas"`.
+-   `echo` yra komanda, kuri priima tekstą ir jį atspausdina. Ji gali atspausdinti čia, ekrane (terminale), bet gali ir atspausdinti kažkur kitur, pvz., nukreipiant tekstą į kokį nors failą. Kaip komanda žino, ką spausdinti? Ji priima `argumentą`. `Argumentas` – tai, ką tu pasirenki duoti tai komandai. Šiuo atveju argumentas yra tekstas tarp abiejų kabučių `"Labas rytas"`.
 
 ![](img/echo.png)
 
@@ -184,7 +184,7 @@ Dabar tau gali kilti klausimas, o kodėl reikėjo atsidaryti šitą failą taip 
 
 YRA!
 
-Terminale įrašyk komandą `cat` ir perleisk jai argumentą – failo pavadinimą, kurį `cat` programa turi perskaityti! Paspausk `Enter` klavišą.
+Terminale įrašyk komandą `cat` ir perleisk jai argumentą – failo pavadinimą, kurį `cat` komanda turi perskaityti! Paspausk `Enter` klavišą.
 
 ```{python}
 cat pasaka.txt
@@ -194,11 +194,11 @@ Ką matai?
 
 ![](img/lec_1_cat.png)
 
-Nieko sau! `cat` programa perskaitė tavo failą ir jį atspausdino Terminal lange. Tau nereikėjo eiti į `Files` susirasti ir atsidaryti failo. Tu viską gali padaryti Terminal lange.
+Nieko sau! `cat` komanda perskaitė tavo failą ir jį atspausdino Terminal lange. Tau nereikėjo eiti į `Files` susirasti ir atsidaryti failo. Tu viską gali padaryti Terminal lange.
 
 ## Teksto nukreipimas į failą - `>>`
 
-Pameni minėjau, jog `>` sukuria failą, jeigu jo nėra, o jeigu jis jau yra, tada perrašo jį. Dėl to ši programa yra gana pavojinga.
+Pameni minėjau, jog `>` sukuria failą, jeigu jo nėra, o jeigu jis jau yra, tada perrašo jį. Dėl to ši komanda yra gana pavojinga.
 
 Pabandyk nusiųsti šį tekstą į pasaka.txt
 
@@ -265,15 +265,15 @@ Pasinaudok komanda `echo` ir kaip jos argumentą įrašyk mano slaptą žinutę 
 
 Išsaugok visa tai pasinaudodama `>` ir sukuriant failą pavadinimu `kodas.txt`.
 
-Gali pasitikrinti, ar kodas.txt tikrai turi slaptą žinutę, pasinaudodama `cat` programa ir perleisdama jai argumentą `kodas.txt`.
+Gali pasitikrinti, ar kodas.txt tikrai turi slaptą žinutę, pasinaudodama `cat` komanda ir perleisdama jai argumentą `kodas.txt`.
 
-## Šifravimo programa - `base64`
+## Šifravimo komanda - `base64`
 
 Na, o dabar belieka pasinaudoti dar viena komanda:
 
-Programa `base64` moka koduoti ir dekoduoti. `-d` yra parametras ir reiškia dekoduoti. `kodas.txt` yra argumentas, tavo anksčiau sukurtas failas, kurio viduje yra kodas.
+Komanda `base64` moka koduoti ir dekoduoti. `-d` yra parametras ir reiškia dekoduoti. `kodas.txt` yra argumentas, tavo anksčiau sukurtas failas, kurio viduje yra kodas.
 
-* **Parametras** yra papildomas nustatymas programai `base64`. Įsivaizduok programa būtų kaip įsakymas "Kepti orkaitėje", o paramtetras "nustačius 200 laispnių temperatūrą".
+* **Parametras** yra papildomas nustatymas komandai `base64`. Įsivaizduok komanda būtų kaip įsakymas "Kepti orkaitėje", o paramtetras "nustačius 200 laispnių temperatūrą".
 
 ```{python}
 base64 -d kodas.txt
