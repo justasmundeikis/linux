@@ -8,7 +8,7 @@
 
 <meta name="author" content="Justas Mundeikis">
 
-<title>Linux Vaikams</title>
+<title>Linux vaikams ir pradedantiesiems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -65,7 +31,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./1_intro_terminal.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -115,7 +81,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Slapta žinutė</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Įvadas</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -130,7 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Linux Vaikams</a> 
+      <a href="./">Linux vaikams ir pradedantiesiems</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -143,13 +109,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Slapta žinutė</span></span></a>
+ <span class="menu-text">Įvadas</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Linux Mint</span></span></a>
+  <a href="./1_intro_terminal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Susipažinkime su Terminal</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2_linux_programm_update_install_remove.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Linux programos ir atnaujinimai</span></span></a>
   </div>
 </li>
     </ul>
@@ -162,29 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#slapta-žinutė" id="toc-slapta-žinutė" class="nav-link active" data-scroll-target="#slapta-žinutė"><span class="header-section-number">1</span> Slapta žinutė</a></li>
-  <li><a href="#terminalas" id="toc-terminalas" class="nav-link" data-scroll-target="#terminalas"><span class="header-section-number">2</span> Terminalas</a>
-  <ul class="collapse">
-  <li><a href="#pažink-terminalą" id="toc-pažink-terminalą" class="nav-link" data-scroll-target="#pažink-terminalą"><span class="header-section-number">2.1</span> Pažink Terminalą</a></li>
-  <li><a href="#pirma-komanda---echo" id="toc-pirma-komanda---echo" class="nav-link" data-scroll-target="#pirma-komanda---echo"><span class="header-section-number">2.2</span> Pirma Komanda - echo</a>
-  <ul class="collapse">
-  <li><a href="#kas-čia-yra-kas" id="toc-kas-čia-yra-kas" class="nav-link" data-scroll-target="#kas-čia-yra-kas"><span class="header-section-number">2.2.1</span> Kas čia yra Kas?</a></li>
-  <li><a href="#challange" id="toc-challange" class="nav-link" data-scroll-target="#challange"><span class="header-section-number">2.2.2</span> Challange:</a></li>
-  </ul></li>
-  <li><a href="#teksto-nukreipimas-į-failą--" id="toc-teksto-nukreipimas-į-failą--" class="nav-link" data-scroll-target="#teksto-nukreipimas-į-failą--"><span class="header-section-number">2.3</span> Teksto nukreipimas į failą - <code>&gt;</code></a></li>
-  <li><a href="#failų-naršyklė---files" id="toc-failų-naršyklė---files" class="nav-link" data-scroll-target="#failų-naršyklė---files"><span class="header-section-number">2.4</span> Failų naršyklė - <code>Files</code></a>
-  <ul class="collapse">
-  <li><a href="#challange-1" id="toc-challange-1" class="nav-link" data-scroll-target="#challange-1"><span class="header-section-number">2.4.1</span> Challange</a></li>
-  </ul></li>
-  <li><a href="#komanda---cat" id="toc-komanda---cat" class="nav-link" data-scroll-target="#komanda---cat"><span class="header-section-number">2.5</span> Komanda - <code>cat</code></a></li>
-  <li><a href="#teksto-nukreipimas-į-failą---1" id="toc-teksto-nukreipimas-į-failą---1" class="nav-link" data-scroll-target="#teksto-nukreipimas-į-failą---1"><span class="header-section-number">2.6</span> Teksto nukreipimas į failą - <code>&gt;&gt;</code></a>
-  <ul class="collapse">
-  <li><a href="#challange-2" id="toc-challange-2" class="nav-link" data-scroll-target="#challange-2"><span class="header-section-number">2.6.1</span> Challange</a></li>
-  </ul></li>
-  <li><a href="#naudingi-klavišų-trumpiniai-shortcuts" id="toc-naudingi-klavišų-trumpiniai-shortcuts" class="nav-link" data-scroll-target="#naudingi-klavišų-trumpiniai-shortcuts"><span class="header-section-number">2.7</span> Naudingi klavišų trumpiniai (shortcuts):</a></li>
-  <li><a href="#slaptos-žinutės-dekodavimas" id="toc-slaptos-žinutės-dekodavimas" class="nav-link" data-scroll-target="#slaptos-žinutės-dekodavimas"><span class="header-section-number">2.8</span> Slaptos Žinutės Dekodavimas:</a></li>
-  <li><a href="#šifravimo-komanda---base64" id="toc-šifravimo-komanda---base64" class="nav-link" data-scroll-target="#šifravimo-komanda---base64"><span class="header-section-number">2.9</span> Šifravimo komanda - <code>base64</code></a></li>
-  </ul></li>
+  <li><a href="#įvadas" id="toc-įvadas" class="nav-link active" data-scroll-target="#įvadas">Įvadas</a></li>
   </ul>
 </nav>
     </div>
@@ -193,7 +143,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Linux Vaikams</h1>
+<h1 class="title">Linux vaikams ir pradedantiesiems</h1>
 </div>
 
 
@@ -216,210 +166,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="slapta-žinutė" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Slapta žinutė</h1>
-<p>Labas! Aš turiu tau slaptą žinutę:</p>
-<div id="dd0f2c74" class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>SmVpZ3UgdGF1IHBhdGlrbywgZ2FsIG5vcmkgdMSZc3RpIGlyIG1va3l0aXMgcHJvZ3JhbXVvdGkg</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>bnVvIHJ1ZGVucz8K</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Dabar tu galvoji, ką šis kodas gali reikšti? Tavo kompiuteris gali tau padėti dekoduoti šią žinutę!</p>
-<p><img src="img/inspect1.gif" class="img-fluid"></p>
-<p>Bet kad kopiuteris tau padėtų - pirma turi išmokti su juo kalbėtis. Ši pamoka ir bus apie tai kur ir kaip kalbėtis su kompiuteriu.</p>
-<p><img src="img/language.jpg" class="img-fluid"></p>
-</section>
-<section id="terminalas" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Terminalas</h1>
-<p>Atsidaryk programėlę “Terminal”, kurią rasi tarp visų programų. Nebijok, gali tekti paieškoti. Ar žinai, kaip greitai rasti programėlę?</p>
-<ul>
-<li>Spausk mygtuką su „Menu“ arba „Start“ piktograma.</li>
-<li>Naudok paieškos laukelį ir įvesk „Terminal“.</li>
-</ul>
-<p><img src="img/lec_1_terminal.png" class="img-fluid"></p>
-<p>Bet tu gali ir tiesiog spustelti su pele ant piktogramos esančios šaila “Menu”</p>
-<p><img src="img/lec_1_terminal_icon.png" class="img-fluid"></p>
-<section id="pažink-terminalą" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="pažink-terminalą"><span class="header-section-number">2.1</span> Pažink Terminalą</h2>
-<p>Tau atsidarys toks baisus juodas langas. Bet tau jo visai nereikia bijoti. Čia tik langas, per kurį gali bendrauti su kompiuteriu, pasakant jam, ką tu nori, kad jis padarytų.</p>
-<p><img src="img/lec_1_terminal_window.png" class="img-fluid"></p>
-<p><strong>Terminalas</strong> yra speciali programa tavo kompiuteryje, panaši į žaidimų platformas kaip Roblox ar YouTube. Tačiau vietoje to, kad žaidžiame ar žiūrėtume vaizdo įrašus, į ją rašome <strong>komandas</strong> - įsakymus kompiuteriui.</p>
-<p><strong>Komandos</strong> yra būdas pasakyti kompiuteriui, ką jam daryti. Kadangi kompiuteris negali suprasti lietuviškai arba angliškai, jam reikia specialios kalbos. Viena iš tokių kalbų yra BASH.</p>
-<p><strong>BASH</strong> (tariasi <strong>beeš</strong>) yra speciali kompiuterinė kalba, kurią naudojame bendraudami su terminalo programa. Ji leidžia mums rašyti ir vykdyti įsakymus arba komandas, kad galėtume valdyti kompiuterį. Panašiai kaip žmonės kalba skirtingomis kalbomis (pvz., lietuvių arba anglų), BASH yra mūsų būdas bendrauti su kompiuteriu, leidžiantis mums atlikti daug įvairių veiksmų - nuo paprastų failų valdymo iki sudėtingesnių komandų vykdymo.</p>
-<p>Kitaip tariant, BASH yra kalba, kuri leidžia mums parašyti ir suprasti komandas, kurios padeda mums dirbti su kompiuteriu ir atlikti norimus veiksmus per terminalą.</p>
-<p><img src="img/cat-typing-3270851812.gif" class="img-fluid"></p>
-</section>
-<section id="pirma-komanda---echo" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="pirma-komanda---echo"><span class="header-section-number">2.2</span> Pirma Komanda - echo</h2>
-<p>Pasiraitokime rankoves ir kibkime į darbą.</p>
-<p>Pirmoji <strong>komanda</strong> (įsakymas kompiuteriui) bus - <code>echo</code>. Komanda <code>echo</code> atspausdina po jos sekantį tekstą.</p>
-<p>Pabandykime pasisveikinti. Atkartok šią komandą terminale:</p>
-<div id="5b44afb1" class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>echo <span class="st">"Labas rytas"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>ir tada nuspausk <strong>Enter</strong> klavišą. iš tiesų jų yra net 2! Ir kartais jie dar vadinami <strong>return</strong>, nes senovinėse spausdinimo mašinose jie gražindavo (angl. - return) eilutę į praždią.</p>
-<p><img src="img/lec_1_enter_key.png" class="img-fluid"></p>
-<p><img src="img/return.gif" class="img-fluid"></p>
-<p>Ar pastebėjai, kas nutiko? Kompiuteris tave išgirdo ir pakluso tavo komandai.</p>
-<p><img src="img/lec_1_terminal_echo.png" class="img-fluid"></p>
-<section id="kas-čia-yra-kas" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="kas-čia-yra-kas"><span class="header-section-number">2.2.1</span> Kas čia yra Kas?</h3>
-<ul>
-<li>Matai šitą dolerio ženklą <code>$</code>? Jis angliškai vadinamas <code>prompt</code> ir reiškia, kad kompiuteris yra pasirengęs gauti iš tavęs komandą ir laukia jos.</li>
-</ul>
-<p><img src="img/prompt.png" class="img-fluid"></p>
-<ul>
-<li><code>echo</code> yra komanda, kuri priima tekstą ir jį atspausdina. Ji gali atspausdinti čia, ekrane (terminale), bet gali ir atspausdinti kažkur kitur, pvz., nukreipiant tekstą į kokį nors failą. Kaip komanda žino, ką spausdinti? Ji priima <code>argumentą</code>. <code>Argumentas</code> – tai, ką tu pasirenki duoti tai komandai. Šiuo atveju argumentas yra tekstas tarp abiejų kabučių <code>"Labas rytas"</code>.</li>
-</ul>
-<p><img src="img/echo.png" class="img-fluid"></p>
-<ul>
-<li><code>Argumentas</code> – tarsi maisto produktas, kurį įdedi į maisto gaminimo įrenginį. O <code>echo</code> – tarsi maisto gaminimo įrenginys, kuris tą produktą apdoroja ir pagamina kažką skanaus.</li>
-</ul>
-<p><img src="img/argument.png" class="img-fluid"></p>
-<p>Kaip matai, sekančioje eilutėje nėra <code>$</code> ženklo. Nes toje eilutėje kompiuteris atsakė tau :)</p>
-<p><img src="img/response.png" class="img-fluid"></p>
-<p>Kai jis tai padarė, vėl pasiruošė tavęs klausyti, nes paruošė kitą eilutę, kurioje paliko prompt ženklą - <code>$</code> ir laukia naujos tavo komandos.</p>
-</section>
-<section id="challange" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="challange"><span class="header-section-number">2.2.2</span> Challange:</h3>
-<p>Dabar visišai savarankiškai atspausdink žemiau pateiktą tekstą:</p>
-<div id="7da1a8b2" class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Labas rytas suraitytas, meškos koja parašytas<span class="op">!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Pagalba:</p>
-<ul>
-<li>Naudok komandą <code>echo</code>.</li>
-<li>Tekstas turi būti apsuptas kabutėmis <code>"......"</code>.</li>
-<li>Kad paleistum komandą – spausk <code>Enter</code> klavišą.</li>
-</ul>
-</section>
-</section>
-<section id="teksto-nukreipimas-į-failą--" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="teksto-nukreipimas-į-failą--"><span class="header-section-number">2.3</span> Teksto nukreipimas į failą - <code>&gt;</code></h2>
-<p>Šaunu! Judam toliau… Dabar pabandysime tai, ką tau kompiuteris atspausdino į Terminal langą, nukreipti į failą. Ką tai reiškia? Tai reiškia, jog kompiuteris neatspaudins teksto Terminal lange, vietoj to, jis sukurs failą ir patalpins tavo norimą tekstą į jo vidų. Taip tavo tekstas gali būti išsaugotas. Išsaugoti angliškai - <strong>save</strong>.</p>
-<p>Nukreipimas į failą įvyksta naudojant <code>&gt;</code> simbolį. Po šio simbolio seka failo pavadinimas, į kurį nurime nukreipti tekstą. Tačiau šis simbolis yra galingas bet ir pavojingas! Jis sukuria failą, jeigu to failo dar nėra, bet jeigu failas tokiu pat pavadinimu jau yra, jis jį perrašo.</p>
-<p>Pabandyk:</p>
-<div id="21310b8d" class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>echo <span class="st">"Labas rytas, katine"</span> <span class="op">&gt;</span> pasaka.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ul>
-<li><code>echo</code> yra komanda.</li>
-<li><code>"Labas rytas, katine"</code> yra argumentas skirtas echo komandai.</li>
-<li><code>&gt;</code> nukreipia tai, kas įvyko prieš tai į failą</li>
-<li><code>pasaka.txt</code> yra failo pavadinimas, kurė sukuriame ir į kurį įrašome tekstą.</li>
-</ul>
-<p>Jeigu viską padarei teisingai, tavo langas turėtų atrodyti taip:</p>
-<p><img src="img/echo_redirect.png" class="img-fluid"></p>
-<p>Kompiuteris ir vėl laukia tavo komandos. Bet kur atsirado failas?</p>
-</section>
-<section id="failų-naršyklė---files" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="failų-naršyklė---files"><span class="header-section-number">2.4</span> Failų naršyklė - <code>Files</code></h2>
-<p>Matai, kompiuteris įvykdė komandą ir vėl tavęs klauso! Bet kur nuėjo tas “Labas rytas, katine!”? Juk jo nėra Terminal lange? Kad rasti, atsidaryk naują programą, šį kartą paieškoje įvesk „Files“.</p>
-<p><img src="img/lec_1_files_find.png" class="img-fluid"></p>
-<p>Tau atsidarė failų naršyklė, angliškai dažnai vadinama „File Explorer“.</p>
-<p>Pažiūrėkime, ką čia matome…</p>
-<ul>
-<li>Matome daug aplankų: Desktop, Documents, Downloads ir jie atsikaroja dešinėje pusėje</li>
-<li>Bet štai ir failas pasaka.txt!</li>
-</ul>
-<p><img src="img/lec_1_files_pasaka.png" class="img-fluid"></p>
-<p>Paspausk ant pasaka.txt du kartus su pele, jis tau atsidarys su teksto redagavimo programa.</p>
-<p><img src="img/lec_1_text.png" class="img-fluid"></p>
-<p>Uždaryk visus visus ir pasiruošk nedideliam challange!</p>
-<section id="challange-1" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1" class="anchored" data-anchor-id="challange-1"><span class="header-section-number">2.4.1</span> Challange</h3>
-<ol type="1">
-<li>Iš naujo atsidaryk Terminal langą</li>
-<li>Naudojantis <code>echo</code> ir <code>&gt;</code> išsaugok šį tekstą</li>
-</ol>
-<div id="5a1f067b" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Lietuva, Tėvyne mūsų Tu didvyrių žeme, Iš praeities Tavo sūnūs Te stiprybę semia.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="3" type="1">
-<li>Išsaugok tekstą faile pavadinimu himnas.txt</li>
-<li>Atsidary <code>Files</code> programą, rask himnas.txt</li>
-<li>Atsidaryk failą ir patvirtink, jog iš tiesų išsaugojai Lietuvos himno pimąją eilutę.</li>
-</ol>
-</section>
-</section>
-<section id="komanda---cat" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="komanda---cat"><span class="header-section-number">2.5</span> Komanda - <code>cat</code></h2>
-<p>Dabar tau gali kilti klausimas, o kodėl reikėjo atsidaryti šitą failą taip komplikuotai. Negi nėra paprastesnio būdo?</p>
-<p>YRA!</p>
-<p>Terminale įrašyk komandą <code>cat</code> ir perleisk jai argumentą – failo pavadinimą, kurį <code>cat</code> komanda turi perskaityti! Paspausk <code>Enter</code> klavišą.</p>
-<div id="5e723ed7" class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cat pasaka.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Ką matai?</p>
-<p><img src="img/lec_1_cat.png" class="img-fluid"></p>
-<p>Nieko sau! <code>cat</code> komanda perskaitė tavo failą ir jį atspausdino Terminal lange. Tau nereikėjo eiti į <code>Files</code> susirasti ir atsidaryti failo. Tu viską gali padaryti Terminal lange.</p>
-</section>
-<section id="teksto-nukreipimas-į-failą---1" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="teksto-nukreipimas-į-failą---1"><span class="header-section-number">2.6</span> Teksto nukreipimas į failą - <code>&gt;&gt;</code></h2>
-<p>Pameni minėjau, jog <code>&gt;</code> sukuria failą, jeigu jo nėra, o jeigu jis jau yra, tada perrašo jį. Dėl to ši komanda yra gana pavojinga.</p>
-<p>Pabandyk nusiųsti šį tekstą į pasaka.txt</p>
-<div id="d370cd9d" class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>echo <span class="st">"Labas maužyle"</span> <span class="op">&gt;</span> pasaka.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>o tada atspausdinti pasaka.txt terminale:</p>
-<div id="27d065df" class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>cat pasaka.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>O ne, dingo prieš tai buves tekstas :(</p>
-<p><img src="img/oh_no.png" class="img-fluid"></p>
-<p>Tam kad neperrašyti failo, o tik pridėti naują eilutę failo apačioje, galima naudoti <code>&gt;&gt;</code> t.y. dvigubas <code>&gt;</code>.</p>
-<p><img src="img/now_good.png" class="img-fluid"></p>
-<section id="challange-2" class="level3" data-number="2.6.1">
-<h3 data-number="2.6.1" class="anchored" data-anchor-id="challange-2"><span class="header-section-number">2.6.1</span> Challange</h3>
-<p>Praėjusiam challange tu įrašei pirmą Lietuvos himno posmą. Tad dabar antrojo posmo eilė:</p>
-<div id="9962b81b" class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Tegul Tavo vaikai eina Vien takais dorybės Tegul dirba Tavo naudai Ir žmonių gėrybei.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol type="1">
-<li>Pirma pasitikrink su komanda <code>cat</code> ar tikrai turi failą himnas.txt ir ar jame tik pirmo posmo tekstas?</li>
-<li>Naudojant echo ir <code>&gt;&gt;</code> pridėk antro posmo tekstą</li>
-<li>Su komanda <code>cat</code> pasitikrink ar tikrai abu posmai išsisaugojo.</li>
-<li>Jeigu eilutės neatrodo gražiai pasidink terminalo langą ir pakartok komandą</li>
-</ol>
-<p><img src="img/himnas_2.png" class="img-fluid"></p>
-</section>
-</section>
-<section id="naudingi-klavišų-trumpiniai-shortcuts" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="naudingi-klavišų-trumpiniai-shortcuts"><span class="header-section-number">2.7</span> Naudingi klavišų trumpiniai (shortcuts):</h2>
-<p>Dvi komandos, kurias turi išmokti čia ir dabar:</p>
-<ul>
-<li>Paspaudus du klavišus vienu metu <code>CTRL</code> ir <code>L</code>, Terminal langas išsivalo ir tu nebematai senų komandų.</li>
-<li>Kartais tu gali įrašyti kažką neteisingai, padaryti klaidą ir kompiuteris gali nesuprasti. Tada geriausia nuspausti <code>CTRL</code> ir <code>C</code> klavišus. Tai įpareigoja kompiuterį nutraukti tavęs klausymąsi, ištrinti tai, ką dabar darai, ir pradėti klausytis vėl iš naujo.</li>
-</ul>
-<p>Pabandyk:</p>
-<p>Pirma įrašyk echo “Labas rytas bet neužbaik teksto įvedimo, nepadėk kabučių ir spausk Enter. Dabar vietoj atspausdinto teksto arba vietoj prompt <code>$</code> matai šitą ženklą <code>&gt;</code>. Jis reiškia, kad kompiuteris laukia, kol tu pabaigsi įrašyt tekstą. Spaudžiant Enter – nieko nesigauna.</p>
-<p>Nuspaudus CTRL + C nutrūksta komandos įrašymas.</p>
-<p>Taip pat, jeigu žinai ko trūksta, šiuo atveju užaryti tekstą kabutėmis, gali įrašyti ir spausti Enter.</p>
-<p><img src="img/output.gif" class="img-fluid"></p>
-</section>
-<section id="slaptos-žinutės-dekodavimas" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="slaptos-žinutės-dekodavimas"><span class="header-section-number">2.8</span> Slaptos Žinutės Dekodavimas:</h2>
-<p>Na štai, išmokai naudotis terminalu, žinai aks yra komanda, argumentas. Taip pat moki nukreipti tekstą į failą. Moki pakankamai, jog dešifruoti paslaptingą žinutę!</p>
-<p><img src="img/257539.jpg" class="img-fluid"></p>
-<p>Pasinaudok komanda <code>echo</code> ir kaip jos argumentą įrašyk mano slaptą žinutę (su pele pažymėk visą kodą, paspausk dešinį pelės mygtuką ir spausk ant COPY). Tada terminale po echo ” su pele spausk ant terminalo, tada paspausk dešinį mygtuką ir spausk ant PASTE. Tačiau dar nespausk ENTER, nepamiršk, jog čia tekstas, kurį reikia uždaryti su “, kad jis niekur nepabėgtų :)</p>
-<p>Išsaugok visa tai pasinaudodama <code>&gt;</code> ir sukuriant failą pavadinimu <code>kodas.txt</code>.</p>
-<p>Gali pasitikrinti, ar kodas.txt tikrai turi slaptą žinutę, pasinaudodama <code>cat</code> komanda ir perleisdama jai argumentą <code>kodas.txt</code>.</p>
-</section>
-<section id="šifravimo-komanda---base64" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="šifravimo-komanda---base64"><span class="header-section-number">2.9</span> Šifravimo komanda - <code>base64</code></h2>
-<p>Na, o dabar belieka pasinaudoti dar viena komanda:</p>
-<p>Komanda <code>base64</code> moka koduoti ir dekoduoti. <code>-d</code> yra parametras ir reiškia dekoduoti. <code>kodas.txt</code> yra argumentas, tavo anksčiau sukurtas failas, kurio viduje yra kodas.</p>
-<ul>
-<li><strong>Parametras</strong> yra papildomas nustatymas komandai <code>base64</code>. Įsivaizduok komanda būtų kaip įsakymas “Kepti orkaitėje”, o paramtetras “nustačius 200 laispnių temperatūrą”.</li>
-</ul>
-<div id="cc35eebc" class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>base64 <span class="op">-</span>d kodas.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Ar pavyko dekoduoti mano žinutę?</p>
-<p>Sėkmės!</p>
-<p><img src="img/lec_1_terminal_kodas.png" class="img-fluid"></p>
+<section id="įvadas" class="level1 unnumbered">
+<h1 class="unnumbered">Įvadas</h1>
+<p>Čia dar bus…</p>
+<p><img src="img/LM-Confused.png" class="img-fluid"></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -847,8 +599,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Linux Mint">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Linux Mint</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./1_intro_terminal.html" class="pagination-link" aria-label="Susipažinkime su Terminal">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Susipažinkime su Terminal</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

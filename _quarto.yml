@@ -3,11 +3,12 @@ project:
   output-dir: docs
 
 book:
-  title: "Linux Vaikams"
+  title: "Linux vaikams ir pradedantiesiems"
   author: "Justas Mundeikis"
   chapters:
     - index.qmd
-    - intro.qmd
+    - 1_intro_terminal.qmd
+    - 2_linux_programm_update_install_remove.qmd
 
 format:
   html:
