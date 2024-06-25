@@ -2,4 +2,4 @@
 
 Čia dar bus...
 
-![](img/LM-Confused.png)
+![](img/index/LM-Confused.png)
