@@ -251,9 +251,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Pasiraitokime rankoves ir kibkime į darbą.</p>
 <p>Pirmoji <strong>komanda</strong> (įsakymas kompiuteriui) bus - <code>echo</code>. Komanda <code>echo</code> atspausdina po jos sekantį tekstą.</p>
 <p>Pabandykime pasisveikinti. Atkartok šią komandą terminale:</p>
-<div id="c2015a20" class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>echo <span class="st">"Labas rytas"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Labas rytas"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>ir tada nuspausk <strong>Enter</strong> klavišą. iš tiesų jų yra net 2! Ir kartais jie dar vadinami <strong>return</strong>, nes senovinėse spausdinimo mašinose jie gražindavo (angl. - return) eilutę į praždią.</p>
 <p><img src="img/lec_1/lec_1_enter_key.png" class="img-fluid"></p>
 <p><img src="img/lec_1/return.gif" class="img-fluid"></p>
@@ -280,9 +278,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="challange" class="level3" data-number="3.2.2">
 <h3 data-number="3.2.2" class="anchored" data-anchor-id="challange"><span class="header-section-number">3.2.2</span> Challange:</h3>
 <p>Dabar visišai savarankiškai atspausdink žemiau pateiktą tekstą:</p>
-<div id="f6796deb" class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Labas rytas suraitytas, meškos koja parašytas<span class="op">!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Labas</span> rytas suraitytas, meškos koja parašytas!</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Pagalba:</p>
 <ul>
 <li>Naudok komandą <code>echo</code>.</li>
@@ -296,9 +292,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Šaunu! Judam toliau… Dabar pabandysime tai, ką tau kompiuteris atspausdino į Terminal langą, nukreipti į failą. Ką tai reiškia? Tai reiškia, jog kompiuteris neatspaudins teksto Terminal lange, vietoj to, jis sukurs failą ir patalpins tavo norimą tekstą į jo vidų. Taip tavo tekstas gali būti išsaugotas. Išsaugoti angliškai - <strong>save</strong>.</p>
 <p>Nukreipimas į failą įvyksta naudojant <code>&gt;</code> simbolį. Po šio simbolio seka failo pavadinimas, į kurį nurime nukreipti tekstą. Tačiau šis simbolis yra galingas bet ir pavojingas! Jis sukuria failą, jeigu to failo dar nėra, bet jeigu failas tokiu pat pavadinimu jau yra, jis jį perrašo.</p>
 <p>Pabandyk:</p>
-<div id="ca45f80c" class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>echo <span class="st">"Labas rytas, katine"</span> <span class="op">&gt;</span> pasaka.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Labas rytas, katine"</span> <span class="op">&gt;</span> pasaka.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>echo</code> yra komanda.</li>
 <li><code>"Labas rytas, katine"</code> yra argumentas skirtas echo komandai.</li>
@@ -329,9 +323,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Iš naujo atsidaryk Terminal langą</li>
 <li>Naudojantis <code>echo</code> ir <code>&gt;</code> išsaugok šį tekstą</li>
 </ol>
-<div id="ad44fed0" class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Lietuva, Tėvyne mūsų Tu didvyrių žeme, Iš praeities Tavo sūnūs Te stiprybę semia.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Lietuva,</span> Tėvyne mūsų Tu didvyrių žeme, Iš praeities Tavo sūnūs Te stiprybę semia.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="3" type="1">
 <li>Išsaugok tekstą faile pavadinimu himnas.txt</li>
 <li>Atsidary <code>Files</code> programą, rask himnas.txt</li>
@@ -344,9 +336,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Dabar tau gali kilti klausimas, o kodėl reikėjo atsidaryti šitą failą taip komplikuotai. Negi nėra paprastesnio būdo?</p>
 <p>YRA!</p>
 <p>Terminale įrašyk komandą <code>cat</code> ir perleisk jai argumentą – failo pavadinimą, kurį <code>cat</code> komanda turi perskaityti! Paspausk <code>Enter</code> klavišą.</p>
-<div id="4bc3eee5" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cat pasaka.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> pasaka.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Ką matai?</p>
 <p><img src="img/lec_1/lec_1_cat.png" class="img-fluid"></p>
 <p>Nieko sau! <code>cat</code> komanda perskaitė tavo failą ir jį atspausdino Terminal lange. Tau nereikėjo eiti į <code>Files</code> susirasti ir atsidaryti failo. Tu viską gali padaryti Terminal lange.</p>
@@ -355,13 +345,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="3.6" class="anchored" data-anchor-id="teksto-nukreipimas-į-failą---1"><span class="header-section-number">3.6</span> Teksto nukreipimas į failą - <code>&gt;&gt;</code></h2>
 <p>Pameni minėjau, jog <code>&gt;</code> sukuria failą, jeigu jo nėra, o jeigu jis jau yra, tada perrašo jį. Dėl to ši komanda yra gana pavojinga.</p>
 <p>Pabandyk nusiųsti šį tekstą į pasaka.txt</p>
-<div id="30a4cb76" class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>echo <span class="st">"Labas maužyle"</span> <span class="op">&gt;</span> pasaka.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Labas maužyle"</span> <span class="op">&gt;</span> pasaka.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>o tada atspausdinti pasaka.txt terminale:</p>
-<div id="3771cd5a" class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>cat pasaka.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> pasaka.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>O ne, dingo prieš tai buves tekstas :(</p>
 <p><img src="img/lec_1/oh_no.png" class="img-fluid"></p>
 <p>Tam kad neperrašyti failo, o tik pridėti naują eilutę failo apačioje, galima naudoti <code>&gt;&gt;</code> t.y. dvigubas <code>&gt;</code>.</p>
@@ -369,9 +355,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="challange-2" class="level3" data-number="3.6.1">
 <h3 data-number="3.6.1" class="anchored" data-anchor-id="challange-2"><span class="header-section-number">3.6.1</span> Challange</h3>
 <p>Praėjusiam challange tu įrašei pirmą Lietuvos himno posmą. Tad dabar antrojo posmo eilė:</p>
-<div id="bc90cd4e" class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Tegul Tavo vaikai eina Vien takais dorybės Tegul dirba Tavo naudai Ir žmonių gėrybei.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Tegul</span> Tavo vaikai eina Vien takais dorybės Tegul dirba Tavo naudai Ir žmonių gėrybei.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol type="1">
 <li>Pirma pasitikrink su komanda <code>cat</code> ar tikrai turi failą himnas.txt ir ar jame tik pirmo posmo tekstas?</li>
 <li>Naudojant echo ir <code>&gt;&gt;</code> pridėk antro posmo tekstą</li>
@@ -409,9 +393,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><strong>Parametras</strong> yra papildomas nustatymas komandai <code>base64</code>. Įsivaizduok komanda būtų kaip įsakymas “Kepti orkaitėje”, o paramtetras “nustačius 200 laispnių temperatūrą”.</li>
 </ul>
-<div id="57042251" class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>base64 <span class="op">-</span>d kodas.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">base64</span> <span class="at">-d</span> kodas.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Ar pavyko dekoduoti mano žinutę?</p>
 <p><img src="img/lec_1/lec_1_terminal_kodas.png" class="img-fluid"></p>
 </section>
