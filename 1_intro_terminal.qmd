@@ -65,7 +65,7 @@ Pirmoji **komanda** (įsakymas kompiuteriui) bus - `echo`. Komanda `echo` atspau
 
 Pabandykime pasisveikinti. Atkartok šią komandą terminale:
 
-```{python}
+```bash
 echo "Labas rytas"
 ```
 
@@ -106,7 +106,7 @@ Kai jis tai padarė, vėl pasiruošė tavęs klausyti, nes paruošė kitą eilut
 
 Dabar visišai savarankiškai atspausdink žemiau pateiktą tekstą:
 
-```{python}
+```bash
 Labas rytas suraitytas, meškos koja parašytas!
 ```
 
@@ -125,7 +125,7 @@ Nukreipimas į failą įvyksta naudojant `>` simbolį. Po šio simbolio seka fai
 
 Pabandyk:
 
-```{python}
+```bash
 echo "Labas rytas, katine" > pasaka.txt
 ```
 
@@ -169,7 +169,7 @@ Uždaryk visus visus ir pasiruošk nedideliam challange!
 1. Iš naujo atsidaryk Terminal langą
 2. Naudojantis `echo` ir `>` išsaugok šį tekstą
 
-```{python}
+```bash
 Lietuva, Tėvyne mūsų Tu didvyrių žeme, Iš praeities Tavo sūnūs Te stiprybę semia.
 ```
 3. Išsaugok tekstą  faile pavadinimu himnas.txt
@@ -184,7 +184,7 @@ YRA!
 
 Terminale įrašyk komandą `cat` ir perleisk jai argumentą – failo pavadinimą, kurį `cat` komanda turi perskaityti! Paspausk `Enter` klavišą.
 
-```{python}
+```bash
 cat pasaka.txt
 ```
 
@@ -200,13 +200,13 @@ Pameni minėjau, jog `>` sukuria failą, jeigu jo nėra, o jeigu jis jau yra, ta
 
 Pabandyk nusiųsti šį tekstą į pasaka.txt
 
-```{python}
+```bash
 echo "Labas maužyle" > pasaka.txt
 ```
 
 o tada atspausdinti pasaka.txt terminale:
 
-```{python}
+```bash
 cat pasaka.txt
 ```
 
@@ -223,7 +223,7 @@ Tam kad neperrašyti failo, o tik pridėti naują eilutę failo apačioje, galim
 
 Praėjusiam challange tu įrašei pirmą Lietuvos himno posmą. Tad dabar antrojo posmo eilė:
 
-```{python}
+```bash
 Tegul Tavo vaikai eina Vien takais dorybės Tegul dirba Tavo naudai Ir žmonių gėrybei.
 ```
 
@@ -273,7 +273,7 @@ Komanda `base64` moka koduoti ir dekoduoti. `-d` yra parametras ir reiškia deko
 
 * **Parametras** yra papildomas nustatymas komandai `base64`. Įsivaizduok komanda būtų kaip įsakymas "Kepti orkaitėje", o paramtetras "nustačius 200 laispnių temperatūrą".
 
-```{python}
+```bash
 base64 -d kodas.txt
 ```
 
