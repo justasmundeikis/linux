@@ -208,5 +208,55 @@
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Linux programos ir atnaujinimai</span>"
     ]
+  },
+  {
+    "objectID": "3_passwords_online_accounts.html",
+    "href": "3_passwords_online_accounts.html",
+    "title": "3  Slaptažodžiai ir internetinės paskyros",
+    "section": "",
+    "text": "3.1 Intro\nAr žinai, kas kelia didžiausią riziką internete, tiek vaikams, tiek suaugusiems? Nesaugūs slaptažodžiai.\nTokie slaptažodžiai kaip:\nyra begalo pavojingi. Blogi pogramuotjai, dar vadinami “hakeriais”, nuolat bando nulaužti internetinas paskyras. Tam jie naudojasi teksto generatoriais, sukuria šimtus tūkstančių kombinacijų, pvz pelenė123 ir bando nulaužti internetinius slaptažodžius.\nkas gali nutikti blogiausia, jeigu tavo slaptažodį nulauš?\nScerijus:\nRetai, bet taip nutinka.\nŠioje pamokoje išmoksi kas yra saugus slaptažodis, kaip juos sukurti ir kaip juos saugoti. Taip tai ne visada yra patogu, bet deja, kaip visad gyvenime, reikia ieškoti kompromiso tarp saugumo ir patogumo.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Slaptažodžiai ir internetinės paskyros</span>"
+    ]
+  },
+  {
+    "objectID": "3_passwords_online_accounts.html#abd",
+    "href": "3_passwords_online_accounts.html#abd",
+    "title": "3  Slaptažodžiai ir internetinės paskyros",
+    "section": "3.2 ABD",
+    "text": "3.2 ABD",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Slaptažodžiai ir internetinės paskyros</span>"
+    ]
+  },
+  {
+    "objectID": "3_passwords_online_accounts.html#intro",
+    "href": "3_passwords_online_accounts.html#intro",
+    "title": "3  Slaptažodžiai ir internetinės paskyros",
+    "section": "",
+    "text": "12345\nslaptažodis\nvardaspavardė\nmamos vardas\naugintinio vardas\n\n\n\n\n\nHackeris “nulaužia” t.y. atspėja tavo slaptažodį pvz Google paskyros\nNueina į tavo banko paskyrą, ir pranša, kad pamiršo savo slaptažodį. Bankas atsiunčia nuorodą į elektronį paštą, kuriame prideda nuorodą, leidžiančia sukurti naują slaptažodį bankui.\nPrisijungęs prie tavo banko paskyros - hackeris ištuština tavo visas santaupas. Dabar tu turi eiti skolintis, vien tam, kad turėti pinigų maistui.\nBet hackeris buvo ypač blogas, apart visko, jis dar ištrynė ir visas kitas tavo paskyras, nuotraukų kopijas esančias internete ir prikėtė visokių kitų šunybių.\nNa prie to pačio, dar ir užrakino tavo telefoną, ištrynė kontaktus, tad net nebežinai, kaip paskambinti draugams ir paprašyti pagalbos.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Slaptažodžiai ir internetinės paskyros</span>"
+    ]
+  },
+  {
+    "objectID": "3_passwords_online_accounts.html#kas-yra-saugus-slaptažodis",
+    "href": "3_passwords_online_accounts.html#kas-yra-saugus-slaptažodis",
+    "title": "3  Slaptažodžiai ir internetinės paskyros",
+    "section": "3.2 Kas yra saugus slaptažodis",
+    "text": "3.2 Kas yra saugus slaptažodis\nPirmiausia, saugus slaptažodis yra toks, kurio tu nežinai! Jeigu tu nežinai savo slaptažodžio, tu negali jo užrašyti ant jokio popieriaus lapelio, tad niekas jo ir nepamatys.\nTai kaip prisijungti prie paskyrų internete, pvz, banke? prie elektroninio pašto?\nTam padeda slaptažodžių programos. Jų yra įvairių\n\ninternetinės programos tokios kaip Bitwarden, kurios sinchronizuoja, t.y. suvienodina informaciją per visus tavo įrenginius: kompiuterį, telefoną ir t.t.\nkompiuteryje instaliuotos programos, pvz keepassx, kuriose išsaugai slaptažodius ir kai reikia prisijungti, atsidarai jas ir iš jų nusikopijuoji slaptažodį, kurio reikia.\n\nKiti aspektai saugaus slaptažodžio:\n\nbent 16 simbolių (geriau naudoti daugiau, bet ne visur leidžiama)\nnaudoti tiek DIDŽIĄSIAS RAIDES, tiek mažąsas, tiek skaičius bet būtinai ir simpbolius tokius kaip !@#$%^&*()_\n\ntačiau pati svarbiausia taisyklė:\n\nnaudoti skirtingus slaptažodžius visur\n\nJeigu kam nors pavyktų nulaužti tavo vieną paskyrą, pvz kokios nors internetinės parduotuvės, tas hackeris negalėtų panaudoti išgauto slaptažožio norint prisijungti prie tavo elektroninio pašto.\nNaudojant tokias programėlės kaip Bitwarden, KeepassX ir kitas, su laiku tu pamatysi, kiek daug paskyrų turi ir kaip nelengva būtų visur turėti skirtingus slaptažodžius.\n\n3.2.1 KeepassX\nInstlaiuok keepassx savo kompiuteryje. Prisimink iš praėjusio skurio, kaip instaliuoti programas naudojantis Terminal Programos pavadinimas kurio reikės keepassx\nPagalba: * sudo suteikia administratoriaus teises * apt programa kuri valdo programas * install komanda kuri įdiegia programas * &lt;argumentas&gt; programos pavadinimas, kurią norima įdiegti\n             Video Video",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Slaptažodžiai ir internetinės paskyros</span>"
+    ]
+  },
+  {
+    "objectID": "3_passwords_online_accounts.html#section",
+    "href": "3_passwords_online_accounts.html#section",
+    "title": "3  Slaptažodžiai ir internetinės paskyros",
+    "section": "3.3 ",
+    "text": "3.3",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Slaptažodžiai ir internetinės paskyros</span>"
+    ]
   }
 ]

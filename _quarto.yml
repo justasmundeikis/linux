@@ -9,6 +9,7 @@ book:
     - index.qmd
     - 1_intro_terminal.qmd
     - 2_linux_programm_update_install_remove.qmd
+    - 3_passwords_online_accounts.qmd
 
 format:
   html:
