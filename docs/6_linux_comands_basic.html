@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6&nbsp; Manipulating files and directories – Linux vaikams ir pradedantiesiems</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./7_linux_comands_advanced.html" rel="next">
+<link href="./5_passwords_online_accounts.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./6_linux_comands_basic.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Manipulating files and directories</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Linux vaikams ir pradedantiesiems</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Įvadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1_linux_configure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Linux konfiguracija</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2_linux_intro_terminal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Susipažinkime su Terminal</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3_linux_update.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linux programos ir atnaujinimai</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4_linux_software.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linux programos ir atnaujinimai</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5_passwords_online_accounts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Slaptažodžiai ir internetinės paskyros</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6_linux_comands_basic.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Manipulating files and directories</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./7_linux_comands_advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">7_linux_comands_advanced.html</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#failų-sistema" id="toc-failų-sistema" class="nav-link active" data-scroll-target="#failų-sistema"><span class="header-section-number">7</span> Failų sistema</a>
+  <ul class="collapse">
+  <li><a href="#pwd" id="toc-pwd" class="nav-link" data-scroll-target="#pwd"><span class="header-section-number">7.1</span> <code>pwd</code></a></li>
+  <li><a href="#clear" id="toc-clear" class="nav-link" data-scroll-target="#clear"><span class="header-section-number">7.2</span> <code>clear</code></a></li>
+  <li><a href="#ls" id="toc-ls" class="nav-link" data-scroll-target="#ls"><span class="header-section-number">7.3</span> <code>ls</code></a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">7.4</span> <code>/</code></a></li>
+  <li><a href="#cd" id="toc-cd" class="nav-link" data-scroll-target="#cd"><span class="header-section-number">7.5</span> <code>cd</code></a></li>
+  <li><a href="#copy-with-cp" id="toc-copy-with-cp" class="nav-link" data-scroll-target="#copy-with-cp"><span class="header-section-number">7.6</span> Copy with cp</a></li>
+  <li><a href="#move-the-file-with-mw" id="toc-move-the-file-with-mw" class="nav-link" data-scroll-target="#move-the-file-with-mw"><span class="header-section-number">7.7</span> Move the file with mw</a></li>
+  <li><a href="#rename-files-with-mv" id="toc-rename-files-with-mv" class="nav-link" data-scroll-target="#rename-files-with-mv"><span class="header-section-number">7.8</span> rename files with mv</a></li>
+  <li><a href="#remove-files-with-rm" id="toc-remove-files-with-rm" class="nav-link" data-scroll-target="#remove-files-with-rm"><span class="header-section-number">7.9</span> remove files with rm</a></li>
+  <li><a href="#create-and-remove-a-directory" id="toc-create-and-remove-a-directory" class="nav-link" data-scroll-target="#create-and-remove-a-directory"><span class="header-section-number">7.10</span> create and remove a directory</a></li>
+  </ul></li>
+  <li><a href="#manipulating-data" id="toc-manipulating-data" class="nav-link" data-scroll-target="#manipulating-data"><span class="header-section-number">8</span> Manipulating data</a>
+  <ul class="collapse">
+  <li><a href="#viewing-file-contents-with-cat" id="toc-viewing-file-contents-with-cat" class="nav-link" data-scroll-target="#viewing-file-contents-with-cat"><span class="header-section-number">8.1</span> Viewing file contents with cat</a></li>
+  <li><a href="#mutliple-paged-files-with-less" id="toc-mutliple-paged-files-with-less" class="nav-link" data-scroll-target="#mutliple-paged-files-with-less"><span class="header-section-number">8.2</span> mutliple paged files with less</a></li>
+  <li><a href="#top-n-rows-with-head" id="toc-top-n-rows-with-head" class="nav-link" data-scroll-target="#top-n-rows-with-head"><span class="header-section-number">8.3</span> top n rows with head</a></li>
+  <li><a href="#autocompletion-with-tab" id="toc-autocompletion-with-tab" class="nav-link" data-scroll-target="#autocompletion-with-tab"><span class="header-section-number">8.4</span> autocompletion with tab</a></li>
+  <li><a href="#flags" id="toc-flags" class="nav-link" data-scroll-target="#flags"><span class="header-section-number">8.5</span> flags</a></li>
+  <li><a href="#ls-1" id="toc-ls-1" class="nav-link" data-scroll-target="#ls-1"><span class="header-section-number">8.6</span> ls</a></li>
+  <li><a href="#see-manual-with-man" id="toc-see-manual-with-man" class="nav-link" data-scroll-target="#see-manual-with-man"><span class="header-section-number">8.7</span> see manual with man</a></li>
+  <li><a href="#cut-command" id="toc-cut-command" class="nav-link" data-scroll-target="#cut-command"><span class="header-section-number">8.8</span> cut command</a></li>
+  <li><a href="#history" id="toc-history" class="nav-link" data-scroll-target="#history"><span class="header-section-number">8.9</span> history</a></li>
+  <li><a href="#grep" id="toc-grep" class="nav-link" data-scroll-target="#grep"><span class="header-section-number">8.10</span> grep</a></li>
+  </ul></li>
+  <li><a href="#combining-tools" id="toc-combining-tools" class="nav-link" data-scroll-target="#combining-tools"><span class="header-section-number">9</span> Combining tools</a>
+  <ul class="collapse">
+  <li><a href="#redirection" id="toc-redirection" class="nav-link" data-scroll-target="#redirection"><span class="header-section-number">9.1</span> Redirection &gt;</a></li>
+  <li><a href="#word-count-with-wc" id="toc-word-count-with-wc" class="nav-link" data-scroll-target="#word-count-with-wc"><span class="header-section-number">9.2</span> word count with wc</a></li>
+  <li><a href="#wildcard" id="toc-wildcard" class="nav-link" data-scroll-target="#wildcard"><span class="header-section-number">9.3</span> wildcard **</a></li>
+  <li><a href="#sorting-with-sort" id="toc-sorting-with-sort" class="nav-link" data-scroll-target="#sorting-with-sort"><span class="header-section-number">9.4</span> sorting with sort</a></li>
+  <li><a href="#remove-adjesent-duplicates" id="toc-remove-adjesent-duplicates" class="nav-link" data-scroll-target="#remove-adjesent-duplicates"><span class="header-section-number">9.5</span> remove adjesent duplicates</a></li>
+  <li><a href="#redirecting" id="toc-redirecting" class="nav-link" data-scroll-target="#redirecting"><span class="header-section-number">9.6</span> redirecting</a></li>
+  <li><a href="#break-out-with-ctrl-c" id="toc-break-out-with-ctrl-c" class="nav-link" data-scroll-target="#break-out-with-ctrl-c"><span class="header-section-number">9.7</span> break out with ctrl + c</a></li>
+  <li><a href="#wrap-up-exercise" id="toc-wrap-up-exercise" class="nav-link" data-scroll-target="#wrap-up-exercise"><span class="header-section-number">9.8</span> wrap up exercise</a></li>
+  </ul></li>
+  <li><a href="#batch-processing" id="toc-batch-processing" class="nav-link" data-scroll-target="#batch-processing"><span class="header-section-number">10</span> Batch processing</a>
+  <ul class="collapse">
+  <li><a href="#shell-variable" id="toc-shell-variable" class="nav-link" data-scroll-target="#shell-variable"><span class="header-section-number">10.1</span> shell variable</a></li>
+  <li><a href="#for" id="toc-for" class="nav-link" data-scroll-target="#for"><span class="header-section-number">10.2</span> for</a></li>
+  <li><a href="#filenames" id="toc-filenames" class="nav-link" data-scroll-target="#filenames"><span class="header-section-number">10.3</span> filenames</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">10.4</span> </a></li>
+  </ul></li>
+  <li><a href="#creating-new-tools" id="toc-creating-new-tools" class="nav-link" data-scroll-target="#creating-new-tools"><span class="header-section-number">11</span> Creating new tools</a>
+  <ul class="collapse">
+  <li><a href="#nano" id="toc-nano" class="nav-link" data-scroll-target="#nano"><span class="header-section-number">11.1</span> nano</a></li>
+  <li><a href="#history-1" id="toc-history-1" class="nav-link" data-scroll-target="#history-1"><span class="header-section-number">11.2</span> history</a></li>
+  </ul></li>
+  <li><a href="#print-the-first-and-last-data-records-of-each-file." id="toc-print-the-first-and-last-data-records-of-each-file." class="nav-link" data-scroll-target="#print-the-first-and-last-data-records-of-each-file."><span class="header-section-number">12</span> Print the first and last data records of each file.</a></li>
+  <li><a href="#bash-scripting" id="toc-bash-scripting" class="nav-link" data-scroll-target="#bash-scripting"><span class="header-section-number">13</span> Bash scripting</a>
+  <ul class="collapse">
+  <li><a href="#from-command-line-to-bash-script" id="toc-from-command-line-to-bash-script" class="nav-link" data-scroll-target="#from-command-line-to-bash-script"><span class="header-section-number">13.1</span> From Command-Line to Bash Script</a></li>
+  <li><a href="#first-bash-script" id="toc-first-bash-script" class="nav-link" data-scroll-target="#first-bash-script"><span class="header-section-number">13.2</span> First bash script</a></li>
+  <li><a href="#standard-streans-and-arguments" id="toc-standard-streans-and-arguments" class="nav-link" data-scroll-target="#standard-streans-and-arguments"><span class="header-section-number">13.3</span> standard streans and arguments</a></li>
+  <li><a href="#variables-in-bash-scripting" id="toc-variables-in-bash-scripting" class="nav-link" data-scroll-target="#variables-in-bash-scripting"><span class="header-section-number">13.4</span> Variables in Bash Scripting</a>
+  <ul class="collapse">
+  <li><a href="#basic-variables-in-bash" id="toc-basic-variables-in-bash" class="nav-link" data-scroll-target="#basic-variables-in-bash"><span class="header-section-number">13.4.1</span> Basic variables in Bash</a></li>
+  </ul></li>
+  <li><a href="#numeric-variables-in-bash" id="toc-numeric-variables-in-bash" class="nav-link" data-scroll-target="#numeric-variables-in-bash"><span class="header-section-number">13.5</span> Numeric variables in Bash</a></li>
+  <li><a href="#arrays-in-bash" id="toc-arrays-in-bash" class="nav-link" data-scroll-target="#arrays-in-bash"><span class="header-section-number">13.6</span> Arrays in Bash</a></li>
+  </ul></li>
+  <li><a href="#create-a-normal-array-with-the-mentioned-elements" id="toc-create-a-normal-array-with-the-mentioned-elements" class="nav-link" data-scroll-target="#create-a-normal-array-with-the-mentioned-elements"><span class="header-section-number">14</span> Create a normal array with the mentioned elements</a></li>
+  <li><a href="#create-a-normal-array-with-the-mentioned-elements-using-the-declare-method" id="toc-create-a-normal-array-with-the-mentioned-elements-using-the-declare-method" class="nav-link" data-scroll-target="#create-a-normal-array-with-the-mentioned-elements-using-the-declare-method"><span class="header-section-number">15</span> Create a normal array with the mentioned elements using the declare method</a></li>
+  <li><a href="#add-append-the-elements" id="toc-add-append-the-elements" class="nav-link" data-scroll-target="#add-append-the-elements"><span class="header-section-number">16</span> Add (append) the elements</a></li>
+  <li><a href="#the-array-has-been-created-for-you" id="toc-the-array-has-been-created-for-you" class="nav-link" data-scroll-target="#the-array-has-been-created-for-you"><span class="header-section-number">17</span> The array has been created for you</a></li>
+  <li><a href="#print-out-the-entire-array" id="toc-print-out-the-entire-array" class="nav-link" data-scroll-target="#print-out-the-entire-array"><span class="header-section-number">18</span> Print out the entire array</a></li>
+  <li><a href="#the-array-has-been-created-for-you-1" id="toc-the-array-has-been-created-for-you-1" class="nav-link" data-scroll-target="#the-array-has-been-created-for-you-1"><span class="header-section-number">19</span> The array has been created for you</a></li>
+  <li><a href="#print-out-the-entire-array-1" id="toc-print-out-the-entire-array-1" class="nav-link" data-scroll-target="#print-out-the-entire-array-1"><span class="header-section-number">20</span> Print out the entire array</a></li>
+  <li><a href="#print-out-the-array-length" id="toc-print-out-the-array-length" class="nav-link" data-scroll-target="#print-out-the-array-length"><span class="header-section-number">21</span> Print out the array length</a></li>
+  <li><a href="#print-out-the-array-length-1" id="toc-print-out-the-array-length-1" class="nav-link" data-scroll-target="#print-out-the-array-length-1"><span class="header-section-number">22</span> Print out the array length</a></li>
+  <li><a href="#create-empty-associative-array" id="toc-create-empty-associative-array" class="nav-link" data-scroll-target="#create-empty-associative-array"><span class="header-section-number">23</span> Create empty associative array</a></li>
+  <li><a href="#add-the-key-value-pairs" id="toc-add-the-key-value-pairs" class="nav-link" data-scroll-target="#add-the-key-value-pairs"><span class="header-section-number">24</span> Add the key-value pairs</a></li>
+  <li><a href="#declare-associative-array-with-key-value-pairs-on-one-line" id="toc-declare-associative-array-with-key-value-pairs-on-one-line" class="nav-link" data-scroll-target="#declare-associative-array-with-key-value-pairs-on-one-line"><span class="header-section-number">25</span> Declare associative array with key-value pairs on one line</a></li>
+  <li><a href="#print-out-the-entire-array-2" id="toc-print-out-the-entire-array-2" class="nav-link" data-scroll-target="#print-out-the-entire-array-2"><span class="header-section-number">26</span> Print out the entire array</a></li>
+  <li><a href="#an-associative-array-has-been-created-for-you" id="toc-an-associative-array-has-been-created-for-you" class="nav-link" data-scroll-target="#an-associative-array-has-been-created-for-you"><span class="header-section-number">27</span> An associative array has been created for you</a></li>
+  <li><a href="#print-out-all-the-keys" id="toc-print-out-all-the-keys" class="nav-link" data-scroll-target="#print-out-all-the-keys"><span class="header-section-number">28</span> Print out all the keys</a></li>
+  <li><a href="#create-variables-from-the-temperature-data-files" id="toc-create-variables-from-the-temperature-data-files" class="nav-link" data-scroll-target="#create-variables-from-the-temperature-data-files"><span class="header-section-number">29</span> Create variables from the temperature data files</a></li>
+  <li><a href="#create-an-array-with-these-variables-as-elements" id="toc-create-an-array-with-these-variables-as-elements" class="nav-link" data-scroll-target="#create-an-array-with-these-variables-as-elements"><span class="header-section-number">30</span> Create an array with these variables as elements</a></li>
+  <li><a href="#call-an-external-program-to-get-average-temperature" id="toc-call-an-external-program-to-get-average-temperature" class="nav-link" data-scroll-target="#call-an-external-program-to-get-average-temperature"><span class="header-section-number">31</span> Call an external program to get average temperature</a></li>
+  <li><a href="#append-average-temp-to-the-array" id="toc-append-average-temp-to-the-array" class="nav-link" data-scroll-target="#append-average-temp-to-the-array"><span class="header-section-number">32</span> Append average temp to the array</a></li>
+  <li><a href="#print-out-the-whole-array" id="toc-print-out-the-whole-array" class="nav-link" data-scroll-target="#print-out-the-whole-array"><span class="header-section-number">33</span> Print out the whole array</a></li>
+  <li><a href="#create-variables-from-the-temperature-data-files-1" id="toc-create-variables-from-the-temperature-data-files-1" class="nav-link" data-scroll-target="#create-variables-from-the-temperature-data-files-1"><span class="header-section-number">34</span> Create variables from the temperature data files</a></li>
+  <li><a href="#create-an-array-with-these-variables-as-elements-1" id="toc-create-an-array-with-these-variables-as-elements-1" class="nav-link" data-scroll-target="#create-an-array-with-these-variables-as-elements-1"><span class="header-section-number">35</span> Create an array with these variables as elements</a></li>
+  <li><a href="#call-an-external-program-to-get-average-temperature-1" id="toc-call-an-external-program-to-get-average-temperature-1" class="nav-link" data-scroll-target="#call-an-external-program-to-get-average-temperature-1"><span class="header-section-number">36</span> Call an external program to get average temperature</a></li>
+  <li><a href="#append-average-temp-to-the-array-1" id="toc-append-average-temp-to-the-array-1" class="nav-link" data-scroll-target="#append-average-temp-to-the-array-1"><span class="header-section-number">37</span> Append average temp to the array</a></li>
+  <li><a href="#print-out-the-whole-array-1" id="toc-print-out-the-whole-array-1" class="nav-link" data-scroll-target="#print-out-the-whole-array-1"><span class="header-section-number">38</span> Print out the whole array</a>
+  <ul class="collapse">
+  <li><a href="#control-statements-in-bash-scripting" id="toc-control-statements-in-bash-scripting" class="nav-link" data-scroll-target="#control-statements-in-bash-scripting"><span class="header-section-number">38.1</span> Control Statements in Bash Scripting</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Manipulating files and directories</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="failų-sistema" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Failų sistema</h1>
+<section id="pwd" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="pwd"><span class="header-section-number">7.1</span> <code>pwd</code></h2>
+<p>The filesystem manages files and directories (or folders). Each is identified by an absolute path that shows how to reach it from the filesystem’s root directory: /home/repl is the directory repl in the directory home, while /home/repl/course.txt is a file course.txt in that directory, and / on its own is the root directory.</p>
+<p>To find out where you are in the filesystem, run the command pwd (short for “print working directory”). This prints the absolute path of your current working directory, which is where the shell runs commands and looks for files by default.</p>
+<p>Run pwd. Where are you right now?</p>
+<p>Instructions 50 XP Possible answers /home /repl /home/repl</p>
+</section>
+<section id="clear" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="clear"><span class="header-section-number">7.2</span> <code>clear</code></h2>
+</section>
+<section id="ls" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="ls"><span class="header-section-number">7.3</span> <code>ls</code></h2>
+<p>How can I identify files and directories?</p>
+<p>pwd tells you where you are. To find out what’s there, type ls (which is short for “listing”) and press the enter key. On its own, ls lists the contents of your current directory (the one displayed by pwd). If you add the names of some files, ls will list them, and if you add the names of directories, it will list their contents. For example, ls /home/repl shows you what’s in your starting directory (usually called your home directory).</p>
+<p>Use ls with an appropriate argument to list the files in the directory /home/repl/seasonal (which holds information on dental surgeries by date, broken down by season). Which of these files is not in that directory?</p>
+<p>Possible answers autumn.csv fall.csv spring.csv winter.csv</p>
+<p>How else can I identify files and directories?</p>
+<p>An absolute path is like a latitude and longitude: it has the same value no matter where you are. A relative path, on the other hand, specifies a location starting from where you are: it’s like saying “20 kilometers north”.</p>
+<p>As examples:</p>
+<pre><code>If you are in the directory /home/repl, the relative path seasonal specifies the same directory as the absolute path /home/repl/seasonal.
+If you are in the directory /home/repl/seasonal, the relative path winter.csv specifies the same file as the absolute path /home/repl/seasonal/winter.csv.</code></pre>
+<p>The shell decides if a path is absolute or relative by looking at its first character: If it begins with /, it is absolute. If it does not begin with /, it is relative. Instructions 2/3 35 XP</p>
+<p>You are in /home/repl. Use ls with a relative path to list the file that has an absolute path of /home/repl/course.txt (and only that file).</p>
+<p>You are in /home/repl. Use ls with a relative path to list the file /home/repl/seasonal/summer.csv (and only that file). 3</p>
+<p>You are in /home/repl. Use ls with a relative path to list the contents of the directory /home/repl/people.</p>
+<p><code>ls</code> komanda yra <code>list storage</code></p>
+<p><code>ls /</code> <code>ls /home</code> <code>ls /home/pi</code> <code>ls ~</code> <code>ls -l</code> <code>ls -lh</code> <code>ls -lha</code></p>
+<p>drwxr-wxr-wx -rwxr-wxr-wx</p>
+</section>
+<section id="section" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="section"><span class="header-section-number">7.4</span> <code>/</code></h2>
+<ul>
+<li><code>/home</code></li>
+</ul>
+</section>
+<section id="cd" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="cd"><span class="header-section-number">7.5</span> <code>cd</code></h2>
+<p>How can I move to another directory?</p>
+<p>Just as you can move around in a file browser by double-clicking on folders, you can move around in the filesystem using the command cd (which stands for “change directory”).</p>
+<p>If you type cd seasonal and then type pwd, the shell will tell you that you are now in /home/repl/seasonal. If you then run ls on its own, it shows you the contents of /home/repl/seasonal, because that’s where you are. If you want to get back to your home directory /home/repl, you can use the command cd /home/repl. Instructions 1/3 35 XP</p>
+<pre><code>1
+
+You are in /home/repl/. Change directory to /home/repl/seasonal using a relative path.</code></pre>
+<p>2</p>
+<p>Use pwd to check that you’re there. 3</p>
+<p>Use ls without any paths to see what’s in that directory.</p>
+<p>How can I move up a directory?</p>
+<p>The parent of a directory is the directory above it. For example, /home is the parent of /home/repl, and /home/repl is the parent of /home/repl/seasonal. You can always give the absolute path of your parent directory to commands like cd and ls. More often, though, you will take advantage of the fact that the special path .. (two dots with no spaces) means “the directory above the one I’m currently in”. If you are in /home/repl/seasonal, then cd .. moves you up to /home/repl. If you use cd .. once again, it puts you in /home. One more cd .. puts you in the root directory /, which is the very top of the filesystem. (Remember to put a space between cd and .. - it is a command and a path, not a single four-letter command.)</p>
+<p>A single dot on its own, ., always means “the current directory”, so ls on its own and ls . do the same thing, while cd . has no effect (because it moves you into the directory you’re currently in).</p>
+<p>One final special path is ~ (the tilde character), which means “your home directory”, such as /home/repl. No matter where you are, ls ~ will always list the contents of your home directory, and cd ~ will always take you home.</p>
+<p>If you are in /home/repl/seasonal, where does cd ~/../. take you?</p>
+<ul>
+<li>pirma <code>pwd</code></li>
+<li>tada <code>cd /</code></li>
+<li><code>pwd</code></li>
+<li><code>cd</code> arba <code>cd ~</code> arba <code>cd /home/pi</code></li>
+</ul>
+</section>
+<section id="copy-with-cp" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="copy-with-cp"><span class="header-section-number">7.6</span> Copy with cp</h2>
+<p>How can I copy files?</p>
+<p>You will often want to copy files, move them into other directories to organize them, or rename them. One command to do this is cp, which is short for “copy”. If original.txt is an existing file, then:</p>
+<p>cp original.txt duplicate.txt</p>
+<p>creates a copy of original.txt called duplicate.txt. If there already was a file called duplicate.txt, it is overwritten. If the last parameter to cp is an existing directory, then a command like:</p>
+<p>cp seasonal/autumn.csv seasonal/winter.csv backup</p>
+<p>copies all of the files into that directory. Instructions 1/2 50 XP</p>
+<pre><code>1
+
+Make a copy of seasonal/summer.csv in the backup directory (which is also in /home/repl), calling the new file summer.bck.</code></pre>
+<p>2</p>
+<p>Copy spring.csv and summer.csv from the seasonal directory into the backup directory without changing your current working directory (/home/repl).</p>
+</section>
+<section id="move-the-file-with-mw" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="move-the-file-with-mw"><span class="header-section-number">7.7</span> Move the file with mw</h2>
+<p>How can I move a file?</p>
+<p>While cp copies a file, mv moves it from one directory to another, just as if you had dragged it in a graphical file browser. It handles its parameters the same way as cp, so the command:</p>
+<p>mv autumn.csv winter.csv ..</p>
+<p>moves the files autumn.csv and winter.csv from the current working directory up one level to its parent directory (because .. always refers to the directory above your current location). Instructions 100 XP</p>
+<p>You are in /home/repl, which has sub-directories seasonal and backup. Using a single command, move spring.csv and summer.csv from seasonal to backup.</p>
+</section>
+<section id="rename-files-with-mv" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="rename-files-with-mv"><span class="header-section-number">7.8</span> rename files with mv</h2>
+<p>Exercise Exercise How can I rename files?</p>
+<p>mv can also be used to rename files. If you run:</p>
+<p>mv course.txt old-course.txt</p>
+<p>then the file course.txt in the current working directory is “moved” to the file old-course.txt. This is different from the way file browsers work, but is often handy.</p>
+<p>One warning: just like cp, mv will overwrite existing files. If, for example, you already have a file called old-course.txt, then the command shown above will replace it with whatever is in course.txt. Instructions 1/3 35 XP</p>
+<pre><code>1
+
+Go into the seasonal directory.</code></pre>
+<p>2</p>
+<p>Rename the file winter.csv to be winter.csv.bck. 3</p>
+<p>Run ls to check that everything has worked.</p>
+</section>
+<section id="remove-files-with-rm" class="level2" data-number="7.9">
+<h2 data-number="7.9" class="anchored" data-anchor-id="remove-files-with-rm"><span class="header-section-number">7.9</span> remove files with rm</h2>
+<p>Exercise Exercise How can I delete files?</p>
+<p>We can copy files and move them around; to delete them, we use rm, which stands for “remove”. As with cp and mv, you can give rm the names of as many files as you’d like, so:</p>
+<p>rm thesis.txt backup/thesis-2017-08.txt</p>
+<p>removes both thesis.txt and backup/thesis-2017-08.txt</p>
+<p>rm does exactly what its name says, and it does it right away: unlike graphical file browsers, the shell doesn’t have a trash can, so when you type the command above, your thesis is gone for good. Instructions 1/4 25 XP</p>
+<pre><code>1
+
+You are in /home/repl. Go into the seasonal directory.</code></pre>
+<p>2</p>
+<p>Remove autumn.csv. 3</p>
+<p>Go back to your home directory. 4</p>
+<p>Remove seasonal/summer.csv without changing directories again.</p>
+</section>
+<section id="create-and-remove-a-directory" class="level2" data-number="7.10">
+<h2 data-number="7.10" class="anchored" data-anchor-id="create-and-remove-a-directory"><span class="header-section-number">7.10</span> create and remove a directory</h2>
+<p>Exercise Exercise How can I create and delete directories?</p>
+<p>mv treats directories the same way it treats files: if you are in your home directory and run mv seasonal by-season, for example, mv changes the name of the seasonal directory to by-season. However, rm works differently.</p>
+<p>If you try to rm a directory, the shell prints an error message telling you it can’t do that, primarily to stop you from accidentally deleting an entire directory full of work. Instead, you can use a separate command called rmdir. For added safety, it only works when the directory is empty, so you must delete the files in a directory before you delete the directory. (Experienced users can use the -r option to rm to get the same effect; we will discuss command options in the next chapter.) Instructions 1/4 25 XP</p>
+<pre><code>1
+
+Without changing directories, delete the file agarwal.txt in the people directory.</code></pre>
+<p>2</p>
+<p>Now that the people directory is empty, use a single command to delete it. 3</p>
+<p>Since a directory is not a file, you must use the command mkdir directory_name to create a new (empty) directory. Use this command to create a new directory called yearly below your home directory. 4</p>
+<p>Now that yearly exists, create another directory called 2017 inside it without leaving your home directory.</p>
+<p>Exercise Exercise Wrapping up</p>
+<p>You will often create intermediate files when analyzing data. Rather than storing them in your home directory, you can put them in /tmp, which is where people and programs often keep files they only need briefly. (Note that /tmp is immediately below the root directory /, not below your home directory.) This wrap-up exercise will show you how to do that. Instructions 1/4 25 XP</p>
+<pre><code>1
+
+Use cd to go into /tmp.</code></pre>
+<p>2</p>
+<p>List the contents of /tmp without typing a directory name. 3</p>
+<p>Make a new directory inside /tmp called scratch. 4</p>
+<p>Move /home/repl/people/agarwal.txt into /tmp/scratch. We suggest you use the ~ shortcut for your home directory and a relative path for the second rather than the absolute path.</p>
+</section>
+</section>
+<section id="manipulating-data" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Manipulating data</h1>
+<section id="viewing-file-contents-with-cat" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="viewing-file-contents-with-cat"><span class="header-section-number">8.1</span> Viewing file contents with cat</h2>
+<p>Exercise Exercise How can I view a file’s contents?</p>
+<p>Before you rename or delete files, you may want to have a look at their contents. The simplest way to do this is with cat, which just prints the contents of files onto the screen. (Its name is short for “concatenate”, meaning “to link things together”, since it will print all the files whose names you give it, one after the other.)</p>
+<p>cat agarwal.txt</p>
+<p>name: Agarwal, Jasmine position: RCT2 start: 2017-04-01 benefits: full</p>
+<p>Instructions 100 XP</p>
+<p>Print the contents of course.txt to the screen.</p>
+</section>
+<section id="mutliple-paged-files-with-less" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="mutliple-paged-files-with-less"><span class="header-section-number">8.2</span> mutliple paged files with less</h2>
+<p>How can I view a file’s contents piece by piece?</p>
+<p>You can use cat to print large files and then scroll through the output, but it is usually more convenient to page the output. The original command for doing this was called more, but it has been superseded by a more powerful command called less. (This kind of naming is what passes for humor in the Unix world.) When you less a file, one page is displayed at a time; you can press spacebar to page down or type q to quit.</p>
+<p>If you give less the names of several files, you can type :n (colon and a lower-case ‘n’) to move to the next file, :p to go back to the previous one, or :q to quit.</p>
+<p>Note: If you view solutions to exercises that use less, you will see an extra command at the end that turns paging off so that we can test your solutions efficiently. Instructions 100 XP</p>
+<p>Use less seasonal/spring.csv seasonal/summer.csv to view those two files in that order. Press spacebar to page down, :n to go to the second file, and :q to quit.</p>
+</section>
+<section id="top-n-rows-with-head" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="top-n-rows-with-head"><span class="header-section-number">8.3</span> top n rows with head</h2>
+<p>Exercise How can I look at the start of a file?</p>
+<p>The first thing most data scientists do when given a new dataset to analyze is figure out what fields it contains and what values those fields have. If the dataset has been exported from a database or spreadsheet, it will often be stored as comma-separated values (CSV). A quick way to figure out what it contains is to look at the first few rows.</p>
+<p>We can do this in the shell using a command called head. As its name suggests, it prints the first few lines of a file (where “a few” means 10), so the command:</p>
+<p>head seasonal/summer.csv</p>
+<p>displays:</p>
+<p>Date,Tooth 2017-01-11,canine 2017-01-18,wisdom 2017-01-21,bicuspid 2017-02-02,molar 2017-02-27,wisdom 2017-02-27,wisdom 2017-03-07,bicuspid 2017-03-15,wisdom 2017-03-20,canine</p>
+<p>What does head do if there aren’t 10 lines in the file? (To find out, use it to look at the top of people/agarwal.txt.) Instructions 50 XP Possible answers Print an error message because the file is too short. Display as many lines as there are. Display enough blank lines to bring the total to 10.</p>
+</section>
+<section id="autocompletion-with-tab" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="autocompletion-with-tab"><span class="header-section-number">8.4</span> autocompletion with tab</h2>
+<p>Exercise Exercise How can I type less?</p>
+<p>One of the shell’s power tools is tab completion. If you start typing the name of a file and then press the tab key, the shell will do its best to auto-complete the path. For example, if you type sea and press tab, it will fill in the directory name seasonal/ (with a trailing slash). If you then type a and tab, it will complete the path as seasonal/autumn.csv.</p>
+<p>If the path is ambiguous, such as seasonal/s, pressing tab a second time will display a list of possibilities. Typing another character or two to make your path more specific and then pressing tab will fill in the rest of the name. Instructions 1/2 50 XP</p>
+<pre><code>1
+
+Run head seasonal/autumn.csv without typing the full filename.</code></pre>
+<p>2</p>
+<p>Run head seasonal/spring.csv without typing the full filename.</p>
+</section>
+<section id="flags" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="flags"><span class="header-section-number">8.5</span> flags</h2>
+<p>Exercise Exercise How can I control what commands do?</p>
+<p>You won’t always want to look at the first 10 lines of a file, so the shell lets you change head’s behavior by giving it a command-line flag (or just “flag” for short). If you run the command:</p>
+<p>head -n 3 seasonal/summer.csv</p>
+<p>head will only display the first three lines of the file. If you run head -n 100, it will display the first 100 (assuming there are that many), and so on.</p>
+<p>A flag’s name usually indicates its purpose (for example, -n is meant to signal “number of lines”). Command flags don’t have to be a - followed by a single letter, but it’s a widely-used convention.</p>
+<p>Note: it’s considered good style to put all flags before any filenames, so in this course, we only accept answers that do that. Instructions 100 XP</p>
+<p>Display the first 5 lines of winter.csv in the seasonal directory.</p>
+</section>
+<section id="ls-1" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="ls-1"><span class="header-section-number">8.6</span> ls</h2>
+<p>Exercise Exercise How can I list everything below a directory?</p>
+<p>In order to see everything underneath a directory, no matter how deeply nested it is, you can give ls the flag -R (which means “recursive”). If you use ls -R in your home directory, you will see something like this:</p>
+<p>backup course.txt people seasonal</p>
+<p>./backup:</p>
+<p>./people: agarwal.txt</p>
+<p>./seasonal: autumn.csv spring.csv summer.csv winter.csv</p>
+<p>This shows every file and directory in the current level, then everything in each sub-directory, and so on. Instructions 100 XP</p>
+<p>To help you know what is what, ls has another flag -F that prints a / after the name of every directory and a * after the name of every runnable program. Run ls with the two flags, -R and -F, and the absolute path to your home directory to see everything it contains. (The order of the flags doesn’t matter, but the directory name must come last.)</p>
+</section>
+<section id="see-manual-with-man" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="see-manual-with-man"><span class="header-section-number">8.7</span> see manual with man</h2>
+<p>Exercise Exercise How can I get help for a command?</p>
+<p>To find out what commands do, people used to use the man command (short for “manual”). For example, the command man head brings up this information:</p>
+<p>HEAD(1) BSD General Commands Manual HEAD(1)</p>
+<p>NAME head – display first lines of a file</p>
+<p>SYNOPSIS head [-n count | -c bytes] [file …]</p>
+<p>DESCRIPTION This filter displays the first count lines or bytes of each of the specified files, or of the standard input if no files are specified. If count is omitted it defaults to 10.</p>
+<pre><code> If more than a single file is specified, each file is preceded by
+ a header consisting of the string ``==&gt; XXX &lt;=='' where ``XXX''
+ is the name of the file.</code></pre>
+<p>SEE ALSO tail(1)</p>
+<p>man automatically invokes less, so you may need to press spacebar to page through the information and :q to quit.</p>
+<p>The one-line description under NAME tells you briefly what the command does, and the summary under SYNOPSIS lists all the flags it understands. Anything that is optional is shown in square brackets […], either/or alternatives are separated by |, and things that can be repeated are shown by …, so head’s manual page is telling you that you can either give a line count with -n or a byte count with -c, and that you can give it any number of filenames.</p>
+<p>The problem with the Unix manual is that you have to know what you’re looking for. If you don’t, you can search Stack Overflow, ask a question on DataCamp’s Slack channels, or look at the SEE ALSO sections of the commands you already know. Instructions 1/2 50 XP</p>
+<pre><code>1
+
+Read the manual page for the tail command to find out what putting a + sign in front of the number used with the -n flag does. (Remember to press spacebar to page down and/or type q to quit.)</code></pre>
+<p>2</p>
+<p>Use tail with the flag -n +7 to display all but the first six lines of seasonal/spring.csv.</p>
+</section>
+<section id="cut-command" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="cut-command"><span class="header-section-number">8.8</span> cut command</h2>
+<p>Exercise Exercise How can I select columns from a file?</p>
+<p>head and tail let you select rows from a text file. If you want to select columns, you can use the command cut. It has several options (use man cut to explore them), but the most common is something like:</p>
+<p>cut -f 2-5,8 -d , values.csv</p>
+<p>which means “select columns 2 through 5 and columns 8, using comma as the separator”. cut uses -f (meaning “fields”) to specify columns and -d (meaning “delimiter”) to specify the separator. You need to specify the latter because some files may use spaces, tabs, or colons to separate columns.</p>
+<p>What command will select the first column (containing dates) from the file spring.csv? Instructions 50 XP Possible answers cut -d , -f 1 seasonal/spring.csv cut -d, -f1 seasonal/spring.csv Either of the above. Neither of the above, because -f must come before -d.</p>
+<p>Exercise Exercise What can’t cut do?</p>
+<p>cut is a simple-minded command. In particular, it doesn’t understand quoted strings. If, for example, your file is:</p>
+<p>Name,Age “Johel,Ranjit”,28 “Sharma,Rupinder”,26</p>
+<p>then:</p>
+<p>cut -f 2 -d , everyone.csv</p>
+<p>will produce:</p>
+<p>Age Ranjit” Rupinder”</p>
+<p>rather than everyone’s age, because it will think the comma between last and first names is a column separator.</p>
+<p>What is the output of cut -d : -f 2-4 on the line:</p>
+<p>first:second:third:</p>
+<p>(Note the trailing colon.) Instructions 50 XP Possible answers second second:third second:third: None of the above, because there aren’t four fields.</p>
+</section>
+<section id="history" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="history"><span class="header-section-number">8.9</span> history</h2>
+<p>Exercise Exercise How can I repeat commands?</p>
+<p>One of the biggest advantages of using the shell is that it makes it easy for you to do things over again. If you run some commands, you can then press the up-arrow key to cycle back through them. You can also use the left and right arrow keys and the delete key to edit them. Pressing return will then run the modified command.</p>
+<p>Even better, history will print a list of commands you have run recently. Each one is preceded by a serial number to make it easy to re-run particular commands: just type !55 to re-run the 55th command in your history (if you have that many). You can also re-run a command by typing an exclamation mark followed by the command’s name, such as !head or !cut, which will re-run the most recent use of that command. Instructions 1/5 20 XP</p>
+<pre><code>1
+2
+3
+4
+5</code></pre>
+<p>Run head summer.csv in your home directory (which should fail).</p>
+</section>
+<section id="grep" class="level2" data-number="8.10">
+<h2 data-number="8.10" class="anchored" data-anchor-id="grep"><span class="header-section-number">8.10</span> grep</h2>
+<p>How can I select lines containing specific values?</p>
+<p>head and tail select rows, cut selects columns, and grep selects lines according to what they contain. In its simplest form, grep takes a piece of text followed by one or more filenames and prints all of the lines in those files that contain that text. For example, grep bicuspid seasonal/winter.csv prints lines from winter.csv that contain “bicuspid”.</p>
+<p>grep can search for patterns as well; we will explore those in the next course. What’s more important right now is some of grep’s more common flags:</p>
+<pre><code>-c: print a count of matching lines rather than the lines themselves
+-h: do not print the names of files when searching multiple files
+-i: ignore case (e.g., treat "Regression" and "regression" as matches)
+-l: print the names of files that contain matches, not the matches
+-n: print line numbers for matching lines
+-v: invert the match, i.e., only show lines that don't match</code></pre>
+<p>Instructions 1/3 35 XP</p>
+<pre><code>1
+
+Print the contents of all of the lines containing the word molar in seasonal/autumn.csv by running a single command while in your home directory. Don't use any flags.</code></pre>
+<p>2</p>
+<p>Invert the match to find all of the lines that don’t contain the word molar in seasonal/spring.csv, and show their line numbers. Remember, it’s considered good style to put all of the flags before other values like filenames or the search term “molar”. 3</p>
+<p>Count how many lines contain the word incisor in autumn.csv and winter.csv combined. (Again, run a single command from your home directory.)</p>
+</section>
+</section>
+<section id="combining-tools" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Combining tools</h1>
+<section id="redirection" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="redirection"><span class="header-section-number">9.1</span> Redirection &gt;</h2>
+<p>Exercise Exercise How can I store a command’s output in a file?</p>
+<p>All of the tools you have seen so far let you name input files. Most don’t have an option for naming an output file because they don’t need one. Instead, you can use redirection to save any command’s output anywhere you want. If you run this command:</p>
+<p>head -n 5 seasonal/summer.csv</p>
+<p>it prints the first 5 lines of the summer data on the screen. If you run this command instead:</p>
+<p>head -n 5 seasonal/summer.csv &gt; top.csv</p>
+<p>nothing appears on the screen. Instead, head’s output is put in a new file called top.csv. You can take a look at that file’s contents using cat:</p>
+<p>cat top.csv</p>
+<p>The greater-than sign &gt; tells the shell to redirect head’s output to a file. It isn’t part of the head command; instead, it works with every shell command that produces output. Instructions 100 XP</p>
+<p>Combine tail with redirection to save the last 5 lines of seasonal/winter.csv in a file called last.csv.</p>
+<p>Exercise Exercise How can I use a command’s output as an input?</p>
+<p>Suppose you want to get lines from the middle of a file. More specifically, suppose you want to get lines 3-5 from one of our data files. You can start by using head to get the first 5 lines and redirect that to a file, and then use tail to select the last 3:</p>
+<p>head -n 5 seasonal/winter.csv &gt; top.csv tail -n 3 top.csv</p>
+<p>A quick check confirms that this is lines 3-5 of our original file, because it is the last 3 lines of the first 5. Instructions 1/2 50 XP</p>
+<pre><code>1
+
+Select the last two lines from seasonal/winter.csv and save them in a file called bottom.csv.</code></pre>
+<p>2</p>
+<p>Select the first line from bottom.csv in order to get the second-to-last line of the original file.</p>
+<p>What’s a better way to combine commands?</p>
+<p>Using redirection to combine commands has two drawbacks:</p>
+<pre><code>It leaves a lot of intermediate files lying around (like top.csv).
+The commands to produce your final result are scattered across several lines of history.</code></pre>
+<p>The shell provides another tool that solves both of these problems at once called a pipe. Once again, start by running head:</p>
+<p>head -n 5 seasonal/summer.csv</p>
+<p>Instead of sending head’s output to a file, add a vertical bar and the tail command without a filename:</p>
+<p>head -n 5 seasonal/summer.csv | tail -n 3</p>
+<p>The pipe symbol tells the shell to use the output of the command on the left as the input to the command on the right. Instructions 100 XP</p>
+<p>Use cut to select all of the tooth names from column 2 of the comma delimited file seasonal/summer.csv, then pipe the result to grep, with an inverted match, to exclude the header line containing the word “Tooth”. cut and grep were covered in detail in Chapter 2, exercises 8 and 11 respectively.</p>
+<p>Exercise Exercise How can I combine many commands?</p>
+<p>You can chain any number of commands together. For example, this command:</p>
+<p>cut -d , -f 1 seasonal/spring.csv | grep -v Date | head -n 10</p>
+<p>will:</p>
+<pre><code>select the first column from the spring data;
+remove the header line containing the word "Date"; and
+select the first 10 lines of actual data.</code></pre>
+<p>Instructions 100 XP</p>
+<p>In the previous exercise, you used the following command to select all the tooth names from column 2 of seasonal/summer.csv:</p>
+<p>cut -d , -f 2 seasonal/summer.csv | grep -v Tooth</p>
+<p>Extend this pipeline with a head command to only select the very first tooth name.</p>
+</section>
+<section id="word-count-with-wc" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="word-count-with-wc"><span class="header-section-number">9.2</span> word count with wc</h2>
+<p>Exercise Exercise How can I count the records in a file?</p>
+<p>The command wc (short for “word count”) prints the number of characters, words, and lines in a file. You can make it print only one of these using -c, -w, or -l respectively. Instructions 100 XP</p>
+<p>Count how many records in seasonal/spring.csv have dates in July 2017 (2017-07).</p>
+<pre><code>To do this, use grep with a partial date to select the lines and pipe this result into wc with an appropriate flag to count the lines.</code></pre>
+</section>
+<section id="wildcard" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="wildcard"><span class="header-section-number">9.3</span> wildcard **</h2>
+<p>How can I specify many files at once?</p>
+<p>Most shell commands will work on multiple files if you give them multiple filenames. For example, you can get the first column from all of the seasonal data files at once like this:</p>
+<p>cut -d , -f 1 seasonal/winter.csv seasonal/spring.csv seasonal/summer.csv seasonal/autumn.csv</p>
+<p>But typing the names of many files over and over is a bad idea: it wastes time, and sooner or later you will either leave a file out or repeat a file’s name. To make your life better, the shell allows you to use wildcards to specify a list of files with a single expression. The most common wildcard is *, which means “match zero or more characters”. Using it, we can shorten the cut command above to this:</p>
+<p>cut -d , -f 1 seasonal/*</p>
+<p>or:</p>
+<p>cut -d , -f 1 seasonal/*.csv</p>
+<p>Instructions 100 XP</p>
+<p>Write a single command using head to get the first three lines from both seasonal/spring.csv and seasonal/summer.csv, a total of six lines of data, but not from the autumn or winter data files. Use a wildcard instead of spelling out the files’ names in full.</p>
+<p>What other wildcards can I use?</p>
+<p>The shell has other wildcards as well, though they are less commonly used:</p>
+<pre><code>? matches a single character, so 201?.txt will match 2017.txt or 2018.txt, but not 2017-01.txt.
+[...] matches any one of the characters inside the square brackets, so 201[78].txt matches 2017.txt or 2018.txt, but not 2016.txt.
+{...} matches any of the comma-separated patterns inside the curly brackets, so {*.txt, *.csv} matches any file whose name ends with .txt or .csv, but not files whose names end with .pdf.</code></pre>
+<p>Which expression would match singh.pdf and johel.txt but not sandhu.pdf or sandhu.txt?</p>
+</section>
+<section id="sorting-with-sort" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="sorting-with-sort"><span class="header-section-number">9.4</span> sorting with sort</h2>
+<p>How can I sort lines of text?</p>
+<p>As its name suggests, sort puts data in order. By default it does this in ascending alphabetical order, but the flags -n and -r can be used to sort numerically and reverse the order of its output, while -b tells it to ignore leading blanks and -f tells it to fold case (i.e., be case-insensitive). Pipelines often use grep to get rid of unwanted records and then sort to put the remaining records in order. Instructions 100 XP</p>
+<p>Remember the combination of cut and grep to select all the tooth names from column 2 of seasonal/summer.csv?</p>
+<p>cut -d , -f 2 seasonal/summer.csv | grep -v Tooth</p>
+<p>Starting from this recipe, sort the names of the teeth in seasonal/winter.csv (not summer.csv) in descending alphabetical order. To do this, extend the pipeline with a sort step.</p>
+</section>
+<section id="remove-adjesent-duplicates" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="remove-adjesent-duplicates"><span class="header-section-number">9.5</span> remove adjesent duplicates</h2>
+<p>How can I remove duplicate lines?</p>
+<p>Another command that is often used with sort is uniq, whose job is to remove duplicated lines. More specifically, it removes adjacent duplicated lines. If a file contains:</p>
+<p>2017-07-03 2017-07-03 2017-08-03 2017-08-03</p>
+<p>then uniq will produce:</p>
+<p>2017-07-03 2017-08-03</p>
+<p>but if it contains:</p>
+<p>2017-07-03 2017-08-03 2017-07-03 2017-08-03</p>
+<p>then uniq will print all four lines. The reason is that uniq is built to work with very large files. In order to remove non-adjacent lines from a file, it would have to keep the whole file in memory (or at least, all the unique lines seen so far). By only removing adjacent duplicates, it only has to keep the most recent unique line in memory. Instructions 100 XP</p>
+<p>Write a pipeline to:</p>
+<pre><code>get the second column from seasonal/winter.csv,
+remove the word "Tooth" from the output so that only tooth names are displayed,
+sort the output so that all occurrences of a particular tooth name are adjacent; and
+display each tooth name once along with a count of how often it occurs.</code></pre>
+<p>The start of your pipeline is the same as the previous exercise:</p>
+<p>cut -d , -f 2 seasonal/winter.csv | grep -v Tooth</p>
+<p>Extend it with a sort command, and use uniq -c to display unique lines with a count of how often each occurs rather than using uniq and wc.</p>
+</section>
+<section id="redirecting" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="redirecting"><span class="header-section-number">9.6</span> redirecting</h2>
+<p>Exercise How can I save the output of a pipe?</p>
+<p>The shell lets us redirect the output of a sequence of piped commands:</p>
+<p>cut -d , -f 2 seasonal/*.csv | grep -v Tooth &gt; teeth-only.txt</p>
+<p>However, &gt; must appear at the end of the pipeline: if we try to use it in the middle, like this:</p>
+<p>cut -d , -f 2 seasonal/*.csv &gt; teeth-only.txt | grep -v Tooth</p>
+<p>then all of the output from cut is written to teeth-only.txt, so there is nothing left for grep and it waits forever for some input.</p>
+<p>What happens if we put redirection at the front of a pipeline as in:</p>
+<blockquote class="blockquote">
+<p>result.txt head -n 3 seasonal/winter.csv</p>
+</blockquote>
+<p>Instructions 50 XP Possible answers The command’s output is redirected to the file as usual. The shell reports it as an error. The shell waits for input forever.</p>
+</section>
+<section id="break-out-with-ctrl-c" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="break-out-with-ctrl-c"><span class="header-section-number">9.7</span> break out with ctrl + c</h2>
+<p>Exercise Exercise How can I stop a running program?</p>
+<p>The commands and scripts that you have run so far have all executed quickly, but some tasks will take minutes, hours, or even days to complete. You may also mistakenly put redirection in the middle of a pipeline, causing it to hang up. If you decide that you don’t want a program to keep running, you can type Ctrl + C to end it. This is often written ^C in Unix documentation; note that the ‘c’ can be lower-case. Instructions 100 XP</p>
+<p>Run the command:</p>
+<p>head</p>
+<p>with no arguments (so that it waits for input that will never come) and then stop it by typing Ctrl + C.</p>
+</section>
+<section id="wrap-up-exercise" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="wrap-up-exercise"><span class="header-section-number">9.8</span> wrap up exercise</h2>
+<p>Wrapping up</p>
+<p>To wrap up, you will build a pipeline to find out how many records are in the shortest of the seasonal data files. Instructions 3/3 30 XP</p>
+<p>Use wc with appropriate parameters to list the number of lines in all of the seasonal data files. (Use a wildcard for the filenames instead of typing them all in by hand.)</p>
+<p>Add another command to the previous one using a pipe to remove the line containing the word “total”. 3</p>
+<p>Add two more stages to the pipeline that use sort -n and head -n 1 to find the file containing the fewest lines.</p>
+</section>
+</section>
+<section id="batch-processing" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Batch processing</h1>
+<p>How does the shell store information?</p>
+<p>Like other programs, the shell stores information in variables. Some of these, called environment variables, are available all the time. Environment variables’ names are conventionally written in upper case, and a few of the more commonly-used ones are shown below. Variable Purpose Value HOME User’s home directory /home/repl PWD Present working directory Same as pwd command SHELL Which shell program is being used /bin/bash USER User’s ID repl</p>
+<p>To get a complete list (which is quite long), you can type set in the shell.</p>
+<p>Use set and grep with a pipe to display the value of HISTFILESIZE, which determines how many old commands are stored in your command history. What is its value? Instructions 50 XP Possible answers 10 500 2000 The variable is not there.</p>
+<p>How can I print a variable’s value?</p>
+<p>A simpler way to find a variable’s value is to use a command called echo, which prints its arguments. Typing</p>
+<p>echo hello DataCamp!</p>
+<p>prints</p>
+<p>hello DataCamp!</p>
+<p>If you try to use it to print a variable’s value like this:</p>
+<p>echo USER</p>
+<p>it will print the variable’s name, USER.</p>
+<p>To get the variable’s value, you must put a dollar sign $ in front of it. Typing</p>
+<p>echo $USER</p>
+<p>prints</p>
+<p>repl</p>
+<p>This is true everywhere: to get the value of a variable called X, you must write $X. (This is so that the shell can tell whether you mean “a file named X” or “the value of a variable named X”.) Instructions 100 XP Instructions 100 XP</p>
+<p>The variable OSTYPE holds the name of the kind of operating system you are using. Display its value using echo.</p>
+<section id="shell-variable" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="shell-variable"><span class="header-section-number">10.1</span> shell variable</h2>
+<p>How else does the shell store information?</p>
+<p>The other kind of variable is called a shell variable, which is like a local variable in a programming language.</p>
+<p>To create a shell variable, you simply assign a value to a name:</p>
+<p>training=seasonal/summer.csv</p>
+<p>without any spaces before or after the = sign. Once you have done this, you can check the variable’s value with:</p>
+<p>echo $training</p>
+<p>seasonal/summer.csv</p>
+<p>Instructions 1/2 50 XP</p>
+<pre><code>1
+
+Define a variable called testing with the value seasonal/winter.csv.</code></pre>
+<p>2</p>
+<p>Use head -n 1 SOMETHING to get the first line from seasonal/winter.csv using the value of the variable testing instead of the name of the file.</p>
+</section>
+<section id="for" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="for"><span class="header-section-number">10.2</span> for</h2>
+<p>How can I repeat a command many times?</p>
+<p>Shell variables are also used in loops, which repeat commands many times. If we run this command:</p>
+<p>for filetype in gif jpg png; do echo $filetype; done</p>
+<p>it produces:</p>
+<p>gif jpg png</p>
+<p>Notice these things about the loop:</p>
+<pre><code>The structure is for …variable… in …list… ; do …body… ; done
+The list of things the loop is to process (in our case, the words gif, jpg, and png).
+The variable that keeps track of which thing the loop is currently processing (in our case, filetype).
+The body of the loop that does the processing (in our case, echo $filetype).</code></pre>
+<p>Notice that the body uses $filetype to get the variable’s value instead of just filetype, just like it does with any other shell variable. Also notice where the semi-colons go: the first one comes between the list and the keyword do, and the second comes between the body and the keyword done. Instructions 100 XP</p>
+<p>Modify the loop so that it prints:</p>
+<p>docx odt pdf</p>
+<p>Please use filetype as the name of the loop variable.</p>
+<p>How can I repeat a command once for each file?</p>
+<p>You can always type in the names of the files you want to process when writing the loop, but it’s usually better to use wildcards. Try running this loop in the console:</p>
+<p>for filename in seasonal/*.csv; do echo $filename; done</p>
+<p>It prints:</p>
+<p>seasonal/autumn.csv seasonal/spring.csv seasonal/summer.csv seasonal/winter.csv</p>
+<p>because the shell expands seasonal/*.csv to be a list of four filenames before it runs the loop. Instructions 100 XP</p>
+<p>Modify the wildcard expression to people/* so that the loop prints the names of the files in the people directory regardless of what suffix they do or don’t have. Please use filename as the name of your loop variable.</p>
+<p>How can I record the names of a set of files?</p>
+<p>People often set a variable using a wildcard expression to record a list of filenames. For example, if you define datasets like this:</p>
+<p>datasets=seasonal/*.csv</p>
+<p>you can display the files’ names later using:</p>
+<p>for filename in $datasets; do echo $filename; done</p>
+<p>This saves typing and makes errors less likely.</p>
+<p>If you run these two commands in your home directory, how many lines of output will they print?</p>
+<p>files=seasonal/*.csv for f in $files; do echo $f; done</p>
+<p>Instructions 50 XP Possible answers None: since files is defined on a separate line, it has no value in the second line. One: the word “files”. Four: the names of all four seasonal data files.</p>
+<p>A variable’s name versus its value</p>
+<p>A common mistake is to forget to use $ before the name of a variable. When you do this, the shell uses the name you have typed rather than the value of that variable.</p>
+<p>A more common mistake for experienced users is to mis-type the variable’s name. For example, if you define datasets like this:</p>
+<p>datasets=seasonal/*.csv</p>
+<p>and then type:</p>
+<p>echo $datsets</p>
+<p>the shell doesn’t print anything, because datsets (without the second “a”) isn’t defined.</p>
+<p>If you were to run these two commands in your home directory, what output would be printed?</p>
+<p>files=seasonal/*.csv for f in files; do echo $f; done</p>
+<p>(Read the first part of the loop carefully before answering.) Answer the question 50XP Possible Answers Select one answer</p>
+<pre><code>One line: the word "files".
+Press
+1
+Four lines: the names of all four seasonal data files.
+Press
+2
+Four blank lines: the variable f isn't assigned a value.
+Press
+3</code></pre>
+<p>How can I run many commands in a single loop?</p>
+<p>Printing filenames is useful for debugging, but the real purpose of loops is to do things with multiple files. This loop prints the second line of each data file:</p>
+<p>for file in seasonal/*.csv; do head -n 2 $file | tail -n 1; done</p>
+<p>It has the same structure as the other loops you have already seen: all that’s different is that its body is a pipeline of two commands instead of a single command. Instructions 100 XP</p>
+<p>Write a loop that prints the last entry from July 2017 (2017-07) in every seasonal file. It should produce a similar output to:</p>
+<p>grep 2017-07 seasonal/winter.csv | tail -n 1</p>
+<p>but for each seasonal file separately. Please use file as the name of the loop variable, and remember to loop through the list of files seasonal/*.csv (instead of ‘seasonal/winter.csv’ as in the example).</p>
+</section>
+<section id="filenames" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="filenames"><span class="header-section-number">10.3</span> filenames</h2>
+<p>Why shouldn’t I use spaces in filenames?</p>
+<p>It’s easy and sensible to give files multi-word names like July 2017.csv when you are using a graphical file explorer. However, this causes problems when you are working in the shell. For example, suppose you wanted to rename July 2017.csv to be 2017 July data.csv. You cannot type:</p>
+<p>mv July 2017.csv 2017 July data.csv</p>
+<p>because it looks to the shell as though you are trying to move four files called July, 2017.csv, 2017, and July (again) into a directory called data.csv. Instead, you have to quote the files’ names so that the shell treats each one as a single parameter:</p>
+<p>mv ‘July 2017.csv’ ‘2017 July data.csv’</p>
+<p>If you have two files called current.csv and last year.csv (with a space in its name) and you type:</p>
+<p>rm current.csv last year.csv</p>
+<p>what will happen: Answer the question 50XP Possible Answers Select one answer</p>
+<pre><code>The shell will print an error message because last and year.csv do not exist.
+Press
+1
+The shell will delete current.csv.
+Press
+2
+Both of the above.
+Press
+3
+Nothing.
+Press
+4</code></pre>
+</section>
+<section id="section-1" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="section-1"><span class="header-section-number">10.4</span> </h2>
+<p>How can I do many things in a single loop?</p>
+<p>The loops you have seen so far all have a single command or pipeline in their body, but a loop can contain any number of commands. To tell the shell where one ends and the next begins, you must separate them with semi-colons:</p>
+<p>for f in seasonal/*.csv; do echo $f; head -n 2 $f | tail -n 1; done</p>
+<p>seasonal/autumn.csv 2017-01-05,canine seasonal/spring.csv 2017-01-25,wisdom seasonal/summer.csv 2017-01-11,canine seasonal/winter.csv 2017-01-03,bicuspid</p>
+<p>Suppose you forget the semi-colon between the echo and head commands in the previous loop, so that you ask the shell to run:</p>
+<p>for f in seasonal/*.csv; do echo $f head -n 2 $f | tail -n 1; done</p>
+<p>What will the shell do? Instructions 50 XP Possible answers Print an error message. Print one line for each of the four files. Print one line for autumn.csv (the first file). Print the last line of each file.</p>
+</section>
+</section>
+<section id="creating-new-tools" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Creating new tools</h1>
+<section id="nano" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="nano"><span class="header-section-number">11.1</span> nano</h2>
+<p>How can I edit a file?</p>
+<p>Unix has a bewildering variety of text editors. For this course, we will use a simple one called Nano. If you type nano filename, it will open filename for editing (or create it if it doesn’t already exist). You can move around with the arrow keys, delete characters using backspace, and do other operations with control-key combinations:</p>
+<pre><code>Ctrl + K: delete a line.
+Ctrl + U: un-delete a line.
+Ctrl + O: save the file ('O' stands for 'output'). You will also need to press Enter to confirm the filename!
+Ctrl + X: exit the editor.</code></pre>
+<p>Instructions 100 XP</p>
+<p>Run nano names.txt to edit a new file in your home directory and enter the following four lines:</p>
+<p>Lovelace Hopper Johnson Wilson</p>
+<p>To save what you have written, type Ctrl + O to write the file out, then Enter to confirm the filename, then Ctrl + X to exit the editor.</p>
+</section>
+<section id="history-1" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="history-1"><span class="header-section-number">11.2</span> history</h2>
+<p>When you are doing a complex analysis, you will often want to keep a record of the commands you used. You can do this with the tools you have already seen:</p>
+<pre><code>Run history.
+Pipe its output to tail -n 10 (or however many recent steps you want to save).
+Redirect that to a file called something like figure-5.history.</code></pre>
+<p>This is better than writing things down in a lab notebook because it is guaranteed not to miss any steps. It also illustrates the central idea of the shell: simple tools that produce and consume lines of text can be combined in a wide variety of ways to solve a broad range of problems. Instructions 2/3 35 XP</p>
+<p>Copy the files seasonal/spring.csv and seasonal/summer.csv to your home directory. 2</p>
+<p>Use grep with the -h flag (to stop it from printing filenames) and -v Tooth (to select lines that don’t match the header line) to select the data records from spring.csv and summer.csv in that order and redirect the output to temp.csv. 3</p>
+<p>Pipe history into tail -n 3 and redirect the output to steps.txt to save the last three commands in a file. (You need to save three instead of just two because the history command itself will be in the list.)</p>
+<p>How can I save commands to re-run later?</p>
+<p>You have been using the shell interactively so far. But since the commands you type in are just text, you can store them in files for the shell to run over and over again. To start exploring this powerful capability, put the following command in a file called headers.sh:</p>
+<p>head -n 1 seasonal/*.csv</p>
+<p>This command selects the first row from each of the CSV files in the seasonal directory. Once you have created this file, you can run it by typing:</p>
+<p>bash headers.sh</p>
+<p>This tells the shell (which is just a program called bash) to run the commands contained in the file headers.sh, which produces the same output as running the commands directly. Instructions 1/2 50 XP</p>
+<pre><code>1
+
+Use nano dates.sh to create a file called dates.sh that contains this command:
+
+cut -d , -f 1 seasonal/*.csv
+
+to extract the first column from all of the CSV files in seasonal.</code></pre>
+<p>2</p>
+<p>Use bash to run the file dates.sh.</p>
+<p>How can I re-use pipes?</p>
+<p>A file full of shell commands is called a *shell script, or sometimes just a “script” for short. Scripts don’t have to have names ending in .sh, but this lesson will use that convention to help you keep track of which files are scripts.</p>
+<p>Scripts can also contain pipes. For example, if all-dates.sh contains this line:</p>
+<p>cut -d , -f 1 seasonal/*.csv | grep -v Date | sort | uniq</p>
+<p>then:</p>
+<p>bash all-dates.sh &gt; dates.out</p>
+<p>will extract the unique dates from the seasonal data files and save them in dates.out. Instructions 1/3 35 XP</p>
+<pre><code>1
+
+A file teeth.sh in your home directory has been prepared for you, but contains some blanks. Use Nano to edit the file and replace the two ____ placeholders with seasonal/*.csv and -c so that this script prints a count of the number of times each tooth name appears in the CSV files in the seasonal directory.</code></pre>
+<p>2</p>
+<p>Use bash to run teeth.sh and &gt; to redirect its output to teeth.out. 3</p>
+<p>Run cat teeth.out to inspect your results.</p>
+<p>How can I pass filenames to scripts?</p>
+<p>A script that processes specific files is useful as a record of what you did, but one that allows you to process any files you want is more useful. To support this, you can use the special expression $@ (dollar sign immediately followed by at-sign) to mean “all of the command-line parameters given to the script”.</p>
+<p>For example, if unique-lines.sh contains sort $@ | uniq, when you run:</p>
+<p>bash unique-lines.sh seasonal/summer.csv</p>
+<p>the shell replaces $@ with seasonal/summer.csv and processes one file. If you run this:</p>
+<p>bash unique-lines.sh seasonal/summer.csv seasonal/autumn.csv</p>
+<p>it processes two data files, and so on.</p>
+<p>As a reminder, to save what you have written in Nano, type Ctrl + O to write the file out, then Enter to confirm the filename, then Ctrl + X to exit the editor. Instructions 1/2 50 XP</p>
+<pre><code>1
+
+Edit the script count-records.sh with Nano and fill in the two ____ placeholders with $@ and -l (the letter) respectively so that it counts the number of lines in one or more files, excluding the first line of each.</code></pre>
+<p>2</p>
+<p>Run count-records.sh on seasonal/*.csv and redirect the output to num-records.out using &gt;.</p>
+<p>How can I process a single argument?</p>
+<p>As well as $@, the shell lets you use $1, $2, and so on to refer to specific command-line parameters. You can use this to write commands that feel simpler or more natural than the shell’s. For example, you can create a script called column.sh that selects a single column from a CSV file when the user provides the filename as the first parameter and the column as the second:</p>
+<p>cut -d , -f $2 $1</p>
+<p>and then run it using:</p>
+<p>bash column.sh seasonal/autumn.csv 1</p>
+<p>Notice how the script uses the two parameters in reverse order.</p>
+<p>The script get-field.sh is supposed to take a filename, the number of the row to select, the number of the column to select, and print just that field from a CSV file. For example:</p>
+<p>bash get-field.sh seasonal/summer.csv 4 2</p>
+<p>should select the second field from line 4 of seasonal/summer.csv. Which of the following commands should be put in get-field.sh to do that? Answer the question 50XP Possible Answers Select one answer</p>
+<pre><code>head -n $1 $2 | tail -n 1 | cut -d , -f $3
+Press
+1
+head -n $2 $1 | tail -n 1 | cut -d , -f $3
+Press
+2
+head -n $3 $1 | tail -n 1 | cut -d , -f $2
+Press
+3
+head -n $2 $3 | tail -n 1 | cut -d , -f $1
+Press
+4</code></pre>
+<p>How can one shell script do many things?</p>
+<p>Our shells scripts so far have had a single command or pipe, but a script can contain many lines of commands. For example, you can create one that tells you how many records are in the shortest and longest of your data files, i.e., the range of your datasets’ lengths.</p>
+<p>Note that in Nano, “copy and paste” is achieved by navigating to the line you want to copy, pressing CTRL + K to cut the line, then CTRL + U twice to paste two copies of it.</p>
+<p>As a reminder, to save what you have written in Nano, type Ctrl + O to write the file out, then Enter to confirm the filename, then Ctrl + X to exit the editor. Instructions 1/4 25 XP</p>
+<p>Use Nano to edit the script range.sh and replace the two ____ placeholders with $@ and -v so that it lists the names and number of lines in all of the files given on the command line without showing the total number of lines in all files. (Do not try to subtract the column header lines from the files.)</p>
+<p>Use Nano again to add sort -n and head -n 1 in that order to the pipeline in range.sh to display the name and line count of the shortest file given to it.</p>
+<p>Again using Nano, add a second line to range.sh to print the name and record count of the longest file in the directory as well as the shortest. This line should be a duplicate of the one you have already written, but with sort -n -r rather than sort -n.</p>
+<p>Run the script on the files in the seasonal directory using seasonal/*.csv to match all of the files and redirect the output using &gt; to a file called range.out in your home directory.</p>
+<p>How can I write loops in a shell script?</p>
+<p>Shell scripts can also contain loops. You can write them using semi-colons, or split them across lines without semi-colons to make them more readable:</p>
+</section>
+</section>
+<section id="print-the-first-and-last-data-records-of-each-file." class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Print the first and last data records of each file.</h1>
+<p>for filename in $@ do head -n 2 $filename | tail -n 1 tail -n 1 $filename done</p>
+<p>(You don’t have to indent the commands inside the loop, but doing so makes things clearer.)</p>
+<p>The first line of this script is a comment to tell readers what the script does. Comments start with the # character and run to the end of the line. Your future self will thank you for adding brief explanations like the one shown here to every script you write.</p>
+<p>As a reminder, to save what you have written in Nano, type Ctrl + O to write the file out, then Enter to confirm the filename, then Ctrl + X to exit the editor. Instructions 1/3 35 XP</p>
+<pre><code>1
+
+Fill in the placeholders in the script date-range.sh with $filename (twice), head, and tail so that it prints the first and last date from one or more files.</code></pre>
+<p>2</p>
+<p>Run date-range.sh on all four of the seasonal data files using seasonal/*.csv to match their names. 3</p>
+<p>Run date-range.sh on all four of the seasonal data files using seasonal/*.csv to match their names, and pipe its output to sort to see that your scripts can be used just like Unix’s built-in commands.</p>
+<p>What happens when I don’t provide filenames?</p>
+<p>A common mistake in shell scripts (and interactive commands) is to put filenames in the wrong place. If you type:</p>
+<p>tail -n 3</p>
+<p>then since tail hasn’t been given any filenames, it waits to read input from your keyboard. This means that if you type:</p>
+<p>head -n 5 | tail -n 3 somefile.txt</p>
+<p>then tail goes ahead and prints the last three lines of somefile.txt, but head waits forever for keyboard input, since it wasn’t given a filename and there isn’t anything ahead of it in the pipeline.</p>
+<p>Suppose you do accidentally type:</p>
+<p>head -n 5 | tail -n 3 somefile.txt</p>
+<p>What should you do next? Instructions 50 XP Possible answers Wait 10 seconds for head to time out. Type somefile.txt and press Enter to give head some input. Use Ctrl + C to stop the running head program.</p>
+</section>
+<section id="bash-scripting" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Bash scripting</h1>
+<section id="from-command-line-to-bash-script" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="from-command-line-to-bash-script"><span class="header-section-number">13.1</span> From Command-Line to Bash Script</h2>
+<p>BASH = (Bourne Again Shell)</p>
+<ul>
+<li><p><code>(e)greo</code> filters input based on regex pattern matching</p></li>
+<li><p><code>cat</code> concatenates file content line-by-line</p></li>
+<li><p><code>tail</code> / <code>head</code> give only the last <code>-n</code> lines</p></li>
+<li><p><code>wc</code> does a character, word or line count (with flags <code>-c</code>, <code>-w</code>, <code>-l</code>)</p></li>
+<li><p><code>sed</code> does pattern-matched string replacement</p></li>
+<li><p>“Regex” or reguler expressions are expressions helping to match a particlar string</p></li>
+<li><p>regex</p>
+<ul>
+<li><code>[]</code> creates a set</li>
+<li><code>^[]</code> inverts the set</li>
+</ul></li>
+</ul>
+<p>Extracting scores with shell</p>
+<p>There is a file in either the start_dir/first_dir, start_dir/second_dir or start_dir/third_dir directory called soccer_scores.csv. It has columns Year,Winner,Winner Goals for outcomes of a soccer league.</p>
+<p>cd into the correct directory and use cat and grep to find who was the winner in 1959. You could also just ls from the top directory if you like! Instructions 50 XP Possible answers Winner Dunav Botev</p>
+<p>Searching a book with shell</p>
+<p>There is a copy of Charles Dickens’s infamous ‘Tale of Two Cities’ in your home directory called two_cities.txt.</p>
+<p>Use command line arguments such as cat, grep and wc with the right flag to count the number of lines in the book that contain either the character ‘Sydney Carton’ or ‘Charles Darnay’. Use exactly these spellings and capitalizations. Instructions 50 XP Possible answers 77 32 45</p>
+<p>cat two_cities.txt | egrep ‘Sydney Carton|Charles Darnay’ | wc -l</p>
+</section>
+<section id="first-bash-script" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="first-bash-script"><span class="header-section-number">13.2</span> First bash script</h2>
+<ul>
+<li>first line <code>#!/usr/bash</code>
+<ul>
+<li>check with <code>which bash</code> as the directory might be different</li>
+</ul></li>
+<li>main code follows</li>
+<li>has the file extension <code>.sh</code> which is not needed if the first line has the she-bang</li>
+<li>can be run with <code>bash script.sh</code> or just by <code>./script.sh</code></li>
+</ul>
+<p>Shell pipelines to Bash scripts</p>
+<p>In this exercise, you are working as a sports analyst for a Bulgarian soccer league. You have received some data on the results of the grand final from 1932 in a csv file. The file is comma-delimited in the format Year,Winner,Winner Goals which lists the year of the match, the team that won and how many goals the winning team scored, such as 1932,Arda,4.</p>
+<p>Your job is to create a Bash script from a shell piped command which will aggregate to see how many times each team has won.</p>
+<p>Don’t worry about the tail -n +2 part, this just ensures we don’t aggregate the CSV headers! Ide Exercise Instruction 100XP</p>
+<pre><code>Create a single-line pipe to cat the soccer_scores.csv file, cut out the relevant field and aggregate (sort &amp; uniq -c will help!) based on winning team.
+Save your script and run from the console.</code></pre>
+<p>cat soccer_scores.csv | cut -d “,” -f 2 | tail -n +2 | sort | uniq -c</p>
+<p>Extract and edit using Bash scripts</p>
+<p>Continuing your work for the Bulgarian soccer league - you need to do some editing on the data you have. Several teams have changed their names so you need to do some replacements. The data is the same as the previous exercise.</p>
+<p>You will need to create a Bash script that makes use of sed to change the required team names. Ide Exercise Instruction 100XP</p>
+<pre><code>Create a pipe using sed twice to change the team Cherno to Cherno City first, and then Arda to Arda United.
+Pipe the output to a file called soccer_scores_edited.csv.
+Save your script and run from the console. Try opening soccer_scores_edited.csv using shell commands to confirm it worked (the first line should be changed)!</code></pre>
+<p>cat soccer_scores.csv | sed ‘s/Cherno/Cherno City/g’ | sed ‘s/Arda/Arda United/g’ &gt; soccer_scores_edited.csv</p>
+</section>
+<section id="standard-streans-and-arguments" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="standard-streans-and-arguments"><span class="header-section-number">13.3</span> standard streans and arguments</h2>
+<ul>
+<li><p>STDIN (stadnard input). A stream of data into the program</p></li>
+<li><p>STDOUT (standard output) A stream of data out of the programm</p></li>
+<li><p>STDERR (standard error) Errors in your program</p></li>
+<li><p><code>2&gt; /dev/null</code> redirecting the STDERR to be deleted</p></li>
+<li><p><code>1&gt; /dev/null</code> would be STDOUT</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="image.png" class="img-fluid figure-img"></p>
+<figcaption>alt text</figcaption>
+</figure>
+</div>
+<ul>
+<li>ARGV is the array of all atguments given</li>
+<li>each argument can be acess via the $ notation: $1, $2</li>
+<li><code>$@</code> and <code>$*</code> give allt he arguments in ARGV</li>
+<li><code>$#</code> gives the lentgh (number) of arguments</li>
+</ul>
+<p>Using arguments in Bash scripts</p>
+<p>Often you will find that your Bash scripts are part of an overall analytics pipeline or process, so it’s very useful to be able to take in arguments (ARGV) from the command line and use these inside your scripts.</p>
+<p>Your job is to create a Bash script that will return the arguments inputted as well as utilize some of the special properties of ARGV elements in Bash scripts.</p>
+<p>Since we are using arguments, you must run your script from the terminal pane, not using the ‘run this file’ button. Ide Exercise Instruction 100XP</p>
+<pre><code>Echo the first and second ARGV arguments.
+Echo out the entire ARGV array in one command (not each element).
+Echo out the size of ARGV (how many arguments fed in).
+Save your script and run from the terminal pane using the arguments Bird Fish Rabbit. Don't use the ./script.sh method.</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bash</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Echo the first and second ARGV arguments</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$1</span> </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$2</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Echo out the entire ARGV array</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$@</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Echo out the size of ARGV</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$#</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>`bash script.sh Bird Fish Rabbit</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Bird</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Fish</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Bird</span> Fish Rabbit</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="ex">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Using arguments with HR data</p>
+<p>In this exercise, you are working as a data scientist in the HR department of a large IT company. You need to extract salary figures for recent hires, however, the HR IT system simply spits out hundreds of files into the folder /hire_data.</p>
+<p>Each file is comma-delimited in the format COUNTRY,CITY,JOBTITLE,SALARY such as Estonia,Tallinn,Javascript Developer,118286</p>
+<p>Your job is to create a Bash script to extract the information needed. Depending on the task at hand, you may need to go back and extract data for a different city. Therefore, your script will need to take in a city (an argument) as a variable, filter all the files by this city and output to a new CSV with the city name. This file can then form part of your analytics work. Ide Exercise Instruction 100XP</p>
+<pre><code>Echo the first ARGV argument so you can confirm it is being read in.
+cat all the files in the directory /hire_data and pipe to grep to filter using the city name (your first ARGV argument).
+On the same line, pipe out the filtered data to a new CSV called cityname.csv where cityname is taken from the first ARGV argument.
+Save your script and run from the console twice (do not use the ./script.sh method). Once with the argument Seoul. Then once with the argument Tallinn.</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Echo the first ARGV argument</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$1</span> </span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Cat all the files</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Then pipe to grep using the first ARGV argument</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Then write out to a named csv using the first ARGV argument</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> hire_data/<span class="pp">*</span>.csv <span class="kw">|</span> <span class="fu">grep</span> <span class="st">"</span><span class="va">$1</span><span class="st">"</span> <span class="op">&gt;</span> <span class="st">"</span><span class="va">$1</span><span class="st">"</span>.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>bash script.sh Seoul</code> <code>bash script.sh Tallinn</code></p>
+</section>
+<section id="variables-in-bash-scripting" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="variables-in-bash-scripting"><span class="header-section-number">13.4</span> Variables in Bash Scripting</h2>
+<section id="basic-variables-in-bash" class="level3" data-number="13.4.1">
+<h3 data-number="13.4.1" class="anchored" data-anchor-id="basic-variables-in-bash"><span class="header-section-number">13.4.1</span> Basic variables in Bash</h3>
+<p>var1=“Moon” $var1</p>
+<p>firstname=“John” lastname=“Wick” echo “Hello” $firstname $lastnname</p>
+<p>Note, there can be no spaces around <code>=</code> else bash will not work</p>
+<p>var1 = “Moon” $var1</p>
+<ul>
+<li>single quotes <code>'...'</code> shell interprets what is between literally</li>
+<li>souble quotes <code>"..."</code> shell interpres literally expcept using $ and backticks backtiks <code>...</code> shell runs the command and captures STDOUT back into a variable</li>
+</ul>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="va">now_var</span><span class="op">=</span><span class="st">'NOW'</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="va">now_var_singlequote</span><span class="op">=</span><span class="st">'$now_var'</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$now_var_singlequote</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="va">now_var_doublequote</span><span class="op">=</span><span class="st">"</span><span class="va">$now_var</span><span class="st">"</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$now_var_doublequote</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>date</code></li>
+</ul>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="va">rightnow_doubleuote</span><span class="op">=</span><span class="st">"The date is </span><span class="kw">`</span><span class="fu">date</span><span class="kw">`</span><span class="st">."</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$rightnow_doubleuote</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>alternative usge <code>$()</code> which is more stardard way in bash</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="va">rightnow_doubleuote</span><span class="op">=</span><span class="st">"The date is </span><span class="kw">`</span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="kw">`</span><span class="st">."</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$rightnow_doubleuote</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Using variables in Bash</p>
+<p>You have just joined a data analytics team at a new company after someone left very quickly to pursue a new job (lucky them!). Unfortunately they left so fast they did not have time to finish the Bash script they were working on as part of a new chatbot project.</p>
+<p>There is an error with this script - it is printing out the words yourname rather than the person’s name. You know this has something to do with variable assignment - can you help fix this script? Add the necessary components to ensure this script runs correctly. Ide Exercise Instruction 100XP</p>
+<pre><code>Create a variable, yourname that contains the name of the user. Let's use the test name 'Sam' for this.
+Fix the echo statement so it prints the variable and not the word yourname.
+Run your script.</code></pre>
+<pre><code># Create the required variable
+____="____"
+
+# Print out the assigned name (Help fix this error!)
+echo "Hi there yourname, welcome to the website!"</code></pre>
+<p>Shell within a shell</p>
+<p>Which of the following correctly uses a ‘shell within a shell’ to print out the date? We do not want to select the option that will just print out the string ‘date’.</p>
+<p>You could try these in the console yourself! Instructions 50 XP Possible answers echo “Right now it is”date”” echo “Right now it is <code>date</code>” echo “Right now it is $date”</p>
+</section>
+</section>
+<section id="numeric-variables-in-bash" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="numeric-variables-in-bash"><span class="header-section-number">13.5</span> Numeric variables in Bash</h2>
+<ul>
+<li><p><code>expr</code> is a useful utility programm (just like <code>cat</code> or <code>grep</code>)</p></li>
+<li><p><code>expr 1+4</code></p></li>
+<li><p>it cannot handle decimal places <code>expr 1 + 2.5</code></p></li>
+<li><p>bc</p></li>
+<li><p><code>1 + 2.5</code></p></li>
+<li><p><code>quit</code> or</p></li>
+<li><p>echo “1+2.5”| bc</p></li>
+<li><p><code>scale</code> number of decimal places for returned valre</p></li>
+<li><p>echo “10/3”| bc</p></li>
+<li><p>echo “scale=3; 10/3”| bc</p></li>
+</ul>
+<pre><code>dog_name='Roger'
+dog_age=6
+echo "... $dog_name...$dog_age"</code></pre>
+<ul>
+<li>expr 5+7</li>
+<li>echo $((5 +7)) &lt;- still uses expr not bc, so no decimals</li>
+</ul>
+<div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="va">model_1</span><span class="op">=</span>87.65</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="va">model_2</span><span class="op">=</span>89.20</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"The total score is </span><span class="va">$(</span><span class="bu">echo</span> <span class="st">"model_1 + model_2"</span> <span class="kw">|</span><span class="fu">bc</span><span class="va">)</span><span class="st">"</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"The avergae score is </span><span class="va">$(</span><span class="bu">echo</span> <span class="st">"(model_1 + model_2) / 2"</span> <span class="kw">|</span><span class="fu">bc</span><span class="va">)</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Converting Fahrenheit to Celsius</p>
+<p>You work in the analytics department for an Australian company that recently purchased an American company. The files and data from the US company are in the imperial system and need to be converted to metric. This sounds like a great opportunity to use your Bash skills to create a program which will assist.</p>
+<p>Your task is to write a program that takes in a single number (a temperature in Fahrenheit) as an ARGV argument, converts it to Celsius and returns the new value. There may be decimal places so you will need to undertake calculations using the bc program.</p>
+<p>At all times use 2 decimal places using the scale command for bc.</p>
+<p>The formula for Fahrenheit to Celsius is:</p>
+<p>C = (F - 32) x (5/9)</p>
+<p>Remember, since we are using arguments, you will need to run your script from the terminal pane rather than ‘run this file’ button. Ide Exercise Instruction 100XP</p>
+<pre><code>Create a variable temp_f from the first ARGV argument.
+Call a shell-within-a-shell to subtract 32 from temp_f and assign to variable temp_f2.
+Using the same method, multiply temp_f2 by 5 and divide by 9, assigning to a new variable temp_c then print out temp_c.
+Save and run your script (in the terminal) using 108 Fahrenheit (the forecast temperature in Parramatta, Sydney this Saturday!).</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get first ARGV into variable</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="va">temp_f</span><span class="op">=</span>____</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtract 32</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="va">temp_f2</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="st">"scale=2; </span><span class="va">$temp_f</span><span class="st"> - ____"</span> <span class="kw">|</span> <span class="fu">bc</span><span class="va">)</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiply by 5/9</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="va">temp_c</span><span class="op">=</span><span class="va">$(</span><span class="bu">echo</span> <span class="st">"scale=2; </span><span class="va">$temp_f2</span><span class="st"> * ____ / 9"</span> <span class="kw">|</span> <span class="fu">bc</span><span class="va">)</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the celsius temp</span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> ____</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Extracting data from files</p>
+<p>You are a data scientist for a climate research organization. To update some models, you need to extract temperature data for 3 regions you are monitoring. Unfortunately the temperature reading devices are quite old and can only be configured to dump data each day into a folder called temps on your server. Each file contains the daily temperature for each region.</p>
+<p>Your task is to extract the data from each file (by concatenating) into the relevant variable and print it out. The temperature in the file region_A needs to be assigned to the variable temp_a and so on.</p>
+<p>You will later do some more advanced calculations on these variables. Ide Exercise Instruction 100XP</p>
+<pre><code>Create three variables from the data in the three files within temps by concatenating the content into a variable using a shell-within-a-shell.
+Print out the variables to ensure it worked.
+Save your script and run from the command line.</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create three variables from the temp data files' contents</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="va">temp_a</span><span class="op">=</span><span class="va">$(</span><span class="ex">____</span> temps/____<span class="va">)</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="va">temp_b</span><span class="op">=</span><span class="va">$(</span><span class="ex">____</span> temps/____<span class="va">)</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="va">temp_c</span><span class="op">=</span><span class="va">$(</span><span class="ex">____</span> temps/____<span class="va">)</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Print out the three variables</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"The three temperatures were ____, </span><span class="va">$temp_b</span><span class="st">, and </span><span class="va">$temp_c</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="arrays-in-bash" class="level2" data-number="13.6">
+<h2 data-number="13.6" class="anchored" data-anchor-id="arrays-in-bash"><span class="header-section-number">13.6</span> Arrays in Bash</h2>
+<ul>
+<li><p>numerical-indexed array</p></li>
+<li><p>declare -a my_first_array</p></li>
+<li><p>my_dirst_array=(1 2 3)</p></li>
+<li><p>my_dirst_array=(1,2,3) this is not correct, bash uses spaces not commas</p></li>
+<li><p>all array elements can be returned using <code>array[@]</code>. Bash requires curly <code>{}</code> brackes around the array name when you want to access these properties</p></li>
+<li><p>accessing array elements using quare brackes. note index starts at 0. so the thrid element is <code>[2]</code> (like in Python)</p></li>
+<li><p>set array elements usingf the index notation</p></li>
+<li><p>slicing a subset of array</p>
+<ul>
+<li>array[@]:N:M</li>
+<li>:N start index</li>
+<li>:M number of elements</li>
+</ul></li>
+<li><p>appending arrays</p>
+<ul>
+<li><code>array+=(elements)</code></li>
+<li>if missing <code>()</code> then 10 will be added to the first element</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb49"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="va">my_array</span><span class="op">=</span><span class="va">(</span>1 3 5 2<span class="va">)</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${my_array</span><span class="op">[@]</span><span class="va">}</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${</span><span class="op">#</span><span class="va">my_array</span><span class="op">[@]</span><span class="va">}</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${my_array</span><span class="op">[</span><span class="dv">2</span><span class="op">]</span><span class="va">}</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="va">my_array</span><span class="op">[</span><span class="dv">0</span><span class="op">]=</span>999</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${my_array</span><span class="op">[@]</span><span class="va">}</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${my_array</span><span class="op">[@]:</span><span class="dv">1</span><span class="op">:</span><span class="dv">2</span><span class="va">}</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="va">my_array</span><span class="op">+=</span><span class="va">(</span>111<span class="va">)</span></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${my_array</span><span class="op">[@]</span><span class="va">}</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="va">my_array</span><span class="op">+=</span>111</span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${my_array</span><span class="op">[@]</span><span class="va">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>associative array</li>
+</ul>
+<div class="sourceCode" id="cb50"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="bu">declare</span> <span class="at">-A</span> <span class="va">city_details</span> <span class="co"># declare first</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="va">city_details</span><span class="op">=</span><span class="va">(</span><span class="op">[</span>city_name<span class="op">]</span><span class="va">=</span><span class="st">"New York"</span> <span class="op">[</span>population<span class="op">]</span><span class="va">=</span>14000000<span class="va">)</span> <span class="co"># add eleemtens</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${city_details</span><span class="op">[</span>city_name<span class="op">]</span><span class="va">}</span> <span class="co"># index using key to return a value</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${city_details</span><span class="op">[</span>population<span class="op">]</span><span class="va">}</span> <span class="co"># index using key to return a value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="va">city_details</span><span class="op">=</span><span class="va">(</span><span class="op">[</span>city_name<span class="op">]</span><span class="va">=</span><span class="st">"New York"</span> <span class="op">[</span>population<span class="op">]</span><span class="va">=</span>14000000<span class="va">)</span> <span class="co"># directly add elements</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${city_details</span><span class="op">[</span>city_name<span class="op">]</span><span class="va">}</span> <span class="co"># index using key to return a value</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${city_details</span><span class="op">[</span>population<span class="op">]</span><span class="va">}</span> <span class="co"># index using key to return a value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>!</code> returns all the keys</li>
+</ul>
+<div class="sourceCode" id="cb52"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">${</span><span class="op">!</span><span class="va">city_details</span><span class="op">[@]</span><span class="va">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Creating an array</p>
+<p>In this exercise, you will practice building and accessing key properties of an array. Understanding what key properties are built in to Bash is important for fully utilizing arrays. For example, when iterating through arrays, knowing their length is very handy. Similarly, knowing how to easily return all array elements is also important for looping and also for checking your work and printing.</p>
+<p>In this exercise, you will firstly build an array using two different methods and then access the length of the array. You will then return the entire array using a different special property. Instructions 1/3 35 XP</p>
+<pre><code>1
+2
+3
+
+Create a normal array called capital_cities which contains the cities Sydney, Albany and Paris. Do not use the declare method; fill the array as you create it. Be sure to put double quotation marks around each element!</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a normal array with the mentioned elements</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="va">capital_cities</span><span class="op">=</span>____</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="create-a-normal-array-with-the-mentioned-elements" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> Create a normal array with the mentioned elements</h1>
+<p>capital_cities=(“Sydney” “Albany” “Paris”)</p>
+<pre><code>Create a normal array called capital_cities using the declare method.
+Below, add each city, appending to the array. The cities were Sydney, Albany, and Paris. Remember to use double quotation marks.</code></pre>
+</section>
+<section id="create-a-normal-array-with-the-mentioned-elements-using-the-declare-method" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> Create a normal array with the mentioned elements using the declare method</h1>
+<p>declare -a capital_cities</p>
+</section>
+<section id="add-append-the-elements" class="level1" data-number="16">
+<h1 data-number="16"><span class="header-section-number">16</span> Add (append) the elements</h1>
+<p>capital_cities+=(“Sydney”) capital_cities+=(“Albany”) capital_cities+=(“Paris”)</p>
+<pre><code>Now you have the array created, print out the entire array using a special array property.
+Then print out the length of the array using another special property.</code></pre>
+</section>
+<section id="the-array-has-been-created-for-you" class="level1" data-number="17">
+<h1 data-number="17"><span class="header-section-number">17</span> The array has been created for you</h1>
+<p>capital_cities=(“Sydney” “Albany” “Paris”)</p>
+</section>
+<section id="print-out-the-entire-array" class="level1" data-number="18">
+<h1 data-number="18"><span class="header-section-number">18</span> Print out the entire array</h1>
+<p>echo ${capital_cities[____]}</p>
+</section>
+<section id="the-array-has-been-created-for-you-1" class="level1" data-number="19">
+<h1 data-number="19"><span class="header-section-number">19</span> The array has been created for you</h1>
+<p>capital_cities=(“Sydney” “Albany” “Paris”)</p>
+</section>
+<section id="print-out-the-entire-array-1" class="level1" data-number="20">
+<h1 data-number="20"><span class="header-section-number">20</span> Print out the entire array</h1>
+<p>echo ${capital_cities[@]}</p>
+</section>
+<section id="print-out-the-array-length" class="level1" data-number="21">
+<h1 data-number="21"><span class="header-section-number">21</span> Print out the array length</h1>
+<p>echo ${#capital_cities[@]}</p>
+</section>
+<section id="print-out-the-array-length-1" class="level1" data-number="22">
+<h1 data-number="22"><span class="header-section-number">22</span> Print out the array length</h1>
+<p>echo ${____capital_cities[____]}</p>
+<p>Creating associative arrays</p>
+<p>Associative arrays are powerful constructs to use in your Bash scripting. They are very similar to ‘normal’ arrays, however they have a few important differences in their creation, manipulation and key properties.</p>
+<p>Associative arrays allow you to index using words rather than numbers, which can be important for ease of inputting and accessing properties. For example, rather than accessing ‘index 4’ of an array about a city’s information, you can access the city_population property, which is a lot clearer!</p>
+<p>In this exercise we will practice creating and adding to an associative array. We will then access some special properties that are unique to associative arrays. Let’s get started!</p>
+<p>NOTE: if you submit incorrect code, you may need to refresh the browser to remove old variables etc that affect the test suite before submitting again Instructions 1/3 35 XP</p>
+<pre><code>1
+2
+3
+
+Create an empty associative array called model_metrics.
+Add the following key-value pairs; (model_accuracy, 98), (model_name, "knn"), (model_f1, 0.82).</code></pre>
+</section>
+<section id="create-empty-associative-array" class="level1" data-number="23">
+<h1 data-number="23"><span class="header-section-number">23</span> Create empty associative array</h1>
+<p>declare -A model_metrics</p>
+</section>
+<section id="add-the-key-value-pairs" class="level1" data-number="24">
+<h1 data-number="24"><span class="header-section-number">24</span> Add the key-value pairs</h1>
+<p>model_metrics[model_accuracy]=98 model_metrics[model_name]=“knn” model_metrics[model_f1]=0.82</p>
+<pre><code>Create the same associative array (model_metrics) all in one line. (model_accuracy, 98), (model_name, "knn"), (model_f1, 0.82). Remember you must add square brackets* around the keys!
+Print out the entire array to see what you created.</code></pre>
+</section>
+<section id="declare-associative-array-with-key-value-pairs-on-one-line" class="level1" data-number="25">
+<h1 data-number="25"><span class="header-section-number">25</span> Declare associative array with key-value pairs on one line</h1>
+<p>declare -A model_metrics=([model_accuracy]=98 [model_name]=“knn” [model_f1]=0.82)</p>
+</section>
+<section id="print-out-the-entire-array-2" class="level1" data-number="26">
+<h1 data-number="26"><span class="header-section-number">26</span> Print out the entire array</h1>
+<p>echo ${model_metrics[@]}</p>
+<p>Now that you’ve created an associative array, print out just all the keys of this associative array.</p>
+</section>
+<section id="an-associative-array-has-been-created-for-you" class="level1" data-number="27">
+<h1 data-number="27"><span class="header-section-number">27</span> An associative array has been created for you</h1>
+<p>declare -A model_metrics=([model_accuracy]=98 [model_name]=“knn” [model_f1]=0.82)</p>
+</section>
+<section id="print-out-all-the-keys" class="level1" data-number="28">
+<h1 data-number="28"><span class="header-section-number">28</span> Print out all the keys</h1>
+<p>echo ${!model_metrics[@]}</p>
+<p>Climate calculations in Bash</p>
+<p>You are continuing your work as a data scientist for the climate research organization. In a previous exercise, you extracted temperature data for 3 regions you are monitoring from some files from the /temps directory.</p>
+<p>Remember, each file contains the daily temperature for each region. However, only two regions will be used in this exercise.</p>
+<p>In this exercise, the lines from your previous exercise are already there which extract the data from each file. However, this time you will then store these variables in an array, calculate the average temperature of the regions and append this to the array.</p>
+<p>For example, for temperatures of 60 and 70, the array should have 60, 70, and 65 as its elements. Ide Exercise Instruction 100XP</p>
+<pre><code>Create an array with the two temp variables as elements.
+Call an external program to get the average temperature. You will need to sum array elements then divide by 2. Use the scale parameter to ensure this is to 2 decimal places.
+Append average_temp to your array and print out the entire array.
+Run your script.</code></pre>
+</section>
+<section id="create-variables-from-the-temperature-data-files" class="level1" data-number="29">
+<h1 data-number="29"><span class="header-section-number">29</span> Create variables from the temperature data files</h1>
+<p>temp_b=“<span class="math inline">\((cat temps/region_B)"
+temp_c="\)</span>(cat temps/region_C)”</p>
+</section>
+<section id="create-an-array-with-these-variables-as-elements" class="level1" data-number="30">
+<h1 data-number="30"><span class="header-section-number">30</span> Create an array with these variables as elements</h1>
+<p>region_temps=(____ ____)</p>
+</section>
+<section id="call-an-external-program-to-get-average-temperature" class="level1" data-number="31">
+<h1 data-number="31"><span class="header-section-number">31</span> Call an external program to get average temperature</h1>
+<p>average_temp=<span class="math inline">\((echo "scale=2; (\)</span>{____[0]} + ${____[1]}) / 2” | ____)</p>
+</section>
+<section id="append-average-temp-to-the-array" class="level1" data-number="32">
+<h1 data-number="32"><span class="header-section-number">32</span> Append average temp to the array</h1>
+<p>region_temps+=($____)</p>
+</section>
+<section id="print-out-the-whole-array" class="level1" data-number="33">
+<h1 data-number="33"><span class="header-section-number">33</span> Print out the whole array</h1>
+<p>echo ${region_temps[____]} s</p>
+</section>
+<section id="create-variables-from-the-temperature-data-files-1" class="level1" data-number="34">
+<h1 data-number="34"><span class="header-section-number">34</span> Create variables from the temperature data files</h1>
+<p>temp_b=“<span class="math inline">\((cat temps/region_B)"
+temp_c="\)</span>(cat temps/region_C)”</p>
+</section>
+<section id="create-an-array-with-these-variables-as-elements-1" class="level1" data-number="35">
+<h1 data-number="35"><span class="header-section-number">35</span> Create an array with these variables as elements</h1>
+<p>region_temps=($temp_b $temp_c)</p>
+</section>
+<section id="call-an-external-program-to-get-average-temperature-1" class="level1" data-number="36">
+<h1 data-number="36"><span class="header-section-number">36</span> Call an external program to get average temperature</h1>
+<p>average_temp=<span class="math inline">\((echo "scale=2; (\)</span>{region_temps[0]} + ${region_temps[1]}) / 2” | bc)</p>
+</section>
+<section id="append-average-temp-to-the-array-1" class="level1" data-number="37">
+<h1 data-number="37"><span class="header-section-number">37</span> Append average temp to the array</h1>
+<p>region_temps+=($average_temp)</p>
+</section>
+<section id="print-out-the-whole-array-1" class="level1" data-number="38">
+<h1 data-number="38"><span class="header-section-number">38</span> Print out the whole array</h1>
+<p>echo ${region_temps[@]} ```</p>
+<section id="control-statements-in-bash-scripting" class="level2" data-number="38.1">
+<h2 data-number="38.1" class="anchored" data-anchor-id="control-statements-in-bash-scripting"><span class="header-section-number">38.1</span> Control Statements in Bash Scripting</h2>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./5_passwords_online_accounts.html" class="pagination-link" aria-label="Slaptažodžiai ir internetinės paskyros">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Slaptažodžiai ir internetinės paskyros</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./7_linux_comands_advanced.html" class="pagination-link" aria-label="7_linux_comands_advanced.html">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">7_linux_comands_advanced.html</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

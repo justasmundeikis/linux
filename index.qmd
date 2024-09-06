@@ -1,5 +1,61 @@
 # Įvadas {.unnumbered}
 
-Čia dar bus...
+> Kam man reikalingas tas Linux'as? 
 
-![](img/index/LM-Confused.png)
+<div class="tenor-gif-embed" data-postid="17212761" data-share-method="host" data-aspect-ratio="1" data-width="30%"><a href="https://tenor.com/view/angry-mad-furious-upset-annoyed-gif-17212761">Angry Mad GIF</a>from <a href="https://tenor.com/search/angry-gifs">Angry GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+## Operacinė sistema
+
+Kai tu įjungi savo telefoną, kompiuterį ar mikrokompiuterį, jame pasileidžia programa - instrukcijų rinkinys, kuris nurodo, kaip tavo prietaisas turi veikti. Ši programa nurodo, pavyzdžiui, įjungus prietaisą pradėti šviesti ekranui, paspaudus klavišus `abc` suprasti, kad tu rašai, arba įjungus elektros kabelį pradėti krauti bateriją.
+
+![Kompiuteris. Autorius: [Alessandro Oliverio](Jakub Zerdzicki: https://www.pexels.com/photo/home-office-studio-20148810/)](img/pexels-jakubzerdzicki-20148810.jpg)
+
+Šis instrukcijų rinkinys dar nėra visavertė operacinė sistema. Tai yra vadinamasis branduolys (angl. - kernel), kuris nurodo, kaip turi veikti kompiuterinė įranga tarpusavyje.
+
+Šalia branduolio yra ir kita programinė įranga, kuri leidžia tau naudotis prietaisu - tai įvairiausios programos, pvz., skambinimo programėlė, kalkuliatorius, interneto naršyklė. Visa ši programinė įranga kartu su branduoliu sudaro operacinę sistemą (angl - operating system, arba - OS).
+
+Taigi operacinė sistema (OS) yra programinė įranga, kuri valdo kompiuterinės įrangos ir programų išteklius. Ji veikia kaip tarpininkė tarp vartotojo ir kompiuterio aparatūros. Pagrindinės populiarios operacinės sistemos yra Windows, macOS, ir Linux.
+
+* **Windows**: Microsoft korporacijos sukurta populiariausia operacinė sistema, naudojama tiek namų, tiek verslo kompiuteriuose. Ji žinoma dėl savo patogumo ir plataus programų pasirinkimo.
+* **macOS**: Apple korporacijos operacinė sistema, naudojama Mac kompiuteriuose. Ji žinoma dėl savo dizaino, stabilumo ir integracijos su Apple ekosistema.
+* **Linux**: Atviro kodo operacinė sistema, kurią gali keisti ir dalintis visi norintys. Ją naudoja dauguma serverių ir technologijų entuziastų.
+
+## Ubuntu skoniai
+
+Linux yra atviro kodo operacinė sistema, todėl ją gali keisti ir dalintis visi norintys. Dėl to yra nemažai programuotojų, kurie nusprendžia pasidalinti savo pagamintais Linux variantais, vadinamais distribucijomis.
+
+![Linux distribucijų medis](img/linux-distro-family-tree-e1451930922347.png)
+
+
+Kai tu įjungi telefoną arba kompiuterį, branduolys užtikrina, kad visi kompiuterio komponentai galėtų tarpusavyje bendrauti. Vis dar trūksta programų, kurios rodytų vaizdus ekrane, leistų įvesti tekstą ir pan. Tam yra reikalingos papildomos programos, dauguma jų buvo sukurtos GNU projekto metu. Tačiau tik branduolys ir GNU programos dar neleistų visavertiškai naudotis kompiuteriu, todėl papildomai diegiamos įvairios reikalingos programos, kurios padaro operacinę sistemą praktiška ir gražiai atrodančia.
+
+Taigi, pilną operacinę sistemą, dar kartais vadinamą Linux distribucija (distribution), sudaro:
+
+* Linux branduolys (kernel)
+* GNU programos
+* Papildomos programos ir grafinis dizainas
+
+## Kodėl Linux
+
+Grįžkime prie klausimo - "Kodėl Linux"?
+
+* **Saugumas**: Linux dažnai laikoma saugesne operacine sistema dėl savo architektūros ir mažesnio virusų kiekio.
+* **Serveriai**: Linux arba jai giminingos UNIX sistemos veikia beveik visuose pasaulio serveriuose. Greičiausiai net tavo namuose yra ne vienas įrenginys, kuriame veikia Linux.
+* **Universalumas**: tiek iOS, tiek Android taip pat veikia UNIX pagrindu.
+* **Lankstumas ir pritaikomumas**: Linux leidžia tau būti labiau savarankiškam ir geriau suprasti, kaip veikia kompiuteriai. Tuo pačiu metu išmoksti dalykų, kurių nemoka kiti.
+* **Programavimas**: Linux yra gera pradžia kelionei į Python ir kitas programavimo kalbas, kurios naudojamos programuojant robotus, kuriant interneto svetaines ar atliekant skaičiavimus su dideliais duomenų kiekiais.
+
+Šiais laikais vis daugiau ir daugiau profesijų kasdienėje veikloje reikia programavimo. Buhelteriai naudojasi Python,kad greičiau apdorotų duomenis. Architektai ir inžinieriai, kad teisingai apskaičiuotų pastato konstrukcijas. Transporto srauto specialistai, kad planuotų ir valdytų automobilių srautus, o NASA darbuotojai, kad valdytų į kosmoosą kylančias raketas.
+
+Taigi Linux ir tam tikra prasme - programavimas, paruošia tave 21-ajam amžiui.
+
+Negana to, Linux veikia ant tokių paprastų mikrokompiuterių kaip Raspberry Pi Zero ir gali atgaivinti net 10-20 metų senumo nešiojamą kompiuterį. Taigi, tai padeda tausoti gamtą, nes savo technika gali naudotis ilgiau.
+
+Bet yra ir kita medalio pusė. Ne visos tavo įprastos programos veikia Linux. Pavyzdžiui, Adobe produktai tiesiog neveikia Linux aplinkoje. Microsoft Excel ir Word taip pat nėra pritaikyti Linux. Jei tavo mokslui ar darbui yra būtinos tam tikros programos, Linux gali neatitikti tavo lūkesčių. Tačiau reikia žinoti, kad daugelis šių programų turi analogus Linux aplinkoje. Dažniausiai jie yra atviro kodo ir nemokami.
+
+
+## Linux Mint
+
+Kaip jau minėjau, yra daug Linux distribucijų. Šiame vadovėlyje naudosime vieną iš paprasčiausių - Linux Mint distribuciją, kuri sukurta Ubuntu pagrindu. 
+
+Ją galima parsisiųsti iš [linuxmint.com](https://www.linuxmint.com/). Kaip ją instaliuoti, gali šiek tiek skirtis priklausomai nuo kompiuterio, tad geriausia šioje vietoje tiesiog paieškoti vaizdo įrašo Youtube svetainėje.

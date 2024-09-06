@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Justas Mundeikis">
 
-<title>Linux vaikams ir pradedantiesiems</title>
+<title>1&nbsp; Linux konfiguracija – Linux vaikams ir pradedantiesiems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./1_linux_configure.html" rel="next">
+<link href="./2_linux_intro_terminal.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Įvadas</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./1_linux_configure.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Linux konfiguracija</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -108,13 +108,13 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Įvadas</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./1_linux_configure.html" class="sidebar-item-text sidebar-link">
+  <a href="./1_linux_configure.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Linux konfiguracija</span></span></a>
   </div>
 </li>
@@ -164,13 +164,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#įvadas" id="toc-įvadas" class="nav-link active" data-scroll-target="#įvadas">Įvadas</a>
-  <ul class="collapse">
-  <li><a href="#operacinė-sistema" id="toc-operacinė-sistema" class="nav-link" data-scroll-target="#operacinė-sistema">Operacinė sistema</a></li>
-  <li><a href="#ubuntu-skoniai" id="toc-ubuntu-skoniai" class="nav-link" data-scroll-target="#ubuntu-skoniai">Ubuntu skoniai</a></li>
-  <li><a href="#kodėl-linux" id="toc-kodėl-linux" class="nav-link" data-scroll-target="#kodėl-linux">Kodėl Linux</a></li>
-  <li><a href="#linux-mint" id="toc-linux-mint" class="nav-link" data-scroll-target="#linux-mint">Linux Mint</a></li>
-  </ul></li>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro"><span class="header-section-number">2</span> Intro</a></li>
+  <li><a href="#themes" id="toc-themes" class="nav-link" data-scroll-target="#themes"><span class="header-section-number">3</span> Themes</a></li>
+  <li><a href="#backgrounds" id="toc-backgrounds" class="nav-link" data-scroll-target="#backgrounds"><span class="header-section-number">4</span> Backgrounds</a></li>
+  <li><a href="#menu" id="toc-menu" class="nav-link" data-scroll-target="#menu"><span class="header-section-number">5</span> Menu</a></li>
+  <li><a href="#panel" id="toc-panel" class="nav-link" data-scroll-target="#panel"><span class="header-section-number">6</span> Panel</a></li>
+  <li><a href="#firewall" id="toc-firewall" class="nav-link" data-scroll-target="#firewall"><span class="header-section-number">7</span> Firewall</a></li>
+  <li><a href="#languages" id="toc-languages" class="nav-link" data-scroll-target="#languages"><span class="header-section-number">8</span> Languages</a></li>
+  <li><a href="#keyboard" id="toc-keyboard" class="nav-link" data-scroll-target="#keyboard"><span class="header-section-number">9</span> Keyboard</a></li>
+  <li><a href="#time" id="toc-time" class="nav-link" data-scroll-target="#time"><span class="header-section-number">10</span> Time</a></li>
+  <li><a href="#tips-tricks" id="toc-tips-tricks" class="nav-link" data-scroll-target="#tips-tricks"><span class="header-section-number">11</span> Tips &amp; Tricks</a></li>
   </ul>
 </nav>
     </div>
@@ -179,19 +182,13 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Linux vaikams ir pradedantiesiems</h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Linux konfiguracija</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Justas Mundeikis </p>
-          </div>
-  </div>
     
   
     
@@ -202,72 +199,38 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="įvadas" class="level1 unnumbered">
-<h1 class="unnumbered">Įvadas</h1>
-<blockquote class="blockquote">
-<p>Kam man reikalingas tas Linux’as?</p>
-</blockquote>
-<div class="tenor-gif-embed" data-postid="17212761" data-share-method="host" data-aspect-ratio="1" data-width="30%">
-<a href="https://tenor.com/view/angry-mad-furious-upset-annoyed-gif-17212761">Angry Mad GIF</a>from <a href="https://tenor.com/search/angry-gifs">Angry GIFs</a>
-</div>
-<script type="text/javascript" async="" src="https://tenor.com/embed.js"></script>
-<section id="operacinė-sistema" class="level2">
-<h2 class="anchored" data-anchor-id="operacinė-sistema">Operacinė sistema</h2>
-<p>Kai tu įjungi savo telefoną, kompiuterį ar mikrokompiuterį, jame pasileidžia programa - instrukcijų rinkinys, kuris nurodo, kaip tavo prietaisas turi veikti. Ši programa nurodo, pavyzdžiui, įjungus prietaisą pradėti šviesti ekranui, paspaudus klavišus <code>abc</code> suprasti, kad tu rašai, arba įjungus elektros kabelį pradėti krauti bateriją.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/pexels-jakubzerdzicki-20148810.jpg" class="img-fluid figure-img"></p>
-<figcaption>Kompiuteris. Autorius: <a href="Jakub Zerdzicki: https://www.pexels.com/photo/home-office-studio-20148810/">Alessandro Oliverio</a></figcaption>
-</figure>
-</div>
-<p>Šis instrukcijų rinkinys dar nėra visavertė operacinė sistema. Tai yra vadinamasis branduolys (angl. - kernel), kuris nurodo, kaip turi veikti kompiuterinė įranga tarpusavyje.</p>
-<p>Šalia branduolio yra ir kita programinė įranga, kuri leidžia tau naudotis prietaisu - tai įvairiausios programos, pvz., skambinimo programėlė, kalkuliatorius, interneto naršyklė. Visa ši programinė įranga kartu su branduoliu sudaro operacinę sistemą (angl - operating system, arba - OS).</p>
-<p>Taigi operacinė sistema (OS) yra programinė įranga, kuri valdo kompiuterinės įrangos ir programų išteklius. Ji veikia kaip tarpininkė tarp vartotojo ir kompiuterio aparatūros. Pagrindinės populiarios operacinės sistemos yra Windows, macOS, ir Linux.</p>
-<ul>
-<li><strong>Windows</strong>: Microsoft korporacijos sukurta populiariausia operacinė sistema, naudojama tiek namų, tiek verslo kompiuteriuose. Ji žinoma dėl savo patogumo ir plataus programų pasirinkimo.</li>
-<li><strong>macOS</strong>: Apple korporacijos operacinė sistema, naudojama Mac kompiuteriuose. Ji žinoma dėl savo dizaino, stabilumo ir integracijos su Apple ekosistema.</li>
-<li><strong>Linux</strong>: Atviro kodo operacinė sistema, kurią gali keisti ir dalintis visi norintys. Ją naudoja dauguma serverių ir technologijų entuziastų.</li>
-</ul>
+<section id="intro" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Intro</h1>
+<p>Šiame skyriuje mes susipažinsime su Linux Mint 22 operacine sistema ir padarysime ją truputi gražesne. Kartu mes susupažinsime su tam tikrais kompiuterio terminais (t.y. pavadinimais), tai padės ateityje greičiau orientuotis.</p>
 </section>
-<section id="ubuntu-skoniai" class="level2">
-<h2 class="anchored" data-anchor-id="ubuntu-skoniai">Ubuntu skoniai</h2>
-<p>Linux yra atviro kodo operacinė sistema, todėl ją gali keisti ir dalintis visi norintys. Dėl to yra nemažai programuotojų, kurie nusprendžia pasidalinti savo pagamintais Linux variantais, vadinamais distribucijomis.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="img/linux-distro-family-tree-e1451930922347.png" class="img-fluid figure-img"></p>
-<figcaption>Linux distribucijų medis</figcaption>
-</figure>
-</div>
-<p>Kai tu įjungi telefoną arba kompiuterį, branduolys užtikrina, kad visi kompiuterio komponentai galėtų tarpusavyje bendrauti. Vis dar trūksta programų, kurios rodytų vaizdus ekrane, leistų įvesti tekstą ir pan. Tam yra reikalingos papildomos programos, dauguma jų buvo sukurtos GNU projekto metu. Tačiau tik branduolys ir GNU programos dar neleistų visavertiškai naudotis kompiuteriu, todėl papildomai diegiamos įvairios reikalingos programos, kurios padaro operacinę sistemą praktiška ir gražiai atrodančia.</p>
-<p>Taigi, pilną operacinę sistemą, dar kartais vadinamą Linux distribucija (distribution), sudaro:</p>
-<ul>
-<li>Linux branduolys (kernel)</li>
-<li>GNU programos</li>
-<li>Papildomos programos ir grafinis dizainas</li>
-</ul>
+<section id="themes" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Themes</h1>
 </section>
-<section id="kodėl-linux" class="level2">
-<h2 class="anchored" data-anchor-id="kodėl-linux">Kodėl Linux</h2>
-<p>Grįžkime prie klausimo - “Kodėl Linux”?</p>
-<ul>
-<li><strong>Saugumas</strong>: Linux dažnai laikoma saugesne operacine sistema dėl savo architektūros ir mažesnio virusų kiekio.</li>
-<li><strong>Serveriai</strong>: Linux arba jai giminingos UNIX sistemos veikia beveik visuose pasaulio serveriuose. Greičiausiai net tavo namuose yra ne vienas įrenginys, kuriame veikia Linux.</li>
-<li><strong>Universalumas</strong>: tiek iOS, tiek Android taip pat veikia UNIX pagrindu.</li>
-<li><strong>Lankstumas ir pritaikomumas</strong>: Linux leidžia tau būti labiau savarankiškam ir geriau suprasti, kaip veikia kompiuteriai. Tuo pačiu metu išmoksti dalykų, kurių nemoka kiti.</li>
-<li><strong>Programavimas</strong>: Linux yra gera pradžia kelionei į Python ir kitas programavimo kalbas, kurios naudojamos programuojant robotus, kuriant interneto svetaines ar atliekant skaičiavimus su dideliais duomenų kiekiais.</li>
-</ul>
-<p>Šiais laikais vis daugiau ir daugiau profesijų kasdienėje veikloje reikia programavimo. Buhelteriai naudojasi Python,kad greičiau apdorotų duomenis. Architektai ir inžinieriai, kad teisingai apskaičiuotų pastato konstrukcijas. Transporto srauto specialistai, kad planuotų ir valdytų automobilių srautus, o NASA darbuotojai, kad valdytų į kosmoosą kylančias raketas.</p>
-<p>Taigi Linux ir tam tikra prasme - programavimas, paruošia tave 21-ajam amžiui.</p>
-<p>Negana to, Linux veikia ant tokių paprastų mikrokompiuterių kaip Raspberry Pi Zero ir gali atgaivinti net 10-20 metų senumo nešiojamą kompiuterį. Taigi, tai padeda tausoti gamtą, nes savo technika gali naudotis ilgiau.</p>
-<p>Bet yra ir kita medalio pusė. Ne visos tavo įprastos programos veikia Linux. Pavyzdžiui, Adobe produktai tiesiog neveikia Linux aplinkoje. Microsoft Excel ir Word taip pat nėra pritaikyti Linux. Jei tavo mokslui ar darbui yra būtinos tam tikros programos, Linux gali neatitikti tavo lūkesčių. Tačiau reikia žinoti, kad daugelis šių programų turi analogus Linux aplinkoje. Dažniausiai jie yra atviro kodo ir nemokami.</p>
+<section id="backgrounds" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Backgrounds</h1>
 </section>
-<section id="linux-mint" class="level2">
-<h2 class="anchored" data-anchor-id="linux-mint">Linux Mint</h2>
-<p>Kaip jau minėjau, yra daug Linux distribucijų. Šiame vadovėlyje naudosime vieną iš paprasčiausių - Linux Mint distribuciją, kuri sukurta Ubuntu pagrindu.</p>
-<p>Ją galima parsisiųsti iš <a href="https://www.linuxmint.com/">linuxmint.com</a>. Kaip ją instaliuoti, gali šiek tiek skirtis priklausomai nuo kompiuterio, tad geriausia šioje vietoje tiesiog paieškoti vaizdo įrašo Youtube svetainėje.</p>
+<section id="menu" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Menu</h1>
+</section>
+<section id="panel" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Panel</h1>
+</section>
+<section id="firewall" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Firewall</h1>
+</section>
+<section id="languages" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Languages</h1>
+</section>
+<section id="keyboard" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Keyboard</h1>
+</section>
+<section id="time" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Time</h1>
+</section>
+<section id="tips-tricks" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Tips &amp; Tricks</h1>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -693,10 +656,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Įvadas">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Įvadas</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./1_linux_configure.html" class="pagination-link" aria-label="Linux konfiguracija">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Linux konfiguracija</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./2_linux_intro_terminal.html" class="pagination-link" aria-label="Susipažinkime su Terminal">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Susipažinkime su Terminal</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

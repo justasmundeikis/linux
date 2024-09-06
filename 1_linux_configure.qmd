@@ -1,0 +1,41 @@
+---
+title: "Linux konfiguracija"
+execute:
+  daemon: false
+  enabled: false
+format:
+  html:
+    code-copy: true
+    eval: false
+    echo: true
+---
+
+# Intro
+
+Šiame skyriuje mes susipažinsime su Linux Mint 22 operacine sistema ir padarysime ją truputi gražesne. Kartu mes susupažinsime su tam tikrais kompiuterio terminais (t.y. pavadinimais), tai padės ateityje greičiau orientuotis.
+
+# Themes
+
+# Backgrounds
+
+# Menu
+
+# Panel
+
+# Firewall
+
+# Languages
+
+# Keyboard
+
+# Time
+
+# Tips & Tricks
+
+
+
+
+
+
+
+

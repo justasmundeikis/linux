@@ -16,11 +16,13 @@ format:
 Visuose kompiuteriuose yra daugybė įvairių programų. Pavyzdžiui, jau susipažinome su `Terminal` ir `Files` programomis. Taip pat išmokome naudoti kai kurias įdiegtas komandas: `echo`, `cat`, ir `base64`. Šių programų kūrėjai dažnai atnaujina savo programas, tad norėdami pasinaudoti naujausiomis funkcijomis ir pataisymais, turime įdiegti šiuos atnaujinimus (angl. - **update**).
 
 Šioje pamokoje sužinosime:
+
 - Kas yra veidrodiniai serveriai (angl. - **mirrors**).
 - Kaip atnaujinti programas naudojant **Update Manager** programą.
 - Kaip atlikti programų atnaujinimus naudojant terminalą.
 
 Be to, išmoksime:
+
 - Kaip įdiegti (angl. - **install**) programas naudojant **Software Manager** ir terminalą.
 - Kuo skiriasi **System Package** nuo **Flatpak** programų.
 - Kaip pašalinti (angl. - **uninstall**) nebereikalingas programas, kad kompiuteris būtų švaresnis ir veiktų sklandžiau.

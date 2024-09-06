@@ -1,0 +1,61 @@
+# Kas aš esu ir kur aš randuosi?
+
+## whoami
+### vartotojas
+### root
+
+* absoliutus adresas (absolute path)
+* santykinis adresas (relative path)
+
+## pwd
+
+## direktorijų šankys
+
+## ls
+
+## cd
+
+## ~
+
+## clear
+
+## hisotry
+
+# switches and options
+
+-H
+-- help
+
+## locate
+
+## whereis
+where binary files are located
+
+## path
+
+## which
+where the binary is located among the directories in path
+
+## find
+
+## ps
+
+## pipe |
+
+## xed
+
+## cat 
+
+## head, tail
+
+## grep
+
+## sed
+
+## more, less
+
+### more
+
+### less
+
+/ allows for search
