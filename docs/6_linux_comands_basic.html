@@ -313,10 +313,57 @@ window.Quarto = {
   <li><a href="#create-an-array-with-these-variables-as-elements-1" id="toc-create-an-array-with-these-variables-as-elements-1" class="nav-link" data-scroll-target="#create-an-array-with-these-variables-as-elements-1"><span class="header-section-number">35</span> Create an array with these variables as elements</a></li>
   <li><a href="#call-an-external-program-to-get-average-temperature-1" id="toc-call-an-external-program-to-get-average-temperature-1" class="nav-link" data-scroll-target="#call-an-external-program-to-get-average-temperature-1"><span class="header-section-number">36</span> Call an external program to get average temperature</a></li>
   <li><a href="#append-average-temp-to-the-array-1" id="toc-append-average-temp-to-the-array-1" class="nav-link" data-scroll-target="#append-average-temp-to-the-array-1"><span class="header-section-number">37</span> Append average temp to the array</a></li>
-  <li><a href="#print-out-the-whole-array-1" id="toc-print-out-the-whole-array-1" class="nav-link" data-scroll-target="#print-out-the-whole-array-1"><span class="header-section-number">38</span> Print out the whole array</a>
+  <li><a href="#print-out-the-whole-array-1" id="toc-print-out-the-whole-array-1" class="nav-link" data-scroll-target="#print-out-the-whole-array-1"><span class="header-section-number">38</span> Print out the whole array</a></li>
+  <li><a href="#extract-accuracy-from-first-argv-element" id="toc-extract-accuracy-from-first-argv-element" class="nav-link" data-scroll-target="#extract-accuracy-from-first-argv-element"><span class="header-section-number">39</span> Extract Accuracy from first ARGV element</a></li>
+  <li><a href="#conditionally-move-into-good_models-folder" id="toc-conditionally-move-into-good_models-folder" class="nav-link" data-scroll-target="#conditionally-move-into-good_models-folder"><span class="header-section-number">40</span> Conditionally move into good_models folder</a></li>
+  <li><a href="#conditionally-move-into-bad_models-folder" id="toc-conditionally-move-into-bad_models-folder" class="nav-link" data-scroll-target="#conditionally-move-into-bad_models-folder"><span class="header-section-number">41</span> Conditionally move into bad_models folder</a></li>
+  <li><a href="#create-variable-from-first-argv-element" id="toc-create-variable-from-first-argv-element" class="nav-link" data-scroll-target="#create-variable-from-first-argv-element"><span class="header-section-number">42</span> Create variable from first ARGV element</a></li>
+  <li><a href="#create-an-if-statement-on-sfiles-contents" id="toc-create-an-if-statement-on-sfiles-contents" class="nav-link" data-scroll-target="#create-an-if-statement-on-sfiles-contents"><span class="header-section-number">43</span> Create an IF statement on sfile’s contents</a>
   <ul class="collapse">
-  <li><a href="#control-statements-in-bash-scripting" id="toc-control-statements-in-bash-scripting" class="nav-link" data-scroll-target="#control-statements-in-bash-scripting"><span class="header-section-number">38.1</span> Control Statements in Bash Scripting</a></li>
+  <li><a href="#for-loops-while-statements" id="toc-for-loops-while-statements" class="nav-link" data-scroll-target="#for-loops-while-statements"><span class="header-section-number">43.1</span> FOR loops &amp; WHILE statements</a></li>
   </ul></li>
+  <li><a href="#use-a-for-loop-on-files-in-directory" id="toc-use-a-for-loop-on-files-in-directory" class="nav-link" data-scroll-target="#use-a-for-loop-on-files-in-directory"><span class="header-section-number">44</span> Use a FOR loop on files in directory</a></li>
+  <li><a href="#create-a-for-statement-on-files-in-directory" id="toc-create-a-for-statement-on-files-in-directory" class="nav-link" data-scroll-target="#create-a-for-statement-on-files-in-directory"><span class="header-section-number">45</span> Create a FOR statement on files in directory</a></li>
+  <li><a href="#create-a-for-statement-on-files-in-directory-1" id="toc-create-a-for-statement-on-files-in-directory-1" class="nav-link" data-scroll-target="#create-a-for-statement-on-files-in-directory-1"><span class="header-section-number">46</span> Create a FOR statement on files in directory</a>
+  <ul class="collapse">
+  <li><a href="#case-statements" id="toc-case-statements" class="nav-link" data-scroll-target="#case-statements"><span class="header-section-number">46.1</span> CASE statements</a></li>
+  </ul></li>
+  <li><a href="#create-a-case-statement-matching-the-first-argv-element" id="toc-create-a-case-statement-matching-the-first-argv-element" class="nav-link" data-scroll-target="#create-a-case-statement-matching-the-first-argv-element"><span class="header-section-number">47</span> Create a CASE statement matching the first ARGV element</a></li>
+  <li><a href="#create-a-case-statement-matching-the-first-argv-element-1" id="toc-create-a-case-statement-matching-the-first-argv-element-1" class="nav-link" data-scroll-target="#create-a-case-statement-matching-the-first-argv-element-1"><span class="header-section-number">48</span> Create a CASE statement matching the first ARGV element</a></li>
+  <li><a href="#use-a-for-loop-for-each-file-in-model_out" id="toc-use-a-for-loop-for-each-file-in-model_out" class="nav-link" data-scroll-target="#use-a-for-loop-for-each-file-in-model_out"><span class="header-section-number">49</span> Use a FOR loop for each file in ‘model_out/’</a></li>
+  <li><a href="#use-a-for-loop-for-each-file-in-model_out-1" id="toc-use-a-for-loop-for-each-file-in-model_out-1" class="nav-link" data-scroll-target="#use-a-for-loop-for-each-file-in-model_out-1"><span class="header-section-number">50</span> Use a FOR loop for each file in ‘model_out/’</a></li>
+  <li><a href="#functions-and-automation" id="toc-functions-and-automation" class="nav-link" data-scroll-target="#functions-and-automation"><span class="header-section-number">51</span> Functions and Automation</a>
+  <ul class="collapse">
+  <li><a href="#basic-functions-in-bash" id="toc-basic-functions-in-bash" class="nav-link" data-scroll-target="#basic-functions-in-bash"><span class="header-section-number">51.1</span> Basic functions in Bash</a></li>
+  </ul></li>
+  <li><a href="#create-function" id="toc-create-function" class="nav-link" data-scroll-target="#create-function"><span class="header-section-number">52</span> Create function</a></li>
+  <li><a href="#call-the-function" id="toc-call-the-function" class="nav-link" data-scroll-target="#call-the-function"><span class="header-section-number">53</span> Call the function</a></li>
+  <li><a href="#create-function-1" id="toc-create-function-1" class="nav-link" data-scroll-target="#create-function-1"><span class="header-section-number">54</span> Create function</a></li>
+  <li><a href="#call-the-function-1" id="toc-call-the-function-1" class="nav-link" data-scroll-target="#call-the-function-1"><span class="header-section-number">55</span> Call the function</a></li>
+  <li><a href="#create-function-2" id="toc-create-function-2" class="nav-link" data-scroll-target="#create-function-2"><span class="header-section-number">56</span> Create function</a></li>
+  <li><a href="#call-the-function-2" id="toc-call-the-function-2" class="nav-link" data-scroll-target="#call-the-function-2"><span class="header-section-number">57</span> Call the function</a></li>
+  <li><a href="#create-function-3" id="toc-create-function-3" class="nav-link" data-scroll-target="#create-function-3"><span class="header-section-number">58</span> Create function</a></li>
+  <li><a href="#call-the-function-3" id="toc-call-the-function-3" class="nav-link" data-scroll-target="#call-the-function-3"><span class="header-section-number">59</span> Call the function</a>
+  <ul class="collapse">
+  <li><a href="#arguments-return-values-and-scope" id="toc-arguments-return-values-and-scope" class="nav-link" data-scroll-target="#arguments-return-values-and-scope"><span class="header-section-number">59.1</span> Arguments, return values, and scope</a></li>
+  </ul></li>
+  <li><a href="#create-a-function" id="toc-create-a-function" class="nav-link" data-scroll-target="#create-a-function"><span class="header-section-number">60</span> Create a function</a></li>
+  <li><a href="#create-a-function-1" id="toc-create-a-function-1" class="nav-link" data-scroll-target="#create-a-function-1"><span class="header-section-number">61</span> Create a function</a></li>
+  <li><a href="#call-the-function-with-456-and-632-and-echo-the-result" id="toc-call-the-function-with-456-and-632-and-echo-the-result" class="nav-link" data-scroll-target="#call-the-function-with-456-and-632-and-echo-the-result"><span class="header-section-number">62</span> Call the function with 456 and 632 and echo the result</a></li>
+  <li><a href="#create-a-function-2" id="toc-create-a-function-2" class="nav-link" data-scroll-target="#create-a-function-2"><span class="header-section-number">63</span> Create a function</a></li>
+  <li><a href="#call-the-function-with-specified-argument" id="toc-call-the-function-with-specified-argument" class="nav-link" data-scroll-target="#call-the-function-with-specified-argument"><span class="header-section-number">64</span> Call the function with specified argument</a></li>
+  <li><a href="#print-out-the-global-variable" id="toc-print-out-the-global-variable" class="nav-link" data-scroll-target="#print-out-the-global-variable"><span class="header-section-number">65</span> Print out the global variable</a></li>
+  <li><a href="#create-a-function-with-a-local-base-variable" id="toc-create-a-function-with-a-local-base-variable" class="nav-link" data-scroll-target="#create-a-function-with-a-local-base-variable"><span class="header-section-number">66</span> Create a function with a local base variable</a></li>
+  <li><a href="#create-a-function-with-a-local-base-variable-1" id="toc-create-a-function-with-a-local-base-variable-1" class="nav-link" data-scroll-target="#create-a-function-with-a-local-base-variable-1"><span class="header-section-number">67</span> Create a function with a local base variable</a>
+  <ul class="collapse">
+  <li><a href="#scheduling-your-scripts-with-cron" id="toc-scheduling-your-scripts-with-cron" class="nav-link" data-scroll-target="#scheduling-your-scripts-with-cron"><span class="header-section-number">67.1</span> Scheduling your scripts with Cron</a></li>
+  </ul></li>
+  <li><a href="#create-a-schedule-for-30-minutes-past-2am-every-day" id="toc-create-a-schedule-for-30-minutes-past-2am-every-day" class="nav-link" data-scroll-target="#create-a-schedule-for-30-minutes-past-2am-every-day"><span class="header-section-number">68</span> Create a schedule for 30 minutes past 2am every day</a></li>
+  <li><a href="#create-a-schedule-for-every-15-30-and-45-minutes-past-the-hour" id="toc-create-a-schedule-for-every-15-30-and-45-minutes-past-the-hour" class="nav-link" data-scroll-target="#create-a-schedule-for-every-15-30-and-45-minutes-past-the-hour"><span class="header-section-number">69</span> Create a schedule for every 15, 30 and 45 minutes past the hour</a></li>
+  <li><a href="#create-a-schedule-for-11.30pm-on-sunday-evening-every-week" id="toc-create-a-schedule-for-11.30pm-on-sunday-evening-every-week" class="nav-link" data-scroll-target="#create-a-schedule-for-11.30pm-on-sunday-evening-every-week"><span class="header-section-number">70</span> Create a schedule for 11.30pm on Sunday evening, every week</a></li>
+  <li><a href="#create-a-schedule-for-30-minutes-past-2am-every-day-1" id="toc-create-a-schedule-for-30-minutes-past-2am-every-day-1" class="nav-link" data-scroll-target="#create-a-schedule-for-30-minutes-past-2am-every-day-1"><span class="header-section-number">71</span> Create a schedule for 30 minutes past 2am every day</a></li>
+  <li><a href="#create-a-schedule-for-every-15-30-and-45-minutes-past-the-hour-1" id="toc-create-a-schedule-for-every-15-30-and-45-minutes-past-the-hour-1" class="nav-link" data-scroll-target="#create-a-schedule-for-every-15-30-and-45-minutes-past-the-hour-1"><span class="header-section-number">72</span> Create a schedule for every 15, 30 and 45 minutes past the hour</a></li>
+  <li><a href="#create-a-schedule-for-11.30pm-on-sunday-evening-every-week-1" id="toc-create-a-schedule-for-11.30pm-on-sunday-evening-every-week-1" class="nav-link" data-scroll-target="#create-a-schedule-for-11.30pm-on-sunday-evening-every-week-1"><span class="header-section-number">73</span> Create a schedule for 11.30pm on Sunday evening, every week</a></li>
   </ul>
 </nav>
     </div>
@@ -1386,12 +1433,422 @@ temp_c="\)</span>(cat temps/region_C)”</p>
 </section>
 <section id="print-out-the-whole-array-1" class="level1" data-number="38">
 <h1 data-number="38"><span class="header-section-number">38</span> Print out the whole array</h1>
-<p>echo ${region_temps[@]} ```</p>
-<section id="control-statements-in-bash-scripting" class="level2" data-number="38.1">
-<h2 data-number="38.1" class="anchored" data-anchor-id="control-statements-in-bash-scripting"><span class="header-section-number">38.1</span> Control Statements in Bash Scripting</h2>
+<p>echo ${region_temps[@]}</p>
+<pre><code>
+## Control Statements in Bash Scripting
 
+### IF statements
 
+```BASH
+if [condition]; then
+...
+else
+...
+fi</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="va">x</span><span class="op">=</span><span class="st">"Queen"</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="va">$x</span>==<span class="st">"King"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"</span><span class="va">$x</span><span class="st"> is a King!"</span></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"</span><span class="va">$x</span><span class="st"> is not a King!"</span></span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="va">x</span><span class="op">=</span>10</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">((</span><span class="va">$x</span><span class="op">&gt;</span><span class="dv">5</span><span class="kw">));</span> <span class="cf">then</span></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">$x</span><span class="st"> is more than 5"</span></span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="image-1.png" class="img-fluid" alt="alt text"> <img src="image-2.png" class="img-fluid" alt="alt text"> * AND &amp;&amp; * OR ||</p>
+<p>Sorting model results</p>
+<p>You are working as a data scientist in a large corporation. The production environment for your machine learning models writes out text files into the model_results/ folder whenever an experiment is completed. The files have the following structure (example):</p>
+<p>Model Name: KNN Accuracy: 89 F1: 0.87 Date: 2019-12-01 ModelID: 34598utjfddfgdg</p>
+<p>You can see the model name, accuracy and F1 scores, the date the experiment completed and a unique ID to link the model experiment back into your experiment system.</p>
+<p>The company has a threshold of 90% for accuracy for a model to continue experimentation. Your task is to write a Bash script that takes in an ARGV argument (a filename), extracts the accuracy score and conditionally sorts the model result file into one of two folders: good_models/ for those with accuracy greater than or equal to 90 and bad_models/ for those less than 90. You must run your script from the terminal with the requested arguments before submitting your answer.</p>
+<p>NOTE!! If you don’t run the script with an argument, it will hang - so make sure to run the script with the requested argument! If you make an error requiring a hint - you may need to refresh the session before submitting as well! Ide Exercise Instruction 100XP</p>
+<pre><code>Create a variable, accuracy by extracting the Accuracy line in the first ARGV element.
+Create an IF statement to move the file into good_models/ folder if it is greater than or equal to 90 using a flag, not a mathematical sign.
+Create an IF statement to move the file into bad_models/ folder if it is less than 90 using a flag, not a mathematical sign.
+Run your script from the terminal pane twice (using bash script.sh). Once with model_results/model_1.txt, then once with model_results/model_2.txt as the only argument.</code></pre>
+<pre><code># Extract Accuracy from first ARGV element
+accuracy=$(grep ____ $1 | sed 's/.* //')
+
+# Conditionally move into good_models folder
+if [ $accuracy -____ 90 ]; then
+    mv $1 ____/
+____
+
+# Conditionally move into bad_models folder
+if [ $accuracy -lt 90 ]; then
+    mv $1 ____/
+fi</code></pre>
 </section>
+<section id="extract-accuracy-from-first-argv-element" class="level1" data-number="39">
+<h1 data-number="39"><span class="header-section-number">39</span> Extract Accuracy from first ARGV element</h1>
+<p>accuracy=$(grep Accuracy $1 | sed ‘s/.* //’)</p>
+</section>
+<section id="conditionally-move-into-good_models-folder" class="level1" data-number="40">
+<h1 data-number="40"><span class="header-section-number">40</span> Conditionally move into good_models folder</h1>
+<p>if [ $accuracy -ge 90 ]; then mv $1 good_models/ fi</p>
+</section>
+<section id="conditionally-move-into-bad_models-folder" class="level1" data-number="41">
+<h1 data-number="41"><span class="header-section-number">41</span> Conditionally move into bad_models folder</h1>
+<p>if [ $accuracy -lt 90 ]; then mv $1 bad_models/ fi</p>
+<p>Moving relevant files</p>
+<p>You have recently joined a new startup as one of the few technical employees. Your manager has asked if you can assist to clean up some of the folders on the server. The company has been through a variety of server monitoring software and so there are many files that should be deleted.</p>
+<p>Luckily you know that all the files to keep contain both vpt and SRVM_ inside the file somewhere.</p>
+<p>Your task is to write a Bash script that will take in file names as ARGV elements and move the file to good_logs/ if it matches both conditions above. Remember from the lecture, the q flag is for ‘quiet’ so it doesn’t return the matched lines like grep normally does. It just returns true if any lines match.</p>
+<p>Remember that when you use command-line arguments like grep in IF statements, there is no need for square brackets so don’t add them! You must also remember to run your script using each file as an ARGV element. One each time; a total of four times to run your script. Ide Exercise Instruction 100XP</p>
+<pre><code>Create a variable sfile out of the first ARGV element.
+Use an IF statement and grep to check if the sfile variable contains SRVM_ AND vpt inside.
+Inside the IF statement, move matching files to the good_logs/ directory.
+Try your script on all of the files in the directory (that is, run it four times - once for each file).</code></pre>
+</section>
+<section id="create-variable-from-first-argv-element" class="level1" data-number="42">
+<h1 data-number="42"><span class="header-section-number">42</span> Create variable from first ARGV element</h1>
+<p>sfile=____</p>
+</section>
+<section id="create-an-if-statement-on-sfiles-contents" class="level1" data-number="43">
+<h1 data-number="43"><span class="header-section-number">43</span> Create an IF statement on sfile’s contents</h1>
+<p>if ____ -q ‘SRVM_’ $sfile &amp;&amp; grep -q ‘____’ $sfile ; ____ # Move file if matched mv $sfile ____/ ____</p>
+<section id="for-loops-while-statements" class="level2" data-number="43.1">
+<h2 data-number="43.1" class="anchored" data-anchor-id="for-loops-while-statements"><span class="header-section-number">43.1</span> FOR loops &amp; WHILE statements</h2>
+<div class="sourceCode" id="cb66"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> 1 2 3 </span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$x</span></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="dt">{</span><span class="dv">1</span><span class="dt">..</span><span class="dv">5</span><span class="dt">..</span><span class="dv">2</span><span class="dt">}</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$x</span></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="er">(</span><span class="kw">(</span><span class="va">x</span><span class="op">=</span>2<span class="kw">;</span><span class="ex">x</span><span class="op">&lt;</span>=4<span class="kw">;</span><span class="va">x</span><span class="op">+=</span>2<span class="kw">))</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$x</span></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> book <span class="kw">in</span> books/<span class="pp">*</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$book</span></span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> book <span class="kw">in</span> <span class="va">$(</span><span class="fu">ls</span> books/ <span class="kw">|</span><span class="fu">grep</span> <span class="at">-i</span> <span class="st">'air'</span><span class="va">)</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$book</span></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="va">x</span><span class="op">=</span>1</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">[</span> <span class="va">$x</span> <span class="ot">-le</span> 3 <span class="bu">]</span><span class="kw">;</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$x</span></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">((</span><span class="va">x</span><span class="op">+=</span><span class="dv">1</span><span class="kw">))</span></span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A simple FOR loop</p>
+<p>You are working as a data scientist in an organization. Due to a recent merge of departments, you have inherited a folder with many files inside. You know that the .R scripts may be useful for your work but you aren’t sure what they contain.</p>
+<p>Write a simple Bash script to loop through all the files in the directory inherited_folder/ that end in .R and print out their names so you can get a quick look at what sort of scripts you have. Hopefully the file names are useful! Ide Exercise Instruction 100XP</p>
+<pre><code>Use a FOR statement to loop through files that end in .R in inherited_folder/ using a glob expansion.
+echo out each file name into the console.</code></pre>
+</section>
+</section>
+<section id="use-a-for-loop-on-files-in-directory" class="level1" data-number="44">
+<h1 data-number="44"><span class="header-section-number">44</span> Use a FOR loop on files in directory</h1>
+<p>for file in ____/*._<strong><em> </em></strong>_<br>
+# Echo out each file echo ____ ____</p>
+<p>Cleaning up a directory</p>
+<p>Continuing your work as a data scientist in a large organization, you were told today that a colleague has left for their dream job (lucky them!). Unfortunately, when their logins were terminated, all their files were dumped into a single folder.</p>
+<p>The good news is that most of their useful code has been backed up. However, all their python files using the Random Forest algorithm are buried in the file dump.</p>
+<p>The task has fallen to you to sift through the hundreds of files to determine if they are both Python files and contain a Random Forest model. This sounds like a perfect opportunity to use your Bash skills, rather than checking every single file manually.</p>
+<p>Write a script that loops through each file in the robs_files/ directory to see if it is a Python file (ends in .py) AND contains RandomForestClassifier. If so, move it into the to_keep/ directory. Ide Exercise Instruction 100XP</p>
+<pre><code>Use a FOR statement to loop through (using glob expansion) files that end in .py in robs_files/.
+Use an IF statement and grep (remember the 'quiet' flag?) to check if RandomForestClassifier is in the file. Don't use a shell-within-a-shell here.
+Move the Python files that contain RandomForestClassifier into the to_keep/ directory.</code></pre>
+</section>
+<section id="create-a-for-statement-on-files-in-directory" class="level1" data-number="45">
+<h1 data-number="45"><span class="header-section-number">45</span> Create a FOR statement on files in directory</h1>
+<p>for file in robs_files/____ ____<br>
+# Create IF statement using grep ____ grep -____ ‘____’ $file ; ____ # Move wanted files to to_keep/ folder ____ $file to_keep/ fi ____</p>
+</section>
+<section id="create-a-for-statement-on-files-in-directory-1" class="level1" data-number="46">
+<h1 data-number="46"><span class="header-section-number">46</span> Create a FOR statement on files in directory</h1>
+<p>for file in robs_files/*.py do<br>
+# Create IF statement using grep if grep -q ‘RandomForestClassifier’ $file ; then # Move wanted files to to_keep/ folder mv $file to_keep/ fi done</p>
+<section id="case-statements" class="level2" data-number="46.1">
+<h2 data-number="46.1" class="anchored" data-anchor-id="case-statements"><span class="header-section-number">46.1</span> CASE statements</h2>
+<div class="sourceCode" id="cb74"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="st">'STRINGVAR'</span> <span class="kw">in</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>    <span class="ss">PATTERN1</span><span class="kw">)</span></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">COMMAND1</span><span class="cf">;;</span></span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>    <span class="ss">PATTERN2</span><span class="kw">)</span></span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">COMMAND2</span><span class="cf">;;</span></span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a>    <span class="pp">*</span><span class="kw">)</span></span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">DEFAUL</span> COMMAND<span class="cf">;;</span></span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a><span class="cf">esac</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="image-3.png" class="img-fluid figure-img"></p>
+<figcaption>alt text</figcaption>
+</figure>
+</div>
+<p>Days of the week with CASE</p>
+<p>In your role as a Data Scientist, it is sometimes useful to associate dates with a ‘working day’ (Monday, Tuesday, Wednesday, Thursday, Friday) or a ‘weekend’ (Saturday &amp; Sunday).</p>
+<p>Your task is to build a small Bash script that will be useful to call in many areas of your data pipeline. It must take in a single argument (string of a day) into ARGV and use a CASE statement to print out whether the argument was a weekday or a weekend. You only need to account for the capitalized case for now.</p>
+<p>You also don’t need to worry about words or letters before and after. Just use exact matching for this example.</p>
+<p>Remember the basic structure of a case statement is:</p>
+<p>case MATCHVAR in PATTERN1) COMMAND1;; PATTERN2) COMMAND2;; *) DEFAULT COMMAND;; esac</p>
+<p>Ide Exercise Instruction 100XP</p>
+<pre><code>Build a CASE statement that matches on the first ARGV element.
+Create a match on each weekday such as Monday, Tuesday etc. using OR syntax on a single line, then a match on each weekend day (Saturday and Sunday) etc. using OR syntax on a single line.
+Create a default match that prints out Not a day! if none of the above patterns are matched.
+Save your script and run in the terminal window with Wednesday and Saturday to test.</code></pre>
+</section>
+</section>
+<section id="create-a-case-statement-matching-the-first-argv-element" class="level1" data-number="47">
+<h1 data-number="47"><span class="header-section-number">47</span> Create a CASE statement matching the first ARGV element</h1>
+<p>case ____ in # Match on all weekdays ____|____|____|____|____) echo “It is a Weekday!”____ # Match on all weekend days ____|Sunday) echo “It is a Weekend!”____ # Create a default ____) echo “Not a day!”____ ____</p>
+</section>
+<section id="create-a-case-statement-matching-the-first-argv-element-1" class="level1" data-number="48">
+<h1 data-number="48"><span class="header-section-number">48</span> Create a CASE statement matching the first ARGV element</h1>
+<p>case $1 in # Match on all weekdays Monday|Tuesday|Wednesday|Thursday|Friday) echo “It is a Weekday!”;; # Match on all weekend days Satturday|Sunday) echo “It is a Weekend!”;; # Create a default *) echo “Not a day!”;; esac</p>
+<p>Moving model results with CASE</p>
+<p>You are working as a data scientist in charge of analyzing some machine learning model results. The production environment moves files into a folder called model_out/ and names them model_RXX.csv where XX is a random number related to which experiment was run.</p>
+<p>Each file has the following structure (example):</p>
+<p>Model Name, Accuracy, CV, Model Duration (s) Logistic,42,4,48</p>
+<p>Your manager has told you that recent work in the organization has meant that tree-based models are to be kept in one folder and everything else deleted.</p>
+<p>Your task is to use a CASE statement to move the tree-based models (Random Forest, GBM, and XGBoost) to the tree_models/ folder, and delete all other models (KNN and Logistic). Ide Exercise Instruction 100XP</p>
+<pre><code>Use a FOR statement to loop through (using glob expansion) files in model_out/.
+Use a CASE statement to match on the contents of the file (we will use cat and shell-within-a-shell to get the contents to match against). It must check if the text contains a tree-based model name and move to tree_models/, otherwise delete the file.
+Create a default match that prints out Unknown model in FILE where FILE is the filename then run your script.</code></pre>
+</section>
+<section id="use-a-for-loop-for-each-file-in-model_out" class="level1" data-number="49">
+<h1 data-number="49"><span class="header-section-number">49</span> Use a FOR loop for each file in ‘model_out/’</h1>
+<p>for file in _____/<em> do # Create a CASE statement for each file’s contents case $(____ $file) in # Match on tree and non-tree models </em>”____“<em>|</em>GBM<em>|</em>_<strong><em><em>) mv $____ ____/ ;; </em></em></strong>_<em>|</em>Logistic*) ____ $file ;; # Create a default ____) echo “Unknown model in ____” ;; ____ done</p>
+</section>
+<section id="use-a-for-loop-for-each-file-in-model_out-1" class="level1" data-number="50">
+<h1 data-number="50"><span class="header-section-number">50</span> Use a FOR loop for each file in ‘model_out/’</h1>
+<p>for file in model_out/<em> do # Create a CASE statement for each file’s contents case $(cat $file) in # Match on tree and non-tree models </em>”Random Forest”<em>|</em>GBM<em>|</em>XGBoost<em>) mv $file tree_models/ ;; </em>KNN<em>|</em>Logistic<em>) rm $file ;; # Create a default </em>) echo “Unknown model in $file” ;; esac done</p>
+</section>
+<section id="functions-and-automation" class="level1" data-number="51">
+<h1 data-number="51"><span class="header-section-number">51</span> Functions and Automation</h1>
+<section id="basic-functions-in-bash" class="level2" data-number="51.1">
+<h2 data-number="51.1" class="anchored" data-anchor-id="basic-functions-in-bash"><span class="header-section-number">51.1</span> Basic functions in Bash</h2>
+<div class="sourceCode" id="cb77"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">function_name ()</span> <span class="kw">{</span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">##function_code</span></span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="co">#something</span></span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> function_name</span> <span class="kw">{</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">##function_code</span></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="co">#something</span></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Uploading model results to the cloud</p>
+<p>You are working as a data scientist on building part of your machine learning cloud infrastructure. Your team has many machine learning experiments running all the time. When an experiment is finished, it will output the results file and a configuration file into a folder called output_dir/.</p>
+<p>These results need to be uploaded to your cloud storage environment for analysis. Your task is to write a Bash script that contains a function which will loop through all the files in output_dir/ and upload the result files to your cloud storage.</p>
+<p>For technical reasons, no files will be uploaded; we will simply echo out the file name. Though you could easily replace this section with code to upload to Amazon S3, Google Cloud or Microsoft Azure! Ide Exercise Instruction 100XP</p>
+<pre><code>Set up a function using the 'function-word' method called upload_to_cloud.
+Use a FOR statement to loop through (using glob expansion) files whose names contain results in output_dir/ and echo that the filename is being uploaded to the cloud.
+Call the function just below the function definition using its name.</code></pre>
+</section>
+</section>
+<section id="create-function" class="level1" data-number="52">
+<h1 data-number="52"><span class="header-section-number">52</span> Create function</h1>
+<p>____ upload_to_cloud () ____ # Loop through files with glob expansion for file in output_dir/____results_<strong><em> do # Echo that they are being uploaded </em></strong>_ “Uploading $file to cloud” done ____</p>
+</section>
+<section id="call-the-function" class="level1" data-number="53">
+<h1 data-number="53"><span class="header-section-number">53</span> Call the function</h1>
+<p>upload_to_cloud</p>
+</section>
+<section id="create-function-1" class="level1" data-number="54">
+<h1 data-number="54"><span class="header-section-number">54</span> Create function</h1>
+<p>function upload_to_cloud () { # Loop through files with glob expansion for file in output_dir/<em>results</em> do # Echo that they are being uploaded echo “Uploading $file to cloud” done }</p>
+</section>
+<section id="call-the-function-1" class="level1" data-number="55">
+<h1 data-number="55"><span class="header-section-number">55</span> Call the function</h1>
+<p>upload_to_cloud</p>
+<p>Get the current day</p>
+<p>Whilst working on a variety of Bash scripts in your data analytics infrastructure, you find that you often need to get the current day of the week. You can see this is unnecessary duplication of code and can be refactored (reduce the size by writing more efficient code) using your new skills in Bash functions.</p>
+<p>Write a simple Bash function that, when called, will simply print out the current day of the week. This will involve parsing the output of the date program from a shell-within-a-shell.</p>
+<p>A reminder that the output of date will look something like this (depending on the timezone you are calling it from!)</p>
+<p>Fri 27 Dec 2019 14:24:33 AEDT</p>
+<p>You want to extract the Fri part only. Ide Exercise Instruction 100XP</p>
+<pre><code>Set up a function called what_day_is_it without using the word function (as you did using the function-word method).
+Parse the output of date into a variable called current_day. The extraction component has been done for you.
+Echo the result.
+Call the function just below the function definition.</code></pre>
+</section>
+<section id="create-function-2" class="level1" data-number="56">
+<h1 data-number="56"><span class="header-section-number">56</span> Create function</h1>
+<p>_____ _____ {</p>
+<p># Parse the results of date ____=$(date | cut -d ” ” -f1)</p>
+<p># Echo the result echo ____ }</p>
+</section>
+<section id="call-the-function-2" class="level1" data-number="57">
+<h1 data-number="57"><span class="header-section-number">57</span> Call the function</h1>
+<hr>
+</section>
+<section id="create-function-3" class="level1" data-number="58">
+<h1 data-number="58"><span class="header-section-number">58</span> Create function</h1>
+<p>what_day_is_it () {</p>
+<p># Parse the results of date current_day=$(date | cut -d ” ” -f1)</p>
+<p># Echo the result echo $current_day }</p>
+</section>
+<section id="call-the-function-3" class="level1" data-number="59">
+<h1 data-number="59"><span class="header-section-number">59</span> Call the function</h1>
+<p>what_day_is_it</p>
+<section id="arguments-return-values-and-scope" class="level2" data-number="59.1">
+<h2 data-number="59.1" class="anchored" data-anchor-id="arguments-return-values-and-scope"><span class="header-section-number">59.1</span> Arguments, return values, and scope</h2>
+<ul>
+<li>$1, $2 $@ $* $# <img src="image-4.png" class="img-fluid" alt="alt text"></li>
+<li>scope
+<ul>
+<li>global</li>
+<li>local<br>
+</li>
+</ul></li>
+<li>in bash all variables are global scope</li>
+<li>to restrict, one can use local</li>
+</ul>
+<div class="sourceCode" id="cb81"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span><span class="fu"> print_filename</span><span class="kw">{</span></span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">local</span> <span class="va">first_filename</span><span class="op">=</span><span class="va">$1</span></span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a><span class="ex">print_filename</span> <span class="st">'abc.txt'</span> <span class="st">'cde.txt'</span></span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$first_filename</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>return values</li>
+<li>$? if successful (0) failure (1-255)</li>
+</ul>
+<p>A percentage calculator</p>
+<p>In your work as a data scientist, you often find yourself needing to calculate percentages within Bash scripts. This would be a great opportunity to create a nice modular function to be called from different places in your code.</p>
+<p>Your task is to create a Bash function that will calculate a percentage of two numbers that are given as arguments and return the value.</p>
+<p>A test example you can think of to use in this script is a model that you just ran where there were 456 correct predictions out of 632 on the test set.</p>
+<p>Remember that the shell can’t natively handle decimal places, so it will be safer to employ the use of bc. Ide Exercise Instruction 100XP</p>
+<pre><code>Create a function called return_percentage using the function-word method.
+Create a variable inside the function called percent that divides the first argument fed into the function by the second argument.
+Return the calculated value by echoing it back.
+Call the function with the mentioned test values of 456 (the first argument) and 632 (the second argument) and echo the result.</code></pre>
+</section>
+</section>
+<section id="create-a-function" class="level1" data-number="60">
+<h1 data-number="60"><span class="header-section-number">60</span> Create a function</h1>
+<p>____ return_percentage () ____</p>
+<p># Calculate the percentage using bc percent=$(echo “scale=2; 100 * ____ / ____” | ____)</p>
+<p># Return the calculated percentage echo $____ }</p>
+</section>
+<section id="create-a-function-1" class="level1" data-number="61">
+<h1 data-number="61"><span class="header-section-number">61</span> Create a function</h1>
+<p>function return_percentage () {</p>
+<p># Calculate the percentage using bc percent=$(echo “scale=2; 100 * $1 / $2” | bc)</p>
+<p># Return the calculated percentage echo $percent }</p>
+</section>
+<section id="call-the-function-with-456-and-632-and-echo-the-result" class="level1" data-number="62">
+<h1 data-number="62"><span class="header-section-number">62</span> Call the function with 456 and 632 and echo the result</h1>
+<p>return_test=$(return_percentage 456 632) echo “456 out of 632 as a percent is $return_test%”</p>
+<p>Sports analytics function</p>
+<p>You have been contracted back to the soccer league to help them with some sports analytics. You notice that a number of the scripts undertake aggregations, just like you did in a previous exercise. Since there is a lot of duplication of code, this is an excellent opportunity to create a single useful function that can be called at many places in the script.</p>
+<p>Your task is to create a Bash function that will take in a city name and find out how many wins they have had since recording began.</p>
+<p>Inside the main function, this script will call out to a shell-within-a-shell which is captured in a (by default, global) variable. You can then access this variable outside the function. This was the first technique discussed in the video for getting data out of a function.</p>
+<p>Most of the shell pipeline used has been done for you, though of course feel free to explore and understand what is happening here. Nothing there should be new to you! Ide Exercise Instruction 100XP</p>
+<pre><code>Create a function called get_number_wins using the function-word method.
+Create a variable inside the function called win_stats that takes the argument fed into the function to filter the last step of the shell-pipeline presented.
+Call the function using the city Etar.
+Below the function call, try to access the win_stats variable created inside the function in the echo command presented.</code></pre>
+</section>
+<section id="create-a-function-2" class="level1" data-number="63">
+<h1 data-number="63"><span class="header-section-number">63</span> Create a function</h1>
+<p>function get_number_wins () {</p>
+<p># Filter aggregate results by argument win_stats=$(cat soccer_scores.csv | cut -d “,” -f2 | egrep -v ‘Winner’| sort | uniq -c | egrep $1)</p>
+<p>}</p>
+</section>
+<section id="call-the-function-with-specified-argument" class="level1" data-number="64">
+<h1 data-number="64"><span class="header-section-number">64</span> Call the function with specified argument</h1>
+<p>get_number_wins “Etar”</p>
+</section>
+<section id="print-out-the-global-variable" class="level1" data-number="65">
+<h1 data-number="65"><span class="header-section-number">65</span> Print out the global variable</h1>
+<p>echo “The aggregated stats are: $win_stats”</p>
+<p>Summing an array</p>
+<p>A common programming task is obtaining the sum of an array of numbers. Let’s create a function to assist with this common task.</p>
+<p>Create a Bash function that will take in an array of numbers and return its sum. We will use bc rather than expr to ensure we can handle decimals.</p>
+<p>Your company’s security rules state that all variables in functions must be restricted local scope so you will need to keep this in mind.</p>
+<p>An array of numbers you can use for a test of your function would be the daily sales in your organization this week (in thousands):</p>
+<p>14 12 23.5 16 19.34 which should sum to 84.84 Ide Exercise Instruction 100XP</p>
+<pre><code>Create a function called sum_array and add a base variable (equal to 0) called sum with local scope. You will loop through the array and increment this variable.
+Create a FOR loop through the ARGV array inside sum_array (hint: This is not $1! but another special array property) and increment sum with each element of the array.
+Rather than assign to a global variable, echo back the result of your FOR loop summation.
+Call your function using the test array provided and echo the result. You can capture the results of the function call using the shell-within-a-shell notation.</code></pre>
+</section>
+<section id="create-a-function-with-a-local-base-variable" class="level1" data-number="66">
+<h1 data-number="66"><span class="header-section-number">66</span> Create a function with a local base variable</h1>
+<p>function sum_array () { ____ sum=0 # Loop through, adding to base variable for number in “<span class="math inline">\(____"
+  do
+    sum=\)</span>(echo”$sum + $____” | bc) done # Echo back the result echo <span class="math inline">\(____
+  }
+# Call function with array
+test_array=(14 12 23.5 16 19.34)
+total=\)</span>(sum_array “${____[@]}”) echo “The total sum of the test array is $____”</p>
+</section>
+<section id="create-a-function-with-a-local-base-variable-1" class="level1" data-number="67">
+<h1 data-number="67"><span class="header-section-number">67</span> Create a function with a local base variable</h1>
+<p>function sum_array () { local sum=0 # Loop through, adding to base variable for number in “<span class="math inline">\(@"
+  do
+    sum=\)</span>(echo”$sum + $number” | bc) done # Echo back the result echo <span class="math inline">\(sum
+  }
+# Call function with array
+test_array=(14 12 23.5 16 19.34)
+total=\)</span>(sum_array “${test_array[@]}”) echo “The total sum of the test array is $total”</p>
+<section id="scheduling-your-scripts-with-cron" class="level2" data-number="67.1">
+<h2 data-number="67.1" class="anchored" data-anchor-id="scheduling-your-scripts-with-cron"><span class="header-section-number">67.1</span> Scheduling your scripts with Cron</h2>
+<p>cron name comes from chronos greek word for time its a service that runs on comuter and executes user predefined commands (cronjobs) crontab is a file tat cotnains cronjob</p>
+<p>crontab -l</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="image-5.png" class="img-fluid figure-img"></p>
+<figcaption>alt text</figcaption>
+</figure>
+</div>
+<p>exaples 5 1 * * * bash myscript.sh runs at 01:05 every day 15 14 * * 7 bash myscript.sh runs at 14:15 every sunday 15,30,45 * * * * bash myscript.sh every day on 15, 30, 45 minute mark <em>/15 </em> * * * bash myscript.sh runs every 15 minutes</p>
+<p>crontab -e you might need to select an editor nano: ctrl+s ctrl+x crontab -l</p>
+<p>https://crontab.guru/</p>
+<p>Creating cronjobs</p>
+<p>You are working as a data scientist managing an end-to-end machine learning environment in the cloud. You have created some great Bash scripts but it is becoming tedious to have to run these scripts every morning and afternoon. You recently learned about cron which you think can greatly assist here!</p>
+<p>An example file has been placed in your directory where you can create some crontab jobs.</p>
+<p>Remember that a crontab schedule has 5 stars relation to the time periods minute, hour, day-of-month, month-of-year, day-of-week. For this task, assume Sunday is the 0th day rather than the 7th day (as in some unix systems).</p>
+<p>Note that where all time periods are not specified in the instructions below, you can assume those time periods are ‘every’ (*).</p>
+<p>Don’t try to run the scripts or use crontab. Neither will work.</p>
+<p>A useful tool for constructing crontabs is https://crontab.guru/. Instructions 100 XP</p>
+<pre><code>Create a crontab schedule that runs script1.sh at 30 minutes past 2am every day.
+Create a crontab schedule that runs script2.sh every 15, 30 and 45 minutes past every hour.
+Create a crontab schedule that runs script3.sh at 11.30pm on Sunday evening, every week. For this task, assume Sunday is the 0th day rather than the 7th day (as in some unix systems).</code></pre>
+</section>
+</section>
+<section id="create-a-schedule-for-30-minutes-past-2am-every-day" class="level1" data-number="68">
+<h1 data-number="68"><span class="header-section-number">68</span> Create a schedule for 30 minutes past 2am every day</h1>
+<p>__ * * * bash script1.sh</p>
+</section>
+<section id="create-a-schedule-for-every-15-30-and-45-minutes-past-the-hour" class="level1" data-number="69">
+<h1 data-number="69"><span class="header-section-number">69</span> Create a schedule for every 15, 30 and 45 minutes past the hour</h1>
+<p>_____ bash script2.sh</p>
+</section>
+<section id="create-a-schedule-for-11.30pm-on-sunday-evening-every-week" class="level1" data-number="70">
+<h1 data-number="70"><span class="header-section-number">70</span> Create a schedule for 11.30pm on Sunday evening, every week</h1>
+<p>_____ bash script3.sh</p>
+</section>
+<section id="create-a-schedule-for-30-minutes-past-2am-every-day-1" class="level1" data-number="71">
+<h1 data-number="71"><span class="header-section-number">71</span> Create a schedule for 30 minutes past 2am every day</h1>
+<p>30 2 * * * bash script1.sh</p>
+</section>
+<section id="create-a-schedule-for-every-15-30-and-45-minutes-past-the-hour-1" class="level1" data-number="72">
+<h1 data-number="72"><span class="header-section-number">72</span> Create a schedule for every 15, 30 and 45 minutes past the hour</h1>
+<p>15,30,45 * * * * bash script2.sh</p>
+</section>
+<section id="create-a-schedule-for-11.30pm-on-sunday-evening-every-week-1" class="level1" data-number="73">
+<h1 data-number="73"><span class="header-section-number">73</span> Create a schedule for 11.30pm on Sunday evening, every week</h1>
+<p>30 23 * * 0 bash script3.sh</p>
+<p>Scheduling cronjobs with crontab</p>
+<p>As the resident data scientist, you have been asked to automate part of a data processing pipeline. You will use one of the cronjob schedules created in a previous exercise.</p>
+<p>You will use the built in crontab functionality of this workspace to schedule a data pipeline script, extract_data.sh to run at 30 minutes past 2am every day. Running early in the morning saves a great amount of cost by utilizing cheaper server power.</p>
+<p>You will end up in the nano text editor where you save a file with ctrl + o (press enter) and exit with ctrl + x. Useful Nano documentation is here.</p>
+<p>At any stage you can refresh your browser window and you will get a fresh workspace to try again if you accidentally make a mistake in the workspace. Instructions 1/3 35 XP</p>
+<pre><code>1
+    Verify there are no existing cronjobs by listing them.</code></pre>
+<p>2</p>
+<pre><code>Use the edit command for crontab (select nano) then schedule extract_data.sh to run with Bash at 2:30am every day.</code></pre>
+<p>3</p>
+<pre><code>Verify the cronjob has been scheduled in the crontab by listing all current scheduled cronjobs.</code></pre>
+
+
 </section>
 
 </main> <!-- /main -->
