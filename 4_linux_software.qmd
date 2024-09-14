@@ -1,5 +1,5 @@
 ---
-title: "Linux programos ir atnaujinimai"
+title: "Linux programos"
 execute:
   daemon: false
   enabled: false
