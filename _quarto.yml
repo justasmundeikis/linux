@@ -8,7 +8,6 @@ book:
   chapters:
     - index.qmd
     - 1_linux_configure.qmd
-    - 2_linux_intro_terminal.qmd
     - 3_linux_update.qmd
     - 4_linux_software.qmd
     - 5_passwords_online_accounts.qmd

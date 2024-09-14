@@ -1,0 +1,60 @@
+---
+title: "BASH advanced"
+execute:
+  daemon: false
+  enabled: false
+format:
+  html:
+    code-copy: true
+    eval: false
+    echo: true
+---
+
+
+### chmod
+
+Komanda chmod (angl. **change mode**, liet. "keisti režimą") naudojama keisti failų ir katalogų teises.
+
+* Suteikti vykdymo teisę failui:
+
+```bash
+chmod +x failas.sh
+```
+
+* Nustatyti konkrečias teises:
+
+```bash
+
+chmod 755 failas.txt
+```
+
+### chown
+Komanda `chown` (angl. change owner, liet. "keisti savininką") naudojama keisti failų ir katalogų savininką.
+
+* Keisti failo savininką:
+
+```bash
+
+sudo chown naujas_savininkas failas.txt
+```
+
+* Keisti failo savininką ir grupę:
+
+```bash
+
+sudo chown naujas_savininkas:nauja_grupė failas.txt
+```
+
+### ps ir top
+Komandos `ps` ir `top` naudojamos valdyti ir stebėti procesus sistemoje.
+
+* Parodyti veikiančius procesus su ps:
+
+```bash
+ps aux
+```
+Realiu laiku sekti procesus su top:
+
+```bash
+top
+```
