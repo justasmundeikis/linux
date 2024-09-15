@@ -14,7 +14,7 @@ Kai tu įjungi savo telefoną, kompiuterį ar mikrokompiuterį, jame pasileidži
 
 Šalia branduolio yra ir kita programinė įranga, kuri leidžia tau naudotis prietaisu - tai įvairiausios programos, pvz., skambinimo programėlė, kalkuliatorius, interneto naršyklė. Visa ši programinė įranga kartu su branduoliu sudaro operacinę sistemą (angl - operating system, arba - OS).
 
-Taigi operacinė sistema (OS) yra programinė įranga, kuri valdo kompiuterinės įrangos ir programų išteklius. Ji veikia kaip tarpininkė tarp vartotojo ir kompiuterio aparatūros. Pagrindinės populiarios operacinės sistemos yra Windows, macOS, ir Linux.
+Taigi operacinė sistema (OS) yra programinė įranga, kuri valdo kompiuterinės įrangos ir programų išteklius. Ji veikia kaip tarpininkė tarp vartotojo ir kompiuterio aparatūros. Pagrindinės populiarios operacinės sistemos yra Windows, UNIX šeimos OS - macOS, ir Linux. 
 
 * **Windows**: Microsoft korporacijos sukurta populiariausia operacinė sistema, naudojama tiek namų, tiek verslo kompiuteriuose. Ji žinoma dėl savo patogumo ir plataus programų pasirinkimo.
 * **macOS**: Apple korporacijos operacinė sistema, naudojama Mac kompiuteriuose. Ji žinoma dėl savo dizaino, stabilumo ir integracijos su Apple ekosistema.

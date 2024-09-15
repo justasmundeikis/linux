@@ -1,3 +1,3 @@
 # Linux Intro
 
-TBD
+[https://justasmundeikis.github.io/linux/](https://justasmundeikis.github.io/linux/)

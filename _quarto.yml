@@ -11,7 +11,8 @@ book:
     - 3_linux_update.qmd
     - 4_linux_software.qmd
     - 5_passwords_online_accounts.qmd
-    - 6_linux_comands_basic.qmd
+    - 6a_linux_comands_basic.qmd
+    - 6b_linux_comands_basic.qmd
     - 7_linux_comands_advanced.qmd
 
 format:

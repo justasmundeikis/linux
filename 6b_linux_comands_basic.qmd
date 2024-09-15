@@ -1,0 +1,434 @@
+---
+title: "Pagridinės BASH komandos"
+execute:
+  daemon: false
+  enabled: false
+format:
+  html:
+    code-copy: true
+    eval: false
+    echo: true
+---
+
+## Failų ir katalogų valdymas
+
+### echo
+
+Komanda `echo` naudojama norint atspausdinti tekstą arba kintamojo vertę į terminalą (dar vadinamą standartine išvestimi, angl - **standard output**).  Tai paprasta, bet galinga komanda, kuri dažnai naudojama skriptuose, kad būtų rodomi pranešimai arba tikrinamos kintamųjų vertės.
+
+Nors nėra būtina apskliausti tekstą kabutėmis, dėl geresnio matomumo ir skaitomumo, patartina tai padaryti.
+
+```bash
+echo Hello World!
+echo "Hello World!"
+echo 'Hello World!'
+```
+
+
+Reikėtų atkreipti dėmesį į tai, jog dvivietės kabutės ("") ir vienvietės kabutės ('') šiek tiek skiriasi. Tekstas, kuris yra '' viduje, atspausdinamas paraidžiui, nepaisant esančių kintamųjų ar specialiųjų simbolių. Tuo tarpu tekstas, esantis "" viduje, yra interpretuojamas, ir Shell leidžia išvesti kintamųjų vertes bei specialiuosius simbolius.
+
+Sukurkime kintamąjį `vardas='Lora'`. Sukuriant kintamuosius, svarbu nepalikti laisvų vietų aplink `=`. Pvz., `vardas = 'Lora'` Bash Shell netinka, nors tai kuo puikiausiai veiktų Python kalboje.
+
+```BASH
+vardas='Lora'
+echo  Hello $vardas
+echo 'Hello $vardas'
+echo "Hello $vardas"
+```
+
+![](img/shell/echo_name.png)
+
+**Pasipraktikuok!**
+
+Sukurkite kintamuosius `ME`, `HD` ir `RNR`, kuriems priskirkite atitinkamai `$USER`, `$HOME` ir `$RANDOM`. Tada atspausdinkite jų vertes naudodami `echo` komandą.
+
+```BASH
+ME=$USER
+HD=$HOME
+RNR=$RANDOM
+
+echo "My username on this computer is $ME and my home directory is $HD. The random number is $RNR"
+```
+
+Patvirtinkite, kad ankstesnė išvestis yra tapati šiai:
+
+```BASH
+echo "My username on this computer is $USER and my home directory is $HOME. The random number is $RANDOM"
+```
+
+### `>` ir `>>` operatoriai
+
+`>` ir `>>` operatoriai naudojami išvesties nukreipimui (angl. **output redirection**). Jie nukreipia komandos išvestį į failą, o ne į terminalą. Šie operatoriai yra esminiai dirbant su failais ir automatizuojant užduotis skriptuose.
+
+`>` operatorius nukreipia komandos išvestį į failą, perrašo šio failo turinį, jei failas jau egzistuoja. Jei failas neegzistuoja, jis bus sukurtas.
+
+```bash
+echo "Hello World!" > failas.txt
+```
+
+Ši komanda sukuria (arba perrašo) failą failas.txt su tekstu "Hello World!".
+
+```bash
+ls > katalogo_turinys.txt
+```
+
+Ši komanda nukreipia `ls` komandos išvestį į failą `katalogo_turinys.txt`, perrašydama failo turinį, jei failas jau egzistuoja.
+
+`>>` operatorius nukreipia komandos išvestį į failą, pridedant (**append**) prie failo turinio. Jei failas neegzistuoja, jis bus sukurtas.
+
+
+```bash
+echo "What a beatiful day" >> failas.txt
+```
+
+Ši komanda prideda "What a beatiful day" prie failo failas.txt galo, neperrašydama esamo turinio.
+
+Nukreipia kitos komandos išvestį:
+
+```bash
+ls -l ~/Downloads >> katalogo_turinys_log.txt
+ls -l ~/Documents >> katalogo_turinys_log.txt
+```
+Ši komanda prideda ls komandos išvestį prie failo `katalogo_turinys_log.txt` galo, išlaikydama esamą turinį.
+
+
+### cat
+
+Komanda cat (angl. **concatenate**, liet. "sujungti") naudojama norint peržiūrėti, sujungti ir kurti failus. Tai viena iš dažniausiai naudojamų komandų, nes ji leidžia greitai peržiūrėti failų turinį, įvesti turinį į kitus failus arba sujungti kelis failus į vieną.
+
+Pagrindiniai naudojimo būdai:
+
+* Peržiūrėti failo turinį:
+
+```bash
+cat failas.txt
+```
+
+Ši komanda išveda failo `failas.txt` turinį į terminalą.
+
+* Sujungti kelių failų turinį ir išvesti į terminalą:
+
+```bash
+cat failas1.txt failas2.txt
+```
+
+Ši komanda išveda failų `failas1.txt` ir `failas2.txt` sujungtą turinį į terminalą.
+
+* Sukurti naują failą arba perrašyti esamą failą tekstu. Įveskite tekstą ir užbaikite įvedimą paspaudę Ctrl+D.
+
+```bash
+cat > naujas_failas.txt
+Hello world!
+What a nice day \n
+cat naujas_failas.txt
+```
+
+Nukopijuoti failo turinį į kitą failą:
+
+```bash
+cat failas1.txt > kopija.txt
+```
+Ši komanda nukopijuoja failo failas1.txt turinį į failą kopija.txt.
+
+### Intarpas: Standartinė įvestis, išvestis ir klaidos
+
+Linux ir Unix sistemose yra trys pagrindiniai srautai, kurie valdo duomenų įvestį ir išvestį programose bei komandose. Šie srautai dažnai vadinami standartine įvestimi (**standard input**), standartine išvestimi (**standard output**) ir standartine klaida (**standard error**). Kiekvienas jų turi specifinį paskirtį ir failo aprašymo numerį.
+
+#### Standartinė įvestis (stdin)
+
+* Failo aprašymo numeris: 0
+* Aprašymas: Standartinė įvestis, sutrumpinta kaip **stdin**, yra srautas, iš kurio komanda ar programa gauna duomenis. Pagal numatytuosius nustatymus, stdin yra prijungta prie klaviatūros įvesties, tačiau gali būti nukreipta iš failo ar kito srauto.
+* Naudojimas:
+
+```bash
+# Nuskaito duomenis iš klaviatūros
+cat
+```
+
+Taip pat gali būti nukreipiama iš failo:
+
+```bash
+cat < failas.txt
+```
+
+#### Standartinė išvestis (stdout)
+
+* Failo aprašymo numeris: 1
+* Aprašymas: Standartinė išvestis, sutrumpinta kaip **stdout**, yra srautas, į kurį komanda ar programa rašo išvestį. Pagal numatytuosius nustatymus, stdout yra prijungta prie terminalo ekrano.
+* Naudojimas:
+
+```bash
+# Spausdina į terminalą
+echo "Hello World"
+```
+
+Taip pat gali būti nukreipiama į failą:
+
+```bash
+echo "Hello World!" > išvestis.txt
+```
+
+#### Standartinė klaida (stderr)
+
+* Failo aprašymo numeris: 2
+* Aprašymas: Standartinė klaida, sutrumpinta kaip **stderr**, yra srautas, į kurį komanda ar programa rašo klaidų pranešimus. Pagal numatytuosius nustatymus, stderr yra prijungta prie terminalo ekrano, bet gali būti nukreipta į failą ar kitą srautą.
+* Naudojimas:
+
+```bash
+# Nukreipia klaidų pranešimus į failą
+ls non_existing_file 2> klaida.log
+```
+
+#### Praktika:
+
+1. Pabandykite atspausdinti (nukipijuoti) su `cat` neegsistuojantį failą `abracadabra.txt` į failą, o klaidą nukreipti į failą `error_logs.txt`
+
+2. Su cat atspausdinkite `error_logs.txt`
+
+3. Su `echo` bei `>` sukurkite failą `abracadabra.txt` pvz 
+
+``` BASH
+echo "Abracadabra is a magic word, historically used as an apotropaic incantation on amulets and common today in stage magic. It is of unknown origin." > 'abracadabra.txt'
+```
+
+4. pakartokite 1 ir 2 žingsnius.
+
+### touch
+
+Komanda `touch` naudojama norint sukurti tuščią failą arba pakeisti esamo failo datą ir laiką (modifikavimo ir prieigos laikus). Tai yra universali ir dažnai naudojama komanda, ypač kai reikia greitai sukurti failą arba atnaujinti failo metaduomenis.
+
+Jei failas dar neegzistuoja, ši komanda jį sukurs. Jei failas jau yra, ji pakeis failo "paskutinio keitimo laiką" į dabartinį laiką, nekeičiant paties failo turinio.
+
+* Sukurti tuščią failą:
+
+```BASH
+touch failas0.txt
+```
+
+![](img/shell/touch_single.png)
+
+* Sukurti keletą tuščių failų vienu metu:
+
+```BASH
+touch failas1.txt failas2.txt failas3.txt
+```
+![](img/shell/touch_multiple.png)
+
+
+* Sukurti tuščią faila kitame kataloge nurodant absoliutų arba relatyvų kelią:
+
+```BASH
+touch /home/user/Documents/failas4.txt
+touch ~/Documents/failas5.txt
+```
+
+![](img/shell/touch_dir.png)
+
+
+* Pakeisti esamo failo paskutinio keitimo laiką `-m` abra prieigos laiką `-a`, arba nustatyti konkretų datą ir laiką `-t`:
+
+```BASH
+touch -m failas.txt
+touch -a failas.txt
+touch -t YYYYMMDDHHMM.SS failas.txt
+```
+
+### mkdir
+
+Komanda `mkdir` (angl. **make directory**, liet. "kurti katalogą") naudojama norint sukurti naujus katalogus. Tai yra pagrindinė komanda, kai reikia sukurti naujus katalogus failų sistemoje.
+
+* Sukurti naują katalogą:
+
+```BASH
+mdkir projektas0
+```
+
+![](img/shell/mkdir_single.png)
+
+
+* Sukurti keletą naujų katalogų vienu metu
+
+```BASH
+mkdir projektas1 projektas2 projektas3
+```
+
+![](img/shell/mkdir_multiple.png)
+
+
+* Sukurti katalogų medį (hierarchiją), jei tarpiniai katalogai neegzistuoja:
+
+```BASH
+mkdir -p projektas0/duomenys
+```
+
+![](img/shell/mkdir_p.png)
+
+Nemo failų naršyklėje taip pat matomas rezultatas
+
+![](img/shell/mkdir_p_nemo.png)
+
+
+### mv
+
+Komanda `mv` (angl. **move**, liet. "perkelti" arba "pervadinti") naudojama perkelti arba pervadinti failus ir katalogus. Tai universali komanda, skirta tiek failų ir katalogų vietos keitimui, tiek jų pavadinimų modifikavimui.
+
+
+* Pervadinti failą arba katalogą:
+
+Ši komanda pervadina failą ar katalogą iš senas_pavadinimas į naujas_pavadinimas.
+
+```BASH
+mv senas_pavadinimas naujas_pavadinimas
+```
+
+* Perkelti failą į kitą katalogą:
+
+Ši komanda perkelia failą failas.txt į katalogą /naujas/kelias/.
+
+```BASH
+mv failas.txt /naujas/kelias/
+```
+
+* Perkelti kelis failus į kitą katalogą:
+
+Ši komanda perkelia failus failas1.txt ir failas2.txt į katalogą /naujas/kelias/.
+
+
+```BASH
+mv failas1.txt failas2.txt /naujas/kelias/
+```
+
+* Perkelti katalogą ir jo turinį į kitą vietą:
+Ši komanda perkelia katalogą katalogas ir visą jo turinį į katalogą /naujas/kelias/.
+
+```BASH
+mv katalogas /naujas/kelias/
+```
+
+### rm
+
+Komanda `rm` (angl. **remove**, liet. "pašalinti") naudojama pašalinti failus ir katalogus. Tai galinga komanda, todėl ja reikia naudotis atsargiai, nes **pašalinti failai ar katalogai nėra perkeliami į šiukšlinę ir jų atkurti nebebus galima**.
+
+* Pašalinti failą:
+
+```BASH
+rm failas.txt
+```
+
+
+* Pašalinti kelis failus:
+
+```BASH
+rm failas1.txt failas2.txt failas3.txt
+```
+
+
+* Pašalinti tuščią katalogą:
+
+```BASH
+rm -d tuščias_katalogas
+```
+
+
+* Pašalinti katalogą ir jo turinį rekursyviai:
+
+```BASH
+rm -r katalogas
+```
+
+
+* Priverstinai pašalinti failą ar katalogą:
+
+
+```BASH
+rm -rf katalogas
+```
+
+### cp
+
+Komanda `cp` (angl. **copy**, liet. "kopijuoti") naudojama kopijuoti failus ir direktorijas.
+
+* Kopijuoti failą:
+
+```bash
+cp šaltinis.txt tikslas.txt
+```
+
+Ši komanda kopijuoja failą šaltinis.txt į failą tikslas.txt.
+
+* Kopijuoti direktorija rekursyviai (su visu esančiu turiniu):
+
+```bash
+cp -r šaltinis_katalogas tikslas_katalogas
+```
+
+Ši komanda kopijuoja direktoriją šaltinis_katalogas ir visą jo turinį į tikslas_katalogas.
+
+
+### head ir tail
+
+Komandos `head` ir `tail` yra naudojamos peržiūrėti pirmąsias arba paskutines failo eilutes.
+
+* Peržiūrėti pirmąsias 10 failo eilučių:
+
+```bash
+head failas.txt
+```
+
+* Peržiūrėti paskutines 10 failo eilučių:
+```bash
+tail failas.txt
+```
+
+* Peržiūrėti pirmąsias n eilučių:
+
+```bash
+head -n 20 failas.txt
+```
+
+* Peržiūrėti paskutines n eilučių:
+
+``` bash
+tail -n 20 failas.txt
+```
+
+
+### grep
+Komanda grep (angl. **global regular expression print**, liet. "globalus reguliariųjų išraiškų paieškos spausdinimas") naudojama tekstui paieškai pagal šabloną failuose arba išvestyje.
+
+* Ieškoti teksto failuose:
+
+```bash
+grep "paieškos_tikslas" failas.txt
+```
+
+Ši komanda ieško "paieškos_tikslas" ir parodo atitinkančias eilutes iš failo failas.txt.
+
+* Ieškoti rekursyviai kataloge:
+
+```bash
+grep -r "paieškos_tikslas" /path/to/directory
+```
+
+Ši komanda ieško "paieškos_tikslas" visame katalogo ir jo pakatalogių medyje.
+
+
+### find
+Komanda find naudojama ieškoti failų ir katalogų pagal įvairius kriterijus.
+
+* Ieškoti failų dabartiniame kataloge pagal pavadinimą:
+
+```bash
+find . -name "failas.txt"
+```
+
+* Ieškoti failų visoje sistemoje pagal pavadinimą:
+
+```bash
+find / -name "failas.txt"
+```
+
+
+
+
+
