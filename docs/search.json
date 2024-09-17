@@ -1408,5 +1408,15 @@
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Terminalas ir Linux failų sistema</span>"
     ]
+  },
+  {
+    "objectID": "6a_linux_comands_basic.html#funkcijos",
+    "href": "6a_linux_comands_basic.html#funkcijos",
+    "title": "5  Terminalas ir Linux failų sistema",
+    "section": "5.5 Funkcijos",
+    "text": "5.5 Funkcijos\nVisos skyriuje panaudotos funkcijos\n\n\n\n\n\n\n\nFunkcija\nAprašymas\n\n\n\n\nwhich\nParodo vykdomojo failo vietą\n\n\npwd\nParodo dabartinės darbinės direktorijos pilną kelią\n\n\ncd\nPakeičia dabartinę direktoriją (esamą vietą) terminale\n\n\nls\nRodo failų ir katalogų sąrašą direktorijoje\n\n\nsudo\nLeidžia vykdyti komandas su kitokio vartotojo teisėmis (dažniausiai root)\n\n\nhistory\nRodo ankstesnių komandų istoriją\n\n\nclear\nIšvalo terminalo ekraną\n\n\nCtrl-A\nPerkelia kursorių į eilutės pradžią\n\n\nCtrl-E\nPerkelia kursorių į eilutės pabaigą\n\n\nCtrl-U\nIštrina viską į kairę nuo kursoriaus\n\n\nCtrl-C\nNutraukia vykdomą komandą terminale\n\n\nCtrl-L\nIšvalo terminalo ekraną (panašu į clear)\n\n\nShift-Ctrl-C\nKopijuoja tekstą iš terminalo\n\n\nShift-Ctrl-V\nĮkelia tekstą į terminalą\n\n\nShift-Ctrl-T\nSukuria naują terminalo skirtuką\n\n\nShift-Ctrl-N\nSukuria naują terminalo langą",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Terminalas ir Linux failų sistema</span>"
+    ]
   }
 ]

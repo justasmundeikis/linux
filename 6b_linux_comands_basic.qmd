@@ -12,6 +12,10 @@ format:
 
 ## Failų ir katalogų valdymas
 
+Prėjusiame skyriuje tu išmokai naviguoti naudojant terminalą. Sužinojai apie Linux failų sistemą, kaip pamatyti sąrašą visų failų ir direktorijų naudojant `ls` komandą, taip pat sužinojai, jog Linux sistemoje yra vartotojai, vartotojai priklauso grupėms ir kiekvienas failas turi informaciją kas jį sukūrė, kokiai grupei priklauso tas, kuris sukūrė ir kokios yra savininko, grupės, ir kitų vartootjų teisės elgtis su failu ar direktorija.
+
+Šiame skyriuje tu išmoksi kaip kurti failus, direktorijas, kaip kopijuoti, trinti, pervadinti ar perstumti failus. taip pat tu išmoksi kaip nuskaityti failų pradžią, pabaigą, arba rasti tekste norimą žodį. Tu susipažinsi su skaitykle more ir less, ir išmoksi kaip jose naviguoti, bei sužinosi kaip rasti pagalbą.
+
 ### echo
 
 Komanda `echo` naudojama norint atspausdinti tekstą arba kintamojo vertę į terminalą (dar vadinamą standartine išvestimi, angl - **standard output**).  Tai paprasta, bet galinga komanda, kuri dažnai naudojama skriptuose, kad būtų rodomi pranešimai arba tikrinamos kintamųjų vertės.

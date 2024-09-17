@@ -650,3 +650,25 @@ Pasinaudok `ls`, atspausdink visus failus, esančius (sub-)direktorijose ir atsa
   * Kiek yra subdirektorijų `test` direktorijoje?
   * Kiek iš viso suskaičiuoji failų? Suskaičiuok visus failus, esančius visose subdirektorijose.
   * Kokio tipo failų (pvz., .txt, .csv) yra daugiausia? Kurioje direktorijoje?
+
+## Funkcijos
+Visos skyriuje panaudotos funkcijos
+
+| Funkcija | Aprašymas |
+| --- | --- |
+| `which` | Parodo vykdomojo failo vietą |
+| `pwd` | Parodo dabartinės darbinės direktorijos pilną kelią |
+| `cd` | Pakeičia dabartinę direktoriją (esamą vietą) terminale |
+| `ls` | Rodo failų ir katalogų sąrašą direktorijoje |
+| `sudo` | Leidžia vykdyti komandas su kitokio vartotojo teisėmis (dažniausiai root) |
+| `history` | Rodo ankstesnių komandų istoriją |
+| `clear` | Išvalo terminalo ekraną |
+| `Ctrl-A` | Perkelia kursorių į eilutės pradžią |
+| `Ctrl-E` | Perkelia kursorių į eilutės pabaigą |
+| `Ctrl-U` | Ištrina viską į kairę nuo kursoriaus |
+| `Ctrl-C` | Nutraukia vykdomą komandą terminale |
+| `Ctrl-L` | Išvalo terminalo ekraną (panašu į clear) |
+| `Shift-Ctrl-C` | Kopijuoja tekstą iš terminalo |
+| `Shift-Ctrl-V` | Įkelia tekstą į terminalą |
+| `Shift-Ctrl-T` | Sukuria naują terminalo skirtuką |
+| `Shift-Ctrl-N` | Sukuria naują terminalo langą |
