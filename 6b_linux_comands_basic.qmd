@@ -1,5 +1,5 @@
 ---
-title: "Pagridinės BASH komandos"
+title: "BASH komandos"
 execute:
   daemon: false
   enabled: false
@@ -10,427 +10,1079 @@ format:
     echo: true
 ---
 
-## Failų ir katalogų valdymas
+## Failų ir direktorijų valdymas
 
-Prėjusiame skyriuje tu išmokai naviguoti naudojant terminalą. Sužinojai apie Linux failų sistemą, kaip pamatyti sąrašą visų failų ir direktorijų naudojant `ls` komandą, taip pat sužinojai, jog Linux sistemoje yra vartotojai, vartotojai priklauso grupėms ir kiekvienas failas turi informaciją kas jį sukūrė, kokiai grupei priklauso tas, kuris sukūrė ir kokios yra savininko, grupės, ir kitų vartootjų teisės elgtis su failu ar direktorija.
+Praėjusiame skyriuje išmokai naviguoti terminale naudojant komandas `pwd` ir `cd`. Sužinojai apie Linux failų sistemą: kaip matyti visų failų ir katalogų sąrašą naudojant `ls` komandą, bei tai, kad Linux sistemoje vartotojai turi skirtingas teises, priklauso grupėms, ir kiekvienas failas turi savininko, grupės, bei kitų vartotojų teises naudotis tuo failu ar katalogu. Taip pat išmokai svarbių klaviatūros trumpinių, kaip peršokti į komandinės eilutės pradžią (`Ctrl-A`), pabaigą (`Ctrl-E`), nutrinti dalį (`Ctrl-U`), kaip kopijuoti ir įklijuoti į terminalą naudojant `Ctrl-Shift-C` ir `Ctrl-Shift-V`. Išmokai dirbti su terminalo istorija naudojant `history` ir kartoti komandas su `!n`.
 
-Šiame skyriuje tu išmoksi kaip kurti failus, direktorijas, kaip kopijuoti, trinti, pervadinti ar perstumti failus. taip pat tu išmoksi kaip nuskaityti failų pradžią, pabaigą, arba rasti tekste norimą žodį. Tu susipažinsi su skaitykle more ir less, ir išmoksi kaip jose naviguoti, bei sužinosi kaip rasti pagalbą.
+Šiame skyriuje skirsi dėmesį darbui su failais ir direktorijomis. Tu išmoksi kurti failus ir direktorijas, juos kopijuoti, perkelti, ištrinti. Taip pat išmoksi sujungti kelias komandas. Ir šio skyriaus pabaigoje pamatysi, kad tavo BASH įgūdžiai tampa dar stipresni!
+
+![By J. Howard Miller - [U.S. National Archives and Records Administration](https://commons.wikimedia.org/w/index.php?curid=80242715)](img/shell_adv/We_Can_Do_It!.jpg)
+
+Prieš pradedant, įsitikink, kad turi keletą svarbių programų: `jq` ir `curl`. Kaip ir praėjusiame skyriuje, kai ieškojai` which $SHELL`, komanda tau parodė, kur yra binary failas (programa). Dabar padaryk tą patį:
+
+* Patikrink, ar turi `curl`, su `which curl`.
+* Patikrink, ar turi `jq`, su `which jq`.
+
+Jei tavo kompiuteris aptinka šias programas, terminalas atspausdins vietą, kur jos yra įdiegtos. Jei terminalas jų neranda, įdiek `curl` ir `jq` kaip sisteminius paketus naudojant `apt`. Jei pamiršai, kaip tai daryti, pakartok ankstesnę medžiagą.
+
+![](img/shell_adv/which_curl_jq.png)
+
+Kai tai atliksi, nukopijuok ir paleisk šią komandą savo terminale - ji sukurs direktoriją **shell_2_dalis** tavo namų direktorijoje kartu su visais šiam skyriui reikalingais failais:
+
+```bash
+curl -s https://gist.githubusercontent.com/justasmundeikis/b4bfc0d672a859afc0fe28f1e721e167/raw | bash
+```
+
+Jeigu viskas gerai, turėtum pamatyti:
+
+![](img/shell_adv/all_created.png)
+
+::: {.callout-tip}
+Pasikartok komandas `cd`, prisimink absoliutų ir reliatyvų kelią, bei ką reiškia `~`, `.` ir `..`. Šiame skyriuje taip pat dažnai reikės naudoti `ls`, tad pasikartok šią komandą ir jos nustatymus dabar.
+:::
+
+Su `ls` komanda atspausdink *long* formatu savo *home directory* turinį. Paaiškink visas šios eilutės reikšmes.
+
+![](img/shell_adv/initial.png)
+
+Pakeisk savo darbinę direktoriją į **~/shell_2_dalis**. Kaip pasikeitė tavo *prompt*? Paaiškink, kas čia yra kas.
+
+![](img/shell_adv/initial_prompt.png)
 
 ### echo
 
-Komanda `echo` naudojama norint atspausdinti tekstą arba kintamojo vertę į terminalą (dar vadinamą standartine išvestimi, angl - **standard output**).  Tai paprasta, bet galinga komanda, kuri dažnai naudojama skriptuose, kad būtų rodomi pranešimai arba tikrinamos kintamųjų vertės.
+Komanda `echo` naudojama norint atspausdinti vartotojo įvestį (**input**) terminale (dar vadinamą standartine išvestimi, angl. **standard output**). Tai paprasta, bet galinga komanda, dažnai naudojama skriptuose pranešimams rodyti arba kintamųjų reikšmėms tikrinti.
 
-Nors nėra būtina apskliausti tekstą kabutėmis, dėl geresnio matomumo ir skaitomumo, patartina tai padaryti.
+Nors nėra būtina tekstą apskliausti kabutėmis, dėl geresnio aiškumo ir įskaitomumo patartina tai daryti.
 
 ```bash
 echo Hello World!
-echo "Hello World!"
 echo 'Hello World!'
+echo "Hello World!"
 ```
 
+Reikėtų atkreipti dėmesį, jog dvigubos kabutės (`" "`) ir viengubos kabutės (`' '`') šiek tiek skiriasi. Tekstas, esantis viengubose kabutėse (`' '`), atspausdinamas paraidžiui, nepaisant ten esančių kintamųjų. Tuo tarpu tekstas, esantis dvigubose kabutėse (`" "`), yra interpretuojamas, ir Shell leidžia naudoti kintamųjų vertes.
 
-Reikėtų atkreipti dėmesį į tai, jog dvivietės kabutės ("") ir vienvietės kabutės ('') šiek tiek skiriasi. Tekstas, kuris yra '' viduje, atspausdinamas paraidžiui, nepaisant esančių kintamųjų ar specialiųjų simbolių. Tuo tarpu tekstas, esantis "" viduje, yra interpretuojamas, ir Shell leidžia išvesti kintamųjų vertes bei specialiuosius simbolius.
+Pabandyk šias komandas, kurios naudoja kintamąjį `$USER`, atspausdinantį shell sesijos vartotojo vardą:
 
-Sukurkime kintamąjį `vardas='Lora'`. Sukuriant kintamuosius, svarbu nepalikti laisvų vietų aplink `=`. Pvz., `vardas = 'Lora'` Bash Shell netinka, nors tai kuo puikiausiai veiktų Python kalboje.
-
-```BASH
-vardas='Lora'
-echo  Hello $vardas
-echo 'Hello $vardas'
-echo "Hello $vardas"
+```bash
+echo My username is $USER
+echo 'My username is $USER'
+echo "My username is $USER"
 ```
+Ar pastebi, kuo skiriasi išvestis?
 
-![](img/shell/echo_name.png)
+![](img/shell_adv/echo.png)
 
-**Pasipraktikuok!**
-
-Sukurkite kintamuosius `ME`, `HD` ir `RNR`, kuriems priskirkite atitinkamai `$USER`, `$HOME` ir `$RANDOM`. Tada atspausdinkite jų vertes naudodami `echo` komandą.
-
-```BASH
-ME=$USER
-HD=$HOME
-RNR=$RANDOM
-
-echo "My username on this computer is $ME and my home directory is $HD. The random number is $RNR"
-```
-
-Patvirtinkite, kad ankstesnė išvestis yra tapati šiai:
-
-```BASH
-echo "My username on this computer is $USER and my home directory is $HOME. The random number is $RANDOM"
-```
 
 ### `>` ir `>>` operatoriai
 
-`>` ir `>>` operatoriai naudojami išvesties nukreipimui (angl. **output redirection**). Jie nukreipia komandos išvestį į failą, o ne į terminalą. Šie operatoriai yra esminiai dirbant su failais ir automatizuojant užduotis skriptuose.
+`>` ir `>>` operatoriai naudojami išvesties nukreipimui (angl. **output redirection**). Jie nukreipia komandos išvestį (angl. **output**) į failą, o ne į terminalą. Šie operatoriai yra esminiai dirbant su failais ir automatizuojant užduotis skriptuose.
 
-`>` operatorius nukreipia komandos išvestį į failą, perrašo šio failo turinį, jei failas jau egzistuoja. Jei failas neegzistuoja, jis bus sukurtas.
+`>` operatorius nukreipia komandos išvestį į failą, perrašydamas jo turinį, jei failas jau egzistuoja. Jei failas neegzistuoja, jis bus sukurtas.
 
-```bash
-echo "Hello World!" > failas.txt
-```
-
-Ši komanda sukuria (arba perrašo) failą failas.txt su tekstu "Hello World!".
+Ši komanda sukuria (arba perrašo) failą **hello_world.txt** su tekstu "Hello World!".
 
 ```bash
-ls > katalogo_turinys.txt
+echo "Hello World!" > hello_world.txt
 ```
 
-Ši komanda nukreipia `ls` komandos išvestį į failą `katalogo_turinys.txt`, perrašydama failo turinį, jei failas jau egzistuoja.
+Kaip `echo` komanda ir jos argumentas "Hello World!" buvo nukreipti į tekstinį failą, taip galime nukreipti ir kitų komandų išvestis į failus. Operatoriaus `>` argumentas nebūtinai turi būti tik failo pavadinimas, tai gali būti ir failo pavadinimas su absoliučiu ar reliatyviu adresu.
 
-`>>` operatorius nukreipia komandos išvestį į failą, pridedant (**append**) prie failo turinio. Jei failas neegzistuoja, jis bus sukurtas.
-
-
-```bash
-echo "What a beatiful day" >> failas.txt
+```BASH
+ls > mix/direktorijos_turinys.txt
 ```
 
-Ši komanda prideda "What a beatiful day" prie failo failas.txt galo, neperrašydama esamo turinio.
+Ši komanda nukreipia `ls` komandos išvestį į failą **direktorijos_turinys.txt**, kuris yra **mix** subdirektorijoje. Atsidaryk šį failą ir patikrink, ar jis susikūrė teisingai. Turėtum matyti kažką panašaus į šį vaizdą:
 
-Nukreipia kitos komandos išvestį:
+![](img/shell_adv/echo_result.png)
 
-```bash
-ls -l ~/Downloads >> katalogo_turinys_log.txt
-ls -l ~/Documents >> katalogo_turinys_log.txt
+::: {.callout-tip title="Praktika"}
+Liekant **shell_part_2** direktorijoje, atspausdink namų direktorijos (angl. **home directory**) turinį su visais paslėptais failais, ilguoju formatu ir žmonėms geriau suprantamais failų ir direktorijų dydžiais, ir nukreipk išvestį į **mix** subdirektorijoje esantį failą **direktorijos_turinys.txt**, jį perrašant.
+:::
+
+----
+
+**Intarpas**
+
+Hey, ką tik gavai užduotį. Ateityje gausi panašias ir dar sudėtingesnes užduotis. Todėl šioje vietoje padarykime intarpą. Pakalbėkime apie vieną svarbiausių darbo būdų programavime (ir ne tik!) – darbų skaidymą (angl. break down).
+
+Kartais gali gauti labai sudėtingą užduotį, kuri iš pradžių atrodys neįveikiama ar nesuprantama. Tai visiškai normalu. Nestresuok – giliai įkvėpk, iškvėpk, jei reikia, pasiimk popierių ir pieštuką ir pradėk skaidyti darbus į logines sekas. Pvz., prieš tai buvusią užduotį galima suskaidyti į tris dalis:
+
+* reikia failų ir direktorijų sąrašo
+* atspausdinti perrašant
+* failo pavdinimas
+
+
+![](img/shell_adv/break_1.png)
+
+Dabar galima skaidyti ar toliau detalizuoti kiekvieną iš šių dalių.
+
+* ls -alh pagamina sąrašą ilguoju, žmonėms suprantamų dydžių formatu
+* `>` perrašo
+* **direktorijos_turinys.txt** bus pavadinimas
+
+![](img/shell_adv/break_2.png)
+
+Tačiau dabartinė darbinė direktorija yra **~/shell_part_2**, todėl reikia
+
+* `ls -alh` kaip argumentą paduoti `~` arba atitinmai `/home/username`
+* **direktorijos_turinys.txt** turi būti **mix** subdirektorijoje
+
+![](img/shell_adv/break_3.png)
+
+Skaidant užduotį į mažesnes dalis, vis labiau suprasi, ką reikia padaryti. Turint daugiau patirties, geriau žinosi, kiek laiko gali prireikti kiekvienam žingsniui.
+
+Pvz., duomenų analitikas gali gauti užduotį: suprognozuoti sekančių metų ledų pardavimus. Analitikas, žinodamas, kad ledų pardavimai priklauso nuo lauko temperatūros, gali suskaidyti darbus taip:
+
+* Importuoti istorinius tam tikros vietos temperatūros duomenis
+* Prognozuoti sekančių metų kiekvienos dienos temperatūras
+* Apskaičiuoti kiekvienos dienos pardavimus
+* Aprašyti duomenis ir pateikti juos užsakovui suprantamu formatu
+
+![Photo by [Kamaji Ogino](https://www.pexels.com/photo/asian-mother-with-daughter-pointing-at-signboard-with-ice-cream-5094361/)](img/shell_adv/pexels-kamaji-ogino-5094361.jpg)
+
+Kiekvieną iš šių žingsnių analitikas gali suskaidyti į dar daugiau mažesnių užduočių.
+
+Kodėl tai svarbu? Visų pirma, tai padeda geriau suprasti, ką reikia padaryti, ir kiek tai gali užtrukti. Kiekvienas žingsnis tampa atskiru procesu, ir jei nepavyksta vienas metodas, gali bandyti kitą.
+
+Darbų skaidymas yra intuityvus procesas kasdieniame darbe ir tu jau šį metodą ir taip taikai pasąmoningai, bet kai gauname naujas ir labai sudėtingas užduotis, vis tiek verta prisiminti šią strategiją, nes kartais mes pamirštame, kaip ji padeda išvengti pasimetimo.
+
+----
+
+`>>` operatorius nukreipia komandos išvestį į failą, pridedant (angl. **append**) prie failo turinio. Jei failas neegzistuoja, jis bus sukurtas.
+
+
+```BASH
+echo "What a beatiful morning" >> day.txt
+echo "What a beatiful day" >> day.txt
+echo "What a beatiful evening" >> day.txt
 ```
-Ši komanda prideda ls komandos išvestį prie failo `katalogo_turinys_log.txt` galo, išlaikydama esamą turinį.
+
+Šios komandos prideda tekstą "What a beautiful morning", "What a beautiful day" ir "What a beautiful evening" prie failo **day.txt** galo, neperrašydamos esamo turinio. Jei tokio failo nėra, jis bus sukurtas.
+
+::: {.callout-tip title="Praktika"}
+* Susirask tau patinkančios dainos tekstą internete.
+* Naudojant komandą `echo` ir operatorių `>`, sukurk failą **favorite_song.txt**. Failo turinys turėtų būti panašus į "My favorite song is <name>".
+* Pirmas keturias dainos eilutes atspausdink į failą **song_text.txt** naudojant `echo` ir `>>`. Nepamiršk, kokie klaviatūros trumpiniai naudojami kopijuojant ir įkeliant tekstą į terminalą!
+:::
 
 
 ### cat
 
-Komanda cat (angl. **concatenate**, liet. "sujungti") naudojama norint peržiūrėti, sujungti ir kurti failus. Tai viena iš dažniausiai naudojamų komandų, nes ji leidžia greitai peržiūrėti failų turinį, įvesti turinį į kitus failus arba sujungti kelis failus į vieną.
+Komanda `cat` (angl. **concatenate**, liet. „sujungti“) naudojama peržiūrėti, sujungti ir atspausdinti failus. Tai viena iš pagrindinių Linux komandų, nes leidžia greitai peržiūrėti failų turinį, įvesti turinį į kitus failus arba sujungti kelis failus į vieną.
 
-Pagrindiniai naudojimo būdai:
+Praeitame skyriuje sukūrei du failus **favorite_song.txt** ir **song_text.txt**. Dabar juos ir naudosime.
 
-* Peržiūrėti failo turinį:
-
-```bash
-cat failas.txt
-```
-
-Ši komanda išveda failo `failas.txt` turinį į terminalą.
-
-* Sujungti kelių failų turinį ir išvesti į terminalą:
+Atspausdink failo **favorite_song.txt** turinį į terminalą:
 
 ```bash
-cat failas1.txt failas2.txt
+cat favorite_song.txt
 ```
 
-Ši komanda išveda failų `failas1.txt` ir `failas2.txt` sujungtą turinį į terminalą.
+Pas mane tai atrodo taip:
 
-* Sukurti naują failą arba perrašyti esamą failą tekstu. Įveskite tekstą ir užbaikite įvedimą paspaudę Ctrl+D.
+![](img/shell_adv/cat_fav_song.png)
+
+
+`cat` leidžia sujungti kelių failų turinį ir atspausdinti rezultatą terminale:
 
 ```bash
-cat > naujas_failas.txt
-Hello world!
-What a nice day \n
-cat naujas_failas.txt
-```
+cat favorite_song.txt song_text.txt
 
-Nukopijuoti failo turinį į kitą failą:
+```
+![](img/shell_adv/cat_fav_song_text.png)
+
+
+Kaip praeitame skyriuje išmokai, komandos išvestį (nesvarbu, ar tai būtų `echo`, ar `ls`) galima nukreipti į failą. Lygiai taip pat gali nukopijuoti failą naudojant `cat` ir `>` arba `>>`:
 
 ```bash
-cat failas1.txt > kopija.txt
+cat favorite_song.txt > favorite_song_2.txt
 ```
-Ši komanda nukopijuoja failo failas1.txt turinį į failą kopija.txt.
 
-### Intarpas: Standartinė įvestis, išvestis ir klaidos
+Ši komanda nukopijuoja failo **favorite_song.txt** turinį į naują failą **favorite_song_2.txt**, perrašydama jo turinį, jei toks failas jau egzistuoja.
 
-Linux ir Unix sistemose yra trys pagrindiniai srautai, kurie valdo duomenų įvestį ir išvestį programose bei komandose. Šie srautai dažnai vadinami standartine įvestimi (**standard input**), standartine išvestimi (**standard output**) ir standartine klaida (**standard error**). Kiekvienas jų turi specifinį paskirtį ir failo aprašymo numerį.
 
-#### Standartinė įvestis (stdin)
+::: {.callout-tip title="Praktika"}
+* Naudojant `echo` ir `>>`, įrašyk dar 4 eilutes mėgstamiausios dainos teksto į failą **song_text_2.txt**.
 
-* Failo aprašymo numeris: 0
-* Aprašymas: Standartinė įvestis, sutrumpinta kaip **stdin**, yra srautas, iš kurio komanda ar programa gauna duomenis. Pagal numatytuosius nustatymus, stdin yra prijungta prie klaviatūros įvesties, tačiau gali būti nukreipta iš failo ar kito srauto.
-* Naudojimas:
+* Sujunk failus **song_text.txt** ir **song_text_2.txt**, nukreipiant rezultatą į **song_text_full.txt**:
+
+* Pagalvok, kaip naudojant visas iki šiol žinomas komandas, būtų galima gauti **song_text.txt** failą, kuriame būtų pirmas ketvertas eilučių ir antras ketvertas eilučių teksto?
+:::
+
+
+### head ir tail
+
+Komandos `head` (galva) ir `tail` (uodega) naudojamos peržiūrėti pirmąsias arba paskutines failo eilutes. Įprastai jos atspausdina 10 eilučių teksto.
+
+::: {.callout-note}
+Dabar tavo failas **song_text.txt** turėtų turėti 8 eilutes teksto. Todėl tokiu pat būdu, kaip prieš tai, pridėk dar 4 eilutes teksto, kad turėtum bent 12.
+:::
+
+Peržiūrėk pirmas 10 eilučių **song_text.txt** su `head`:
 
 ```bash
-# Nuskaito duomenis iš klaviatūros
-cat
+head song_text.txt
 ```
 
-Taip pat gali būti nukreipiama iš failo:
+Peržiūrėk paskutines 10 failo eilučių:
 
 ```bash
-cat < failas.txt
+tail song_text.txt
 ```
 
-#### Standartinė išvestis (stdout)
+Tiek `head`, tiek `tail` priima nustatymą (**option**) `-n` su argumentu, nurodančiu, kiek eilučių atspausdinti:
 
-* Failo aprašymo numeris: 1
-* Aprašymas: Standartinė išvestis, sutrumpinta kaip **stdout**, yra srautas, į kurį komanda ar programa rašo išvestį. Pagal numatytuosius nustatymus, stdout yra prijungta prie terminalo ekrano.
-* Naudojimas:
+* Norint peržiūrėti pirmas 3 eilutes, naudok komandą: `head -n 3 song_text.txt`
+* Norint peržiūrėti paskutines 5 eilutes, naudok komandą: `tail -n 5 song_text.txt`.
 
-```bash
-# Spausdina į terminalą
-echo "Hello World"
-```
+::: {.callout-tip title="Praktika"}
+Kas nutiktų, jei panaudotum `head` arba `tail` su failu, kuriame nėra 10 eilučių? Pabandyk su **favorite_song.txt**
+:::
 
-Taip pat gali būti nukreipiama į failą:
+::: {.callout-tip title="Praktika"}
 
-```bash
-echo "Hello World!" > išvestis.txt
-```
+Dabar dirbsi su failu **data/temp_vilnius.txt**.
 
-#### Standartinė klaida (stderr)
+* Naudojant `cat`, atspausdink visą failą terminale
+* Pirmosios dienos prognozės gali turėti mažiau nei 24 valandas (pvz., likusios 6 valandos). Naudojant `head`, atspausdink tik šiandienos orų prognozes
+* Kadangi šiandienos oras jau aiškus, tavo draugei Amelijai reikia rytojaus orų prognozės. Derinant `head` ir `tail`, išfiltruok eilutes taip ir sukurk tarpinius failus, kad būtų nusiųstos tik rytojaus 24 valandų temperatūros prognozės. Rezultatą išsaugok į failą **amelija_vilnius_temp.txt** subdirektorijoje **data**. Naudojant `cat` įsitikink, jog turi tik rytojaus temperatūras.
+:::
 
-* Failo aprašymo numeris: 2
-* Aprašymas: Standartinė klaida, sutrumpinta kaip **stderr**, yra srautas, į kurį komanda ar programa rašo klaidų pranešimus. Pagal numatytuosius nustatymus, stderr yra prijungta prie terminalo ekrano, bet gali būti nukreipta į failą ar kitą srautą.
-* Naudojimas:
 
-```bash
-# Nukreipia klaidų pranešimus į failą
-ls non_existing_file 2> klaida.log
-```
+### less
 
-#### Praktika:
+Praėjusiame skyriuje jau turėjai atvejį, kai viso failo **vilnius_temp.txt** turinys netilpo į terminalo langą. Tikėtina, reikėjo pakeisti terminalo lango dydį arba slinkti su pele. Dabar tau galbūt kyla klausimas, kaip būtų galima matyti failo turinį gabaliukais?
 
-1. Pabandykite atspausdinti (nukipijuoti) su `cat` neegsistuojantį failą `abracadabra.txt` į failą, o klaidą nukreipti į failą `error_logs.txt`
+Nors gali naudoti `cat` dideliems failams atspausdinti ir tada slinkti išvestį, paprastai patogiau failą rodyti puslapiais. Tam pirminė komanda buvo `more`, bet ją pakeitė galingesnė komanda `less`.
 
-2. Su cat atspausdinkite `error_logs.txt`
+Naudojant `less <failas>`, vienu metu matysi tik vieną failo puslapį. Spaudžiant ␣ (space) klavišą, pereisi į kitą puslapį; gali taip pat naudoti ↓ ir ↑ klavišus, kad judėtum po vieną eilutę žemyn arba aukštyn. Norint išeiti, spausk `q`.
 
-3. Su `echo` bei `>` sukurkite failą `abracadabra.txt` pvz 
+::: {.callout-tip title="Praktika"}
+Atsidaryk **data/vilnius_temp.txt** su less, išbandyk judėjimą tekste žemyn, aukštyn ir uždaryk programą su `q`.
+:::
 
-``` BASH
-echo "Abracadabra is a magic word, historically used as an apotropaic incantation on amulets and common today in stage magic. It is of unknown origin." > 'abracadabra.txt'
-```
+Jei `less` komandai nurodysi kelis failus, gali naudoti `:n` (**next**) pereiti prie kito failo, o `:p` (**previous**) sugrįžti prie ankstesnio failo. Norint išeiti, spausk `q`.
 
-4. pakartokite 1 ir 2 žingsnius.
+::: {.callout-tip title="Praktika"}
+Atsidaryk failus **favorite_song.txt**, **data/vilnius_temp.txt** ir **text/seneles_pasaka.txt** su less. Išbandyk judėjimą tekste žemyn, aukštyn, pereik tarp failų naudojant `:n` ir `:p` bei pabaigoje uždaryk `less` su `q`
+:::
+
+
+### wc
+
+Komanda `wc` (angl. **word count**) naudojama atspausdinti naujų eilučių, žodžių ir baitų skaičių faile.
+
+| Nustatymas | Reikšmė                                                                         |
+|------------|----------------------------------------------------------------------------------|
+| `-c`       | 	Atspausdina baitų skaičių (angl. byte count), kiek vietos užima failas                                   |
+| `-m`       | Atspausdina simbolių skaičių (angl. character count)                               |
+| `-w`       | 	Atspausdina žodžių skaičių (angl. word count)                                 |
+| `-l`       | Atspausdina eilučių skaičių (angl. line count)                                     |
+
+Pastaba: `-c` ir `-m` gali atspausdinti skirtingus rezultatus priklausomai nuo failo koduotės, nes simbolis gali užimti daugiau nei vieną baitą (pvz., specialūs lietuviški simboliai).
+
+::: {.callout-tip title="Praktika"}
+* Kiek žodžių ir kiek eilučių yra **text/seneles_pasaka.txt**?
+* Kiek eilučių yra **data/temp_vilnius.txt** ir kiek **data/temp_kaunas.txt**?
+:::
+
 
 ### touch
 
-Komanda `touch` naudojama norint sukurti tuščią failą arba pakeisti esamo failo datą ir laiką (modifikavimo ir prieigos laikus). Tai yra universali ir dažnai naudojama komanda, ypač kai reikia greitai sukurti failą arba atnaujinti failo metaduomenis.
+Komanda `touch` naudojama kuriant tuščią failą arba keičiant esamo failo metaduomenis, pvz., modifikavimo ar prieigos laiką. Ji yra universali ir ypač naudinga tais atvejais, kai reikia greitai sukurti failą arba atnaujinti failo laikus be jo turinio keitimo.
 
-Jei failas dar neegzistuoja, ši komanda jį sukurs. Jei failas jau yra, ji pakeis failo "paskutinio keitimo laiką" į dabartinį laiką, nekeičiant paties failo turinio.
+Jei failas neegzistuoja, `touch` jį sukurs. Jei failas jau yra, komanda tiesiog pakeis failo "paskutinio keitimo laiką" (**modification time**) į dabartinį laiką, nesikeičiant turinio.
 
-* Sukurti tuščią failą:
-
-```BASH
-touch failas0.txt
-```
-
-![](img/shell/touch_single.png)
-
-* Sukurti keletą tuščių failų vienu metu:
+Sukurk tuščią failą:
 
 ```BASH
-touch failas1.txt failas2.txt failas3.txt
+touch empty_1.txt
 ```
-![](img/shell/touch_multiple.png)
 
+![](img/shell_adv/touch_single.png)
 
-* Sukurti tuščią faila kitame kataloge nurodant absoliutų arba relatyvų kelią:
+Jei nurodysi kelis failų pavadinimus, touch sukurs visus iš karto:
 
 ```BASH
-touch /home/user/Documents/failas4.txt
-touch ~/Documents/failas5.txt
+touch empty_2.txt empty_3.txt empty_4.txt
 ```
 
-![](img/shell/touch_dir.png)
+![](img/shell_adv/touch_multiple.png)
 
 
-* Pakeisti esamo failo paskutinio keitimo laiką `-m` abra prieigos laiką `-a`, arba nustatyti konkretų datą ir laiką `-t`:
+Jeigu failo pavadinimas yra nurodytas su absoliučiu ar reliatyviu keliu, failas bus sukurtas atitinkamoje direktorijoje, jei tokia direktorija egzistuoja. Jei direktorija neegzistuoja, bus pranešta apie klaidą, ir failas nebus sukurtas.
+
+```bash
+touch mix/empty_5.txt
+touch tralala/empty_6.txt
+```
+![](img/shell_adv/touch_error.png)
+
+
+`touch` taip pat leidžia atnaujinti failo prieigos arba modifikavimo laiką. Štai keli pavyzdžiai:
+
+* Atnaujinti tiek prieigos, tiek modifikavimo laikus į dabartinį laiką:
 
 ```BASH
-touch -m failas.txt
-touch -a failas.txt
-touch -t YYYYMMDDHHMM.SS failas.txt
+touch empty_1.txt
 ```
+* Atnaujinti tik prieigos laiką:
+
+```BASH
+touch -a empty_1.txt
+```
+* Atnaujinti tik modifikavimo laiką:
+
+```BASH
+touch -m empty_1.txt
+```
+* Nustatyti tiek prieigos, tiek modifikavimo laikus į konkrečią datą, pvz., 2022 m. sausio 1 d., 12:00 val.: 
+
+```BASH
+touch -t 202201011200 empty_1.txt
+```
+
+* Naudoti `-d` parinktį, norint lankstesnio laiko nustatymo:
+
+```BASH
+touch -d "2023-07-04 15:45" empty_1.txt
+```
+
+Dabar gali kilti klausimas - kam tai naudinga? Iš tiesų, failų laikų keitimas gali atrodyti nišinis, tačiau tai naudinga tam tikrais atvejais:
+
+* Jei nori išbandyti skriptą, kuris rūšiuoja ar archyvuoja failus pagal jų prieigos ar modifikavimo laiką, gali generuoti tuščius failus su netikrais laikais ir patikrinti, ar skriptas veikia teisingai.
+* Jei atstatai failus iš atsarginės kopijos, gali norėti atkurti ir jų originalius prieigos bei modifikavimo laikus, kad išsaugotum failų istoriją tiksliai tokia, kokia buvo prieš atsargines kopijas.
+
 
 ### mkdir
 
-Komanda `mkdir` (angl. **make directory**, liet. "kurti katalogą") naudojama norint sukurti naujus katalogus. Tai yra pagrindinė komanda, kai reikia sukurti naujus katalogus failų sistemoje.
+Komanda `mkdir` (angl. **make directory**) naudojama naujų direktorijų kūrimui.
 
-* Sukurti naują katalogą:
-
-```BASH
-mdkir projektas0
-```
-
-![](img/shell/mkdir_single.png)
-
-
-* Sukurti keletą naujų katalogų vienu metu
+Naują direktoriją gali sukurti taip:
 
 ```BASH
-mkdir projektas1 projektas2 projektas3
+mkdir projektas1
 ```
 
-![](img/shell/mkdir_multiple.png)
+Kaip ir su komanda `touch`, gali sukurti kelias direktorijas vienu metu, nurodant pavadinimus arba kelius į jas:
 
+```BASH
+mkdir projektas2 mix/projektas3
+```
 
-* Sukurti katalogų medį (hierarchiją), jei tarpiniai katalogai neegzistuoja:
+![](img/shell_adv/mkdir.png)
+
+Kartais reikia sukurti direktorijų medį (hierarchiją). Jei tarpinės direktorijos dar neegzistuoja, gali naudoti `-p` argumentą, kuris automatiškai sukurs ir tarpines direktorijas. Pavyzdžiui:
 
 ```BASH
 mkdir -p projektas0/duomenys
 ```
 
-![](img/shell/mkdir_p.png)
+![](img/shell_adv/mkdir_p.png)
 
-Nemo failų naršyklėje taip pat matomas rezultatas
+::: {.callout-tip title="Praktika"}
+Netrukus norėsime sukurti tam tikrų failų atsargines kopijas. Kaip pasiruošimą, užtikrink, kad shell_part_2 direktorijoje būtų:
 
-![](img/shell/mkdir_p_nemo.png)
+* backup/data
+* backup/text
+
+Sukurk jas naudojant `-p`, nurodant abi direktorijas kaip du argumentus vienoje komandoje (vienoje eilutėje). 
+:::
+
+### cp
+
+Pripažink, kopijuoti failą su `cat failas.txt > kopija.txt` nėra labai intuityvu. O ką daryti, jei nori nukopijuoti ne tik failą, bet ir visą direktoriją?
+
+Komanda `cp` (angl. **copy**) naudojama failams ir direktorijoms kopijuoti.
+
+Paprasčiausiu atveju, kai nori sukurti failo kopiją, komandai `cp` nurodai originalaus failo pavadinimą ir kokiu pavadinimu turėtų būti sukurta kopija. 
+
+```bash
+cp song_text.txt song_text_copy.txt
+```
+
+Jei failas **song_text_copy.txt** jau egzistuotų, jis būtų perrašytas. Taigi `cp` veikia panašiai kaip `>`.
+
+Kaip ir su visomis BASH komandomis, gali naudoti tiek reliatyvius, tiek absoliučius kelius (angl. path). Pavyzdžiui, kopiją gali perkelti į kitą direktoriją:
+
+```bash
+cp ./song_text.txt ./mix/song_text_copy.txt
+```
+![](img/shell_adv/cp_dir.png)
+
+Jeigu kaip antrąjį argumentą nurodysi egzistuojančios direktorijos pavadinimą, `cp` sukurs kopiją tokiu pačiu pavadinimu kaip originalas ir patalpins ją į nurodytą direktoriją. Šįkart praleidžiam 
+
+```bash
+cp song_text.txt mix
+```
+
+![](img/shell_adv/cp_dir2.png)
+
+
+`cp` gali kopijuoti ir direktorijas, tačiau tam, kad visa direktorija būtų nukopijuota rekursyviai (su visu turiniu), reikia naudoti nustatymą `-r` (**recursive**). Jeigu pamirši `-r` direktorija nebus nukopijuota!
+
+```bash
+cp -r mix mix_copy
+```
+
+![](img/shell_adv/cp_dir3.png)
+
+
+
+Kada naudoti `cp -a`?
+
+Nustatymas `-a` (arba **archive**) naudojamas, kai reikia nukopijuoti failus ir direktorijas kartu su jų metaduomenimis (pvz., failo leidimais, nuosavybe, laikais). Tai naudinga, kai nori išsaugoti visas originalaus failo ar katalogo savybes. `-a` iš esmės yra kombinuotas `cp -r` (rekursija) ir kitų nustatymų rinkinys, kuris užtikrina, kad išsaugomi visi atributai.
+
+```bash
+cp -a mix mix_copy_2
+```
+
+Dabar palyging metaduominis su `ls -l`. 
+
+![](img/shell_adv/cp_dir4.png)
+
+
+::: {.callout-tip title="Praktika"}
+* Padaryk **temp_vilnius.txt** kopiją pavadinimu **temp_vilnius.txt**, bet kaip argumentą nurodyk direktoriją **ir** failo pavadinimą. Patalpink kopiją į **backup/data**.
+* Padaryk **temp_kaunas.txt** ir **temp_klaipeda.txt** kopiją vienoje komandoje su originaliu pavadinimu, kaip **trečią** argumentą `cp` paduodant tik **backup/data** direktoriją.
+* Padaryk **text** direktorijos kopiją su visu jos turinu į **backup** direktoriją. Išsaugok visus metaduomenis. 
+* **Teorinis klausimas**: kas nutiktų jeigu panaudotum `cp -r text backup/text`?
+* Ar darant **temp_** failų atsargines kopijas išsaugojai metaduomenis? jeigu ne, pakartok komandas tik su teisingu nustatymu ir įsitikink, ar iš tiesų metaduomenys tokie pat!
+:::
 
 
 ### mv
 
-Komanda `mv` (angl. **move**, liet. "perkelti" arba "pervadinti") naudojama perkelti arba pervadinti failus ir katalogus. Tai universali komanda, skirta tiek failų ir katalogų vietos keitimui, tiek jų pavadinimų modifikavimui.
+Komanda `mv` (angl. **move**) naudojama perkelti arba pervadinti failus ir direktorijas. Tai universali komanda, skirta tiek failų ir katalogų vietos keitimui, tiek jų pavadinimų modifikavimui.
 
 
-* Pervadinti failą arba katalogą:
-
-Ši komanda pervadina failą ar katalogą iš senas_pavadinimas į naujas_pavadinimas.
-
-```BASH
-mv senas_pavadinimas naujas_pavadinimas
-```
-
-* Perkelti failą į kitą katalogą:
-
-Ši komanda perkelia failą failas.txt į katalogą /naujas/kelias/.
-
-```BASH
-mv failas.txt /naujas/kelias/
-```
-
-* Perkelti kelis failus į kitą katalogą:
-
-Ši komanda perkelia failus failas1.txt ir failas2.txt į katalogą /naujas/kelias/.
+Pvz., naudojant `mv`, gali pervadinti failą **temp_vilnius.txt** į **temp_alytus.txt**:
 
 
 ```BASH
-mv failas1.txt failas2.txt /naujas/kelias/
+mv data/temp_vilnius.txt data/temp_alytus.txt
 ```
 
-* Perkelti katalogą ir jo turinį į kitą vietą:
-Ši komanda perkelia katalogą katalogas ir visą jo turinį į katalogą /naujas/kelias/.
+![](img/shell_adv/mv_single.png)
+
+
+Taip pat su `mv` gali perkelti failus iš vienos direktorijos į kitą. Ši komanda perkelia failą **temp_kaunas.txt** į **mix**:
 
 ```BASH
-mv katalogas /naujas/kelias/
+mv data/temp_kaunas.txt mix
 ```
+
+![](img/shell_adv/mv_file_dir.png)
+
+`mv` komandai galima paduoti daugiau nei du argumentus. Pavyzdžiui, ši komanda perkelia failus **temp_alytus.txt** ir **seneles_pasaka.txt** į direktoriją **mix**. Čia svarbu, kad paskutinis argumentas būtų egzistuojanti direktorija:
+
+```BASH
+mv data/temp_alytus.txt text/seneles_pasaka.txt mix
+```
+ 
+`mv` taip pat gali būti naudojama perkelti direktoriją ir visą jos turinį. Pavyzdžiui, ši komanda perkelia direktoriją **mix_copy** į **mix**:
+
+```BASH
+mv mix_copy mix
+```
+
+**Pastaba**: dirbant su direktorijomis:
+
+* jeigu `mv origin target` jeigu target neegzistuoja, tada mv **pervadins** direktoriją origin į target
+* jeigu `mv origin target` jeigu target egzistuoja, tada mv **perkels** origin į target direktoriją
+
+**Svarbu**: kaip ir naudojant `>` ar `cp`, jeigu tikslinis **failas** jau egzistuoja, jis bus perrašytas, nebent pridėsi `-i` (interaktyvų režimą), kad būtų paprašyta patvirtinimo prieš perrašant.
+
+
+::: {.callout-tip title="Praktika"}
+* **Teorinis klausimas**: Kas nutiktų, jei įvykdytum šią komandą?
+
+```BASH
+mv vilnius_temp.txt kaunas_temp.txt ~/Documents ~/Downloads
+```
+
+* Perkelk Alytaus ir Kauno temperatūrų failus atgal iš **mix** į **data** naudojant `mv`. Pervadink Alytaus failą atgal į Vilniaus
+* Atsidaryk Nemo ir rankiniu būdu ištrink data direktoriją. Dabar su terminal, padaryk backup/data kopiją (su `cp` ir reikalaingais nustatymais), jog vėl atsirastų **/shell_part_2/data**.
+:::
+
 
 ### rm
 
-Komanda `rm` (angl. **remove**, liet. "pašalinti") naudojama pašalinti failus ir katalogus. Tai galinga komanda, todėl ja reikia naudotis atsargiai, nes **pašalinti failai ar katalogai nėra perkeliami į šiukšlinę ir jų atkurti nebebus galima**.
+Tavo **shell_part_2** direktorijoje dabar tikrai daug failų ir subdirektorijų, kurių nebereikia. Laikas įvesti šiek tiek tvarkos!
 
-* Pašalinti failą:
+Komanda `rm` (angl. **remove**) naudojama pašalinti failus ir direktorijas. Tai galinga komanda, todėl ja reikia naudotis atsargiai, nes pašalinti failai ar direktorijos nėra perkeliami į šiukšliadėžę ir jų atkurti nebebus galima.
 
-```BASH
-rm failas.txt
-```
-
-
-* Pašalinti kelis failus:
+Norint pašalinti failą, `rm` komandai paduodamas argumentas - failo pavadinimas arba absoliutus, arba reliatyvus kelias į failą.
 
 ```BASH
-rm failas1.txt failas2.txt failas3.txt
+rm day.txt
+rm mix/empty_5.txt
 ```
 
 
-* Pašalinti tuščią katalogą:
+Komandai `rm` galima paduoti ir kelis failus vienu metu:
 
 ```BASH
-rm -d tuščias_katalogas
+rm empty_1.txt empty_2.txt 
 ```
 
 
-* Pašalinti katalogą ir jo turinį rekursyviai:
+Tuščią direktoriją (kai joje nėra jokių kitų failų ar subdirektorijų) galima pašalinti arba naudojant `rmdir` (kuri yra `mkdir` priešingybė), arba su `rm`, nurodant nustatymą `-d`.
 
 ```BASH
-rm -r katalogas
+rm -d projektas1
+rmdir projektas2
 ```
 
+![](img/shell_adv/rmdir.png)
 
-* Priverstinai pašalinti failą ar katalogą:
+Tiesiog pašalinti direktoriją, kurioje yra kažkas, su `rm` arba `rm -d` nepavyks, nes BASH bando apsaugoti vartotoją nuo rizikos netyčia ištrinti daugiau failų nei reikia.
 
+![](img/shell_adv/rmdir_error.png)
+
+Jei reikia ištrinti visą direktoriją su visu jos turiniu, naudojamas parametras `-r` (**recursive**).
 
 ```BASH
-rm -rf katalogas
+rm -r projektas0
 ```
 
-### cp
+Kartais gali nutikti, jog `rm -r` negalės ištrinti direktorijos dėl failų teisių ar kitų kliūčių. Tokiu atveju pridedamas nustatymas `-f` (**force**), kuris priverstinai ištrina failus.
 
-Komanda `cp` (angl. **copy**, liet. "kopijuoti") naudojama kopijuoti failus ir direktorijas.
+```BASH
+rm -rf mix_copy_2
+```
 
-* Kopijuoti failą:
+**intarpas: Wildcard'ų naudojimas ***
+
+Kartais BASH komandose norisi pažymėti arba pasirinkti daugiau nei vieną failą. Kaip jau matei, tiek `cat`, tiek `cp`, `mv`, `rm`, `less` komandos kuo puikiausiai dirba su keliais failais. Tad kyla klausimas, kaip tai padaryti efektyviau naudojant wildcard simbolius.
+
+Pvz., tu galėtum rašyti:
 
 ```bash
-cp šaltinis.txt tikslas.txt
+rm empty_1.txt empty_2.txt
 ```
+Tačiau yra akivaizdu, jog šiuose failų pavadinimuose yra tam tikras dėsningumas – jie prasideda **empty_** ir baigiasi **.txt**.
 
-Ši komanda kopijuoja failą šaltinis.txt į failą tikslas.txt.
+BASH, kaip ir daugelyje kitų programavimo kalbų, yra vadinamieji wildcard - simboliai, kurie leidžia užpildyti vieną ar daugiau ženklų.
 
-* Kopijuoti direktorija rekursyviai (su visu esančiu turiniu):
+Pavyzdžiui, `*` simbolis pakeičia bet kokį skaičių ženklų. Taigi, galima būtų parašyti:
 
 ```bash
-cp -r šaltinis_katalogas tikslas_katalogas
+rm empty_*.txt
 ```
 
-Ši komanda kopijuoja direktoriją šaltinis_katalogas ir visą jo turinį į tikslas_katalogas.
+Wildcard'ų simboliai:
+
+* `*` reiškia jokio, vieną arba daugiau simbolių.
+* `?` reiškia tiksliai vieną simbolį, pvz., 201?.txt galėtų atitikti 2017.txt, 2018.txt, bet ne 2017-01.txt.
+* `[...]` reiškia vieną iš pateiktų simbolių, pvz., 201[78].txt atitiks 2017.txt arba 2018.txt, bet ne 2016.txt.
+* `{}` reiškia vieną iš nurodytų reikšmių, pvz., rm {*.txt,*.csv} atitiks visus failus, kurių pavadinimas baigiasi .txt arba .csv, bet ne .pdf.
+
+::: {.callout-tip title="Praktika"}
+Teorinė užduotis - pasakyk, kas nutiktų visais šiais atvejais:
+
+* `rm song*.txt`
+* `rm *song*.txt`
+* `rm *.txt`
+* `rm *.*`
+* `rm ./*`
+* `rm *`
+* `rm data/*`
+* `rm text/*.txt`
+* Pasitikrink atsakymą naudojant ChatGPT!
 
 
-### head ir tail
+Praktinė užduotis - naudojantis wildcard ištrink iš **shell_part_2** visus failus:
 
-Komandos `head` ir `tail` yra naudojamos peržiūrėti pirmąsias arba paskutines failo eilutes.
+* kurių pavadinime yra žodis *song*, neproklausomai nuo pozicijos ir failo tipo
+* kurių failo tipas yra .txt
+* visus failus esančius **mix** subdirektorijoje. Tam gali prireikti papildomo nustatymo `rm` komandai, nes **mix** gali būti direktorijos!
+* subdirektorijas **data** ir **text**. O tada naudodojant `cp` ir būtinai reikiamą nustatymą metaduomenų išlaikymui, atkurti iš **backup**
 
-* Peržiūrėti pirmąsias 10 failo eilučių:
+:::
 
-```bash
-head failas.txt
-```
+Atlikus visus valymus turėtum turėti:
 
-* Peržiūrėti paskutines 10 failo eilučių:
-```bash
-tail failas.txt
-```
-
-* Peržiūrėti pirmąsias n eilučių:
-
-```bash
-head -n 20 failas.txt
-```
-
-* Peržiūrėti paskutines n eilučių:
-
-``` bash
-tail -n 20 failas.txt
-```
+![](img/shell_adv/cleaned_up.png)
 
 
 ### grep
-Komanda grep (angl. **global regular expression print**, liet. "globalus reguliariųjų išraiškų paieškos spausdinimas") naudojama tekstui paieškai pagal šabloną failuose arba išvestyje.
 
-* Ieškoti teksto failuose:
+Kartais tau gali prireikti nuskaityti tik tam tikras failo eilutes, kuriose yra konkretus tekstas. Komanda `grep` (angl. **global regular expression print**, liet. „globalus reguliariųjų išraiškų paieškos spausdinimas“) naudojama teksto paieškai pagal šabloną failuose arba išvestyje.
 
-```bash
-grep "paieškos_tikslas" failas.txt
-```
-
-Ši komanda ieško "paieškos_tikslas" ir parodo atitinkančias eilutes iš failo failas.txt.
-
-* Ieškoti rekursyviai kataloge:
+Pavyzdžiui, ši komanda surastų visas eilutes **data/seneles_pasaka**, kuriose yra žodis „Apie“:
 
 ```bash
-grep -r "paieškos_tikslas" /path/to/directory
+grep Apie text/seneles_pasaka.text
 ```
+![](img/shell_adv/grep_apie.png)
 
-Ši komanda ieško "paieškos_tikslas" visame katalogo ir jo pakatalogių medyje.
-
-
-### find
-Komanda find naudojama ieškoti failų ir katalogų pagal įvairius kriterijus.
-
-* Ieškoti failų dabartiniame kataloge pagal pavadinimą:
+Suprantama, gali pateikti kelis failus vienu metu. Šiuo atveju komanda `grep` suras visas eilutes, kuriose yra **14:00:00** abiejuose jai pateiktuose failuose ir atitinkamas eilutes atspausdins tau į terminalą.
 
 ```bash
-find . -name "failas.txt"
+grep 14:00:00 data/temp_vilnius.txt data/temp_kaunas.txt 
 ```
 
-* Ieškoti failų visoje sistemoje pagal pavadinimą:
+![](img/shell_adv/grep_multiple.png)
+
+
+`grep` priima ir tam tikrus nustatymus, kurie padeda atlikti paiešką efektyviau:
+
+* `-c`: atspausdina, kiek eilučių atitinka tavo pateiktą kriterijų.
+* `-h`: neatspausdina failų pavadinimų, kuriuose rasti atitikimai, kai pateiki keli failai.
+* `-i`: ignoruoja didžiąsias ir mažąsias raides (pvz., įrašius -i apie, ras ir „Apie“, „apie“, „APIE“ ir t.t.).
+* `-l`: atspausdina tik failų pavadinimus, kuriuose rasti atitikimai.
+* `-n`: atspausdina eilučių numerius šalia pačios eilutės.
+* `-v`: ieško eilučių, kuriose nėra raktinio paieškos kriterijaus.
+
+::: {.callout-tip title="Praktika"}
+Dirbk su **data/seneles_pasaka.txt**
+
+* Kurios eilutės turi paminėtą žodį „pasaka“ (tik su mažąja raide)?
+* Kurios eilutės turi paminėtą žodį „pasaka“ (nesvarbu, ar rašyta didžiosiomis, ar mažosiomis raidėmis)?
+* Kiek eilučių (ieškome skaičiaus) turi paminėtą žodį „apie“, nepriklausomai nuo rašybos?
+* Kiek eilučių (ieškome skaičiaus) nepamini žodžio „apie“, nepriklausomai nuo rašybos? 
+:::
+
+
+**Pastaba**: komanda `grep` ieško tekstinės atitikties failuose, todėl ji nepriima loginių operatorių kaip >, =, ar <. Visgi, `grep` leidžia naudoti reguliarias išraiškas (regular expressions), kurios leidžia dar smulkiau atrinkti tekstą.
+
+Štai kaip būtų galima panaudoti `grep` su reguliariomis išraiškomis, norint surasti visas eilutes, kuriose yra vienas skaitmuo prieš tašką, visuose **temp_** failuose:
 
 ```bash
-find / -name "failas.txt"
+grep -P '\t[0-9]\.[0-9]' data/temp_*.txt
 ```
+
+![](img/shell_adv/grep_regex.png)
+
+
+Į reguliarias išraiškas dabar neverta gilintis išsamiau, bet svarbu žinoti, kad jos egzistuoja ir gali būti labai naudingos dirbant su tekstiniais duomenimis. Jeigu kiltų noras pasibandyti, siūlau naudti [https://regexr.com/](https://regexr.com/).
+
+### cut
+
+Kartais tau gali prireikti išfiltruoti ne eilutes, o stulpelius. Pvz., komanda `head` **data/temp_vilnius.txt** parodo tarsi 3 stulpelius: datą, laiką ir temperatūrą. Pastebima, kad tarp datos ir laiko yra mažas tarpas (greičiausiai „space“), o tarp laiko ir temperatūros – didelis tarpas (tikėtina, "tab"). Tai šiek tiek apsunkina darbą, kol nesusipažinai su `sed` komanda, bet tai nereiškia, jog negalime išskaidyti failo į stulpelius pagal skirtingus skirtukus, pvz., „space“ ir „tab“.
+
+![](img/shell_adv/cut_head.png)
+
+
+Komandai `cut` reikia tam tikrų nustatymų. Pagrindiniai nustatymai:
+
+* `-d` (**delimiter**) – skirtukas, kuris skiria stulpelius. Pagal nutylėjimą skirtukas yra tabuliacija (tab), tad šio nustatymo keisti nereikia. Jeigu norėtum naudoti kitą skirtuką, pvz., tarpo ženklą, turėtum naudoti `-d " "`. Jeigu skirtukas būtų kablelis, naudotum `-d ","` ir t.t.
+* `-f` (**fields**) – nurodo, kuriuos stulpelius (laukelius) nori pasirinkti. Pvz., `-f 2` pasirinktų antrą stulpelį, `-f 2-5` pasirinktų nuo antro iki penkto stulpelio, o `-f 2-5,8` pasirinktų antrą, trečią, ketvirtą, penktą ir aštuntą stulpelius.
+
+
+Ši komanda priima „space“ kaip skirtuką ir atspausdina pirmąjį stulpelį:
+
+```bash
+cut -d " " -f 1 data/temp_vilnius.txt
+```
+
+![](img/shell_adv/cut_column1.png)
+
+Ši komanda priima „tab“ kaip skirtuką ir atspausdina antrąjį stulpelį:
+
+```bash
+cut -f 2  data/temp_vilnius.txt
+```
+
+![](img/shell_adv/cut_column_last.png)
+
+
+Jeigu norėtum gauti tik metus, galėtum nurodyti skirtuką „-“ ir pasirinkti pirmąjį stulpelį:
+
+```bash
+cut -d "-" -f 1 data/temp_vilnius.txt 
+```
+
+![](img/shell_adv/cut_year.png)
+
+
+::: {.callout-tip title="Praktika"}
+
+Programuojant ir dirbant su duomenimis, svarbu išmokti išnaudoti AI galimybes. Šioje praktikoje tu turi nueiti į ChatGPT ir parašyti kažką panašaus:
+
+>Sugeneruok 25 eilučių .csv failą, kurio skirtukas būtų "," su šiais stulpeliais:
+>
+>* user_id,
+>* age (18-99)
+>* country_code (LT, LV, EE)
+>* orders (0-250)
+
+
+ChatGPT sugeneruos .csv failą ir leis jį atsisiųsti. Šiam sugeneravimui ChatGPT pasinaudos Python programavimo kalba. Tu galėtum išsaugoti grąžintą kodą ir naudoti jį ateityje, nes tavo kompiuteryje šis kodas taip pat veiktų. Bet prie Python mes dar grįšime vėliau.
+
+Perkelk failą iš **~/Downloads** į **~/shell_part_2/data**. Tarkime, failas vadinasi sample_data.csv.
+
+![](img/shell_adv/gpt_generator.mp4)
+
+Turint failą:
+
+1. Pervadink failą į **balt_customers.csv**.
+2. Naudojant žinomomis komandomis tyrinėk failą **data/balt_customers.csv**:
+    * Kiek jame eilučių?
+    * Koks skirtukas naudojamas?
+    * Kokie duomenys yra pirmoje eilutėje (antraštė ar duomenys)?
+    * Kiek ir kurios eilutės yra duomenys?
+
+**Užduotis**: Tu dirbi su klientais iš Estijos (EE). Turi parašyti visiems klientams iš Estijos el. laišką ir pranešti apie jų užsakymų skaičių. Laiško rašymą perims programa, tačiau tu jai turi pateikti failą **customers_ee.csv**, kuris turėtų atrodyti taip (tavo duomenys gali skirtis dėl atsitiktinio jų sugeneravimo):
+
+![](img/shell_adv/cut_project.png)
+
+Kad įgyvendintum šią užduotį, tau prireiks komandų: `head`, `cut`, `>` `>>`, `cat` ir `grep` bei sukurti kelis tarpinius failus, kuriuos vėliau galėsi ištrinti. Taip pat patarčiau bandyt skaidyti darbus :) 
+
+Sėkmės!
+
+:::
+
+
+
+### Intarpas: Standartinė įvestis, išvestis ir klaidos
+
+Iki šiol mes naudojome sąvokas, tokias kaip įvestis (**input**) ir išvestis (**output**). Įvestis buvo tai, ką tu įvedi klaviatūra į terminalą, o išvestis – tai, ką BASH atspausdina terminale arba ką tu nukreipi į failą naudodant `>` arba `>>`. Tačiau iki šiol formaliai neaptarėme BASH srautų.
+
+Linux ir Unix sistemose yra trys pagrindiniai srautai, kurie valdo duomenų įvestį ir išvestį programose bei komandose. Šie srautai vadinami standartine įvestimi (**standard input**), standartine išvestimi (**standard output**) ir standartine klaida (**standard error**). Kiekvienas srautas turi specifinę paskirtį ir failo aprašymo numerį.
+
+Svarbu: Linux'e viskas yra failai, net srautai (input/output) traktuojami kaip failai.
+
+#### Standartinė įvestis (stdin)
+
+Standartinė įvestis, sutrumpinta kaip **stdin**, yra srautas, iš kurio komanda ar programa gauna duomenis. Pagal numatytuosius nustatymus, **stdin** yra prijungta prie klaviatūros, tačiau gali būti nukreipta iš failo ar kito srauto.
+
+Pabandyk įrašyti `cat`, paspausti Enter, ir tada įvesk kelis žodžius, vis paspausdžiant Enter. Terminale matysi tekstą, kurį įvedi, nes jis bus perduotas kaip įvestis `cat` komandai, kuri atspausdins šį tekstą. Todėl matysi dvigubai tai, ką įvedei.
+
+```bash
+cat
+```
+
+Nutraukti `cat` įvestį gali su `Ctrl-D` arba `Ctrl-C`.
+
+![](img/shell_adv/std_input_cat.mp4)
+
+
+
+Įvestis taip pat gali būti perduodama iš failo į komandą. Pavyzdžiui, komandai `cat` galime nurodyti failą taip:
+
+```bash
+cat < data/customers_ee.csv
+```
+
+Kodėl veikia <?
+
+Simbolis `<` nurodo komandai, kad vietoje įprastos įvesties iš klaviatūros naudotų failą kaip įvesties šaltinį. Pvz., `cat < data/customers_ee.csv` reiškia, kad `cat` komanda skaitys duomenis iš failo data/customers_ee.csv, o ne iš klaviatūros.
+
+![](img/shell_adv/std_input_file.png)
+
+
+Standartinės įvesties aprašymo numeris: 0. Vėliau pamatysi, kam tie skaičiai naudingi.
+
+#### Standartinė išvestis (stdout)
+
+Standartinė išvestis, sutrumpinta kaip **stdout**, yra srautas, į kurį komanda ar programa rašo išvestį. Dirbant terminale, **stdout** prijungta prie terminalo ekrano. Pavyzdžiui, įrašius šią komandą, terminale atspausdinamas „Hello World“:
+
+```bash
+echo "Hello World"
+```
+
+Galima nukreipti standartinę išvestį ne į terminalo langą, bet į failą, kaip jau esame darę anksčiau:
+
+```bash
+echo "Hello World!" > hello_world.txt
+```
+Standartinė išvestis turi numerį 1. Tai reiškia
+
+```bash
+echo "Hello World!" 1> hello_world.txt
+```
+
+jog **stdout** srautas (`1`), kurį generuoja `echo` komanda, siunčiamas į failą hello_world.txt. Mes panaudojom srauto numerį, kad pasakyti kurį srautą siųsti į failą.
+
+#### Standartinė klaida (stderr)
+
+Kai komanda negali atlikti tam tikro veiksmo, ji sugeneruoja klaidos pranešimą, kuris siunčiamas į standartinį klaidos srautą (**stderr**). Standartinės klaidos srautas turi numerį 2, ir jį taip pat galima nukreipti į failą.
+
+Pabandyk komandą `ls` su neegzistuojančia direktorija, pvz.,:
+
+```bash
+ls abc
+```
+
+![](img/shell_adv/stderr_ls.png)
+
+Klaidos pranešimas bus išspausdintas terminale. Tačiau galime nukreipti tik klaidos srautą į failą:
+
+```bash
+ls abc 2> error.log
+```
+
+Terminale klaidos nebus matyti, bet gali naudoti komandas `head` arba `cat`, kad pažiūrėtum, kas yra **error.log** faile.
+
+![](img/shell_adv/stderr_ls_log.png)
+
+
+
+
+### Kaip visą tai taikyti praktikoje?
+
+Įsivaizduok, kad turi komandą `ls`, kuri kartais sugeneruoja išvestį, kurią nori nukreipti į list.txt, o klaidas – į error.log. Tam galėtum naudoti:
+
+```bash
+ls <direktorija1> <direktorija2> <direktorija3> 1>>list.txt 2>>error.log
+```
+
+Išbandyk šią komandą su egzistuojančia ir neegzistuojančia direktorija (prieš tai su `rm` ištrink error.log jeigu toks egzistuoja)
+
+
+```bash
+ls -l data abc text 1> list.txt 2> error.log
+```
+
+![](img/shell_adv/stdout_stderr.png)
+
+
+Kartais gali prireikti, kad abu srautai būtų nukreipti į tą patį failą. Pvz., jeigu kas 10 minučių matuoji kompiuterio temperatūrą, gali nukreipti tiek stdout, tiek stderr į failą:
+
+```bash
+komanda 1>temp.log 2>&1
+```
+
+Arba gali klaidos srautą nukreipti į temp.log, o standartinę išvestį – į klaidų srautą:
+
+```bash
+komanda 2>temp.log 1>&2
+```
+Simbolis `&` nurodo, kad mes kalbame apie srautą, o ne apie failo vardą. Kai rašai, pvz., `1>&2`, tai reiškia, kad standartinę išvestį (stdout, 1) nukreipi ne į failą, o į standartinį klaidų srautą (stderr, 2). Tai leidžia abu srautus sujungti ir siųsti į tą patį tikslą. Jei `&` nebūtų, sistema galvotų, kad „2“ yra failo pavadinimas, o ne kitas srautas. Analogiškai, `2>&1` reiškia, kad klaidų srautas (stderr, 2) nukreipiamas į išvesties srautą (stdout, 1).
+
+
+### pipe |
+
+Iki šiol, kai reikėdavo vienos komandos išvestį panaudoti kitoje komandoje, pavyzdžiui, išfiltravus Estijos vartotojus su `grep EE data/balt_customers.csv`, turėjai juos išsaugoti į tarpinį failą (pvz., **temporal.csv**), o tik tada paduoti rezultatą į `cut -d "," -f 1,4 temporal.csv`, kad gautum norimą rezultatą. Tai yra neefektyvus metodas, nes:
+
+* Lieka daug tarpinių failų.
+* Komandos būna suskaidytos per kelias eilutes, todėl jas sunku peržiūrėti su `history`.
+
+BASH siūlo kelis būdus, kaip efektyviau panaudoti vienos komandos rezultatus kitose, pavyzdžiui, su `xargs` arba kitais įrankiais. Tačiau dažniausiai naudojamas metodas yra **pipe** (angl. "vamzdis").
+
+`|` (**pipe**) – tai vertikalus brūkšnys, kuris sujungia komandas į vieną srautą, kur vienos komandos išvestis tampa kitos komandos įvestimi.
+
+![](img/shell_adv/pipe_input_ouput.png)
+
+Pabandyk sujungti šias komandas:
+
+* `grep EE data/balt_customers.csv` - išfiltruoti tik EE vartotojus.
+* Panaudoti `|`, kuris pavers pirmosios komandos išvestį antrosios komandos įvestimi.
+* `cut -d "," -f 1,4` – iškirpti pirmą ir ketvirtą stulpelius.
+* Galutinį rezultatą su `>` nukreipk į failą `data/customers_ee_2.csv`.
+
+![](img/shell_adv/pipe_input_ouput_ee.png)
+
+```bash
+grep EE data/balt_customers.csv | cut -d "," -f 1,4 > data/customers_ee_2.csv
+```
+
+Pirma pabandyk paleisti komandą be `>`, kad pamatytum rezultatą terminale:
+
+![](img/shell_adv/pipe_ee.png)
+
+Dabar paleisk pilną komandą, nukreipiančią išvestį į failą:
+
+![](img/shell_adv/pipe_ee_2.png)
+
+
+::: {.callout-tip title="Praktika"}
+* Terminale atspausdink pirmas 3 eilutes, kuriose yra žodis „Apie“ iš failo **data/seneles_pasaka.txt**.
+* Terminale atspausdingk paskutines 3 eilutes kuriose yra 00:00:00 faile **data/temp_vilnius.txt**
+:::
+
+
+
+### sort 
+
+Tu darai nuostabią pažangą ir jau moki naudoti `grep`, `cut`, `head`, `tail`, su kuriomis gali išfiltruoti eilutes, stulpelius ir t.t. Naudojant `|`, jau moki sujungti kelias komandas į vieną. Tačiau ko tu dar nemoki – kaip išrikiuoti reikšmes. Čia pravers komanda `sort`.
+
+`sort` labai gerai sąveikauja su pipe `|`.
+
+Pagrindiniai nustatymai:
+
+* `-r` – nuo didžiausios iki mažiausios reikšmės.
+* `-n` – rikiuoti skaičius.
+* `-h` – rikiuoti pagal dydį, jei dydis pateiktas *human readable* skaičiais (pvz., KB, MB, GB).
+* `-t` – nurodo, koks yra skirtukas tarp stulpelių (**delimiter**).
+* `-k` – pagal kurį stulpelį rikiuoti.
+
+
+Sukurk šį failą:
+
+```bash
+echo -e "A,101\nB,3\nC,2\nD,40" > tosort
+```
+
+Ar pastebėjai, **tosort** neturi indikacijos, koks tai failas, nei .csv, nei .txt. Nieko tokio Linux operacinėje sistemoje, komandos veikia kuo puikiausiai ir be failo tipo indikatoriaus.
+
+![](img/shell_adv/sort_ex_base.png)
+
+Pagal nutylėjimą sort priims failą kaip argumentą ir rikiuos pagal pirmą stulpelį. sort -r apsuks rikiavimo eigą.
+
+```bash
+sort tosort
+sort -r tosort
+```
+
+![](img/shell_adv/sort_text_r.png)
+
+Jei nori, kad BASH suprastų failą kaip turintį skirtingus stulpelius, turi nurodyti, koks yra skirtukas (**delimiter**) su `-t ","`. Tuomet galima rikiuoti pagal konkretų stulpelį su `-k 2`. Jei nepridėsi `-n`, sort rikiuos taip, lyg skaičiai būtų tekstas, t.y., vertins pagal pirmą skaitmenį, tada pagal antrą ir t.t. Pridėjus `-n`, skaičiai vertinami kaip skaičiai.
+
+Galima apsieiti ir be kabučių aplink skirtuką, o `-n` pridėti prie `-k 2`, kad būtų rikiuojama pagal skaičius. Galų gale, tai tavo pasirinkimas.
+
+
+```bash
+sort -t "," -k 2 tosort
+sort -t "," -k 2 -n tosort
+sort -t, -k2n tosort
+```
+
+![](img/shell_adv/sort_tabuler_numeric.png)
+
+
+::: {.callout-tip title="Praktika"}
+
+**Užduotis**: Įsivaizduok, kad esi IT administratorė arba administratorius, atsakingas už sistemų stebėjimą. Tau reikia periodiškai siųsti sąrašą su 5 didžiausiais failais ar direktorijomis pagal dydį namų direktorijoje (`~`). Šis sąrašas turėtų apimti visus paslėptus failus (kurie prasideda su "." savo pavadinime), o dydis turėtų būti *human readable* formatu, o ne baitais. Taip pat norisi, kad maksimalus gylis būtų 1, t.y., jog būtų žiūrima į `~` ir vieną lygį giliau, t.y. `~/direktorija/`.
+
+Kadangi šią užduotį reikia atlikti kasdien, nusprendei sukurti ilgą BASH komandą.
+
+**Pagalba**: Prieš pradedant nueik į ChatGPT ir paprašyk:
+
+>Paaiškink man "du" komanda Linux ir jos nustatymus. Man reiktų matyti failus human readable formatu. Pateik kelis pvz.
+
+Perskaityk ką tau gražins ChatGPT, jeigu reikia pasitisklink užduodant papildomus klausimus.
+
+![](img/shell_adv/du_example.png)
+
+Pabandyk sukurti komandų seką (**pipeline**) su `du`, `sort`, `head`. Eksperimentuok su nustatymais.
+
+Kai terminalo lange matysi reikiamą išvestį, naudok `echo`, apskliausk visą komandą kabutėmis ir nukreipk į failą pavadinimu **list_du_homedir.sh**. Taigi, tai turėtų atrodyti daugmaž taip:
+
+```bash
+echo "komanda komanda komanda" > list_du_homedir.sh
+```
+
+O dabar pabandyk  
+
+```bash
+bash list_du_homedir.sh
+```
+
+arba su pipe
+
+```bash
+cat list_du_homedir.sh | bash
+```
+
+Sveikinu, ką tik sukūrei savo pirmą skriptą! Tai komandų rinkinys, kurį gali perduoti BASH, ir jis jį įvykdys.
+
+:::
+
+
+### sed
+
+`sed` komanda Linux sistemoje yra srauto redaktorius (**stream editor**), naudojamas tekstui apdoroti ir manipuliuoti. Ji leidžia atlikti įvairius teksto pakeitimus, pvz., ieškoti ir pakeisti žodžius, ištrinti eilutes arba modifikuoti tekstą pagal tam tikras taisykles, nespausdinant teksto į terminalą.
+
+Vienas paprasčiausių būdų naudoti `sed` – tai pakeisti tam tikrą tekstą kitu tekstu: tam naudojama tokia sintaksė `sed 's/ką keisti/kuo pakeisti/'`.
+
+Taigi, ši komanda pakeičia „rytas“ į „vakaras“:
+
+```bash
+echo "Labas rytas" | sed 's/rytas/vakaras/'
+```
+
+`sed` nėra agresyvi komanda, todėl ankstesnė komanda pakeičia tik pirmą rastą atitikmenį:
+
+```bash
+echo "Labas rytas, pasakė senelė kai atėjo rytas" | sed 's/rytas/vakaras/'
+```
+
+Matyti, kad tik pirmas „rytas“ pakeistas į „vakaras“, o antrasis ne. Jei nori, kad visi atitikmenys būtų pakeisti, reikia pridėti nustatymą `g`:
+
+```bash
+echo "Labas rytas, pasakė senelė kai atėjo rytas" | sed 's/rytas/vakaras/g' 
+```
+
+Su sed taip pat galima ištrinti eilutes. Pavyzdžiui, jei `ls -l` komanda atspausdina „total ...“, galima tai ištrinti naudojant `sed '1d'`:
+
+```bash
+ls -l
+ls -l |sed '1d'
+```
+Vietoje `1`, kuris nurodo, kurią eilutę trinti, galima nurodyti ir diapazoną, pvz., nuo 1 iki 3 su sed `'1,3d'`:
+
+```bash
+ls -l | sed '1,3d'
+```
+
+Taip pat galima įterpti naujas eilutes:
+
+```bash
+ls -l | sed '3a/nauja eilutė'
+```
+
+Pora įdomybių:
+
+Su `sed` gali naudoti *regular expressions*. Štai keletas reikšmių:
+
+* `^` reiškia eilutės pradžią.
+* `$` reiškia eilutės pabaigą.
+* `\t` reiškia tabuliaciją (naudoti su `sed -E`).
+* `\s` reiškia tarpą (naudoti su `sed -E`).
+
+Pvz., pridėti veiduką prieš kiekvieną eilutę:
+
+```
+sed 's/^/😀/g' text/seneles_pasaka.txt
+```
+
+Jei nori, kad `sed` ignoruotų raidžių dydžius, pridėk nustatymą `I`. Tai panašu į `grep -i`.
+
+```bash
+echo Labas Rytas | sed 's/rytas/Vakaras/'
+echo Labas Rytas | sed 's/rytas/Vakaras/I'
+```
+
+::: {.callout-tip title="Praktika"}
+
+1. Dirbk su **data/seneles_pasaka.txt**. Tavo tikslas – padaryti pasaką labiau patrauklią vaikams, pakeičiant žodžius simboliais. Naudok `sed` komandą ir pakeisk šiuos žodžius į atitinkamus simbolius. Sujunk visas `sed` komandas į viena *pipeline* naudojant `|`.
+
+Žąsiną moliūgą – 🦢🎃
+Vilką – 🐺
+Baltą mešką – 🐻‍❄️
+Joną – 👦🏻
+Eglę - 🌲
+Žalčio – 🐍
+Ragana - 🧙‍♀️
+Pamotė pikta – 😡
+
+
+Išsaugok pasaką kaip **text/seneles_pasaka_emojies.txt** 
+
+![](img/shell_adv/sed_pasaka.png)
+
+2. **data/temp_vilnius.txt** ir kitų miestų failai turi kelias problemas, kurias turėtum ištaisyti:
+    * Vilniaus faile kiekvienos eilutės pradžioje įrašyk „Vilnius “ (su tarpeliu po miesto pavadinimo). Kituose miestuose atitinkmai "Kaunas " ir "Klaipėda "
+    * Dabar pirmieji du skirtukai yra tarpai, o antrasis – tabuliacija. Paleisk `sed` komandą du kartus: vieną kartą pakeisk tarpus (space) į kablelius, o antrą kartą – tabuliacijas į kablelius.
+    * Išsaugok Vilniaus, Kauno, ir Klaipėdos failus kaip **temp_vilnius.csv**, **temp_kaunas.csv**, **temp_klaipeda.csv** (vietoje .txt naudok **.csv** plėtinį).
+    * Kiekvienas miestas turėtų turėti visą komandą vienoje eilutėje naudojant `|`.
+* Sujunk visus Vilniaus, Kauno ir Klaipėdos failus į vieną ir pavadink rezultatą temp_lietuva.csv.
+* Pabandyk atidaryti šį failą su LibreOffice Calc:
+ 
+ ```bash
+ libreoffice --calc temp_lietuva.csv
+ ```
+* Pavaizduok sekančių dienų temperatūras.
+
+ ![](img/shell_adv/sed_temp.png)
+:::
+
+
 
 
 

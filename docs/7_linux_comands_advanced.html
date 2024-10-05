@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./6_linux_comands_basic.html" rel="prev">
+<link href="./6b_linux_comands_basic.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -153,32 +153,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./2_linux_intro_terminal.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Susipažinkime su Terminal</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./3_linux_update.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linux programos ir atnaujinimai</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Linux atnaujinimas</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./4_linux_software.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linux programos ir atnaujinimai</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linux programos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./5_passwords_online_accounts.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Slaptažodžiai ir internetinės paskyros</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Slaptažodžiai ir internetinės paskyros</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./6_linux_comands_basic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Pagridinės BASH komandos</span></span></a>
+  <a href="./6a_linux_comands_basic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Terminalas ir Linux failų sistema</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6b_linux_comands_basic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">BASH komandos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -197,9 +197,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#chmod" id="toc-chmod" class="nav-link active" data-scroll-target="#chmod"><span class="header-section-number">7.0.1</span> chmod</a></li>
-  <li><a href="#chown" id="toc-chown" class="nav-link" data-scroll-target="#chown"><span class="header-section-number">7.0.2</span> chown</a></li>
-  <li><a href="#ps-ir-top" id="toc-ps-ir-top" class="nav-link" data-scroll-target="#ps-ir-top"><span class="header-section-number">7.0.3</span> ps ir top</a></li>
+  <li><a href="#help" id="toc-help" class="nav-link active" data-scroll-target="#help"><span class="header-section-number">7.0.1</span> help</a></li>
+  <li><a href="#man" id="toc-man" class="nav-link" data-scroll-target="#man"><span class="header-section-number">7.0.2</span> man</a></li>
+  <li><a href="#find" id="toc-find" class="nav-link" data-scroll-target="#find"><span class="header-section-number">7.0.3</span> find</a></li>
+  <li><a href="#chmod" id="toc-chmod" class="nav-link" data-scroll-target="#chmod"><span class="header-section-number">7.0.4</span> chmod</a></li>
+  <li><a href="#chown" id="toc-chown" class="nav-link" data-scroll-target="#chown"><span class="header-section-number">7.0.5</span> chown</a></li>
+  <li><a href="#ps-ir-top" id="toc-ps-ir-top" class="nav-link" data-scroll-target="#ps-ir-top"><span class="header-section-number">7.0.6</span> ps ir top</a></li>
+  <li><a href="#sed" id="toc-sed" class="nav-link" data-scroll-target="#sed"><span class="header-section-number">7.1</span> sed</a></li>
+  <li><a href="#xed" id="toc-xed" class="nav-link" data-scroll-target="#xed"><span class="header-section-number">7.2</span> xed</a></li>
+  <li><a href="#find-1" id="toc-find-1" class="nav-link" data-scroll-target="#find-1"><span class="header-section-number">7.3</span> find</a></li>
+  <li><a href="#ps" id="toc-ps" class="nav-link" data-scroll-target="#ps"><span class="header-section-number">7.4</span> ps</a>
+  <ul class="collapse">
+  <li><a href="#tldr" id="toc-tldr" class="nav-link" data-scroll-target="#tldr"><span class="header-section-number">7.4.1</span> tldr</a></li>
+  </ul></li>
+  <li><a href="#learning-path-for-bash" id="toc-learning-path-for-bash" class="nav-link" data-scroll-target="#learning-path-for-bash"><span class="header-section-number">8</span> Learning Path for Bash</a>
+  <ul class="collapse">
+  <li><a href="#file-permissions-and-ownership" id="toc-file-permissions-and-ownership" class="nav-link" data-scroll-target="#file-permissions-and-ownership"><span class="header-section-number">8.1</span> 1. File Permissions and Ownership</a></li>
+  <li><a href="#environment-variables" id="toc-environment-variables" class="nav-link" data-scroll-target="#environment-variables"><span class="header-section-number">8.2</span> 2. Environment Variables</a></li>
+  <li><a href="#text-processing-tools" id="toc-text-processing-tools" class="nav-link" data-scroll-target="#text-processing-tools"><span class="header-section-number">8.3</span> 3. Text Processing Tools</a></li>
+  <li><a href="#basic-networking-commands" id="toc-basic-networking-commands" class="nav-link" data-scroll-target="#basic-networking-commands"><span class="header-section-number">8.4</span> 4. Basic Networking Commands</a></li>
+  <li><a href="#job-control-light-coverage" id="toc-job-control-light-coverage" class="nav-link" data-scroll-target="#job-control-light-coverage"><span class="header-section-number">8.5</span> 5. Job Control (Light Coverage)</a></li>
+  <li><a href="#command-history-and-aliases" id="toc-command-history-and-aliases" class="nav-link" data-scroll-target="#command-history-and-aliases"><span class="header-section-number">8.6</span> 6. Command History and Aliases</a></li>
+  <li><a href="#file-compression-and-archiving" id="toc-file-compression-and-archiving" class="nav-link" data-scroll-target="#file-compression-and-archiving"><span class="header-section-number">8.7</span> 7. File Compression and Archiving</a></li>
+  <li><a href="#disk-usage-commands" id="toc-disk-usage-commands" class="nav-link" data-scroll-target="#disk-usage-commands"><span class="header-section-number">8.8</span> 8. Disk Usage Commands</a></li>
+  <li><a href="#secure-file-transfer" id="toc-secure-file-transfer" class="nav-link" data-scroll-target="#secure-file-transfer"><span class="header-section-number">8.9</span> 9. Secure File Transfer</a></li>
+  <li><a href="#command-execution-and-debugging" id="toc-command-execution-and-debugging" class="nav-link" data-scroll-target="#command-execution-and-debugging"><span class="header-section-number">8.10</span> 10. Command Execution and Debugging</a></li>
+  <li><a href="#wrap-up" id="toc-wrap-up" class="nav-link" data-scroll-target="#wrap-up"><span class="header-section-number">8.11</span> Wrap-Up</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -225,44 +249,225 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="chmod" class="level3" data-number="7.0.1">
-<h3 data-number="7.0.1" class="anchored" data-anchor-id="chmod"><span class="header-section-number">7.0.1</span> chmod</h3>
+<section id="help" class="level3" data-number="7.0.1">
+<h3 data-number="7.0.1" class="anchored" data-anchor-id="help"><span class="header-section-number">7.0.1</span> help</h3>
+</section>
+<section id="man" class="level3" data-number="7.0.2">
+<h3 data-number="7.0.2" class="anchored" data-anchor-id="man"><span class="header-section-number">7.0.2</span> man</h3>
+<p>Exercise Exercise How can I get help for a command?</p>
+<p>To find out what commands do, people used to use the man command (short for “manual”). For example, the command man head brings up this information:</p>
+<p>HEAD(1) BSD General Commands Manual HEAD(1)</p>
+<p>NAME head – display first lines of a file</p>
+<p>SYNOPSIS head [-n count | -c bytes] [file …]</p>
+<p>DESCRIPTION This filter displays the first count lines or bytes of each of the specified files, or of the standard input if no files are specified. If count is omitted it defaults to 10.</p>
+<pre><code> If more than a single file is specified, each file is preceded by
+ a header consisting of the string ``==&gt; XXX &lt;=='' where ``XXX''
+ is the name of the file.</code></pre>
+<p>SEE ALSO tail(1)</p>
+<p>man automatically invokes less, so you may need to press spacebar to page through the information and :q to quit.</p>
+<p>The one-line description under NAME tells you briefly what the command does, and the summary under SYNOPSIS lists all the flags it understands. Anything that is optional is shown in square brackets […], either/or alternatives are separated by |, and things that can be repeated are shown by …, so head’s manual page is telling you that you can either give a line count with -n or a byte count with -c, and that you can give it any number of filenames.</p>
+<p>The problem with the Unix manual is that you have to know what you’re looking for. If you don’t, you can search Stack Overflow, ask a question on DataCamp’s Slack channels, or look at the SEE ALSO sections of the commands you already know. Instructions 1/2 50 XP</p>
+<pre><code>1
+
+Read the manual page for the tail command to find out what putting a + sign in front of the number used with the -n flag does. (Remember to press spacebar to page down and/or type q to quit.)</code></pre>
+<p>2</p>
+<p>Use tail with the flag -n +7 to display all but the first six lines of seasonal/spring.csv.</p>
+</section>
+<section id="find" class="level3" data-number="7.0.3">
+<h3 data-number="7.0.3" class="anchored" data-anchor-id="find"><span class="header-section-number">7.0.3</span> find</h3>
+<p>Komanda find naudojama ieškoti failų ir katalogų pagal įvairius kriterijus.</p>
+<ul>
+<li>Ieškoti failų dabartiniame kataloge pagal pavadinimą:</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">"failas.txt"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Ieškoti failų visoje sistemoje pagal pavadinimą:</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> / <span class="at">-name</span> <span class="st">"failas.txt"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="chmod" class="level3" data-number="7.0.4">
+<h3 data-number="7.0.4" class="anchored" data-anchor-id="chmod"><span class="header-section-number">7.0.4</span> chmod</h3>
 <p>Komanda chmod (angl. <strong>change mode</strong>, liet. “keisti režimą”) naudojama keisti failų ir katalogų teises.</p>
 <ul>
 <li>Suteikti vykdymo teisę failui:</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x failas.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x failas.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Nustatyti konkrečias teises:</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 755 failas.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 755 failas.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="chown" class="level3" data-number="7.0.2">
-<h3 data-number="7.0.2" class="anchored" data-anchor-id="chown"><span class="header-section-number">7.0.2</span> chown</h3>
+<section id="chown" class="level3" data-number="7.0.5">
+<h3 data-number="7.0.5" class="anchored" data-anchor-id="chown"><span class="header-section-number">7.0.5</span> chown</h3>
 <p>Komanda <code>chown</code> (angl. change owner, liet. “keisti savininką”) naudojama keisti failų ir katalogų savininką.</p>
 <ul>
 <li>Keisti failo savininką:</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown naujas_savininkas failas.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown naujas_savininkas failas.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Keisti failo savininką ir grupę:</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown naujas_savininkas:nauja_grupė failas.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown naujas_savininkas:nauja_grupė failas.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="ps-ir-top" class="level3" data-number="7.0.3">
-<h3 data-number="7.0.3" class="anchored" data-anchor-id="ps-ir-top"><span class="header-section-number">7.0.3</span> ps ir top</h3>
+<section id="ps-ir-top" class="level3" data-number="7.0.6">
+<h3 data-number="7.0.6" class="anchored" data-anchor-id="ps-ir-top"><span class="header-section-number">7.0.6</span> ps ir top</h3>
 <p>Komandos <code>ps</code> ir <code>top</code> naudojamos valdyti ir stebėti procesus sistemoje.</p>
 <ul>
 <li>Parodyti veikiančius procesus su ps:</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> aux</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> aux</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Realiu laiku sekti procesus su top:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">top</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">top</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="sed" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="sed"><span class="header-section-number">7.1</span> sed</h2>
+</section>
+<section id="xed" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="xed"><span class="header-section-number">7.2</span> xed</h2>
+</section>
+<section id="find-1" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="find-1"><span class="header-section-number">7.3</span> find</h2>
+</section>
+<section id="ps" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="ps"><span class="header-section-number">7.4</span> ps</h2>
+<section id="tldr" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="tldr"><span class="header-section-number">7.4.1</span> tldr</h3>
+</section>
+</section>
+<section id="learning-path-for-bash" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Learning Path for Bash</h1>
+<section id="file-permissions-and-ownership" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="file-permissions-and-ownership"><span class="header-section-number">8.1</span> 1. File Permissions and Ownership</h2>
+<ul>
+<li><strong>Understanding Permissions</strong>
+<ul>
+<li>Recap of <code>r</code>, <code>w</code>, <code>x</code> permissions.</li>
+</ul></li>
+<li><strong>Commands to Manage Permissions</strong>
+<ul>
+<li><code>chmod</code>: Change file permissions.</li>
+<li><code>chown</code>: Change file ownership.</li>
+<li><code>chgrp</code>: Change group ownership.</li>
+</ul></li>
+</ul>
+</section>
+<section id="environment-variables" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="environment-variables"><span class="header-section-number">8.2</span> 2. Environment Variables</h2>
+<ul>
+<li><strong>Introduction to Environment Variables</strong>
+<ul>
+<li>Importance and usage in scripting.</li>
+</ul></li>
+<li><strong>Commands</strong>
+<ul>
+<li><code>export</code>: Set environment variables.</li>
+<li><code>env</code>, <code>printenv</code>: Display environment variables.</li>
+</ul></li>
+</ul>
+</section>
+<section id="text-processing-tools" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="text-processing-tools"><span class="header-section-number">8.3</span> 3. Text Processing Tools</h2>
+<ul>
+<li><strong>Advanced Text Processing</strong>
+<ul>
+<li><code>awk</code>: Basic usage for pattern scanning and processing.</li>
+<li><code>paste</code>: Merging lines of files.</li>
+</ul></li>
+</ul>
+</section>
+<section id="basic-networking-commands" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="basic-networking-commands"><span class="header-section-number">8.4</span> 4. Basic Networking Commands</h2>
+<ul>
+<li><strong>Networking Basics</strong>
+<ul>
+<li><code>ping</code>: Checking network connectivity.</li>
+<li><code>curl</code> or <code>wget</code>: Fetching files or data from the web.</li>
+<li><code>nc</code>: Networking tool for reading/writing data across network connections.</li>
+</ul></li>
+</ul>
+</section>
+<section id="job-control-light-coverage" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="job-control-light-coverage"><span class="header-section-number">8.5</span> 5. Job Control (Light Coverage)</h2>
+<ul>
+<li><strong>Understanding Job Control</strong>
+<ul>
+<li>Overview of foreground and background processes.</li>
+<li>Basic commands: <code>jobs</code>, <code>bg</code>, <code>fg</code>, <code>kill</code>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="command-history-and-aliases" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="command-history-and-aliases"><span class="header-section-number">8.6</span> 6. Command History and Aliases</h2>
+<ul>
+<li><strong>Managing Command History</strong>
+<ul>
+<li><code>history</code>: Viewing command history.</li>
+</ul></li>
+<li><strong>Creating Shortcuts</strong>
+<ul>
+<li><code>alias</code>: Define shortcuts for commands.</li>
+</ul></li>
+</ul>
+</section>
+<section id="file-compression-and-archiving" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="file-compression-and-archiving"><span class="header-section-number">8.7</span> 7. File Compression and Archiving</h2>
+<ul>
+<li><strong>File Management</strong>
+<ul>
+<li><code>tar</code>: Archive files and directories.</li>
+<li><code>gzip</code>: Compress files.</li>
+</ul></li>
+</ul>
+</section>
+<section id="disk-usage-commands" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="disk-usage-commands"><span class="header-section-number">8.8</span> 8. Disk Usage Commands</h2>
+<ul>
+<li><strong>Disk Usage Overview</strong>
+<ul>
+<li><code>df</code>: Report file system disk space usage.</li>
+<li><code>du</code>: Estimate file and directory space usage.</li>
+<li><code>ncdu</code>: Disk usage analyzer with a text-based interface.</li>
+</ul></li>
+</ul>
+</section>
+<section id="secure-file-transfer" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="secure-file-transfer"><span class="header-section-number">8.9</span> 9. Secure File Transfer</h2>
+<ul>
+<li><strong>Transferring Files Securely</strong>
+<ul>
+<li><code>scp</code>: Secure copy protocol.</li>
+<li><code>rsync</code>: Efficiently transfer files and directories.</li>
+<li><code>ssh</code>: Secure shell for remote access.</li>
+</ul></li>
+</ul>
+</section>
+<section id="command-execution-and-debugging" class="level2" data-number="8.10">
+<h2 data-number="8.10" class="anchored" data-anchor-id="command-execution-and-debugging"><span class="header-section-number">8.10</span> 10. Command Execution and Debugging</h2>
+<ul>
+<li><strong>Command Substitution</strong>
+<ul>
+<li><code>eval</code>: Execute commands stored in variables.</li>
+</ul></li>
+<li><strong>Debugging Scripts</strong>
+<ul>
+<li>Introduction to debugging scripts (using <code>set -x</code> for tracing execution).</li>
+</ul></li>
+</ul>
+</section>
+<section id="wrap-up" class="level2" data-number="8.11">
+<h2 data-number="8.11" class="anchored" data-anchor-id="wrap-up"><span class="header-section-number">8.11</span> Wrap-Up</h2>
+<ul>
+<li><strong>Integration and Practice</strong>
+<ul>
+<li>Combine learned commands in small exercises to reinforce concepts.</li>
+</ul></li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -688,8 +893,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./6_linux_comands_basic.html" class="pagination-link" aria-label="Pagridinės BASH komandos">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Pagridinės BASH komandos</span></span>
+      <a href="./6b_linux_comands_basic.html" class="pagination-link" aria-label="BASH komandos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">BASH komandos</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
