@@ -6,34 +6,46 @@ book:
   title: "Linux ir programavimas"
   author: "Justas Mundeikis"
   chapters:
-    - part: "Linux Basics"
+    - part: "Linux Pagrindai"
       chapters:
         - index.qmd
         - 1_linux_configure.qmd
         - 2_linux_update.qmd
         - 3_linux_software.qmd
-    - part: "Bash and Terminal"
+        - 4_passwords.qmd
+    - part: "Bash Pagrindai"
       chapters:
-        - 5_terminal_filesystem.qmd
+        - 5_bash_terminal_filesystem.qmd
         - 6_bash_comands_basic.qmd
-        - 7_bash_comands_advanced.qmd
-        - 8_bash_advanced2.qmd
-    - part: "Text Editing and Git"
+        - 7_bash_comands_advanced_1.qmd
+        - 8_bash_commands_advanced_2.qmd
+    - part: "Editoriai ir Git"
       chapters:
-        - 9_text_editor_ide.qmd
+        - 9_text_editors_ide.qmd
         - 10_git_github_1.qmd
         - 11_git_github_2.qmd
-        - 11b_ssh.qmd
-    - part: "Python Programming"
+        - 12_ssh.qmd
+    - part: "Bash Skriptai"
+      chapters:
+        - 14_bash_scripts_1.qmd
+        - 15_bash_scripts_2.qmd
+    - part: "Python Programavimas"
       chapters:
         - 12_python_intro.qmd
-        - 13_python_data_structures_loops.qmd
-        - 14_python_variables_conditionals.qmd
-        - 15_python_read_write_files.qmd
+        - 16a_python_data_structures_loops.qmd
+        - 16b_python_variables_conditionals.qmd
+        - 16c_python_read_write_files.qmd
         - 16_python_APIs.qmd
         - 17_python_functions_os.qmd
         - 18_Python_openai_api.qmd
-    - part: "Advanced Topics"
+        - 19_python_webscrapping.qmd
+        - 20_python_ollama.qmd
+        - 21_python_bottles.qmd
+        - 22_python_sql.qmd
+        - 23_python_html.qmd
+        - 24_python_css.qmd
+        - 25_python_deployment.qmd
+    - part: "Pažangios Temos"
       chapters:
         - 26_TCP_IP.qmd
         - 27_raspberry_pi.qmd
@@ -44,6 +56,3 @@ book:
 format:
   html:
     theme: flatly
-
-
-

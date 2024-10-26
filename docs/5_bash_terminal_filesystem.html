@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>5&nbsp; Terminalas ir Linux failų sistema – Linux ir programavimas</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./6_bash_comands_basic.html" rel="next">
+<link href="./4_passwords.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./5_bash_terminal_filesystem.html">Bash Pagrindai</a></li><li class="breadcrumb-item"><a href="./5_bash_terminal_filesystem.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Terminalas ir Linux failų sistema</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Linux ir programavimas</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Linux Pagrindai</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Įvadas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1_linux_configure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Linux pirmieji žingnsiai</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2_linux_update.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Linux atnaujinimas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3_linux_software.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linux programos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./4_passwords.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Slaptažodžiai ir internetinės paskyros</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bash Pagrindai</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5_bash_terminal_filesystem.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Terminalas ir Linux failų sistema</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6_bash_comands_basic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">BASH komandos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./7_bash_comands_advanced_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BASH advanced</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./8_bash_commands_advanced_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">BASH advanced 2</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Editoriai ir Git</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9_text_editors_ide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Text editors ir IDE</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10_git_github_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Git ir GitHub 1</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11_git_github_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Git ir GitHub 2</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12_ssh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">SSH</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bash Skriptai</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14_bash_scripts_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Bash Skriptai 1</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15_bash_scripts_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Bash Skriptai 2</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Python Programavimas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12_python_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Python Įvadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16a_python_data_structures_loops.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Python Struktūros ir Ciklai</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16b_python_variables_conditionals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Python Kintamieji</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16c_python_read_write_files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Python Failai</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16_python_APIs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Python API</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17_python_functions_os.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Python Funkcijos ir OS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18_Python_openai_api.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Python ir OpenAI</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19_python_webscrapping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Python Web Scaping</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20_python_ollama.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Python Struktūros ir Ollama</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21_python_bottles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Python Bottles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22_python_sql.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Python SQL</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./23_python_html.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Python HTML</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./24_python_css.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Python CSS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./25_python_deployment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Python NGINX, Gunicorn</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Pažangios Temos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./26_TCP_IP.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">TCP/IP</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./27_raspberry_pi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Raspberry Pi</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./28_home_server.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Raspberry pi - Server</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./29_docker_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Docker 1</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./30_docker_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Docker 2</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#shell-ir-terminalas" id="toc-shell-ir-terminalas" class="nav-link active" data-scroll-target="#shell-ir-terminalas"><span class="header-section-number">5.1</span> Shell ir Terminalas</a></li>
+  <li><a href="#iš-ko-susideda-cli-komanda" id="toc-iš-ko-susideda-cli-komanda" class="nav-link" data-scroll-target="#iš-ko-susideda-cli-komanda"><span class="header-section-number">5.2</span> Iš ko susideda CLI komanda?</a>
+  <ul class="collapse">
+  <li><a href="#praktika" id="toc-praktika" class="nav-link" data-scroll-target="#praktika"><span class="header-section-number">5.2.1</span> Praktika</a></li>
+  </ul></li>
+  <li><a href="#linux-failų-sistema" id="toc-linux-failų-sistema" class="nav-link" data-scroll-target="#linux-failų-sistema"><span class="header-section-number">5.3</span> Linux failų sistema</a>
+  <ul class="collapse">
+  <li><a href="#sudo" id="toc-sudo" class="nav-link" data-scroll-target="#sudo"><span class="header-section-number">5.3.1</span> sudo</a></li>
+  <li><a href="#root-direktorija" id="toc-root-direktorija" class="nav-link" data-scroll-target="#root-direktorija"><span class="header-section-number">5.3.2</span> root direktorija</a></li>
+  <li><a href="#praktika-1" id="toc-praktika-1" class="nav-link" data-scroll-target="#praktika-1"><span class="header-section-number">5.3.3</span> Praktika</a></li>
+  </ul></li>
+  <li><a href="#keliavimas-failų-sistema" id="toc-keliavimas-failų-sistema" class="nav-link" data-scroll-target="#keliavimas-failų-sistema"><span class="header-section-number">5.4</span> Keliavimas failų sistema</a>
+  <ul class="collapse">
+  <li><a href="#absoliutus-kelias" id="toc-absoliutus-kelias" class="nav-link" data-scroll-target="#absoliutus-kelias"><span class="header-section-number">5.4.1</span> Absoliutus kelias</a></li>
+  <li><a href="#relatyvus-kelias" id="toc-relatyvus-kelias" class="nav-link" data-scroll-target="#relatyvus-kelias"><span class="header-section-number">5.4.2</span> Relatyvus kelias</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">5.4.3</span> ~</a></li>
+  <li><a href="#pwd" id="toc-pwd" class="nav-link" data-scroll-target="#pwd"><span class="header-section-number">5.4.4</span> pwd</a></li>
+  <li><a href="#cd" id="toc-cd" class="nav-link" data-scroll-target="#cd"><span class="header-section-number">5.4.5</span> cd</a></li>
+  <li><a href="#ls" id="toc-ls" class="nav-link" data-scroll-target="#ls"><span class="header-section-number">5.4.6</span> ls</a></li>
+  <li><a href="#teisės-ir-tipai" id="toc-teisės-ir-tipai" class="nav-link" data-scroll-target="#teisės-ir-tipai"><span class="header-section-number">5.4.7</span> Teisės ir tipai</a></li>
+  <li><a href="#pagalbinės-funkcijos-terminale" id="toc-pagalbinės-funkcijos-terminale" class="nav-link" data-scroll-target="#pagalbinės-funkcijos-terminale"><span class="header-section-number">5.4.8</span> Pagalbinės funkcijos terminale</a></li>
+  <li><a href="#history" id="toc-history" class="nav-link" data-scroll-target="#history"><span class="header-section-number">5.4.9</span> history</a></li>
+  <li><a href="#clear" id="toc-clear" class="nav-link" data-scroll-target="#clear"><span class="header-section-number">5.4.10</span> clear</a></li>
+  <li><a href="#ctrl-l" id="toc-ctrl-l" class="nav-link" data-scroll-target="#ctrl-l"><span class="header-section-number">5.4.11</span> Ctrl-L</a></li>
+  <li><a href="#navigacija-terminale" id="toc-navigacija-terminale" class="nav-link" data-scroll-target="#navigacija-terminale"><span class="header-section-number">5.4.12</span> Navigacija terminale</a></li>
+  <li><a href="#ctrl-c-ir-escape" id="toc-ctrl-c-ir-escape" class="nav-link" data-scroll-target="#ctrl-c-ir-escape"><span class="header-section-number">5.4.13</span> Ctrl-C ir Escape</a></li>
+  <li><a href="#praktika-2" id="toc-praktika-2" class="nav-link" data-scroll-target="#praktika-2"><span class="header-section-number">5.4.14</span> Praktika</a></li>
+  </ul></li>
+  <li><a href="#funkcijos" id="toc-funkcijos" class="nav-link" data-scroll-target="#funkcijos"><span class="header-section-number">5.5</span> Funkcijos</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./5_bash_terminal_filesystem.html">Bash Pagrindai</a></li><li class="breadcrumb-item"><a href="./5_bash_terminal_filesystem.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Terminalas ir Linux failų sistema</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Terminalas ir Linux failų sistema</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="shell-ir-terminalas" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="shell-ir-terminalas"><span class="header-section-number">5.1</span> Shell ir Terminalas</h2>
+<p>Šiek tiek istorijos… Senais laikais kompiuteriai buvo milžiniški. Kad būtų patogiau (santykinai) su jais dirbti, žmonės prisėsdavo prie ekrano su klaviatūra, kuris buvo sujungtas su kompiuteriu. Ši instaliacija – ekranas su klaviatūra – buvo vadinama <strong>terminalu</strong>. Darbuotojai rašydavo komandas, o kompiuteris jas vykdydavo ir grąžindavo rezultatus. Tais laikais buvo rašomos komandos, nes kompiuteriai dar nebuvo tokie galingi ir neturėjo <strong>GUI</strong> (<strong>graphical user interface</strong>, lt - grafinės vartotojo sąsajos). Taigi, terminalas buvo <strong>CLI</strong> (<strong>command line interface</strong>, lt- komandų eilutės sąsaja), nes priimdavo komandas. Tai yra vartotojo sąsaja, kurioje komandos įvedamos (<strong>input</strong>) tekstu, o rezultatai rodomi kaip teksto išvestis (<strong>output</strong>). Skirtingai nuo GUI, kur naudojami vizualiniai elementai, tokie kaip langai ir mygtukai, CLI leidžia tiesiogiai rašyti instrukcijas, kurias vykdo sistema.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/shell/the-ibm-2741-terminal.jpg" class="img-fluid figure-img"></p>
+<figcaption>The IBM 2741 Terminal <a href="https://www.ibm.com/history/ibm100/images/icp/Z491903Y91074L07/us__en_us__ibm100__selectric__selectric_2__900x746.jpg">IBM</a></figcaption>
+</figure>
+</div>
+<p>Kiek vėliau, atsiradus ekranams…</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/shell/500px-IBM_2260.jpeg" class="img-fluid figure-img"></p>
+<figcaption>22.0 IBM Modell 360 / 370 <a href="https://digitaltmuseum.no/011015240147/22-0-ibm-modell-360-370">IBM</a></figcaption>
+</figure>
+</div>
+<p>Šiais laikais, kai norime, kad kompiuteris vykdytų komandas, taip pat naudojamės terminalu, tik jau ne fiziniu, o program, kuri emuliuoja fizinį terminalą.</p>
+<p>Programa, kuri priima ir vykdo komandas, bendrai vadinama <strong>Shell</strong>. Ji priima komandas, išverčia jas į kompiuterio suprantamą kalbą ir liepia kompiuteriui jas įvykdyti. Po to, gavusi rezultatus, ji juos parodo terminale. Yra keletas skirtingų Shell “kalbų” arba tipų. Populiariausi Shell tipai, tokie kaip <strong>Bash</strong> (Bourne Again Shell), yra standartinė kiekvienos Linux sistemos dalis. <strong>Zsh</strong> (Z Shell) yra standartinis Shell MacOS sistemose, tačiau jis vis labiau populiarėja ir tarp Linux vartotojų.</p>
+<p>Shell programos leidžia automatizuoti įvairias užduotis ir vykdyti sudėtingas komandas. Be to, Shell turi programavimo kalbos savybių, leidžiančių rašyti <strong>skriptus</strong> – failus su komandomis, kurios vykdomos viena po kitos.</p>
+<p>Taigi terminalas yra CLI programa, kuri leidžia pasiekti Shell sąsają. Jį galima įsivaizduoti kaip langą kompiuteryje, per kurį įvedi komandas ir matai jų rezultatus. Terminalo programos naudojamos įvairiose operacinėse sistemose, nes jos leidžia efektyviau valdyti sistemą nei daugelis grafinių vartotojo sąsajų. Naudodajantis terminalu, gali atlikti įvairias užduotis greičiau ir tiksliau.</p>
+<p>Atidaryk terminalo programą ir įrašyk šią komandą. Ji parodys, kur yra Shell ir koks būtent Shell tipas naudojamas.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> <span class="va">$SHELL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Atsakymas (<strong>output</strong>) parodo vykdomojo Shell failo vietą – Shell programą, kuri šiuo metu naudojama tavo terminale. Iš output taip pat gali matyti, koks tai Shell tipas. Šiuo atveju, tai Bash.</p>
+</section>
+<section id="iš-ko-susideda-cli-komanda" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="iš-ko-susideda-cli-komanda"><span class="header-section-number">5.2</span> Iš ko susideda CLI komanda?</h2>
+<p>Atsidaryk terminalo programą. Štai ką turėtum pamatyti:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/shell/cli_prompt.png" class="img-fluid figure-img"></p>
+<figcaption>Terminal su matomu prompt</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Prompt</strong></li>
+</ul>
+<p>Terminale iškart matai <strong>prompt</strong> – tai teksto eilutė, kuri nurodo, kad sistema yra pasirengusi priimti komandą. Ši eilutė dažniausiai rodo informaciją apie dabartinę direktoriją, vartotojo vardą ar kitus naudingus duomenis. Pavyzdžiui:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">justas@linux-pc:~$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Čia rodoma: <code>vartotojo vardas</code> <code>@</code> <code>kompiuterio pavadinimas</code>. Simbolis <code>~</code> nurodo aktyvią darbinę direktoriją (namų direktoriją), o <code>$</code> reiškia, kad sistema laukia įvesties (todėl ir vadinama prompt – iššaukimas). Kas yra darbinė direktorija, sužinosime vėliau.</p>
+<p>Štai pavyzdys, kai Shell yra užsiėmęs ir nėra pasirengęs priimti tavo komandos:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/shell/cli_busy.png" class="img-fluid figure-img"></p>
+<figcaption>Terminal vykdo užduotį</figcaption>
+</figure>
+</div>
+<ul>
+<li>Žymeklis (<strong>Cursor</strong>)</li>
+</ul>
+<p>Mirksintis žymeklis (<strong>cursor</strong>) rodo, kad terminalas pasirengęs priimti kitą įvestį ir nurodo, kurioje vietoje eilutėje bus įrašas.</p>
+<ul>
+<li>Komanda (<strong>command</strong>)</li>
+</ul>
+<p>Komanda (angl. <strong>command</strong>) yra specifinis nurodymas, kurį vartotojas įveda, kad būtų atliktas tam tikras veiksmas sistemoje. Komandos gali būti naudojamos įvairiems veiksmams atlikti, pvz., failų kopijavimui, direktorijų kūrimui ar informacijos rodymui. Pavyzdžiui, komanda <code>ls</code> rodo dabartinės direktorijos failus ir subdirektorijas:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Kai kurios komandos turi subkomandas. Pavyzdžiui, <code>apt</code> yra komanda, atsakinga už programinės įrangos (angl. <strong>software</strong>) valdymą, tačiau ji naudojama su subkomandomis:</p>
+<ul>
+<li><code>apt update:</code>: Atnaujina prieinamų programų sąrašą.</li>
+<li><code>apt install</code>: Instaliuoja nurodytą paketą.</li>
+<li><code>apt remove</code>: Pašalina nurodytą paketą.</li>
+<li><code>apt upgrade</code>: Atnaujina visus diegtus paketus į naujausias versijas</li>
+</ul>
+<p>Kad bet kas negalėtų instaliuoti programų, ši komanda turi būti vykdoma su administratoriaus teisėmis, pasitelkiant komandą <code>sudo</code>. Todėl kartais naudojamos kelios komandos iš eilės:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install cowsay</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Pasirinkimai ir argumentai (<strong>Option</strong>, <strong>Argument</strong>)</li>
+</ul>
+<p>Pasirinkimas (angl. <strong>option</strong>) ir argumentas (angl. <strong>argument</strong>) yra papildomi parametrai, kurie gali būti pridėti prie komandos, siekiant tiksliau nurodyti, kaip komanda turėtų būti vykdoma.</p>
+<p>Pasirinkimas (<strong>option</strong>): Pasirinkimas modifikuoja komandos elgesį. Jis dažnai pridedamas prie komandos su brūkšneliu (<code>-</code>) arba dvigubu brūkšneliu (<code>--</code>). Pavyzdžiui, naudojant <code>ls -l</code>, <code>-l</code> yra pasirinkimas, kuris rodo failų sąrašą ilgąja forma. Naudojant sutrumpintus pasirinkimus, naudojamas vienas brūkšnys <code>-</code>, o išrašant pilną pavadinimą – dvigubas brūkšnys <code>--</code>.</p>
+<p>Argumentas (<strong>argument</strong>): Argumentas yra papildoma informacija, kurią komanda naudoja veikimui. Pvz., <code>ls Documents</code> nurodo, kad komanda <code>ls</code> turėtų parodyti direktorijos <code>Documents</code> turinį. Šiuo atveju <code>Documents</code> yra argumentas.</p>
+<p><img src="img/shell/cli_full.png" class="img-fluid"></p>
+<section id="praktika" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="praktika"><span class="header-section-number">5.2.1</span> Praktika</h3>
+<ol type="1">
+<li>Identifikuok užklausą (prompt), komandą (command), pasirinkimą (option) ir argumentą (argumentą). Nepanikuok, jei nepažįsti pačių komandų.</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">main-user@linux-mint:~$</span> sudo apt install <span class="at">-y</span> cowsay</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">main-user@linux-mint:~$</span> cd Downloads</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">main-user@linux-mint:~$</span> rm <span class="at">-rf</span> test/</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">main-user@linux-mint:~$</span> ls <span class="at">-alh</span> /home/user/Downloads</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">main-user@linux-mint:~$</span> mkdir <span class="at">-p</span> /project/data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Surask būdą, kaip sukurti skirtukus (<strong>tabs</strong>) terminalo lange. Kartais yra labai patogu turėti kelis skirtingus terminalo skirtukus. Pavyzdžiui, viename galite stebėti kompiuterio temperatūrą, kitame valdyti ir paleisti programas, o trečiame - stebėti, ar sistema nefiksuoja kokių nors klaidų. Bet kaip atidaryti skirtukus? Koks yra klaviatūros trumpinys? Jei norėtumėte paleisti ne skirtuką, o atskirą langą, koks trumpinys tai padarytų?</li>
+</ol>
+<p><img src="img/shell/3_tabs.png" class="img-fluid"></p>
+<ol start="3" type="1">
+<li>Susirask terminalo grafinius nustatymus ir pakeisk foną, teksto spalvą ir kitus stiliaus elementus. Rask tau patinkantį stilių. Nebijok eksperimentuoti!</li>
+</ol>
+<p><img src="img/shell/cli_colors.png" class="img-fluid"></p>
+<ol start="4" type="1">
+<li>Nors dažniausiai žymeklis yra blyksintis kvadratėlis, surask, kaip jį pakeisti į <code>|</code>?</li>
+</ol>
+</section>
+</section>
+<section id="linux-failų-sistema" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="linux-failų-sistema"><span class="header-section-number">5.3</span> Linux failų sistema</h2>
+<p>Terminai “direktorija”, “katalogas” ir “aplankas” dažnai vartojami kaip sinonimai ir paprastai reiškia tą patį – vietą failų sistemoje, kur gali būti saugomi failai ir kiti subkatalogai. Tačiau yra keletas kultūrinių ir kontekstinių niuansų:</p>
+<ul>
+<li><p>Direktorija (angl. <strong>directory</strong>): Techninis terminas, dažniausiai vartojamas Unix/Linux bendruomenėje ir kitose techninėse aplinkose. Jis pabrėžia hierarchinę failų sistemos struktūrą.</p></li>
+<li><p>Katalogas: Tai dar vienas techninis terminas, dažnai vartojamas kaip sinonimas direktorijai. Šis terminas paplitęs tiek techninėje, tiek kasdieninėje kalboje.</p></li>
+<li><p>Aplankas (angl. <strong>folder</strong>): Terminas, dažniausiai naudojamas grafinėse vartotojo sąsajose (GUI), pavyzdžiui, Windows ir Mac OS. Nors jis iš esmės reiškia tą patį kaip direktorija ar katalogas, jis dažniau vartojamas GUI kontekste.</p></li>
+</ul>
+<p>Čia aš naudosiu terminą „direktorija“, nes jis yra artimiausias angliškam „directory“. Tačiau kartais galiu panaudoti ir „aplanką“ ar „katalogą“, tad nenustebk.</p>
+<section id="sudo" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="sudo"><span class="header-section-number">5.3.1</span> sudo</h3>
+<p>Praeitame skyriuje aptarėme, kad tam tikroms komandoms vykdyti reikia naudoti <code>sudo</code>, t.y., eskaluoti (pakelti) savo vartotojo privilegijas iki administratoriaus (<strong>root</strong>) lygio. Tam reikia įvesti slaptažodį. Taip užtikrinamas saugumas, kad bet kas negalėtų vykdyti pavojingų veiksmų sistemoje.</p>
+<p>Paprastas vartotojas (<strong>user</strong>) ir administratorius (<strong>root</strong>) Linux sistemoje turi skirtingas teises ir privilegijas:</p>
+<p><strong>user</strong>:</p>
+<ul>
+<li>Teisės: Turi ribotas teises, gali atlikti veiksmus tik savo namų direkorijoje (<strong>home directory</strong>) ir kitose direktorijose, kuriose turi suteiktas teises.</li>
+<li>Priėjimas: Negali atlikti sisteminės administracijos užduočių, pvz., negali įdiegti ar pašalinti programinės įrangos, keisti sisteminių failų ar atlikti daugumos konfigūracijos pakeitimų.</li>
+</ul>
+<p><strong>root</strong></p>
+<ul>
+<li>Teisės: Turi pilną administracinę prieigą prie visos sistemos. Gali atlikti bet kokias užduotis, įskaitant sisteminių failų modifikavimą, vartotojų administravimą, programinės įrangos diegimą ir pašalinimą.</li>
+<li>Priėjimas: Gali atlikti bet kokias operacijas be apribojimų.</li>
+</ul>
+<p>Paprastas vartotojas, vykdydamas <code>sudo</code>, gali laikinai gauti root teises, pvz.:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install <span class="op">&lt;</span>programa<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Perėjimas iš paprasto vartotojo į <strong>root</strong> yra galimas tik tiems vartotojams, kurie yra įtraukti į <em>sudo</em> grupę. Instaliuojant Linux, pirmasis vartotojas automatiškai pridedamas prie šios grupės, tačiau vėliau sukurti vartotojai gali būti pridėti į <em>sudo</em> grupę pagal poreikį.</p>
+</section>
+<section id="root-direktorija" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="root-direktorija"><span class="header-section-number">5.3.2</span> root direktorija</h3>
+<p>Windows operacinėje sistemoje turbūt matei diskus, pažymėtus raidėmis, pavyzdžiui, C:, D:, E:. Tai nereiškia, kad kompiuteryje yra keli fiziniai kietieji diskai. Dažniausiai tai yra vienas kietasis diskas, padalytas į logines dalis.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/shell/windows_drives.png" class="img-fluid figure-img"></p>
+<figcaption>Šaltinis <a href="https://www.youtube.com/watch?v=xWtaNbx6nJ0">OnlineComputerTips</a></figcaption>
+</figure>
+</div>
+<p>Pavyzdžiui, C:&nbsp;diske paprastai saugomi Windows failai, o vartotojai dažnai naudoja kitą diską failams saugoti. Šie „diskai“ yra visiškai atskirti vienas nuo kito.</p>
+<p>Linux sistemoje viskas veikia šiek tiek kitaip. Net jei kompiuteryje būtų keli fiziniai diskai, jie gali būti sujungti į vieną loginę talpą (angl. <strong>logical volume</strong>) ir „pakišti“ po root direktorija, kuri žymima <strong>/</strong>.</p>
+<p><strong>Root direktorija</strong> yra failų sistemos viršūnė, žymima <strong>/</strong>. Visi kiti failai ir direktorijos yra šios šakninės direktorijos pavaldiniai. Tai atitinka Windows C:&nbsp;diską.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/shell/root_dir.jpg" class="img-fluid figure-img"></p>
+<figcaption><a href="https://blog.bytebytego.com/p/ep63-linux-file-system-explained">Šaltinis</a></figcaption>
+</figure>
+</div>
+<p>Čia rasi daug subdirektorijų. Svarbiausios iš jų:</p>
+<ul>
+<li>/root: Root vartotojo (administratoriaus) namų direktorija.</li>
+<li>/etc: Konfigūracijos failai, kurie kontroliuoja įvairių programų paleidimą ir veikimą.</li>
+<li>/home: Paprastų vartotojų namų direktorijos, pvz., /home/justas/, /home/ruprecht/.</li>
+<li>/mnt: Laikina vieta prijungtoms laikmenoms, tokioms kaip kietieji diskai ar tinklo diskai.</li>
+<li>/media: Katalogas, kuriame pritvirtinami USB, CD ar DVD įrenginiai.</li>
+<li>/bin: Sisteminiai vykdomieji failai, pvz., <code>ls</code>, <code>cp</code>, <code>mv</code>.</li>
+<li>/lib: Bibliotekos, būtinos sisteminėms programoms ir komandų vykdymui.</li>
+</ul>
+<p>Kai atidarai failų naršyklę (Linux Mint tai programa Nemo), tavo namų direktorija bus po /home/vartotojas/. Štai kaip atrodytų naršy</p>
+<pre><code>/
+└── home
+    ├── user name</code></pre>
+<p><img src="img/shell/user_home_dir.png" class="img-fluid"></p>
+<p>Visada gali pasitikrinti savo buvimo vietą, paspaudžiant ant „Toggle Location Entry“:</p>
+<p><img src="img/shell/user_home_dir_path.png" class="img-fluid"></p>
+</section>
+<section id="praktika-1" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="praktika-1"><span class="header-section-number">5.3.3</span> Praktika</h3>
+<ol type="1">
+<li><p>Atsidaryk <a href="https://excalidraw.com/">excalidraw</a> naršyklėje ir nupiešk <code>/</code>, <code>/home/</code>, <code>/media/</code> struktūros diagramą. Įsivaizduok, kad kompiuteryje yra trys vartotojai: <code>justas</code>, <code>ruprechtas</code> ir <code>slibinas</code>. Nupiešk jų namų direktorijas.</p></li>
+<li><p>Įkišk USB laikmeną į kompiuterį, atidaryk failų naršyklę (Nemo). Turėtum pamatyti kažką panašaus. Paspausk ant USB laikmenos, tada spustelėk „Toggle Location Entry“ ir identifikuok, kurioje failų sistemos vietoje yra USB laikmena. Pridėk tai prie diagramos, kurią piešei.</p></li>
+</ol>
+<p><img src="img/shell/nemo_usb_drive.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="keliavimas-failų-sistema" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="keliavimas-failų-sistema"><span class="header-section-number">5.4</span> Keliavimas failų sistema</h2>
+<p>Jau šiek tiek susipažinai su Linux failų sistemos struktūra. Kai atsidarai failų naršyklę (Nemo), matai šias direktorijas:</p>
+<p><img src="img/shell/user_home_dir.png" class="img-fluid"></p>
+<p>Direktorijų medyje tai atrodytų taip:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>/</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>└── home</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    ├── justas</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    │   ├── Desktop</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    │   ├── Documents</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    │   ├── Downloads</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    │   ├── Music</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    │   ├── Pictures</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    │   ├── Public</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    │   ├── Templates</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    │   └── Videos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Šiame skyriuje išmoksi, kaip sužinoti, kur esi, su komanda <code>pwd</code>, kaip pakeisti direktoriją su <code>cd</code> ir kaip atspausdinti failų bei direktorijų sąrašą su <code>ls</code>.</p>
+<p>Tačiau prieš einant prie pačių komandų, tau dar reikis susipažinti su vienu svarbiu konceptu - absoliučiu ir relatyviu adresu (arba keliu, nes angliškai - <strong>path</strong>).</p>
+<section id="absoliutus-kelias" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="absoliutus-kelias"><span class="header-section-number">5.4.1</span> Absoliutus kelias</h3>
+<p>Absoliutus kelias (angl. <strong>absolute path</strong>) yra pilnas kelias nuo šaknies direktorijos (<strong>/</strong>) iki konkretaus failo ar katalogo. Jis visada nurodo tą pačią vietą, nepriklausomai nuo to, kur esi šiuo metu.</p>
+<p>Pavyzdžiui, šis kelias nurodo visą maršrutą nuo <code>/</code> per <code>/home/</code>, vartotojo namų direktoriją <code>/justas/</code>iki subdirektorijos <code>Documents</code>, kurioje yra failas <code>data.csv</code>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/justas/Documents/data.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="relatyvus-kelias" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="relatyvus-kelias"><span class="header-section-number">5.4.2</span> Relatyvus kelias</h3>
+<p>Relatyvus kelias (angl. <strong>relative path</strong>) yra nurodomas atsižvelgiant į dabartinę darbinę direktoriją. Jis neturi pradinio <code>/</code>, todėl priklauso nuo to, kur esi.</p>
+<p>Jeigu šiuo metu esi direktorijoje<code>/home/justas</code>, relatyvus kelias į failą <code>data.csv</code> subdirektorijoje <code>Documents</code> būtų:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Documents/data.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Kartais gali pamatyti relatyvų kelią su <code>.</code> (tašku), kuris reiškia “esama direktorija”. Taigi šis relatyvus kelias irgi tinka:</p>
+<pre><code>./Documents/data.csv</code></pre>
+</section>
+<section id="section" class="level3" data-number="5.4.3">
+<h3 data-number="5.4.3" class="anchored" data-anchor-id="section"><span class="header-section-number">5.4.3</span> ~</h3>
+<p>Vartotojų vardai Linux sistemoje gali skirtis, pvz., <code>justas</code>, <code>ruprechtas</code> ir t.t. Tarkime, rašai skriptą, kuris turi veikti vartotojo <code>Downloads</code> direktorijoje. Tu negali žinoti vartotojo vardo, todėl naudoti absoliutų kelią <code>/home/justas/Downloads</code> būtų nepatogu.</p>
+<p>Bet ir relatyvus kelias <code>./Downloads</code> gali sukelti problemų, nes skriptas gali būti paleistas ne iš vartotojo namų direktorijos, o tiesiai iš <code>Downloads</code> direktorijos, kas sukurtų absurdišką <code>Downloads/Downloads.</code></p>
+<pre><code>/
+└── home
+    ├── justas
+    │   ├── Downloads
+    │     ├── ./Downloads</code></pre>
+<p>Štai čia gelbsti <code>~</code>. Shell atpažįsta <code>~</code> kaip nuorodą į dabartinio vartotojo namų direktoriją.</p>
+<p>Taigi relatyvus kelias<code>~/Downloads</code> yra automatiškai keičiamas į <code>/home/justas/Downloads</code>, jeigu vartotojas yra <code>justas</code>, arba į <code>/home/ruprecht/Downloads</code>, jeigu vartotojo vardas yra <code>ruprecht</code>.</p>
+<p>Kada naudoti ką?</p>
+<ul>
+<li><p>Absoliutūs keliai dažniausiai naudojami skriptuose, konfigūracijų failuose, dokumentacijoje ir sisteminiuose veiksmuose.</p></li>
+<li><p>Relatyvūs keliai labiau tinka kasdieniam darbui su failais, naršymui ir interaktyviam scenarijų vykdymui.</p></li>
+</ul>
+</section>
+<section id="pwd" class="level3" data-number="5.4.4">
+<h3 data-number="5.4.4" class="anchored" data-anchor-id="pwd"><span class="header-section-number">5.4.4</span> pwd</h3>
+<p>Jau kelis kartus minėjome darbinę direktoriją. Kas tai? Darbinė direktorija yra ta direktorija, kurioje šiuo metu “gyvena” shell. Įsijunk terminalą, įrašyk komandą <code>pwd</code> ir paspausk Enter, kad ją įvykdytum. Komanda <code>pwd</code> (angl. “<strong>print working directory</strong>”) parodo dabartinės darbinės direktorijos pilną kelią (<strong>path</strong>).</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell/pwd.png" class="img-fluid"></p>
+<p>Šiuo atveju darbinė direktorija yra <code>/home/justas</code>.</p>
+<p>Taigi, iš mano darbinės direktorijos, <code>Downloads</code> subdirektorijoje esantis failas <code>data.csv</code> man būtų pasiekiamas <code>Downloads/data.csv</code> keliu. Tačiau aš galiu pakeisti savo darbinę direktoriją pereidamas į kitas direktorijas su komanda <code>cd</code>.</p>
+</section>
+<section id="cd" class="level3" data-number="5.4.5">
+<h3 data-number="5.4.5" class="anchored" data-anchor-id="cd"><span class="header-section-number">5.4.5</span> cd</h3>
+<p>Komanda <code>cd</code> (angl. <strong>change directory</strong>) naudojama pereiti iš vienos direktorijos į kitą. Kai pereini į kitą direktoriją, pasikeičia ir <em>darbinė direktorija</em>, kartais dar vadinama <em>aktyvia direktorija</em> (angl. <strong>current directory</strong>).</p>
+<p>Įvedęs komandą:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Downloads</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Aš pereinu į <code>Downloads</code> subdirektoriją. Kadangi <code>Downloads</code> yra mano namų direktorijoje, galėjau pasinaudoti relatyviu keliu. Atkreipk dėmesį, kaip pasikeičia terminalo prompt: vietoj <code>~</code> (jau žinai, ką jis reiškia), dabar matosi <code>~/Downloads</code>.</p>
+<p><img src="img/shell/pwd_downloads.png" class="img-fluid"></p>
+<p>Dabar failas <code>Downloads/data.csv</code> tampa pasiekiamas tiesiog kaip <code>data.csv</code>.</p>
+<p>Komandai <code>cd</code> gali duoti absoliutų kelią, ir tada <code>cd</code> pakeis darbinę direktoriją, nesvarbu, kur tuo metu esi:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /home/justas/Documents</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ši komanda perkelia mane iš <code>Downloads</code> tiesiai į <code>Documents</code>.</p>
+<p><img src="img/shell/cd_absolute.png" class="img-fluid"></p>
+<p>Tačiau <code>cd</code> komandai gali nurodyti ir relatyvų kelią, svarbu, kad jis egzistuotų. Pavyzdžiui, aš galiu pereiti iš savo namų direktorijos į <code>Downloads</code> su <code>cd Downloads/</code>, tačiau negaliu pereiti į <code>Documents</code>, jei esu <code>Downloads</code> direktorijoje, nes <code>Documents</code> ten nėra. Tada gaunu klaidos pranešimą: <code>bash: cd: Documents/: No such file or directory</code>.</p>
+<p><img src="img/shell/cd_relative.png" class="img-fluid"></p>
+<p>Priminimui:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>/</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>└── home</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    ├── justas</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    │   ├── Desktop</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    │   ├── Documents</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    │   ├── Downloads</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    │   ├── Music</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    │   ├── Pictures</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    │   ├── Public</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    │   ├── Templates</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    │   └── Videos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Kaip jau minėjau, taškas <code>.</code> reiškia “čia”. Pvz., iš namų direktorijos galėčiau pereiti į <code>Downloads</code> su <code>cd ./Downloads</code>.</p>
+<p>Yra ir <code>..</code>, du taškai, kurie reiškia direktoriją esančią aukščiau už dabartinę (<code>.</code>) direktoriją. Ji dažnai vadinama <strong>parent directory</strong>. Taigi, su komanda <code>cd ./Downloads</code> nuėjęs į <code>Downloads</code>, galiu vėl pakilti į viršų su <code>cd ..</code>.</p>
+<p><img src="img/shell/cd_dot_dot.png" class="img-fluid"></p>
+<p><code>..</code> taip pat gali būti naudojama pereiti relatyviai, pvz., iš <code>Downloads</code> į <code>Documents</code>. Būdamas <code>Downloads</code> direktorijoje, galiu naudoti komandą <code>cd ../Documents</code>, kad pakilčiau vienu lygiu aukščiau ir tada pereičiau į <code>Documents</code>.</p>
+<p><img src="img/shell/cd_dot_dot_travel.png" class="img-fluid"></p>
+<p><code>..</code> gali būti naudojama ir kelis kartus iš eilės, pvz., iš <code>Downloads</code> galima pakilti į <code>home</code>, naudojant <code>cd ../..</code>.</p>
+<p><img src="img/shell/cli_dot_dot_home.png" class="img-fluid"></p>
+<p>Priminimui</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>/</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>└── home</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    ├── justas</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    │   ├── Desktop</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    │   ├── Documents</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    │   ├── Downloads</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Komandą <code>cd</code> gali naudoti ir be jokių argumentų, kad grįžtum į namų direktoriją, pvz., <code>cd</code> arba su <code>cd ~</code>.</p>
+<p><img src="img/shell/cd_alone.png" class="img-fluid"></p>
+<p>Pereiti į ankstesnę direktoriją gali su komanda <code>cd -</code>. Tarkime, buvau <code>home/justas/Downloads</code>, perėjau į <code>home/justas/Documents</code>, bet supratau, kad padariau klaidą - norėčiau likti Downloads. Galiu grįžti atgal su <code>cd -</code>.</p>
+<p><img src="img/shell/cd_minus.png" class="img-fluid"></p>
+<p>Sveikinu! Dabar jau moki naršyti po direktorijas naudojant terminalą. Nors tai gali atrodyti sudėtinga iš pradžių, laikui bėgant pastebėsi, kad paleisti terminalą su klaviatūros trumpiniu <code>Ctrl-Alt-T</code> ir, naudojant TAB greitesniam komandų ir argumentų užpildymui, greitai nueiti į norimą direktoriją bei redaguoti failus bus daug greičiau nei tai daryti su grafinės sąsajos (GUI) įrankiais.</p>
+<p>Pvz., iš savo namų direktorijos pereinu į <code>Documents</code>, tada į <code>project</code>, tada į <code>documentation</code>, atspausdinu failų sąrašą su <code>ls</code> ir redaguoju failą su <code>nano</code> programa.</p>
+<p><video src="img/shell/navigation_edit.mp4" class="img-fluid" controls=""><a href="img/shell/navigation_edit.mp4">Video</a></video></p>
+<p>Bet kas ta <code>ls</code> komanda?</p>
+</section>
+<section id="ls" class="level3" data-number="5.4.6">
+<h3 data-number="5.4.6" class="anchored" data-anchor-id="ls"><span class="header-section-number">5.4.6</span> ls</h3>
+<p>Komanda <code>ls</code> (angl. <strong>list storage</strong>) naudojama norint peržiūrėti failų ir katalogų sąrašą dabartinėje arba nurodytoje direktorijoje. Tai viena dažniausiai naudojamų komandų, naviguojant failų sistemoje.</p>
+<p>Jei atidarytum failų naršyklę, pavyzdžiui, <strong>Nemo</strong>, matytum kažką panašaus:</p>
+<p><img src="img/shell/nemo_simple.png" class="img-fluid"></p>
+<p>Lygiai taip pat failų sąrašą gali parodyti ir terminale, įvedant komandą <code>ls</code>:</p>
+<p><img src="img/shell/ls.png" class="img-fluid"></p>
+<p>Komanda <code>ls</code> gali priimti argumentą – direktorijos kelią, kurio turinį norima parodyti. Šis kelias gali būti tiek absoliutus, tiek relatyvus. Pavyzdžiui, <code>ls /home/justas/Downloads</code> parodys <code>Downloads</code> katalogo turinį. Atkreipk dėmesį į spalvas: failai yra balti, o katalogai – mėlyni.</p>
+<p><img src="img/shell/ls_dir.png" class="img-fluid"></p>
+<p>Kartais pamatyti tik failų pavadinimus gali būti nepakankama. Galbūt norisi matyti daugiau informacijos, pvz., kada failai sukurti, kas turi teises juos valdyti ar matyti, ar kam jie priklauso.</p>
+<p><img src="img/shell/nemo_list_view.png" class="img-fluid"></p>
+<p>Kaip ir failų naršyklėje, kur gali perjungti į “List View”, terminale gali naudoti komandos ls nustatymą <code>-l</code>, kuris išveda išsamų (ilgą) failų sąrašą su papildoma informacija: teisėmis, savininku, dydžiu ir paskutinio modifikavimo data.</p>
+<p><img src="img/shell/ls_l.png" class="img-fluid"></p>
+<p>Pavyzdžiui ką tokią eilutė reikšia, paaikšinsiu netrukus.</p>
+<pre><code>drwxr-xr-x 2 justas justas 4096 Sep 15 10:19 Desktop</code></pre>
+<p>Norint pamatyti visus failus, įskaitant paslėptus (failai, kurių pavadinimai prasideda tašku), gali naudoti <code>-a</code> arba <code>--all</code>:</p>
+<p><img src="img/shell/ls_a.png" class="img-fluid"></p>
+<p><em>Nemo</em> failų naršyklėje taip pat gali pamatyti paslėptus failus, jei aktyvuosi šią funkciją.</p>
+<p><video src="img/shell/nemo_hiden.mp4" class="img-fluid" controls=""><a href="img/shell/nemo_hiden.mp4">Video</a></video></p>
+<p>Kai paleidi <code>ls -l</code>, failų dydžiai nurodomi baitais. Kartais naudingiau matyti dydžius, išreikštus žmonėms suprantamesniais vienetais, kaip kilobaitai (1000 baitų), megabaitai (1000 kilobaitų) ir t.t. Tam gali naudoti nustatymą <code>--human-readable</code> arba trumpinį <code>-h</code> - <code>ls -lh</code></p>
+<p>Šios abi komandos <code>ls -all -l --human-readable</code> ir <code>ls -alh</code> yra teisingos, tačiau dažniau naudojamas trumpesnis variantas. Panaudojant <code>ls -alh</code>, galėsi matyti paslėptus failus, o failų dydžiai bus išreikšti žmonėms labiau suprantama forma.</p>
+<p><img src="img/shell/ls_lah.png" class="img-fluid"></p>
+<p>Kartais gali prireikti rekursyvaus katalogo turinio peržiūros. Komanda <code>ls -R</code> arba <code>ls --recursive</code> parodys ne tik pasirinktos direktorijos, bet ir visų jos subdirektorijų turinį.</p>
+<p><img src="img/shell/ls_R.png" class="img-fluid"></p>
+</section>
+<section id="teisės-ir-tipai" class="level3" data-number="5.4.7">
+<h3 data-number="5.4.7" class="anchored" data-anchor-id="teisės-ir-tipai"><span class="header-section-number">5.4.7</span> Teisės ir tipai</h3>
+<p>Ši eilutė rodo failų arba direktorijų sąrašą su jų detalėmis:</p>
+<p><img src="img/shell/ls_l_details.png" class="img-fluid"></p>
+<p>Pirmas stulpelis parodo, kokio tipo failas ar direktorija tai yra, ir kokias teises turi skirtingi vartotojai.</p>
+<p>Pirmoji raidė gali būti:</p>
+<ul>
+<li><strong><code>d</code></strong> – Direktorija (<strong>directory</strong>)</li>
+<li><strong><code>l</code></strong> – Simbolinė nuoroda (<strong>link</strong>)</li>
+<li><strong><code>-</code></strong> – Įprastas failas (<strong>regular file</strong>)</li>
+</ul>
+<p>Linux sistemoje yra trys vartotojų tipai:</p>
+<ol type="1">
+<li><strong>Savininkas</strong> – vartotojas, kuris sukūrė failą arba direktoriją. Šiuo atveju vartotojas yra <code>justas</code>.</li>
+<li><strong>Grupė</strong> – Grupė, kuriai priklauso failo savininkas. Dažnai grupės vardas yra tas pats kaip ir savininko vartotojo vardas, pvz., <code>justas</code>. Vartotojai gali priklausyti kelioms grupėms, tačiau kiekvienas failas ir direktorija turi pagrindinę grupę, kuri turi tam tikras teises į tą failą arba direktoriją. Pameni minėjom, kad ne visi vartotojai priklauso <em>sudo</em> grupei? Čia panašiai, tik kita grupė.</li>
+<li><strong>Kiti (other)</strong> – Visi kiti vartotojai, kurie nėra nei savininkas, nei grupės nariai. Tai apima visus kitus sistemos vartotojus, kurie neturi specialių teisių šiam failui ar direktorijai.</li>
+</ol>
+<p>Teisės nurodomos pirmame stulpelyje trimis tripletais: <code>xxx-xxx-xxx</code> (be brūkšnių).</p>
+<ul>
+<li><strong><code>r</code></strong> – Skaitymo teisė (read), leidžia matyti ir skaityti turinį.</li>
+<li><strong><code>w</code></strong> – Rašymo teisė (write), leidžia perrašyti turinį.</li>
+<li><strong><code>x</code></strong> – Vykdymo teisė (execute), leidžia vykdyti failą.</li>
+</ul>
+<p>Pvz., teisės <strong><code>drwxr-xr-x</code></strong>:</p>
+<ul>
+<li><strong><code>d</code></strong> – Direktorija (directory)</li>
+<li><strong><code>rwx</code></strong> – Savininko teisės: skaitymas (read), rašymas (write), vykdymas (execute)</li>
+<li><strong><code>r-x</code></strong> – Grupės teisės: skaitymas (read), vykdymas (execute)</li>
+<li><strong><code>r-x</code></strong> – Kitų vartotojų teisės: skaitymas (read), vykdymas (execute)</li>
+<li><strong><code>2</code></strong> – Nuorodų skaičius į šią direktoriją. Tai apima nuorodą į pačią direktoriją ir bet kurias subdirektorijas. Pavyzdžiui, jei skaičius būtų <code>4</code>, tai reikštų, kad direktorijoje yra trys subdirektorijos (ir arba failai) ir viena pati direktorija.</li>
+<li><strong><code>justas</code></strong> – Direktorijos savininko vartotojo vardas.</li>
+<li><strong><code>justas</code></strong> – Direktorijos grupės vardas.</li>
+<li><strong><code>4096</code></strong> – Direktorijos dydis baitais.</li>
+<li><strong><code>Sep 15 10:19</code></strong> – Paskutinio direktorijos modifikavimo data ir laikas.</li>
+<li><strong><code>Desktop</code></strong> – Direktorijos pavadinimas.</li>
+</ul>
+</section>
+<section id="pagalbinės-funkcijos-terminale" class="level3" data-number="5.4.8">
+<h3 data-number="5.4.8" class="anchored" data-anchor-id="pagalbinės-funkcijos-terminale"><span class="header-section-number">5.4.8</span> Pagalbinės funkcijos terminale</h3>
+</section>
+<section id="history" class="level3" data-number="5.4.9">
+<h3 data-number="5.4.9" class="anchored" data-anchor-id="history"><span class="header-section-number">5.4.9</span> history</h3>
+<p>Komanda <code>history</code> (liet. „istorija“) naudojama norint parodyti visų anksčiau įvestų komandų sąrašą dabartinėje terminalo sesijoje. Tai suteikia patogų būdą sekti ir kartoti anksčiau vykdytas komandas.</p>
+<p><img src="img/shell/history.png" class="img-fluid"></p>
+<p>Jei nori parodyti tik paskutines <code>n</code> komandų, gali naudoti <code>history n</code>. Pvz., parodyti paskutines 10 komandų <code>history 10</code>:</p>
+<p><img src="img/shell/history_n.png" class="img-fluid"></p>
+<p>Kartoti konkrečią komandą pagal numerį galima įrašius <code>!</code> ir komandos numerį. Pavyzdžiui, jei nori pakartoti komandą, kurios numeris yra 99:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">history</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">!99</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell/history_bang.png" class="img-fluid"></p>
+<p>Ištrinti komandų istoriją galima su <code>history -c</code>.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">history</span> <span class="at">-c</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">hisotry</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell/history_c.png" class="img-fluid"></p>
+</section>
+<section id="clear" class="level3" data-number="5.4.10">
+<h3 data-number="5.4.10" class="anchored" data-anchor-id="clear"><span class="header-section-number">5.4.10</span> clear</h3>
+<p>Komanda <code>clear</code> (liet. „valyti“) naudojama norint išvalyti terminalo ekraną, pašalinant visus anksčiau įvestus ir parodytus tekstinius duomenis. Tai palieka terminalą švarų ir patogesnį tolimesniam naudojimui. <strong>Svarbu</strong>: ši komanda neištrina terminalo istorijos (<strong>history</strong>); ji tik paslenka visą tekstą į viršų, už dabartinio vaizdo ribų.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">clear</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ctrl-l" class="level3" data-number="5.4.11">
+<h3 data-number="5.4.11" class="anchored" data-anchor-id="ctrl-l"><span class="header-section-number">5.4.11</span> Ctrl-L</h3>
+<p>Alternatyva komandos <code>clear</code> naudojimui yra klaviatūros trumpinys <code>Ctrl-L</code>. Šis trumpinys atlieka tą pačią funkciją kaip ir komanda <code>clear</code>, tačiau jis yra greitesnis ir patogesnis, ypač kai dirbi terminale ir nori greitai išvalyti ekraną. Naudojant <code>Ctrl-L</code>, terminalo ekranas bus išvalytas, tačiau terminalo istorija liks nepakitusi.</p>
+</section>
+<section id="navigacija-terminale" class="level3" data-number="5.4.12">
+<h3 data-number="5.4.12" class="anchored" data-anchor-id="navigacija-terminale"><span class="header-section-number">5.4.12</span> Navigacija terminale</h3>
+<p>Rašant ilgas komandas, klaidos neišvengiamos. Pavyzdžiui, rašai „Hello World“ ir paspaudi Enter ⏎, tik tada supranti, kad reikėjo parašyti <code>echo</code> prieš „Hello World“.</p>
+<p>Štai kaip tai gali ištaisyti:</p>
+<ul>
+<li>Pakilk į ankstesnę eilutę naudodamas rodyklę į viršų ⬆️.</li>
+<li>Perkelk kursorių į eilutės pradžią naudodamas rodyklę į kairę ⬅️.</li>
+<li>Prirašyk <code>echo</code> ir pakartok komandą paspaudus Enter ⏎.</li>
+</ul>
+<p><video src="img/shell/up.mp4" class="img-fluid" controls=""><a href="img/shell/up.mp4">Video</a></video></p>
+<p>Kartais eilutės būna gana ilgos:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sud</span> apt update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt full-upgrade <span class="at">-y</span> <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt autoremove <span class="at">-y</span> <span class="kw">&amp;&amp;</span> <span class="ex">flatpak</span> update</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Jei praleidai raidę, pavyzdžiui, pirmame sudo truksta o, nereikia viską iš naujo rašyti</p>
+<ul>
+<li>Pakilk į ankstesnę eilutę naudodamas rodyklę į viršų ⬆️.</li>
+<li>Naudok<code>Ctrl-A</code>, kad perkeltum kursorių į eilutės pradžią.</li>
+<li>➡️ ➡️ ➡️ ir pridėti o raidę.</li>
+<li>pabaigus taisymą tiesiog paspausti Enter ⏎ (nebūtina nueiti į eilutės pabaigą)</li>
+</ul>
+<p><video src="img/shell/ctrl-a.mp4" class="img-fluid" controls=""><a href="img/shell/ctrl-a.mp4">Video</a></video></p>
+<p>Tavo žiniai:</p>
+<ul>
+<li><code>Ctrl-A</code>: perkelia kursorių į eilutės pradžią</li>
+<li><code>Ctrl-E</code>: perkelia kursorių į eilutės pabaigą</li>
+<li><code>Ctrl-U</code>: ištrina viską į dešinę nuo kursoriaus</li>
+</ul>
+<p><strong>Užduotis:</strong></p>
+<p>Pastebėsi, kad <code>Ctrl-C</code> ir <code>Ctrl-V</code> neveikia taip, kaip esame įpratę. Terminalo nustatymuose (<strong>settings</strong>) rask derinį, kuris atitinka įprastines Ctrl-C ir Ctrl-V kombinacijas.Kokie jie?</p>
+</section>
+<section id="ctrl-c-ir-escape" class="level3" data-number="5.4.13">
+<h3 data-number="5.4.13" class="anchored" data-anchor-id="ctrl-c-ir-escape"><span class="header-section-number">5.4.13</span> Ctrl-C ir Escape</h3>
+<p>Naudojant komandinę eilutę, kartais terminalas gali „pakibti“. Pvz., jei pradėsi rašyti echo su kabutėmis, bet pamirši uždaryti kabutes, terminalas lauks, kol užbaigsi komandą.</p>
+<p>Tokiais atvejais terminalas gali atrodyti „pakibęs“. Pabandyk paleisti šias komandas po vieną:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">"hello</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="st">$ grep foobar</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="st">$ yes</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="st">$ tail</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="st">$ cat</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Norėdamas nutraukti „pakibusią“ komandą, naudok <code>Ctrl-C</code>. Šis derinys siunčia kontrolės signalą terminalui ir nutraukia vykdomą procesą. Pastaba: <code>Ctrl-C</code> čia reiškia „Cancel“ (nutraukti).</p>
+<p>Kartais terminale gali pamatyti <code>^C</code>, rodančią, kad buvo paspaustas <code>Ctrl-C</code>. Jei <code>Ctrl-C</code> neveikia, pabandyk <code>ESC</code> klavišą.</p>
+<p>Verta žinoti: kad kartais vietoj <code>Ctrl-</code> notacijos, gali sutikti <code>^</code> notaciją, pvz., <code>^C</code>, <code>^O</code>, <code>^X</code>.</p>
+</section>
+<section id="praktika-2" class="level3" data-number="5.4.14">
+<h3 data-number="5.4.14" class="anchored" data-anchor-id="praktika-2"><span class="header-section-number">5.4.14</span> Praktika</h3>
+<ol type="1">
+<li><p>Kai paleidi terminalą, kurioje direktorijoje esi? Pakeisk direktoriją į <code>Downloads</code>. Uždaryk terminalą ir paleisk jį iš naujo. Kur dabar esi?</p></li>
+<li><p>Iš<code>/home/user/</code> direktorijos pereik į Downloads ir atspausdink direktorijos turinį naudojant <code>ls</code>. Užduotis:</p>
+<ul>
+<li>Failų dydis būtų suprantamas žmonėms.</li>
+<li>Sąrašas būtų pateikiamas viename stulpelyje.</li>
+</ul></li>
+<li><p>Iš <code>/home/user/</code> direktorijos pereik į <code>Documents</code>. Iš ten atspausdink failų sąrašą <code>Downloads</code> (!!!) direktorijoje</p>
+<ul>
+<li>naudojant absoliutų kelią</li>
+<li>naudojant relatyvų kelią</li>
+</ul></li>
+</ol>
+<p>Pagalbai:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Home</span> Directory/</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> Desktop/</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> Documents/</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> Downloads/</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> Music/</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> Pictures/</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> Public/</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> Templates/</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> Videos/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="1">
+<li><p>Naudok <code>clear</code>, kad išvalytum terminalą, tada su history surask tau patinkančią komandą ir pakartok ją naudojant <code>!n</code>.</p></li>
+<li><p>Vizualizuok vartotojų ir grupių santykius pagal šią lentelę. Naudok <a href="https://excalidraw.com/">Excalidraw</a>:</p></li>
+</ol>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Vartotojas</th>
+<th>Sudo grupė</th>
+<th>Grupė “namai”</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>root</td>
+<td>Taip</td>
+<td>Taip</td>
+</tr>
+<tr class="even">
+<td>justas</td>
+<td>Taip</td>
+<td>Taip</td>
+</tr>
+<tr class="odd">
+<td>ruprechtas</td>
+<td>Ne</td>
+<td>Taip</td>
+</tr>
+</tbody>
+</table>
+<ol start="6" type="1">
+<li>Įsivaizduok, kad failas <code>/home/ruprechtas/info.txt</code> turi tokias savybes:</li>
+</ol>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">-rwx-----</span> 2 ruprechtas namai 4096 Sep 15 10:19 info.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ar vartotojas <code>justas</code>, priklausantis grupei <code>namai</code>, galės atidaryti ir perrašyti šį failą? Kodėl?</p>
+<ol start="7" type="1">
+<li><p>Ką reikėtų pakeisti, kad vartotojas justas galėtų matyti ir perrašyti šį failą? Atsakyk teoriškai (nes dar nežinai komandų, kuriomis tai apdaryti).</p></li>
+<li><p>Nukopijuok ir paleisk šią komandą terminale.</p></li>
+</ol>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> https://gist.githubusercontent.com/justasmundeikis/e61bb3ab5cf28686f74a50e436b06fe6/raw <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ši komanda parsisiųs ir įvykdys skriptą, kuris sukurs <code>test</code> direktoriją tavo<code>/home/username/</code> direktorijoje.</p>
+<p>Pasinaudok <code>ls</code>, atspausdink visus failus, esančius (sub-)direktorijose ir atsakyk į šiuos klausimus:</p>
+<ul>
+<li>Kiek yra subdirektorijų <code>test</code> direktorijoje?</li>
+<li>Kiek iš viso suskaičiuoji failų? Suskaičiuok visus failus, esančius visose subdirektorijose.</li>
+<li>Kokio tipo failų (pvz., .txt, .csv) yra daugiausia? Kurioje direktorijoje?</li>
+</ul>
+</section>
+</section>
+<section id="funkcijos" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="funkcijos"><span class="header-section-number">5.5</span> Funkcijos</h2>
+<p>Visos skyriuje panaudotos funkcijos</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Funkcija</th>
+<th>Aprašymas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>which</code></td>
+<td>Parodo vykdomojo failo vietą</td>
+</tr>
+<tr class="even">
+<td><code>pwd</code></td>
+<td>Parodo dabartinės darbinės direktorijos pilną kelią</td>
+</tr>
+<tr class="odd">
+<td><code>cd</code></td>
+<td>Pakeičia dabartinę direktoriją (esamą vietą) terminale</td>
+</tr>
+<tr class="even">
+<td><code>ls</code></td>
+<td>Rodo failų ir katalogų sąrašą direktorijoje</td>
+</tr>
+<tr class="odd">
+<td><code>sudo</code></td>
+<td>Leidžia vykdyti komandas su kitokio vartotojo teisėmis (dažniausiai root)</td>
+</tr>
+<tr class="even">
+<td><code>history</code></td>
+<td>Rodo ankstesnių komandų istoriją</td>
+</tr>
+<tr class="odd">
+<td><code>clear</code></td>
+<td>Išvalo terminalo ekraną</td>
+</tr>
+<tr class="even">
+<td><code>Ctrl-A</code></td>
+<td>Perkelia kursorių į eilutės pradžią</td>
+</tr>
+<tr class="odd">
+<td><code>Ctrl-E</code></td>
+<td>Perkelia kursorių į eilutės pabaigą</td>
+</tr>
+<tr class="even">
+<td><code>Ctrl-U</code></td>
+<td>Ištrina viską į kairę nuo kursoriaus</td>
+</tr>
+<tr class="odd">
+<td><code>Ctrl-C</code></td>
+<td>Nutraukia vykdomą komandą terminale</td>
+</tr>
+<tr class="even">
+<td><code>Ctrl-L</code></td>
+<td>Išvalo terminalo ekraną (panašu į clear)</td>
+</tr>
+<tr class="odd">
+<td><code>Shift-Ctrl-C</code></td>
+<td>Kopijuoja tekstą iš terminalo</td>
+</tr>
+<tr class="even">
+<td><code>Shift-Ctrl-V</code></td>
+<td>Įkelia tekstą į terminalą</td>
+</tr>
+<tr class="odd">
+<td><code>Shift-Ctrl-T</code></td>
+<td>Sukuria naują terminalo skirtuką</td>
+</tr>
+<tr class="even">
+<td><code>Shift-Ctrl-N</code></td>
+<td>Sukuria naują terminalo langą</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./4_passwords.html" class="pagination-link" aria-label="Slaptažodžiai ir internetinės paskyros">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Slaptažodžiai ir internetinės paskyros</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./6_bash_comands_basic.html" class="pagination-link" aria-label="BASH komandos">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">BASH komandos</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
