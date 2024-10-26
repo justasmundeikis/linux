@@ -10,8 +10,31 @@ format:
     echo: true
 ---
 
+## Pagalba sau
+Praeitame skyriuje susipažinai su daug komandų, kurios tau kuria pagrindą darbui su SHELL. Tu išmokai daug programų, su daug skirtingų nustatymų, tačiau kaip gali įsivaizduoti, tu tikrai neišmokai VISKO. Todėl prieš judant toliau, pradėkie turputi nuo to, kaip padėti sau, kai pastringi: kai neprisemeni kokias opcijas naudoti ir t.t.
 
 ### help
+
+vienas papraščiausių būdų rasti greitai paaiškinimą, kaip veika tam tikra komanda pasinaudoti help, dažniausiai help iššaukiama taip
+
+```bash
+komanda --help
+```
+
+kaip pameni, `--` naudoji prieš tuos nustatymus, kurie išrašyti pilnai, trumpiniams naudjoamas vienas `-`. 
+
+
+tada tau terminale bus atspaudintas visas su šia komanda susijęs pagalbos tekstas.
+
+dažniausiai help sudaro:
+
+* ...
+* ....
+* .....
+
+Pabandyk rasti pagalba šioms komandoms: ls, cp, rm, sed.
+
+
 
 ### man
 

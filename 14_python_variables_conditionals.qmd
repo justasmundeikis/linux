@@ -1,0 +1,11 @@
+---
+title: "Python Kintamieji"
+execute:
+  daemon: false
+  enabled: false
+format:
+  html:
+    code-copy: true
+    eval: false
+    echo: true
+---

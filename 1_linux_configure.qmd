@@ -1,5 +1,5 @@
 ---
-title: "Linux konfiguracija"
+title: "Linux pirmieji žingnsiai"
 execute:
   daemon: false
   enabled: false

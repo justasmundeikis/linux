@@ -10,7 +10,6 @@ format:
     echo: true
 ---
 
-
 ## Pradžia
 
 Visuose kompiuteriuose yra daugybė įvairių programų. Pavyzdžiui, jau susipažinome su `Terminal` ir `Files` programomis. Taip pat išmokome naudoti kai kurias įdiegtas komandas: `echo`, `cat`, ir `base64`. Šių programų kūrėjai dažnai atnaujina savo programas, tad norėdami pasinaudoti naujausiomis funkcijomis ir pataisymais, turime įdiegti šiuos atnaujinimus (angl. - **update**).

@@ -1,0 +1,11 @@
+---
+title: "Python Struktūros ir Ciklai"
+execute:
+  daemon: false
+  enabled: false
+format:
+  html:
+    code-copy: true
+    eval: false
+    echo: true
+---

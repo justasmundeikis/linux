@@ -247,26 +247,26 @@ Dabar dirbsi su failu **data/temp_vilnius.txt**.
 
 * Naudojant `cat`, atspausdink visą failą terminale
 * Pirmosios dienos prognozės gali turėti mažiau nei 24 valandas (pvz., likusios 6 valandos). Naudojant `head`, atspausdink tik šiandienos orų prognozes
-* Kadangi šiandienos oras jau aiškus, tavo draugei Amelijai reikia rytojaus orų prognozės. Derinant `head` ir `tail`, išfiltruok eilutes taip ir sukurk tarpinius failus, kad būtų nusiųstos tik rytojaus 24 valandų temperatūros prognozės. Rezultatą išsaugok į failą **amelija_vilnius_temp.txt** subdirektorijoje **data**. Naudojant `cat` įsitikink, jog turi tik rytojaus temperatūras.
+* Kadangi šiandienos oras jau aiškus, tavo draugei Amelijai reikia rytojaus orų prognozės. Derinant `head` ir `tail`, išfiltruok eilutes taip ir sukurk tarpinius failus, kad būtų nusiųstos tik rytojaus 24 valandų temperatūros prognozės. Rezultatą išsaugok į failą **amelija_temp_vilnius.txt** subdirektorijoje **data**. Naudojant `cat` įsitikink, jog turi tik rytojaus temperatūras.
 :::
 
 
 ### less
 
-Praėjusiame skyriuje jau turėjai atvejį, kai viso failo **vilnius_temp.txt** turinys netilpo į terminalo langą. Tikėtina, reikėjo pakeisti terminalo lango dydį arba slinkti su pele. Dabar tau galbūt kyla klausimas, kaip būtų galima matyti failo turinį gabaliukais?
+Praėjusiame skyriuje jau turėjai atvejį, kai viso failo **temp_vilnius.txt** turinys netilpo į terminalo langą. Tikėtina, reikėjo pakeisti terminalo lango dydį arba slinkti su pele. Dabar tau galbūt kyla klausimas, kaip būtų galima matyti failo turinį gabaliukais?
 
 Nors gali naudoti `cat` dideliems failams atspausdinti ir tada slinkti išvestį, paprastai patogiau failą rodyti puslapiais. Tam pirminė komanda buvo `more`, bet ją pakeitė galingesnė komanda `less`.
 
 Naudojant `less <failas>`, vienu metu matysi tik vieną failo puslapį. Spaudžiant ␣ (space) klavišą, pereisi į kitą puslapį; gali taip pat naudoti ↓ ir ↑ klavišus, kad judėtum po vieną eilutę žemyn arba aukštyn. Norint išeiti, spausk `q`.
 
 ::: {.callout-tip title="Praktika"}
-Atsidaryk **data/vilnius_temp.txt** su less, išbandyk judėjimą tekste žemyn, aukštyn ir uždaryk programą su `q`.
+Atsidaryk **data/temp_vilnius.txt** su less, išbandyk judėjimą tekste žemyn, aukštyn ir uždaryk programą su `q`.
 :::
 
 Jei `less` komandai nurodysi kelis failus, gali naudoti `:n` (**next**) pereiti prie kito failo, o `:p` (**previous**) sugrįžti prie ankstesnio failo. Norint išeiti, spausk `q`.
 
 ::: {.callout-tip title="Praktika"}
-Atsidaryk failus **favorite_song.txt**, **data/vilnius_temp.txt** ir **text/seneles_pasaka.txt** su less. Išbandyk judėjimą tekste žemyn, aukštyn, pereik tarp failų naudojant `:n` ir `:p` bei pabaigoje uždaryk `less` su `q`
+Atsidaryk failus **favorite_song.txt**, **data/temp_vilnius.txt** ir **text/seneles_pasaka.txt** su less. Išbandyk judėjimą tekste žemyn, aukštyn, pereik tarp failų naudojant `:n` ir `:p` bei pabaigoje uždaryk `less` su `q`
 :::
 
 
@@ -500,7 +500,7 @@ mv mix_copy mix
 * **Teorinis klausimas**: Kas nutiktų, jei įvykdytum šią komandą?
 
 ```BASH
-mv vilnius_temp.txt kaunas_temp.txt ~/Documents ~/Downloads
+mv temp_vilnius.txt temp_kaunas.txt ~/Documents ~/Downloads
 ```
 
 * Perkelk Alytaus ir Kauno temperatūrų failus atgal iš **mix** į **data** naudojant `mv`. Pervadink Alytaus failą atgal į Vilniaus
@@ -1080,6 +1080,7 @@ Išsaugok pasaką kaip **text/seneles_pasaka_emojies.txt**
 * Pavaizduok sekančių dienų temperatūras.
 
  ![](img/shell_adv/sed_temp.png)
+* Pabandyk atsidaryti visus tris pavienius failus su Excel Power Query ir apdorojus duomenis sukurti dashboard to slicer filtrais ir grafikais.
 :::
 
 

@@ -19,15 +19,13 @@ Komanda `whoami` parodo dabartinio vartotojo (**user**) vardą, su kuriuo esate 
 whoami
 ```
 
-Šiuo atveju, vartotojo vardas yra `main-user`
-
 ![](img/shell/whoami.png)
 
 ### $PATH
 
-!Atsargiai ši tema kiek sudėtingesnė, bet ją pravartu žinoti.
+Persp4jimas ši tema kiek sudėtingesnė, bet ją pravartu žinoti.
 
-Kaip Shell žino, kokią programą startuoti, kai pvz tu įrašai `ls`? Juk negali Shell eiti epr visus tavo failus ir ieškoti, ar yra tokia programa `ls`? Tai užtruktų labai ilgai ir būtų neefektyvu. Tavo Bash programa yra išsaugojusi visų direktorijų sąrašą, kurias ji tikrina.
+Kaip Shell žino, kokią programą startuoti, kai pvz tu įrašai `ls`? Juk negali Shell eiti per visus tavo failus ir ieškoti, ar yra tokia programa `ls`? Tai užtruktų labai ilgai ir būtų neefektyvu. Tavo Bash programa yra išsaugojusi visų direktorijų sąrašą, kurias ji tikrina. Tod4l pavyzdžiui įrašius
 
 
 ```BASH
