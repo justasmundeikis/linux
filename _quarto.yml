@@ -8,50 +8,51 @@ book:
   chapters:
     - part: "Linux Pagrindai"
       chapters:
-        - index.qmd
-        - 1_linux_configure.qmd
-        - 2_linux_update.qmd
-        - 3_linux_software.qmd
-        - 4_passwords.qmd
+        - a_linux_pagrindai/1_linux_configure.qmd
+        - a_linux_pagrindai/2_linux_update.qmd
+        - a_linux_pagrindai/3_linux_software.qmd
+        - a_linux_pagrindai/4_passwords_programms.qmd
     - part: "Bash Pagrindai"
       chapters:
-        - 5_bash_terminal_filesystem.qmd
-        - 6_bash_comands_basic.qmd
-        - 7_bash_comands_advanced_1.qmd
-        - 8_bash_commands_advanced_2.qmd
+        - b_bash_pagrindai/5_bash_terminal_filesystem.qmd
+        - b_bash_pagrindai/6_bash_comands_basic.qmd
+        - b_bash_pagrindai/7_bash_comands_advanced_1.qmd
+        - b_bash_pagrindai/8_bash_commands_advanced_2.qmd
     - part: "Editoriai ir Git"
       chapters:
-        - 9_text_editors_ide.qmd
-        - 10_git_github_1.qmd
-        - 11_git_github_2.qmd
-        - 12_ssh.qmd
+        - c_editoriai_git/9_text_editors_ide.qmd
+        - c_editoriai_git/10_git_github_1.qmd
+        - c_editoriai_git/11_git_github_2.qmd
+        - c_editoriai_git/12_git_github_2.qmd
+        - c_editoriai_git/12_ssh.qmd
     - part: "Bash Skriptai"
       chapters:
-        - 14_bash_scripts_1.qmd
-        - 15_bash_scripts_2.qmd
+        - d_bash_skriptai/13_bash_scripts_1.qmd
+        - d_bash_skriptai/14_bash_scripts_2.qmd
+        - d_bash_skriptai/15_bash_scripts_3.qmd
     - part: "Python Programavimas"
       chapters:
-        - 12_python_intro.qmd
-        - 16a_python_data_structures_loops.qmd
-        - 16b_python_variables_conditionals.qmd
-        - 16c_python_read_write_files.qmd
-        - 16_python_APIs.qmd
-        - 17_python_functions_os.qmd
-        - 18_Python_openai_api.qmd
-        - 19_python_webscrapping.qmd
-        - 20_python_ollama.qmd
-        - 21_python_bottles.qmd
-        - 22_python_sql.qmd
-        - 23_python_html.qmd
-        - 24_python_css.qmd
-        - 25_python_deployment.qmd
+        - e_python_programavimas/16_python_intro.qmd
+        - e_python_programavimas/17_python_data_structures_loops.qmd
+        - e_python_programavimas/18_python_variables_conditionals.qmd
+        - e_python_programavimas/19_python_read_write_files.qmd
+        - e_python_programavimas/20_python_APIs.qmd
+        - e_python_programavimas/21_python_ollama.qmd
+        - e_python_programavimas/22_python_bottles.qmd
+        - e_python_programavimas/23_python_functions_os.qmd
+        - e_python_programavimas/24_python_openai_api.qmd
+        - e_python_programavimas/25_python_sql.qmd
+        - e_python_programavimas/26_python_html.qmd
+        - e_python_programavimas/27_python_webscrapping.qmd
+        - e_python_programavimas/28_python_css.qmd
+        - e_python_programavimas/29_python_deployment.qmd
     - part: "Pažangios Temos"
       chapters:
-        - 26_TCP_IP.qmd
-        - 27_raspberry_pi.qmd
-        - 28_home_server.qmd
-        - 29_docker_1.qmd
-        - 30_docker_2.qmd
+        - f_pažangios_temos/30_TCP_IP.qmd
+        - f_pažangios_temos/31_raspberry_pi.qmd
+        - f_pažangios_temos/32_home_server.qmd
+        - f_pažangios_temos/33_docker_1.qmd
+        - f_pažangios_temos/34_docker_2.qmd
 
 format:
   html:

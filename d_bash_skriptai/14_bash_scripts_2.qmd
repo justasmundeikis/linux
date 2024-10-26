@@ -1,0 +1,212 @@
+---
+title: "Bash Skriptai 1"
+execute:
+  daemon: false
+  enabled: false
+format:
+  html:
+    code-copy: true
+    eval: false
+    echo: true
+---
+
+## Kam man reikalingi BASH skriptai?
+
+Kai administruoji (prižiūri) kompiuterius, arba nori automatizuoti tam tikrus procesus savo kompiuteryje, BASH skriptai tampa nepaimainoma pagalba. Štai keli pvz. perinstaliavus Linux, tu gali paleisti skriptą, kuris automatiškai instaliuos visas tavo naudojamas programas bei atstatys tavo nustatymus. O galbūt tu nori, kad kartą per savaitę failai esantys tavo Downloads direktorijoje susitvarkyt ir būtų išskirstyti, o šiukliadėžė išvalyta? O galbūt tu nori, kad reguliariai tavo kompiuteris padarytų savo backup kopiją ir ją patalpintų namų serveryje? Visokiems tokiems su kompiuteriu ar serveriu susijusius veiksmus lengviausia automatizuoti su BASH, nors tiesa, jog daugumą šių veiklų galima padaryti ir su Python arba kitomis programavimo kalbomis. 
+
+Nors BASH nėra tikrąją ta žodžio prasme programavimo kalba, BASH tai komandų interpretatorius skirtas interakcijai su tavo SHELL, visgi atzsižvelgiant į tai, jog BASH'e tu gali naudoti kintamuosius, ciklus ir t.t. padaro BASH beveik pilnaverte programavimo kalba.
+
+Ar BASH skriptai reikalingi tik Linux adminsitratoriams? Ne, nors ko gero Linux administratoriai juos naudoja dažniausiai, šis įvadas į BASH skriptus padės geriau suprasti kompiuterinę logiką (ciklus), padės praktikuotis BASH komandas ir įgalins tave ne tik tapti dar labiau IT raštinga, bet ir paklos pamatus tiek Python, tiek Docker ir kitoms IT temoms, kuriose tu ir toliau naudosi Terminalą bei turėsi interakciją su Linux operacine sistema.
+
+## Kas yra bash skriptas?
+
+Iki šiol tu rašei komandas vieną paskui kitą tiesiogiai į terminalą. Nors išmokai jas sujungti (pipe) visgi tai nevsiada be galo patogus būdas, jeigu pvz norėtum paleisti 150 komandų vieną paskui kitą. Tam naudojami skriptai - tekstinis failas, kuriame surašyta visa komandų seka ir tavo SHELL skaito visas komandas ir vykdo jas vieną paskui kitą.
+
+## Hello World
+
+Pasileidus terminalą, susikurk norimoje vietoje direktoriją "learning_bash" naudojant `mkdir`. Su `cd` pereik į šią direktoriją. Kol dirbsime su bash skriptais, dirbsime iš šios direktorijos.
+
+Dabar terminale paleisk NANO editorių ir sukuruk faila:
+
+```bash
+nano hello_world.sh
+```
+
+Griežtai žiūrint, `.sh` nėra reikalingas. Kompiuteris susiduręs su šiuo failu ir taip supras, ką jam daryti. Tačiau tam, kad kiti žmonės greitai pamatytų ir surpastų, jog tai skiptinis failas, įprastai naudoajamas `.sh` arba `.bash`.
+
+Pačiame faile įrašyk
+
+```bash
+echo "Hello world"
+```
+
+Išsaugok failą su Ctrl+s ir Ctrl+x
+
+
+Atspausdink su `ls -l` direktorijos turinį.
+
+
+Kaip matai, šis failas neturi `x` taigi joks vartotojas neturi `execution` teisių. Naudojant `sudo chmod 744 hello_world.sh` suteik sau visas teises, paliekant grupei ir kitiems vartotojams tik skaitymo teises. 
+
+pasitikrink su `ls -l` ar tikrai turi visas reikiamas teises. Galimai dabar net skriptinis failas pakeitė spalvą ir tapo žalias (?).
+
+Kaip dabar paleisti skirptą?
+
+```bash
+./hello_world.sh
+```
+
+Paleidus šį skriptą BASH interpretatorius skaito eilutę po eilutės ir vykdo komandas. 
+
+Tačiau šis skriptas dar nėra visai teisingas. Minėjau, jog failo indikatorius `.sh` nėra būtinas. tad kaip kompiuteris žino, jog tai skriptas? Įprastai (ir nuo šiol visada) mes pirmoje eilutė yįašome šebang `#!` kuris pasako SHELL interpretatoiui - "Hey, čia ne komentaras, o nurodymas, kokį interpretatoriu naudoti". Kaip minėjau pačioje mokymų pradžioje, kai kuriuose kompiuteriuose gali būti BASH, ZSH ir kiti SHELL interpretatoriai. Komanduose jose gali šiek tiek skirtis (skirtingas dialektas, arba būdingos tam tikros komandos). Tam kad nekiltų problemų vykdant šį skriptą (angl. running script), mes nurodome koks būtent interpetatorius `/bin/bash` turėtų perskaityti ir vykdyti komandas.
+
+```bash
+#!/bin/bash
+
+echo "Hello World"
+```
+
+Sveikinu, tai pirmas pilnavertis tavo BASH skriptas. Pripažinkime, tai labai paprastas skriptas.
+
+## Kintamieji
+
+Kintamieji yra reikalingi tam, kad išsaugotų tam tikras reikšmes. Terminale išbandyk, tik gal įrašyk savo vardą. Svarbu, priešingai nei Python, BASH tarp kintamojo ir `=` negali būti space ir taip pat tarp `=` ir argumento!
+
+```bash
+manovardas="Justas"
+manoskaicius=14
+```
+
+Tol kol šita terminalo sesija rya aktivyi (ir tu neperrašei šių kintamųjų) jie bus pasiekiami tavo terminale. Išbandyk panaudoti šiuos kintamuosius naudojant `echo` komandą. Kad BASH žinotų, jog tu turi omenyje kintamąjį, reikia naudoti `$` prieš kintamojo pavadinimą.Šis procesas vadinamas kintamųjų deklaravimu. 
+
+```bash
+echo $manovardas
+echo $manoskaicius
+```
+
+
+
+
+O dabar pabandyk sudėti viską į vieną sakinį
+
+
+```bash
+echo "Mano vardas: $manovardas ir mano mėgstamiausias skaičius yra $manoskaicius"
+```
+
+Paskutinę komandą galėjome atspausdinti ir be `""`, tačiau jeigu naudotume `''` nieko gero nesigautų. Išbandyk ir įsitikink
+
+```bash
+echo Mano vardas: $manovardas ir mano mėgstamiausias skaičius yra $manoskaicius
+echo 'Mano vardas: $manovardas ir mano mėgstamiausias skaičius yra $manoskaicius'
+```
+Štai todėl, dažniausiai ir naudojame `""`
+
+
+Kas nutiktu jeigu panaudtum kintamąjė, kuris nėra deklaruotas
+
+```bash
+echo $blabla
+```
+
+Ogi nieko. Bash tau neišmes klaidos ir atspausdins tiesiog tuščią vietą.
+
+Pbanadyk uždaryti terminalą ir atsidaryk iš jį iš naujo. Pakartok komandą
+
+```bash
+echo "Mano vardas: $manovardas ir mano mėgstamiausias skaičius yra $manoskaicius"
+```
+
+ir įsikitkink, jog kintamieji neišsisaugojo. Taigi, kintamieji kuriuos sukuri temrinalo sesijoje, glaioje tik toje terminalo sesijoje. Išjungus terminalą, ar restartavus kompiuterį - viskas dingsta.
+
+Tam kad neprarasti kintamųjų, mes juos išsaugome kartu su komandomis skripto viduje. Su NANO sukurk naują skriptą `apie_mane.sh`
+
+```bash
+#!/bin/bash
+
+manovardas="Justas"
+manoskaicius=14
+manoamzius='39'
+
+echo "Mano vardas: $manovardas ir mano mėgstamiausias skaičius yra $manoskaicius."
+echo "Mano amžius yra $manoamzius"
+```
+
+Išbandyk su `./apie_mane.sh`.
+
+
+Šiuo metu tavo skriptas yra begalo paprastas ir vienu žvilsniu suprantamas. Tačiau ilgainiui, tau gali reikėti pridėti komentarus, t.y. priminimus sau, arba paaiškinimus kitiems, kas vyksta kode ir t.t. Tam naudojami komentarai.  Skritpuose komentarai pradedami # (nors gali naudoti ir kelis). Viskas į dešinė nuo # toje pačioje eilutė nebus interpretuojama kaip kodas, o BASH supras jog tai yra komentaras ir jo neskaitys.
+
+Pridėkime kelis komentarus;
+
+```bash
+#!/bin/bash
+# =====================================================
+# Data: 2024-10-30
+# Autorius: Justas Mundeikis
+# Paskirtis: Atspasdinti informaciją apie mane
+# =====================================================
+
+## Deklaracijos
+manovardas="Justas" # deklaruojamas vardas, pasikeisk į savo
+manoskaicius=14 # deklaruojamas skaičius, pasikeisk į savo
+manoamzius='39' # deklaruojamas amžius, pasikeisk į savo
+
+## Funkcijos
+echo "Mano vardas: $manovardas ir mano mėgstamiausias skaičius yra $manoskaicius."
+echo "Mano amžius yra $manoamzius"
+```
+
+Išbandyk su `./apie_mane.sh`.
+
+
+Kaip matai, pridėjau skripto virųuje vaidnamą `header` (virtutinėje) dalyje, komentarus, kurie informuoja apie tai, kas, kada sukurė šį skriptą. 
+Ar yra privalomi paminėti dalykai? Ne. Tačiau geroji praktika rodo, kad autorius, data ir paskirtis neretai rpaverčia net sau pačiamm atsidarius skriptus po kiek laiko, greičiau susigaudyti. Jeigu kažkada tavo skritpai taptų labai įmantrūs, tada komentaras header skiltyje galėtų būti dar išsamesnis, štai ChatGPT man pasiūlė net aprašyti kokie yra dependencies, pvz jeigu skriptas naudoja komanda,s kurios ali būti neinstaliuotos. Tada kitas vartotojas atsidaręs iškart matys ką turi instaliuoti, jog skriptas veiktų, o ne pirma paleidus skritpą ir sulaukus klaidos, ieškoti ko trūko.
+
+```md
+#!/bin/bash
+#====================================================================
+# Script Name: script_name.sh
+# Description: Briefly describe what the script does.
+# Usage: ./script_name.sh [options] [arguments]
+# Author: Your Name
+# Created Date: YYYY-MM-DD
+# Version: 1.0
+# Last Modified: YYYY-MM-DD
+# Dependencies: List dependencies like `curl`, `awk`, or other scripts.
+# Requirements: Any system requirements or permissions needed.
+# Notes: Additional helpful notes, warnings, or cautions.
+#====================================================================
+
+```
+Dabar tau gali kilti klausimas - o kodėl neparašius komandos, kad instaliuoti iškart šiuos dependencies? Nebent tavo skriptas yra skirtas programų instaliavimui ir kitas vartotojas tai supras ir tu tai dokumentavai, pvz README.md faile... nėra labai ger apraktika tiesiog paleisti instialiavią kažkieno kito kompiuteryje. Be to, tu negli būti tikra, ar tia Linux, ar MacOs sistema. O net Linux, gali būti naudoajmas ne `apt` programū menedžeris, o `dnf` ir t.t. Taigi, ir saugiau ir lengviau leisti tam tikruas programas susiinstaliuoti pačiam vartotojui.
+
+
+
+
+
+## Matematinės Funkcijos
+
+## IF ELSE
+
+## Išeities kodai
+
+## WHILE ciklai
+
+## Praktikumas
+
+## FOR ciklai
+
+## Kur saugoti skriptus?
+
+## Data Streams (stdin, stdout, stderror)
+
+## Funkcijos
+
+## CASE
+
+## CRON 
+
+## Argumentai
+
+## Praktikumas: Serverio Backup skritpas
