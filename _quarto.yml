@@ -6,6 +6,7 @@ book:
   title: "Linux ir programavimas"
   author: "Justas Mundeikis"
   chapters:
+    - index.qmd
     - part: "Linux Pagrindai"
       chapters:
         - a_linux_pagrindai/1_linux_configure.qmd
