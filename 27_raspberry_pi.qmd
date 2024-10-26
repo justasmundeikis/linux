@@ -1,5 +1,5 @@
 ---
-title: "Raspberry Pi
+title: "Raspberry Pi"
 execute:
   daemon: false
   enabled: false

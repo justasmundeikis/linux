@@ -1,5 +1,5 @@
 ---
-title: "Python Įvadas
+title: "Python Įvadas"
 execute:
   daemon: false
   enabled: false

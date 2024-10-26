@@ -1,5 +1,5 @@
 ---
-title: "Python Funkcijos ir OS
+title: "Python Funkcijos ir OS"
 execute:
   daemon: false
   enabled: false
