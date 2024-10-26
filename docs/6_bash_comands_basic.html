@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>5&nbsp; BASH komandos – Linux ir programavimas</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./7_bash_comands_advanced.html" rel="next">
+<link href="./5_terminal_filesystem.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./5_terminal_filesystem.html">Bash and Terminal</a></li><li class="breadcrumb-item"><a href="./6_bash_comands_basic.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">BASH komandos</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Linux ir programavimas</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Linux Basics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Įvadas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./1_linux_configure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Linux pirmieji žingnsiai</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./2_linux_update.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Linux atnaujinimas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./3_linux_software.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linux programos</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bash and Terminal</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./5_terminal_filesystem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Terminalas ir Linux failų sistema</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./6_bash_comands_basic.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">BASH komandos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./7_bash_comands_advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">BASH advanced</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./8_bash_advanced2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BASH advanced 2</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Text Editing and Git</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./9_text_editor_ide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Text editors ir IDE</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10_git_github_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Git ir GitHub 1</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11_git_github_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Git ir GitHub 2</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11b_ssh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">SSH</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Python Programming</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12_python_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Python Įvadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13_python_data_structures_loops.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Python Struktūros ir Ciklai</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14_python_variables_conditionals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Python Kintamieji</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15_python_read_write_files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Python Failai</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16_python_APIs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Python API</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17_python_functions_os.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Python Funkcijos ir OS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18_Python_openai_api.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Python ir OpenAI</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Advanced Topics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./26_TCP_IP.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">TCP/IP</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./27_raspberry_pi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Raspberry Pi</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./28_home_server.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Raspberry pi - Server</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./29_docker_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Docker 1</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./30_docker_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Docker 2</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#failų-ir-direktorijų-valdymas" id="toc-failų-ir-direktorijų-valdymas" class="nav-link active" data-scroll-target="#failų-ir-direktorijų-valdymas"><span class="header-section-number">5.1</span> Failų ir direktorijų valdymas</a>
+  <ul class="collapse">
+  <li><a href="#echo" id="toc-echo" class="nav-link" data-scroll-target="#echo"><span class="header-section-number">5.1.1</span> echo</a></li>
+  <li><a href="#ir-operatoriai" id="toc-ir-operatoriai" class="nav-link" data-scroll-target="#ir-operatoriai"><span class="header-section-number">5.1.2</span> <code>&gt;</code> ir <code>&gt;&gt;</code> operatoriai</a></li>
+  <li><a href="#cat" id="toc-cat" class="nav-link" data-scroll-target="#cat"><span class="header-section-number">5.1.3</span> cat</a></li>
+  <li><a href="#head-ir-tail" id="toc-head-ir-tail" class="nav-link" data-scroll-target="#head-ir-tail"><span class="header-section-number">5.1.4</span> head ir tail</a></li>
+  <li><a href="#less" id="toc-less" class="nav-link" data-scroll-target="#less"><span class="header-section-number">5.1.5</span> less</a></li>
+  <li><a href="#wc" id="toc-wc" class="nav-link" data-scroll-target="#wc"><span class="header-section-number">5.1.6</span> wc</a></li>
+  <li><a href="#touch" id="toc-touch" class="nav-link" data-scroll-target="#touch"><span class="header-section-number">5.1.7</span> touch</a></li>
+  <li><a href="#mkdir" id="toc-mkdir" class="nav-link" data-scroll-target="#mkdir"><span class="header-section-number">5.1.8</span> mkdir</a></li>
+  <li><a href="#cp" id="toc-cp" class="nav-link" data-scroll-target="#cp"><span class="header-section-number">5.1.9</span> cp</a></li>
+  <li><a href="#mv" id="toc-mv" class="nav-link" data-scroll-target="#mv"><span class="header-section-number">5.1.10</span> mv</a></li>
+  <li><a href="#rm" id="toc-rm" class="nav-link" data-scroll-target="#rm"><span class="header-section-number">5.1.11</span> rm</a></li>
+  <li><a href="#grep" id="toc-grep" class="nav-link" data-scroll-target="#grep"><span class="header-section-number">5.1.12</span> grep</a></li>
+  <li><a href="#cut" id="toc-cut" class="nav-link" data-scroll-target="#cut"><span class="header-section-number">5.1.13</span> cut</a></li>
+  <li><a href="#intarpas-standartinė-įvestis-išvestis-ir-klaidos" id="toc-intarpas-standartinė-įvestis-išvestis-ir-klaidos" class="nav-link" data-scroll-target="#intarpas-standartinė-įvestis-išvestis-ir-klaidos"><span class="header-section-number">5.1.14</span> Intarpas: Standartinė įvestis, išvestis ir klaidos</a></li>
+  <li><a href="#kaip-visą-tai-taikyti-praktikoje" id="toc-kaip-visą-tai-taikyti-praktikoje" class="nav-link" data-scroll-target="#kaip-visą-tai-taikyti-praktikoje"><span class="header-section-number">5.1.15</span> Kaip visą tai taikyti praktikoje?</a></li>
+  <li><a href="#pipe" id="toc-pipe" class="nav-link" data-scroll-target="#pipe"><span class="header-section-number">5.1.16</span> pipe |</a></li>
+  <li><a href="#sort" id="toc-sort" class="nav-link" data-scroll-target="#sort"><span class="header-section-number">5.1.17</span> sort</a></li>
+  <li><a href="#sed" id="toc-sed" class="nav-link" data-scroll-target="#sed"><span class="header-section-number">5.1.18</span> sed</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./5_terminal_filesystem.html">Bash and Terminal</a></li><li class="breadcrumb-item"><a href="./6_bash_comands_basic.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">BASH komandos</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">BASH komandos</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="failų-ir-direktorijų-valdymas" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="failų-ir-direktorijų-valdymas"><span class="header-section-number">5.1</span> Failų ir direktorijų valdymas</h2>
+<p>Praėjusiame skyriuje išmokai naviguoti terminale naudojant komandas <code>pwd</code> ir <code>cd</code>. Sužinojai apie Linux failų sistemą: kaip matyti visų failų ir katalogų sąrašą naudojant <code>ls</code> komandą, bei tai, kad Linux sistemoje vartotojai turi skirtingas teises, priklauso grupėms, ir kiekvienas failas turi savininko, grupės, bei kitų vartotojų teises naudotis tuo failu ar katalogu. Taip pat išmokai svarbių klaviatūros trumpinių, kaip peršokti į komandinės eilutės pradžią (<code>Ctrl-A</code>), pabaigą (<code>Ctrl-E</code>), nutrinti dalį (<code>Ctrl-U</code>), kaip kopijuoti ir įklijuoti į terminalą naudojant <code>Ctrl-Shift-C</code> ir <code>Ctrl-Shift-V</code>. Išmokai dirbti su terminalo istorija naudojant <code>history</code> ir kartoti komandas su <code>!n</code>.</p>
+<p>Šiame skyriuje skirsi dėmesį darbui su failais ir direktorijomis. Tu išmoksi kurti failus ir direktorijas, juos kopijuoti, perkelti, ištrinti. Taip pat išmoksi sujungti kelias komandas. Ir šio skyriaus pabaigoje pamatysi, kad tavo BASH įgūdžiai tampa dar stipresni!</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/shell_adv/We_Can_Do_It!.jpg" class="img-fluid figure-img"></p>
+<figcaption>By J. Howard Miller - <a href="https://commons.wikimedia.org/w/index.php?curid=80242715">U.S. National Archives and Records Administration</a></figcaption>
+</figure>
+</div>
+<p>Prieš pradedant, įsitikink, kad turi keletą svarbių programų: <code>jq</code> ir <code>curl</code>. Kaip ir praėjusiame skyriuje, kai ieškojai<code>which $SHELL</code>, komanda tau parodė, kur yra binary failas (programa). Dabar padaryk tą patį:</p>
+<ul>
+<li>Patikrink, ar turi <code>curl</code>, su <code>which curl</code>.</li>
+<li>Patikrink, ar turi <code>jq</code>, su <code>which jq</code>.</li>
+</ul>
+<p>Jei tavo kompiuteris aptinka šias programas, terminalas atspausdins vietą, kur jos yra įdiegtos. Jei terminalas jų neranda, įdiek <code>curl</code> ir <code>jq</code> kaip sisteminius paketus naudojant <code>apt</code>. Jei pamiršai, kaip tai daryti, pakartok ankstesnę medžiagą.</p>
+<p><img src="img/shell_adv/which_curl_jq.png" class="img-fluid"></p>
+<p>Kai tai atliksi, nukopijuok ir paleisk šią komandą savo terminale - ji sukurs direktoriją <strong>shell_2_dalis</strong> tavo namų direktorijoje kartu su visais šiam skyriui reikalingais failais:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> https://gist.githubusercontent.com/justasmundeikis/b4bfc0d672a859afc0fe28f1e721e167/raw <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Jeigu viskas gerai, turėtum pamatyti:</p>
+<p><img src="img/shell_adv/all_created.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Pasikartok komandas <code>cd</code>, prisimink absoliutų ir reliatyvų kelią, bei ką reiškia <code>~</code>, <code>.</code> ir <code>..</code>. Šiame skyriuje taip pat dažnai reikės naudoti <code>ls</code>, tad pasikartok šią komandą ir jos nustatymus dabar.</p>
+</div>
+</div>
+<p>Su <code>ls</code> komanda atspausdink <em>long</em> formatu savo <em>home directory</em> turinį. Paaiškink visas šios eilutės reikšmes.</p>
+<p><img src="img/shell_adv/initial.png" class="img-fluid"></p>
+<p>Pakeisk savo darbinę direktoriją į <strong>~/shell_2_dalis</strong>. Kaip pasikeitė tavo <em>prompt</em>? Paaiškink, kas čia yra kas.</p>
+<p><img src="img/shell_adv/initial_prompt.png" class="img-fluid"></p>
+<section id="echo" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="echo"><span class="header-section-number">5.1.1</span> echo</h3>
+<p>Komanda <code>echo</code> naudojama norint atspausdinti vartotojo įvestį (<strong>input</strong>) terminale (dar vadinamą standartine išvestimi, angl. <strong>standard output</strong>). Tai paprasta, bet galinga komanda, dažnai naudojama skriptuose pranešimams rodyti arba kintamųjų reikšmėms tikrinti.</p>
+<p>Nors nėra būtina tekstą apskliausti kabutėmis, dėl geresnio aiškumo ir įskaitomumo patartina tai daryti.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> Hello World!</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'Hello World!'</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hello World!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Reikėtų atkreipti dėmesį, jog dvigubos kabutės (<code>" "</code>) ir viengubos kabutės (<code>' '</code>’) šiek tiek skiriasi. Tekstas, esantis viengubose kabutėse (<code>' '</code>), atspausdinamas paraidžiui, nepaisant ten esančių kintamųjų. Tuo tarpu tekstas, esantis dvigubose kabutėse (<code>" "</code>), yra interpretuojamas, ir Shell leidžia naudoti kintamųjų vertes.</p>
+<p>Pabandyk šias komandas, kurios naudoja kintamąjį <code>$USER</code>, atspausdinantį shell sesijos vartotojo vardą:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> My username is <span class="va">$USER</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'My username is $USER'</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"My username is </span><span class="va">$USER</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ar pastebi, kuo skiriasi išvestis?</p>
+<p><img src="img/shell_adv/echo.png" class="img-fluid"></p>
+</section>
+<section id="ir-operatoriai" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="ir-operatoriai"><span class="header-section-number">5.1.2</span> <code>&gt;</code> ir <code>&gt;&gt;</code> operatoriai</h3>
+<p><code>&gt;</code> ir <code>&gt;&gt;</code> operatoriai naudojami išvesties nukreipimui (angl. <strong>output redirection</strong>). Jie nukreipia komandos išvestį (angl. <strong>output</strong>) į failą, o ne į terminalą. Šie operatoriai yra esminiai dirbant su failais ir automatizuojant užduotis skriptuose.</p>
+<p><code>&gt;</code> operatorius nukreipia komandos išvestį į failą, perrašydamas jo turinį, jei failas jau egzistuoja. Jei failas neegzistuoja, jis bus sukurtas.</p>
+<p>Ši komanda sukuria (arba perrašo) failą <strong>hello_world.txt</strong> su tekstu “Hello World!”.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hello World!"</span> <span class="op">&gt;</span> hello_world.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Kaip <code>echo</code> komanda ir jos argumentas “Hello World!” buvo nukreipti į tekstinį failą, taip galime nukreipti ir kitų komandų išvestis į failus. Operatoriaus <code>&gt;</code> argumentas nebūtinai turi būti tik failo pavadinimas, tai gali būti ir failo pavadinimas su absoliučiu ar reliatyviu adresu.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="op">&gt;</span> mix/direktorijos_turinys.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ši komanda nukreipia <code>ls</code> komandos išvestį į failą <strong>direktorijos_turinys.txt</strong>, kuris yra <strong>mix</strong> subdirektorijoje. Atsidaryk šį failą ir patikrink, ar jis susikūrė teisingai. Turėtum matyti kažką panašaus į šį vaizdą:</p>
+<p><img src="img/shell_adv/echo_result.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Liekant <strong>shell_part_2</strong> direktorijoje, atspausdink namų direktorijos (angl. <strong>home directory</strong>) turinį su visais paslėptais failais, ilguoju formatu ir žmonėms geriau suprantamais failų ir direktorijų dydžiais, ir nukreipk išvestį į <strong>mix</strong> subdirektorijoje esantį failą <strong>direktorijos_turinys.txt</strong>, jį perrašant.</p>
+</div>
+</div>
+<hr>
+<p><strong>Intarpas</strong></p>
+<p>Hey, ką tik gavai užduotį. Ateityje gausi panašias ir dar sudėtingesnes užduotis. Todėl šioje vietoje padarykime intarpą. Pakalbėkime apie vieną svarbiausių darbo būdų programavime (ir ne tik!) – darbų skaidymą (angl. break down).</p>
+<p>Kartais gali gauti labai sudėtingą užduotį, kuri iš pradžių atrodys neįveikiama ar nesuprantama. Tai visiškai normalu. Nestresuok – giliai įkvėpk, iškvėpk, jei reikia, pasiimk popierių ir pieštuką ir pradėk skaidyti darbus į logines sekas. Pvz., prieš tai buvusią užduotį galima suskaidyti į tris dalis:</p>
+<ul>
+<li>reikia failų ir direktorijų sąrašo</li>
+<li>atspausdinti perrašant</li>
+<li>failo pavdinimas</li>
+</ul>
+<p><img src="img/shell_adv/break_1.png" class="img-fluid"></p>
+<p>Dabar galima skaidyti ar toliau detalizuoti kiekvieną iš šių dalių.</p>
+<ul>
+<li>ls -alh pagamina sąrašą ilguoju, žmonėms suprantamų dydžių formatu</li>
+<li><code>&gt;</code> perrašo</li>
+<li><strong>direktorijos_turinys.txt</strong> bus pavadinimas</li>
+</ul>
+<p><img src="img/shell_adv/break_2.png" class="img-fluid"></p>
+<p>Tačiau dabartinė darbinė direktorija yra <strong>~/shell_part_2</strong>, todėl reikia</p>
+<ul>
+<li><code>ls -alh</code> kaip argumentą paduoti <code>~</code> arba atitinmai <code>/home/username</code></li>
+<li><strong>direktorijos_turinys.txt</strong> turi būti <strong>mix</strong> subdirektorijoje</li>
+</ul>
+<p><img src="img/shell_adv/break_3.png" class="img-fluid"></p>
+<p>Skaidant užduotį į mažesnes dalis, vis labiau suprasi, ką reikia padaryti. Turint daugiau patirties, geriau žinosi, kiek laiko gali prireikti kiekvienam žingsniui.</p>
+<p>Pvz., duomenų analitikas gali gauti užduotį: suprognozuoti sekančių metų ledų pardavimus. Analitikas, žinodamas, kad ledų pardavimai priklauso nuo lauko temperatūros, gali suskaidyti darbus taip:</p>
+<ul>
+<li>Importuoti istorinius tam tikros vietos temperatūros duomenis</li>
+<li>Prognozuoti sekančių metų kiekvienos dienos temperatūras</li>
+<li>Apskaičiuoti kiekvienos dienos pardavimus</li>
+<li>Aprašyti duomenis ir pateikti juos užsakovui suprantamu formatu</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/shell_adv/pexels-kamaji-ogino-5094361.jpg" class="img-fluid figure-img"></p>
+<figcaption>Photo by <a href="https://www.pexels.com/photo/asian-mother-with-daughter-pointing-at-signboard-with-ice-cream-5094361/">Kamaji Ogino</a></figcaption>
+</figure>
+</div>
+<p>Kiekvieną iš šių žingsnių analitikas gali suskaidyti į dar daugiau mažesnių užduočių.</p>
+<p>Kodėl tai svarbu? Visų pirma, tai padeda geriau suprasti, ką reikia padaryti, ir kiek tai gali užtrukti. Kiekvienas žingsnis tampa atskiru procesu, ir jei nepavyksta vienas metodas, gali bandyti kitą.</p>
+<p>Darbų skaidymas yra intuityvus procesas kasdieniame darbe ir tu jau šį metodą ir taip taikai pasąmoningai, bet kai gauname naujas ir labai sudėtingas užduotis, vis tiek verta prisiminti šią strategiją, nes kartais mes pamirštame, kaip ji padeda išvengti pasimetimo.</p>
+<hr>
+<p><code>&gt;&gt;</code> operatorius nukreipia komandos išvestį į failą, pridedant (angl. <strong>append</strong>) prie failo turinio. Jei failas neegzistuoja, jis bus sukurtas.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"What a beatiful morning"</span> <span class="op">&gt;&gt;</span> day.txt</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"What a beatiful day"</span> <span class="op">&gt;&gt;</span> day.txt</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"What a beatiful evening"</span> <span class="op">&gt;&gt;</span> day.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Šios komandos prideda tekstą “What a beautiful morning”, “What a beautiful day” ir “What a beautiful evening” prie failo <strong>day.txt</strong> galo, neperrašydamos esamo turinio. Jei tokio failo nėra, jis bus sukurtas.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Susirask tau patinkančios dainos tekstą internete.</li>
+<li>Naudojant komandą <code>echo</code> ir operatorių <code>&gt;</code>, sukurk failą <strong>favorite_song.txt</strong>. Failo turinys turėtų būti panašus į “My favorite song is <name>”.</name></li>
+<li>Pirmas keturias dainos eilutes atspausdink į failą <strong>song_text.txt</strong> naudojant <code>echo</code> ir <code>&gt;&gt;</code>. Nepamiršk, kokie klaviatūros trumpiniai naudojami kopijuojant ir įkeliant tekstą į terminalą!</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="cat" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="cat"><span class="header-section-number">5.1.3</span> cat</h3>
+<p>Komanda <code>cat</code> (angl. <strong>concatenate</strong>, liet. „sujungti“) naudojama peržiūrėti, sujungti ir atspausdinti failus. Tai viena iš pagrindinių Linux komandų, nes leidžia greitai peržiūrėti failų turinį, įvesti turinį į kitus failus arba sujungti kelis failus į vieną.</p>
+<p>Praeitame skyriuje sukūrei du failus <strong>favorite_song.txt</strong> ir <strong>song_text.txt</strong>. Dabar juos ir naudosime.</p>
+<p>Atspausdink failo <strong>favorite_song.txt</strong> turinį į terminalą:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> favorite_song.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Pas mane tai atrodo taip:</p>
+<p><img src="img/shell_adv/cat_fav_song.png" class="img-fluid"></p>
+<p><code>cat</code> leidžia sujungti kelių failų turinį ir atspausdinti rezultatą terminale:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> favorite_song.txt song_text.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell_adv/cat_fav_song_text.png" class="img-fluid"></p>
+<p>Kaip praeitame skyriuje išmokai, komandos išvestį (nesvarbu, ar tai būtų <code>echo</code>, ar <code>ls</code>) galima nukreipti į failą. Lygiai taip pat gali nukopijuoti failą naudojant <code>cat</code> ir <code>&gt;</code> arba <code>&gt;&gt;</code>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> favorite_song.txt <span class="op">&gt;</span> favorite_song_2.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ši komanda nukopijuoja failo <strong>favorite_song.txt</strong> turinį į naują failą <strong>favorite_song_2.txt</strong>, perrašydama jo turinį, jei toks failas jau egzistuoja.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Naudojant <code>echo</code> ir <code>&gt;&gt;</code>, įrašyk dar 4 eilutes mėgstamiausios dainos teksto į failą <strong>song_text_2.txt</strong>.</p></li>
+<li><p>Sujunk failus <strong>song_text.txt</strong> ir <strong>song_text_2.txt</strong>, nukreipiant rezultatą į <strong>song_text_full.txt</strong>:</p></li>
+<li><p>Pagalvok, kaip naudojant visas iki šiol žinomas komandas, būtų galima gauti <strong>song_text.txt</strong> failą, kuriame būtų pirmas ketvertas eilučių ir antras ketvertas eilučių teksto?</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="head-ir-tail" class="level3" data-number="5.1.4">
+<h3 data-number="5.1.4" class="anchored" data-anchor-id="head-ir-tail"><span class="header-section-number">5.1.4</span> head ir tail</h3>
+<p>Komandos <code>head</code> (galva) ir <code>tail</code> (uodega) naudojamos peržiūrėti pirmąsias arba paskutines failo eilutes. Įprastai jos atspausdina 10 eilučių teksto.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Dabar tavo failas <strong>song_text.txt</strong> turėtų turėti 8 eilutes teksto. Todėl tokiu pat būdu, kaip prieš tai, pridėk dar 4 eilutes teksto, kad turėtum bent 12.</p>
+</div>
+</div>
+<p>Peržiūrėk pirmas 10 eilučių <strong>song_text.txt</strong> su <code>head</code>:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> song_text.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Peržiūrėk paskutines 10 failo eilučių:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span> song_text.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Tiek <code>head</code>, tiek <code>tail</code> priima nustatymą (<strong>option</strong>) <code>-n</code> su argumentu, nurodančiu, kiek eilučių atspausdinti:</p>
+<ul>
+<li>Norint peržiūrėti pirmas 3 eilutes, naudok komandą: <code>head -n 3 song_text.txt</code></li>
+<li>Norint peržiūrėti paskutines 5 eilutes, naudok komandą: <code>tail -n 5 song_text.txt</code>.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Kas nutiktų, jei panaudotum <code>head</code> arba <code>tail</code> su failu, kuriame nėra 10 eilučių? Pabandyk su <strong>favorite_song.txt</strong></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Dabar dirbsi su failu <strong>data/temp_vilnius.txt</strong>.</p>
+<ul>
+<li>Naudojant <code>cat</code>, atspausdink visą failą terminale</li>
+<li>Pirmosios dienos prognozės gali turėti mažiau nei 24 valandas (pvz., likusios 6 valandos). Naudojant <code>head</code>, atspausdink tik šiandienos orų prognozes</li>
+<li>Kadangi šiandienos oras jau aiškus, tavo draugei Amelijai reikia rytojaus orų prognozės. Derinant <code>head</code> ir <code>tail</code>, išfiltruok eilutes taip ir sukurk tarpinius failus, kad būtų nusiųstos tik rytojaus 24 valandų temperatūros prognozės. Rezultatą išsaugok į failą <strong>amelija_temp_vilnius.txt</strong> subdirektorijoje <strong>data</strong>. Naudojant <code>cat</code> įsitikink, jog turi tik rytojaus temperatūras.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="less" class="level3" data-number="5.1.5">
+<h3 data-number="5.1.5" class="anchored" data-anchor-id="less"><span class="header-section-number">5.1.5</span> less</h3>
+<p>Praėjusiame skyriuje jau turėjai atvejį, kai viso failo <strong>temp_vilnius.txt</strong> turinys netilpo į terminalo langą. Tikėtina, reikėjo pakeisti terminalo lango dydį arba slinkti su pele. Dabar tau galbūt kyla klausimas, kaip būtų galima matyti failo turinį gabaliukais?</p>
+<p>Nors gali naudoti <code>cat</code> dideliems failams atspausdinti ir tada slinkti išvestį, paprastai patogiau failą rodyti puslapiais. Tam pirminė komanda buvo <code>more</code>, bet ją pakeitė galingesnė komanda <code>less</code>.</p>
+<p>Naudojant <code>less &lt;failas&gt;</code>, vienu metu matysi tik vieną failo puslapį. Spaudžiant ␣ (space) klavišą, pereisi į kitą puslapį; gali taip pat naudoti ↓ ir ↑ klavišus, kad judėtum po vieną eilutę žemyn arba aukštyn. Norint išeiti, spausk <code>q</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Atsidaryk <strong>data/temp_vilnius.txt</strong> su less, išbandyk judėjimą tekste žemyn, aukštyn ir uždaryk programą su <code>q</code>.</p>
+</div>
+</div>
+<p>Jei <code>less</code> komandai nurodysi kelis failus, gali naudoti <code>:n</code> (<strong>next</strong>) pereiti prie kito failo, o <code>:p</code> (<strong>previous</strong>) sugrįžti prie ankstesnio failo. Norint išeiti, spausk <code>q</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Atsidaryk failus <strong>favorite_song.txt</strong>, <strong>data/temp_vilnius.txt</strong> ir <strong>text/seneles_pasaka.txt</strong> su less. Išbandyk judėjimą tekste žemyn, aukštyn, pereik tarp failų naudojant <code>:n</code> ir <code>:p</code> bei pabaigoje uždaryk <code>less</code> su <code>q</code></p>
+</div>
+</div>
+</section>
+<section id="wc" class="level3" data-number="5.1.6">
+<h3 data-number="5.1.6" class="anchored" data-anchor-id="wc"><span class="header-section-number">5.1.6</span> wc</h3>
+<p>Komanda <code>wc</code> (angl. <strong>word count</strong>) naudojama atspausdinti naujų eilučių, žodžių ir baitų skaičių faile.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 87%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Nustatymas</th>
+<th>Reikšmė</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>-c</code></td>
+<td>Atspausdina baitų skaičių (angl. byte count), kiek vietos užima failas</td>
+</tr>
+<tr class="even">
+<td><code>-m</code></td>
+<td>Atspausdina simbolių skaičių (angl. character count)</td>
+</tr>
+<tr class="odd">
+<td><code>-w</code></td>
+<td>Atspausdina žodžių skaičių (angl. word count)</td>
+</tr>
+<tr class="even">
+<td><code>-l</code></td>
+<td>Atspausdina eilučių skaičių (angl. line count)</td>
+</tr>
+</tbody>
+</table>
+<p>Pastaba: <code>-c</code> ir <code>-m</code> gali atspausdinti skirtingus rezultatus priklausomai nuo failo koduotės, nes simbolis gali užimti daugiau nei vieną baitą (pvz., specialūs lietuviški simboliai).</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Kiek žodžių ir kiek eilučių yra <strong>text/seneles_pasaka.txt</strong>?</li>
+<li>Kiek eilučių yra <strong>data/temp_vilnius.txt</strong> ir kiek <strong>data/temp_kaunas.txt</strong>?</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="touch" class="level3" data-number="5.1.7">
+<h3 data-number="5.1.7" class="anchored" data-anchor-id="touch"><span class="header-section-number">5.1.7</span> touch</h3>
+<p>Komanda <code>touch</code> naudojama kuriant tuščią failą arba keičiant esamo failo metaduomenis, pvz., modifikavimo ar prieigos laiką. Ji yra universali ir ypač naudinga tais atvejais, kai reikia greitai sukurti failą arba atnaujinti failo laikus be jo turinio keitimo.</p>
+<p>Jei failas neegzistuoja, <code>touch</code> jį sukurs. Jei failas jau yra, komanda tiesiog pakeis failo “paskutinio keitimo laiką” (<strong>modification time</strong>) į dabartinį laiką, nesikeičiant turinio.</p>
+<p>Sukurk tuščią failą:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> empty_1.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell_adv/touch_single.png" class="img-fluid"></p>
+<p>Jei nurodysi kelis failų pavadinimus, touch sukurs visus iš karto:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> empty_2.txt empty_3.txt empty_4.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell_adv/touch_multiple.png" class="img-fluid"></p>
+<p>Jeigu failo pavadinimas yra nurodytas su absoliučiu ar reliatyviu keliu, failas bus sukurtas atitinkamoje direktorijoje, jei tokia direktorija egzistuoja. Jei direktorija neegzistuoja, bus pranešta apie klaidą, ir failas nebus sukurtas.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> mix/empty_5.txt</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> tralala/empty_6.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell_adv/touch_error.png" class="img-fluid"></p>
+<p><code>touch</code> taip pat leidžia atnaujinti failo prieigos arba modifikavimo laiką. Štai keli pavyzdžiai:</p>
+<ul>
+<li>Atnaujinti tiek prieigos, tiek modifikavimo laikus į dabartinį laiką:</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> empty_1.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Atnaujinti tik prieigos laiką:</li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> <span class="at">-a</span> empty_1.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Atnaujinti tik modifikavimo laiką:</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> <span class="at">-m</span> empty_1.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Nustatyti tiek prieigos, tiek modifikavimo laikus į konkrečią datą, pvz., 2022 m. sausio 1 d., 12:00 val.:</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> <span class="at">-t</span> 202201011200 empty_1.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Naudoti <code>-d</code> parinktį, norint lankstesnio laiko nustatymo:</li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> <span class="at">-d</span> <span class="st">"2023-07-04 15:45"</span> empty_1.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Dabar gali kilti klausimas - kam tai naudinga? Iš tiesų, failų laikų keitimas gali atrodyti nišinis, tačiau tai naudinga tam tikrais atvejais:</p>
+<ul>
+<li>Jei nori išbandyti skriptą, kuris rūšiuoja ar archyvuoja failus pagal jų prieigos ar modifikavimo laiką, gali generuoti tuščius failus su netikrais laikais ir patikrinti, ar skriptas veikia teisingai.</li>
+<li>Jei atstatai failus iš atsarginės kopijos, gali norėti atkurti ir jų originalius prieigos bei modifikavimo laikus, kad išsaugotum failų istoriją tiksliai tokia, kokia buvo prieš atsargines kopijas.</li>
+</ul>
+</section>
+<section id="mkdir" class="level3" data-number="5.1.8">
+<h3 data-number="5.1.8" class="anchored" data-anchor-id="mkdir"><span class="header-section-number">5.1.8</span> mkdir</h3>
+<p>Komanda <code>mkdir</code> (angl. <strong>make directory</strong>) naudojama naujų direktorijų kūrimui.</p>
+<p>Naują direktoriją gali sukurti taip:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> projektas1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Kaip ir su komanda <code>touch</code>, gali sukurti kelias direktorijas vienu metu, nurodant pavadinimus arba kelius į jas:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> projektas2 mix/projektas3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell_adv/mkdir.png" class="img-fluid"></p>
+<p>Kartais reikia sukurti direktorijų medį (hierarchiją). Jei tarpinės direktorijos dar neegzistuoja, gali naudoti <code>-p</code> argumentą, kuris automatiškai sukurs ir tarpines direktorijas. Pavyzdžiui:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> projektas0/duomenys</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell_adv/mkdir_p.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Netrukus norėsime sukurti tam tikrų failų atsargines kopijas. Kaip pasiruošimą, užtikrink, kad shell_part_2 direktorijoje būtų:</p>
+<ul>
+<li>backup/data</li>
+<li>backup/text</li>
+</ul>
+<p>Sukurk jas naudojant <code>-p</code>, nurodant abi direktorijas kaip du argumentus vienoje komandoje (vienoje eilutėje).</p>
+</div>
+</div>
+</section>
+<section id="cp" class="level3" data-number="5.1.9">
+<h3 data-number="5.1.9" class="anchored" data-anchor-id="cp"><span class="header-section-number">5.1.9</span> cp</h3>
+<p>Pripažink, kopijuoti failą su <code>cat failas.txt &gt; kopija.txt</code> nėra labai intuityvu. O ką daryti, jei nori nukopijuoti ne tik failą, bet ir visą direktoriją?</p>
+<p>Komanda <code>cp</code> (angl. <strong>copy</strong>) naudojama failams ir direktorijoms kopijuoti.</p>
+<p>Paprasčiausiu atveju, kai nori sukurti failo kopiją, komandai <code>cp</code> nurodai originalaus failo pavadinimą ir kokiu pavadinimu turėtų būti sukurta kopija.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> song_text.txt song_text_copy.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Jei failas <strong>song_text_copy.txt</strong> jau egzistuotų, jis būtų perrašytas. Taigi <code>cp</code> veikia panašiai kaip <code>&gt;</code>.</p>
+<p>Kaip ir su visomis BASH komandomis, gali naudoti tiek reliatyvius, tiek absoliučius kelius (angl. path). Pavyzdžiui, kopiją gali perkelti į kitą direktoriją:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ./song_text.txt ./mix/song_text_copy.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell_adv/cp_dir.png" class="img-fluid"></p>
+<p>Jeigu kaip antrąjį argumentą nurodysi egzistuojančios direktorijos pavadinimą, <code>cp</code> sukurs kopiją tokiu pačiu pavadinimu kaip originalas ir patalpins ją į nurodytą direktoriją. Šįkart praleidžiam</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> song_text.txt mix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell_adv/cp_dir2.png" class="img-fluid"></p>
+<p><code>cp</code> gali kopijuoti ir direktorijas, tačiau tam, kad visa direktorija būtų nukopijuota rekursyviai (su visu turiniu), reikia naudoti nustatymą <code>-r</code> (<strong>recursive</strong>). Jeigu pamirši <code>-r</code> direktorija nebus nukopijuota!</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> mix mix_copy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell_adv/cp_dir3.png" class="img-fluid"></p>
+<p>Kada naudoti <code>cp -a</code>?</p>
+<p>Nustatymas <code>-a</code> (arba <strong>archive</strong>) naudojamas, kai reikia nukopijuoti failus ir direktorijas kartu su jų metaduomenimis (pvz., failo leidimais, nuosavybe, laikais). Tai naudinga, kai nori išsaugoti visas originalaus failo ar katalogo savybes. <code>-a</code> iš esmės yra kombinuotas <code>cp -r</code> (rekursija) ir kitų nustatymų rinkinys, kuris užtikrina, kad išsaugomi visi atributai.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-a</span> mix mix_copy_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Dabar palyging metaduominis su <code>ls -l</code>.</p>
+<p><img src="img/shell_adv/cp_dir4.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Padaryk <strong>temp_vilnius.txt</strong> kopiją pavadinimu <strong>temp_vilnius.txt</strong>, bet kaip argumentą nurodyk direktoriją <strong>ir</strong> failo pavadinimą. Patalpink kopiją į <strong>backup/data</strong>.</li>
+<li>Padaryk <strong>temp_kaunas.txt</strong> ir <strong>temp_klaipeda.txt</strong> kopiją vienoje komandoje su originaliu pavadinimu, kaip <strong>trečią</strong> argumentą <code>cp</code> paduodant tik <strong>backup/data</strong> direktoriją.</li>
+<li>Padaryk <strong>text</strong> direktorijos kopiją su visu jos turinu į <strong>backup</strong> direktoriją. Išsaugok visus metaduomenis.</li>
+<li><strong>Teorinis klausimas</strong>: kas nutiktų jeigu panaudotum <code>cp -r text backup/text</code>?</li>
+<li>Ar darant <strong>temp_</strong> failų atsargines kopijas išsaugojai metaduomenis? jeigu ne, pakartok komandas tik su teisingu nustatymu ir įsitikink, ar iš tiesų metaduomenys tokie pat!</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="mv" class="level3" data-number="5.1.10">
+<h3 data-number="5.1.10" class="anchored" data-anchor-id="mv"><span class="header-section-number">5.1.10</span> mv</h3>
+<p>Komanda <code>mv</code> (angl. <strong>move</strong>) naudojama perkelti arba pervadinti failus ir direktorijas. Tai universali komanda, skirta tiek failų ir katalogų vietos keitimui, tiek jų pavadinimų modifikavimui.</p>
+<p>Pvz., naudojant <code>mv</code>, gali pervadinti failą <strong>temp_vilnius.txt</strong> į <strong>temp_alytus.txt</strong>:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> data/temp_vilnius.txt data/temp_alytus.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell_adv/mv_single.png" class="img-fluid"></p>
+<p>Taip pat su <code>mv</code> gali perkelti failus iš vienos direktorijos į kitą. Ši komanda perkelia failą <strong>temp_kaunas.txt</strong> į <strong>mix</strong>:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> data/temp_kaunas.txt mix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell_adv/mv_file_dir.png" class="img-fluid"></p>
+<p><code>mv</code> komandai galima paduoti daugiau nei du argumentus. Pavyzdžiui, ši komanda perkelia failus <strong>temp_alytus.txt</strong> ir <strong>seneles_pasaka.txt</strong> į direktoriją <strong>mix</strong>. Čia svarbu, kad paskutinis argumentas būtų egzistuojanti direktorija:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> data/temp_alytus.txt text/seneles_pasaka.txt mix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>mv</code> taip pat gali būti naudojama perkelti direktoriją ir visą jos turinį. Pavyzdžiui, ši komanda perkelia direktoriją <strong>mix_copy</strong> į <strong>mix</strong>:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> mix_copy mix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pastaba</strong>: dirbant su direktorijomis:</p>
+<ul>
+<li>jeigu <code>mv origin target</code> jeigu target neegzistuoja, tada mv <strong>pervadins</strong> direktoriją origin į target</li>
+<li>jeigu <code>mv origin target</code> jeigu target egzistuoja, tada mv <strong>perkels</strong> origin į target direktoriją</li>
+</ul>
+<p><strong>Svarbu</strong>: kaip ir naudojant <code>&gt;</code> ar <code>cp</code>, jeigu tikslinis <strong>failas</strong> jau egzistuoja, jis bus perrašytas, nebent pridėsi <code>-i</code> (interaktyvų režimą), kad būtų paprašyta patvirtinimo prieš perrašant.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Teorinis klausimas</strong>: Kas nutiktų, jei įvykdytum šią komandą?</li>
+</ul>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> temp_vilnius.txt temp_kaunas.txt ~/Documents ~/Downloads</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Perkelk Alytaus ir Kauno temperatūrų failus atgal iš <strong>mix</strong> į <strong>data</strong> naudojant <code>mv</code>. Pervadink Alytaus failą atgal į Vilniaus</li>
+<li>Atsidaryk Nemo ir rankiniu būdu ištrink data direktoriją. Dabar su terminal, padaryk backup/data kopiją (su <code>cp</code> ir reikalaingais nustatymais), jog vėl atsirastų <strong>/shell_part_2/data</strong>.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="rm" class="level3" data-number="5.1.11">
+<h3 data-number="5.1.11" class="anchored" data-anchor-id="rm"><span class="header-section-number">5.1.11</span> rm</h3>
+<p>Tavo <strong>shell_part_2</strong> direktorijoje dabar tikrai daug failų ir subdirektorijų, kurių nebereikia. Laikas įvesti šiek tiek tvarkos!</p>
+<p>Komanda <code>rm</code> (angl. <strong>remove</strong>) naudojama pašalinti failus ir direktorijas. Tai galinga komanda, todėl ja reikia naudotis atsargiai, nes pašalinti failai ar direktorijos nėra perkeliami į šiukšliadėžę ir jų atkurti nebebus galima.</p>
+<p>Norint pašalinti failą, <code>rm</code> komandai paduodamas argumentas - failo pavadinimas arba absoliutus, arba reliatyvus kelias į failą.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> day.txt</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> mix/empty_5.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Komandai <code>rm</code> galima paduoti ir kelis failus vienu metu:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> empty_1.txt empty_2.txt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Tuščią direktoriją (kai joje nėra jokių kitų failų ar subdirektorijų) galima pašalinti arba naudojant <code>rmdir</code> (kuri yra <code>mkdir</code> priešingybė), arba su <code>rm</code>, nurodant nustatymą <code>-d</code>.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-d</span> projektas1</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rmdir</span> projektas2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell_adv/rmdir.png" class="img-fluid"></p>
+<p>Tiesiog pašalinti direktoriją, kurioje yra kažkas, su <code>rm</code> arba <code>rm -d</code> nepavyks, nes BASH bando apsaugoti vartotoją nuo rizikos netyčia ištrinti daugiau failų nei reikia.</p>
+<p><img src="img/shell_adv/rmdir_error.png" class="img-fluid"></p>
+<p>Jei reikia ištrinti visą direktoriją su visu jos turiniu, naudojamas parametras <code>-r</code> (<strong>recursive</strong>).</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> projektas0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Kartais gali nutikti, jog <code>rm -r</code> negalės ištrinti direktorijos dėl failų teisių ar kitų kliūčių. Tokiu atveju pridedamas nustatymas <code>-f</code> (<strong>force</strong>), kuris priverstinai ištrina failus.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> mix_copy_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>intarpas: Wildcard’ų naudojimas </strong>*</p>
+<p>Kartais BASH komandose norisi pažymėti arba pasirinkti daugiau nei vieną failą. Kaip jau matei, tiek <code>cat</code>, tiek <code>cp</code>, <code>mv</code>, <code>rm</code>, <code>less</code> komandos kuo puikiausiai dirba su keliais failais. Tad kyla klausimas, kaip tai padaryti efektyviau naudojant wildcard simbolius.</p>
+<p>Pvz., tu galėtum rašyti:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> empty_1.txt empty_2.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Tačiau yra akivaizdu, jog šiuose failų pavadinimuose yra tam tikras dėsningumas – jie prasideda <strong>empty_</strong> ir baigiasi <strong>.txt</strong>.</p>
+<p>BASH, kaip ir daugelyje kitų programavimo kalbų, yra vadinamieji wildcard - simboliai, kurie leidžia užpildyti vieną ar daugiau ženklų.</p>
+<p>Pavyzdžiui, <code>*</code> simbolis pakeičia bet kokį skaičių ženklų. Taigi, galima būtų parašyti:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> empty_<span class="pp">*</span>.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Wildcard’ų simboliai:</p>
+<ul>
+<li><code>*</code> reiškia jokio, vieną arba daugiau simbolių.</li>
+<li><code>?</code> reiškia tiksliai vieną simbolį, pvz., 201?.txt galėtų atitikti 2017.txt, 2018.txt, bet ne 2017-01.txt.</li>
+<li><code>[...]</code> reiškia vieną iš pateiktų simbolių, pvz., 201[78].txt atitiks 2017.txt arba 2018.txt, bet ne 2016.txt.</li>
+<li><code>{}</code> reiškia vieną iš nurodytų reikšmių, pvz., rm {<em>.txt,</em>.csv} atitiks visus failus, kurių pavadinimas baigiasi .txt arba .csv, bet ne .pdf.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Teorinė užduotis - pasakyk, kas nutiktų visais šiais atvejais:</p>
+<ul>
+<li><code>rm song*.txt</code></li>
+<li><code>rm *song*.txt</code></li>
+<li><code>rm *.txt</code></li>
+<li><code>rm *.*</code></li>
+<li><code>rm ./*</code></li>
+<li><code>rm *</code></li>
+<li><code>rm data/*</code></li>
+<li><code>rm text/*.txt</code></li>
+<li>Pasitikrink atsakymą naudojant ChatGPT!</li>
+</ul>
+<p>Praktinė užduotis - naudojantis wildcard ištrink iš <strong>shell_part_2</strong> visus failus:</p>
+<ul>
+<li>kurių pavadinime yra žodis <em>song</em>, neproklausomai nuo pozicijos ir failo tipo</li>
+<li>kurių failo tipas yra .txt</li>
+<li>visus failus esančius <strong>mix</strong> subdirektorijoje. Tam gali prireikti papildomo nustatymo <code>rm</code> komandai, nes <strong>mix</strong> gali būti direktorijos!</li>
+<li>subdirektorijas <strong>data</strong> ir <strong>text</strong>. O tada naudodojant <code>cp</code> ir būtinai reikiamą nustatymą metaduomenų išlaikymui, atkurti iš <strong>backup</strong></li>
+</ul>
+</div>
+</div>
+<p>Atlikus visus valymus turėtum turėti:</p>
+<p><img src="img/shell_adv/cleaned_up.png" class="img-fluid"></p>
+</section>
+<section id="grep" class="level3" data-number="5.1.12">
+<h3 data-number="5.1.12" class="anchored" data-anchor-id="grep"><span class="header-section-number">5.1.12</span> grep</h3>
+<p>Kartais tau gali prireikti nuskaityti tik tam tikras failo eilutes, kuriose yra konkretus tekstas. Komanda <code>grep</code> (angl. <strong>global regular expression print</strong>, liet. „globalus reguliariųjų išraiškų paieškos spausdinimas“) naudojama teksto paieškai pagal šabloną failuose arba išvestyje.</p>
+<p>Pavyzdžiui, ši komanda surastų visas eilutes <strong>data/seneles_pasaka</strong>, kuriose yra žodis „Apie“:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> Apie text/seneles_pasaka.text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell_adv/grep_apie.png" class="img-fluid"></p>
+<p>Suprantama, gali pateikti kelis failus vienu metu. Šiuo atveju komanda <code>grep</code> suras visas eilutes, kuriose yra <strong>14:00:00</strong> abiejuose jai pateiktuose failuose ir atitinkamas eilutes atspausdins tau į terminalą.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> 14:00:00 data/temp_vilnius.txt data/temp_kaunas.txt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell_adv/grep_multiple.png" class="img-fluid"></p>
+<p><code>grep</code> priima ir tam tikrus nustatymus, kurie padeda atlikti paiešką efektyviau:</p>
+<ul>
+<li><code>-c</code>: atspausdina, kiek eilučių atitinka tavo pateiktą kriterijų.</li>
+<li><code>-h</code>: neatspausdina failų pavadinimų, kuriuose rasti atitikimai, kai pateiki keli failai.</li>
+<li><code>-i</code>: ignoruoja didžiąsias ir mažąsias raides (pvz., įrašius -i apie, ras ir „Apie“, „apie“, „APIE“ ir t.t.).</li>
+<li><code>-l</code>: atspausdina tik failų pavadinimus, kuriuose rasti atitikimai.</li>
+<li><code>-n</code>: atspausdina eilučių numerius šalia pačios eilutės.</li>
+<li><code>-v</code>: ieško eilučių, kuriose nėra raktinio paieškos kriterijaus.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Dirbk su <strong>data/seneles_pasaka.txt</strong></p>
+<ul>
+<li>Kurios eilutės turi paminėtą žodį „pasaka“ (tik su mažąja raide)?</li>
+<li>Kurios eilutės turi paminėtą žodį „pasaka“ (nesvarbu, ar rašyta didžiosiomis, ar mažosiomis raidėmis)?</li>
+<li>Kiek eilučių (ieškome skaičiaus) turi paminėtą žodį „apie“, nepriklausomai nuo rašybos?</li>
+<li>Kiek eilučių (ieškome skaičiaus) nepamini žodžio „apie“, nepriklausomai nuo rašybos?</li>
+</ul>
+</div>
+</div>
+<p><strong>Pastaba</strong>: komanda <code>grep</code> ieško tekstinės atitikties failuose, todėl ji nepriima loginių operatorių kaip &gt;, =, ar &lt;. Visgi, <code>grep</code> leidžia naudoti reguliarias išraiškas (regular expressions), kurios leidžia dar smulkiau atrinkti tekstą.</p>
+<p>Štai kaip būtų galima panaudoti <code>grep</code> su reguliariomis išraiškomis, norint surasti visas eilutes, kuriose yra vienas skaitmuo prieš tašką, visuose <strong>temp_</strong> failuose:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-P</span> <span class="st">'\t[0-9]\.[0-9]'</span> data/temp_<span class="pp">*</span>.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell_adv/grep_regex.png" class="img-fluid"></p>
+<p>Į reguliarias išraiškas dabar neverta gilintis išsamiau, bet svarbu žinoti, kad jos egzistuoja ir gali būti labai naudingos dirbant su tekstiniais duomenimis. Jeigu kiltų noras pasibandyti, siūlau naudti <a href="https://regexr.com/">https://regexr.com/</a>.</p>
+</section>
+<section id="cut" class="level3" data-number="5.1.13">
+<h3 data-number="5.1.13" class="anchored" data-anchor-id="cut"><span class="header-section-number">5.1.13</span> cut</h3>
+<p>Kartais tau gali prireikti išfiltruoti ne eilutes, o stulpelius. Pvz., komanda <code>head</code> <strong>data/temp_vilnius.txt</strong> parodo tarsi 3 stulpelius: datą, laiką ir temperatūrą. Pastebima, kad tarp datos ir laiko yra mažas tarpas (greičiausiai „space“), o tarp laiko ir temperatūros – didelis tarpas (tikėtina, “tab”). Tai šiek tiek apsunkina darbą, kol nesusipažinai su <code>sed</code> komanda, bet tai nereiškia, jog negalime išskaidyti failo į stulpelius pagal skirtingus skirtukus, pvz., „space“ ir „tab“.</p>
+<p><img src="img/shell_adv/cut_head.png" class="img-fluid"></p>
+<p>Komandai <code>cut</code> reikia tam tikrų nustatymų. Pagrindiniai nustatymai:</p>
+<ul>
+<li><code>-d</code> (<strong>delimiter</strong>) – skirtukas, kuris skiria stulpelius. Pagal nutylėjimą skirtukas yra tabuliacija (tab), tad šio nustatymo keisti nereikia. Jeigu norėtum naudoti kitą skirtuką, pvz., tarpo ženklą, turėtum naudoti <code>-d " "</code>. Jeigu skirtukas būtų kablelis, naudotum <code>-d ","</code> ir t.t.</li>
+<li><code>-f</code> (<strong>fields</strong>) – nurodo, kuriuos stulpelius (laukelius) nori pasirinkti. Pvz., <code>-f 2</code> pasirinktų antrą stulpelį, <code>-f 2-5</code> pasirinktų nuo antro iki penkto stulpelio, o <code>-f 2-5,8</code> pasirinktų antrą, trečią, ketvirtą, penktą ir aštuntą stulpelius.</li>
+</ul>
+<p>Ši komanda priima „space“ kaip skirtuką ir atspausdina pirmąjį stulpelį:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-d</span> <span class="st">" "</span> <span class="at">-f</span> 1 data/temp_vilnius.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell_adv/cut_column1.png" class="img-fluid"></p>
+<p>Ši komanda priima „tab“ kaip skirtuką ir atspausdina antrąjį stulpelį:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f</span> 2  data/temp_vilnius.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell_adv/cut_column_last.png" class="img-fluid"></p>
+<p>Jeigu norėtum gauti tik metus, galėtum nurodyti skirtuką „-“ ir pasirinkti pirmąjį stulpelį:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-d</span> <span class="st">"-"</span> <span class="at">-f</span> 1 data/temp_vilnius.txt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell_adv/cut_year.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Programuojant ir dirbant su duomenimis, svarbu išmokti išnaudoti AI galimybes. Šioje praktikoje tu turi nueiti į ChatGPT ir parašyti kažką panašaus:</p>
+<blockquote class="blockquote">
+<p>Sugeneruok 25 eilučių .csv failą, kurio skirtukas būtų “,” su šiais stulpeliais:</p>
+<ul>
+<li>user_id,</li>
+<li>age (18-99)</li>
+<li>country_code (LT, LV, EE)</li>
+<li>orders (0-250)</li>
+</ul>
+</blockquote>
+<p>ChatGPT sugeneruos .csv failą ir leis jį atsisiųsti. Šiam sugeneravimui ChatGPT pasinaudos Python programavimo kalba. Tu galėtum išsaugoti grąžintą kodą ir naudoti jį ateityje, nes tavo kompiuteryje šis kodas taip pat veiktų. Bet prie Python mes dar grįšime vėliau.</p>
+<p>Perkelk failą iš <strong>~/Downloads</strong> į <strong>~/shell_part_2/data</strong>. Tarkime, failas vadinasi sample_data.csv.</p>
+<p><video src="img/shell_adv/gpt_generator.mp4" class="img-fluid" controls=""><a href="img/shell_adv/gpt_generator.mp4">Video</a></video></p>
+<p>Turint failą:</p>
+<ol type="1">
+<li>Pervadink failą į <strong>balt_customers.csv</strong>.</li>
+<li>Naudojant žinomomis komandomis tyrinėk failą <strong>data/balt_customers.csv</strong>:
+<ul>
+<li>Kiek jame eilučių?</li>
+<li>Koks skirtukas naudojamas?</li>
+<li>Kokie duomenys yra pirmoje eilutėje (antraštė ar duomenys)?</li>
+<li>Kiek ir kurios eilutės yra duomenys?</li>
+</ul></li>
+</ol>
+<p><strong>Užduotis</strong>: Tu dirbi su klientais iš Estijos (EE). Turi parašyti visiems klientams iš Estijos el. laišką ir pranešti apie jų užsakymų skaičių. Laiško rašymą perims programa, tačiau tu jai turi pateikti failą <strong>customers_ee.csv</strong>, kuris turėtų atrodyti taip (tavo duomenys gali skirtis dėl atsitiktinio jų sugeneravimo):</p>
+<p><img src="img/shell_adv/cut_project.png" class="img-fluid"></p>
+<p>Kad įgyvendintum šią užduotį, tau prireiks komandų: <code>head</code>, <code>cut</code>, <code>&gt;</code> <code>&gt;&gt;</code>, <code>cat</code> ir <code>grep</code> bei sukurti kelis tarpinius failus, kuriuos vėliau galėsi ištrinti. Taip pat patarčiau bandyt skaidyti darbus :)</p>
+<p>Sėkmės!</p>
+</div>
+</div>
+</section>
+<section id="intarpas-standartinė-įvestis-išvestis-ir-klaidos" class="level3" data-number="5.1.14">
+<h3 data-number="5.1.14" class="anchored" data-anchor-id="intarpas-standartinė-įvestis-išvestis-ir-klaidos"><span class="header-section-number">5.1.14</span> Intarpas: Standartinė įvestis, išvestis ir klaidos</h3>
+<p>Iki šiol mes naudojome sąvokas, tokias kaip įvestis (<strong>input</strong>) ir išvestis (<strong>output</strong>). Įvestis buvo tai, ką tu įvedi klaviatūra į terminalą, o išvestis – tai, ką BASH atspausdina terminale arba ką tu nukreipi į failą naudodant <code>&gt;</code> arba <code>&gt;&gt;</code>. Tačiau iki šiol formaliai neaptarėme BASH srautų.</p>
+<p>Linux ir Unix sistemose yra trys pagrindiniai srautai, kurie valdo duomenų įvestį ir išvestį programose bei komandose. Šie srautai vadinami standartine įvestimi (<strong>standard input</strong>), standartine išvestimi (<strong>standard output</strong>) ir standartine klaida (<strong>standard error</strong>). Kiekvienas srautas turi specifinę paskirtį ir failo aprašymo numerį.</p>
+<p>Svarbu: Linux’e viskas yra failai, net srautai (input/output) traktuojami kaip failai.</p>
+<section id="standartinė-įvestis-stdin" class="level4" data-number="5.1.14.1">
+<h4 data-number="5.1.14.1" class="anchored" data-anchor-id="standartinė-įvestis-stdin"><span class="header-section-number">5.1.14.1</span> Standartinė įvestis (stdin)</h4>
+<p>Standartinė įvestis, sutrumpinta kaip <strong>stdin</strong>, yra srautas, iš kurio komanda ar programa gauna duomenis. Pagal numatytuosius nustatymus, <strong>stdin</strong> yra prijungta prie klaviatūros, tačiau gali būti nukreipta iš failo ar kito srauto.</p>
+<p>Pabandyk įrašyti <code>cat</code>, paspausti Enter, ir tada įvesk kelis žodžius, vis paspausdžiant Enter. Terminale matysi tekstą, kurį įvedi, nes jis bus perduotas kaip įvestis <code>cat</code> komandai, kuri atspausdins šį tekstą. Todėl matysi dvigubai tai, ką įvedei.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Nutraukti <code>cat</code> įvestį gali su <code>Ctrl-D</code> arba <code>Ctrl-C</code>.</p>
+<p><video src="img/shell_adv/std_input_cat.mp4" class="img-fluid" controls=""><a href="img/shell_adv/std_input_cat.mp4">Video</a></video></p>
+<p>Įvestis taip pat gali būti perduodama iš failo į komandą. Pavyzdžiui, komandai <code>cat</code> galime nurodyti failą taip:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="op">&lt;</span> data/customers_ee.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Kodėl veikia &lt;?</p>
+<p>Simbolis <code>&lt;</code> nurodo komandai, kad vietoje įprastos įvesties iš klaviatūros naudotų failą kaip įvesties šaltinį. Pvz., <code>cat &lt; data/customers_ee.csv</code> reiškia, kad <code>cat</code> komanda skaitys duomenis iš failo data/customers_ee.csv, o ne iš klaviatūros.</p>
+<p><img src="img/shell_adv/std_input_file.png" class="img-fluid"></p>
+<p>Standartinės įvesties aprašymo numeris: 0. Vėliau pamatysi, kam tie skaičiai naudingi.</p>
+</section>
+<section id="standartinė-išvestis-stdout" class="level4" data-number="5.1.14.2">
+<h4 data-number="5.1.14.2" class="anchored" data-anchor-id="standartinė-išvestis-stdout"><span class="header-section-number">5.1.14.2</span> Standartinė išvestis (stdout)</h4>
+<p>Standartinė išvestis, sutrumpinta kaip <strong>stdout</strong>, yra srautas, į kurį komanda ar programa rašo išvestį. Dirbant terminale, <strong>stdout</strong> prijungta prie terminalo ekrano. Pavyzdžiui, įrašius šią komandą, terminale atspausdinamas „Hello World“:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hello World"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Galima nukreipti standartinę išvestį ne į terminalo langą, bet į failą, kaip jau esame darę anksčiau:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hello World!"</span> <span class="op">&gt;</span> hello_world.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Standartinė išvestis turi numerį 1. Tai reiškia</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hello World!"</span> <span class="dv">1</span><span class="op">&gt;</span> hello_world.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>jog <strong>stdout</strong> srautas (<code>1</code>), kurį generuoja <code>echo</code> komanda, siunčiamas į failą hello_world.txt. Mes panaudojom srauto numerį, kad pasakyti kurį srautą siųsti į failą.</p>
+</section>
+<section id="standartinė-klaida-stderr" class="level4" data-number="5.1.14.3">
+<h4 data-number="5.1.14.3" class="anchored" data-anchor-id="standartinė-klaida-stderr"><span class="header-section-number">5.1.14.3</span> Standartinė klaida (stderr)</h4>
+<p>Kai komanda negali atlikti tam tikro veiksmo, ji sugeneruoja klaidos pranešimą, kuris siunčiamas į standartinį klaidos srautą (<strong>stderr</strong>). Standartinės klaidos srautas turi numerį 2, ir jį taip pat galima nukreipti į failą.</p>
+<p>Pabandyk komandą <code>ls</code> su neegzistuojančia direktorija, pvz.,:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> abc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell_adv/stderr_ls.png" class="img-fluid"></p>
+<p>Klaidos pranešimas bus išspausdintas terminale. Tačiau galime nukreipti tik klaidos srautą į failą:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> abc <span class="dv">2</span><span class="op">&gt;</span> error.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Terminale klaidos nebus matyti, bet gali naudoti komandas <code>head</code> arba <code>cat</code>, kad pažiūrėtum, kas yra <strong>error.log</strong> faile.</p>
+<p><img src="img/shell_adv/stderr_ls_log.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="kaip-visą-tai-taikyti-praktikoje" class="level3" data-number="5.1.15">
+<h3 data-number="5.1.15" class="anchored" data-anchor-id="kaip-visą-tai-taikyti-praktikoje"><span class="header-section-number">5.1.15</span> Kaip visą tai taikyti praktikoje?</h3>
+<p>Įsivaizduok, kad turi komandą <code>ls</code>, kuri kartais sugeneruoja išvestį, kurią nori nukreipti į list.txt, o klaidas – į error.log. Tam galėtum naudoti:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="op">&lt;</span>direktorija1<span class="op">&gt;</span> <span class="op">&lt;</span>direktorija2<span class="op">&gt;</span> <span class="op">&lt;</span>direktorija3<span class="op">&gt;</span> 1<span class="op">&gt;&gt;</span>list.txt <span class="dv">2</span><span class="op">&gt;&gt;</span>error.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Išbandyk šią komandą su egzistuojančia ir neegzistuojančia direktorija (prieš tai su <code>rm</code> ištrink error.log jeigu toks egzistuoja)</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> data abc text <span class="dv">1</span><span class="op">&gt;</span> list.txt <span class="dv">2</span><span class="op">&gt;</span> error.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell_adv/stdout_stderr.png" class="img-fluid"></p>
+<p>Kartais gali prireikti, kad abu srautai būtų nukreipti į tą patį failą. Pvz., jeigu kas 10 minučių matuoji kompiuterio temperatūrą, gali nukreipti tiek stdout, tiek stderr į failą:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="ex">komanda</span> <span class="dv">1</span><span class="op">&gt;</span>temp.log <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Arba gali klaidos srautą nukreipti į temp.log, o standartinę išvestį – į klaidų srautą:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="ex">komanda</span> <span class="dv">2</span><span class="op">&gt;</span>temp.log <span class="dv">1</span><span class="op">&gt;&amp;</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Simbolis <code>&amp;</code> nurodo, kad mes kalbame apie srautą, o ne apie failo vardą. Kai rašai, pvz., <code>1&gt;&amp;2</code>, tai reiškia, kad standartinę išvestį (stdout, 1) nukreipi ne į failą, o į standartinį klaidų srautą (stderr, 2). Tai leidžia abu srautus sujungti ir siųsti į tą patį tikslą. Jei <code>&amp;</code> nebūtų, sistema galvotų, kad „2“ yra failo pavadinimas, o ne kitas srautas. Analogiškai, <code>2&gt;&amp;1</code> reiškia, kad klaidų srautas (stderr, 2) nukreipiamas į išvesties srautą (stdout, 1).</p>
+</section>
+<section id="pipe" class="level3" data-number="5.1.16">
+<h3 data-number="5.1.16" class="anchored" data-anchor-id="pipe"><span class="header-section-number">5.1.16</span> pipe |</h3>
+<p>Iki šiol, kai reikėdavo vienos komandos išvestį panaudoti kitoje komandoje, pavyzdžiui, išfiltravus Estijos vartotojus su <code>grep EE data/balt_customers.csv</code>, turėjai juos išsaugoti į tarpinį failą (pvz., <strong>temporal.csv</strong>), o tik tada paduoti rezultatą į <code>cut -d "," -f 1,4 temporal.csv</code>, kad gautum norimą rezultatą. Tai yra neefektyvus metodas, nes:</p>
+<ul>
+<li>Lieka daug tarpinių failų.</li>
+<li>Komandos būna suskaidytos per kelias eilutes, todėl jas sunku peržiūrėti su <code>history</code>.</li>
+</ul>
+<p>BASH siūlo kelis būdus, kaip efektyviau panaudoti vienos komandos rezultatus kitose, pavyzdžiui, su <code>xargs</code> arba kitais įrankiais. Tačiau dažniausiai naudojamas metodas yra <strong>pipe</strong> (angl. “vamzdis”).</p>
+<p><code>|</code> (<strong>pipe</strong>) – tai vertikalus brūkšnys, kuris sujungia komandas į vieną srautą, kur vienos komandos išvestis tampa kitos komandos įvestimi.</p>
+<p><img src="img/shell_adv/pipe_input_ouput.png" class="img-fluid"></p>
+<p>Pabandyk sujungti šias komandas:</p>
+<ul>
+<li><code>grep EE data/balt_customers.csv</code> - išfiltruoti tik EE vartotojus.</li>
+<li>Panaudoti <code>|</code>, kuris pavers pirmosios komandos išvestį antrosios komandos įvestimi.</li>
+<li><code>cut -d "," -f 1,4</code> – iškirpti pirmą ir ketvirtą stulpelius.</li>
+<li>Galutinį rezultatą su <code>&gt;</code> nukreipk į failą <code>data/customers_ee_2.csv</code>.</li>
+</ul>
+<p><img src="img/shell_adv/pipe_input_ouput_ee.png" class="img-fluid"></p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> EE data/balt_customers.csv <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-d</span> <span class="st">","</span> <span class="at">-f</span> 1,4 <span class="op">&gt;</span> data/customers_ee_2.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Pirma pabandyk paleisti komandą be <code>&gt;</code>, kad pamatytum rezultatą terminale:</p>
+<p><img src="img/shell_adv/pipe_ee.png" class="img-fluid"></p>
+<p>Dabar paleisk pilną komandą, nukreipiančią išvestį į failą:</p>
+<p><img src="img/shell_adv/pipe_ee_2.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Terminale atspausdink pirmas 3 eilutes, kuriose yra žodis „Apie“ iš failo <strong>data/seneles_pasaka.txt</strong>.</li>
+<li>Terminale atspausdingk paskutines 3 eilutes kuriose yra 00:00:00 faile <strong>data/temp_vilnius.txt</strong></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="sort" class="level3" data-number="5.1.17">
+<h3 data-number="5.1.17" class="anchored" data-anchor-id="sort"><span class="header-section-number">5.1.17</span> sort</h3>
+<p>Tu darai nuostabią pažangą ir jau moki naudoti <code>grep</code>, <code>cut</code>, <code>head</code>, <code>tail</code>, su kuriomis gali išfiltruoti eilutes, stulpelius ir t.t. Naudojant <code>|</code>, jau moki sujungti kelias komandas į vieną. Tačiau ko tu dar nemoki – kaip išrikiuoti reikšmes. Čia pravers komanda <code>sort</code>.</p>
+<p><code>sort</code> labai gerai sąveikauja su pipe <code>|</code>.</p>
+<p>Pagrindiniai nustatymai:</p>
+<ul>
+<li><code>-r</code> – nuo didžiausios iki mažiausios reikšmės.</li>
+<li><code>-n</code> – rikiuoti skaičius.</li>
+<li><code>-h</code> – rikiuoti pagal dydį, jei dydis pateiktas <em>human readable</em> skaičiais (pvz., KB, MB, GB).</li>
+<li><code>-t</code> – nurodo, koks yra skirtukas tarp stulpelių (<strong>delimiter</strong>).</li>
+<li><code>-k</code> – pagal kurį stulpelį rikiuoti.</li>
+</ul>
+<p>Sukurk šį failą:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"A,101\nB,3\nC,2\nD,40"</span> <span class="op">&gt;</span> tosort</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ar pastebėjai, <strong>tosort</strong> neturi indikacijos, koks tai failas, nei .csv, nei .txt. Nieko tokio Linux operacinėje sistemoje, komandos veikia kuo puikiausiai ir be failo tipo indikatoriaus.</p>
+<p><img src="img/shell_adv/sort_ex_base.png" class="img-fluid"></p>
+<p>Pagal nutylėjimą sort priims failą kaip argumentą ir rikiuos pagal pirmą stulpelį. sort -r apsuks rikiavimo eigą.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> tosort</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> <span class="at">-r</span> tosort</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell_adv/sort_text_r.png" class="img-fluid"></p>
+<p>Jei nori, kad BASH suprastų failą kaip turintį skirtingus stulpelius, turi nurodyti, koks yra skirtukas (<strong>delimiter</strong>) su <code>-t ","</code>. Tuomet galima rikiuoti pagal konkretų stulpelį su <code>-k 2</code>. Jei nepridėsi <code>-n</code>, sort rikiuos taip, lyg skaičiai būtų tekstas, t.y., vertins pagal pirmą skaitmenį, tada pagal antrą ir t.t. Pridėjus <code>-n</code>, skaičiai vertinami kaip skaičiai.</p>
+<p>Galima apsieiti ir be kabučių aplink skirtuką, o <code>-n</code> pridėti prie <code>-k 2</code>, kad būtų rikiuojama pagal skaičius. Galų gale, tai tavo pasirinkimas.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> <span class="at">-t</span> <span class="st">","</span> <span class="at">-k</span> 2 tosort</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> <span class="at">-t</span> <span class="st">","</span> <span class="at">-k</span> 2 <span class="at">-n</span> tosort</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> <span class="at">-t,</span> <span class="at">-k2n</span> tosort</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell_adv/sort_tabuler_numeric.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Užduotis</strong>: Įsivaizduok, kad esi IT administratorė arba administratorius, atsakingas už sistemų stebėjimą. Tau reikia periodiškai siųsti sąrašą su 5 didžiausiais failais ar direktorijomis pagal dydį namų direktorijoje (<code>~</code>). Šis sąrašas turėtų apimti visus paslėptus failus (kurie prasideda su “.” savo pavadinime), o dydis turėtų būti <em>human readable</em> formatu, o ne baitais. Taip pat norisi, kad maksimalus gylis būtų 1, t.y., jog būtų žiūrima į <code>~</code> ir vieną lygį giliau, t.y. <code>~/direktorija/</code>.</p>
+<p>Kadangi šią užduotį reikia atlikti kasdien, nusprendei sukurti ilgą BASH komandą.</p>
+<p><strong>Pagalba</strong>: Prieš pradedant nueik į ChatGPT ir paprašyk:</p>
+<blockquote class="blockquote">
+<p>Paaiškink man “du” komanda Linux ir jos nustatymus. Man reiktų matyti failus human readable formatu. Pateik kelis pvz.</p>
+</blockquote>
+<p>Perskaityk ką tau gražins ChatGPT, jeigu reikia pasitisklink užduodant papildomus klausimus.</p>
+<p><img src="img/shell_adv/du_example.png" class="img-fluid"></p>
+<p>Pabandyk sukurti komandų seką (<strong>pipeline</strong>) su <code>du</code>, <code>sort</code>, <code>head</code>. Eksperimentuok su nustatymais.</p>
+<p>Kai terminalo lange matysi reikiamą išvestį, naudok <code>echo</code>, apskliausk visą komandą kabutėmis ir nukreipk į failą pavadinimu <strong>list_du_homedir.sh</strong>. Taigi, tai turėtų atrodyti daugmaž taip:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"komanda komanda komanda"</span> <span class="op">&gt;</span> list_du_homedir.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>O dabar pabandyk</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> list_du_homedir.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>arba su pipe</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> list_du_homedir.sh <span class="kw">|</span> <span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Sveikinu, ką tik sukūrei savo pirmą skriptą! Tai komandų rinkinys, kurį gali perduoti BASH, ir jis jį įvykdys.</p>
+</div>
+</div>
+</section>
+<section id="sed" class="level3" data-number="5.1.18">
+<h3 data-number="5.1.18" class="anchored" data-anchor-id="sed"><span class="header-section-number">5.1.18</span> sed</h3>
+<p><code>sed</code> komanda Linux sistemoje yra srauto redaktorius (<strong>stream editor</strong>), naudojamas tekstui apdoroti ir manipuliuoti. Ji leidžia atlikti įvairius teksto pakeitimus, pvz., ieškoti ir pakeisti žodžius, ištrinti eilutes arba modifikuoti tekstą pagal tam tikras taisykles, nespausdinant teksto į terminalą.</p>
+<p>Vienas paprasčiausių būdų naudoti <code>sed</code> – tai pakeisti tam tikrą tekstą kitu tekstu: tam naudojama tokia sintaksė <code>sed 's/ką keisti/kuo pakeisti/'</code>.</p>
+<p>Taigi, ši komanda pakeičia „rytas“ į „vakaras“:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Labas rytas"</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/rytas/vakaras/'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>sed</code> nėra agresyvi komanda, todėl ankstesnė komanda pakeičia tik pirmą rastą atitikmenį:</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Labas rytas, pasakė senelė kai atėjo rytas"</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/rytas/vakaras/'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Matyti, kad tik pirmas „rytas“ pakeistas į „vakaras“, o antrasis ne. Jei nori, kad visi atitikmenys būtų pakeisti, reikia pridėti nustatymą <code>g</code>:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Labas rytas, pasakė senelė kai atėjo rytas"</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/rytas/vakaras/g'</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Su sed taip pat galima ištrinti eilutes. Pavyzdžiui, jei <code>ls -l</code> komanda atspausdina „total …“, galima tai ištrinti naudojant <code>sed '1d'</code>:</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> <span class="kw">|</span><span class="fu">sed</span> <span class="st">'1d'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Vietoje <code>1</code>, kuris nurodo, kurią eilutę trinti, galima nurodyti ir diapazoną, pvz., nuo 1 iki 3 su sed <code>'1,3d'</code>:</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'1,3d'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Taip pat galima įterpti naujas eilutes:</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'3a/nauja eilutė'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Pora įdomybių:</p>
+<p>Su <code>sed</code> gali naudoti <em>regular expressions</em>. Štai keletas reikšmių:</p>
+<ul>
+<li><code>^</code> reiškia eilutės pradžią.</li>
+<li><code>$</code> reiškia eilutės pabaigą.</li>
+<li><code>\t</code> reiškia tabuliaciją (naudoti su <code>sed -E</code>).</li>
+<li><code>\s</code> reiškia tarpą (naudoti su <code>sed -E</code>).</li>
+</ul>
+<p>Pvz., pridėti veiduką prieš kiekvieną eilutę:</p>
+<pre><code>sed 's/^/😀/g' text/seneles_pasaka.txt</code></pre>
+<p>Jei nori, kad <code>sed</code> ignoruotų raidžių dydžius, pridėk nustatymą <code>I</code>. Tai panašu į <code>grep -i</code>.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> Labas Rytas <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/rytas/Vakaras/'</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> Labas Rytas <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/rytas/Vakaras/I'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Dirbk su <strong>data/seneles_pasaka.txt</strong>. Tavo tikslas – padaryti pasaką labiau patrauklią vaikams, pakeičiant žodžius simboliais. Naudok <code>sed</code> komandą ir pakeisk šiuos žodžius į atitinkamus simbolius. Sujunk visas <code>sed</code> komandas į viena <em>pipeline</em> naudojant <code>|</code>.</li>
+</ol>
+<p>Žąsiną moliūgą – 🦢🎃 Vilką – 🐺 Baltą mešką – 🐻‍❄️ Joną – 👦🏻 Eglę - 🌲 Žalčio – 🐍 Ragana - 🧙‍♀️ Pamotė pikta – 😡</p>
+<p>Išsaugok pasaką kaip <strong>text/seneles_pasaka_emojies.txt</strong></p>
+<p><img src="img/shell_adv/sed_pasaka.png" class="img-fluid"></p>
+<ol start="2" type="1">
+<li><strong>data/temp_vilnius.txt</strong> ir kitų miestų failai turi kelias problemas, kurias turėtum ištaisyti:
+<ul>
+<li>Vilniaus faile kiekvienos eilutės pradžioje įrašyk „Vilnius “ (su tarpeliu po miesto pavadinimo). Kituose miestuose atitinkmai “Kaunas” ir “Klaipėda”</li>
+<li>Dabar pirmieji du skirtukai yra tarpai, o antrasis – tabuliacija. Paleisk <code>sed</code> komandą du kartus: vieną kartą pakeisk tarpus (space) į kablelius, o antrą kartą – tabuliacijas į kablelius.</li>
+<li>Išsaugok Vilniaus, Kauno, ir Klaipėdos failus kaip <strong>temp_vilnius.csv</strong>, <strong>temp_kaunas.csv</strong>, <strong>temp_klaipeda.csv</strong> (vietoje .txt naudok <strong>.csv</strong> plėtinį).</li>
+<li>Kiekvienas miestas turėtų turėti visą komandą vienoje eilutėje naudojant <code>|</code>.</li>
+</ul></li>
+</ol>
+<ul>
+<li>Sujunk visus Vilniaus, Kauno ir Klaipėdos failus į vieną ir pavadink rezultatą temp_lietuva.csv.</li>
+<li>Pabandyk atidaryti šį failą su LibreOffice Calc:</li>
+</ul>
+<div class="sourceCode" id="cb72"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="ex">libreoffice</span> <span class="at">--calc</span> temp_lietuva.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Pavaizduok sekančių dienų temperatūras.</li>
+</ul>
+<p><img src="img/shell_adv/sed_temp.png" class="img-fluid"> * Pabandyk atsidaryti visus tris pavienius failus su Excel Power Query ir apdorojus duomenis sukurti dashboard to slicer filtrais ir grafikais.</p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./5_terminal_filesystem.html" class="pagination-link" aria-label="Terminalas ir Linux failų sistema">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Terminalas ir Linux failų sistema</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./7_bash_comands_advanced.html" class="pagination-link" aria-label="BASH advanced">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">BASH advanced</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

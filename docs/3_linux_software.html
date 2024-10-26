@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Linux pirmieji žingnsiai – Linux ir programavimas</title>
+<title>3&nbsp; Linux programos – Linux ir programavimas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./2_linux_update.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./5_terminal_filesystem.html" rel="next">
+<link href="./2_linux_update.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Linux Basics</a></li><li class="breadcrumb-item"><a href="./1_linux_configure.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Linux pirmieji žingnsiai</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Linux Basics</a></li><li class="breadcrumb-item"><a href="./3_linux_software.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linux programos</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -123,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./1_linux_configure.html" class="sidebar-item-text sidebar-link active">
+  <a href="./1_linux_configure.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Linux pirmieji žingnsiai</span></span></a>
   </div>
 </li>
@@ -135,7 +169,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./3_linux_software.html" class="sidebar-item-text sidebar-link">
+  <a href="./3_linux_software.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linux programos</span></span></a>
   </div>
 </li>
@@ -315,25 +349,33 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro"><span class="header-section-number">1.1</span> Intro</a></li>
-  <li><a href="#themes" id="toc-themes" class="nav-link" data-scroll-target="#themes"><span class="header-section-number">1.2</span> Themes</a></li>
-  <li><a href="#backgrounds" id="toc-backgrounds" class="nav-link" data-scroll-target="#backgrounds"><span class="header-section-number">1.3</span> Backgrounds</a></li>
-  <li><a href="#menu" id="toc-menu" class="nav-link" data-scroll-target="#menu"><span class="header-section-number">1.4</span> Menu</a></li>
-  <li><a href="#panel" id="toc-panel" class="nav-link" data-scroll-target="#panel"><span class="header-section-number">1.5</span> Panel</a></li>
-  <li><a href="#firewall" id="toc-firewall" class="nav-link" data-scroll-target="#firewall"><span class="header-section-number">1.6</span> Firewall</a></li>
-  <li><a href="#languages" id="toc-languages" class="nav-link" data-scroll-target="#languages"><span class="header-section-number">1.7</span> Languages</a></li>
-  <li><a href="#keyboard" id="toc-keyboard" class="nav-link" data-scroll-target="#keyboard"><span class="header-section-number">1.8</span> Keyboard</a></li>
-  <li><a href="#time" id="toc-time" class="nav-link" data-scroll-target="#time"><span class="header-section-number">1.9</span> Time</a></li>
-  <li><a href="#tips-tricks" id="toc-tips-tricks" class="nav-link" data-scroll-target="#tips-tricks"><span class="header-section-number">1.10</span> Tips &amp; Tricks</a></li>
+  <li><a href="#programų-instaliavimas" id="toc-programų-instaliavimas" class="nav-link active" data-scroll-target="#programų-instaliavimas"><span class="header-section-number">4</span> Programų instaliavimas</a>
+  <ul class="collapse">
+  <li><a href="#sisteminių-paketų-instaliavimas" id="toc-sisteminių-paketų-instaliavimas" class="nav-link" data-scroll-target="#sisteminių-paketų-instaliavimas"><span class="header-section-number">4.1</span> Sisteminių paketų instaliavimas</a></li>
+  <li><a href="#sisteminių-paketų-įdiegimas-terminal-lange" id="toc-sisteminių-paketų-įdiegimas-terminal-lange" class="nav-link" data-scroll-target="#sisteminių-paketų-įdiegimas-terminal-lange"><span class="header-section-number">4.2</span> Sisteminių paketų įdiegimas Terminal lange</a></li>
+  <li><a href="#flatpak" id="toc-flatpak" class="nav-link" data-scroll-target="#flatpak"><span class="header-section-number">4.3</span> Flatpak</a></li>
+  </ul></li>
+  <li><a href="#programų-ištrynimas" id="toc-programų-ištrynimas" class="nav-link" data-scroll-target="#programų-ištrynimas"><span class="header-section-number">5</span> Programų ištrynimas</a>
+  <ul class="collapse">
+  <li><a href="#software-manager" id="toc-software-manager" class="nav-link" data-scroll-target="#software-manager"><span class="header-section-number">5.1</span> Software Manager</a></li>
+  <li><a href="#menu" id="toc-menu" class="nav-link" data-scroll-target="#menu"><span class="header-section-number">5.2</span> Menu</a></li>
+  <li><a href="#terminalas" id="toc-terminalas" class="nav-link" data-scroll-target="#terminalas"><span class="header-section-number">5.3</span> Terminalas</a>
+  <ul class="collapse">
+  <li><a href="#sisteminis-paketas" id="toc-sisteminis-paketas" class="nav-link" data-scroll-target="#sisteminis-paketas"><span class="header-section-number">5.3.1</span> Sisteminis paketas</a></li>
+  </ul></li>
+  <li><a href="#flatpak-1" id="toc-flatpak-1" class="nav-link" data-scroll-target="#flatpak-1"><span class="header-section-number">5.4</span> Flatpak</a></li>
+  <li><a href="#kodėl-per-terminal" id="toc-kodėl-per-terminal" class="nav-link" data-scroll-target="#kodėl-per-terminal"><span class="header-section-number">5.5</span> Kodėl per Terminal?</a></li>
+  </ul></li>
+  <li><a href="#žodynėlis" id="toc-žodynėlis" class="nav-link" data-scroll-target="#žodynėlis"><span class="header-section-number">6</span> Žodynėlis</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Linux Basics</a></li><li class="breadcrumb-item"><a href="./1_linux_configure.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Linux pirmieji žingnsiai</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Linux Basics</a></li><li class="breadcrumb-item"><a href="./3_linux_software.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linux programos</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Linux pirmieji žingnsiai</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linux programos</span></h1>
 </div>
 
 
@@ -350,35 +392,224 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="intro" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="intro"><span class="header-section-number">1.1</span> Intro</h2>
+<section id="programų-instaliavimas" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Programų instaliavimas</h1>
+<p>Programų instaliavimas Linux yra gana paprastas. Užtenka susirasti ir atsidaryti <strong>Software Manager</strong>.</p>
+<p><img src="img/lec_2/lec_2_softare_manager_menu.png" class="img-fluid"></p>
+<p>Jam atsidarius, iškart matome daug programų pasiūlymų. Drąsiai panaršyk šiame lange. Ar matai ką nors tave dominančio?</p>
+<p><img src="./img/lec_2_softare_manager.png" class="img-fluid"></p>
+<section id="sisteminių-paketų-instaliavimas" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="sisteminių-paketų-instaliavimas"><span class="header-section-number">4.1</span> Sisteminių paketų instaliavimas</h2>
+<p><strong>Sisteminis paketas</strong> (angl. System Package) - tai programa, kurią Linux kūrėjai patikrino ir pritaikė tavo kompiuterio veikimui. Šios programos valdomos per <code>apt</code> programą.</p>
+<p>Kita programų instaliavimo sistema yra <strong>Flatpak</strong>, su ja susipažinsime vėliau.</p>
+<p>Įdiekime “Bloboats” žaidimą.</p>
+<p>Paieškos viršuje įrašyk <code>Bloboats</code> ir paspausk ant programos piktogramos.</p>
+<p><img src="img/lec_2/lec_2_bloboats_search.png" class="img-fluid"></p>
+<p>Kaip matai, sekantis langas parodo, jog tai <strong>System Package</strong> ir leidžia tau šią programą įdiegti. Spausk ant <strong>Install</strong>.</p>
+<p><img src="img/lec_2/lec_2_bloboats_install.png" class="img-fluid"></p>
+<p>Software Manager programa informuos tave, jei reikia įdiegti papildomas programas.</p>
+<p><img src="img/lec_2/lec_2_bloboats_install_additional.png" class="img-fluid"></p>
+<p>Jei taip nutiktų, spausk ant <strong>Continue</strong>, o tada įrašyk savo slaptažodį ir spausk ant <strong>Authenticate</strong>. Prisimeni, kai tu įrašai savo slaptažodį, kompiuteris komandas vykdo kaip <code>sudo</code> :)</p>
+<p><img src="img/lec_2/lec_2_bloboats_launch.png" class="img-fluid"></p>
+<p>Dabar gali spausti ant <strong>Launch</strong> (lt - paleisti), arba rasi šią programą tarp visų programų.</p>
 </section>
-<section id="themes" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="themes"><span class="header-section-number">1.2</span> Themes</h2>
+<section id="sisteminių-paketų-įdiegimas-terminal-lange" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="sisteminių-paketų-įdiegimas-terminal-lange"><span class="header-section-number">4.2</span> Sisteminių paketų įdiegimas Terminal lange</h2>
+<p>Susiraskime kitą programą - <code>3dchess</code>. Kaip matai, jos pavadinimas kompiuteriui yra parašytas šio lango apačioje:</p>
+<p><img src="img/lec_2/lec_2_chess_search.png" class="img-fluid"></p>
+<p>Atsidaryk terminalą ir įrašyk šią komandą, daug kas jau tau bus matyta:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install 3dchess</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Paaiškinkime, kas čia yra kas:</p>
+<ul>
+<li><code>sudo</code> - pakelia tavo teises iki administratoriaus ir leidžia įdiegti programas.</li>
+<li><code>apt</code> - programa, kuri įdiegia, atnaujina ir pašalina programas.</li>
+<li><code>install</code> - komanda, pasakanti <code>apt</code>, ką turi daryti, šįkart įdiegti naują programą.</li>
+<li><code>3dchess</code> - argumentas, pasakantis, kokią programą įdiegti.</li>
+</ul>
+<p>Mes taip pat galėjome pridėti <code>-y</code>, bet šįkart to nepadarysime. Pažiūrėkime, kas nutinka. Ar pastebėjai kompiuterio reikalavimą patvirtinti, jog tikrai nori instaliuoti šią programą? <code>Do you want to Continue [Y/n]</code></p>
+<p><video src="img/lec_2/chess_install_terminal.mp4" class="img-fluid" controls=""><a href="img/lec_2/chess_install_terminal.mp4">Video</a></video></p>
+<p>Kaip matai, kompiuteris manęs klausė, ar tikrai noriu, ir teko įrašyti <code>Y</code> raidę ir spustelėti Enter. Tiesa, kai matai <code>[Y/n]</code> tai reiškia, kad jeigu tiesiog paspausi Enter - kompiuteris galvos, kad tu renkiesi <code>Y</code> (<code>Yes</code> trumpinys), tad rašyti Yes tau net nereikia. Kartais tu gali pamatyti <code>[N/y]</code>. Taigi tas pasirinkimas, kuris parašytas didžiąja raide - bus automatiškai pasirinktas jeigu nieko neįrašysi, bet pasupausi Enter klavišą.</p>
+<p>Jeigu būčiau įrašęs komandą</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install 3dchess <span class="at">-y</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Terminal programa manęs neprašytų patvirtinti mano pasirinkimo. Nes priejus šiam klausimui <code>Do you want to Continue [Y/n]</code>, nustatymas <code>-y</code> pasakytų iškart <code>Yes</code>.</p>
 </section>
-<section id="backgrounds" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="backgrounds"><span class="header-section-number">1.3</span> Backgrounds</h2>
+<section id="flatpak" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="flatpak"><span class="header-section-number">4.3</span> Flatpak</h2>
+<p><strong>Flatpak</strong> yra kitoks būdas instaliuoti programas. Kai tu instaliuoji Flatpak programą, tu atsisiunti ne tik pačią programą, bet ir visas kitas programas, kurios reikalingos, kad pagrindinė programa veiktų. Pabandykime tai paaiškinti kitaip.</p>
+<p>Įsivaizduok, kad tavo kompiuteris yra kaip namas. Namai turi kambarius, virtuvę, vonią ir t.t. Dabar įsivaizduok, kad nori naujos spintos. Kai tu parsisiunti spintą kaip <strong>System Package</strong> (sisteminį paketą), tai tarsi parsiveži ją iš IKEA parduotuvės ir pastatai savo kambaryje.</p>
+<p><strong>Flatpak</strong> programos veikia kitaip. Kai tu atsisiunti Flatpak programą, tai tarsi parsineštum visą didelę palapinę, kurioje yra ne tik tavo spinta, bet ir visa kita - virtuvė, vonia ir dar keli kambariai. Kodėl taip daroma?</p>
+<p>Kartais programoms reikia kitų programų, kad jos veiktų gerai. Tavo kompiuteryje ne visada yra visos šios reikalingos programos. Todėl kai parsisiunti Flatpak programą, ji atsisiunčia viską, ko jai reikia, kad veiktų be problemų. Tai reiškia, kad gauni naujesnę ir geriau veikiančią programą. Tačiau ši didelė palapinė užima daugiau vietos tavo kompiuteryje, nes joje yra viskas, ko reikia programai.</p>
+<p>Pavyzdžiui, susiraskime programą “hedgewars”. Pasirink bet kurią piktogramą.</p>
+<p><img src="img/lec_2/lec_2_hedgewars_search.png" class="img-fluid"></p>
+<p>Kaip matai, šalia “System Package” arba “Flatpak” yra nedidelis trikampiukas. Paspaudus ant jo, pamatysi, jog gali įdiegti šią programą ir kitu formatu.</p>
+<p>Taip atrodo System Package:</p>
+<p><img src="img/lec_2/lec_2_hedgewars_sp.png" class="img-fluid"></p>
+<p>O štai taip Flatpak. Atkreipk dėmesį į programos versijos skirtumus ir kiek vietos reikia kompiuteryje.</p>
+<p><img src="img/lec_2/lec_2_hedgewars_flat.png" class="img-fluid"></p>
+<p>Kaip System Package ši programa užima 194 MB vietos tavo kompiuteryje, o kaip Flatpak - 3.7 GB. 3.7 GB atitinka 3700 MB. Taigi beveik 20 kartų daugiau vietos. Tai reiškia, kad Flatpak programai reikia daugiau vietos, nes ji atsisiunčia viską, ko jai reikia.</p>
+<p>Gera žinia yra ta, kad kai instaliuosi kitą programą su Flatpak, labai tikėtina, kad kita programa jau galės naudotis kai kuriais dalykais iš pirmosios palapinės. Tada naujai programai reikės mažiau vietos.</p>
+<p>Flatpak programas taip pat galima instaliuoti per Terminal programą.</p>
+<p>Tačiau tai šiek tiek skiriasi:</p>
+<ul>
+<li>nereikia naudoti <code>sudo</code></li>
+<li>vietoj <code>apt</code> reikia naudoti <code>flatpak</code></li>
+<li>naudojame <code>install</code></li>
+<li>programos pavadinimą galima pasiimti iš Software Manager, bet daugiau Flatpak programų galima rasti ir <a href="https://flathub.org/">flathub.org</a> tinklapyje.</li>
+</ul>
+<p><video src="img/lec_2/lec_2_flatpak_terminal.mp4" class="img-fluid" controls=""><a href="img/lec_2/lec_2_flatpak_terminal.mp4">Video</a></video></p>
 </section>
-<section id="menu" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="menu"><span class="header-section-number">1.4</span> Menu</h2>
 </section>
-<section id="panel" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="panel"><span class="header-section-number">1.5</span> Panel</h2>
+<section id="programų-ištrynimas" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Programų ištrynimas</h1>
+<p>Kaip ir programų įdiegimas, programų ištrynimas Linux yra gana paprastas. Tai galima padaryti keliais būdais. Šiame skyriuje išmoksi ištrinti programas per <strong>Software Manager</strong> bet ir per <strong>Menu</strong>. Taip pat atlikti abu veiksmus naudojant Terminal programą.</p>
+<section id="software-manager" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="software-manager"><span class="header-section-number">5.1</span> Software Manager</h2>
+<p>Pirmiausia pažiūrėkime, kaip ištrinti programas naudojant <strong>Software Manager</strong>.</p>
+<ol type="1">
+<li>Atidaryk <strong>Software Manager</strong>.</li>
+<li>Paspaudus ant trijų brūkšnelių spausk ant “Show Installed Application” (lt. parodyk įdiegtas programas).</li>
+</ol>
+<p><img src="img/lec_2/lec_2_del_sm_1.png" class="img-fluid"></p>
+<ol start="3" type="1">
+<li>Surask programą, kurią nori ištrinti, ir spausk ant jos pavadinimo ar piktogramos.</li>
+</ol>
+<p><img src="img/lec_2/lec_2_del_sm_2.png" class="img-fluid"></p>
+<ol start="4" type="1">
+<li>Atsidariusiame lange spausk ant <strong>Remove</strong> (lt. pašalinti).</li>
+</ol>
+<p><img src="img/lec_2/lec_2_del_sm_3.png" class="img-fluid"></p>
+<ol start="5" type="1">
+<li>Software Manager programa paprašys patvirtinimo. Spausk <strong>Continue</strong>, įvesk savo slaptažodį ir spausk <strong>Authenticate</strong>.</li>
+</ol>
 </section>
-<section id="firewall" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="firewall"><span class="header-section-number">1.6</span> Firewall</h2>
+<section id="menu" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="menu"><span class="header-section-number">5.2</span> Menu</h2>
+<p>Kitas būdas ištrinti programas yra per Menu.</p>
+<ol type="1">
+<li>Atidaryk meniu, kur randi visas savo programas.</li>
+<li>Dešiniu pelės klavišu spustelk ant programos, kurią nori ištrinti. Prasiskleis papildomas meniu.</li>
+<li>Pasirink <strong>Uninstall</strong> (lt. pašalinti).</li>
+<li>Pasirodys patvirtinimo langas. Pasirink <strong>OK</strong>, įvesk savo slaptažodį ir spausk <strong>Authenticate</strong>.</li>
+</ol>
+<p><video src="./img/lec_2_rm_menu.mp4" class="img-fluid" controls=""><a href="./img/lec_2_rm_menu.mp4">Video</a></video></p>
 </section>
-<section id="languages" class="level2" data-number="1.7">
-<h2 data-number="1.7" class="anchored" data-anchor-id="languages"><span class="header-section-number">1.7</span> Languages</h2>
+<section id="terminalas" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="terminalas"><span class="header-section-number">5.3</span> Terminalas</h2>
+<p>Programas taip pat galima ištrinti per terminalą.</p>
+<section id="sisteminis-paketas" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="sisteminis-paketas"><span class="header-section-number">5.3.1</span> Sisteminis paketas</h3>
+<p>Norėdami ištrinti sisteminį paketą, naudokime <code>apt</code> programą. Pavyzdžiui, jei nori ištrinti programą “3dchess”:</p>
+<ol type="1">
+<li>Atidaryk terminalą.</li>
+<li>Įrašyk šią komandą: <code>sudo apt remove 3dchess</code></li>
+</ol>
+<p>Paaiškinkime, kas čia yra kas:</p>
+<ul>
+<li><code>sudo</code> - pakelia tavo teises iki administratoriaus ir leidžia ištrinti programas.</li>
+<li><code>apt</code> - programa, kuri įdiegia, atnaujina ir pašalina programas.</li>
+<li><code>remove</code> - komanda, pasakanti apt, kad reikia ištrinti programą.</li>
+<li><code>3dchess</code> - argumentas, pasakantis, kokią programą ištrinti.</li>
+</ul>
+<p>Kompiuteris gali paprašyti patvirtinimo. Įrašyk <code>Y</code> ir spausk Enter.</p>
 </section>
-<section id="keyboard" class="level2" data-number="1.8">
-<h2 data-number="1.8" class="anchored" data-anchor-id="keyboard"><span class="header-section-number">1.8</span> Keyboard</h2>
 </section>
-<section id="time" class="level2" data-number="1.9">
-<h2 data-number="1.9" class="anchored" data-anchor-id="time"><span class="header-section-number">1.9</span> Time</h2>
+<section id="flatpak-1" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="flatpak-1"><span class="header-section-number">5.4</span> Flatpak</h2>
+<p>Per Terminal irgi galime ištrinti Flatpak programą. Pavyzdžiui, jei nori ištrinti programą <code>org.hedgewars.Hedgewars</code>:</p>
+<pre class="{bash}"><code>flatpak uninstall org.hedgewars.Hedgewars</code></pre>
+<p>Paaiškinkime, kas čia yra kas:</p>
+<ul>
+<li><code>flatpak</code> - programa, kuri įdiegia, atnaujina ir pašalina Flatpak programas.</li>
+<li><code>uninstall</code> - komanda, pasakanti flatpak, kad reikia ištrinti programą.</li>
+<li><code>org.hedgewars.Hedgewars</code> - argumentas, pasakantis, kokią programą ištrinti.</li>
+</ul>
+<p>Kompiuteris gali paprašyti patvirtinimo. Įrašyk <code>Y</code> ir spausk Enter.</p>
 </section>
-<section id="tips-tricks" class="level2" data-number="1.10">
-<h2 data-number="1.10" class="anchored" data-anchor-id="tips-tricks"><span class="header-section-number">1.10</span> Tips &amp; Tricks</h2>
+<section id="kodėl-per-terminal" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="kodėl-per-terminal"><span class="header-section-number">5.5</span> Kodėl per Terminal?</h2>
+<p>Ko gero tau dabar kyla klausimas, kodėl verta mokėti atnaujinti, įdiegti ir ištrinti programas naudojant Terminal?</p>
+<p>Naudoti Terminal gali atrodyti sudėtingiau nei spustelėti pelę, tačiau jis turi daug privalumų.</p>
+<ul>
+<li><p>Terminal leidžia tau atlikti daugybę užduočių labai greitai. Užuot naršant per meniu ir ieškant reikiamų funkcijų, tu gali tiesiog įvesti kelias komandas ir tavo darbas bus atliktas.</p></li>
+<li><p>Terminal suteikia daugiau galimybių ir lankstumo. Kai kuriuos dalykus gali padaryti tik per Terminal. Be to, Terminal naudoti gali būti smagu! Tai tarsi magija – tu rašai komandas, o kompiuteris jas vykdo.</p></li>
+<li><p>Terminal naudojimas gali padėti tau geriau suprasti, kaip veikia tavo kompiuteris. Kai tu įrašai komandas ir matai, kaip jos veikia, tu pradedi suvokti, kas vyksta tavo kompiuterio viduje.</p></li>
+<li><p>Terminal naudojimas gali padėti tau tapti tikru kompiuterių ekspertu. Ir kas žino, galbūt ateityje tave sudomins programavimo, duomenų analitikos ar tiesiog inžinerijos mokslai? Labai daug profesijų pradeda nautodi programavimą kasdieniuose savo darbuose. Aplinkosaugininkai gali tyrinėti kaip keičiasi klimatas ir kaip kinta gamta, buhalteriai gali paspasrtinti ataskaitų ruošimą, architektai apskaičiuoti kaip statyti namą, jog jis nesugriųtų vykstant žemės drebėjimui, robotikos specialistai - kaip sukonstruoti robotoą, kuris važinėja ir tyrinėja Marso planeta…</p></li>
+</ul>
+<p>Skamba truputį sudėtingai, tiesa? Pateiksiu tau pavyzdį. Įsivaizduok, kad tu turi draugę vardu Pelenė. Pelenė irgi turi kompiuterį, bet nežino, kaip įdiegti programas. Tačiau jūs norite kartu žaisti tą patį žaidimą - lenktyniauti žaidžiant Super Tux Cart. Ką daryti?</p>
+<p>Tu gali jai parašyti žinutę ir pasakyti, kad nukopijuotų ir paleistų štai tokį kodą:</p>
+<p>sudo apt update &amp;&amp; sudo apt full-upgrade -y &amp;&amp; sudo apt autoremove -y &amp;&amp; flatpak update &amp;&amp; flatpak install net.supertuxkart.SuperTuxKart -y</p>
+<p>Na štai, jeigu jūs turite paskyras <a href="https://online.supertuxkart.net/">Super Tux Cart</a>, dabar galite nuotoliniu būdu lenktyniauti kartu.</p>
+<p>Dar neturi paskyros ir elektroninio pašto adreso? Sekančioje pamokoje tai ir susikursime.</p>
+</section>
+</section>
+<section id="žodynėlis" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Žodynėlis</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 51%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Komanda</strong></th>
+<th><strong>Apibrėžimas</strong></th>
+<th><strong>Pavyzdys</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>sudo apt update</code></td>
+<td>Komanda, kuri atnaujina paketų sąrašą iš visų saugyklų, kad būtų galima gauti informaciją apie naujausias programinės įrangos versijas.</td>
+<td>Paleidus <code>sudo apt update</code>, sistema patikrina, ar yra naujų programinės įrangos paketų atnaujinimų.</td>
+</tr>
+<tr class="even">
+<td><code>sudo apt full-upgrade</code></td>
+<td>Komanda, kuri atnaujina visus įdiegtus paketus į naujausias galimas versijas, automatiškai pašalindama arba įdiegdama paketus, kai reikia.</td>
+<td>Naudojant <code>sudo apt full-upgrade</code>, jūsų sistema bus atnaujinta į naujausias programinės įrangos versijas.</td>
+</tr>
+<tr class="odd">
+<td><code>sudo autoremove</code></td>
+<td>Komanda, kuri pašalina nereikalingus paketus, kurie buvo įdiegti kaip priklausomybės, bet dabar nebėra reikalingi.</td>
+<td>Paleidus <code>sudo autoremove</code>, bus pašalinti nereikalingi bibliotekų paketai, siekiant atlaisvinti vietos diske.</td>
+</tr>
+<tr class="even">
+<td><code>flatpak update</code></td>
+<td>Komanda, kuri atnaujina visus įdiegtus Flatpak programas į naujausias versijas.</td>
+<td>Naudojant <code>flatpak update</code>, jūsų Flatpak programos bus atnaujintos į naujausias versijas.</td>
+</tr>
+<tr class="odd">
+<td><code>sudo apt install &lt;name&gt;</code></td>
+<td>Komanda, kuri įdiegia nurodytą programinės įrangos paketą iš saugyklos.</td>
+<td>Paleidus <code>sudo apt install vim</code>, bus įdiegta <code>vim</code> redaktoriaus programa.</td>
+</tr>
+<tr class="even">
+<td><code>sudo apt remove &lt;name&gt;</code></td>
+<td>Komanda, kuri pašalina nurodytą programinės įrangos paketą iš sistemos.</td>
+<td>Naudojant <code>sudo apt remove vim</code>, bus pašalinta <code>vim</code> redaktoriaus programa.</td>
+</tr>
+<tr class="odd">
+<td><code>flatpak install &lt;name&gt;</code></td>
+<td>Komanda, kuri įdiegia nurodytą Flatpak programą iš Flatpak saugyklos.</td>
+<td>Paleidus <code>flatpak install flathub org.gimp.GIMP</code>, bus įdiegta <code>GIMP</code> programa.</td>
+</tr>
+<tr class="even">
+<td><code>flatpak remove &lt;name&gt;</code></td>
+<td>Komanda, kuri pašalina nurodytą Flatpak programą iš sistemos.</td>
+<td>Naudojant <code>flatpak remove org.gimp.GIMP</code>, bus pašalinta <code>GIMP</code> programa.</td>
+</tr>
+<tr class="odd">
+<td><code>-y</code></td>
+<td>Parametras, kuris automatiškai atsako “taip” į visus klausimus, kuriuos komanda gali užduoti, taip palengvinant automatizuotą diegimą ar pašalinimą.</td>
+<td>Komandoje <code>sudo apt install -y vim</code>, parametras <code>-y</code> užtikrina, kad diegimo procesas vyks be vartotojo įsikišimo.</td>
+</tr>
+<tr class="even">
+<td><code>&amp;&amp;</code></td>
+<td>Loginis operatorius, naudojamas sujungti kelias komandas taip, kad antroji komanda būtų vykdoma tik tuo atveju, jei pirmoji komanda baigiasi sėkmingai.</td>
+<td>Komandoje <code>sudo apt update &amp;&amp; sudo apt upgrade</code>, <code>sudo apt upgrade</code> bus vykdoma tik tada, jei <code>sudo apt update</code> sėkmingai baigiasi.</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>
@@ -806,13 +1037,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Įvadas">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Įvadas</span>
+      <a href="./2_linux_update.html" class="pagination-link" aria-label="Linux atnaujinimas">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Linux atnaujinimas</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./2_linux_update.html" class="pagination-link" aria-label="Linux atnaujinimas">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Linux atnaujinimas</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./5_terminal_filesystem.html" class="pagination-link" aria-label="Terminalas ir Linux failų sistema">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Terminalas ir Linux failų sistema</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -6,40 +6,40 @@ book:
   title: "Linux ir programavimas"
   author: "Justas Mundeikis"
   chapters:
-    - index.qmd
-    - 1_linux_configure.qmd
-    - 2_linux_update.qmd
-    - 3_linux_software.qmd
-    - 4_passwords.qmd
-    - 5_terminal_filesystem.qmd
-    - 6_bash_comands_basic.qmd
-    - 7_bash_comands_advanced.qmd
-    - 8_bash_advanced2.qmd
-    - 9_text_editor_ide.qmd
-    - 9b_bash_scripts_1.qmd
-    - 9c_bash_scripts_2.qmd
-    - 10_git_github_1.qmd
-    - 11_git_github_2.qmd
-    - 11b_ssh.qmd
-    - 12_python_intro.qmd
-    - 13_python_data_structures_loops.qmd
-    - 14_python_variables_conditionals.qmd
-    - 15_python_read_write_files.qmd
-    - 16_python_APIs.qmd
-    - 17_python_functions_os.qmd
-    - 18_Python_openai_api.qmd
-    - 19_python_webscrapping.qmd
-    - 20_python_ollama.qmd
-    - 21_python_bottles.qmd
-    - 22_python_sql.qmd
-    - 23_python_html.qmd
-    - 24_python_css.qmd
-    - 25_python_deployment.qmd
-    - 26_TCP_IP.qmd
-    - 27_raspberry_pi.qmd
-    - 28_home_server.qmd
-    - 29_docker_1.qmd
-    - 30_docker_2.qmd
+    - part: "Linux Basics"
+      chapters:
+        - index.qmd
+        - 1_linux_configure.qmd
+        - 2_linux_update.qmd
+        - 3_linux_software.qmd
+    - part: "Bash and Terminal"
+      chapters:
+        - 5_terminal_filesystem.qmd
+        - 6_bash_comands_basic.qmd
+        - 7_bash_comands_advanced.qmd
+        - 8_bash_advanced2.qmd
+    - part: "Text Editing and Git"
+      chapters:
+        - 9_text_editor_ide.qmd
+        - 10_git_github_1.qmd
+        - 11_git_github_2.qmd
+        - 11b_ssh.qmd
+    - part: "Python Programming"
+      chapters:
+        - 12_python_intro.qmd
+        - 13_python_data_structures_loops.qmd
+        - 14_python_variables_conditionals.qmd
+        - 15_python_read_write_files.qmd
+        - 16_python_APIs.qmd
+        - 17_python_functions_os.qmd
+        - 18_Python_openai_api.qmd
+    - part: "Advanced Topics"
+      chapters:
+        - 26_TCP_IP.qmd
+        - 27_raspberry_pi.qmd
+        - 28_home_server.qmd
+        - 29_docker_1.qmd
+        - 30_docker_2.qmd
 
 format:
   html:
