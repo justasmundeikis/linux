@@ -435,7 +435,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#kam-man-reikalingi-bash-skriptai" id="toc-kam-man-reikalingi-bash-skriptai" class="nav-link active" data-scroll-target="#kam-man-reikalingi-bash-skriptai"><span class="header-section-number">14.1</span> Kam man reikalingi BASH skriptai?</a></li>
   <li><a href="#kas-yra-bash-skriptas" id="toc-kas-yra-bash-skriptas" class="nav-link" data-scroll-target="#kas-yra-bash-skriptas"><span class="header-section-number">14.2</span> Kas yra bash skriptas?</a></li>
   <li><a href="#hello-world" id="toc-hello-world" class="nav-link" data-scroll-target="#hello-world"><span class="header-section-number">14.3</span> Hello World</a></li>
-  <li><a href="#kintamieji" id="toc-kintamieji" class="nav-link" data-scroll-target="#kintamieji"><span class="header-section-number">14.4</span> Kintamieji</a></li>
+  <li><a href="#kintamieji" id="toc-kintamieji" class="nav-link" data-scroll-target="#kintamieji"><span class="header-section-number">14.4</span> Kintamieji</a>
+  <ul class="collapse">
+  <li><a href="#subshell" id="toc-subshell" class="nav-link" data-scroll-target="#subshell"><span class="header-section-number">14.4.1</span> Subshell</a></li>
+  </ul></li>
   <li><a href="#matematinės-funkcijos" id="toc-matematinės-funkcijos" class="nav-link" data-scroll-target="#matematinės-funkcijos"><span class="header-section-number">14.5</span> Matematinės Funkcijos</a></li>
   <li><a href="#if-else" id="toc-if-else" class="nav-link" data-scroll-target="#if-else"><span class="header-section-number">14.6</span> IF ELSE</a></li>
   <li><a href="#išeities-kodai" id="toc-išeities-kodai" class="nav-link" data-scroll-target="#išeities-kodai"><span class="header-section-number">14.7</span> Išeities kodai</a></li>
@@ -447,8 +450,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#funkcijos" id="toc-funkcijos" class="nav-link" data-scroll-target="#funkcijos"><span class="header-section-number">14.13</span> Funkcijos</a></li>
   <li><a href="#case" id="toc-case" class="nav-link" data-scroll-target="#case"><span class="header-section-number">14.14</span> CASE</a></li>
   <li><a href="#cron" id="toc-cron" class="nav-link" data-scroll-target="#cron"><span class="header-section-number">14.15</span> CRON</a></li>
-  <li><a href="#argumentai" id="toc-argumentai" class="nav-link" data-scroll-target="#argumentai"><span class="header-section-number">14.16</span> Argumentai</a></li>
-  <li><a href="#praktikumas-serverio-backup-skritpas" id="toc-praktikumas-serverio-backup-skritpas" class="nav-link" data-scroll-target="#praktikumas-serverio-backup-skritpas"><span class="header-section-number">14.17</span> Praktikumas: Serverio Backup skritpas</a></li>
   </ul>
 </nav>
     </div>
@@ -568,47 +569,665 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="fu"># Notes: Additional helpful notes, warnings, or cautions.</span></span>
 <span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>#====================================================================</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Dabar tau gali kilti klausimas - o kodėl neparašius komandos, kad instaliuoti iškart šiuos dependencies? Nebent tavo skriptas yra skirtas programų instaliavimui ir kitas vartotojas tai supras ir tu tai dokumentavai, pvz README.md faile… nėra labai ger apraktika tiesiog paleisti instialiavią kažkieno kito kompiuteryje. Be to, tu negli būti tikra, ar tia Linux, ar MacOs sistema. O net Linux, gali būti naudoajmas ne <code>apt</code> programū menedžeris, o <code>dnf</code> ir t.t. Taigi, ir saugiau ir lengviau leisti tam tikruas programas susiinstaliuoti pačiam vartotojui.</p>
+<p>Dabar tau gali kilti klausimas, kam reikaligi tie kintamieji? Viena pagrindini7 pri=a2i7, kam naudojami kinatiemiji, tia tma, kad i6vengti dagybinio perrašymo. štai pvz:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Linux is awesome"</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Android is awesome"</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Nextcloud is awesome"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Jeigu šiame banaliame skipte nusprestume pakeisti žodį awesome į cool, tada tai reiktų daryti net trijose skirtingose eilutėse. O dabar įsivaizduok, kad tavo skriptas yra kelių šimtų eilučių ilgumo… Tam kad išvengti pasikarotimų, naudojami kintamieji, tad tokiu atveju užtenka pakeisti vieną kintamąjį vienoje eilutėje ir visame kode pasikeičia norimos riekšmės</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="va">var</span><span class="op">=</span><span class="st">"awesome"</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Linux is </span><span class="va">$var</span><span class="st">"</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Android is </span><span class="va">$var</span><span class="st">"</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Nextcloud is </span><span class="va">$var</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>o dabar pakeiskime i cool</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="va">var</span><span class="op">=</span><span class="st">"cool"</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Linux is </span><span class="va">$var</span><span class="st">"</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Android is </span><span class="va">$var</span><span class="st">"</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Nextcloud is </span><span class="va">$var</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="subshell" class="level3" data-number="14.4.1">
+<h3 data-number="14.4.1" class="anchored" data-anchor-id="subshell"><span class="header-section-number">14.4.1</span> Subshell</h3>
+<p>Kartais tau gali prireikti įvykdyti komandas ir jų rezultatą panaudoti. tam tu gali pasinaudoti bash skripte (aktyvioje shell aplinkoje), iššaukiant sub shell, tai gali padaryti su $(<komanda>). [tik čia ne temrinale o skripte]</komanda></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="va">files</span><span class="op">=</span><span class="va">$(</span><span class="fu">ls</span><span class="va">)</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$files</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Kas čia įvyksta? kai shell skaito ir vykdo tavo skiptą, $() iššaukia subshell, šioje subshell įvykdoma ls komanda ir visas rezultatas spriskiriamas files kintamajam.</p>
+<p>Štai kiek nauddinesgnis pavyzdys. Tarkime tu rašai skriptą ir nori pasinaudoti <code>date</code> komandą, su kuria jau susipažinau bash pagrindų skyriuoje. Takrime skiprto pačioje pradžioje bash turi sukurti direktoriją, kurios pavadinimas būtų šiandienos data, ne spvz tu į ta direktoriją patalpinsi šiandienos duomenis.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="va">now</span><span class="op">=</span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Systemos data ir laikas yra:"</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$now</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Iš esmės tai atitinktų</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Systemos data ir laikas yra:"</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>## Aplinkos kintamieji</p>
+<p>Kai kurie kintamieji yra deklaruoti automatiškai, kai tik prasideda tavo kompiuteriio sesija, štai keli jų</p>
+<p>Šie kintamieji nustatomi visai sistemai ir yra prieinami visiems procesams:</p>
+<ol type="1">
+<li><strong><code>$HOME</code></strong> – vartotojo namų katalogo kelias (pvz., <code>/home/user</code>).</li>
+<li><strong><code>$USER</code></strong> – prisijungusio vartotojo vardas.</li>
+<li><strong><code>$PATH</code></strong> – katalogų, kuriuose ieškoma vykdomųjų failų, sąrašas, atskirtas dvitaškiais.</li>
+<li><strong><code>$SHELL</code></strong> – numatytojo terminalo kelias (pvz., <code>/bin/bash</code>).</li>
+<li><strong><code>$PWD</code></strong> – dabartinis darbinis katalogas.</li>
+<li><strong><code>$OLDPWD</code></strong> – ankstesnis darbinis katalogas (prieš <code>cd</code> komandą).</li>
+<li><strong><code>$LANG</code></strong> – numatytoji sistemos kalba.</li>
+<li><strong><code>$EDITOR</code></strong> – numatytasis teksto redaktorius (pvz., <code>vim</code> arba <code>nano</code>).</li>
+<li><strong><code>$TERM</code></strong> – naudojamas terminalo tipas (pvz., <code>xterm</code>).</li>
+<li><strong><code>$HOSTNAME</code></strong> – kompiuterio arba serverio vardas.</li>
+</ol>
+<p>Kaip matai jie visi didžiosiomis raidėmis. tam kad atksirti, kurie kintamieji sukruti varotojo, kurie systemos, patarmaia savo kintamuosius rašyti mažosiomis raidėmis, o sisteminius kintamauosius tada galima atpažinti iš didžiųjųraidžių. bet tai labiau rekomendacija, kurios nėra privaloma laikytis.</p>
+<p>kokius visus aplinkos kintamuosius turi, gali pamayti terinae paleidus komanda <code>env</code></p>
+</section>
 </section>
 <section id="matematinės-funkcijos" class="level2" data-number="14.5">
 <h2 data-number="14.5" class="anchored" data-anchor-id="matematinės-funkcijos"><span class="header-section-number">14.5</span> Matematinės Funkcijos</h2>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">expr</span> 2 + 2</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">expr</span> 2 / 4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="if-else" class="level2" data-number="14.6">
 <h2 data-number="14.6" class="anchored" data-anchor-id="if-else"><span class="header-section-number">14.6</span> IF ELSE</h2>
+<p>Iki šiol tu susipažinai su tuo, kaip yra kuriami bash scriptai, tačiau iki šiol, tai nebuvo labai prasmingi skriptai. Daugumą jų, tu galėtum net greičiau atlikti tiesiog surašant reikaimas komandas Terminal lange. Tikroji skiptų galia pasirodo tada, kai skiprtas įgauna šiek tiek daugiau logikos. Vienas iš logikos veksmų, yra atlikti tam tikrus veiksmus, kai (if) tam tikra sąlyga yra išpildyta.</p>
+<p>Štai pavyzdys <code>nano if_clause.sh</code></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/Bash</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="va">my_num</span><span class="op">=</span>200</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="va">$my_num</span> <span class="ot">-eq</span> 200 <span class="bu">]</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"The condition is true"</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>chmod 744 if_clause.sh</code></p>
+<ul>
+<li><code>my_num=200</code> susikuriam kintamajį, prieš kurį validuosime logiką</li>
+<li><code>if</code> pradeda, of <code>fi</code> uždaro if bloką</li>
+<li><code>[ &lt;logika&gt; ]</code> po ir prieš kvadratinius skliaustelius turi būti <space>!!!</space></li>
+<li><code>$my_num -eq 200</code> testuojama ar kintamasis yra lygus (<code>-eq</code>) 200
+<ul>
+<li>jeigu taip, einame į <code>then</code></li>
+</ul></li>
+</ul>
+<p><code>else</code> nėra būtinas. Jeigu sąlyga atitiks testą (loginis testas gražins True), tada skritpas įvykdys tai, kas yra numatyta <code>then</code> dalyje. Jeigu loginis testas gražins False skriptas žiūrės ar yra ar yra <code>else</code> jeigu ne, šis loginis testas bus nutrauktas ir bash skaitys skiptą toliau.</p>
+<p>Pakeiskime <code>nano if_clause.sh</code></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/Bash</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="va">my_num</span><span class="op">=</span>200</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="va">$my_num</span> <span class="ot">-eq</span> 100 <span class="bu">]</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="bu">echo</span> <span class="st">"Number is 100"</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="bu">echo</span> <span class="st">"Number is 200"</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Šauktukas apsuka loginį testą. Jeigu loginis testas grąžintų TRUE, tada ! TRUE tampa FALSE</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="va">my_num</span><span class="op">=</span>200</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="va">$my_num</span> <span class="ot">-eq</span> 100 <span class="bu">]</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">!</span> <span class="va">$my_num</span> <span class="ot">-eq</span> 100 <span class="bu">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Visgi šauktukas gali būt kiek sudėtingiau suprantamas, tad kur kas geriau naudti <code>-ne</code> , kas reikia not equal</p>
+<p>Šiek tiek galimų variantų:</p>
+<ul>
+<li><code>-eq</code> ==</li>
+<li><code>-ne</code> !=</li>
+<li><code>-gt</code> &gt;</li>
+<li><code>-ge</code> &gt;=</li>
+<li><code>-lt</code> &lt;</li>
+<li><code>-le</code> &lt;=</li>
+</ul>
+<p>Bet yra ir kitų testų:</p>
+<ul>
+<li><code>[ -f &lt;failas&gt;]</code> patikrina, ar failas egzituoja, jeigu taip, loginis testras gražina true</li>
+</ul>
+<p>sukurk šitą skirptą pavadinimu <code>test_if_file_exists.sh</code>, kuris testuoja ar failas <code>test_file</code> egizstuoja. suteik execute teises ir paleisk jį.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-f</span> test_file <span class="bu">]</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span> </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"test_file exists"</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"test_file does not exist"</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>dabar terminale naudojant <code>touch</code> komandą sukurk šį failą ir išbandyk, ar pakito tai, ką gražina šis skirptas. su <code>rm</code> ištrink failą ir dar kartą išbandyk skriptą, dabar jis turėtų gražinti informaciją, jog failas neezgistuoja. Ar pavyko?</p>
+<p>Kokių dar yra testų?</p>
+<ul>
+<li><code>-d</code> ar direktorija egiztuoja</li>
+<li><code>-f</code> ar failas egistuoja</li>
+</ul>
+<p><code>which</code> komandą tu jau pažinai pirmuose skyriuose, ji parodo, kur randasi proogramos binarinis kodas.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Bet jeigu tu įrašai pvz <code>which htop</code> ji nieko negražins, nes tikėtina, tu dar nesi instaliavusi šios programos! išbandyk <code>which htop</code>. <code>htop</code> yra sistemos monitoringo progframa, kuri parodo kiek procesocoairuas, darbinėįs atminties dabar tavo kompiuteris naudoja, kurie procesai tai daro ir.t.t. tam tikr aprasme tai task manager, kurį galbūt pameni iš Windows.</p>
+<p>Ko gero jau nujauti, kas bus dabar? Tu moki valdyti logiką, tu moki patikinrti ar programa aptinkama kompiuteryje… tad dabar pažiūrėkime, kaip galima išnaudoti bash skriptus ir instlaiuoti trūkstamas programas.</p>
+<p>nano install_requirements.sh</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="va">binary</span><span class="op">=</span>/usr/bin/htop</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-f</span> <span class="va">$binary</span> <span class="bu">]</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span> </span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"htop is present"</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"htop is not present. Installing it now"</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt install htop <span class="at">-y</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Suprantama, šiuo metu tai vis dar nėra labai prasmingas, nes tu turi žinoti, kurioje vietoje turėtų būti instaliuotas <code>htop</code>.</p>
+<p>Bet tu jau moki iššaukti subshell ir jos rezultatus priskirti kintamajam. Ką reiktų viršuje esančiame skripte pakeisti? Būtent, panaudokime <code>which</code> kuri sukurs binary kintamąjį, kurio vertė arba bus tuščia, jeigu htop binary nėra sistemoje, arba su adresu binary failo.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="va">binary</span><span class="op">=</span><span class="va">$(</span><span class="fu">which</span> htop<span class="va">)</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-f</span> <span class="va">$binary</span> <span class="bu">]</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span> </span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"htop is present"</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"htop is not present. Installing it now"</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt install htop <span class="at">-y</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Bet kas dabar negarai su šiuo kodu? mes 3 kartus parašome tą patį <code>htop</code></p>
+<p>[]</p>
+<p>Pabandykime pakeisti ir optimizuoti kodą. kaiskime <code>htop</code> kintamuoju, kuriam priskirsime pavadinimą htop.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="va">programm</span><span class="op">=</span>htop</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="va">binary</span><span class="op">=</span><span class="va">$(</span><span class="fu">which</span> <span class="va">$programm)</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-f</span> <span class="va">$binary</span> <span class="bu">]</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span> </span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">$programm</span><span class="st"> is present"</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">$programm</span><span class="st"> is not present. Installing it now"</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt install <span class="va">$programm</span> <span class="at">-y</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Nuostabu, dabar jeigu nuspręstum pakeisti programos pavadinimą į kokią nors kitą, tau tereiktų skripte atnaujinti tai vienoje vinetinleėje vietoje!</p>
+<p>Galima ir šiokia tokia variacija. Jeigu atsisakysime testo, ar failas egzistuoja, galima supraprastinti loginį testą iki to, ar komanda egzistuoja su <code>command -v</code>.</p>
+<p>Prieš taisant skriptą išbandyk temrinale <code>command -v htop</code> ir <code>command -v abc</code>. Jeigu argumentas (komanda) egzistuoja, temrinal gražins binary, jeigu ne, tada ne.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="va">programm</span><span class="op">=</span>htop</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">command</span> <span class="at">-v</span> <span class="va">$programm</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span> </span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">$programm</span><span class="st"> is present"</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">$programm</span><span class="st"> is not present. Installing it now"</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt install <span class="va">$programm</span> <span class="at">-y</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>ar galėtume command pakeisti which? TAIP!</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="va">programm</span><span class="op">=</span>htop</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="fu">which</span> <span class="va">$programm</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span> </span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">$programm</span><span class="st"> is present"</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">$programm</span><span class="st"> is not present. Installing it now"</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt install <span class="va">$programm</span> <span class="at">-y</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>bet abiems atvejais… mes gaunam kelią į binary, jeigu jis egzistuoja. Galbūt mes to nenorime. Ar pameni, stdin, stdout ir stderror ir jų nukreipimus? padarikime taip, which $programm atsakymą nukreipkime į /dev/null, tam, kad skirptas negrąžintu nieko mums.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="va">programm</span><span class="op">=</span>htop</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="fu">which</span> <span class="va">$programm</span> <span class="op">&gt;</span>/dev/null <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span> </span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">$programm</span><span class="st"> is present"</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">$programm</span><span class="st"> is not present. Installing it now"</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt install <span class="va">$programm</span> <span class="at">-y</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>SVEIKINU! tu parašei pirmą, ganėtinai prasmingą skriptą. Gerai pagalvok ir sudėliok kelis scenarijus, kaip galėtum tai panaudoti ateityje? Kaip galbūt reiktų papildomai pakeisti šį ar panašų skriptą? Aptark!</p>
 </section>
 <section id="išeities-kodai" class="level2" data-number="14.7">
 <h2 data-number="14.7" class="anchored" data-anchor-id="išeities-kodai"><span class="header-section-number">14.7</span> Išeities kodai</h2>
+<p>Kiekvieną kartą, kai tu paleidi kažkurią komandą, ji arba suveikia, arba ne. Jeigu ji suveikia, tu pamatai aiškų tikimasi rezultatą. Jeigu ne, dažniausiai bash tave informuoja apie problemą. Tačiau tau nematant, kiekvienos komandos įvykdymas sugeneruoja ir tam tikrus išeities kodus (exit codes), ty skaičius, kuris turi tam tikrą reiškmę. Ši elgsena nėra reta IT pasaulyje, pvz įvedus netinkama URL adresą, neretai gali išvyst 404</p>
+<p>[404]</p>
+<p>Panašiai ir BASH. Po kiekvienos komandos įvykdymo, bash sukuria kintamajį, su išeities kodu. Paskutinis išeities kodas galima pamatyti su <code>echo $?</code></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$?</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> tralala</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>išeities kodas <code>0</code> reiškia, jog nebuvo jokių klaidų</li>
+<li>visi kiti kodai, reiškia, jog buvo kažkokia klaida</li>
+</ul>
+<p>Dabar gali pagalvboti, kaip galėtum derinti išeities kodus su <code>if [ exit_code -eq 0]</code> arba <code>if [ exit_code -ne 0]</code></p>
+<p>šiame skripte:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="va">programm</span><span class="op">=</span>htop</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="fu">which</span> <span class="va">$programm</span> <span class="op">&gt;</span>/dev/null <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span> </span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">$programm</span><span class="st"> is present"</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">$programm</span><span class="st"> is not present. Installing it now"</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt install <span class="va">$programm</span> <span class="at">-y</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Šioje vietoje, ko gero prasmingiausia būtų atspausdinti, ar <code>$prgramm</code> instaliavimas buvo sėkmginas ar ne.</p>
+<p>::: Praktikumas</p>
+<p>sukurt antra if clause skripte, kuris atspausintų pranešimą, ar programa buvo ar nebuvo sėkmingai instaliuota. Tačiau gerai pagalvok apie logiką. Jeigu tu idėsi antrą if clause po pirmojo, tada antrassis if vertins tiek išeities kodą kai programa egistuoja, tiek kai programa neegistuoja ir einama instaliavimo keliu</p>
+<p>papildomas reikalavimas, pagalvok, kaip apdaryti, jog temrinale nebūtų spausdinami apt update ir apt install pranešimai, kurie užildo visą terminalo langą. apt update tu gali drąsiai pasiųsti į /dev/null, tačiau install pranešimus, tu norėtum nusiųsti į script.log failą, jog bet kada galėtum pamatyti,kas vyko. Suprantama, tu nenori, kad failas būtų kaskart perrašomas, o kauptų istoriją.</p>
+<p>Taigi tavo logiką turėtų atrodyti daug maž taip.</p>
+<p>[caldidraw]</p>
+<p>išinstaliuok htop ir su skruptų vėl sintaliuok, tada pakeisk scriptą, kad paketas btūtų “notexist”. peržiūrėk log failus su <code>cat</code>. :::</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="va">programm</span><span class="op">=</span>htop</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="fu">which</span> <span class="va">$programm</span> <span class="op">&gt;</span>/dev/null <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span> </span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">"</span><span class="va">$programm</span><span class="st"> is present"</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">"</span><span class="va">$programm</span><span class="st"> is not present. Installing it now"</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sudo</span> apt update <span class="op">&gt;</span>/dev/null <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span> <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt install <span class="va">$programm</span> <span class="at">-y</span> <span class="op">&gt;&gt;</span> </span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">[</span> <span class="va">$?</span> <span class="ot">-eq</span> 0 <span class="bu">]</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">then</span> </span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>                <span class="bu">echo</span> <span class="st">"Installation of </span><span class="va">$programm</span><span class="st"> was successfull"</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>                <span class="bu">echo</span> <span class="st">"Installation of </span><span class="va">$programm</span><span class="st"> was not successfull"</span></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">fi</span></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>jeigu nori pašalinti htop ir pažiūrėti kaip veikia skriptas gali naudoti <code>sudo apt remove htop -y</code></p>
 </section>
 <section id="while-ciklai" class="level2" data-number="14.8">
 <h2 data-number="14.8" class="anchored" data-anchor-id="while-ciklai"><span class="header-section-number">14.8</span> WHILE ciklai</h2>
+<p>Iki šiol tu išmokai IF ciklą, IF TRUE THEN DO ELSE DO THAT. Tai labai galingas ciklas, nes jis įgalina taov skriptą veikti logiškai. Jeigu programos X nėra, skiprtas ją instaliuota, jeigu ji yra, tai jos instaliuoti nereikia. Tačiau tai nevienintinlis ciklas. Kitas ciklas yra WHILE. WHILE (angl kol), veikia tol, kol tam tirka salyga yra teisinga.</p>
+<p>pvz. kol lyja neiti iš namų. Toks ciklas reišktų, kad tu neinit tol iš namų, kol lyja. bet tik nustos lyti, tu galėsi eiti iš namų. Bet čia tu matai ir jau vieną problemą, WHILE ciklai gali būti pavojingi, tu juk nenori eiši iš namų 3 nakties?.</p>
+<p>[lunatic]</p>
+<p>Štai pavyzdys, kurį aptarsime išsamiau <code>run_while.sh</code>:</p>
+<ul>
+<li>pirma sukuriame kintamąjėį var ir priksieame jam reikšmę 1</li>
+<li>tad apaleidžiame WHILE ciklą, kuris testuoja ar var &lt;=15 ir kol taip yra WHILE paleidia savo cikla</li>
+<li>WHILE ciklas pradedas do ir užbaigiamas done</li>
+<li>cikle atspausdinamas var</li>
+<li>bet tam kad var neliktų 1, reikia jį inkrepemtuoti (padidinti vienetu), tam man iš sukuriame naują įvertį, prie $var prideda 1 <code>Ėvar +1</code>, bet liepiema tai apdaryti subshell $(), tačiau tu matai, jog šįkart mes panaudojaom dvigubus skliaustelius $((…)), taip rya todėl, nes</li>
+<li>sleep 0.5 priverčia kompiuterėį pauzuoti pusę sekndunės tarp kiekvieno ciklo, tam kad tu geriau matytum jog tai pavieniai ciklai</li>
+<li>kai var pasieks 16, tada while taps FALSE ir ciklas nepasileis</li>
+</ul>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="va">var</span><span class="op">=</span>1</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">[</span> <span class="va">$var</span> <span class="ot">-le</span> 15 <span class="bu">]</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">"</span><span class="va">$var</span><span class="st">"</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">var</span><span class="op">=</span><span class="va">$(($var</span> <span class="op">+</span><span class="dv">1</span><span class="va">))</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sleep</span> 0.5</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"While ciklas baigtas"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>altrernatyva naudoti gryną aritmetika ((var++)) čia pvar++ reiškia, jog paimamas var kintamais ir padidinaimas vientu ir tada rezultatatas priskiriamas tam pačiam var kintamajam.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="va">var</span><span class="op">=</span>1</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">[</span> <span class="va">$var</span> <span class="ot">-le</span> 15 <span class="bu">]</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">"</span><span class="va">$var</span><span class="st">"</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">((</span><span class="va">var</span><span class="op">++</span><span class="kw">))</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sleep</span> 0.5</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"While ciklas baigtas"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Kitas pvz.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> ~/testfile</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">[</span> <span class="ot">-f</span> ~/testfile <span class="bu">]</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">"</span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st"> Failas egzistuoja"</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sleep</span> 1</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st"> Failas nebeegizstuoja"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>O dabar kitame terminale, su <code>rm testfile</code> panaiking failą</p>
+<p>Sualvbok bent 3 scenarijus, kada tu pasirinktum naudoti WHILE ciklus?</p>
+<p>Štai mano keli scenarijai. Tiesa, kai kuriuos iš jų, būtų lengviau suprogramuoti su Python nei su bash</p>
+<ul>
+<li>Kol naktis, tol išjungiamas internetas namuose (while + date)</li>
+<li>Kas 24 valandas parsiųsti vilniaus temperatūrų prognozes (while + sleep )</li>
+<li>Kai namuose atsiranda vaiko telefonas (pasijungia prie wifi, išsiųsti žinutę tėvams). Tai daryti kas 15min, kol tėvų išmaniųjų telefonų nėra namuose. (while + ping + sleep)</li>
+<li>Kai namų serverio procesoriaus temperatūra pakylą virš XX C, išsiųsti pranešimą apie kaistantį procvesorių per Telegram.</li>
+</ul>
 </section>
 <section id="praktikumas" class="level2" data-number="14.9">
 <h2 data-number="14.9" class="anchored" data-anchor-id="praktikumas"><span class="header-section-number">14.9</span> Praktikumas</h2>
+<p>Parašyk <code>universal_update.sh</code> skriptą.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-d</span> /etc/pacman.d <span class="bu">]</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> pacman <span class="at">-Syu</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-d</span> /etc/apt <span class="bu">]</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span> </span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> apt update</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> apt full-upgrade <span class="at">-y</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>osr=/etc/os-release</p>
+<p>if grep -qi “ubuntu” /etc/os-release</p>
+<p>Užduotis, surask kokios dar versijos egzituoja ir kokios komandos atnaujintų sistemą. Paisnoaudok tam chat gpt</p>
+<p>||</p>
+<p>if grep -qi “ubuntu” $osr || grep -qi “debian” $osr</p>
+<ul>
+<li><code>||</code> OR</li>
+<li><code>&amp;&amp;</code> AND</li>
+</ul>
 </section>
 <section id="for-ciklai" class="level2" data-number="14.10">
 <h2 data-number="14.10" class="anchored" data-anchor-id="for-ciklai"><span class="header-section-number">14.10</span> FOR ciklai</h2>
+<p>Jau moki IF clause, kuris įvyką vieną ciklą jeigu salyga teisinga, bei WHILE ciklą, kuris nuolat sukasi tol, kol sąlygos testvimas gražina TRUE. Tačiau kartais tau nereikia kad skritpas suktūsi be galo, o tik tam tikra ciklų skaičių. Tuo tiklsu naudojami FOR ciklai.</p>
+<p><code>skaiciai_1_10.sh</code></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/Bash</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> nr <span class="kw">in</span> 1 2 3 4 5 6 7 8 9 10</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span> </span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="bu">echo</span> <span class="va">$nr</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sleep</span> 0.5</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Finished"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Kas čia vyksta?</p>
+<ul>
+<li>for pradeda for ciklą, o do ir done, kaip ri while cikle apibrėžia ciklo ribas</li>
+<li>nr sukuria kintamąjį kuris yra <code>in</code> sekoje. pirmą karta nr priims vertę 1, antra karta 2, ir t.t. kol apsieks paskutinę vertę - 10</li>
+</ul>
+<p>Tiesa, toks skaičių išrašymas yra labai neefektyvus. Skaičių seką tu gali sukurti {1..10}. Pabandyk</p>
+<p>Bet skaičiai nėra vienintelis kintamojo reikšmė, kuri gali būti naudojami it tekstinai kintamieji.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/Bash</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> nr <span class="kw">in</span> <span class="st">'uobolys'</span> <span class="st">'citrina'</span> <span class="st">'mangas'</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span> </span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="bu">echo</span> <span class="va">$nr</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sleep</span> 0.5</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Finished"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash </span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> file <span class="kw">in</span> zip_files/<span class="pp">*</span>.zip</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span> </span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">zip</span> <span class="va">$file</span>.zip</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash </span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> file <span class="kw">in</span> zip_files/<span class="pp">*</span>.zip</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span> </span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unzip</span> file</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># File containing the URLs</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="va">file</span><span class="op">=</span><span class="st">"urls.txt"</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop through each line in the file</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> url <span class="kw">in</span> <span class="va">$(</span><span class="fu">cat</span> <span class="st">"</span><span class="va">$file</span><span class="st">"</span><span class="va">)</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Fetching </span><span class="va">$url</span><span class="st">"</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">curl</span> <span class="at">-O</span> <span class="st">"</span><span class="va">$url</span><span class="st">"</span>  <span class="co"># Use -O to save the file with the same name as the remote file</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"All URLs have been processed."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="kur-saugoti-skriptus" class="level2" data-number="14.11">
 <h2 data-number="14.11" class="anchored" data-anchor-id="kur-saugoti-skriptus"><span class="header-section-number">14.11</span> Kur saugoti skriptus?</h2>
+<p>FHS flilesysteh hierachy standard</p>
+<p>/usr/local/bin</p>
+<p>sudo mv &lt;scriptane.sh&gt; /usr/local/bin <sciptname> sudo move update.sh /usr/lcoal/bin/update taigi be sh</sciptname></p>
+<p>ptiktinkime teises, matome, kad teisės yra vartotojo, tad pakeiskime į root</p>
+<p><code>sudo chown root:root /usr/local/bin/update</code></p>
+<p><code>.sh</code> failo pratęsimas (file extension) yra skirtas labiau vartotojui, nei kad kompiuteriui. Tai šiek tiek skiriasi nuo Microsoft Windows,, kur failo tipoas yra pivalomas.</p>
+<p>Kas įvyksta: /usr/local/bin guli tavo PATH kelyje, kur linux tirkina ar yra tam tikri failai… tad kai tu terminale įrašai tiesiog <code>update</code> bash eidamas per visas direktrijas numatytas PATH, randa update ir jį įvyko. jeigu paliktum update.sh, tai nesuveiktu.</p>
+<p>štai pvz. perkelk šituos du skriptus į /usr/local/bin viena pavading call_1 kitą call_2.sh, suteik root privilegijas ir dabar temrinale įrašyk call_1, call_1sh, call_2, call_2.sh</p>
+<p>[rezultatas]</p>
+<p>ir dabar šį skritpą gali nukopijuoti į bet kokį kitą linux kompiuterį. sugalvok 2-3 skirptus, kurie būtų rpamsingi tavo ir kitų kompiuteriuose?</p>
+<p><code>env</code> sąraše pamatysi <code>path</code> bet gali path iššaukti ir taip. which komanda pereina per šias direktrijas, kai iešįko programos binary failo. pvz <code>which htop</code>.</p>
+<p>kas, jeigu /usr/local/bin nera path? tokiu atveju tu galėtum pridėti:</p>
+<p><code>export PATH=/usr/local/bin:$PATH</code></p>
+<p>bet dabar tau to tikėinta daryti nereikia. Tačiau turėk omenyje, kad taip pridedamos vietos prie path, ir ateityje nauddoajnt tam tikras programas, tavo path gali prailgėti.</p>
 </section>
 <section id="data-streams-stdin-stdout-stderror" class="level2" data-number="14.12">
 <h2 data-number="14.12" class="anchored" data-anchor-id="data-streams-stdin-stdout-stderror"><span class="header-section-number">14.12</span> Data Streams (stdin, stdout, stderror)</h2>
+<p>Trumpas priminimas apie data streams <code>stdin</code> <code>stdout</code> ir <code>stder</code></p>
+<p>Jau žinai, kaip galima atpažinti klaidas, taip pat žinai, jog su <code>echo $?</code> gali atspasdinti paskutinės komandos išeities kodą. Tačiau būna atveju, kai tavo komanda gražina tiek stdout tiek stderr vienu metu.</p>
+<p>štai geras pvz, jeigu ieškai failo</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> /etc <span class="at">-type</span> f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>ir išbandyk <code>echo $?</code></p>
+<p>Paskrollinus terminale, tu rasi daug įrašu, kuriuos gali matayti, bet lygiai taip pat pamatysi įrašy, kur <code>Permission denied</code>, nes kamndą įvykei ne su sudo ir neturi pakankamai priveligejų. Taigi šiuo atveju gravai ir stdout ir stderr viename lange!</p>
+<p>Tu jau žinai, jog komandos išvestis galima nukreipti, tad šiuo atveju, nukreipk klaidas į <code>/dev/null</code></p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> /etc <span class="at">-type</span> f <span class="dv">2</span><span class="op">&gt;</span>/dev/null</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>ir išbandyk <code>echo $?</code> Kaip matai, paskutinė komanda nebuvo įkydyta be klaidų, tačiau klaidų tu nematei, nes jas nusiuntei į <code>/dev/null</code>.</p>
+<p>O dabar išbandyk nusiust sdtdout į /dev/null, tam kad pamatytum, kuriems failams tu neturi prieigos teisių</p>
+<p>pritayk šias žinias</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="va">release_file</span><span class="op">=</span>/etc/os-release</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="va">log_file</span><span class="op">=</span>/var/log/updter.log</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="va">error_log</span><span class="op">=</span>/var/log/updater_error.log</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="fu">grep</span> <span class="at">-qi</span> <span class="st">'arch'</span> <span class="va">$release_file</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> pacman <span class="at">-Syu</span> <span class="dv">1</span><span class="op">&gt;&gt;</span><span class="va">$log_file</span> <span class="dv">2</span><span class="op">&gt;&gt;</span><span class="va">$error_log</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="bu">[</span> <span class="va">$?</span> <span class="ot">-ne</span> 0 <span class="bu">]</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">then</span> <span class="bu">echo</span> <span class="st">"Error occured"</span></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">fi</span></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="fu">grep</span> <span class="at">-qi</span> <span class="st">'debian'</span> <span class="va">$release_file</span> <span class="kw">||</span> <span class="fu">grep</span> <span class="at">-qi</span> <span class="st">'ubuntu'</span> <span class="va">$release_file</span></span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span> </span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> apt update <span class="dv">1</span><span class="op">&gt;&gt;</span><span class="va">$log_file</span> <span class="dv">2</span><span class="op">&gt;&gt;</span><span class="va">$error_log</span></span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>   <span class="cf">if</span> <span class="bu">[</span> <span class="va">$?</span> <span class="ot">-ne</span> 0 <span class="bu">]</span></span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">then</span> <span class="bu">echo</span> <span class="st">"Error occured"</span></span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">fi</span></span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sudo</span> apt full-upgrade <span class="at">-y</span> <span class="dv">1</span><span class="op">&gt;&gt;</span><span class="va">$log_file</span> <span class="dv">2</span><span class="op">&gt;&gt;</span><span class="va">$error_log</span></span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="bu">[</span> <span class="va">$?</span> <span class="ot">-ne</span> 0 <span class="bu">]</span></span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a>  <span class="cf">then</span> <span class="bu">echo</span> <span class="st">"Error occured"</span></span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">fi</span></span>
+<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>O kaip apie stdin?</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Echo please enter your name"</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="va">myname</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hello </span><span class="va">$myname</span><span class="st">, how is your day?"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Šiuo atveju read iššaukia stdin, t.y. kad varotojas įrašytų kažką klaviatūra. Tai kas įrašyta, mes galime prisikrti kintamajam ir toliau jį naudoti.</p>
+<p>Pabandyk. Šiame pvz neveikia logika <code>{$x..$y}</code> nes <code>{}</code> priima tik skaičius, ne kintamuosius, todėl pasitelksime kitą funckiją <code>seq</code></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Nuo kokio skaičiaus skaičiuosime? "</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="va">x</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Iki kokio skaičiaus skaičiuosime? "</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="va">y</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="va">$(</span><span class="fu">seq</span> <span class="va">$x</span> <span class="va">$y)</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="va">$i</span></span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sleep</span> 0.5</span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="funkcijos" class="level2" data-number="14.13">
 <h2 data-number="14.13" class="anchored" data-anchor-id="funkcijos"><span class="header-section-number">14.13</span> Funkcijos</h2>
+<p>https://www.cloudbooklet.com/developer/how-to-create-and-use-bash-functions-in-linux</p>
+<p>Jeigu tu kažką parašei jau du kartus - geras ženklas, jog tai turėtų būti funkcija, o ne tieiosg kodas.</p>
+<p>Ši filosofija labai gerai apibūdina prorgramavimą bendrai, tiek bash, python, R ir t.t.</p>
+<p>Peržiūrėk ką tu pakartojai update skripte? <code>sudo nano /usr/local/bin/update</code></p>
+<p>[]</p>
+<p>Tu gali refaktorizuoti dalį kodo, kuri kartojasi panaudojant funkciją</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_exit_status()</span> <span class="kw">{</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="bu">[</span> <span class="va">$?</span> - ne <span class="er">0</span> <span class="ex">]</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">then</span> <span class="ex">....</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">fi</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>dabar kodas atrodo taip</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="ex">code</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="praktikumas">
+
+</div>
 </section>
 <section id="case" class="level2" data-number="14.14">
 <h2 data-number="14.14" class="anchored" data-anchor-id="case"><span class="header-section-number">14.14</span> CASE</h2>
+<div class="sourceCode" id="cb51"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Kaip tavo diena?"</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"1 - nelabai gera"</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"2 - nei gera, nei bloga"</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"3 - labai gera"</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"įrašyk skaičių"</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="va">value</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="va">$value</span> <span class="kw">in</span></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>  <span class="ss">1</span><span class="kw">)</span> <span class="bu">echo</span> <span class="st">"Gal pakalbam?"</span><span class="cf">;;</span></span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>  <span class="ss">2</span><span class="kw">)</span> <span class="bu">echo</span> <span class="st">"Papasakok"</span><span class="cf">;;</span></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>  <span class="ss">3</span><span class="kw">)</span> <span class="bu">echo</span> <span class="st">"Kaip faina, pasidalink!"</span><span class="cf">;;</span></span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>  <span class="pp">*</span><span class="kw">)</span> <span class="bu">echo</span> <span class="st">"Gal pabandyk dar kartą, tarp 1 ir 3?"</span></span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a><span class="cf">esac</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Kaip matai, pabandius vieną kartą skritpas pasibaigia. Bet įrašius 999 ir gavus pasiūlymą bandyt dar kartą. Šioje vietoje, tau labai rpaverstų while ciklas. Pagalvok, ką būtų galima čia pakeisti? O tada žiūrėk į atsakymą žemiau</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="va">pabaiga</span><span class="op">=</span>0</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">[</span> <span class="va">$pabaiga</span> <span class="ot">-eq</span> 0 <span class="bu">]</span></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span> </span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Kaip tavo diena?"</span></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"1 - nelabai gera"</span></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"2 - nei gera, nei bloga"</span></span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"3 - labai gera"</span></span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"įrašyk skaičių"</span></span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"kai norėsi pabaigti, parašyk 'stop' "</span></span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="va">value</span></span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="va">$value</span> <span class="kw">in</span></span>
+<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a>  <span class="ss">1</span><span class="kw">)</span> <span class="bu">echo</span> <span class="st">"Gal pakalbam?"</span><span class="cf">;;</span></span>
+<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a>  <span class="ss">2</span><span class="kw">)</span> <span class="bu">echo</span> <span class="st">"Papasakok"</span><span class="cf">;;</span></span>
+<span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a>  <span class="ss">3</span><span class="kw">)</span> <span class="bu">echo</span> <span class="st">"Kaip faina, pasidalink!"</span><span class="cf">;;</span></span>
+<span id="cb52-21"><a href="#cb52-21" aria-hidden="true" tabindex="-1"></a>  <span class="ss">stop</span><span class="kw">)</span> <span class="va">pabaiga</span><span class="op">=</span>1</span>
+<span id="cb52-22"><a href="#cb52-22" aria-hidden="true" tabindex="-1"></a>  <span class="ex">*</span><span class="er">)</span> <span class="st">"Gal pabandyk tarp 1 ir 3 arba stop"</span></span>
+<span id="cb52-23"><a href="#cb52-23" aria-hidden="true" tabindex="-1"></a><span class="cf">esac</span></span>
+<span id="cb52-24"><a href="#cb52-24" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="praktikumas">
+<p>Tu - katinas Leopoldas, kuriam priklauso kačių kavinė. Kavinėje dirba 4 katės: Luci, Nora ir Bumas ir Floras. Jie priima užsakymus. Tiesa, kačių kavinės meniu nera didelis, svečiai gali pasirinkti “Ledai”, “Pyragas”, “Kava”. Ledai kainuoja 2.5, Pyragas 4.5, p kava tik 2 eurus. Kačių kavinės savininko - Leopoldo noras, dienos pabaigoje pamatyti, kur iš kačių aptarnavo daugiausiai ir kiek ko buvo parduota. Leopoldo lūkestis matyti tokius duomenis, pvz:</p>
+<p>data,laikas,katė,produktas,kaina 2024-10-01,10:00,Luci,Kava,2.0 2024-10-01,10:00,Luci,Pyragas,4.5 2024-10-01,10:30,Floras,Ledai,2.5</p>
+<p>Leopoldas - nusprendė jog planšetėje paleis skriptą, į kuri kačių kavinės personalas galės suvesti ir tai bus labai didelis palengvinimas vedant apskaitą. Bet kad nepakrauti kačių, jis nusprendė jos jos suves tik: vardą ir kas buvo parduota. Kaina ir laikas - turi būti sugeneruoti automatiškai.</p>
+<p>Šiame projekte naudok case, while, if, echo, &gt;&gt; po visos dienos, Leopoldas tikisi rasti failą “pardavimai.csv”</p>
+<p>Kai pabaigsi projektą, suvesk atlik bent 10 įvedimus už kates, o tada naudojant Excel arba LibreOffice Calc, importuok duomenis ir atvaizduok juos.</p>
+</div>
+<div class="praktikumas">
+<p>Sugalvok bent 2-3 kitas idėjas panašiames skriptams. Tada trumpai ant popieriau lapo nupaišyk logiką, kaip veiktų skriptas, kokios dalys būtų, kur būtųš if, while, for, case….</p>
+</div>
+<pre><code>#!/bin/bash
+
+while true; do
+  value=$(whiptail --title "Dienos nuotaika" --menu "Kaip tavo diena?" 15 60 4 \
+    "1" "nelabai gera" \
+    "2" "nei gera, nei bloga" \
+    "3" "labai gera" 3&gt;&amp;1 1&gt;&amp;2 2&gt;&amp;3)
+
+  exitstatus=$?
+  if [ $exitstatus = 0 ]; then
+    case $value in
+      1) whiptail --msgbox "Gal pakalbam?" 8 45;;
+      2) whiptail --msgbox "Papasakok" 8 45;;
+      3) whiptail --msgbox "Kaip faina, pasidalink!" 8 45;;
+    esac
+  else
+    break
+  fi
+done</code></pre>
 </section>
 <section id="cron" class="level2" data-number="14.15">
 <h2 data-number="14.15" class="anchored" data-anchor-id="cron"><span class="header-section-number">14.15</span> CRON</h2>
-</section>
+<p>Automatinis paleidimas (<strong>sheduling</strong>) yra labai svarbus konceptas. Prieš atsirandant tokiems instrumentams kaip Airflow, duomenų inžinieriai anksčiau automatizuodavo darbus manualiai su CRON. Nemažai įmonių ir dabar, CRON vis dar naudojamas automatizuoti tam tikrus darbų paleidimus. Bet ir asmeniniame kompiuteryje ar namų serveryje CRON yra labai naudingas instrumentas. CRON yra automatiškai įdiegtas visuose Linux sistemose. Tačiau rekomenduoju apsitikrinti, ar tu jį turi su <code>which cron</code>. taip pat išbandyk, ar turi <code>at</code> su <code>which at</code>. Jeigu neturi, instaliuok!.</p>
+<p><code>at</code> komanda yra labai paprasta. Ką ji padaro, tai tiesiog suteikia galimybę paleisti tam tikrą komandą tam tikru metu Susikurk šitą skriptą <code>example_for_at.sh</code></p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>  <span class="ex">GNU</span> nano 7.2                                                            example_for_at.sh                                                                     </span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="va">logfile</span><span class="op">=</span>at_logfile.log</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="dt">{</span><span class="dv">1</span><span class="dt">..</span><span class="dv">10</span><span class="dt">}</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span> </span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"This is </span><span class="va">$i</span><span class="st"> run at </span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st">"</span> <span class="op">&gt;&gt;</span><span class="va">$logfile</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sleep</span> 1</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>suteik execute teises su <code>chmod 744 example_for_at.sh</code></p>
+<p>išabndyk prirmą skriptą manualiai ir su <code>cat</code> įsitikink, jgo skriptas iš tiesų veikia ir nėra jokių klaidų.</p>
+<p>o dabar su <code>at</code> pasirink kada paleisti skriptą. Pasirink laiką, tarkime už kelių miniučių nuo dabar, kad nereiktų ilgai laukti ir pamatyti, jog iš tiesų <code>at</code> suveikė. Nepamiršk su <code>rm</code> ištrinti senajo log failo. Ir nurodyk atitinkmą kelią, arba absoliutų arba relatyvų.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="ex">at</span> 10:00 <span class="at">-f</span> ~/example_for_at.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Jeigu nori pamatyti, kokie darbai yra suplantuoti:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="ex">atq</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Čia pamatysi job id, kurė galėsi ištrinti su <code>atrm &lt;id&gt;</code></p>
+<p>Tarkime nori suplanuoti tiklsiesnę datą</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="ex">at</span> 10:00 2024-12-31 <span class="at">-f</span> ~/example_for_at.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>at</code> yra patogi komanda, bet ji paleidžia komandą ar skriptą tik vieną kartą. Ir tai ali būti nepakankama, nes pvz,, galbūt tu nori, jog duomenys parsisiųstų kasnakt? O galbūt, kad kiekvieną sekmadienį tavo Downloads direktorijije esantys failai būtų perkeltį į namų serverį / Nextcloud, tam kad turėti jų atsarginę kopiją?</p>
+<p><code>cron</code></p>
+<p>fully qualified path for commands ir kodėl jas reikia naudoti cron paruoštiems skriptams, bet galbūt geriau ir bendrai visada.</p>
+<ul>
+<li>cron gali veikti ne shell</li>
+<li>kas nros gali sukurti komanda vz kaip ems <code>update</code> ir tik ją pavadint, pvz <code>echo</code> ir tada pekitus path, cron galėtų paimti tą komandą…</li>
+</ul>
+<p>Tačiau prieš pradedant automatizuoti</p>
+<p><code>crontab -e</code> iššaukia crontab editorių pasirink teksto editorių su kuriuo norėsi dirbti. rekomenduoju - NANO. Atsidarius <code>crontab -e</code> nemžą dalį ekrano užimo komentarai (#). Juos galima ištrinti, tam, kad netrukdytų. Po eilutę NANO editoriuje galima ištrinti su Ctrl+k.</p>
+<p>Kaip atrodo crontab eilutė:</p>
+<ul>
+<li><ul>
+<li><ul>
+<li><ul>
+<li><ul>
+<li><komanda></komanda></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Ką tai reiškia.</p>
+<p><code>*</code> - reiškia bet kokią reikšmę, arba “kiekvieną”. jeigu <code>*</code> pailikta ties minute, tai reikš kiekvieną minutę, jiegu ties valanda - kiekvieną valandą ir t.t. <code>,</code> - naudojamas atksirti reikšmes pvz <code>0,9,18</code> ties valandomis riekšų jog cron užduotis pasileis vidurnaktį, 9 valandą ryto ir 18 valandą vakaro. <code>-</code> - naudoajmas nurodyti diapazoną, pvz <code>10-20</code> reikštų nuo 10 iki 20 minutės. <code>/</code> - reiškia žingnsius. pvz */5 ties minutės reiktų jog cron darbas paleidžiamas KAS 5 minutes</p>
+<p>Rekomenduoju iššisaugoti <a href="https://crontab.guru/">https://crontab.guru/</a> šiame tinklapyje galima rasti skaičiuoklę, kuri padeda pagaminti norimą laiko pasirinkimą. Tačiau štai keli pvz:</p>
+<ul>
+<li><code>@reboot</code>: kaskart restartavus kompiuterį (labai dažnai naudojama valymo darbams)</li>
+<li><code>@hourly</code> : kas valandą (priklausomai nuo tada kada buvo įjungtas kompiuteris arba pirmą kartą pasileido cron užduotis).</li>
+</ul>
+<p>Iš kurio vartootojo paskyros paleidžiamas cron darbas?</p>
+<p>jeigu tu aktyvyuoji cron editorių be sudo, tu suplanuoji savo vartotojo cron darbus. tačiau gali naudoti <code>sudo crontab -u &lt;username&gt; -e</code> jeigu nori nustatyti cron darbą tam tikram vartootjui<code>&lt;username&gt;</code>.</p>
+<p>Cron jobs are scheduled tasks managed by the system, independent of currently logged-in users. Thus, the cron job you scheduled for your user with crontab -e will run according to the specified schedule, regardless of which user is currently logged in. The job will execute with your user’s permissions, not the permissions of the logged-in user.</p>
+<p>crontab -e:</p>
+<p>When you invoke crontab -e without sudo, you’re editing the cron jobs for your own user account. Any tasks you schedule will run with your user’s permissions, and the jobs will only affect your user environment. This means the cron jobs will only be able to access files and execute actions that your user has permission for. sudo crontab -e:</p>
+<p>Using sudo with crontab -e allows you to edit the cron jobs for the root user. This means the tasks scheduled will run with root-level permissions. The cron jobs in this context have elevated privileges, which allows them to perform actions across the entire system, access files, and execute commands that would typically require superuser access. This is useful for scheduling tasks that need administrative privileges, such as system maintenance tasks or jobs that affect multiple users or system-wide settings.</p>
+<div class="praktikumas">
+<p>Įsivaizduok, jog tu turi bash scriptą, kuris patikrina, ar darbinis serveris veikia gerai. Skriptas prasisuka per 30 sekundžių. Todėl tu nusprendei, jog siekiant kokybiško monitoringo, tu ji paliesi kas 5 minutes kasdien. Darbo valandos tavo įmonėje 8-17, tačiau kadangi skriptas monitorina serverio užžimtumą, tu nori pamantyti ir 7 bei 18 vlaandos rodiklis, tam kad turėti palyginimą. Kitomis valandomis, tu nenori jog tavo skiprtas veiktų, nes visgi tam naudojama elektra o ir poreikio naktiniam monitoringui tu šiuo metu neturi. Tas pats pasakytina ir apie savaitgalius.</p>
+<p>Parašyk paprasta bash scriptą, kuris naudotų: …..</p>
+<p>Tavo norimi duomenys turėtų būti išsaugomi <code>server_x.log</code> faile ir turėtų turėti tokią struktūrą</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>|date|time|cpu|memory|</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <section id="argumentai" class="level2" data-number="14.16">
 <h2 data-number="14.16" class="anchored" data-anchor-id="argumentai"><span class="header-section-number">14.16</span> Argumentai</h2>
+<p>Tu jau žinai, jog komandos priima argumentus, pvz <code>ls -l Downloads</code> priima argumenta <code>Downloads</code> ir atspausdina šios direktorijos turinį. Lygiai taip pat, tu gali naudoti argumentus ir bash skriptams, jeigu nori, suteikti daugiau fleksibilumo jiems.</p>
+<p>test_script.sh</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"You enetered this argument </span><span class="va">$1</span><span class="st">"</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Tavo antras ir trečias argumentas yra </span><span class="va">$2</span><span class="st"> ir </span><span class="va">$3</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>$1</code> reikiškia pirmą argumentą, kuris paduotas kartu su sciptu</li>
+</ul>
+<div class="sourceCode" id="cb60"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./test_script.sh</span> Linux GNU Intell</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Tačiau kas nutinka, jeigu vartotojas nenurodė argumento, nors jio buvo tikimasi</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./test_script.sh</span> Linux GNU Intell</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>atrodo keistai.</p>
+<p>Kaip galima tai išsrpęsti, tai naudoti <code>if</code> ir <code>$#</code> šis kintamasis parodo, kiek argumentų paduota skriptui.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="va">$#</span> <span class="ot">-ne</span> 3 <span class="bu">]</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="cf">then</span></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"This script requires exactly 3 arguments and you provided </span><span class="va">$#</span><span class="st">"</span></span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"pabandyk dar kartą"</span></span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span> 1</span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"You enetered this argument </span><span class="va">$1</span><span class="st">"</span></span>
+<span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Tavo antras ir trečias argumentas yra </span><span class="va">$2</span><span class="st"> ir </span><span class="va">$3</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="praktikumas">
+<p>Parašyk skriptą, kuris jeigu paduotas be argumento, parodys sekančių 7 dienų orų prgonozę Vilniui. Bet galimi argumentai gali būti vilnius, kaunas, klaipeda. priklausomai nuo argumento, turėtų būti parodomi atitinkami duomenys.</p>
+</div>
 </section>
 <section id="praktikumas-serverio-backup-skritpas" class="level2" data-number="14.17">
 <h2 data-number="14.17" class="anchored" data-anchor-id="praktikumas-serverio-backup-skritpas"><span class="header-section-number">14.17</span> Praktikumas: Serverio Backup skritpas</h2>
+<p>https://cameronnokes.com/blog/the-most-useful-bash-commands-for-front-end-development/</p>
 
 
+</section>
+</div>
 </section>
 
 </main> <!-- /main -->

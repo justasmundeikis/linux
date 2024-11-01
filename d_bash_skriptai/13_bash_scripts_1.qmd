@@ -182,31 +182,1053 @@ Ar yra privalomi paminėti dalykai? Ne. Tačiau geroji praktika rodo, kad autori
 Dabar tau gali kilti klausimas - o kodėl neparašius komandos, kad instaliuoti iškart šiuos dependencies? Nebent tavo skriptas yra skirtas programų instaliavimui ir kitas vartotojas tai supras ir tu tai dokumentavai, pvz README.md faile... nėra labai ger apraktika tiesiog paleisti instialiavią kažkieno kito kompiuteryje. Be to, tu negli būti tikra, ar tia Linux, ar MacOs sistema. O net Linux, gali būti naudoajmas ne `apt` programū menedžeris, o `dnf` ir t.t. Taigi, ir saugiau ir lengviau leisti tam tikruas programas susiinstaliuoti pačiam vartotojui.
 
 
+Dabar tau gali kilti klausimas, kam reikaligi tie kintamieji? Viena pagrindini7 pri=a2i7, kam naudojami kinatiemiji, tia tma, kad i6vengti dagybinio perrašymo. štai pvz:
 
+
+```bash
+#!/bin/bash
+echo "Linux is awesome"
+echo "Android is awesome"
+echo "Nextcloud is awesome"
+```
+
+Jeigu šiame banaliame skipte nusprestume pakeisti žodį awesome į cool, tada tai reiktų daryti net trijose skirtingose eilutėse. O dabar įsivaizduok, kad tavo skriptas yra kelių šimtų eilučių ilgumo...
+Tam kad išvengti pasikarotimų, naudojami kintamieji, tad tokiu atveju užtenka pakeisti vieną kintamąjį vienoje eilutėje ir visame kode pasikeičia norimos riekšmės
+
+```bash
+#!/bin/bash
+var="awesome"
+echo "Linux is $var"
+echo "Android is $var"
+echo "Nextcloud is $var"
+```
+
+o dabar pakeiskime i cool
+
+```bash
+#!/bin/bash
+var="cool"
+echo "Linux is $var"
+echo "Android is $var"
+echo "Nextcloud is $var"
+```
+
+### Subshell
+
+Kartais tau gali prireikti įvykdyti komandas ir jų rezultatą panaudoti. tam tu gali pasinaudoti bash skripte (aktyvioje shell aplinkoje), iššaukiant sub shell, tai gali padaryti su $(<komanda>). [tik čia ne temrinale o skripte]
+
+
+```bash
+#!/bin/bash
+files=$(ls)
+echo $files
+```
+
+Kas čia įvyksta? kai shell skaito ir vykdo tavo skiptą, $() iššaukia subshell, šioje subshell įvykdoma ls komanda ir visas rezultatas spriskiriamas files kintamajam.
+
+Štai kiek nauddinesgnis pavyzdys. Tarkime tu rašai skriptą ir nori pasinaudoti `date`
+ komandą, su kuria jau susipažinau bash pagrindų skyriuoje. Takrime skiprto pačioje pradžioje bash turi sukurti direktoriją, kurios pavadinimas būtų šiandienos data, ne spvz tu į ta direktoriją patalpinsi šiandienos duomenis.
+
+
+ ```bash
+ #!/bin/bash
+now=$(date)
+echo "Systemos data ir laikas yra:"
+echo $now
+ ```
+
+
+Iš esmės tai atitinktų 
+
+ ```bash
+ #!/bin/bash
+echo "Systemos data ir laikas yra:"
+date
+ ```
+
+
+
+
+
+ ## Aplinkos kintamieji
+
+
+ Kai kurie kintamieji yra deklaruoti automatiškai, kai tik prasideda tavo kompiuteriio sesija, štai keli jų
+
+
+Šie kintamieji nustatomi visai sistemai ir yra prieinami visiems procesams:
+
+1. **`$HOME`** – vartotojo namų katalogo kelias (pvz., `/home/user`).
+2. **`$USER`** – prisijungusio vartotojo vardas.
+3. **`$PATH`** – katalogų, kuriuose ieškoma vykdomųjų failų, sąrašas, atskirtas dvitaškiais.
+4. **`$SHELL`** – numatytojo terminalo kelias (pvz., `/bin/bash`).
+5. **`$PWD`** – dabartinis darbinis katalogas.
+6. **`$OLDPWD`** – ankstesnis darbinis katalogas (prieš `cd` komandą).
+7. **`$LANG`** – numatytoji sistemos kalba.
+8. **`$EDITOR`** – numatytasis teksto redaktorius (pvz., `vim` arba `nano`).
+9. **`$TERM`** – naudojamas terminalo tipas (pvz., `xterm`).
+10. **`$HOSTNAME`** – kompiuterio arba serverio vardas.
+
+Kaip matai jie visi didžiosiomis raidėmis. tam kad atksirti, kurie kintamieji sukruti varotojo, kurie systemos, patarmaia savo kintamuosius rašyti mažosiomis raidėmis, o sisteminius kintamauosius tada galima atpažinti iš didžiųjųraidžių. bet tai labiau rekomendacija, kurios nėra privaloma laikytis.
+
+kokius visus aplinkos kintamuosius turi, gali pamayti terinae paleidus komanda `env`
 
 
 ## Matematinės Funkcijos
 
+
+```bash
+expr 2 + 2
+expr 2 / 4
+```
+
 ## IF ELSE
+
+Iki šiol tu susipažinai su tuo, kaip yra kuriami bash scriptai, tačiau iki šiol, tai nebuvo labai prasmingi skriptai. Daugumą jų, tu galėtum net greičiau atlikti tiesiog surašant reikaimas komandas Terminal lange. Tikroji skiptų galia pasirodo tada, kai skiprtas įgauna šiek tiek daugiau logikos. Vienas iš logikos veksmų, yra atlikti tam tikrus veiksmus, kai (if) tam tikra sąlyga yra išpildyta.
+
+Štai pavyzdys  `nano if_clause.sh`
+
+```bash
+#!/bin/Bash
+my_num=200
+
+if [ $my_num -eq 200 ]
+then
+echo "The condition is true"
+fi
+
+```
+
+`chmod 744 if_clause.sh`
+
+
+
+* `my_num=200` susikuriam kintamajį, prieš kurį validuosime logiką
+* `if` pradeda, of `fi` uždaro  if bloką
+* `[ <logika> ]` po ir prieš kvadratinius skliaustelius turi būti <space>!!!
+* `$my_num -eq 200 ` testuojama ar kintamasis yra lygus (`-eq`) 200
+  * jeigu taip, einame į `then`
+
+`else` nėra būtinas. Jeigu sąlyga atitiks testą (loginis testas gražins True), tada skritpas įvykdys tai, kas yra  numatyta `then` dalyje. Jeigu loginis testas gražins False
+skriptas žiūrės ar yra ar yra `else` jeigu ne, šis loginis testas bus nutrauktas ir bash skaitys skiptą toliau.
+
+
+Pakeiskime  `nano if_clause.sh`
+
+```bash
+#!/bin/Bash
+my_num=200
+
+if [ $my_num -eq 100 ]
+then
+  echo "Number is 100"
+else
+  echo "Number is 200"
+fi
+```
+
+Šauktukas apsuka loginį testą. Jeigu loginis testas grąžintų TRUE, tada ! TRUE tampa FALSE
+
+```bash
+my_num=200
+
+if [ $my_num -eq 100 ]
+if [ ! $my_num -eq 100 ]
+```
+
+Visgi šauktukas gali būt kiek sudėtingiau suprantamas, tad kur kas geriau naudti `-ne` , kas reikia not equal
+
+
+
+Šiek tiek galimų variantų:
+
+* `-eq` ==
+* `-ne` !=
+* `-gt` >
+* `-ge` >=
+* `-lt` <
+* `-le` <=
+
+Bet yra ir kitų testų:
+
+* `[ -f <failas>]` patikrina, ar failas egzituoja, jeigu taip, loginis testras gražina true
+
+sukurk šitą skirptą pavadinimu `test_if_file_exists.sh`, kuris testuoja ar failas `test_file` egizstuoja.
+suteik execute teises
+ir paleisk jį.
+
+```bash
+if [ -f test_file ]
+then 
+echo "test_file exists"
+else
+echo "test_file does not exist"
+fi
+```
+dabar terminale naudojant `touch` komandą sukurk šį failą ir išbandyk, ar pakito tai, ką gražina šis skirptas.
+su `rm` ištrink failą ir dar kartą išbandyk skriptą, dabar jis turėtų gražinti informaciją, jog failas neezgistuoja. Ar pavyko?
+
+Kokių dar yra testų?
+
+* `-d` ar direktorija egiztuoja
+* `-f` ar failas egistuoja
+
+`which` komandą tu jau pažinai pirmuose skyriuose, ji parodo, kur randasi proogramos binarinis kodas. 
+
+```bash
+which bash
+```
+
+Bet jeigu tu įrašai pvz `which htop` ji nieko negražins, nes tikėtina, tu dar nesi instaliavusi šios programos! išbandyk `which htop`. `htop` yra sistemos monitoringo progframa, kuri parodo kiek procesocoairuas, darbinėįs atminties dabar tavo kompiuteris naudoja, kurie procesai tai daro ir.t.t. tam tikr aprasme tai task manager, kurį galbūt pameni iš Windows.
+
+Ko gero jau nujauti, kas bus dabar? Tu moki valdyti logiką, tu moki patikinrti ar programa aptinkama kompiuteryje... tad dabar pažiūrėkime, kaip galima išnaudoti bash skriptus ir instlaiuoti trūkstamas programas.
+
+nano install_requirements.sh
+
+```bash
+#!/bin/bash
+
+binary=/usr/bin/htop
+
+if [ -f $binary ]
+then 
+echo "htop is present"
+else
+echo "htop is not present. Installing it now"
+sudo apt update && sudo apt install htop -y
+fi
+```
+
+Suprantama, šiuo metu tai vis dar nėra labai prasmingas, nes tu turi žinoti, kurioje vietoje turėtų būti instaliuotas `htop`.
+
+Bet tu jau moki iššaukti subshell ir jos rezultatus priskirti kintamajam. Ką reiktų viršuje esančiame skripte pakeisti? Būtent, panaudokime `which` kuri sukurs binary kintamąjį, kurio vertė arba bus tuščia, jeigu htop binary nėra sistemoje, arba su adresu binary failo. 
+
+```bash
+#!/bin/bash
+
+binary=$(which htop)
+
+if [ -f $binary ]
+then 
+echo "htop is present"
+else
+echo "htop is not present. Installing it now"
+sudo apt update && sudo apt install htop -y
+fi
+```
+
+
+Bet kas dabar negarai su šiuo kodu? mes 3 kartus parašome tą patį `htop`
+
+[]
+
+Pabandykime pakeisti ir optimizuoti kodą. kaiskime `htop` kintamuoju, kuriam priskirsime pavadinimą htop.
+
+```bash
+#!/bin/bash
+
+programm=htop
+binary=$(which $programm)
+
+if [ -f $binary ]
+then 
+echo "$programm is present"
+else
+echo "$programm is not present. Installing it now"
+sudo apt update && sudo apt install $programm -y
+fi
+```
+
+Nuostabu, dabar jeigu nuspręstum pakeisti programos pavadinimą į kokią nors kitą, tau tereiktų skripte atnaujinti tai vienoje vinetinleėje vietoje!
+
+Galima ir šiokia tokia variacija. Jeigu atsisakysime testo, ar failas egzistuoja, galima supraprastinti loginį testą iki to, ar komanda egzistuoja su `command -v`.
+
+Prieš taisant skriptą išbandyk temrinale `command -v htop` ir `command -v abc`. Jeigu argumentas (komanda) egzistuoja, temrinal gražins binary, jeigu ne, tada ne.
+ 
+
+```bash
+#!/bin/bash
+
+programm=htop
+
+if command -v $programm
+then 
+echo "$programm is present"
+else
+echo "$programm is not present. Installing it now"
+sudo apt update && sudo apt install $programm -y
+fi
+```
+
+ar galėtume command pakeisti which? TAIP!
+
+```bash
+#!/bin/bash
+
+programm=htop
+
+if which $programm
+then 
+echo "$programm is present"
+else
+echo "$programm is not present. Installing it now"
+sudo apt update && sudo apt install $programm -y
+fi
+```
+
+bet abiems atvejais... mes gaunam kelią į binary, jeigu jis egzistuoja. Galbūt mes to nenorime. Ar pameni, stdin, stdout ir stderror ir jų nukreipimus? padarikime taip, which $programm atsakymą nukreipkime į /dev/null, tam, kad skirptas negrąžintu nieko mums.
+
+```bash
+#!/bin/bash
+
+programm=htop
+
+if which $programm >/dev/null 2>&1
+then 
+echo "$programm is present"
+else
+echo "$programm is not present. Installing it now"
+sudo apt update && sudo apt install $programm -y
+fi
+```
+
+SVEIKINU! tu parašei pirmą, ganėtinai prasmingą skriptą. Gerai pagalvok ir sudėliok kelis scenarijus, kaip galėtum tai panaudoti ateityje? Kaip galbūt reiktų  papildomai pakeisti šį ar panašų skriptą? Aptark!
 
 ## Išeities kodai
 
+Kiekvieną kartą, kai tu paleidi kažkurią komandą, ji arba suveikia, arba ne. Jeigu ji suveikia, tu pamatai aiškų tikimasi rezultatą. Jeigu ne, dažniausiai bash tave informuoja apie problemą. Tačiau tau nematant, kiekvienos komandos įvykdymas sugeneruoja ir tam tikrus išeities kodus (exit codes), ty skaičius, kuris turi tam tikrą reiškmę. Ši elgsena nėra reta IT pasaulyje, pvz įvedus netinkama URL adresą, neretai gali išvyst 404
+
+[404]
+
+Panašiai ir BASH. Po kiekvienos komandos įvykdymo, bash sukuria kintamajį, su išeities kodu. Paskutinis išeities kodas galima pamatyti su `echo $?`
+
+```bash
+ls
+echo $?
+ls tralala
+echo $?
+```
+
+* išeities kodas `0` reiškia, jog nebuvo jokių klaidų
+* visi kiti kodai, reiškia, jog buvo kažkokia klaida
+
+Dabar gali pagalvboti, kaip galėtum derinti išeities kodus su `if [ exit_code -eq 0]` arba `if [ exit_code -ne 0]`
+
+šiame skripte:
+
+```bash
+#!/bin/bash
+
+programm=htop
+
+if which $programm >/dev/null 2>&1
+then 
+echo "$programm is present"
+else
+echo "$programm is not present. Installing it now"
+sudo apt update && sudo apt install $programm -y
+fi
+```
+
+Šioje vietoje, ko gero prasmingiausia būtų atspausdinti, ar `$prgramm` instaliavimas buvo sėkmginas ar ne. 
+
+
+:::
+Praktikumas
+
+sukurt antra if clause skripte, kuris atspausintų pranešimą, ar programa buvo ar nebuvo sėkmingai instaliuota. Tačiau gerai pagalvok apie logiką. Jeigu tu idėsi antrą if clause po pirmojo, tada antrassis if vertins tiek išeities kodą kai programa egistuoja, tiek kai programa neegistuoja ir einama instaliavimo keliu
+
+papildomas reikalavimas, pagalvok, kaip apdaryti, jog temrinale nebūtų spausdinami apt update ir apt install pranešimai, kurie užildo visą terminalo langą. apt update tu gali drąsiai pasiųsti į /dev/null, tačiau install pranešimus, tu norėtum nusiųsti į script.log failą, jog bet kada galėtum pamatyti,kas vyko. Suprantama, tu nenori, kad failas būtų kaskart perrašomas, o kauptų istoriją.
+
+Taigi tavo logiką turėtų atrodyti daug maž taip.
+
+[caldidraw]
+
+išinstaliuok htop ir su skruptų vėl sintaliuok, tada pakeisk scriptą, kad paketas btūtų "notexist". peržiūrėk log failus su `cat`.
+:::
+
+
+```bash
+#!/bin/bash
+
+programm=htop
+
+if which $programm >/dev/null 2>&1
+then 
+        echo "$programm is present"
+else
+        echo "$programm is not present. Installing it now"
+        sudo apt update >/dev/null 2>&1 && sudo apt install $programm -y >> 
+        if [ $? -eq 0 ]
+        then 
+                echo "Installation of $programm was successfull"
+        else
+                echo "Installation of $programm was not successfull"
+        fi
+fi
+
+```
+
+jeigu nori pašalinti htop ir pažiūrėti kaip veikia skriptas gali naudoti `sudo apt remove htop -y`
+
+
+
+
+
+
 ## WHILE ciklai
+
+Iki šiol tu išmokai IF ciklą, IF TRUE THEN DO ELSE DO THAT. Tai labai galingas ciklas, nes jis įgalina taov skriptą veikti logiškai. Jeigu programos X nėra, skiprtas ją instaliuota, jeigu ji yra, tai jos instaliuoti nereikia. Tačiau tai nevienintinlis ciklas. Kitas ciklas yra WHILE. WHILE (angl kol), veikia tol, kol tam tirka salyga yra teisinga.
+
+pvz. kol lyja neiti iš namų. Toks ciklas reišktų, kad tu neinit tol iš namų, kol lyja. bet tik nustos lyti, tu galėsi eiti iš namų. Bet čia tu matai ir jau vieną problemą, WHILE ciklai gali būti pavojingi, tu juk nenori eiši iš namų 3 nakties?.
+
+[lunatic]
+
+Štai pavyzdys, kurį aptarsime išsamiau `run_while.sh`:
+
+* pirma sukuriame kintamąjėį var ir priksieame jam reikšmę 1
+* tad apaleidžiame WHILE ciklą, kuris testuoja ar var <=15 ir kol taip yra WHILE paleidia savo cikla
+* WHILE ciklas pradedas do ir užbaigiamas done
+* cikle atspausdinamas var
+* bet tam kad var neliktų 1, reikia jį inkrepemtuoti (padidinti vienetu), tam man iš sukuriame naują įvertį, prie $var prideda 1 `Ėvar +1`, bet liepiema tai apdaryti subshell $(), tačiau tu matai, jog šįkart mes panaudojaom dvigubus  skliaustelius $((...)), taip rya todėl, nes
+* sleep 0.5 priverčia kompiuterėį pauzuoti  pusę sekndunės tarp kiekvieno ciklo, tam kad tu geriau matytum jog tai pavieniai ciklai
+* kai var pasieks 16, tada while taps FALSE ir ciklas nepasileis
+
+
+
+```bash                                                                             
+#!/bin/bash
+
+var=1
+
+while [ $var -le 15 ]
+do
+        echo "$var"
+        var=$(($var +1))
+        sleep 0.5
+done
+echo "While ciklas baigtas"
+```
+
+
+altrernatyva naudoti gryną aritmetika ((var++)) čia pvar++ reiškia, jog paimamas var kintamais ir padidinaimas vientu ir tada rezultatatas priskiriamas tam pačiam var kintamajam.
+
+```bash                                                                             
+#!/bin/bash
+
+var=1
+
+while [ $var -le 15 ]
+do
+        echo "$var"
+        ((var++))
+        sleep 0.5
+done
+echo "While ciklas baigtas"
+```
+
+Kitas pvz.
+
+```bash                                                                             
+#!/bin/bash
+
+touch ~/testfile
+
+while [ -f ~/testfile ]
+do
+        echo "$(date) Failas egzistuoja"
+        sleep 1
+done
+echo "$(date) Failas nebeegizstuoja"
+```
+
+O dabar kitame terminale, su `rm testfile` panaiking failą
+
+
+Sualvbok bent 3 scenarijus, kada tu pasirinktum naudoti WHILE ciklus? 
+
+
+Štai mano keli scenarijai. Tiesa, kai kuriuos iš jų, būtų lengviau suprogramuoti su Python nei su bash
+
+* Kol naktis, tol išjungiamas internetas namuose (while +  date)
+* Kas 24 valandas parsiųsti vilniaus temperatūrų prognozes (while + sleep )
+* Kai namuose atsiranda vaiko telefonas (pasijungia prie wifi, išsiųsti žinutę tėvams). Tai daryti kas 15min, kol tėvų išmaniųjų telefonų nėra namuose. (while + ping + sleep)
+* Kai namų serverio procesoriaus temperatūra pakylą virš XX C, išsiųsti pranešimą apie kaistantį procvesorių per Telegram.
+
+
 
 ## Praktikumas
 
+Parašyk `universal_update.sh` skriptą. 
+
+
+
+
+```bash
+
+if [ -d /etc/pacman.d ]
+then
+  sudo pacman -Syu
+fi
+
+if [ -d /etc/apt ]
+then 
+  sudo apt update
+  sudo apt full-upgrade -y
+fi
+
+
+```
+
+osr=/etc/os-release
+
+if grep -qi "ubuntu" /etc/os-release
+
+Užduotis, surask kokios dar versijos egzituoja ir kokios komandos atnaujintų sistemą. Paisnoaudok tam chat gpt
+
+
+||
+
+if grep -qi "ubuntu" $osr || grep -qi "debian" $osr
+
+
+* `||` OR 
+* `&&` AND
+
+
 ## FOR ciklai
+
+Jau moki IF clause, kuris įvyką vieną ciklą jeigu salyga teisinga, bei WHILE ciklą, kuris nuolat sukasi tol, kol sąlygos testvimas gražina TRUE. Tačiau kartais tau nereikia kad skritpas suktūsi be galo, o tik tam tikra ciklų skaičių. Tuo tiklsu naudojami FOR ciklai. 
+
+`skaiciai_1_10.sh`
+
+```bash
+#!/bin/Bash
+
+for nr in 1 2 3 4 5 6 7 8 9 10
+do 
+  echo $nr
+  sleep 0.5
+done
+echo "Finished"
+```
+
+Kas čia vyksta?
+
+* for pradeda for ciklą, o do ir done, kaip ri while cikle apibrėžia ciklo ribas
+* nr sukuria kintamąjį kuris yra `in` sekoje. pirmą karta nr priims vertę 1, antra karta 2, ir t.t. kol apsieks paskutinę vertę - 10
+
+Tiesa, toks skaičių išrašymas yra labai neefektyvus. Skaičių seką tu gali sukurti {1..10}. Pabandyk
+
+Bet skaičiai nėra vienintelis kintamojo reikšmė, kuri gali būti naudojami it tekstinai kintamieji.
+
+```bash
+#!/bin/Bash
+
+for nr in 'uobolys' 'citrina' 'mangas'
+do 
+  echo $nr
+  sleep 0.5
+done
+echo "Finished"
+```
+
+
+
+```bash
+#!/bin/bash 
+
+for file in zip_files/*.zip
+
+do 
+  zip $file.zip
+done
+```
+
+```bash
+#!/bin/bash 
+
+for file in zip_files/*.zip
+
+do 
+  unzip file
+done
+```
+
+
+```bash
+#!/bin/bash
+
+# File containing the URLs
+file="urls.txt"
+
+# Loop through each line in the file
+for url in $(cat "$file"); do
+    echo "Fetching $url"
+    curl -O "$url"  # Use -O to save the file with the same name as the remote file
+done
+
+echo "All URLs have been processed."
+```
+
+
 
 ## Kur saugoti skriptus?
 
+FHS flilesysteh hierachy standard
+
+
+/usr/local/bin
+
+sudo mv <scriptane.sh> /usr/local/bin <sciptname>
+sudo move update.sh /usr/lcoal/bin/update
+taigi be sh
+
+ptiktinkime teises, matome, kad teisės yra vartotojo, tad pakeiskime į root
+
+`sudo chown root:root /usr/local/bin/update`
+
+
+`.sh` failo pratęsimas (file extension) yra skirtas labiau vartotojui, nei kad kompiuteriui. Tai šiek tiek skiriasi nuo Microsoft Windows,, kur failo tipoas yra pivalomas.
+
+
+Kas įvyksta: /usr/local/bin guli tavo PATH kelyje, kur linux tirkina ar yra tam tikri failai... tad kai tu terminale įrašai tiesiog `update` bash eidamas per visas direktrijas numatytas PATH, randa update ir jį įvyko. jeigu paliktum update.sh, tai nesuveiktu.
+
+štai pvz. perkelk šituos du skriptus į /usr/local/bin viena pavading call_1 kitą call_2.sh, suteik root privilegijas ir dabar temrinale įrašyk call_1, call_1sh, call_2, call_2.sh
+
+[rezultatas]
+
+ir dabar šį skritpą gali nukopijuoti į bet kokį kitą linux kompiuterį. sugalvok 2-3 skirptus, kurie būtų rpamsingi tavo ir kitų kompiuteriuose?
+
+
+`env`  sąraše pamatysi `path` bet gali path iššaukti ir taip. which komanda pereina per šias direktrijas, kai iešįko programos binary failo. pvz `which htop`.
+
+kas, jeigu /usr/local/bin nera path? tokiu atveju tu galėtum pridėti:
+
+`export PATH=/usr/local/bin:$PATH`
+
+bet dabar tau to tikėinta daryti nereikia. Tačiau turėk omenyje, kad taip pridedamos vietos prie path, ir ateityje nauddoajnt tam tikras programas, tavo path gali prailgėti.
+
 ## Data Streams (stdin, stdout, stderror)
+
+Trumpas priminimas apie data streams `stdin` `stdout` ir `stder`
+
+Jau žinai, kaip galima atpažinti klaidas, taip pat žinai, jog su `echo $?` gali atspasdinti paskutinės komandos išeities kodą. Tačiau būna atveju, kai tavo komanda gražina tiek stdout tiek stderr vienu metu.
+
+štai geras pvz, jeigu ieškai failo 
+
+```bash
+find /etc -type f
+```
+
+ir išbandyk `echo $?`
+
+Paskrollinus terminale, tu rasi daug įrašu, kuriuos gali matayti, bet lygiai taip pat pamatysi įrašy, kur `Permission denied`, nes kamndą įvykei ne su sudo ir neturi pakankamai priveligejų.  Taigi šiuo atveju gravai ir stdout ir stderr viename lange!
+
+Tu jau žinai, jog komandos išvestis galima nukreipti, tad šiuo atveju, nukreipk klaidas į `/dev/null`
+
+```bash
+find /etc -type f 2>/dev/null
+```
+ir išbandyk `echo $?`
+Kaip matai, paskutinė komanda nebuvo įkydyta be klaidų, tačiau klaidų tu nematei, nes jas nusiuntei į `/dev/null`.
+
+
+O dabar išbandyk nusiust sdtdout į /dev/null, tam kad pamatytum, kuriems failams tu neturi prieigos teisių
+
+
+pritayk šias žinias
+
+```bash
+#!/bin/bash
+release_file=/etc/os-release
+log_file=/var/log/updter.log
+error_log=/var/log/updater_error.log
+
+if grep -qi 'arch' $release_file
+then
+  sudo pacman -Syu 1>>$log_file 2>>$error_log
+  if [ $? -ne 0 ]
+  then echo "Error occured"
+  fi
+fi
+
+if grep -qi 'debian' $release_file || grep -qi 'ubuntu' $release_file
+then 
+  sudo apt update 1>>$log_file 2>>$error_log
+   if [ $? -ne 0 ]
+  then echo "Error occured"
+  fi
+  sudo apt full-upgrade -y 1>>$log_file 2>>$error_log
+  if [ $? -ne 0 ]
+  then echo "Error occured"
+  fi
+fi
+
+```
+
+
+
+O kaip apie stdin?
+
+
+```bash
+#!/bin/bash
+
+echo "Echo please enter your name"
+read myname
+echo "Hello $myname, how is your day?"
+```
+
+Šiuo atveju read iššaukia stdin, t.y. kad varotojas įrašytų  kažką klaviatūra. Tai kas įrašyta, mes galime prisikrti kintamajam ir toliau jį naudoti.
+
+Pabandyk. Šiame pvz neveikia logika `{$x..$y}` nes `{}` priima tik skaičius, ne kintamuosius, todėl pasitelksime kitą funckiją `seq`
+
+```bash
+#!/bin/bash
+
+echo "Nuo kokio skaičiaus skaičiuosime? "
+read x
+echo "Iki kokio skaičiaus skaičiuosime? "
+read y
+
+for i in $(seq $x $y)
+do
+    echo $i
+    sleep 0.5
+done
+```
 
 ## Funkcijos
 
+https://www.cloudbooklet.com/developer/how-to-create-and-use-bash-functions-in-linux
+
+
+
+Jeigu tu kažką parašei jau du kartus - geras ženklas, jog tai turėtų būti funkcija, o ne tieiosg kodas.
+
+Ši filosofija labai gerai apibūdina prorgramavimą bendrai, tiek bash, python, R ir t.t.
+
+Peržiūrėk ką tu pakartojai update skripte? `sudo nano /usr/local/bin/update`
+
+
+[]
+
+
+Tu gali refaktorizuoti dalį kodo, kuri kartojasi panaudojant funkciją
+
+```bash
+check_exit_status() {
+  if [ $? - ne 0 ]
+  then ....
+  fi
+}
+```
+
+dabar kodas atrodo taip
+
+```bash
+code
+```
+
+
+:::praktikumas
+
+
+:::
+
+
+
+
 ## CASE
+
+```bash
+#!/bin/bash
+
+echo "Kaip tavo diena?"
+echo "1 - nelabai gera"
+echo "2 - nei gera, nei bloga"
+echo "3 - labai gera"
+echo "įrašyk skaičių"
+
+read value
+
+case $value in
+  1) echo "Gal pakalbam?";;
+  2) echo "Papasakok";;
+  3) echo "Kaip faina, pasidalink!";;
+  *) echo "Gal pabandyk dar kartą, tarp 1 ir 3?"
+esac
+```
+
+Kaip matai, pabandius vieną kartą skritpas pasibaigia. Bet įrašius 999 ir gavus pasiūlymą bandyt dar kartą. Šioje vietoje, tau labai rpaverstų while ciklas. Pagalvok, ką būtų galima čia pakeisti? O tada žiūrėk į atsakymą žemiau
+
+
+```bash                                                                             
+#!/bin/bash
+
+pabaiga=0
+
+while [ $pabaiga -eq 0 ]
+do 
+
+echo "Kaip tavo diena?"
+echo "1 - nelabai gera"
+echo "2 - nei gera, nei bloga"
+echo "3 - labai gera"
+echo "įrašyk skaičių"
+echo "kai norėsi pabaigti, parašyk 'stop' "
+
+read value
+
+case $value in
+  1) echo "Gal pakalbam?";;
+  2) echo "Papasakok";;
+  3) echo "Kaip faina, pasidalink!";;
+  stop) pabaiga=1
+  *) "Gal pabandyk tarp 1 ir 3 arba stop"
+esac
+done
+```
+
+:::praktikumas
+Tu - katinas Leopoldas, kuriam priklauso kačių kavinė. Kavinėje dirba 4 katės: Luci, Nora ir Bumas ir Floras. Jie priima užsakymus. Tiesa, kačių kavinės meniu nera didelis, svečiai gali pasirinkti "Ledai", "Pyragas", "Kava". Ledai kainuoja 2.5, Pyragas 4.5, p kava tik 2 eurus. Kačių kavinės savininko - Leopoldo noras, dienos pabaigoje pamatyti, kur iš kačių aptarnavo daugiausiai ir kiek ko buvo parduota. Leopoldo lūkestis matyti tokius duomenis, pvz:
+
+data,laikas,katė,produktas,kaina
+2024-10-01,10:00,Luci,Kava,2.0
+2024-10-01,10:00,Luci,Pyragas,4.5
+2024-10-01,10:30,Floras,Ledai,2.5
+
+
+Leopoldas - nusprendė jog planšetėje paleis skriptą, į kuri kačių kavinės personalas galės suvesti ir tai bus labai didelis palengvinimas vedant apskaitą. Bet kad nepakrauti kačių, jis nusprendė jos jos suves tik: vardą ir kas buvo parduota. Kaina ir laikas - turi būti sugeneruoti automatiškai.
+
+Šiame projekte naudok case, while, if, echo, >>
+po visos dienos, Leopoldas tikisi rasti failą "pardavimai.csv"
+
+Kai pabaigsi projektą, suvesk atlik bent 10 įvedimus už kates, o tada naudojant Excel arba LibreOffice Calc, importuok duomenis ir atvaizduok juos.
+
+:::
+
+
+:::praktikumas
+Sugalvok bent 2-3 kitas idėjas panašiames skriptams. Tada trumpai ant popieriau lapo nupaišyk logiką, kaip veiktų skriptas, kokios dalys būtų, kur būtųš if, while, for, case....
+:::
+
+
+
+
+
+```
+#!/bin/bash
+
+while true; do
+  value=$(whiptail --title "Dienos nuotaika" --menu "Kaip tavo diena?" 15 60 4 \
+    "1" "nelabai gera" \
+    "2" "nei gera, nei bloga" \
+    "3" "labai gera" 3>&1 1>&2 2>&3)
+
+  exitstatus=$?
+  if [ $exitstatus = 0 ]; then
+    case $value in
+      1) whiptail --msgbox "Gal pakalbam?" 8 45;;
+      2) whiptail --msgbox "Papasakok" 8 45;;
+      3) whiptail --msgbox "Kaip faina, pasidalink!" 8 45;;
+    esac
+  else
+    break
+  fi
+done
+```
+
 
 ## CRON 
 
+Automatinis paleidimas (**sheduling**) yra labai svarbus konceptas. Prieš atsirandant tokiems instrumentams kaip Airflow, duomenų inžinieriai anksčiau automatizuodavo darbus manualiai su CRON. Nemažai įmonių ir dabar, CRON vis dar naudojamas automatizuoti tam tikrus darbų paleidimus. Bet ir asmeniniame kompiuteryje ar namų serveryje CRON yra labai naudingas instrumentas. CRON yra automatiškai įdiegtas visuose Linux sistemose. Tačiau rekomenduoju apsitikrinti, ar tu jį turi su `which cron`. taip pat išbandyk, ar turi `at` su `which at`. Jeigu neturi, instaliuok!.
+
+`at` komanda yra labai paprasta. Ką ji padaro, tai tiesiog suteikia galimybę paleisti tam tikrą komandą tam tikru metu
+Susikurk šitą skriptą `example_for_at.sh`
+
+```bash
+  GNU nano 7.2                                                            example_for_at.sh                                                                     
+#!/bin/bash
+logfile=at_logfile.log
+
+for i in {1..10}
+do 
+echo "This is $i run at $(date)" >>$logfile
+sleep 1
+done
+```
+
+suteik execute teises su `chmod 744 example_for_at.sh`
+
+išabndyk prirmą skriptą manualiai ir su `cat` įsitikink, jgo skriptas iš tiesų veikia ir nėra jokių klaidų.
+
+o dabar su `at` pasirink kada paleisti skriptą. Pasirink laiką, tarkime už kelių miniučių nuo dabar, kad nereiktų ilgai laukti ir pamatyti, jog iš tiesų `at` suveikė. Nepamiršk su `rm` ištrinti senajo log failo. Ir nurodyk atitinkmą kelią, arba absoliutų arba relatyvų.
+
+```bash
+at 10:00 -f ~/example_for_at.sh
+```
+
+Jeigu nori pamatyti, kokie darbai yra suplantuoti:
+
+```bash
+atq
+```
+
+Čia pamatysi job id, kurė galėsi ištrinti su `atrm <id>`
+
+Tarkime nori suplanuoti tiklsiesnę datą
+
+```bash
+at 10:00 2024-12-31 -f ~/example_for_at.sh
+```
+
+`at` yra patogi komanda, bet ji paleidžia komandą ar skriptą tik vieną kartą. Ir tai ali būti nepakankama, nes pvz,, galbūt tu nori, jog duomenys parsisiųstų kasnakt? O galbūt, kad kiekvieną sekmadienį tavo Downloads direktorijije esantys failai būtų perkeltį į namų serverį / Nextcloud, tam kad turėti jų atsarginę kopiją?
+
+
+`cron`
+
+fully  qualified path for commands ir kodėl jas reikia naudoti cron paruoštiems skriptams, bet galbūt geriau ir bendrai visada.
+
+* cron gali veikti ne shell
+* kas nros gali sukurti komanda vz kaip ems `update` ir tik ją pavadint, pvz `echo` ir tada pekitus path, cron galėtų paimti tą komandą...
+
+
+
+Tačiau prieš pradedant automatizuoti
+
+
+
+`crontab -e` iššaukia crontab editorių
+pasirink teksto editorių su kuriuo norėsi dirbti. rekomenduoju - NANO.
+Atsidarius `crontab -e` nemžą dalį ekrano užimo komentarai (#). Juos galima ištrinti, tam, kad netrukdytų. Po eilutę NANO editoriuje galima ištrinti su Ctrl+k.
+
+Kaip atrodo crontab eilutė:
+
+* * * * * <komanda>
+
+Ką tai reiškia. 
+
+`*` - reiškia bet kokią reikšmę, arba "kiekvieną". jeigu `*` pailikta ties minute, tai reikš kiekvieną minutę, jiegu ties valanda - kiekvieną valandą ir t.t.
+`,` - naudojamas atksirti reikšmes pvz `0,9,18` ties valandomis riekšų jog cron užduotis pasileis vidurnaktį, 9 valandą ryto ir 18 valandą vakaro.
+`-` - naudoajmas nurodyti diapazoną, pvz `10-20` reikštų nuo 10 iki 20 minutės.
+`/` - reiškia žingnsius. pvz */5 ties minutės reiktų jog cron darbas paleidžiamas KAS 5 minutes 
+
+
+Rekomenduoju iššisaugoti [https://crontab.guru/](https://crontab.guru/) šiame tinklapyje galima rasti skaičiuoklę, kuri padeda pagaminti norimą laiko pasirinkimą.
+Tačiau štai keli pvz:
+
+* `@reboot`: kaskart restartavus kompiuterį (labai dažnai naudojama valymo darbams)
+* `@hourly` : kas valandą (priklausomai nuo tada kada buvo įjungtas kompiuteris arba pirmą kartą pasileido cron užduotis). 
+
+Iš kurio vartootojo paskyros paleidžiamas cron darbas?
+
+jeigu tu aktyvyuoji cron editorių be sudo, tu suplanuoji savo vartotojo cron darbus.   tačiau gali naudoti `sudo crontab -u <username> -e` jeigu nori nustatyti cron darbą tam tikram vartootjui`<username>`. 
+
+Cron jobs are scheduled tasks managed by the system, independent of currently logged-in users. Thus, the cron job you scheduled for your user with crontab -e will run according to the specified schedule, regardless of which user is currently logged in. The job will execute with your user's permissions, not the permissions of the logged-in user.
+
+
+
+crontab -e:
+
+When you invoke crontab -e without sudo, you're editing the cron jobs for your own user account. Any tasks you schedule will run with your user's permissions, and the jobs will only affect your user environment.
+This means the cron jobs will only be able to access files and execute actions that your user has permission for.
+sudo crontab -e:
+
+Using sudo with crontab -e allows you to edit the cron jobs for the root user. This means the tasks scheduled will run with root-level permissions.
+The cron jobs in this context have elevated privileges, which allows them to perform actions across the entire system, access files, and execute commands that would typically require superuser access.
+This is useful for scheduling tasks that need administrative privileges, such as system maintenance tasks or jobs that affect multiple users or system-wide settings.
+
+
+
+
+:::praktikumas
+
+Įsivaizduok, jog tu turi bash scriptą, kuris patikrina, ar darbinis serveris veikia gerai. Skriptas prasisuka per 30 sekundžių. Todėl tu nusprendei, jog siekiant kokybiško monitoringo, tu ji paliesi kas 5 minutes kasdien. Darbo valandos tavo įmonėje 8-17, tačiau kadangi skriptas monitorina serverio užžimtumą, tu nori pamantyti ir 7 bei 18 vlaandos rodiklis, tam kad turėti palyginimą.  Kitomis valandomis, tu nenori jog tavo skiprtas veiktų, nes visgi tam naudojama elektra o ir poreikio naktiniam monitoringui tu šiuo metu neturi.  Tas pats pasakytina ir apie savaitgalius.
+
+Parašyk paprasta bash scriptą, kuris naudotų: .....
+
+Tavo norimi duomenys turėtų būti išsaugomi `server_x.log` faile ir turėtų turėti tokią struktūrą
+
+```md
+|date|time|cpu|memory|
+
+```
+
+
+
 ## Argumentai
 
+Tu jau žinai, jog komandos priima argumentus, pvz `ls -l Downloads` priima argumenta `Downloads` ir atspausdina šios direktorijos turinį. Lygiai taip pat, tu gali naudoti argumentus ir bash skriptams, jeigu nori, suteikti daugiau fleksibilumo jiems.
+
+
+test_script.sh
+
+```bash
+#!/bin/bash
+echo "You enetered this argument $1"
+echo "Tavo antras ir trečias argumentas yra $2 ir $3"
+```
+
+* `$1` reikiškia pirmą argumentą, kuris paduotas kartu su sciptu
+
+
+```bash
+./test_script.sh Linux GNU Intell
+```
+
+
+Tačiau kas nutinka, jeigu vartotojas nenurodė argumento, nors jio buvo tikimasi
+
+```bash
+./test_script.sh Linux GNU Intell
+```
+atrodo keistai.
+
+
+Kaip galima tai išsrpęsti, tai naudoti `if`  ir `$#` šis kintamasis parodo, kiek argumentų paduota skriptui.
+
+```bash
+
+if [ $# -ne 3 ]
+then
+echo "This script requires exactly 3 arguments and you provided $#"
+echo "pabandyk dar kartą"
+exit 1
+fi
+
+echo "You enetered this argument $1"
+echo "Tavo antras ir trečias argumentas yra $2 ir $3"
+```
+
+
+
+:::praktikumas
+
+Parašyk skriptą, kuris jeigu paduotas be argumento, parodys sekančių 7 dienų orų prgonozę Vilniui. Bet galimi argumentai gali būti vilnius, kaunas, klaipeda. priklausomai nuo argumento, turėtų būti parodomi atitinkami duomenys.
+
+
+:::
+
+
 ## Praktikumas: Serverio Backup skritpas
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://cameronnokes.com/blog/the-most-useful-bash-commands-for-front-end-development/

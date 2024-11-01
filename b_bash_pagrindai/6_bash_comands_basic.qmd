@@ -16,7 +16,7 @@ Praėjusiame skyriuje išmokai naviguoti terminale naudojant komandas `pwd` ir `
 
 Šiame skyriuje skirsi dėmesį darbui su failais ir direktorijomis. Tu išmoksi kurti failus ir direktorijas, juos kopijuoti, perkelti, ištrinti. Taip pat išmoksi sujungti kelias komandas. Ir šio skyriaus pabaigoje pamatysi, kad tavo BASH įgūdžiai tampa dar stipresni!
 
-![By J. Howard Miller - [U.S. National Archives and Records Administration](https://commons.wikimedia.org/w/index.php?curid=80242715)](img/shell_adv/We_Can_Do_It!.jpg)
+![By J. Howard Miller - [U.S. National Archives and Records Administration](https://commons.wikimedia.org/w/index.php?curid=80242715)]\(../img/shell_adv/We_Can_Do_It!.jpg)
 
 Prieš pradedant, įsitikink, kad turi keletą svarbių programų: `jq` ir `curl`. Kaip ir praėjusiame skyriuje, kai ieškojai` which $SHELL`, komanda tau parodė, kur yra binary failas (programa). Dabar padaryk tą patį:
 
@@ -25,7 +25,7 @@ Prieš pradedant, įsitikink, kad turi keletą svarbių programų: `jq` ir `curl
 
 Jei tavo kompiuteris aptinka šias programas, terminalas atspausdins vietą, kur jos yra įdiegtos. Jei terminalas jų neranda, įdiek `curl` ir `jq` kaip sisteminius paketus naudojant `apt`. Jei pamiršai, kaip tai daryti, pakartok ankstesnę medžiagą.
 
-![](img/shell_adv/which_curl_jq.png)
+![]\(../img/shell_adv/which_curl_jq.png)
 
 Kai tai atliksi, nukopijuok ir paleisk šią komandą savo terminale - ji sukurs direktoriją **shell_2_dalis** tavo namų direktorijoje kartu su visais šiam skyriui reikalingais failais:
 
@@ -35,7 +35,7 @@ curl -s https://gist.githubusercontent.com/justasmundeikis/b4bfc0d672a859afc0fe2
 
 Jeigu viskas gerai, turėtum pamatyti:
 
-![](img/shell_adv/all_created.png)
+![]\(../img/shell_adv/all_created.png)
 
 ::: {.callout-tip}
 Pasikartok komandas `cd`, prisimink absoliutų ir reliatyvų kelią, bei ką reiškia `~`, `.` ir `..`. Šiame skyriuje taip pat dažnai reikės naudoti `ls`, tad pasikartok šią komandą ir jos nustatymus dabar.
@@ -43,11 +43,11 @@ Pasikartok komandas `cd`, prisimink absoliutų ir reliatyvų kelią, bei ką rei
 
 Su `ls` komanda atspausdink *long* formatu savo *home directory* turinį. Paaiškink visas šios eilutės reikšmes.
 
-![](img/shell_adv/initial.png)
+![]\(../img/shell_adv/initial.png)
 
 Pakeisk savo darbinę direktoriją į **~/shell_2_dalis**. Kaip pasikeitė tavo *prompt*? Paaiškink, kas čia yra kas.
 
-![](img/shell_adv/initial_prompt.png)
+![]\(../img/shell_adv/initial_prompt.png)
 
 ### echo
 
@@ -72,7 +72,7 @@ echo "My username is $USER"
 ```
 Ar pastebi, kuo skiriasi išvestis?
 
-![](img/shell_adv/echo.png)
+![]\(../img/shell_adv/echo.png)
 
 
 ### `>` ir `>>` operatoriai
@@ -95,7 +95,7 @@ ls > mix/direktorijos_turinys.txt
 
 Ši komanda nukreipia `ls` komandos išvestį į failą **direktorijos_turinys.txt**, kuris yra **mix** subdirektorijoje. Atsidaryk šį failą ir patikrink, ar jis susikūrė teisingai. Turėtum matyti kažką panašaus į šį vaizdą:
 
-![](img/shell_adv/echo_result.png)
+![]\(../img/shell_adv/echo_result.png)
 
 ::: {.callout-tip title="Praktika"}
 Liekant **shell_part_2** direktorijoje, atspausdink namų direktorijos (angl. **home directory**) turinį su visais paslėptais failais, ilguoju formatu ir žmonėms geriau suprantamais failų ir direktorijų dydžiais, ir nukreipk išvestį į **mix** subdirektorijoje esantį failą **direktorijos_turinys.txt**, jį perrašant.
@@ -114,7 +114,7 @@ Kartais gali gauti labai sudėtingą užduotį, kuri iš pradžių atrodys neįv
 * failo pavdinimas
 
 
-![](img/shell_adv/break_1.png)
+![]\(../img/shell_adv/break_1.png)
 
 Dabar galima skaidyti ar toliau detalizuoti kiekvieną iš šių dalių.
 
@@ -122,14 +122,14 @@ Dabar galima skaidyti ar toliau detalizuoti kiekvieną iš šių dalių.
 * `>` perrašo
 * **direktorijos_turinys.txt** bus pavadinimas
 
-![](img/shell_adv/break_2.png)
+![]\(../img/shell_adv/break_2.png)
 
 Tačiau dabartinė darbinė direktorija yra **~/shell_part_2**, todėl reikia
 
 * `ls -alh` kaip argumentą paduoti `~` arba atitinmai `/home/username`
 * **direktorijos_turinys.txt** turi būti **mix** subdirektorijoje
 
-![](img/shell_adv/break_3.png)
+![]\(../img/shell_adv/break_3.png)
 
 Skaidant užduotį į mažesnes dalis, vis labiau suprasi, ką reikia padaryti. Turint daugiau patirties, geriau žinosi, kiek laiko gali prireikti kiekvienam žingsniui.
 
@@ -140,7 +140,7 @@ Pvz., duomenų analitikas gali gauti užduotį: suprognozuoti sekančių metų l
 * Apskaičiuoti kiekvienos dienos pardavimus
 * Aprašyti duomenis ir pateikti juos užsakovui suprantamu formatu
 
-![Photo by [Kamaji Ogino](https://www.pexels.com/photo/asian-mother-with-daughter-pointing-at-signboard-with-ice-cream-5094361/)](img/shell_adv/pexels-kamaji-ogino-5094361.jpg)
+![Photo by [Kamaji Ogino](https://www.pexels.com/photo/asian-mother-with-daughter-pointing-at-signboard-with-ice-cream-5094361/)]\(../img/shell_adv/pexels-kamaji-ogino-5094361.jpg)
 
 Kiekvieną iš šių žingsnių analitikas gali suskaidyti į dar daugiau mažesnių užduočių.
 
@@ -182,7 +182,7 @@ cat favorite_song.txt
 
 Pas mane tai atrodo taip:
 
-![](img/shell_adv/cat_fav_song.png)
+![]\(../img/shell_adv/cat_fav_song.png)
 
 
 `cat` leidžia sujungti kelių failų turinį ir atspausdinti rezultatą terminale:
@@ -191,7 +191,7 @@ Pas mane tai atrodo taip:
 cat favorite_song.txt song_text.txt
 
 ```
-![](img/shell_adv/cat_fav_song_text.png)
+![]\(../img/shell_adv/cat_fav_song_text.png)
 
 
 Kaip praeitame skyriuje išmokai, komandos išvestį (nesvarbu, ar tai būtų `echo`, ar `ls`) galima nukreipti į failą. Lygiai taip pat gali nukopijuoti failą naudojant `cat` ir `>` arba `>>`:
@@ -301,7 +301,7 @@ Sukurk tuščią failą:
 touch empty_1.txt
 ```
 
-![](img/shell_adv/touch_single.png)
+![]\(../img/shell_adv/touch_single.png)
 
 Jei nurodysi kelis failų pavadinimus, touch sukurs visus iš karto:
 
@@ -309,7 +309,7 @@ Jei nurodysi kelis failų pavadinimus, touch sukurs visus iš karto:
 touch empty_2.txt empty_3.txt empty_4.txt
 ```
 
-![](img/shell_adv/touch_multiple.png)
+![]\(../img/shell_adv/touch_multiple.png)
 
 
 Jeigu failo pavadinimas yra nurodytas su absoliučiu ar reliatyviu keliu, failas bus sukurtas atitinkamoje direktorijoje, jei tokia direktorija egzistuoja. Jei direktorija neegzistuoja, bus pranešta apie klaidą, ir failas nebus sukurtas.
@@ -318,7 +318,7 @@ Jeigu failo pavadinimas yra nurodytas su absoliučiu ar reliatyviu keliu, failas
 touch mix/empty_5.txt
 touch tralala/empty_6.txt
 ```
-![](img/shell_adv/touch_error.png)
+![]\(../img/shell_adv/touch_error.png)
 
 
 `touch` taip pat leidžia atnaujinti failo prieigos arba modifikavimo laiką. Štai keli pavyzdžiai:
@@ -372,7 +372,7 @@ Kaip ir su komanda `touch`, gali sukurti kelias direktorijas vienu metu, nurodan
 mkdir projektas2 mix/projektas3
 ```
 
-![](img/shell_adv/mkdir.png)
+![]\(../img/shell_adv/mkdir.png)
 
 Kartais reikia sukurti direktorijų medį (hierarchiją). Jei tarpinės direktorijos dar neegzistuoja, gali naudoti `-p` argumentą, kuris automatiškai sukurs ir tarpines direktorijas. Pavyzdžiui:
 
@@ -380,7 +380,7 @@ Kartais reikia sukurti direktorijų medį (hierarchiją). Jei tarpinės direktor
 mkdir -p projektas0/duomenys
 ```
 
-![](img/shell_adv/mkdir_p.png)
+![]\(../img/shell_adv/mkdir_p.png)
 
 ::: {.callout-tip title="Praktika"}
 Netrukus norėsime sukurti tam tikrų failų atsargines kopijas. Kaip pasiruošimą, užtikrink, kad shell_part_2 direktorijoje būtų:
@@ -410,7 +410,7 @@ Kaip ir su visomis BASH komandomis, gali naudoti tiek reliatyvius, tiek absoliu�
 ```bash
 cp ./song_text.txt ./mix/song_text_copy.txt
 ```
-![](img/shell_adv/cp_dir.png)
+![]\(../img/shell_adv/cp_dir.png)
 
 Jeigu kaip antrąjį argumentą nurodysi egzistuojančios direktorijos pavadinimą, `cp` sukurs kopiją tokiu pačiu pavadinimu kaip originalas ir patalpins ją į nurodytą direktoriją. Šįkart praleidžiam 
 
@@ -418,7 +418,7 @@ Jeigu kaip antrąjį argumentą nurodysi egzistuojančios direktorijos pavadinim
 cp song_text.txt mix
 ```
 
-![](img/shell_adv/cp_dir2.png)
+![]\(../img/shell_adv/cp_dir2.png)
 
 
 `cp` gali kopijuoti ir direktorijas, tačiau tam, kad visa direktorija būtų nukopijuota rekursyviai (su visu turiniu), reikia naudoti nustatymą `-r` (**recursive**). Jeigu pamirši `-r` direktorija nebus nukopijuota!
@@ -427,7 +427,7 @@ cp song_text.txt mix
 cp -r mix mix_copy
 ```
 
-![](img/shell_adv/cp_dir3.png)
+![]\(../img/shell_adv/cp_dir3.png)
 
 
 
@@ -441,7 +441,7 @@ cp -a mix mix_copy_2
 
 Dabar palyging metaduominis su `ls -l`. 
 
-![](img/shell_adv/cp_dir4.png)
+![]\(../img/shell_adv/cp_dir4.png)
 
 
 ::: {.callout-tip title="Praktika"}
@@ -465,7 +465,7 @@ Pvz., naudojant `mv`, gali pervadinti failą **temp_vilnius.txt** į **temp_alyt
 mv data/temp_vilnius.txt data/temp_alytus.txt
 ```
 
-![](img/shell_adv/mv_single.png)
+![]\(../img/shell_adv/mv_single.png)
 
 
 Taip pat su `mv` gali perkelti failus iš vienos direktorijos į kitą. Ši komanda perkelia failą **temp_kaunas.txt** į **mix**:
@@ -474,7 +474,7 @@ Taip pat su `mv` gali perkelti failus iš vienos direktorijos į kitą. Ši koma
 mv data/temp_kaunas.txt mix
 ```
 
-![](img/shell_adv/mv_file_dir.png)
+![]\(../img/shell_adv/mv_file_dir.png)
 
 `mv` komandai galima paduoti daugiau nei du argumentus. Pavyzdžiui, ši komanda perkelia failus **temp_alytus.txt** ir **seneles_pasaka.txt** į direktoriją **mix**. Čia svarbu, kad paskutinis argumentas būtų egzistuojanti direktorija:
 
@@ -536,11 +536,11 @@ rm -d projektas1
 rmdir projektas2
 ```
 
-![](img/shell_adv/rmdir.png)
+![]\(../img/shell_adv/rmdir.png)
 
 Tiesiog pašalinti direktoriją, kurioje yra kažkas, su `rm` arba `rm -d` nepavyks, nes BASH bando apsaugoti vartotoją nuo rizikos netyčia ištrinti daugiau failų nei reikia.
 
-![](img/shell_adv/rmdir_error.png)
+![]\(../img/shell_adv/rmdir_error.png)
 
 Jei reikia ištrinti visą direktoriją su visu jos turiniu, naudojamas parametras `-r` (**recursive**).
 
@@ -605,7 +605,7 @@ Praktinė užduotis - naudojantis wildcard ištrink iš **shell_part_2** visus f
 
 Atlikus visus valymus turėtum turėti:
 
-![](img/shell_adv/cleaned_up.png)
+![]\(../img/shell_adv/cleaned_up.png)
 
 
 ### grep
@@ -617,7 +617,7 @@ Pavyzdžiui, ši komanda surastų visas eilutes **data/seneles_pasaka**, kuriose
 ```bash
 grep Apie text/seneles_pasaka.text
 ```
-![](img/shell_adv/grep_apie.png)
+![]\(../img/shell_adv/grep_apie.png)
 
 Suprantama, gali pateikti kelis failus vienu metu. Šiuo atveju komanda `grep` suras visas eilutes, kuriose yra **14:00:00** abiejuose jai pateiktuose failuose ir atitinkamas eilutes atspausdins tau į terminalą.
 
@@ -625,7 +625,7 @@ Suprantama, gali pateikti kelis failus vienu metu. Šiuo atveju komanda `grep` s
 grep 14:00:00 data/temp_vilnius.txt data/temp_kaunas.txt 
 ```
 
-![](img/shell_adv/grep_multiple.png)
+![]\(../img/shell_adv/grep_multiple.png)
 
 
 `grep` priima ir tam tikrus nustatymus, kurie padeda atlikti paiešką efektyviau:
@@ -655,7 +655,7 @@ Dirbk su **data/seneles_pasaka.txt**
 grep -P '\t[0-9]\.[0-9]' data/temp_*.txt
 ```
 
-![](img/shell_adv/grep_regex.png)
+![]\(../img/shell_adv/grep_regex.png)
 
 
 Į reguliarias išraiškas dabar neverta gilintis išsamiau, bet svarbu žinoti, kad jos egzistuoja ir gali būti labai naudingos dirbant su tekstiniais duomenimis. Jeigu kiltų noras pasibandyti, siūlau naudti [https://regexr.com/](https://regexr.com/).
@@ -664,7 +664,7 @@ grep -P '\t[0-9]\.[0-9]' data/temp_*.txt
 
 Kartais tau gali prireikti išfiltruoti ne eilutes, o stulpelius. Pvz., komanda `head` **data/temp_vilnius.txt** parodo tarsi 3 stulpelius: datą, laiką ir temperatūrą. Pastebima, kad tarp datos ir laiko yra mažas tarpas (greičiausiai „space“), o tarp laiko ir temperatūros – didelis tarpas (tikėtina, "tab"). Tai šiek tiek apsunkina darbą, kol nesusipažinai su `sed` komanda, bet tai nereiškia, jog negalime išskaidyti failo į stulpelius pagal skirtingus skirtukus, pvz., „space“ ir „tab“.
 
-![](img/shell_adv/cut_head.png)
+![]\(../img/shell_adv/cut_head.png)
 
 
 Komandai `cut` reikia tam tikrų nustatymų. Pagrindiniai nustatymai:
@@ -679,7 +679,7 @@ Komandai `cut` reikia tam tikrų nustatymų. Pagrindiniai nustatymai:
 cut -d " " -f 1 data/temp_vilnius.txt
 ```
 
-![](img/shell_adv/cut_column1.png)
+![]\(../img/shell_adv/cut_column1.png)
 
 Ši komanda priima „tab“ kaip skirtuką ir atspausdina antrąjį stulpelį:
 
@@ -687,7 +687,7 @@ cut -d " " -f 1 data/temp_vilnius.txt
 cut -f 2  data/temp_vilnius.txt
 ```
 
-![](img/shell_adv/cut_column_last.png)
+![]\(../img/shell_adv/cut_column_last.png)
 
 
 Jeigu norėtum gauti tik metus, galėtum nurodyti skirtuką „-“ ir pasirinkti pirmąjį stulpelį:
@@ -696,7 +696,7 @@ Jeigu norėtum gauti tik metus, galėtum nurodyti skirtuką „-“ ir pasirinkt
 cut -d "-" -f 1 data/temp_vilnius.txt 
 ```
 
-![](img/shell_adv/cut_year.png)
+![]\(../img/shell_adv/cut_year.png)
 
 
 ::: {.callout-tip title="Praktika"}
@@ -715,7 +715,7 @@ ChatGPT sugeneruos .csv failą ir leis jį atsisiųsti. Šiam sugeneravimui Chat
 
 Perkelk failą iš **~/Downloads** į **~/shell_part_2/data**. Tarkime, failas vadinasi sample_data.csv.
 
-![](img/shell_adv/gpt_generator.mp4)
+![]\(../img/shell_adv/gpt_generator.mp4)
 
 Turint failą:
 
@@ -728,7 +728,7 @@ Turint failą:
 
 **Užduotis**: Tu dirbi su klientais iš Estijos (EE). Turi parašyti visiems klientams iš Estijos el. laišką ir pranešti apie jų užsakymų skaičių. Laiško rašymą perims programa, tačiau tu jai turi pateikti failą **customers_ee.csv**, kuris turėtų atrodyti taip (tavo duomenys gali skirtis dėl atsitiktinio jų sugeneravimo):
 
-![](img/shell_adv/cut_project.png)
+![]\(../img/shell_adv/cut_project.png)
 
 Kad įgyvendintum šią užduotį, tau prireiks komandų: `head`, `cut`, `>` `>>`, `cat` ir `grep` bei sukurti kelis tarpinius failus, kuriuos vėliau galėsi ištrinti. Taip pat patarčiau bandyt skaidyti darbus :) 
 
@@ -758,7 +758,7 @@ cat
 
 Nutraukti `cat` įvestį gali su `Ctrl-D` arba `Ctrl-C`.
 
-![](img/shell_adv/std_input_cat.mp4)
+![]\(../img/shell_adv/std_input_cat.mp4)
 
 
 
@@ -772,7 +772,7 @@ Kodėl veikia <?
 
 Simbolis `<` nurodo komandai, kad vietoje įprastos įvesties iš klaviatūros naudotų failą kaip įvesties šaltinį. Pvz., `cat < data/customers_ee.csv` reiškia, kad `cat` komanda skaitys duomenis iš failo data/customers_ee.csv, o ne iš klaviatūros.
 
-![](img/shell_adv/std_input_file.png)
+![]\(../img/shell_adv/std_input_file.png)
 
 
 Standartinės įvesties aprašymo numeris: 0. Vėliau pamatysi, kam tie skaičiai naudingi.
@@ -808,7 +808,7 @@ Pabandyk komandą `ls` su neegzistuojančia direktorija, pvz.,:
 ls abc
 ```
 
-![](img/shell_adv/stderr_ls.png)
+![]\(../img/shell_adv/stderr_ls.png)
 
 Klaidos pranešimas bus išspausdintas terminale. Tačiau galime nukreipti tik klaidos srautą į failą:
 
@@ -818,7 +818,7 @@ ls abc 2> error.log
 
 Terminale klaidos nebus matyti, bet gali naudoti komandas `head` arba `cat`, kad pažiūrėtum, kas yra **error.log** faile.
 
-![](img/shell_adv/stderr_ls_log.png)
+![]\(../img/shell_adv/stderr_ls_log.png)
 
 
 
@@ -838,7 +838,7 @@ Išbandyk šią komandą su egzistuojančia ir neegzistuojančia direktorija (pr
 ls -l data abc text 1> list.txt 2> error.log
 ```
 
-![](img/shell_adv/stdout_stderr.png)
+![]\(../img/shell_adv/stdout_stderr.png)
 
 
 Kartais gali prireikti, kad abu srautai būtų nukreipti į tą patį failą. Pvz., jeigu kas 10 minučių matuoji kompiuterio temperatūrą, gali nukreipti tiek stdout, tiek stderr į failą:
@@ -866,7 +866,7 @@ BASH siūlo kelis būdus, kaip efektyviau panaudoti vienos komandos rezultatus k
 
 `|` (**pipe**) – tai vertikalus brūkšnys, kuris sujungia komandas į vieną srautą, kur vienos komandos išvestis tampa kitos komandos įvestimi.
 
-![](img/shell_adv/pipe_input_ouput.png)
+![]\(../img/shell_adv/pipe_input_ouput.png)
 
 Pabandyk sujungti šias komandas:
 
@@ -875,7 +875,7 @@ Pabandyk sujungti šias komandas:
 * `cut -d "," -f 1,4` – iškirpti pirmą ir ketvirtą stulpelius.
 * Galutinį rezultatą su `>` nukreipk į failą `data/customers_ee_2.csv`.
 
-![](img/shell_adv/pipe_input_ouput_ee.png)
+![]\(../img/shell_adv/pipe_input_ouput_ee.png)
 
 ```bash
 grep EE data/balt_customers.csv | cut -d "," -f 1,4 > data/customers_ee_2.csv
@@ -883,11 +883,11 @@ grep EE data/balt_customers.csv | cut -d "," -f 1,4 > data/customers_ee_2.csv
 
 Pirma pabandyk paleisti komandą be `>`, kad pamatytum rezultatą terminale:
 
-![](img/shell_adv/pipe_ee.png)
+![]\(../img/shell_adv/pipe_ee.png)
 
 Dabar paleisk pilną komandą, nukreipiančią išvestį į failą:
 
-![](img/shell_adv/pipe_ee_2.png)
+![]\(../img/shell_adv/pipe_ee_2.png)
 
 
 ::: {.callout-tip title="Praktika"}
@@ -920,7 +920,7 @@ echo -e "A,101\nB,3\nC,2\nD,40" > tosort
 
 Ar pastebėjai, **tosort** neturi indikacijos, koks tai failas, nei .csv, nei .txt. Nieko tokio Linux operacinėje sistemoje, komandos veikia kuo puikiausiai ir be failo tipo indikatoriaus.
 
-![](img/shell_adv/sort_ex_base.png)
+![]\(../img/shell_adv/sort_ex_base.png)
 
 Pagal nutylėjimą sort priims failą kaip argumentą ir rikiuos pagal pirmą stulpelį. sort -r apsuks rikiavimo eigą.
 
@@ -929,7 +929,7 @@ sort tosort
 sort -r tosort
 ```
 
-![](img/shell_adv/sort_text_r.png)
+![]\(../img/shell_adv/sort_text_r.png)
 
 Jei nori, kad BASH suprastų failą kaip turintį skirtingus stulpelius, turi nurodyti, koks yra skirtukas (**delimiter**) su `-t ","`. Tuomet galima rikiuoti pagal konkretų stulpelį su `-k 2`. Jei nepridėsi `-n`, sort rikiuos taip, lyg skaičiai būtų tekstas, t.y., vertins pagal pirmą skaitmenį, tada pagal antrą ir t.t. Pridėjus `-n`, skaičiai vertinami kaip skaičiai.
 
@@ -942,7 +942,7 @@ sort -t "," -k 2 -n tosort
 sort -t, -k2n tosort
 ```
 
-![](img/shell_adv/sort_tabuler_numeric.png)
+![]\(../img/shell_adv/sort_tabuler_numeric.png)
 
 
 ::: {.callout-tip title="Praktika"}
@@ -957,7 +957,7 @@ Kadangi šią užduotį reikia atlikti kasdien, nusprendei sukurti ilgą BASH ko
 
 Perskaityk ką tau gražins ChatGPT, jeigu reikia pasitisklink užduodant papildomus klausimus.
 
-![](img/shell_adv/du_example.png)
+![]\(../img/shell_adv/du_example.png)
 
 Pabandyk sukurti komandų seką (**pipeline**) su `du`, `sort`, `head`. Eksperimentuok su nustatymais.
 
@@ -1064,7 +1064,7 @@ Pamotė pikta – 😡
 
 Išsaugok pasaką kaip **text/seneles_pasaka_emojies.txt** 
 
-![](img/shell_adv/sed_pasaka.png)
+![]\(../img/shell_adv/sed_pasaka.png)
 
 2. **data/temp_vilnius.txt** ir kitų miestų failai turi kelias problemas, kurias turėtum ištaisyti:
     * Vilniaus faile kiekvienos eilutės pradžioje įrašyk „Vilnius “ (su tarpeliu po miesto pavadinimo). Kituose miestuose atitinkmai "Kaunas " ir "Klaipėda "
@@ -1079,7 +1079,7 @@ Išsaugok pasaką kaip **text/seneles_pasaka_emojies.txt**
  ```
 * Pavaizduok sekančių dienų temperatūras.
 
- ![](img/shell_adv/sed_temp.png)
+ ![]\(../img/shell_adv/sed_temp.png)
 * Pabandyk atsidaryti visus tris pavienius failus su Excel Power Query ir apdorojus duomenis sukurti dashboard to slicer filtrais ir grafikais.
 :::
 
