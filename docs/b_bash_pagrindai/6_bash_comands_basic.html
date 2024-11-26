@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -205,13 +205,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../b_bash_pagrindai/7_bash_comands_advanced_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BASH advanced</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BASH pažengusiems</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../b_bash_pagrindai/8_bash_commands_advanced_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">BASH advanced 2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">BASH darbas su OS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../b_bash_pagrindai/12_ssh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">SSH</span></span></a>
   </div>
 </li>
       </ul>
@@ -228,31 +234,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../c_editoriai_git/9_text_editors_ide.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Text editors ir IDE</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Text editors ir IDE</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../c_editoriai_git/10_git_github_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Git ir GitHub 1</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Git ir GitHub 1</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../c_editoriai_git/11_git_github_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Git ir GitHub 2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git ir GitHub 2</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../c_editoriai_git/12_git_github_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git ir GitHub 1</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../c_editoriai_git/12_ssh.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">SSH</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Git ir GitHub 1</span></span></a>
   </div>
 </li>
       </ul>
@@ -556,8 +556,8 @@ Praktika
 </div>
 <hr>
 <p><strong>Intarpas</strong></p>
-<p>Hey, ką tik gavai užduotį. Ateityje gausi panašias ir dar sudėtingesnes užduotis. Todėl šioje vietoje padarykime intarpą. Pakalbėkime apie vieną svarbiausių darbo būdų programavime (ir ne tik!) – darbų skaidymą (angl. break down).</p>
-<p>Kartais gali gauti labai sudėtingą užduotį, kuri iš pradžių atrodys neįveikiama ar nesuprantama. Tai visiškai normalu. Nestresuok – giliai įkvėpk, iškvėpk, jei reikia, pasiimk popierių ir pieštuką ir pradėk skaidyti darbus į logines sekas. Pvz., prieš tai buvusią užduotį galima suskaidyti į tris dalis:</p>
+<p>Hey, ką tik gavai užduotį. Ateityje gausi panašias ir dar sudėtingesnes užduotis. Todėl šioje vietoje padarykime intarpą. Pakalbėkime apie vieną svarbiausių darbo būdų programavime (ir ne tik!) - darbų skaidymą (angl. break down).</p>
+<p>Kartais gali gauti labai sudėtingą užduotį, kuri iš pradžių atrodys neįveikiama ar nesuprantama. Tai visiškai normalu. Nestresuok - giliai įkvėpk, iškvėpk, jei reikia, pasiimk popierių ir pieštuką ir pradėk skaidyti darbus į logines sekas. Pvz., prieš tai buvusią užduotį galima suskaidyti į tris dalis:</p>
 <ul>
 <li>reikia failų ir direktorijų sąrašo</li>
 <li>atspausdinti perrašant</li>
@@ -966,7 +966,7 @@ Praktika
 <p>Kartais BASH komandose norisi pažymėti arba pasirinkti daugiau nei vieną failą. Kaip jau matei, tiek <code>cat</code>, tiek <code>cp</code>, <code>mv</code>, <code>rm</code>, <code>less</code> komandos kuo puikiausiai dirba su keliais failais. Tad kyla klausimas, kaip tai padaryti efektyviau naudojant wildcard simbolius.</p>
 <p>Pvz., tu galėtum rašyti:</p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> empty_1.txt empty_2.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Tačiau yra akivaizdu, jog šiuose failų pavadinimuose yra tam tikras dėsningumas – jie prasideda <strong>empty_</strong> ir baigiasi <strong>.txt</strong>.</p>
+<p>Tačiau yra akivaizdu, jog šiuose failų pavadinimuose yra tam tikras dėsningumas - jie prasideda <strong>empty_</strong> ir baigiasi <strong>.txt</strong>.</p>
 <p>BASH, kaip ir daugelyje kitų programavimo kalbų, yra vadinamieji wildcard - simboliai, kurie leidžia užpildyti vieną ar daugiau ženklų.</p>
 <p>Pavyzdžiui, <code>*</code> simbolis pakeičia bet kokį skaičių ženklų. Taigi, galima būtų parašyti:</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> empty_<span class="pp">*</span>.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1056,12 +1056,12 @@ Praktika
 </section>
 <section id="cut" class="level3" data-number="6.1.13">
 <h3 data-number="6.1.13" class="anchored" data-anchor-id="cut"><span class="header-section-number">6.1.13</span> cut</h3>
-<p>Kartais tau gali prireikti išfiltruoti ne eilutes, o stulpelius. Pvz., komanda <code>head</code> <strong>data/temp_vilnius.txt</strong> parodo tarsi 3 stulpelius: datą, laiką ir temperatūrą. Pastebima, kad tarp datos ir laiko yra mažas tarpas (greičiausiai „space“), o tarp laiko ir temperatūros – didelis tarpas (tikėtina, “tab”). Tai šiek tiek apsunkina darbą, kol nesusipažinai su <code>sed</code> komanda, bet tai nereiškia, jog negalime išskaidyti failo į stulpelius pagal skirtingus skirtukus, pvz., „space“ ir „tab“.</p>
+<p>Kartais tau gali prireikti išfiltruoti ne eilutes, o stulpelius. Pvz., komanda <code>head</code> <strong>data/temp_vilnius.txt</strong> parodo tarsi 3 stulpelius: datą, laiką ir temperatūrą. Pastebima, kad tarp datos ir laiko yra mažas tarpas (greičiausiai „space“), o tarp laiko ir temperatūros - didelis tarpas (tikėtina, “tab”). Tai šiek tiek apsunkina darbą, kol nesusipažinai su <code>sed</code> komanda, bet tai nereiškia, jog negalime išskaidyti failo į stulpelius pagal skirtingus skirtukus, pvz., „space“ ir „tab“.</p>
 <p><img src="../img/shell_adv/cut_head.png" class="img-fluid"></p>
 <p>Komandai <code>cut</code> reikia tam tikrų nustatymų. Pagrindiniai nustatymai:</p>
 <ul>
-<li><code>-d</code> (<strong>delimiter</strong>) – skirtukas, kuris skiria stulpelius. Pagal nutylėjimą skirtukas yra tabuliacija (tab), tad šio nustatymo keisti nereikia. Jeigu norėtum naudoti kitą skirtuką, pvz., tarpo ženklą, turėtum naudoti <code>-d " "</code>. Jeigu skirtukas būtų kablelis, naudotum <code>-d ","</code> ir t.t.</li>
-<li><code>-f</code> (<strong>fields</strong>) – nurodo, kuriuos stulpelius (laukelius) nori pasirinkti. Pvz., <code>-f 2</code> pasirinktų antrą stulpelį, <code>-f 2-5</code> pasirinktų nuo antro iki penkto stulpelio, o <code>-f 2-5,8</code> pasirinktų antrą, trečią, ketvirtą, penktą ir aštuntą stulpelius.</li>
+<li><code>-d</code> (<strong>delimiter</strong>) - skirtukas, kuris skiria stulpelius. Pagal nutylėjimą skirtukas yra tabuliacija (tab), tad šio nustatymo keisti nereikia. Jeigu norėtum naudoti kitą skirtuką, pvz., tarpo ženklą, turėtum naudoti <code>-d " "</code>. Jeigu skirtukas būtų kablelis, naudotum <code>-d ","</code> ir t.t.</li>
+<li><code>-f</code> (<strong>fields</strong>) - nurodo, kuriuos stulpelius (laukelius) nori pasirinkti. Pvz., <code>-f 2</code> pasirinktų antrą stulpelį, <code>-f 2-5</code> pasirinktų nuo antro iki penkto stulpelio, o <code>-f 2-5,8</code> pasirinktų antrą, trečią, ketvirtą, penktą ir aštuntą stulpelius.</li>
 </ul>
 <p>Ši komanda priima „space“ kaip skirtuką ir atspausdina pirmąjį stulpelį:</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-d</span> <span class="st">" "</span> <span class="at">-f</span> 1 data/temp_vilnius.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1115,7 +1115,7 @@ Praktika
 </section>
 <section id="intarpas-standartinė-įvestis-išvestis-ir-klaidos" class="level3" data-number="6.1.14">
 <h3 data-number="6.1.14" class="anchored" data-anchor-id="intarpas-standartinė-įvestis-išvestis-ir-klaidos"><span class="header-section-number">6.1.14</span> Intarpas: Standartinė įvestis, išvestis ir klaidos</h3>
-<p>Iki šiol mes naudojome sąvokas, tokias kaip įvestis (<strong>input</strong>) ir išvestis (<strong>output</strong>). Įvestis buvo tai, ką tu įvedi klaviatūra į terminalą, o išvestis – tai, ką BASH atspausdina terminale arba ką tu nukreipi į failą naudodant <code>&gt;</code> arba <code>&gt;&gt;</code>. Tačiau iki šiol formaliai neaptarėme BASH srautų.</p>
+<p>Iki šiol mes naudojome sąvokas, tokias kaip įvestis (<strong>input</strong>) ir išvestis (<strong>output</strong>). Įvestis buvo tai, ką tu įvedi klaviatūra į terminalą, o išvestis - tai, ką BASH atspausdina terminale arba ką tu nukreipi į failą naudodant <code>&gt;</code> arba <code>&gt;&gt;</code>. Tačiau iki šiol formaliai neaptarėme BASH srautų.</p>
 <p>Linux ir Unix sistemose yra trys pagrindiniai srautai, kurie valdo duomenų įvestį ir išvestį programose bei komandose. Šie srautai vadinami standartine įvestimi (<strong>standard input</strong>), standartine išvestimi (<strong>standard output</strong>) ir standartine klaida (<strong>standard error</strong>). Kiekvienas srautas turi specifinę paskirtį ir failo aprašymo numerį.</p>
 <p>Svarbu: Linux’e viskas yra failai, net srautai (input/output) traktuojami kaip failai.</p>
 <section id="standartinė-įvestis-stdin" class="level4" data-number="6.1.14.1">
@@ -1156,14 +1156,14 @@ Praktika
 </section>
 <section id="kaip-visą-tai-taikyti-praktikoje" class="level3" data-number="6.1.15">
 <h3 data-number="6.1.15" class="anchored" data-anchor-id="kaip-visą-tai-taikyti-praktikoje"><span class="header-section-number">6.1.15</span> Kaip visą tai taikyti praktikoje?</h3>
-<p>Įsivaizduok, kad turi komandą <code>ls</code>, kuri kartais sugeneruoja išvestį, kurią nori nukreipti į list.txt, o klaidas – į error.log. Tam galėtum naudoti:</p>
+<p>Įsivaizduok, kad turi komandą <code>ls</code>, kuri kartais sugeneruoja išvestį, kurią nori nukreipti į list.txt, o klaidas - į error.log. Tam galėtum naudoti:</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="op">&lt;</span>direktorija1<span class="op">&gt;</span> <span class="op">&lt;</span>direktorija2<span class="op">&gt;</span> <span class="op">&lt;</span>direktorija3<span class="op">&gt;</span> 1<span class="op">&gt;&gt;</span>list.txt <span class="dv">2</span><span class="op">&gt;&gt;</span>error.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Išbandyk šią komandą su egzistuojančia ir neegzistuojančia direktorija (prieš tai su <code>rm</code> ištrink error.log jeigu toks egzistuoja)</p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> data abc text <span class="dv">1</span><span class="op">&gt;</span> list.txt <span class="dv">2</span><span class="op">&gt;</span> error.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="../img/shell_adv/stdout_stderr.png" class="img-fluid"></p>
 <p>Kartais gali prireikti, kad abu srautai būtų nukreipti į tą patį failą. Pvz., jeigu kas 10 minučių matuoji kompiuterio temperatūrą, gali nukreipti tiek stdout, tiek stderr į failą:</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="ex">komanda</span> <span class="dv">1</span><span class="op">&gt;</span>temp.log <span class="dv">2</span><span class="op">&gt;&amp;</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Arba gali klaidos srautą nukreipti į temp.log, o standartinę išvestį – į klaidų srautą:</p>
+<p>Arba gali klaidos srautą nukreipti į temp.log, o standartinę išvestį - į klaidų srautą:</p>
 <div class="sourceCode" id="cb56"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="ex">komanda</span> <span class="dv">2</span><span class="op">&gt;</span>temp.log <span class="dv">1</span><span class="op">&gt;&amp;</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Simbolis <code>&amp;</code> nurodo, kad mes kalbame apie srautą, o ne apie failo vardą. Kai rašai, pvz., <code>1&gt;&amp;2</code>, tai reiškia, kad standartinę išvestį (stdout, 1) nukreipi ne į failą, o į standartinį klaidų srautą (stderr, 2). Tai leidžia abu srautus sujungti ir siųsti į tą patį tikslą. Jei <code>&amp;</code> nebūtų, sistema galvotų, kad „2“ yra failo pavadinimas, o ne kitas srautas. Analogiškai, <code>2&gt;&amp;1</code> reiškia, kad klaidų srautas (stderr, 2) nukreipiamas į išvesties srautą (stdout, 1).</p>
 </section>
@@ -1175,13 +1175,13 @@ Praktika
 <li>Komandos būna suskaidytos per kelias eilutes, todėl jas sunku peržiūrėti su <code>history</code>.</li>
 </ul>
 <p>BASH siūlo kelis būdus, kaip efektyviau panaudoti vienos komandos rezultatus kitose, pavyzdžiui, su <code>xargs</code> arba kitais įrankiais. Tačiau dažniausiai naudojamas metodas yra <strong>pipe</strong> (angl. “vamzdis”).</p>
-<p><code>|</code> (<strong>pipe</strong>) – tai vertikalus brūkšnys, kuris sujungia komandas į vieną srautą, kur vienos komandos išvestis tampa kitos komandos įvestimi.</p>
+<p><code>|</code> (<strong>pipe</strong>) - tai vertikalus brūkšnys, kuris sujungia komandas į vieną srautą, kur vienos komandos išvestis tampa kitos komandos įvestimi.</p>
 <p><img src="../img/shell_adv/pipe_input_ouput.png" class="img-fluid"></p>
 <p>Pabandyk sujungti šias komandas:</p>
 <ul>
 <li><code>grep EE data/balt_customers.csv</code> - išfiltruoti tik EE vartotojus.</li>
 <li>Panaudoti <code>|</code>, kuris pavers pirmosios komandos išvestį antrosios komandos įvestimi.</li>
-<li><code>cut -d "," -f 1,4</code> – iškirpti pirmą ir ketvirtą stulpelius.</li>
+<li><code>cut -d "," -f 1,4</code> - iškirpti pirmą ir ketvirtą stulpelius.</li>
 <li>Galutinį rezultatą su <code>&gt;</code> nukreipk į failą <code>data/customers_ee_2.csv</code>.</li>
 </ul>
 <p><img src="../img/shell_adv/pipe_input_ouput_ee.png" class="img-fluid"></p>
@@ -1209,15 +1209,15 @@ Praktika
 </section>
 <section id="sort" class="level3" data-number="6.1.17">
 <h3 data-number="6.1.17" class="anchored" data-anchor-id="sort"><span class="header-section-number">6.1.17</span> sort</h3>
-<p>Tu darai nuostabią pažangą ir jau moki naudoti <code>grep</code>, <code>cut</code>, <code>head</code>, <code>tail</code>, su kuriomis gali išfiltruoti eilutes, stulpelius ir t.t. Naudojant <code>|</code>, jau moki sujungti kelias komandas į vieną. Tačiau ko tu dar nemoki – kaip išrikiuoti reikšmes. Čia pravers komanda <code>sort</code>.</p>
+<p>Tu darai nuostabią pažangą ir jau moki naudoti <code>grep</code>, <code>cut</code>, <code>head</code>, <code>tail</code>, su kuriomis gali išfiltruoti eilutes, stulpelius ir t.t. Naudojant <code>|</code>, jau moki sujungti kelias komandas į vieną. Tačiau ko tu dar nemoki - kaip išrikiuoti reikšmes. Čia pravers komanda <code>sort</code>.</p>
 <p><code>sort</code> labai gerai sąveikauja su pipe <code>|</code>.</p>
 <p>Pagrindiniai nustatymai:</p>
 <ul>
-<li><code>-r</code> – nuo didžiausios iki mažiausios reikšmės.</li>
-<li><code>-n</code> – rikiuoti skaičius.</li>
-<li><code>-h</code> – rikiuoti pagal dydį, jei dydis pateiktas <em>human readable</em> skaičiais (pvz., KB, MB, GB).</li>
-<li><code>-t</code> – nurodo, koks yra skirtukas tarp stulpelių (<strong>delimiter</strong>).</li>
-<li><code>-k</code> – pagal kurį stulpelį rikiuoti.</li>
+<li><code>-r</code> - nuo didžiausios iki mažiausios reikšmės.</li>
+<li><code>-n</code> - rikiuoti skaičius.</li>
+<li><code>-h</code> - rikiuoti pagal dydį, jei dydis pateiktas <em>human readable</em> skaičiais (pvz., KB, MB, GB).</li>
+<li><code>-t</code> - nurodo, koks yra skirtukas tarp stulpelių (<strong>delimiter</strong>).</li>
+<li><code>-k</code> - pagal kurį stulpelį rikiuoti.</li>
 </ul>
 <p>Sukurk šį failą:</p>
 <div class="sourceCode" id="cb58"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"A,101\nB,3\nC,2\nD,40"</span> <span class="op">&gt;</span> tosort</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1265,7 +1265,7 @@ Praktika
 <section id="sed" class="level3" data-number="6.1.18">
 <h3 data-number="6.1.18" class="anchored" data-anchor-id="sed"><span class="header-section-number">6.1.18</span> sed</h3>
 <p><code>sed</code> komanda Linux sistemoje yra srauto redaktorius (<strong>stream editor</strong>), naudojamas tekstui apdoroti ir manipuliuoti. Ji leidžia atlikti įvairius teksto pakeitimus, pvz., ieškoti ir pakeisti žodžius, ištrinti eilutes arba modifikuoti tekstą pagal tam tikras taisykles, nespausdinant teksto į terminalą.</p>
-<p>Vienas paprasčiausių būdų naudoti <code>sed</code> – tai pakeisti tam tikrą tekstą kitu tekstu: tam naudojama tokia sintaksė <code>sed 's/ką keisti/kuo pakeisti/'</code>.</p>
+<p>Vienas paprasčiausių būdų naudoti <code>sed</code> - tai pakeisti tam tikrą tekstą kitu tekstu: tam naudojama tokia sintaksė <code>sed 's/ką keisti/kuo pakeisti/'</code>.</p>
 <p>Taigi, ši komanda pakeičia „rytas“ į „vakaras“:</p>
 <div class="sourceCode" id="cb64"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Labas rytas"</span> <span class="kw">|</span> <span class="fu">sed</span> <span class="st">'s/rytas/vakaras/'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>sed</code> nėra agresyvi komanda, todėl ankstesnė komanda pakeičia tik pirmą rastą atitikmenį:</p>
@@ -1303,16 +1303,25 @@ Praktika
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Dirbk su <strong>data/seneles_pasaka.txt</strong>. Tavo tikslas – padaryti pasaką labiau patrauklią vaikams, pakeičiant žodžius simboliais. Naudok <code>sed</code> komandą ir pakeisk šiuos žodžius į atitinkamus simbolius. Sujunk visas <code>sed</code> komandas į viena <em>pipeline</em> naudojant <code>|</code>.</li>
+<li>Dirbk su <strong>data/seneles_pasaka.txt</strong>. Tavo tikslas - padaryti pasaką labiau patrauklią vaikams, pakeičiant žodžius simboliais. Naudok <code>sed</code> komandą ir pakeisk šiuos žodžius į atitinkamus simbolius. Sujunk visas <code>sed</code> komandas į viena <em>pipeline</em> naudojant <code>|</code>.</li>
 </ol>
-<p>Žąsiną moliūgą – 🦢🎃 Vilką – 🐺 Baltą mešką – 🐻‍❄️ Joną – 👦🏻 Eglę - 🌲 Žalčio – 🐍 Ragana - 🧙‍♀️ Pamotė pikta – 😡</p>
+<ul>
+<li>Žąsiną moliūgą - 🦢🎃</li>
+<li>Vilką - 🐺</li>
+<li>Baltą mešką - 🐻‍❄️</li>
+<li>Joną - 👦🏻</li>
+<li>Eglę - 🌲</li>
+<li>Žalčio - 🐍</li>
+<li>Ragana - 🧙‍♀️</li>
+<li>Pamotė pikta - 😡</li>
+</ul>
 <p>Išsaugok pasaką kaip <strong>text/seneles_pasaka_emojies.txt</strong></p>
 <p><img src="../img/shell_adv/sed_pasaka.png" class="img-fluid"></p>
 <ol start="2" type="1">
 <li><strong>data/temp_vilnius.txt</strong> ir kitų miestų failai turi kelias problemas, kurias turėtum ištaisyti:
 <ul>
 <li>Vilniaus faile kiekvienos eilutės pradžioje įrašyk „Vilnius “ (su tarpeliu po miesto pavadinimo). Kituose miestuose atitinkmai “Kaunas” ir “Klaipėda”</li>
-<li>Dabar pirmieji du skirtukai yra tarpai, o antrasis – tabuliacija. Paleisk <code>sed</code> komandą du kartus: vieną kartą pakeisk tarpus (space) į kablelius, o antrą kartą – tabuliacijas į kablelius.</li>
+<li>Dabar pirmieji du skirtukai yra tarpai, o antrasis - tabuliacija. Paleisk <code>sed</code> komandą du kartus: vieną kartą pakeisk tarpus (space) į kablelius, o antrą kartą - tabuliacijas į kablelius.</li>
 <li>Išsaugok Vilniaus, Kauno, ir Klaipėdos failus kaip <strong>temp_vilnius.csv</strong>, <strong>temp_kaunas.csv</strong>, <strong>temp_klaipeda.csv</strong> (vietoje .txt naudok <strong>.csv</strong> plėtinį).</li>
 <li>Kiekvienas miestas turėtų turėti visą komandą vienoje eilutėje naudojant <code>|</code>.</li>
 </ul></li>
@@ -1326,6 +1335,32 @@ Praktika
 <li>Pavaizduok sekančių dienų temperatūras.</li>
 </ul>
 <p><img src="../img/shell_adv/sed_temp.png" class="img-fluid"> * Pabandyk atsidaryti visus tris pavienius failus su Excel Power Query ir apdorojus duomenis sukurti dashboard to slicer filtrais ir grafikais.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Projektas">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Projektas
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Užduotis: Top 10 populiariausių markių analizė naudojant Bash</p>
+<p>Šiame mini projekte tu dirbsi su transporto priemonių valstybiniais numeriais pagal markę ir modelį. Duomenys yra prieinami čia ( https://data.gov.lt/datasets/2749/#info ). Paspausk „Duomenys“, o tada „Atsisiųsti“. Gausi failą, kuris vadinsis ValstybinisNumeris.csv. Jis yra gana didelis (~380mb, tad užtruks kol atsisiųs), todėl prireiks ir komandų efektyviam jo apdorojimui (į excelį netelpa, nes čia virš 1 mln eilučių: Pagrindiniai stulpeliai (galimi papildomi metaduomenys): _id vda_id valst_nr_zym marke modelis 59e046e3 000008398921ea6 XXX000 CHEVROLET CRUZE 3c1e15b0 000009b2cf32ad9 XXX000 TOYOTA MEM LEXUS RX400H 9fba96c4 00000c08564017c XXX000 MITSUBISHI MITSUBISHI ASX 3a8fda00 000014d2a79c79d XXX000 VW PASSAT 03344c63 0000209af983016 XXX000 MERCEDES BENZ B 180 CDI Tavo užduotis:</p>
+<pre><code>Susikurk naują direktoriją „pop_markes“.
+
+Atsisiųsk failą ir perkelk jį iš „Downloads“ į „pop_markes“ direktoriją. Alternatyva gali pasinaudoti ir bash komanda curl "https://get.data.gov.lt/datasets/gov/regitra/ktpr/ValstybinisNumeris" (su curl susipažinsi netrukus, bet ji šiuoatveju atsiunčia failą)
+
+Naudodama cut, sort, head arba tail bei uniq komandas, suskaičiuok, kurios 15 markių yra labiausiai populiarios Lietuvoje.</code></pre>
+<p>Pagalba:</p>
+<pre><code>Atidaryk ChatGPT ir paklausk:
+„Kaip naudoti komandą uniq kartu su sort norint suskaičiuoti ir išrikiuoti eilutes pagal pasikartojimų skaičių?“
+Perskaityk atsakymą, suprask ir užsirašyk tai į savo užrašus.</code></pre>
+<p>Rezultatas:</p>
+<p>Rezultatas kurį turėtum gauti, parašius visas komandas vienoje eilutėje ir sujungiant jas su pipe | simboliu:</p>
+<p>Peržiūrėk sąrašą. Ar matai problemas? Jų ne viena, o netgi slypi pora,nors ir su tuo pačiu gamintoju…. Panašu, kad duomenys, ne tik ne visai tvarkingi, bet dar ir su atkskirties tašku gali būti problema. Painvestiguok duomenis savarankiškai… Pagalvok ir pasakyk man, kaip spręstum šią problemą ir su kokia komanda?</p>
 </div>
 </div>
 
@@ -1761,8 +1796,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../b_bash_pagrindai/7_bash_comands_advanced_1.html" class="pagination-link" aria-label="BASH advanced">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BASH advanced</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../b_bash_pagrindai/7_bash_comands_advanced_1.html" class="pagination-link" aria-label="BASH pažengusiems">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BASH pažengusiems</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

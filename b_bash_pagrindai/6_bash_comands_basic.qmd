@@ -105,9 +105,9 @@ Liekant **shell_part_2** direktorijoje, atspausdink namų direktorijos (angl. **
 
 **Intarpas**
 
-Hey, ką tik gavai užduotį. Ateityje gausi panašias ir dar sudėtingesnes užduotis. Todėl šioje vietoje padarykime intarpą. Pakalbėkime apie vieną svarbiausių darbo būdų programavime (ir ne tik!) – darbų skaidymą (angl. break down).
+Hey, ką tik gavai užduotį. Ateityje gausi panašias ir dar sudėtingesnes užduotis. Todėl šioje vietoje padarykime intarpą. Pakalbėkime apie vieną svarbiausių darbo būdų programavime (ir ne tik!) - darbų skaidymą (angl. break down).
 
-Kartais gali gauti labai sudėtingą užduotį, kuri iš pradžių atrodys neįveikiama ar nesuprantama. Tai visiškai normalu. Nestresuok – giliai įkvėpk, iškvėpk, jei reikia, pasiimk popierių ir pieštuką ir pradėk skaidyti darbus į logines sekas. Pvz., prieš tai buvusią užduotį galima suskaidyti į tris dalis:
+Kartais gali gauti labai sudėtingą užduotį, kuri iš pradžių atrodys neįveikiama ar nesuprantama. Tai visiškai normalu. Nestresuok - giliai įkvėpk, iškvėpk, jei reikia, pasiimk popierių ir pieštuką ir pradėk skaidyti darbus į logines sekas. Pvz., prieš tai buvusią užduotį galima suskaidyti į tris dalis:
 
 * reikia failų ir direktorijų sąrašo
 * atspausdinti perrašant
@@ -563,7 +563,7 @@ Pvz., tu galėtum rašyti:
 ```bash
 rm empty_1.txt empty_2.txt
 ```
-Tačiau yra akivaizdu, jog šiuose failų pavadinimuose yra tam tikras dėsningumas – jie prasideda **empty_** ir baigiasi **.txt**.
+Tačiau yra akivaizdu, jog šiuose failų pavadinimuose yra tam tikras dėsningumas - jie prasideda **empty_** ir baigiasi **.txt**.
 
 BASH, kaip ir daugelyje kitų programavimo kalbų, yra vadinamieji wildcard - simboliai, kurie leidžia užpildyti vieną ar daugiau ženklų.
 
@@ -662,15 +662,15 @@ grep -P '\t[0-9]\.[0-9]' data/temp_*.txt
 
 ### cut
 
-Kartais tau gali prireikti išfiltruoti ne eilutes, o stulpelius. Pvz., komanda `head` **data/temp_vilnius.txt** parodo tarsi 3 stulpelius: datą, laiką ir temperatūrą. Pastebima, kad tarp datos ir laiko yra mažas tarpas (greičiausiai „space“), o tarp laiko ir temperatūros – didelis tarpas (tikėtina, "tab"). Tai šiek tiek apsunkina darbą, kol nesusipažinai su `sed` komanda, bet tai nereiškia, jog negalime išskaidyti failo į stulpelius pagal skirtingus skirtukus, pvz., „space“ ir „tab“.
+Kartais tau gali prireikti išfiltruoti ne eilutes, o stulpelius. Pvz., komanda `head` **data/temp_vilnius.txt** parodo tarsi 3 stulpelius: datą, laiką ir temperatūrą. Pastebima, kad tarp datos ir laiko yra mažas tarpas (greičiausiai „space“), o tarp laiko ir temperatūros - didelis tarpas (tikėtina, "tab"). Tai šiek tiek apsunkina darbą, kol nesusipažinai su `sed` komanda, bet tai nereiškia, jog negalime išskaidyti failo į stulpelius pagal skirtingus skirtukus, pvz., „space“ ir „tab“.
 
 ![](../img/shell_adv/cut_head.png)
 
 
 Komandai `cut` reikia tam tikrų nustatymų. Pagrindiniai nustatymai:
 
-* `-d` (**delimiter**) – skirtukas, kuris skiria stulpelius. Pagal nutylėjimą skirtukas yra tabuliacija (tab), tad šio nustatymo keisti nereikia. Jeigu norėtum naudoti kitą skirtuką, pvz., tarpo ženklą, turėtum naudoti `-d " "`. Jeigu skirtukas būtų kablelis, naudotum `-d ","` ir t.t.
-* `-f` (**fields**) – nurodo, kuriuos stulpelius (laukelius) nori pasirinkti. Pvz., `-f 2` pasirinktų antrą stulpelį, `-f 2-5` pasirinktų nuo antro iki penkto stulpelio, o `-f 2-5,8` pasirinktų antrą, trečią, ketvirtą, penktą ir aštuntą stulpelius.
+* `-d` (**delimiter**) - skirtukas, kuris skiria stulpelius. Pagal nutylėjimą skirtukas yra tabuliacija (tab), tad šio nustatymo keisti nereikia. Jeigu norėtum naudoti kitą skirtuką, pvz., tarpo ženklą, turėtum naudoti `-d " "`. Jeigu skirtukas būtų kablelis, naudotum `-d ","` ir t.t.
+* `-f` (**fields**) - nurodo, kuriuos stulpelius (laukelius) nori pasirinkti. Pvz., `-f 2` pasirinktų antrą stulpelį, `-f 2-5` pasirinktų nuo antro iki penkto stulpelio, o `-f 2-5,8` pasirinktų antrą, trečią, ketvirtą, penktą ir aštuntą stulpelius.
 
 
 Ši komanda priima „space“ kaip skirtuką ir atspausdina pirmąjį stulpelį:
@@ -740,7 +740,7 @@ Sėkmės!
 
 ### Intarpas: Standartinė įvestis, išvestis ir klaidos
 
-Iki šiol mes naudojome sąvokas, tokias kaip įvestis (**input**) ir išvestis (**output**). Įvestis buvo tai, ką tu įvedi klaviatūra į terminalą, o išvestis – tai, ką BASH atspausdina terminale arba ką tu nukreipi į failą naudodant `>` arba `>>`. Tačiau iki šiol formaliai neaptarėme BASH srautų.
+Iki šiol mes naudojome sąvokas, tokias kaip įvestis (**input**) ir išvestis (**output**). Įvestis buvo tai, ką tu įvedi klaviatūra į terminalą, o išvestis - tai, ką BASH atspausdina terminale arba ką tu nukreipi į failą naudodant `>` arba `>>`. Tačiau iki šiol formaliai neaptarėme BASH srautų.
 
 Linux ir Unix sistemose yra trys pagrindiniai srautai, kurie valdo duomenų įvestį ir išvestį programose bei komandose. Šie srautai vadinami standartine įvestimi (**standard input**), standartine išvestimi (**standard output**) ir standartine klaida (**standard error**). Kiekvienas srautas turi specifinę paskirtį ir failo aprašymo numerį.
 
@@ -825,7 +825,7 @@ Terminale klaidos nebus matyti, bet gali naudoti komandas `head` arba `cat`, kad
 
 ### Kaip visą tai taikyti praktikoje?
 
-Įsivaizduok, kad turi komandą `ls`, kuri kartais sugeneruoja išvestį, kurią nori nukreipti į list.txt, o klaidas – į error.log. Tam galėtum naudoti:
+Įsivaizduok, kad turi komandą `ls`, kuri kartais sugeneruoja išvestį, kurią nori nukreipti į list.txt, o klaidas - į error.log. Tam galėtum naudoti:
 
 ```bash
 ls <direktorija1> <direktorija2> <direktorija3> 1>>list.txt 2>>error.log
@@ -847,7 +847,7 @@ Kartais gali prireikti, kad abu srautai būtų nukreipti į tą patį failą. Pv
 komanda 1>temp.log 2>&1
 ```
 
-Arba gali klaidos srautą nukreipti į temp.log, o standartinę išvestį – į klaidų srautą:
+Arba gali klaidos srautą nukreipti į temp.log, o standartinę išvestį - į klaidų srautą:
 
 ```bash
 komanda 2>temp.log 1>&2
@@ -864,7 +864,7 @@ Iki šiol, kai reikėdavo vienos komandos išvestį panaudoti kitoje komandoje, 
 
 BASH siūlo kelis būdus, kaip efektyviau panaudoti vienos komandos rezultatus kitose, pavyzdžiui, su `xargs` arba kitais įrankiais. Tačiau dažniausiai naudojamas metodas yra **pipe** (angl. "vamzdis").
 
-`|` (**pipe**) – tai vertikalus brūkšnys, kuris sujungia komandas į vieną srautą, kur vienos komandos išvestis tampa kitos komandos įvestimi.
+`|` (**pipe**) - tai vertikalus brūkšnys, kuris sujungia komandas į vieną srautą, kur vienos komandos išvestis tampa kitos komandos įvestimi.
 
 ![](../img/shell_adv/pipe_input_ouput.png)
 
@@ -872,7 +872,7 @@ Pabandyk sujungti šias komandas:
 
 * `grep EE data/balt_customers.csv` - išfiltruoti tik EE vartotojus.
 * Panaudoti `|`, kuris pavers pirmosios komandos išvestį antrosios komandos įvestimi.
-* `cut -d "," -f 1,4` – iškirpti pirmą ir ketvirtą stulpelius.
+* `cut -d "," -f 1,4` - iškirpti pirmą ir ketvirtą stulpelius.
 * Galutinį rezultatą su `>` nukreipk į failą `data/customers_ee_2.csv`.
 
 ![](../img/shell_adv/pipe_input_ouput_ee.png)
@@ -899,17 +899,17 @@ Dabar paleisk pilną komandą, nukreipiančią išvestį į failą:
 
 ### sort 
 
-Tu darai nuostabią pažangą ir jau moki naudoti `grep`, `cut`, `head`, `tail`, su kuriomis gali išfiltruoti eilutes, stulpelius ir t.t. Naudojant `|`, jau moki sujungti kelias komandas į vieną. Tačiau ko tu dar nemoki – kaip išrikiuoti reikšmes. Čia pravers komanda `sort`.
+Tu darai nuostabią pažangą ir jau moki naudoti `grep`, `cut`, `head`, `tail`, su kuriomis gali išfiltruoti eilutes, stulpelius ir t.t. Naudojant `|`, jau moki sujungti kelias komandas į vieną. Tačiau ko tu dar nemoki - kaip išrikiuoti reikšmes. Čia pravers komanda `sort`.
 
 `sort` labai gerai sąveikauja su pipe `|`.
 
 Pagrindiniai nustatymai:
 
-* `-r` – nuo didžiausios iki mažiausios reikšmės.
-* `-n` – rikiuoti skaičius.
-* `-h` – rikiuoti pagal dydį, jei dydis pateiktas *human readable* skaičiais (pvz., KB, MB, GB).
-* `-t` – nurodo, koks yra skirtukas tarp stulpelių (**delimiter**).
-* `-k` – pagal kurį stulpelį rikiuoti.
+* `-r` - nuo didžiausios iki mažiausios reikšmės.
+* `-n` - rikiuoti skaičius.
+* `-h` - rikiuoti pagal dydį, jei dydis pateiktas *human readable* skaičiais (pvz., KB, MB, GB).
+* `-t` - nurodo, koks yra skirtukas tarp stulpelių (**delimiter**).
+* `-k` - pagal kurį stulpelį rikiuoti.
 
 
 Sukurk šį failą:
@@ -988,7 +988,7 @@ Sveikinu, ką tik sukūrei savo pirmą skriptą! Tai komandų rinkinys, kurį ga
 
 `sed` komanda Linux sistemoje yra srauto redaktorius (**stream editor**), naudojamas tekstui apdoroti ir manipuliuoti. Ji leidžia atlikti įvairius teksto pakeitimus, pvz., ieškoti ir pakeisti žodžius, ištrinti eilutes arba modifikuoti tekstą pagal tam tikras taisykles, nespausdinant teksto į terminalą.
 
-Vienas paprasčiausių būdų naudoti `sed` – tai pakeisti tam tikrą tekstą kitu tekstu: tam naudojama tokia sintaksė `sed 's/ką keisti/kuo pakeisti/'`.
+Vienas paprasčiausių būdų naudoti `sed` - tai pakeisti tam tikrą tekstą kitu tekstu: tam naudojama tokia sintaksė `sed 's/ką keisti/kuo pakeisti/'`.
 
 Taigi, ši komanda pakeičia „rytas“ į „vakaras“:
 
@@ -1050,16 +1050,16 @@ echo Labas Rytas | sed 's/rytas/Vakaras/I'
 
 ::: {.callout-tip title="Praktika"}
 
-1. Dirbk su **data/seneles_pasaka.txt**. Tavo tikslas – padaryti pasaką labiau patrauklią vaikams, pakeičiant žodžius simboliais. Naudok `sed` komandą ir pakeisk šiuos žodžius į atitinkamus simbolius. Sujunk visas `sed` komandas į viena *pipeline* naudojant `|`.
+1. Dirbk su **data/seneles_pasaka.txt**. Tavo tikslas - padaryti pasaką labiau patrauklią vaikams, pakeičiant žodžius simboliais. Naudok `sed` komandą ir pakeisk šiuos žodžius į atitinkamus simbolius. Sujunk visas `sed` komandas į viena *pipeline* naudojant `|`.
 
-Žąsiną moliūgą – 🦢🎃
-Vilką – 🐺
-Baltą mešką – 🐻‍❄️
-Joną – 👦🏻
-Eglę - 🌲
-Žalčio – 🐍
-Ragana - 🧙‍♀️
-Pamotė pikta – 😡
+* Žąsiną moliūgą - 🦢🎃
+* Vilką - 🐺
+* Baltą mešką - 🐻‍❄️
+* Joną - 👦🏻
+* Eglę - 🌲
+* Žalčio - 🐍
+* Ragana - 🧙‍♀️
+* Pamotė pikta - 😡
 
 
 Išsaugok pasaką kaip **text/seneles_pasaka_emojies.txt** 
@@ -1068,7 +1068,7 @@ Išsaugok pasaką kaip **text/seneles_pasaka_emojies.txt**
 
 2. **data/temp_vilnius.txt** ir kitų miestų failai turi kelias problemas, kurias turėtum ištaisyti:
     * Vilniaus faile kiekvienos eilutės pradžioje įrašyk „Vilnius “ (su tarpeliu po miesto pavadinimo). Kituose miestuose atitinkmai "Kaunas " ir "Klaipėda "
-    * Dabar pirmieji du skirtukai yra tarpai, o antrasis – tabuliacija. Paleisk `sed` komandą du kartus: vieną kartą pakeisk tarpus (space) į kablelius, o antrą kartą – tabuliacijas į kablelius.
+    * Dabar pirmieji du skirtukai yra tarpai, o antrasis - tabuliacija. Paleisk `sed` komandą du kartus: vieną kartą pakeisk tarpus (space) į kablelius, o antrą kartą - tabuliacijas į kablelius.
     * Išsaugok Vilniaus, Kauno, ir Klaipėdos failus kaip **temp_vilnius.csv**, **temp_kaunas.csv**, **temp_klaipeda.csv** (vietoje .txt naudok **.csv** plėtinį).
     * Kiekvienas miestas turėtų turėti visą komandą vienoje eilutėje naudojant `|`.
 * Sujunk visus Vilniaus, Kauno ir Klaipėdos failus į vieną ir pavadink rezultatą temp_lietuva.csv.
@@ -1087,5 +1087,38 @@ Išsaugok pasaką kaip **text/seneles_pasaka_emojies.txt**
 
 
 
+::: {.callout-tip title="Projektas"}
+Užduotis: Top 10 populiariausių markių analizė naudojant Bash
+
+Šiame mini projekte tu dirbsi su transporto priemonių valstybiniais numeriais pagal markę ir modelį. Duomenys yra prieinami čia ( https://data.gov.lt/datasets/2749/#info ). Paspausk „Duomenys“, o tada „Atsisiųsti“. Gausi failą, kuris vadinsis ValstybinisNumeris.csv. Jis yra gana didelis (~380mb, tad užtruks kol atsisiųs), todėl prireiks ir komandų efektyviam jo apdorojimui (į excelį netelpa, nes čia virš 1 mln eilučių:
+Pagrindiniai stulpeliai (galimi papildomi metaduomenys):
+_id 	vda_id 	valst_nr_zym 	marke 	modelis
+59e046e3 	000008398921ea6 	XXX000 	CHEVROLET 	CRUZE
+3c1e15b0 	000009b2cf32ad9 	XXX000 	TOYOTA MEM 	LEXUS RX400H
+9fba96c4 	00000c08564017c 	XXX000 	MITSUBISHI 	MITSUBISHI ASX
+3a8fda00 	000014d2a79c79d 	XXX000 	VW 	PASSAT
+03344c63 	0000209af983016 	XXX000 	MERCEDES BENZ 	B 180 CDI
+Tavo užduotis:
+
+    Susikurk naują direktoriją „pop_markes“.
+
+    Atsisiųsk failą ir perkelk jį iš „Downloads“ į „pop_markes“ direktoriją. Alternatyva gali pasinaudoti ir bash komanda curl "https://get.data.gov.lt/datasets/gov/regitra/ktpr/ValstybinisNumeris" (su curl susipažinsi netrukus, bet ji šiuoatveju atsiunčia failą)
+
+    Naudodama cut, sort, head arba tail bei uniq komandas, suskaičiuok, kurios 15 markių yra labiausiai populiarios Lietuvoje.
+
+Pagalba:
+
+    Atidaryk ChatGPT ir paklausk:
+    „Kaip naudoti komandą uniq kartu su sort norint suskaičiuoti ir išrikiuoti eilutes pagal pasikartojimų skaičių?“
+    Perskaityk atsakymą, suprask ir užsirašyk tai į savo užrašus.
+
+Rezultatas:
+
+Rezultatas kurį turėtum gauti, parašius visas komandas vienoje eilutėje ir sujungiant jas su pipe | simboliu:
+
+Peržiūrėk sąrašą. Ar matai problemas? Jų ne viena, o netgi slypi pora,nors ir su tuo pačiu gamintoju....
+Panašu, kad duomenys, ne tik ne visai tvarkingi, bet dar ir su atkskirties tašku gali būti problema. Painvestiguok duomenis savarankiškai... Pagalvok ir pasakyk man, kaip spręstum šią problemą ir su kokia komanda?
+
+:::
 
 

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; BASH advanced – Linux ir programavimas</title>
+<title>7&nbsp; BASH pažengusiems – Linux ir programavimas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../b_bash_pagrindai/5_bash_terminal_filesystem.html">Bash Pagrindai</a></li><li class="breadcrumb-item"><a href="../b_bash_pagrindai/7_bash_comands_advanced_1.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BASH advanced</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../b_bash_pagrindai/5_bash_terminal_filesystem.html">Bash Pagrindai</a></li><li class="breadcrumb-item"><a href="../b_bash_pagrindai/7_bash_comands_advanced_1.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BASH pažengusiems</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -205,13 +205,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../b_bash_pagrindai/7_bash_comands_advanced_1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BASH advanced</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BASH pažengusiems</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../b_bash_pagrindai/8_bash_commands_advanced_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">BASH advanced 2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">BASH darbas su OS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../b_bash_pagrindai/12_ssh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">SSH</span></span></a>
   </div>
 </li>
       </ul>
@@ -228,31 +234,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../c_editoriai_git/9_text_editors_ide.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Text editors ir IDE</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Text editors ir IDE</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../c_editoriai_git/10_git_github_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Git ir GitHub 1</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Git ir GitHub 1</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../c_editoriai_git/11_git_github_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Git ir GitHub 2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git ir GitHub 2</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../c_editoriai_git/12_git_github_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git ir GitHub 1</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../c_editoriai_git/12_ssh.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">SSH</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Git ir GitHub 1</span></span></a>
   </div>
 </li>
       </ul>
@@ -432,45 +432,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#pagalba-sau" id="toc-pagalba-sau" class="nav-link active" data-scroll-target="#pagalba-sau"><span class="header-section-number">7.1</span> Pagalba sau</a>
+  <li><a href="#įvadas" id="toc-įvadas" class="nav-link active" data-scroll-target="#įvadas"><span class="header-section-number">7.1</span> Įvadas</a></li>
+  <li><a href="#pagalbos-komandos-help-man-ir-tldr" id="toc-pagalbos-komandos-help-man-ir-tldr" class="nav-link" data-scroll-target="#pagalbos-komandos-help-man-ir-tldr"><span class="header-section-number">7.2</span> Pagalbos Komandos: help, man ir tldr</a>
   <ul class="collapse">
-  <li><a href="#help" id="toc-help" class="nav-link" data-scroll-target="#help"><span class="header-section-number">7.1.1</span> help</a></li>
-  <li><a href="#man" id="toc-man" class="nav-link" data-scroll-target="#man"><span class="header-section-number">7.1.2</span> man</a></li>
-  <li><a href="#find" id="toc-find" class="nav-link" data-scroll-target="#find"><span class="header-section-number">7.1.3</span> find</a></li>
-  <li><a href="#chmod" id="toc-chmod" class="nav-link" data-scroll-target="#chmod"><span class="header-section-number">7.1.4</span> chmod</a></li>
-  <li><a href="#chown" id="toc-chown" class="nav-link" data-scroll-target="#chown"><span class="header-section-number">7.1.5</span> chown</a></li>
-  <li><a href="#ps-ir-top" id="toc-ps-ir-top" class="nav-link" data-scroll-target="#ps-ir-top"><span class="header-section-number">7.1.6</span> ps ir top</a></li>
+  <li><a href="#help" id="toc-help" class="nav-link" data-scroll-target="#help"><span class="header-section-number">7.2.1</span> <code>--help</code></a></li>
+  <li><a href="#man-manual-pages" id="toc-man-manual-pages" class="nav-link" data-scroll-target="#man-manual-pages"><span class="header-section-number">7.2.2</span> man: manual pages</a></li>
+  <li><a href="#tldr" id="toc-tldr" class="nav-link" data-scroll-target="#tldr"><span class="header-section-number">7.2.3</span> tldr</a></li>
+  <li><a href="#chatgpt" id="toc-chatgpt" class="nav-link" data-scroll-target="#chatgpt"><span class="header-section-number">7.2.4</span> ChatGPT</a></li>
+  <li><a href="#konspektavimas" id="toc-konspektavimas" class="nav-link" data-scroll-target="#konspektavimas"><span class="header-section-number">7.2.5</span> konspektavimas</a></li>
   </ul></li>
-  <li><a href="#sed" id="toc-sed" class="nav-link" data-scroll-target="#sed"><span class="header-section-number">7.2</span> sed</a></li>
-  <li><a href="#xed" id="toc-xed" class="nav-link" data-scroll-target="#xed"><span class="header-section-number">7.3</span> xed</a></li>
-  <li><a href="#find-1" id="toc-find-1" class="nav-link" data-scroll-target="#find-1"><span class="header-section-number">7.4</span> find</a></li>
-  <li><a href="#ps" id="toc-ps" class="nav-link" data-scroll-target="#ps"><span class="header-section-number">7.5</span> ps</a>
+  <li><a href="#tinklo-komandos" id="toc-tinklo-komandos" class="nav-link" data-scroll-target="#tinklo-komandos"><span class="header-section-number">7.3</span> Tinklo komandos</a></li>
+  <li><a href="#curl-ir-wget" id="toc-curl-ir-wget" class="nav-link" data-scroll-target="#curl-ir-wget"><span class="header-section-number">7.4</span> curl ir wget</a>
   <ul class="collapse">
-  <li><a href="#tldr" id="toc-tldr" class="nav-link" data-scroll-target="#tldr"><span class="header-section-number">7.5.1</span> tldr</a></li>
+  <li><a href="#curl" id="toc-curl" class="nav-link" data-scroll-target="#curl"><span class="header-section-number">7.4.1</span> curl</a></li>
   </ul></li>
-  <li><a href="#learning-path-for-bash" id="toc-learning-path-for-bash" class="nav-link" data-scroll-target="#learning-path-for-bash"><span class="header-section-number">8</span> Learning Path for Bash</a>
+  <li><a href="#failų-redagavimas-ir-apdorojimas" id="toc-failų-redagavimas-ir-apdorojimas" class="nav-link" data-scroll-target="#failų-redagavimas-ir-apdorojimas"><span class="header-section-number">7.5</span> Failų Redagavimas ir Apdorojimas</a>
   <ul class="collapse">
-  <li><a href="#file-permissions-and-ownership" id="toc-file-permissions-and-ownership" class="nav-link" data-scroll-target="#file-permissions-and-ownership"><span class="header-section-number">8.1</span> 1. File Permissions and Ownership</a></li>
-  <li><a href="#environment-variables" id="toc-environment-variables" class="nav-link" data-scroll-target="#environment-variables"><span class="header-section-number">8.2</span> 2. Environment Variables</a></li>
-  <li><a href="#text-processing-tools" id="toc-text-processing-tools" class="nav-link" data-scroll-target="#text-processing-tools"><span class="header-section-number">8.3</span> 3. Text Processing Tools</a></li>
-  <li><a href="#basic-networking-commands" id="toc-basic-networking-commands" class="nav-link" data-scroll-target="#basic-networking-commands"><span class="header-section-number">8.4</span> 4. Basic Networking Commands</a></li>
-  <li><a href="#job-control-light-coverage" id="toc-job-control-light-coverage" class="nav-link" data-scroll-target="#job-control-light-coverage"><span class="header-section-number">8.5</span> 5. Job Control (Light Coverage)</a></li>
-  <li><a href="#command-history-and-aliases" id="toc-command-history-and-aliases" class="nav-link" data-scroll-target="#command-history-and-aliases"><span class="header-section-number">8.6</span> 6. Command History and Aliases</a></li>
-  <li><a href="#file-compression-and-archiving" id="toc-file-compression-and-archiving" class="nav-link" data-scroll-target="#file-compression-and-archiving"><span class="header-section-number">8.7</span> 7. File Compression and Archiving</a></li>
-  <li><a href="#disk-usage-commands" id="toc-disk-usage-commands" class="nav-link" data-scroll-target="#disk-usage-commands"><span class="header-section-number">8.8</span> 8. Disk Usage Commands</a></li>
-  <li><a href="#secure-file-transfer" id="toc-secure-file-transfer" class="nav-link" data-scroll-target="#secure-file-transfer"><span class="header-section-number">8.9</span> 9. Secure File Transfer</a></li>
-  <li><a href="#command-execution-and-debugging" id="toc-command-execution-and-debugging" class="nav-link" data-scroll-target="#command-execution-and-debugging"><span class="header-section-number">8.10</span> 10. Command Execution and Debugging</a></li>
-  <li><a href="#wrap-up" id="toc-wrap-up" class="nav-link" data-scroll-target="#wrap-up"><span class="header-section-number">8.11</span> Wrap-Up</a></li>
+  <li><a href="#uniq" id="toc-uniq" class="nav-link" data-scroll-target="#uniq"><span class="header-section-number">7.5.1</span> uniq</a></li>
   </ul></li>
+  <li><a href="#failų-paieška" id="toc-failų-paieška" class="nav-link" data-scroll-target="#failų-paieška"><span class="header-section-number">7.6</span> Failų Paieška</a>
+  <ul class="collapse">
+  <li><a href="#find" id="toc-find" class="nav-link" data-scroll-target="#find"><span class="header-section-number">7.6.1</span> find</a></li>
+  <li><a href="#locate" id="toc-locate" class="nav-link" data-scroll-target="#locate"><span class="header-section-number">7.6.2</span> locate</a></li>
+  <li><a href="#whereis" id="toc-whereis" class="nav-link" data-scroll-target="#whereis"><span class="header-section-number">7.6.3</span> whereis</a></li>
+  <li><a href="#which" id="toc-which" class="nav-link" data-scroll-target="#which"><span class="header-section-number">7.6.4</span> which</a></li>
+  </ul></li>
+  <li><a href="#failo-teisių-valdymas" id="toc-failo-teisių-valdymas" class="nav-link" data-scroll-target="#failo-teisių-valdymas"><span class="header-section-number">7.7</span> Failo teisių valdymas</a></li>
+  <li><a href="#procesų-valdymas" id="toc-procesų-valdymas" class="nav-link" data-scroll-target="#procesų-valdymas"><span class="header-section-number">7.8</span> Procesų Valdymas</a>
+  <ul class="collapse">
+  <li><a href="#ps-aux-procesų-sąrašas" id="toc-ps-aux-procesų-sąrašas" class="nav-link" data-scroll-target="#ps-aux-procesų-sąrašas"><span class="header-section-number">7.8.1</span> ps aux – Procesų sąrašas</a></li>
+  <li><a href="#htop-patogus-procesų-stebėjimas-realiu-laiku" id="toc-htop-patogus-procesų-stebėjimas-realiu-laiku" class="nav-link" data-scroll-target="#htop-patogus-procesų-stebėjimas-realiu-laiku"><span class="header-section-number">7.8.2</span> htop – Patogus procesų stebėjimas realiu laiku</a></li>
+  <li><a href="#whoami" id="toc-whoami" class="nav-link" data-scroll-target="#whoami"><span class="header-section-number">7.8.3</span> whoami</a></li>
+  <li><a href="#path" id="toc-path" class="nav-link" data-scroll-target="#path"><span class="header-section-number">7.8.4</span> $PATH</a></li>
+  <li><a href="#which-1" id="toc-which-1" class="nav-link" data-scroll-target="#which-1"><span class="header-section-number">7.8.5</span> which</a></li>
+  </ul></li>
+  <li><a href="#nano" id="toc-nano" class="nav-link" data-scroll-target="#nano"><span class="header-section-number">7.9</span> nano</a>
+  <ul class="collapse">
+  <li><a href="#pagrindiniai-nano-klaviatūros-trumpiniai" id="toc-pagrindiniai-nano-klaviatūros-trumpiniai" class="nav-link" data-scroll-target="#pagrindiniai-nano-klaviatūros-trumpiniai"><span class="header-section-number">7.9.1</span> <strong>Pagrindiniai “nano” klaviatūros trumpiniai</strong>:</a></li>
+  <li><a href="#nano-paleidimas-iš-komandų-eilutės" id="toc-nano-paleidimas-iš-komandų-eilutės" class="nav-link" data-scroll-target="#nano-paleidimas-iš-komandų-eilutės"><span class="header-section-number">7.9.2</span> <strong>“nano” paleidimas iš komandų eilutės</strong>:</a></li>
+  </ul></li>
+  <li><a href="#alias" id="toc-alias" class="nav-link" data-scroll-target="#alias"><span class="header-section-number">7.10</span> Alias</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../b_bash_pagrindai/5_bash_terminal_filesystem.html">Bash Pagrindai</a></li><li class="breadcrumb-item"><a href="../b_bash_pagrindai/7_bash_comands_advanced_1.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BASH advanced</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../b_bash_pagrindai/5_bash_terminal_filesystem.html">Bash Pagrindai</a></li><li class="breadcrumb-item"><a href="../b_bash_pagrindai/7_bash_comands_advanced_1.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BASH pažengusiems</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BASH advanced</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BASH pažengusiems</span></h1>
 </div>
 
 
@@ -487,240 +497,710 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="pagalba-sau" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="pagalba-sau"><span class="header-section-number">7.1</span> Pagalba sau</h2>
-<p>Praeitame skyriuje susipažinai su daug komandų, kurios tau kuria pagrindą darbui su SHELL. Tu išmokai daug programų, su daug skirtingų nustatymų, tačiau kaip gali įsivaizduoti, tu tikrai neišmokai VISKO. Todėl prieš judant toliau, pradėkie turputi nuo to, kaip padėti sau, kai pastringi: kai neprisemeni kokias opcijas naudoti ir t.t.</p>
-<section id="help" class="level3" data-number="7.1.1">
-<h3 data-number="7.1.1" class="anchored" data-anchor-id="help"><span class="header-section-number">7.1.1</span> help</h3>
-<p>vienas papraščiausių būdų rasti greitai paaiškinimą, kaip veika tam tikra komanda pasinaudoti help, dažniausiai help iššaukiama taip</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">komanda</span> <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>kaip pameni, <code>--</code> naudoji prieš tuos nustatymus, kurie išrašyti pilnai, trumpiniams naudjoamas vienas <code>-</code>.</p>
-<p>tada tau terminale bus atspaudintas visas su šia komanda susijęs pagalbos tekstas.</p>
-<p>dažniausiai help sudaro:</p>
+<section id="įvadas" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="įvadas"><span class="header-section-number">7.1</span> Įvadas</h2>
+<p>Praėjusiame skyriuje susipažinai su įvairiomis CLI (command line interface) komandomis, suteikiančiomis pagrindinius įrankius darbui su shell aplinka. Išmokai naudoti <code>echo</code>, <code>cat</code>, <code>head</code>, <code>tail</code>, <code>less</code>, <code>wc</code>, <code>touch</code>, <code>mkdir</code>, <code>cp</code>, <code>mv</code>, <code>rm</code>, <code>grep</code>, <code>cut</code>, <code>sort</code>, <code>sed</code>, taip pat operatorius <code>&gt;</code>, <code>&gt;&gt;</code>, bei <code>|</code>. Šios komandos leidžia dirbti su failais, kurti direktorijas, atlikti filtravimą pagal eilutes ir stulpelius bei automatizuoti užduotis.</p>
+<p>Šiame skyriuje dar gilinsimės į failų valdymą ir apdorojimą. Sužinosi:</p>
 <ul>
-<li>…</li>
-<li>….</li>
-<li>…..</li>
+<li><p><strong>Pagalbos komandas</strong> - mokysiesi naudotis <code>help</code>, <code>man</code> ir <code>tldr</code>, kad greitai rastum informaciją apie komandas.</p></li>
+<li><p><strong>Tinklo komandas</strong> - išmoksi naudoti <code>ping</code>, <code>curl</code> ir <code>wget</code>, kad galėtum patikrinti ryšį bei atsisiųsti duomenis.</p></li>
+<li><p><strong>Kaip ieškoti failų</strong> - naudosi <code>find</code>, <code>locate</code> ir <code>whereis</code>, kad efektyviai surastum failus ir suprastum jų vietą.</p></li>
+<li><p><strong>Teksto apdorojimą</strong> - įgysi žinių apie <code>awk</code>, <code>paste</code> ir <code>sed</code>, kad galėtum analizuoti ir jungti duomenis.</p></li>
+<li><p><strong>Failų teises ir savininkystę</strong> - sužinosi apie <code>chmod</code>, <code>chown</code> ir <code>chgrp</code>, kurie padės valdyti failų teises ir naudotojus.</p></li>
+<li><p><strong>Procesų valdymą</strong> - sužinosi, kaip stebėti ir valdyti procesus naudojant <code>ps</code> ir <code>top</code> ir <code>htop</code>.</p></li>
+<li><p><strong>Komandų istoriją ir alias</strong> - naudosi <code>history</code> ir <code>alias</code>, kad galėtum peržiūrėti praeityje naudotas komandas bei kurti trumpinius.</p></li>
 </ul>
-<p>Pabandyk rasti pagalba šioms komandoms: ls, cp, rm, sed.</p>
+<p>Šis skyrius suteiks tvirtesnį pagrindą darbui su Linux aplinka, padės efektyviau valdyti failus ir suprasti esminius failų teisių, procesų bei tinklo valdymo aspektus.</p>
+<p>Taip pat tu vis dažniau gausi nuorodas naudotis ChatGPT. Esminis dalykas - išmokti naudotis šiuo įrankiu ne tam, kad jis už tave spręstų problemas, bet kad įgalintų tave greičiau rasti geriausią sprendimą. Todėl niekad nesiek atiduoti sprendimo paieškos ChatGPT, o veikiau naudok jį kaip korektorių: pasitikrink, ar gerai darai, ar gali pagerinti savo darbą, taip pat įgyti naujų žinių ar pasitikrinti save.</p>
+<p>Taip pat mano rekomendacija perskaičius kiekvieną skyriaus dalį - skirk laiko reflektuoti, atsakant į klausimus:</p>
+<ul>
+<li>Ką aš ką tik išmokau?</li>
+<li>Kaip aš tai galėčiau panaudoti? Sukurk mintyse bent kelis scenarijus.</li>
+<li>Pradėk konspektuotis kompiuteryje naudojant Joplin arba Obsidian - programos padės vėliau lengviau rasti tai, ką išmokai.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Namų direktorijoje susikurk subdirektoriją šiam skyriui, pavadink ją pvz <code>bash_advanced</code>. Pereik į ją, nes šįkart visus duomenis susikursi besimokydama.</p>
+</div>
+</div>
 </section>
-<section id="man" class="level3" data-number="7.1.2">
-<h3 data-number="7.1.2" class="anchored" data-anchor-id="man"><span class="header-section-number">7.1.2</span> man</h3>
-<p>Exercise Exercise How can I get help for a command?</p>
-<p>To find out what commands do, people used to use the man command (short for “manual”). For example, the command man head brings up this information:</p>
-<p>HEAD(1) BSD General Commands Manual HEAD(1)</p>
-<p>NAME head – display first lines of a file</p>
-<p>SYNOPSIS head [-n count | -c bytes] [file …]</p>
-<p>DESCRIPTION This filter displays the first count lines or bytes of each of the specified files, or of the standard input if no files are specified. If count is omitted it defaults to 10.</p>
-<pre><code> If more than a single file is specified, each file is preceded by
- a header consisting of the string ``==&gt; XXX &lt;=='' where ``XXX''
- is the name of the file.</code></pre>
-<p>SEE ALSO tail(1)</p>
-<p>man automatically invokes less, so you may need to press spacebar to page through the information and :q to quit.</p>
-<p>The one-line description under NAME tells you briefly what the command does, and the summary under SYNOPSIS lists all the flags it understands. Anything that is optional is shown in square brackets […], either/or alternatives are separated by |, and things that can be repeated are shown by …, so head’s manual page is telling you that you can either give a line count with -n or a byte count with -c, and that you can give it any number of filenames.</p>
-<p>The problem with the Unix manual is that you have to know what you’re looking for. If you don’t, you can search Stack Overflow, ask a question on DataCamp’s Slack channels, or look at the SEE ALSO sections of the commands you already know. Instructions 1/2 50 XP</p>
-<pre><code>1
+<section id="pagalbos-komandos-help-man-ir-tldr" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="pagalbos-komandos-help-man-ir-tldr"><span class="header-section-number">7.2</span> Pagalbos Komandos: help, man ir tldr</h2>
+<p>Naudojant Linux, komandos turi daugybę nustatymų ir opcijų, kurias gali būti sudėtinga prisiminti. Pavyzdžiui, gali iškilti klausimas, ar <code>sort</code> komandai reikia naudoti <code>-d</code> ar <code>-t</code> flagą, arba norisi prisiminti, kuo <code>sed</code> skiriasi nuo <code>grep</code>. Šiame skyriuje išmoksi efektyviai naudotis pagalbos įrankiais, kurie padės greitai rasti informaciją apie komandas ir jų naudojimo būdus, kai iškyla klausimų.</p>
+<p>Aptariamos pagalbos komandos:</p>
+<ul>
+<li><code>help</code> komanda - kaip naudoti <code>--help</code>, kad greitai gautum pagrindinę informaciją apie komandą ir jos dažniausius nustatymus.</li>
+<li><code>man</code> komanda - detalus vadovas apie <code>man</code> komandos naudojimą ir struktūrą (sekcijos NAME, SYNOPSIS, DESCRIPTION).</li>
+<li><code>tldr</code> komanda - kaip greitai gauti pagrindinius patarimus ir scenarijus, naudojant <code>tldr</code>, kuris pateikia paprastus pavyzdžius ir labiausiai reikalingus flagus.</li>
+<li>ChatGPT - kaip gali pasitelkti įrankius, tokius kaip ChatGPT, klausimų paaiškinimui ir pagalbai, kai prireikia papildomo paaiškinimo.</li>
+</ul>
+<p><strong>Scenarijus</strong></p>
+<ul>
+<li>Susikurk projekto direktoriją su <code>mkdir</code> ir pakeisk savo darbinę direktoriją į projekto direktoriją. Pavadink ją pvz., “<strong>energetikos_analizė</strong>”.</li>
+<li>Parsisiųsk fizinių asmenų elektros suavrotjimo duomenis .csv formatu su <code>curl</code> komanda. Tai padarysi taip:</li>
+<li><code>curl https://get.data.gov.lt/datasets/gov/eso/fizin_asm_elektros_suvartojimas/FizinAsmElektraSuvartojimas/:format/csv -o raw_data_hh_customers.csv</code></li>
+<li>Siuntimas truks ilgai, nes failo dydis yra apie 2 GB. Tai daugmaž atitinka 130 000 puslapių Word dokumentų.</li>
+<li>Nusprendei susipažinti su duomenimis, analizuojant pirmas 15 eilučių terminale. Pamiršai, kokie flagai naudojami su <code>wc</code>, <code>head</code> ir <code>cut</code> komandomis.</li>
+</ul>
+<section id="help" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="help"><span class="header-section-number">7.2.1</span> <code>--help</code></h3>
+<p>Dauguma komandų turi flagą (opciją) <code>--help</code>, kuris pateikia santrauką apie komandos veikimą ir galimus flagus. Kai kurios komandos taip pat turi trumpesnį <code>-h</code> flagą. Jei <code>--help</code> neveikia, pabandyk <code>-h</code>. Atmink, kad <code>--help</code> veikia tik pagrindinei komandai (pvz., apt –help), tačiau subkomandoms (<code>apt update</code>) ji gali neveikti.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Kiek eilučių yra <code>raw_data_hh_customers.csv</code> faile? Naudok <code>wc --help</code>, kad sužinotum flagą, skirtą eilučių skaičiavimui.</li>
+<li>Konspektavimas: Tekstiniame dokumente užsirašyk, ką bandei padaryti, kokie naudingi flagai, ir pateik pavyzdines komandas.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="man-manual-pages" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="man-manual-pages"><span class="header-section-number">7.2.2</span> man: manual pages</h3>
+<p>Kaip ir su namų technika - prie jos būna trumpos ir ilgos instrukcijos. Trumpos parodo kaip kaip veikia, tia atitinka <code>--help</code> arba <code>tldr</code> (su kuria susipažinsi netrukus). Tačiau kartais reikia dar daugiau informacijos, tam kad suprastum kaip kas veikia - arba skaityti pilnas vartotojų instrikcuijas (angl - manual). Būtent šią funkcija atlieka <code>man</code> komanda, kuriai kaip argumentą gali pateikti kitą komandą, arba net ją pačia!</p>
+<p>Kadangi <code>man</code> - vartojojo instrukcijos yra kur kas iglesnės nei <code>--help</code>, man savo išvesties nespausdina terminale, o iššaukia <code>less</code> su kuria jau susipažinai praeitame skyriuje. Keisti psulapius gali su space klavišu, o nutraukti su <code>:q</code></p>
+<p>Man puslapis įprastai turi tokią struktūra</p>
+<p><em>name </em>synopsos <em>description </em>author <em>reproting bugs </em>copywrigh</p>
+<p>[…] reiškia…. , o altenrtyvos atksirtos |. kas gali kartotis nurodoma su …</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Prisimeni, jog su <code>head</code> ir <code>tail</code> galėjai nurodyti kiek eilučių spausdinti? pvz <code>head -n 15</code> atspausdino pirmas 15 eilučių. Atsiversk <code>man head</code> ir susirask <code>-n</code>. Ten aprašytas naudojimas - skaičiaus. Dabar pažiūrėk <code>man tail</code> ir ten rask -n bet su + naudodjimu.</p></li>
+<li><p>susikonspektuok head ir tail tame pačiame dokumente, kaip ir <code>wc</code></p></li>
+<li><p>dabar tavo failas raw_data_hh_customers.csv turi antraštes (header) ir duomenis. pasinaudojus head arba tail bei išmoktais flagais, sukurk naują failą <code>pure_data.csv</code> kuriame būtų visos originalaus failo eilutės bet ne antraštė.</p></li>
+<li><p>palyging su <code>wc</code> eilučių skaičių viename ir kitame faile ir įsitinkjog skirtumas tik 1 eilutė.</p></li>
+<li><p>su <code>ls -lh</code> arba <code>ls -l</code> palygik, kiek sutaupei vietos, atsisakius vienos eilutės “duomenų”.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="tldr" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="tldr"><span class="header-section-number">7.2.3</span> tldr</h3>
+<p><code>man</code> puslapiai yra begalo išsamūs, tačiau jie ir ganėtinai ilgi. <code>&lt;command&gt; --help</code> arba <code>&lt;command&gt; -h</code> kartais būna gani trumpi ir aiškūs pagalbos puslpiai, tačiau jeigu komanda turi daug nustatymų ir argumentų, net <code>--help</code> puslapiai gali būti perdaug sudėtingi, ypač pačioje pradžioje naudojantis shell. Čia į paggalba gali ateiti kita programa, kurios greičiausiai tavo kompiuretyje nėra - <code>tldr</code>. (akronimias reiškiantis “too long;didn’t read it” = santrauka). Ši programa pateikia dažniausius komandos naudjimo scenarijus ir labai trumpą paaiškinimą apie komandą. Tad tai dar vienas instrumentas tavo arsenale, primiršus prismint kaip veikia komanda, ką ji daro ir kokie nustatymai ir argumentai yra galimi.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>pasitikrink ar turi <code>tldr</code> su <code>which</code></li>
+<li>Prisimink kokius žingsnius turi padaryti, norint instlaituoti programą?</li>
+<li>Insaltiuok <code>tldr</code></li>
+</ul>
+</div>
+</div>
+<p><code>tldr</code> komanda priima kaip argumentą kitą komandą. Daugumai standarintinių komandų, <code>tldr</code> terminale tau atspausdins standarintinius ir dažniausiai vartojamus flagus (nustatymus) bei kelis jų taikomo pvz.</p>
+<ul>
+<li>Pabandyk
+<ul>
+<li><code>tldr head</code></li>
+<li><code>tldr wc</code></li>
+</ul></li>
+<li>Pabandyk <code>tldr tldr</code></li>
+</ul>
+<p>kaip matai, tldr priima ir <command> ir <command><subcommand></subcommand></command></command></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Tu norėtum po truputi inspektuoti raw_data_hh_customers.csv failą, tačiau pamirškai, kaip pasirinkti tam tikrą stulpelį. pasinaudkok <code>tldr cut</code>.</p></li>
+<li><p>Jeigu paleisti cut … raw_data_hh_customers.csv , jis tau atspausdins laai duag eilučių. tia būtų neefektyvu. Prisimink, kaip sujungti skritingas komandas ir pagalvok, kaip galėtum inspreksuoti kievieną stulpelį atksirai, bet matyti tik pirmas 15 eilučių? inspektuok temrinale pirmus 10 stulepių, pabandyk surpasti ar jie būtų vertingi analizei ar ne.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="chatgpt" class="level3" data-number="7.2.4">
+<h3 data-number="7.2.4" class="anchored" data-anchor-id="chatgpt"><span class="header-section-number">7.2.4</span> ChatGPT</h3>
+<p>ChatGPT yra nuostabus įrankis. Jis nėra labai protingas, bet jo algoritmai yra gana stiprūs, jog padėtų tau dirbant. Keli labai svarbus dalykai.</p>
+<p>Tik prisiregistravus tu gali naudotis gerensiu modeliu. Taip pat išsisaugo tavo užklausų istorija, o tai padeda turėti ilgenses sesijas. Ilgensės sesijos turi naudą, jog tda ChatGPT reaguoja į visą sesijos kontekstą, apie ką kalbėjote, kokią informaciją iš tavęs gavo.</p>
+<p>Labai svarbu, jog po truputi pratintumeisi KAIP rašyti užklausas CHATGPT. Štai keli patarimai</p>
+<ul>
+<li>angliškai chatgpt surptna ir atršo geriau, nei lietuviškai, nes angliškos kalbos modelis turėjo daugiau trenirvaimosi duomenų (wikipedia anglų kalba yra daug išsamesnė nei lietuvių)</li>
+<li>pradėk užklausą suteikiant kotektsą, o ne tik rašant klausimą.</li>
+<li>kartais tu gali norėti, jog chatgpt elgtsi kaip tam tikras asmuo. tai gali suformuluoti savo užklausoje</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>praeitame praktikume tu panaudojai <code>head 15 raw_data_hh_customers.csv | cut -d "," -f 1</code> bet galėjai panaudoti ir <code>cut -d "," -f 1 raw_data_hh_customers.csv | head 15</code>. tačiau kuris variantas yra gerensis?</p>
+<p>išbanyk šias užklausas ir palygink jų atskaymus. Rašyk užklausas pradėdama vis naują chat’ą.</p>
+<ol type="1">
+<li>“Ar galima naudoti <code>cut -d "," -f 1 raw_data_hh_customers.csv | head 1</code>”.</li>
+<li>Kuri komanda yra efektyvesnė <code>head 15 raw_data_hh_customers.csv | cut -d "," -f 1</code> ar <code>cut -d "," -f 1 raw_data_hh_customers.csv | head 15</code>.</li>
+<li>O dabar suteik daugiau konteksto ir įvertinkg GPT atsakymą į klausimą: “Aš dirbu su 4 mln eilučių failų raw_data_hh_customers.csv. Mano tiklsas yra perpūrėiti pirma 15 eilučių kiekvieno stulpelio. koks komendų head ir cut eiliškumas šioje situacijoje būtų geriausas. paaiškink savo atsakymą. elkis taip, tarsi būtum labai patyes shell (bash) programuotojas”</li>
+</ol>
+</div>
+</div>
+<p>Ar pastebėjai skirtumą? Pateikus kontekstą bei paprašius argumentuoti savo pasirinkimą, GPT tau pateikia kur kas tiklsinesįė taskymą. Prierašas jog elgųtsi kaip patyręs bash programuotojas, GPT ne tik atsako į klausimą, galbūt pateikia net ir papildomų sprendimų kaip įveikti šią užduoti.</p>
+<p>taigi įismink:</p>
+<ul>
+<li>kontekstas (ką tu darai)</li>
+<li>tikslas (ką nori padaryti, kokį rezultatą norėtum gauti)</li>
+<li>problemos (ką gauni vietoj to, ko negauni, arba kur matai problemą)</li>
+<li>prašymas paaikšinti savo pasirinkimą</li>
+<li>“agento” sukūrimas paakant kaip kas turėtų GP elgti</li>
+</ul>
+<p>yra žingniai, kurie padės tau efektyviau dirbti</p>
+</section>
+<section id="konspektavimas" class="level3" data-number="7.2.5">
+<h3 data-number="7.2.5" class="anchored" data-anchor-id="konspektavimas"><span class="header-section-number">7.2.5</span> konspektavimas</h3>
+<p>Ko gero jau pradedi pastabeti, kad prisiminti visas komandas nėra lengva. Kai kurias iš jų naudosi taip dažnai, jog jos taps pastovios atminties dalimi. Kai kurias, naudosi rečiau. Dirbant analitikoje, programavime, tu niekada nepsiriminsi visko. Tiesiog reikia įprasti ir naudtis savo “antrinėmis smegenimis” - konspektuotis viską taip, kad vėliau prireikus galėtum greičiau rasti reikiamą informaciją.</p>
+<p>Pvz analitikai, dažnai išsisaugo ilgus duomenų užklausų kodų gabalus (code chunks), ypač jeigu jų prireikia reguliariai, bet nėra kitos geros galimybės jų išsisaugoti. prograuotojai irgi dažnai naudoja obsidian https://youtu.be/kUZ3RP08-HY.</p>
+<p>Aš dažnai naudoju Obsidian arba Joplin tam, kad kosnpektuočiausi kokia poblema kilo, kaip aš ją sprendžiau, kas veikė kas ne. konspektuotis rpadedu dar tebesitęsiant problemai. pvz, ne per seniausiai mano kompiuteris negalėjo sukurti VPN tunelio, tada kartu su chatgpt bandžiau kartu spręsti kilusias probelmas. Kartu mes išmabdėme daug dalykų, kad patikinti kas veikia kas ne, tam kad identifikuoti problemos priežastį ir susiaurinti įtaramiųjų sąrašą. vsią šį procesą aš apsirašiau tam, kad vėl kilus tai probelamai, neturėčiau kartoti šio proceso, o jau žinočiau ką pradėti daryti ir taip sutaupyčiau laiko, nes pats atlikes tam tikrus veiksmus jau galėčiau chatgpt užduoti tiklesniį klausimą, apteikiant aiškesnensį situaijos įvertinimą.</p>
+<p>Kitas scenarijus, kur nuolat naudoju užrašus, tai kaip aš instlaiuoju savo Linux sistemą. Kadangi mano kompiuteris naudoajmas ir darbo ir asmeniniais tikslais, man svarbu, akd perinstaliavus Linux, aš turėčiau gerai aprašytą procesą, ką turiu instaliuoti, po ko, kodėl. Po instaliavimo proceso, vis instlaiuojant naujas programas, aš kaskart papildau šį dokumentą, tam kad visad turėčiau aktualiasia jo versiją. To nedarant atsiranda taip vadinas “tech debt” - techninė skolą. Tai temrinas kuris naudojamas IT pasaulyje, kai programuotjai kažką padaro čia ir dabar, palikdami problemas ateičiai. :)</p>
+<div class="paktika">
+<ul>
+<li>peržirūėk https://youtu.be/kUZ3RP08-HY ir galbūt https://youtu.be/hSTy_BInQs8</li>
+<li>instaliuok obsidian. Susikurk “vault” (direktoriją kurioje bus visi obsidian užrašai idelaisiu atveju į savo namų serverio Nextcloud)</li>
+<li>Perkelk savo konspektus. pagalvok, kaokia būtų geriausia aplankų ir failų struktūra</li>
+</ul>
+</div>
+<p>Obsidian naudoja Markdown formatą. Peržiūrėk čia, kaip jis naudojamas.</p>
+<p>Plugins</p>
+<ul>
+<li>canvas</li>
+<li>tags</li>
+<li>tagsfolder</li>
+<li>codeblocks dataview</li>
+</ul>
+</section>
+</section>
+<section id="tinklo-komandos" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="tinklo-komandos"><span class="header-section-number">7.3</span> Tinklo komandos</h2>
+<p>Šioje dalyje to išmoksi naudoti <code>ping</code>, <code>curl</code>ir <code>wget</code>, kad galėtum patikrinti ryšį bei atsisiųsti duomenis.</p>
+<p>Filmuose apie povandeninius laivus dažnai sonarai paleidžia “<strong>ping</strong>” garsą, tam kad paleistas garsas reflektuotų objektus esančius vandenyje ir sonarai galėtų identifikuoti, kur slepiasi kitas povandeninis laivas.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UeO4SV-wghs?si=GTxIVhDA_IetV95z&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
+</iframe>
+<p><video src="../img/bash_advanced/one_ping_only.mp4" class="img-fluid" controls=""><a href="../img/bash_advanced/one_ping_only.mp4">Video</a></video></p>
+<p>Panašiai ir tu, gali naudoti <code>ping</code> komandą, kuri pingina kompiuterius, serverius ir gali patikrinti tiek, ar tu turi prieigą prie interneto (ping komanda išeina), tiek ar tavo norimas pasiekti kompiuteris yra pasiekimas.</p>
+<p>Linux operacinėje sistemoje komanda <code>ping &lt;host&gt;</code> leidžiua tau nurodyti vietoj <host> tiek tau žinomą URL adresą, pvz lrt.lt, tiek tiek kompiuterio / serverio IP adresą. Kartu priešingai nei Windows operacinėje sistemeoje, Linux ping nesustoja, tad labai patarčiau naudoti <code>-c</code> (count) ir nurodyti skaičių po kiek ping signalų komanda turėtų sustoti, pvz <code>5</code> .</host></p>
+<p>Pabandyk</p>
+<p><code>ping -c 5 infraplanas.lt</code></p>
+<p>Dabar turėtum matyt kažką panašaus:</p>
+<p><img src="../img/bash_advanced/ping.png" class="img-fluid"></p>
+<ul>
+<li>ping parašo kokį adresą pingins infraplanas.lt bet kartu ir nurodo šio adreso IP adresą (65.108.247.94)</li>
+<li>tu turėtum gauti 5 eilutės pingų atgal, su nurodytais meta duomenimis, tarp ju <strong>time</strong>, kaip ilgai užtruko signalui iš tavo kompiuterio nueitiki iki 65.108.247.94 ir grįžti atgal.</li>
+<li>ping komanda sustojo po 5 kartų</li>
+</ul>
+<p>Dabar tau gali kilti klausimas, ar tu gali pasinaudoti šiuo adresu, kad tiesiai atsiaryti interneto tinklapį?</p>
+<p>pabandyk įrašyti komanda <code>firefox 65.108.247.94</code></p>
+<p><video src="../img/bash_advanced/open_ping.mp4" class="img-fluid" controls=""><a href="../img/bash_advanced/open_ping.mp4">Video</a></video></p>
+<p>Kaip matai, pavyksta. Bet taip nebus ne visada. Labai trumpai paaikšinsiu kodėl iškart po tavo praktikos.</p>
+<div class="paktika">
+<ul>
+<li>pasinaoduok tldr ir identifikuok pagrinius flagus ping komandai. kada ir kokius naudotum? susikonspektuok</li>
+<li>pabandyk pinginti 3 kartus vinted.lt</li>
+<li>pabandyk atsidaryti pingintą IP su <code>firefox &lt;IP&gt;</code></li>
+</ul>
+</div>
+<p>Trumpai apie tai, kodėl tau pavyko pingtini vinted.lt, bet nepavyko atsidaryti 172.64.150.26.</p>
+<p><img src="../img/bash_advanced/ping_cloudflare.png" class="img-fluid"></p>
+<p>Kai į interneto naršyklę įrašai vinted.lt tavo kompiuteris dar nežino, kur keliauti, t.y. konketaus IP adreso. Tad jis išeina į internatą irt šaukią AUUUU kas žinot, koks vinted.lt IP adresas? Yra specialūs serveriai, kurie reaguoja į tokis užklausas ir jie pasako, eik į IP 1xx.xxx.xxx.xxx tada tavo kompiuteris keliauja ten. Pimru atveju infraplanas.lt buvo pasiekiamas tiesiai adresu 65.108.247.94. Nes tai kažzkokiame paprastame serveryje patalpintas statinis tinklapis. Tačiau dauguma serverių šiais laikais naudojasi Cloudflare apsauga. Tai tari ugniasienė (firewall) kuri apsaugo serverius nuo atakų. Panašu, jog rašant vinted.lt tu kuo puikiaisi nueisi į vinted.lt tinklapį, bet įrašius IP adresą, Cloudflare sako:</p>
+<p><img src="../img/bash_advanced/no_no.jpg" class="img-fluid"></p>
+<p>Pabandyk dabar atjungti savo wifi ryši kompiuteryje ir pinginti pvz lrt.lt.</p>
+<p><img src="../img/bash_advanced/ping_failed.png" class="img-fluid"></p>
+<p>Kaip matai, gauni kur kas kitokią išvestį. Beje, pagalvok, čia <strong>stdout</strong> ar <strong>stderr</strong>?</p>
+</section>
+<section id="curl-ir-wget" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="curl-ir-wget"><span class="header-section-number">7.4</span> curl ir wget</h2>
+<p><code>curl</code> ir <code>wget</code> yra įrankiai darbui su tinklo užklausomis, tačiau jų paskirtis skiriasi. <code>wget</code> orientuotas į failų atsisiuntimą, palaiko rekursyvų atsisiuntimą (pvz., svetainių veidrodžiams), automatiškai atnaujina nutrauktus parsisiuntimus ir paprastai išsaugo failus tiesiai į diską. Tuo tarpu <code>curl</code> yra universalesnis – jis tinka ne tik failų atsisiuntimui, bet ir duomenų siuntimui (pvz., <strong>API</strong> užklausoms), dirba su daugiau tinklo protokolų ir pagal nutylėjimą išveda duomenis į terminalą, o ne į failą.</p>
+<section id="wget" class="level4" data-number="7.4.0.1">
+<h4 data-number="7.4.0.1" class="anchored" data-anchor-id="wget"><span class="header-section-number">7.4.0.1</span> wget</h4>
+<p>Interneto naršyklėje atsidaryk <a href="https://data.gov.lt/datasets/2749/">https://data.gov.lt/datasets/2749/</a>, čia rasi “Transporto priemonių valstybiniai numeriai pagal markę ir modelį” duomenis. Papaudus ant “Duomenys” ir “Atsiųsti”, tu suprantama gali atsisiųsti manualiai duomenis. Bet argi taip elgiasi tikri programuotojai?</p>
+<p><img src="../img/bash_advanced/get_data.png" class="img-fluid"></p>
+<p>Nueik į API skiltį. Ten rasi HTTP, HTTTPie ir curl. Nusikopijuok url adresą esantį skiltyje Užklausa.</p>
+<p><img src="../img/bash_advanced/wget_1.png" class="img-fluid"></p>
+<p>Terminale irašyk <code>wget https://get.data.gov.lt/datasets/gov/regitra/ktpr/ValstybinisNumeris</code></p>
+<p><img src="../img/bash_advanced/wget_2.png" class="img-fluid"></p>
+<p>Peržvelk kas parašyta. Pirma wget resolvin’a url adresą ir supranta, kad tai 193.219.12.192, tada jungiasi prie jo. Gauną atsakymą kad ok, tau apvyko prisijungti (200 OK). tada pradeda duomenų parsiuntimą ir išsaugo kaip <code>ValstybinisNumeris</code>. Pabaigus siuntimą turėtum matyti tokį pranešimą, kuris pasako koks buvo vidutinis greitis ir koks failo pavadinimas.</p>
+<p><img src="../img/bash_advanced/wget_3.png" class="img-fluid"></p>
+<p>Yra vienas bet… failą tau atsiuntė. tačiau jeigu pabandysi <code>head ValstybinisNumeris</code> nustebsi, nes pamatysi, jog terminalas nenustoja spausdinti. Tiesa gali jį nutraukti su ctrl+c.&nbsp;Taip nutiko dėl to, jog wget prigriebė reikiamą failą, tačiau netinkamu formatu. Tau atsiuntė failą taip vadinamu JSON formatu. Kur visi duomenys yra pirmoje eilutėje. Apie JSON formatus, pagalbėsime kitą kartą.</p>
+<p>Tavęs neišgelbės ir flagas <code>--output-document ValstybinisNumeris.csv</code> kur galėtum nurodyti kaip užvadinti failą, nes po .csv failu vis tiek slypės JSON formato duomenys. Štai parsisiuntus ir bandant atsidaryti su LibreOffice Calc tu jau amtai, kad kažkas čia negerai</p>
+<p><img src="../img/bash_advanced/wget_4.png" class="img-fluid">.</p>
+<p>Taigi esmė ta, jog šie duomenys serveryje guli ne visai tuo formatu, kuris mums tinkamas. Taip yra dėl to, jog https://data.gov.lt/ yra gražus fasadas, bet po apačia veikia kiek mažiau graži programa, kuri pvadainta duomenų spinta.</p>
+<p>Nueik į tą mažiau gražią “spintą”</p>
+<p><img src="../img/bash_advanced/wget_5.png" class="img-fluid">.</p>
+<p>Virįšuje pamatysi, visus formatus, kuriais galėtum parsisiųsti duomenis. Jeigu kairės pelės mygtuku paspausi and <code>CSV</code> interneto naršyklė pradės iškart šiųsti ValstybinsNumeris.csv. Bet tu atėjai ne to. Dešiniu pelės mygtuku paspasuks ant CSV ir meniu pasirinki nukopijuoti nuorodą (copy link)</p>
+<p><img src="../img/bash_advanced/wget_6.png" class="img-fluid">.</p>
+<p>nuordą kurią turėjai gauti atrodo taip <code>https://get.data.gov.lt/datasets/gov/regitra/ktpr/ValstybinisNumeris/:format/csv</code></p>
+<p>Kaip matai, ji nealabai skirasi nuo <code>https://get.data.gov.lt/datasets/gov/regitra/ktpr/ValstybinisNumeris</code>, kurią matei API skiltyje. Tiesiog URL adrese yra <code>/:format/csv</code> dalelė, kuri pasako, kokiu formatu parsisti.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>naudojant <code>rm</code> komandą išsivalyk darbinę dirketoriją nuo nereikalingų failų</li>
+<li>naudojantis <code>wget</code> ir nukopijuotą Link adresą parsiisųsk duomenis. Parsiunčiant naudok flag’ą <code>--output-document ValstybinisNumeris.csv</code></li>
+<li>kol siunčiasi duomenys - pasidaryk kavos ☕</li>
+<li>Atspausdink primas 5 ValstybinisNumeris.csv failo eilutes ir įsitkink, jog duomenys dabar tokie, kokių tikėtumeisi.</li>
+</ul>
+<p><img src="../img/bash_advanced/wget_7.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="curl" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="curl"><span class="header-section-number">7.4.1</span> curl</h3>
+<p>curl yra panaši, tik kur kas daugiau nustatymų turinti programa. Svarbu pamainėti, kad <code>curl</code> nepateikus nustatymų, gražiną išvestė tiesiog terminale. Tai nėra optimalu, norin parsisiųsti duomenis. Jeigu paleistum <code>curl https://get.data.gov.lt/datasets/gov/regitra/ktpr/ValstybinisNumeris/:format/csv</code> pamatytum skrieti rpadedantį .csv failą</p>
+<p><img src="../img/bash_advanced/curl_1.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>pasinaudok <code>tldr curl</code>, <code>curl --help</code> ir pabandyk identifikuoti pagrindinius flagus. Taip pat pasiklausk ChatGPT apie tai, kokius flagus galėtum naudoti.</li>
+<li>naudojant <code>curl</code> parsisiųsk failą</li>
+</ul>
+</div>
+</div>
+<p>Pagrindiniai <code>curl</code> flagai <code>-o &lt;failo pavadnimas&gt;</code> išsaugo failą norimu pavadinimu. <code>-s</code> (silent) curl negrąžina jokio stdout, t.y. veikia tyliai.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Tinklapyje <a href="https://data.gov.lt">https://data.gov.lt</a> susirask duomenis <strong>Valstybės apdovanojimai</strong>.</li>
+<li>Parsisisųk juos .csv formatu išsaugant failą pavadinimu apdovanojimai.csv naudok <code>wget</code></li>
+<li>prisimink, jog URL adresą gali pasiimt iš API skiltyje esančios užklausos adreso, tik turėtum pridėti <code>/:format/csv</code></li>
+<li>su <code>curl</code> parsisiųsk “Pacientų registracijos paslaugoms Žalgirio klinikoje” ir išsaugant kaip <code>reg_zalgiris.csv</code></li>
+</ul>
+<p>Dabar turėtum turėti 4 duomenų failus:</p>
+<p><img src="../img/bash_advanced/curl_2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="failų-redagavimas-ir-apdorojimas" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="failų-redagavimas-ir-apdorojimas"><span class="header-section-number">7.5</span> Failų Redagavimas ir Apdorojimas</h2>
+<p>Praeitame skyriuje tu jau išmokai naudotis komanda <code>sed</code>, kuri yra labai galinga apdorojant raw duomenis. Dabar dar praplėsi supratimą kaip gali išnaudoti uniq, kad geriau susipažintum su failo struktūra ar netgi atlik mini analizes.</p>
+<section id="uniq" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="uniq"><span class="header-section-number">7.5.1</span> uniq</h3>
+<p>Tu jau moki sortiruoti failo eilutes su komanda <code>sort</code>, tiek didėjančia (A-Z), tiek žemėjančia (Z-A) tvarka, taip pat sortiruoti pagal skaičius. <code>uniq</code> comanda įgalina tave parodyti unikalias eilutes ir jeigu reikia jas suskaičiuoti.</p>
+<p>Šis komandų junginys <code>head reg_zalgiris.csv | cut -d "," -f 13 | sort</code> paima pirmas 10 eilučių, supjausto reg_zalgiris.csv failą identifiikuojant , kaip skirtumą tarp stulpelių, pasirenką 13ą stulpelį, o <code>sort</code> surikiuoja duomanis didėjančia tvarką (A-Z).</p>
+<p><img src="../img/bash_advanced/uniq_1.png" class="img-fluid"></p>
+<p>Komanda <code>uniq</code> leidžia pamatyti unikalias reikšmes, tik uniq parašyta taip, kad aptiktų duplikatus tik tada, kai jie vienas šalia kito. Todėl uniq beveik visada naudojama kartu su sort <code>head reg_zalgiris.csv | cut -d "," -f 13 |sort | uniq</code></p>
+<p><img src="../img/bash_advanced/uniq_2.png" class="img-fluid"></p>
+<p>Labai retais atvejais tau gali būti įdomu sužinoti tik eilutes, kurios neturi duplikatu, tada naudutum flag’ą <code>-u</code>. Šiuo atveju gydytojo_specialybe kartojasi tik vieną kartą (natrūlau, tai duomenų antraštė), todėl <code>uniq -u</code> grąžina tik šią eilutę.</p>
+<p><img src="../img/bash_advanced/uniq_3.png" class="img-fluid"></p>
+<p>Kur kas prakšitkėnis flag’as - <code>uniq -c</code>, kuri suskaičiuoja kiek yra vienodų eilučių.</p>
+<p><img src="../img/bash_advanced/uniq_4.png" class="img-fluid"></p>
+<p>Tik kaip matai, dabar mes turime problemą -stuleplio antraštė (header) figuruoja kaip duomenys. Jeigu tau reikia tik grubiai įsivertinti ar duomenys teisingi, ir juos geriau surpasti, tai gali netrukdyti. Bet būtų galima iš išsivalyti.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>kokias 2 strategijas (komandas) <strong>reg_zalgiris.csv</strong> turi savo arsenale, neįtraukti eilutės su <code>gydytojo_specialybe</code> į tolimensius veiksmus? Prisimink ką išmokai <code>--help</code> dalyje, prisimink komandą, kuri filtuoja eilutes.</li>
+<li>Pasinaudok viena iš šių strategijų ir suskaičiuok pas kokių speliacibių daktarus buvo daugiausiai ir mažiausiai registracijų.</li>
+</ul>
+<p>Turėtum gauti šį rezultatą:</p>
+<p><img src="../img/bash_advanced/uniq_5.png" class="img-fluid"></p>
+<p>Kaip matai, rezultatas nėra tobulas, nes dabar turi 6622 “Ortodontė” ir 6727 Ortodontas. Nors specialybė tokia pati. Jeigu tave domintų, kiek buvo registracijų pagal specialybes, ko gero suskirutm taisykles su <code>sed</code> komanda, kur suvienodintum profesijų pavadinimus ir apdaryutm juos neutralius lyčiai.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="failų-paieška" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="failų-paieška"><span class="header-section-number">7.6</span> Failų Paieška</h2>
+<p>Dabar susipažinsi su keliomis labai svarbiomis komandomis, kurios padės tau rasti failus. <code>find</code> skirtas paieškai su detaliaiss paieškos kriterijais (pagal pavadinimą, tipą, datą ir kt.). <code>locate</code> išnaudoja linux operacinėje sistemoja kuriamą failų indeksą greitai failų paieškai. <code>whereis</code> skirtas direktorijos vietos ir vykdomojo failo kelio (path) radimui, apimant bin ir dokumentaciją.</p>
+<section id="find" class="level3" data-number="7.6.1">
+<h3 data-number="7.6.1" class="anchored" data-anchor-id="find"><span class="header-section-number">7.6.1</span> find</h3>
+<p>Komanda find naudojama ieškoti failų ir direktorijų pagal pavadinimą, dydį, datą, teises ir kitus kriterijus.</p>
+<p>Bazinė <code>find</code> komanda atrodo taip <code>find /path/to/search -options criteria</code></p>
+<p>Tikėinta tavo darbinė direktorija dabar yra <code>bash_advanced</code> ir joje turi 4 failus. Pažiūrėk kokie jie dydžio.</p>
+<p><img src="../img/bash_advanced/find_1.png" class="img-fluid"></p>
+<p>Turint omenyje, kad čia tik 4 failai, tai nėra bėgalo įdomu. Pažiūrėk ar dar turi <code>shell_part_2</code> savo namų direktorijoje, jeigu ne, paleisk skriptą, jog ji vėl būtų sukurta (žr praėjusio skyrio pradžią).</p>
+<p>Ieškoti failų darbinėje direktorijoje, t.y. “čia” galima išnaudoajt taško notaciją <code>.</code>. Tačiau tu darbuosies labiau su <code>~</code>, t.y. nuoroda į visą savo namų direktoriją. Tavo ir mano terminalo išvestys skirsis, tad nenustebk, jeigu matysi daugiau ar mažiau failų.</p>
+<p>pakeisk savo darbinę direktroiją į namų su <code>cd ~</code>.</p>
+<p>Komandai find pirmas argumentas yra <strong>kur</strong> yra ieškoma, dažniausiai tai tai gali būti:</p>
+<ul>
+<li><code>find .</code> ieškoti aktyvioje direktorijoje</li>
+<li><code>find ~</code> ieškoti namų direktorijoje</li>
+<li><code>find /</code> ieškoti root direktorijoje (t.y. vismae kompiuteryje)</li>
+<li><code>find ~/Downloads</code> ieškoti vartootjo Downloads direktorijoje, arba kitoje konkrečiai nurodytoje direktorijoje</li>
+</ul>
+<p><code>find</code> priima daug skirtinų nustatmų ir vienas pagrindinių jų <code>-name</code>.</p>
+<p>Suraskime kur yra failas su regigtsracijomis į Žalgirio kliniką. įsivaizuokk, jog prisimini tik, kad ten buvo zalgiris pavadinime… Kaip matai, pirmoji komanda negfražina jokio failo, nes jo nerado. <code>find</code> kaip ri dauguma bash komandų gali veikti su wildcards.</p>
+<p><code>find ~ -name zalgiris</code> <code>find ~ -name *zalgiris*</code></p>
+<p><img src="../img/bash_advanced/find_wildcard.png" class="img-fluid"></p>
+<p>Dabar tu nori susirasti faila su valstybiniais numeriais, tačiau <code>find ~ -name *valstyb*</code> nieko negrąžina, nes find yra case sensitive, kaip ir viskas BASH’e. Panašiai kaipir su kitomis komandimis, čia gali pasinaudoti <code>-iname</code> kad padaryti paiekšą ne case-sensitive.</p>
+<p><code>find ~ -name *valstyb*</code> <code>find ~ -iname *valstyb*</code></p>
+<p><img src="../img/bash_advanced/find_iname.png" class="img-fluid"></p>
+<p>Beje, jeigu nenurodysi <code>-name &lt;pavadinimas&gt;</code> tada find komanda ieškos visų failų ar direktorijų, atitinkančių kitus nurodytus kriterijus, jeigu nebus jokio kriterijo, tada ji suras tiesiog visus failus.</p>
+<p><code>find bash_advanced/</code></p>
+<p><img src="../img/bash_advanced/find_noargs.png" class="img-fluid"></p>
+<p>Kartais tu gali norėti, kad find gražinntų ne tik rastų failų adresus bet ir daugiau informacijos, tada gali panaudoti <code>-ls</code> flagą</p>
+<p><img src="../img/bash_advanced/find_ls.png" class="img-fluid"></p>
+<p>Tu gali apriboti paiešką pagal tai, kokio tipo failo (<code>f</code>) ieškai, ar tai yra direktoriją (<code>d</code>) , ar tai failas ar nuoroda (<code>l</code>).</p>
+<p>Ši komanda ieško tipo - direktorijos, kurios pavadinaime nepriklausomai nuo vietos ir raidžių dydžio yra “do”.</p>
+<p><code>find -type d -iname *do*</code></p>
+<p>Kaip matai find gražiną ir direktorijas kurios yra paslėptos</p>
+<p><img src="../img/bash_advanced/find_type.png" class="img-fluid"></p>
+<p>Tikėtina, kad tua gali būti įdomu rasti failus kurie užima daug, arba labai mažai vietos. šioje vietoje tau talkininkauja <code>-size</code> flagas. jis priima skaičius human readable formatu, pvz 10M = 10 megabaitų, 1G = 1 gigabaitas ir t.t. tam kad indikuoti failų dydį glai naudoti - arba + prieš skaičių, pasakant, kad ieškoti mažesnių nei x arba didesnių nei x failų.</p>
+<p>Jeigu nurodysi skaičių be pliuso ar minuso, find ieškoys failų kurių dydis lygus pasirinktam argumentui.</p>
+<p><code>find -type f -size 300M</code> <code>find -type f -size +300M</code></p>
+<p>Jeigu kompiuteriu naudosies ilgai, tu gali norėti ieškoti failų pagal jų</p>
+<ul>
+<li>sūkūrimo data <code>c</code></li>
+<li>modifikavimo data <code>m</code></li>
+<li>prieigos data <code>a</code></li>
+</ul>
+<p>tokiu atveju tu turėtum naudoti flagus <code>-[acm]time</code> (pasirink reikiamą raidę) ir nurodyti dienas. <code>-n</code> reikš per paskutines n dienų, +n reikš daugiau nei prieš n dienų. Turėk omenyje, jog dienas find vertina kaip kalendorines. taip pat, jeigu nori, gali sukabinti kelis reikalavimus į vieną. pavz ieškoti failų kurie buvo sukurti prieš daugiau nei 2 diens <code>-ctime +2</code> bet (ir) mažiau nei prieš 7 dienas <code>-ctime -7</code></p>
+<p><code>find ~ -type f -ctime +2 -ctime -7</code></p>
+<p>Paleidus šią komanda pamatysi, kad tikėinta, esi sukūrus gana daug failų, ir galbūt norėtum apsiriboti, kaip giliai <code>find</code> turėtų ieškoti. pabandyk išnaudoti <code>-maxdepth</code> arba <code>-mindepth</code>. šis argumentas yra <strong>globalus</strong> todėl jį turėtum rašyti iškart po <code>find ~</code></p>
+<p><code>find ~ -maxdepth 1 -type f -ctime +2 -ctime -7</code></p>
+<p>komanda find priima ir loginius operatorius -and -or ir !( šauktukas atitinke - ne). nenustebk, neretai gali pamatyti trumpinius <code>-a</code> ir <code>-o</code></p>
+<p>Štai komandos ieško fialų, kurie yra sukurti prieš daugiau nei 2, bet mažiau nei prieš 7 dienas ARBA ir IR kai jų dydis daugiau nei 300MB.</p>
+<p><code>find ~ -maxdepth 2 -type d -ctime +2 -ctime -7 -or -size +300M</code> <code>find ~ -maxdepth 2 -type d -ctime +2 -ctime -7 -and -size +300M</code></p>
+<p>Kaip matai, -or leidžia rasti daugiau, nes or pakanki kad bent viena sąlyga būtų patenktina, tuo tarpu -and reikialauja, kad salygos visos sąlygos būtų ptanektintos.</p>
+<p><img src="../img/bash_advanced/find_and_or.png" class="img-fluid">_</p>
+<p>Ką daryti, jeigu nori sujungti daugiau sąlygų arba sukurti kiek sudėtingesnį loginį algoritmą? Tam gali išnaudoti skliaustleius. tačiau juos turėti escpainti su <code>\(</code> ir <code>\)</code> tam kad find neieškotų skliaustelių pavadinime.</p>
+<p>štai tai būtų galima ieškoti failų, kurie didesni nei 2M ir mažesni nei 100M IR yra arba .csv arba .txt</p>
+<p><code>find ~ -size +2M -size -100M \( -iname *.txt -or -iname *.csv \)</code></p>
+<p>Šioje vietoje svarbu paminėti, akd būtina turėt tarpepius aplink skliaustleius! jeigu sukeli kelis raikalavimus, kaip atnai <code>-size +2M</code>, <code>-size -100M</code>, jie sujungiami su <code>and</code> todėl nebūtina jo nurodyti explicitškai</p>
+<p>Find komanda suteikia ir tam tikrų papildomų funkcijų. pvz <code>-delete</code> nustatymas ištrins (povisam) visus rastus failus!</p>
+<p>The -exec option allows you to execute any command on the files or directories that find locates. The command is terminated with ;, and the {} placeholder is used within the command to represent the current file being processed.</p>
+<p>Kitas svarus aspektas, kad tu gali perduoti rastus failus apdirbti kitoms komandoms. tada sintakse atrodo taip <code>find -name ... exec grep -i apie {} \;</code></p>
+<p>O dabar prieikime prie pavojingesnių komandų!</p>
+<p>find turi nustatymą -delete, kad visus surastus failus, kuriuos ras pagal nurodyus parametrus, ištrintų. Naudok -delete tik, kai prieš tai būsi tikra, kad viskas, kas randama, gali būti trinama</p>
+<p><code>find ~ -name "*.txt" -delete</code></p>
+<p><img src="../img/bash_advanced/find_delete.png" class="img-fluid"></p>
+<p><code>find</code> komanda jau yra labai stipri, tačiau tu dar nežinai jos stipriausios galios! su find tu gali perleisti rastus failus, tolesniam apdirbimui. tiesa, tai neveikia taip, kaip su pipe <code>|</code>. Syntakse yra tokia</p>
+<p><code>find ... -exec &lt;komanda&gt; {} \;</code></p>
+<ul>
+<li><code>-exec</code> pasako, kad su tuo ką radai, dabar vykyk kitą komanda</li>
+<li><code>&lt;komanda&gt;</code> gali būti bet kas, tik turi būti tinkama pasirinktiems failams</li>
+<li><code>{}</code> panaudojamas vietoj failų pabadinimo</li>
+<li>kad baigei komandą, nurodai su <code>\;</code></li>
+</ul>
+<p>įsivaizduok, tu nori nori atspausdinti visas eilutes, kuriose yra žodis “apie”. Bet nepameni, kuriame būtent faile, tik žinai, kad tas failas buvo .txt formato</p>
+<p><code>find ~ -type f -iname "*.txt" -exec grep -iH "apie" {} \;</code></p>
+<p><img src="../img/bash_advanced/find_exec.png" class="img-fluid"></p>
+<ul>
+<li>taigi find suranda visus tekstinius failus, tiklsiau tuos failus, kurių pavadinimas baigiasi .txt</li>
+<li>-exec perleidžia juos grep komandai</li>
+<li>grep ieško case insensitive <code>-i</code> bet kartu ir atspasdina failo, kuriam priklauso rasti eilutė adresą <code>-H</code></li>
+</ul>
+<p>taip kaip perleidome failus rastus grep, juos alima perleisti ir ktoms komandoms, pvz <code>rm</code>, <code>cp</code> <code>mv</code></p>
+<p>Visgi kaip matai, perelsiti failus į -exec gali būti pavojinga. alternatyva, kur tavęs prašys patvritinti kiekvienam failui taikomą komanda, yra <code>-ok</code>. Štai komanda, kuris suras visus failus, kuriųpavadinime yra .csv ir padarys jų kopiją į aplanka ~/copy.</p>
+<p>mdkir copy find ~ -iname “*.csv” -ok cp {} ~/copy/ ;</p>
+<p>Kaip matai, prieš kiekvieną operą, temrinalas reikalauja patvirtinmo, kuri turi įrašyti <code>y</code> arba <code>yes</code> arba <code>n</code> <code>no</code>. jeigu spausi enter, tada tai aititks <code>no</code>.</p>
+<p><video src="../img/bash_advanced/find_ok_copy.mkv" class="img-fluid" controls=""><a href="../img/bash_advanced/find_ok_copy.mkv">Video</a></video></p>
+<p>Kaip matai vykdant šia operaciją, find rado dar kartą tuos pačius failus ten, kur jie jau buvo nukopijuoti, t.y. pačioje copy direktorijoje. kad išvengti to, galima find nurodyti kur ne ieškoti su <code>-not -path "/home/justas/copy/*"</code> arba <code>! -path "/home/justas/copy/*"</code> atkreip dėmesį į tai, nurodant -path, reikia absoliutaus adreso ir <code>*</code> kad tenai rasti failai (jų adresai) nebūtų įtraukti.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>parašyk komandą, kuri ieško visų failų tavo namų direktrijoje, kurių pavadinimas baigiasi arba .csv arba .txt.</li>
+<li>ta pati komanda tik perleisk rezultatus į grep, atspausdink tas eilutes, kuriose yra “2024”</li>
+<li>surask visus failus kurių sukūrimo data yra daugiau nei prieš 14 dienų, kurių pavadinimas baigiasi <code>.mp4</code> ir failai yra <code>dwhelper</code> arba <code>Downlaods</code> direktorijose bei kurių dydis yra didesnis nei 100M.</li>
+<li>ta pati komanda, tik panaudok <code>-ok</code> ir <code>rm {}</code>. dabar komanda perklaus ar trinti keivieną failą. Ši komanda turėtų padėti tau apsivalyti įvairius senokus video.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="locate" class="level3" data-number="7.6.2">
+<h3 data-number="7.6.2" class="anchored" data-anchor-id="locate"><span class="header-section-number">7.6.2</span> locate</h3>
+<p>Linux operacine sistema nuolad indeksuoja visus failus. Tad komanda <code>locate &lt;pavadinimas&gt;</code> padeda labai greitei rasti failą, kurio pavadinimą tu jau žinai. Suprantama, gali naudoti wildcard *.</p>
+<p><img src="../img/bash_advanced/locate.png" class="img-fluid"></p>
+<p>Trūkumas: Nerodo naujausiai sukurtų ar pervardytų failų, kol nėra atnaujinta duomenų bazė. Iššaunkti atnaujinimą alima su <code>updatedb</code></p>
+<p><video src="../img/bash_advanced/updatedb.mkv" class="img-fluid" controls=""><a href="../img/bash_advanced/updatedb.mkv">Video</a></video></p>
+<p>Locate taip pat neturipaiekšos parametrų kaip dydis, amžius ir t.t. kuriuos turi find.</p>
+</section>
+<section id="whereis" class="level3" data-number="7.6.3">
+<h3 data-number="7.6.3" class="anchored" data-anchor-id="whereis"><span class="header-section-number">7.6.3</span> whereis</h3>
+<p>Komandos <code>whereis</code> paskirtis rasti vykdomuosius failus (binary files), jų dokumentaciją (man puslapius) ir šaltinio failus. Naudojama norint sužinoti, kur yra įdiegta programa ar vykdomasis failas.</p>
+<p><img src="../img/bash_advanced/whereis.png" class="img-fluid"></p>
+</section>
+<section id="which" class="level3" data-number="7.6.4">
+<h3 data-number="7.6.4" class="anchored" data-anchor-id="which"><span class="header-section-number">7.6.4</span> which</h3>
+<p>Komandos <code>which</code> paskirtis rodyti, kurioje <code>PATH</code> aplinkoje esantis vykdomasis failas bus paleistas, kai įvesi jo pavadinimą terminale. <code>which</code> patikrina vartotojo aplinkos kintamąjį PATH ir pateikia pirmą rastą vykdomąjį failą.</p>
+<p><img src="../img/bash_advanced/which.png" class="img-fluid"></p>
+<p>Svarbu: <code>which</code> rodo tik pirmą PATH rastą vykdomąjį failą. Taigi jeigu nori žinoti AR turi programa pvz python instlaiuotą, which tau į tai atsakys. tačiau enatsakys, ar turi tam tirkas python versijas. Tam geriau naudti whereis.</p>
+</section>
+</section>
+<section id="failo-teisių-valdymas" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="failo-teisių-valdymas"><span class="header-section-number">7.7</span> Failo teisių valdymas</h2>
+<p>Užpaeitame skyriuje susipažinai su tuo, jog failai ir direktorijoms priirktas valdytojas. ir kartu nurodomos to vartojo, jo grupės ir visų kitų vartotojų teisės.</p>
+<p>drwxrwxr-x 4 justas justas 4096 Sep 27 18:28 backup drwxrwxr-x 2 justas justas 4096 Sep 28 18:45 data -rw-rw-r– 1 justas justas 45 Sep 28 16:28 list_du_home.sh -rw-rw-r– 1 justas justas 635 Sep 28 13:33 list.txt drwxrwxr-x 2 justas justas 4096 Sep 27 21:42 mix drwxrwxr-x 2 justas justas 4096 Sep 28 18:34 text</p>
+<p>Taigi, ką tu gali keisti?</p>
+<ul>
+<li>su chmod tu gali keisti priegos teises</li>
+<li>su chown tu gali keisti vartotojo vardą</li>
+<li>su chgrp tu gali keisti savininko grupę</li>
+</ul>
+<p>Su chown ir chgrp tu susidursi retai, nes relaybeje beveik nebus scenarijų kada tau gali reikėti keisti failo savininko vardą ar jo grupę. Jeigu visgi prireiktų turėk omenyje kas su</p>
+<ul>
+<li><code>chown &lt;user&gt; &lt;file&gt;</code> pasirinktam failui tu gali nurodyti, aks yra vartotojas</li>
+<li><code>chown &lt;user&gt;:&lt;group&gt; &lt;file&gt;</code> po : gali nurodyti iškart ir grupę</li>
+<li><code>chown -R &lt;user&gt;:&lt;group&gt; &lt;direcotry&gt;</code> jeigu reikia pakeisti visų failų esnų direktorijoe teises gali naudoti flag’ą <code>-R</code></li>
+<li>tik grupę gali pakeisti su <code>chown :&lt;group&gt; &lt;file&gt;</code></li>
+<li>arba su <code>chgrp &lt;group&gt; &lt;file&gt;</code></li>
+</ul>
+<p>Turėk omenyje, kad jeigu keisti sisteminių failų savininkų teises, tau gali reikėi administratoriaus teisių, todėl gali reikėti panaudoti <code>sudo</code> prie chown komandą.</p>
+<p>Kol savininko vardo ir grupės keitimas yra mažai tikėtinas scenarijus, su kuriuo susidursi, teisių keitimas yra labai aktualus.</p>
+<p>Yra du scenarijai, kada tau reikės keisti failo teises.</p>
+<ul>
+<li>skriptų paleidimas</li>
+<li>appimages paleidimas</li>
+</ul>
+<p>Ėsivaizduok tu sukuri skriptą, ką tavo Linux’as turi padaryti atlitki, na pvz surasti 30 dienų nenatidarytus failus esčnaius dwhelper ir downloads direktorijose ir tuos failus ištrinti. tarkime skritpas yra <code>senu_video_valymas.sh</code>. jeigu tu atpsausdinsi ls -l pamatyti, jog faials turi įprastines reises, savininkos ir jo grupė turi teisę read ir write, o kiti vartotojai tik read.</p>
+<p>Tačiau su <code>chmod &lt;kodas&gt; &lt;failas&gt;</code> tu gali pakeisti šias teises.</p>
+<p>Kodo reikšmės:</p>
+<ul>
+<li>4 - read</li>
+<li>2 - write</li>
+<li>1 - execute</li>
+</ul>
+<p>Jeigu nori savininkui suteikti read 4 + write 2 + execetu 1 = 7. jeigu nori suteikti tokias pat teises grupei - 7. O kitiems vartotojams, jeigu nori palikti tik read - 4, gauni trijų skaitmenų koda 774. Kurio nustatai, kad turi ir kokias teises.</p>
+<p><code>chmod 774 senu_video_valymas.sh</code></p>
+<p><img src="../img/bash_advanced/chmod.png" class="img-fluid"></p>
+<p>Atkreipk dėmsi į tai, kad skiprtas, kai jis tapo executible, pakeitė spalvą ir tapo žalias!</p>
+<p>Tu bet kada gali atkeisti teises pvz atgal tik į read +write , t.y 4+2=6 vartojui ir jo grupei ir tik read =4 kitiems vartotojams</p>
+<p><code>chmod 664 senu_video_valymas.sh</code>.</p>
+<p>Kitas varianta kada gali reikėti pakeisti teises, tai parsisiuntus AppImage. AppImage yra tam tikras programos failo formatas, kur visa programa yra konteinerizuota pačiame faile. Nors tu tiktėtina jau turi Freetube, nueik į <a href="https://freetubeapp.io/#download">https://freetubeapp.io/#download</a> ir paspausk ant AppImage, kad jį atsisiųsti.</p>
+<p><img src="../img/bash_advanced/appimage_1.png" class="img-fluid"></p>
+<p>kaip matai, failas neturi executbale teisių.</p>
+<p><img src="../img/bash_advanced/appimage_2.png" class="img-fluid">.</p>
+<p>Norint paleisti failą, reiktų arba atsidarius su Nemo, aspausti dešiniu pelės mygtuku, ir pasirinkti Properites, tada eiti į Permissions ir ten udždėti varnelę ant “Allow executing file as program”.</p>
+<p><video src="../img/bash_advanced/chmod_free.mkv" class="img-fluid" controls=""><a href="../img/bash_advanced/chmod_free.mkv">Video</a></video></p>
+<p>arba su <code>chmod 774 freetube_0.22.0_amd64.AppImage</code> suteikti tas pačias teises.</p>
+<p>dabar dukart paspaudus ant Freetube ikonėlės porgama pasileidžia, bet paleisti ją galima ir iš temrinalo su <code>./freetube_0.22.0_amd64.AppImage</code>.</p>
+<p>Taigi iš esmės skriptas ir parsisiųstas AppImage failas iš esmės veikia gana panašiai.</p>
+<p>verta žinoti, kad internete gali suteikti ir <code>chmod a+x &lt;failas&gt;</code> komandos notaciją, kuri reiškia: visiems (a) vartotojams pridėk execution (+x) teises. Tačiau mano patarimas, geriau elgtis kiek saugiau ir suteikinėti teises tik savininkui ir jo grupei, bet ne kitiems vartotojams.</p>
+<p>Šiame <strong>symbolic mode</strong> tu gali sudėti komandas naudojant:</p>
+<ul>
+<li><code>a</code>: all users (user, group, and others)</li>
+<li><code>u</code>: user (owner of the file)</li>
+<li><code>g</code>: group (group associated with the file)</li>
+<li><code>o</code>: others (everyone else)</li>
+<li><code>r</code>: read permission (value 4)</li>
+<li><code>w</code>: write permission (value 2)</li>
+<li><code>x</code>: execute permission (value 1)</li>
+<li><code>+</code>: add permission</li>
+<li><code>-</code>: remove permission</li>
+<li><code>=</code>: set exact permissions (replace existing ones)</li>
+</ul>
+<p>Command Numeric Value User Group Others Explanation chmod a+x — Adds x to all users (rwxr-xr-x) - - Adds execute permission for all users chmod 777 777 rwx rwx rwx Full permissions for all users chmod 755 755 rwx r-x r-x Owner can read, write, execute; others can read and execute chmod 664 664 rw- rw- r– Owner and group can read and write, others can only read chmod 644 644 rw- r– r– Owner can read and write, others can only read chmod 700 700 rwx — — Only the owner has full access</p>
+</section>
+<section id="procesų-valdymas" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="procesų-valdymas"><span class="header-section-number">7.8</span> Procesų Valdymas</h2>
+<p>Sistemų administravime ir duomenų analitikoje svarbu suprasti, kas vyksta kompiuteryje. Komandos ps aux ir htop leidžia stebėti veikiančius procesus ir identifikuoti problemas, susijusias su resursų naudojimu.</p>
+<section id="ps-aux-procesų-sąrašas" class="level3" data-number="7.8.1">
+<h3 data-number="7.8.1" class="anchored" data-anchor-id="ps-aux-procesų-sąrašas"><span class="header-section-number">7.8.1</span> ps aux – Procesų sąrašas</h3>
+<p><code>ps aux</code> leidžia pamatyti visų veikiančių procesų sąrašą. Ši komanda naudinga, kai norite gauti statinį procesų vaizdą.</p>
+<p>Ką rodo išvestis?</p>
+<ul>
+<li>USER: Kas paleido procesą. Pvz., justas, root.</li>
+<li>PID: Procesų identifikatorius (unikalus skaičius).</li>
+<li>%CPU: Kiek procesorius užimtas procesu.</li>
+<li>%MEM: Kiek RAM naudoja procesas.</li>
+<li>COMMAND: Proceso paleidimo komanda, pvz., python analysis.py.</li>
+</ul>
+<p>Tipiniai scenarijai:</p>
+<pre><code>Ieškoti konkretaus proceso
+Tarkime, dirbate su dideliu Python skriptu, bet jis užstringa ir turite jį sustabdyti. Naudokite:</code></pre>
+<p>ps aux | grep python</p>
+<p>Tai parodys visus procesus, susijusius su python. Rasite PID ir galėsite sustabdyti procesą su kill komanda:</p>
+<p>kill <pid></pid></p>
+<p>Rūšiuoti pagal procesoriaus naudojimą Jei kompiuteris veikia lėtai, išsiaiškinkite, kuris procesas apkrauna CPU:</p>
+<p>ps aux –sort=-%cpu | head</p>
+<p>Atminties naudojimo analizė Tarkime, jūsų mašinos RAM greitai užsipildo analizuojant didelius duomenis:</p>
+<p>ps aux –sort=-%mem | head</p>
+</section>
+<section id="htop-patogus-procesų-stebėjimas-realiu-laiku" class="level3" data-number="7.8.2">
+<h3 data-number="7.8.2" class="anchored" data-anchor-id="htop-patogus-procesų-stebėjimas-realiu-laiku"><span class="header-section-number">7.8.2</span> htop – Patogus procesų stebėjimas realiu laiku</h3>
+<p>htop – tai interaktyvus įrankis, skirtas stebėti procesus realiu laiku. Jis yra vizualiai aiškesnis nei ps aux, pateikia spalvotą sąsają, leidžia filtruoti, rūšiuoti ir valdyti procesus.</p>
+<p>Kaip paleisti htop:</p>
+<p>htop</p>
+<p>Pagrindinės funkcijos:</p>
+<pre><code>Rodo procesus, rūšiuotus pagal resursų naudojimą.
+Leidžia sustabdyti procesus neišeinant iš sąsajos.
+Dinamiškai atnaujina informaciją.</code></pre>
+<p>Valdymas htop viduje:</p>
+<pre><code>Rodyklių klavišai: Naršyti procesus.
+F3: Ieškoti proceso pagal pavadinimą (pvz., įveskite python).
+F9: Užbaigti pasirinktą procesą (kill).
+F10: Išeiti iš htop.</code></pre>
+<p>Tipiniai scenarijai:</p>
+<pre><code>Surasti procesą, kuris apkrauna CPU
+Dirbant su dideliais duomenų failais, htop leidžia pamatyti, ar jūsų skriptas naudoja per daug CPU. Ieškokite proceso, rūšiuokite paspausdami P.
 
-Read the manual page for the tail command to find out what putting a + sign in front of the number used with the -n flag does. (Remember to press spacebar to page down and/or type q to quit.)</code></pre>
-<p>2</p>
-<p>Use tail with the flag -n +7 to display all but the first six lines of seasonal/spring.csv.</p>
+Valdyti strigusį procesą
+Jei jūsų R arba Python procesas užstringa, raskite jį naudodami htop, pasirinkite rodyklėmis ir paspauskite F9.
+
+Atminties stebėjimas realiu laiku
+Darant sudėtingus skaičiavimus (pvz., mokant mašininio mokymosi modelį), stebėkite atminties naudojimą. Jei procesas per daug apkrauna sistemą, galite jį sustabdyti.</code></pre>
 </section>
-<section id="find" class="level3" data-number="7.1.3">
-<h3 data-number="7.1.3" class="anchored" data-anchor-id="find"><span class="header-section-number">7.1.3</span> find</h3>
-<p>Komanda find naudojama ieškoti failų ir katalogų pagal įvairius kriterijus.</p>
+<section id="whoami" class="level3" data-number="7.8.3">
+<h3 data-number="7.8.3" class="anchored" data-anchor-id="whoami"><span class="header-section-number">7.8.3</span> whoami</h3>
+<p>5.2 whoami and $PATH: Identifying User and Executable Paths</p>
+<pre><code>whoami: Check current user.
+$PATH: Understand the executable search path and use which to locate commands.
+Exercise: Check your $PATH, then find the path of ls with which.</code></pre>
+<p>Komanda <code>whoami</code> parodo dabartinio vartotojo (<strong>user</strong>) vardą, su kuriuo esate prisijungę prie sistemos. Tai paprastas ir naudingas būdas patikrinti, kokį vartotojo prisijungimą naudojate, ypač kai dirbate su keliais vartotojais toje pačioje sistemoje.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">whoami</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img src="img/shell/whoami.png" class="img-fluid"></p>
+</section>
+<section id="path" class="level3" data-number="7.8.4">
+<h3 data-number="7.8.4" class="anchored" data-anchor-id="path"><span class="header-section-number">7.8.4</span> $PATH</h3>
+<p>Persp4jimas ši tema kiek sudėtingesnė, bet ją pravartu žinoti.</p>
+<p>Kaip Shell žino, kokią programą startuoti, kai pvz tu įrašai <code>ls</code>? Juk negali Shell eiti per visus tavo failus ir ieškoti, ar yra tokia programa <code>ls</code>? Tai užtruktų labai ilgai ir būtų neefektyvu. Tavo Bash programa yra išsaugojusi visų direktorijų sąrašą, kurias ji tikrina. Tod4l pavyzdžiui įrašius</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">main-user@linux-mint:~$</span> <span class="va">$PATH</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">bash:</span> /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin: No such file or directory</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ką visa tai reiškia? Kai vartotojas įrašo komanda <code>ls</code> Bah pirma tikrina <code>/usr/local/sbin/</code> jeigu ten neranda, eina į sekandią direktoriją <code>/usr/local/bin</code> ir t.t. Jeigu visame sąraše šios programos nebūtų, įrašius <code>ls</code> nieko neįvyktų, o terminale išvystum pranešimą, su siūlymų galbūt šią programą instaliuoti (jeigu <code>apt</code> programa apie šią komandą kažką žino).</p>
+<p>su komanda <code>which</code> galime pamayti, o tai kur būtent <code>ls</code> randasi</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">main-user@linux-mint:~$</span> which ls</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/bin/ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Taigi įrašius <code>ls</code> bash keliavo</p>
 <ul>
-<li>Ieškoti failų dabartiniame kataloge pagal pavadinimą:</li>
+<li>/usr/local/sbin &lt;- nerado <code>ls</code></li>
+<li>/usr/local/bin &lt;- nerado <code>ls</code></li>
+<li>/usr/sbin &lt;- nerado <code>ls</code></li>
+<li>/usr/bin &lt;- čia rado <code>ls</code></li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">"failas.txt"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Retais atvejais, tau gali reikėti pridėti direktorijas prie $PATH, bet labai tikėtina, jog tik pradedant naudotis Linux CLI, tau to dar nereikės. Tačiau jeigu kada prireiks, tu žinosi, apie ką čia kalbama.</p>
+</section>
+<section id="which-1" class="level3" data-number="7.8.5">
+<h3 data-number="7.8.5" class="anchored" data-anchor-id="which-1"><span class="header-section-number">7.8.5</span> which</h3>
+<p>Komanda <code>which</code> naudojama norint sužinoti, kurioje vietoje (<strong>path</strong>) yra esanti tam tikra vykdomoji programa. Ji parodo visą vykdomojo failo kelią, nurodydama, kurioje direktorijoje sistema pirmiausiai ieškos šios programos pagal PATH aplinkos kintamąjį.</p>
+<p>Kartu ši komanda naudojama norint sužinoti, ar norima komanda yra įdiegta.</p>
+<p>parodo kurioje vietoje yra <code>ls</code> programa</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> ls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Taip pat galima pamatyti, ar pvz <code>neovim</code> programa yra instaliuota</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> neovim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Kadangi Terminal negrąžino jokio kelio (path), tai pasako, jog šios programos nėra.</p>
+<p><img src="img/shell/which.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="nano" class="level2" data-number="7.9">
+<h2 data-number="7.9" class="anchored" data-anchor-id="nano"><span class="header-section-number">7.9</span> nano</h2>
+<p>which nano</p>
+<p>nano</p>
+<p>New Buffer - rei6kia n4ra jokio failo galima bet ką ašyti</p>
+<p>su rodyklėmis galima judėti</p>
+<p>^Raidė = tas ptas kas spausti ctrl ir raidę</p>
+<p>citrl O write Out tada duoti pavadinimą</p>
+<p>daug dažniau naudojama</p>
+<p>nano failas. jeigu failas yra, jis bus atidarytas jeigu failo nėra, jis bis sukurtas, KAI jis bus išsaugottas jeigu reikia teisių rayši sistmeinius failus sudo nano failas</p>
+<p>ctrl w - leidžia ieškoti ctrl - X kad išeiti cut visą eilutę cltr k paste cltr u ctrl s</p>
+<p>nano + linenumber nano -v fialas (view only file)</p>
+<p>sudo apt install spell</p>
+<p>ctr t iškart parodo kuris neteisingas tada galima apačioje ršašyti ctrl t vl palitki spell check mode</p>
+<section id="pagrindiniai-nano-klaviatūros-trumpiniai" class="level3" data-number="7.9.1">
+<h3 data-number="7.9.1" class="anchored" data-anchor-id="pagrindiniai-nano-klaviatūros-trumpiniai"><span class="header-section-number">7.9.1</span> <strong>Pagrindiniai “nano” klaviatūros trumpiniai</strong>:</h3>
 <ul>
-<li>Ieškoti failų visoje sistemoje pagal pavadinimą:</li>
-</ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> / <span class="at">-name</span> <span class="st">"failas.txt"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="chmod" class="level3" data-number="7.1.4">
-<h3 data-number="7.1.4" class="anchored" data-anchor-id="chmod"><span class="header-section-number">7.1.4</span> chmod</h3>
-<p>Komanda chmod (angl. <strong>change mode</strong>, liet. “keisti režimą”) naudojama keisti failų ir katalogų teises.</p>
-<ul>
-<li>Suteikti vykdymo teisę failui:</li>
-</ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x failas.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Nustatyti konkrečias teises:</li>
-</ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 755 failas.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="chown" class="level3" data-number="7.1.5">
-<h3 data-number="7.1.5" class="anchored" data-anchor-id="chown"><span class="header-section-number">7.1.5</span> chown</h3>
-<p>Komanda <code>chown</code> (angl. change owner, liet. “keisti savininką”) naudojama keisti failų ir katalogų savininką.</p>
-<ul>
-<li>Keisti failo savininką:</li>
-</ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown naujas_savininkas failas.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Keisti failo savininką ir grupę:</li>
-</ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown naujas_savininkas:nauja_grupė failas.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="ps-ir-top" class="level3" data-number="7.1.6">
-<h3 data-number="7.1.6" class="anchored" data-anchor-id="ps-ir-top"><span class="header-section-number">7.1.6</span> ps ir top</h3>
-<p>Komandos <code>ps</code> ir <code>top</code> naudojamos valdyti ir stebėti procesus sistemoje.</p>
-<ul>
-<li>Parodyti veikiančius procesus su ps:</li>
-</ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> aux</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Realiu laiku sekti procesus su top:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">top</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="sed" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="sed"><span class="header-section-number">7.2</span> sed</h2>
-</section>
-<section id="xed" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="xed"><span class="header-section-number">7.3</span> xed</h2>
-</section>
-<section id="find-1" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="find-1"><span class="header-section-number">7.4</span> find</h2>
-</section>
-<section id="ps" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="ps"><span class="header-section-number">7.5</span> ps</h2>
-<section id="tldr" class="level3" data-number="7.5.1">
-<h3 data-number="7.5.1" class="anchored" data-anchor-id="tldr"><span class="header-section-number">7.5.1</span> tldr</h3>
-</section>
-</section>
-<section id="learning-path-for-bash" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Learning Path for Bash</h1>
-<section id="file-permissions-and-ownership" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="file-permissions-and-ownership"><span class="header-section-number">8.1</span> 1. File Permissions and Ownership</h2>
-<ul>
-<li><strong>Understanding Permissions</strong>
-<ul>
-<li>Recap of <code>r</code>, <code>w</code>, <code>x</code> permissions.</li>
-</ul></li>
-<li><strong>Commands to Manage Permissions</strong>
-<ul>
-<li><code>chmod</code>: Change file permissions.</li>
-<li><code>chown</code>: Change file ownership.</li>
-<li><code>chgrp</code>: Change group ownership.</li>
-</ul></li>
+<li><strong>Ctrl + O</strong>: Išsaugoti failą (Write Out).</li>
+<li><strong>Ctrl + X</strong>: Išeiti iš <code>nano</code>.</li>
+<li><strong>Ctrl + W</strong>: Ieškoti teksto (Where Is).</li>
+<li><strong>Ctrl + K</strong>: Iškirpti pažymėtą tekstą.</li>
+<li><strong>Ctrl + U</strong>: Įklijuoti iškirptą tekstą.</li>
+<li><strong>Ctrl + J</strong>: Teisingai suformatuoti dabartinį pastraipą (išlyginti tekstą).</li>
+<li><strong>Ctrl + C</strong>: Rodyti dabartinę žymeklio padėtį (eilutė ir stulpelis).</li>
+<li><strong>Ctrl + A</strong>: Pereiti į eilutės pradžią.</li>
+<li><strong>Ctrl + E</strong>: Pereiti į eilutės pabaigą.</li>
+<li><strong>Ctrl + Y</strong>: Slinkti aukštyn viena puslapiu.</li>
+<li><strong>Ctrl + V</strong>: Slinkti žemyn viena puslapiu.</li>
+<li><strong>Ctrl + T</strong>: Tikrinti rašybą (jei pasiekiama).</li>
+<li><strong>Ctrl + _ (pamynimas)</strong>: Pereiti į konkrečią eilutę.</li>
 </ul>
 </section>
-<section id="environment-variables" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="environment-variables"><span class="header-section-number">8.2</span> 2. Environment Variables</h2>
+<section id="nano-paleidimas-iš-komandų-eilutės" class="level3" data-number="7.9.2">
+<h3 data-number="7.9.2" class="anchored" data-anchor-id="nano-paleidimas-iš-komandų-eilutės"><span class="header-section-number">7.9.2</span> <strong>“nano” paleidimas iš komandų eilutės</strong>:</h3>
 <ul>
-<li><strong>Introduction to Environment Variables</strong>
-<ul>
-<li>Importance and usage in scripting.</li>
-</ul></li>
-<li><strong>Commands</strong>
-<ul>
-<li><code>export</code>: Set environment variables.</li>
-<li><code>env</code>, <code>printenv</code>: Display environment variables.</li>
-</ul></li>
+<li><code>nano &lt;failas&gt;</code>: Atidaryti nurodytą failą (sukurti, jei jis neegzistuoja).</li>
+<li><code>nano -c &lt;failas&gt;</code>: Rodyti žymeklio padėtį (eilutė ir stulpelis) būsenos juostoje.</li>
+<li><code>nano -B &lt;failas&gt;</code>: Įjungti atsarginio failo kūrimą prieš išsaugant.</li>
+<li><code>nano -m &lt;failas&gt;</code>: Įjungti pelės palaikymą (slinkimui ir teksto žymėjimui).</li>
+<li><code>nano -l &lt;failas&gt;</code>: Rodyti eilutes kairėje maržoje.</li>
 </ul>
 </section>
-<section id="text-processing-tools" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="text-processing-tools"><span class="header-section-number">8.3</span> 3. Text Processing Tools</h2>
-<ul>
-<li><strong>Advanced Text Processing</strong>
-<ul>
-<li><code>awk</code>: Basic usage for pattern scanning and processing.</li>
-<li><code>paste</code>: Merging lines of files.</li>
-</ul></li>
-</ul>
 </section>
-<section id="basic-networking-commands" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="basic-networking-commands"><span class="header-section-number">8.4</span> 4. Basic Networking Commands</h2>
-<ul>
-<li><strong>Networking Basics</strong>
-<ul>
-<li><code>ping</code>: Checking network connectivity.</li>
-<li><code>curl</code> or <code>wget</code>: Fetching files or data from the web.</li>
-<li><code>nc</code>: Networking tool for reading/writing data across network connections.</li>
-</ul></li>
-</ul>
-</section>
-<section id="job-control-light-coverage" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="job-control-light-coverage"><span class="header-section-number">8.5</span> 5. Job Control (Light Coverage)</h2>
-<ul>
-<li><strong>Understanding Job Control</strong>
-<ul>
-<li>Overview of foreground and background processes.</li>
-<li>Basic commands: <code>jobs</code>, <code>bg</code>, <code>fg</code>, <code>kill</code>.</li>
-</ul></li>
-</ul>
-</section>
-<section id="command-history-and-aliases" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="command-history-and-aliases"><span class="header-section-number">8.6</span> 6. Command History and Aliases</h2>
-<ul>
-<li><strong>Managing Command History</strong>
-<ul>
-<li><code>history</code>: Viewing command history.</li>
-</ul></li>
-<li><strong>Creating Shortcuts</strong>
-<ul>
-<li><code>alias</code>: Define shortcuts for commands.</li>
-</ul></li>
-</ul>
-</section>
-<section id="file-compression-and-archiving" class="level2" data-number="8.7">
-<h2 data-number="8.7" class="anchored" data-anchor-id="file-compression-and-archiving"><span class="header-section-number">8.7</span> 7. File Compression and Archiving</h2>
-<ul>
-<li><strong>File Management</strong>
-<ul>
-<li><code>tar</code>: Archive files and directories.</li>
-<li><code>gzip</code>: Compress files.</li>
-</ul></li>
-</ul>
-</section>
-<section id="disk-usage-commands" class="level2" data-number="8.8">
-<h2 data-number="8.8" class="anchored" data-anchor-id="disk-usage-commands"><span class="header-section-number">8.8</span> 8. Disk Usage Commands</h2>
-<ul>
-<li><strong>Disk Usage Overview</strong>
-<ul>
-<li><code>df</code>: Report file system disk space usage.</li>
-<li><code>du</code>: Estimate file and directory space usage.</li>
-<li><code>ncdu</code>: Disk usage analyzer with a text-based interface.</li>
-</ul></li>
-</ul>
-</section>
-<section id="secure-file-transfer" class="level2" data-number="8.9">
-<h2 data-number="8.9" class="anchored" data-anchor-id="secure-file-transfer"><span class="header-section-number">8.9</span> 9. Secure File Transfer</h2>
-<ul>
-<li><strong>Transferring Files Securely</strong>
-<ul>
-<li><code>scp</code>: Secure copy protocol.</li>
-<li><code>rsync</code>: Efficiently transfer files and directories.</li>
-<li><code>ssh</code>: Secure shell for remote access.</li>
-</ul></li>
-</ul>
-</section>
-<section id="command-execution-and-debugging" class="level2" data-number="8.10">
-<h2 data-number="8.10" class="anchored" data-anchor-id="command-execution-and-debugging"><span class="header-section-number">8.10</span> 10. Command Execution and Debugging</h2>
-<ul>
-<li><strong>Command Substitution</strong>
-<ul>
-<li><code>eval</code>: Execute commands stored in variables.</li>
-</ul></li>
-<li><strong>Debugging Scripts</strong>
-<ul>
-<li>Introduction to debugging scripts (using <code>set -x</code> for tracing execution).</li>
-</ul></li>
-</ul>
-</section>
-<section id="wrap-up" class="level2" data-number="8.11">
-<h2 data-number="8.11" class="anchored" data-anchor-id="wrap-up"><span class="header-section-number">8.11</span> Wrap-Up</h2>
-<ul>
-<li><strong>Integration and Practice</strong>
-<ul>
-<li>Combine learned commands in small exercises to reinforce concepts.</li>
-</ul></li>
-</ul>
+<section id="alias" class="level2" data-number="7.10">
+<h2 data-number="7.10" class="anchored" data-anchor-id="alias"><span class="header-section-number">7.10</span> Alias</h2>
+<p>Ir užbaikime šį skyrių nedideliu “programavimu”. Tai dar ne visai skriptų rašymas, bet jau gana “šilta”.</p>
+<p><img src="../img/bash_advanced/alias.jpg" class="img-fluid"></p>
+<p>Tu išmokai surasti didelius video failus ir tavo komanda atrodė ko gero taip</p>
+<p><code>find ~/Downloads/ ~/dwhelper/ -type f -iname "*.mp4" -size +100M -atime +14</code></p>
+<p>jeigu kaskart reiktų ją surašyti, nors tu be abejonės galėtum tai padaryti, tai atime daug laiko. Vienas variantas, kurį ioksi vėliau, tai automatizuoti tam tikrų skriptų paleidimą, pvz kai įsijungia kompiuteris. Tačiau kiek paprastenis būdas, yra šiai komandai sukurti trumpinį, kurį tavo temrinalas žinos ir kurį įrašius, jis vietoj tavėęs padaryšs visą ilgą komanda.</p>
+<p>kad sukurti trumpinį, tu turi edituoti taov namų direktorijjoje esantį .bashrc failą. pačioje failo pabaigoje turėtum priratyši tokią sintakse</p>
+<p><code>alias alias_name='command'</code> pvz <code>alias lnuf='find...'</code></p>
+<p>jeigu dabar terminale įrašysi lnuf jis nieko nesupras ir sakys, akd tokios komandos neturi. Taip nutiko dėl to, kad paeisus .bashrc failą, tavo terminalas dar nežino, akd šis failas atsinaujino. Vienas sprendimas būtų tiesiog išjungti ir vėl paleisti Terminal programą. Tačiau gerensis sprendimas yra komanda <code>source .bashrc</code>, kuris iš naujo užrkauna terminale bash shell nustaytyms su nauju sukurtu alias.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1151,8 +1631,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../b_bash_pagrindai/8_bash_commands_advanced_2.html" class="pagination-link" aria-label="BASH advanced 2">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">BASH advanced 2</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../b_bash_pagrindai/8_bash_commands_advanced_2.html" class="pagination-link" aria-label="BASH darbas su OS">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">BASH darbas su OS</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

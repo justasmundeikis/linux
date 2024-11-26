@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>9&nbsp; SSH – Linux ir programavimas</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../c_editoriai_git/9_text_editors_ide.html" rel="next">
+<link href="../b_bash_pagrindai/8_bash_commands_advanced_2.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../b_bash_pagrindai/5_bash_terminal_filesystem.html">Bash Pagrindai</a></li><li class="breadcrumb-item"><a href="../b_bash_pagrindai/12_ssh.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">SSH</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Linux ir programavimas</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Įvadas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Linux Pagrindai</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../a_linux_pagrindai/1_linux_configure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Linux pirmieji žingnsiai</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../a_linux_pagrindai/2_linux_update.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Linux atnaujinimas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../a_linux_pagrindai/3_linux_software.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Linux programos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../a_linux_pagrindai/4_passwords_programms.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Slaptažodžiai ir internetinės paskyros</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bash Pagrindai</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../b_bash_pagrindai/5_bash_terminal_filesystem.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Terminalas ir Linux failų sistema</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../b_bash_pagrindai/6_bash_comands_basic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">BASH komandos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../b_bash_pagrindai/7_bash_comands_advanced_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BASH pažengusiems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../b_bash_pagrindai/8_bash_commands_advanced_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">BASH darbas su OS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../b_bash_pagrindai/12_ssh.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">SSH</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Editoriai ir Git</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../c_editoriai_git/9_text_editors_ide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Text editors ir IDE</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../c_editoriai_git/10_git_github_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Git ir GitHub 1</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../c_editoriai_git/11_git_github_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git ir GitHub 2</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../c_editoriai_git/12_git_github_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Git ir GitHub 1</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Bash Skriptai</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../d_bash_skriptai/13_bash_scripts_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Bash Skriptai 1</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../d_bash_skriptai/14_bash_scripts_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Bash Skriptai 1</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../d_bash_skriptai/15_bash_scripts_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Bash Skriptai 2</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Python Programavimas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_python_programavimas/16_python_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Python Įvadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_python_programavimas/17_python_data_structures_loops.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Python Struktūros ir Ciklai</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_python_programavimas/18_python_variables_conditionals.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Python Kintamieji</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_python_programavimas/19_python_read_write_files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Python Failai</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_python_programavimas/20_python_APIs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Python API</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_python_programavimas/21_python_ollama.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Python Struktūros ir Ollama</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_python_programavimas/22_python_bottles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Python Bottles</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_python_programavimas/23_python_functions_os.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Python Funkcijos ir OS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_python_programavimas/24_python_openai_api.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Python ir OpenAI</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_python_programavimas/25_python_sql.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Python SQL</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_python_programavimas/26_python_html.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Python HTML</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_python_programavimas/27_python_webscrapping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Python Web Scaping</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_python_programavimas/28_python_css.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Python CSS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../e_python_programavimas/29_python_deployment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Python NGINX, Gunicorn</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Pažangios Temos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../f_pažangios_temos/30_TCP_IP.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">TCP/IP</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../f_pažangios_temos/31_raspberry_pi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Raspberry Pi</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../f_pažangios_temos/32_home_server.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Raspberry pi - Server</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../f_pažangios_temos/33_docker_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Docker 1</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../f_pažangios_temos/34_docker_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Docker 2</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#įvadas" id="toc-įvadas" class="nav-link active" data-scroll-target="#įvadas"><span class="header-section-number">9.1</span> Įvadas</a></li>
+  <li><a href="#virtual-box" id="toc-virtual-box" class="nav-link" data-scroll-target="#virtual-box"><span class="header-section-number">9.2</span> Virtual Box</a></li>
+  <li><a href="#ubuntu-serverio-iso" id="toc-ubuntu-serverio-iso" class="nav-link" data-scroll-target="#ubuntu-serverio-iso"><span class="header-section-number">9.3</span> Ubuntu serverio ISO</a></li>
+  <li><a href="#ubuntu-instalivimas-per-virtualbox" id="toc-ubuntu-instalivimas-per-virtualbox" class="nav-link" data-scroll-target="#ubuntu-instalivimas-per-virtualbox"><span class="header-section-number">9.4</span> Ubuntu instalivimas per Virtualbox</a></li>
+  <li><a href="#antras-serveris" id="toc-antras-serveris" class="nav-link" data-scroll-target="#antras-serveris"><span class="header-section-number">9.5</span> Antras serveris</a></li>
+  <li><a href="#finišas" id="toc-finišas" class="nav-link" data-scroll-target="#finišas"><span class="header-section-number">9.6</span> Finišas</a></li>
+  <li><a href="#įvdas" id="toc-įvdas" class="nav-link" data-scroll-target="#įvdas"><span class="header-section-number">9.7</span> Įvdas</a></li>
+  <li><a href="#prisijungti-per-ssh" id="toc-prisijungti-per-ssh" class="nav-link" data-scroll-target="#prisijungti-per-ssh"><span class="header-section-number">9.8</span> Prisijungti per SSH</a></li>
+  <li><a href="#ssh-nustatymai" id="toc-ssh-nustatymai" class="nav-link" data-scroll-target="#ssh-nustatymai"><span class="header-section-number">9.9</span> ssh nustatymai</a>
+  <ul class="collapse">
+  <li><a href="#ssh-config-client" id="toc-ssh-config-client" class="nav-link" data-scroll-target="#ssh-config-client"><span class="header-section-number">9.9.1</span> ssh config client</a></li>
+  <li><a href="#ssh-keys-sukūrimas" id="toc-ssh-keys-sukūrimas" class="nav-link" data-scroll-target="#ssh-keys-sukūrimas"><span class="header-section-number">9.9.2</span> ssh keys sukūrimas</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">9.9.3</span> </a></li>
+  <li><a href="#configrue-ssh-server-side" id="toc-configrue-ssh-server-side" class="nav-link" data-scroll-target="#configrue-ssh-server-side"><span class="header-section-number">9.9.4</span> configrue ssh server side</a></li>
+  <li><a href="#pakeisti-config-į-ssh--p-2222" id="toc-pakeisti-config-į-ssh--p-2222" class="nav-link" data-scroll-target="#pakeisti-config-į-ssh--p-2222"><span class="header-section-number">9.9.5</span> pakeisti config į ssh -p 2222</a></li>
+  <li><a href="#ufw" id="toc-ufw" class="nav-link" data-scroll-target="#ufw"><span class="header-section-number">9.9.6</span> UFW</a></li>
+  <li><a href="#problems" id="toc-problems" class="nav-link" data-scroll-target="#problems"><span class="header-section-number">9.9.7</span> problems</a></li>
+  <li><a href="#prideti-savo-public-key-githube" id="toc-prideti-savo-public-key-githube" class="nav-link" data-scroll-target="#prideti-savo-public-key-githube"><span class="header-section-number">9.9.8</span> prideti savo public key GitHube</a></li>
+  </ul></li>
+  <li><a href="#tmux" id="toc-tmux" class="nav-link" data-scroll-target="#tmux"><span class="header-section-number">9.10</span> TMUX</a></li>
+  <li><a href="#split" id="toc-split" class="nav-link" data-scroll-target="#split"><span class="header-section-number">9.11</span> split</a></li>
+  <li><a href="#langai" id="toc-langai" class="nav-link" data-scroll-target="#langai"><span class="header-section-number">9.12</span> langai</a></li>
+  <li><a href="#sesijos" id="toc-sesijos" class="nav-link" data-scroll-target="#sesijos"><span class="header-section-number">9.13</span> sesijos</a></li>
+  <li><a href="#config" id="toc-config" class="nav-link" data-scroll-target="#config"><span class="header-section-number">9.14</span> config</a></li>
+  <li><a href="#secure-file-transfer" id="toc-secure-file-transfer" class="nav-link" data-scroll-target="#secure-file-transfer"><span class="header-section-number">9.15</span> 9. Secure File Transfer</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../b_bash_pagrindai/5_bash_terminal_filesystem.html">Bash Pagrindai</a></li><li class="breadcrumb-item"><a href="../b_bash_pagrindai/12_ssh.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">SSH</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">SSH</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="įvadas" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="įvadas"><span class="header-section-number">9.1</span> Įvadas</h2>
+<p>Šiame skyriuje tu išmoksi kelių labai svarbių dalykų. Pirma tu instlaiuosi Virtualbox ir guesteddions CD. Tai programa, kuri tau leis tavo kompiuteryje instlaituoti vieną ar kelis kitus kompiuterius. Tu galėtum teoriškai instlaiuoti net Windows as MacOs operacines sistemas, kurios būtų pilnavertiškai veikiančios iš tavo kompiuterio. Suprantama yra bet… Windows reikia licenzijos, ir tiek Windows tiek MacOs reikalauja gauna daug resursų.Tai reikia turėti omenyje. Ųiame skyriuje tu instaliuosi net 2 Ubuntu serverius ir vienu metus juos galėsi valdyti. Instaliavus ubuntu serverius tu suprantama galėsi matyti jų langus savo ekrane. Taip tu simuliuotum tarsi ekrano ir klaviatūros turėjimą serverinėje. Tačiau taip nevisada yra, dažniausiai reikia prie serverio prisijungti nuotoliniu būdų. Tam tu išmoksi naudotis labai svarbia programa - SSH (secure shell), kuri tau leis nepaliekant tavo kompiuterio terminal lango, sukurti ryši ir persikelti į serverį. Skyriaus pabaigoje, tu išmoksi naudotis ir TMUX, tai terminalo multiplexorius, kuris leidžia viename Terminalo lango turėti kelis terminalo langus. Tai tau padės efektyviau dirbti su visais serveriais. Papildomai tu išmoksi scp ir rsync komandas (programas), kurios leis tau siųsti duomenis tarp serverių.</p>
+<p><img src="../img/ssh/overview.png" class="img-fluid"></p>
+<p>Traigi šio skyriaus planas:</p>
+<ul>
+<li>instliuoti Vitualbox</li>
+<li>instliuoti 2 Ubuntu serverius</li>
+<li>išmokti naudotis SSH kad prisijungti prie serverių</li>
+<li>išmokti naudotis TMUX, kad darbas dirbant su serveriais būtų paprastensnis</li>
+<li>snaudotis cp ir rsync komandos persiunčiant failus tarp serverių</li>
+</ul>
+<p>Ką tau reikia prisiminti iš praėjusių skyrių:</p>
+<ul>
+<li>kaip atnaujinti Debian sistemas (Ubuntu, Linux Mint) su <code>apt</code></li>
+<li>kas yra ufw firewall ir kaip jis konfiguruojamas</li>
+<li>kaip su systemd (<code>systemctl</code>) startuoti procesus</li>
+</ul>
+<p>Čia kaip SSH į VirtualBox, tik iškart geriau kaip bridge adapter, nes tada VM naudojasi dhcp ir gauna nromalų lokalų adresą https://youtu.be/rhFLfwZzlGA</p>
+</section>
+<section id="virtual-box" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="virtual-box"><span class="header-section-number">9.2</span> Virtual Box</h2>
+<p>Virtual Box yra programa, kuri leidžia tau sukurti konteinerius ir juose instaliuoti kitas operacines sistemas. Pradėkime nuo to, kad tau reikia instaliuoti Virtual Box. Kadangi VirtualBox lengviausia naudoti naudojantis GUI (graphical user interface), tai ir instaliaciją padaryk per software manager. Čia vienas variantų, kai GUI aplikacija yra geresnis pasirinkikimas nei kad terminalas. Nors esu tikras, jog teoriškai tai būtų irgi įmanoma. :D</p>
+<p>Psileisk Software Manager per Menu. Ir visai gali būti, kad tau į akis iškart šoks VirtualBox, jeigu ne, į paiešką įrašyk Virutalbox</p>
+<p><img src="../img/ssh/vb_install1.png" class="img-fluid"></p>
+<p>Pradėk nuo Virtualbox (base) ji instaliuojant tau automatiškai instaliuosi pirmi trys paketai, bet tada patarčiau iškart instaliuoti ir sekančius du.</p>
+<ul>
+<li>virtualbox-guest-additions-iso</li>
+<li>virtualbox-ext-pack</li>
+</ul>
+<p><img src="../img/ssh/vb_install2.png" class="img-fluid"></p>
+<p>Dabar per Menu startuok Virtualbox ir tave turėtų pasitikti štai toks vaizdas:</p>
+<p><img src="../img/ssh/vb_start.png" class="img-fluid"></p>
+<p>Jeigu kažkur spustelėsi, gali būt kad į šį meniu nebegrįši, tad kai prireiks instlaiuoti virtualius kompiuterius, virtuiniame meniu rinkis “Machine” ir tada “New”.</p>
+</section>
+<section id="ubuntu-serverio-iso" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="ubuntu-serverio-iso"><span class="header-section-number">9.3</span> Ubuntu serverio ISO</h2>
+<p>Prieš pradedant instaliuoti Ubuntu serverio operacinę sistemą, ją reikia parsisiųsti. Nueik į <a href="https://ubuntu.com/download/server">https://ubuntu.com/download/server</a> ir pasirinki Download 24.04.01 LTS. Arba jeigu jau bis naujesnė LTS versiją, pasirink ją. Paspaudus ant Download, tau atsidarys naujas langas. Nieko įrašinėti tau nereikia, ISO failo parsisiuntimas prasidės po kelių sekundžių automatiškai.</p>
+<p><img src="../img/ssh/ubuntu_download1.png" class="img-fluid"></p>
+<p>Tačiau jeigu nori, gali iš atsidariusio lango parsisitų Ubuntu Cheatsheet - pagrindinių ubuntu temrinalo komandų rinkinį. Labai daug ką iš ten, jau būsi mačius.</p>
+<p>ISO failas, tai taso virtualus CD. Jeigu norėtum dar ir dabar galėtum panaudti ISO failą, kad įrašyti / sukurti instlaicijos CD. Tačiau CD mums neprireiks, viską padarysi virtualiai.</p>
+<p>Atsidarius Nemo ir nueėjus į Downloads turėtum matyti</p>
+<p><img src="../img/ssh/ubuntu_iso.png" class="img-fluid"></p>
+</section>
+<section id="ubuntu-instalivimas-per-virtualbox" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="ubuntu-instalivimas-per-virtualbox"><span class="header-section-number">9.4</span> Ubuntu instalivimas per Virtualbox</h2>
+<p>Virtualbox spausk ant Machine, tada ant New</p>
+<p><img src="../img/ssh/ubuntu_install_1.png" class="img-fluid"></p>
+<p>Atsiduriasame lange įrašyk:</p>
+<ul>
+<li>ubuntu_server_1</li>
+<li>ISO image, spasuk ant dropdpown meniu, pasirink Other, dabar atsidarys Nemo failų naršyklė, nueik į Downloads ir ten pasirinkus ISO failą spausk ant</li>
+<li>uždėk varnelę ant Skip unattened installation</li>
+</ul>
+<p><img src="../img/ssh/ubuntu_install_2.png" class="img-fluid"> <img src="../img/ssh/ubuntu_install_3.png" class="img-fluid"> <img src="../img/ssh/ubuntu_install_4.png" class="img-fluid"></p>
+<p>Spausk ant next. Dabar reikės sukurti nustatymus kiek resursų suteiki šiam virtualiam serveriui. Gali arba judinti slider’į arba tiesiog įrašyti skaičius:</p>
+<ul>
+<li>Base Memory 512</li>
+<li>Processos 1</li>
+</ul>
+<p><img src="../img/ssh/ubuntu_install_5.png" class="img-fluid"></p>
+<p>Spausk ant next. Sekančiame lange tavęs klaus, kiek suteikti kietojo disko vietos. Kadangi tau praktikai reikia tik minimalios instaliacijos ir tu nedarysi su šiais serveriais nieko reikšmingo, pasirink 5GB. Kai pasirinksi, taov kompiuteris alokuos iki 5GB vietos, bet jeigu instaliacijai reikės tik 3GB, tai ir panaudosi tik 3. <strong>Nedėk varnelės</strong> ant Pre-allocate Full Size!</p>
+<p><img src="../img/ssh/ubuntu_install_6.png" class="img-fluid"></p>
+<p>Spausk Next. Įsitikink kad visi paremtrai teisingi ir spausk Finish</p>
+<p><img src="../img/ssh/ubuntu_install_7.png" class="img-fluid"></p>
+<p>Dabar tu dar nieko neinstliavai, tik sukūrei konteinėrį. Ir vaizdas turėjo pasiekst į daugmaž tokį. Spausk ant Settings (jeigu reikia, spustl ant ubuntu_server_1).</p>
+<p><img src="../img/ssh/ubuntu_install_8.png" class="img-fluid"></p>
+<p>Nueik į Network ir Attached to: pakeisk iš NAT į Bridged Adapter. Tai leis virtual serveriui, gauti IP adresą iš tavo maršutizatoriaus ir tu galėsi pasiekti šį kompiuterį naudojantis IP adresu. Bet apie tai vėliau. Spausk ant OK.</p>
+<p><img src="../img/ssh/ubuntu_install_9.png" class="img-fluid"></p>
+<p>Dabar tu pasiruošus rpadėt Ubuntu Serverio instaliavimą šiame konteineryje. Spausk ant Start.</p>
+<p><img src="../img/ssh/ubuntu_install_10.png" class="img-fluid"></p>
+<p>Pranįimų panelę gali išjungti. Tada gali spausti Enter, arba jeigu nespėsi, po keliolikos sekundžių pasileis pirmas pasirinkimas - instlaiuoti Ubuntu Serverį (Try or Install Ubuntu Server)</p>
+<p><img src="../img/ssh/ubuntu_install_11.png" class="img-fluid"></p>
+<p><strong>NOTE:</strong> Jeigu pastrigo vaizdas ir niekas nejuda pirmyn, išjunk per X langą. Pasirink Power off the machine., tada nueik ir tik instaliacijos metu suteik daugiau resursų, pvz 2 procesrius ir 1024 RAM. Tai gali padaryti Settings nuėjus į System. Padidinti base memory iki 2024 ir processor skiltyje iki 2.</p>
+<p>Jeigu viskas gerai, dabar turėtum matyt tokį vaizdą, kur tavęs klaus, kokia kalba instlaiuoti Ubuntu serverį. Intsialicijos langą tu valdau su roduklytėmis ir enter klavišu. Pasirinkus English, spausk Enter.</p>
+<p><img src="../img/ssh/ubuntu_install_12.png" class="img-fluid"></p>
+<p>Jeigu gausi pranešimą, kad yra prieinamas instaliatoriaus anaujinimas, pasirink atnaujinkti ir spausk Enter</p>
+<p><img src="../img/ssh/ubuntu_install_12_b.png" class="img-fluid"></p>
+<p>Sekančiame lange tavęs klaus, kokia tavo klaviatūra, pasilik prie English US. Kaip matai, apačioje ž-aliuoja Done, jeigu spausi enter, iš esmės nuspausi ta Done “mygtuką”.</p>
+<p><img src="../img/ssh/ubuntu_install_13.png" class="img-fluid"></p>
+<p>Sekančiame lange su rodyklytėm pakilk ant Ubuntu Server (minimized) ir su SPACE klavišu atvirtink pasirinkimą. X turėtų pažymėti, pasirinktą variantą. tada su roiklyte nueik ant Done ir spausk Enter</p>
+<p><img src="../img/ssh/ubuntu_install_14.png" class="img-fluid"></p>
+<p>Sekančiame lange tau nereikia nieko daryti. Gali spausti enter. Bet kartu, šiame lange jau matysi IP adresą, kuriuos tavo serveris bus pasiekiamas. Jeigu viskas gerai ir tu matai skaičius tokius kaip 192.168.1…. viskas ok ir spausk Enter</p>
+<p><img src="../img/ssh/ubuntu_install_15.png" class="img-fluid"></p>
+<p>Sekančiame lange tavęs klausia, ar tu naudoji Proxy. Tu nieko nenaudoji, tad spausk Enter.</p>
+<p><img src="../img/ssh/ubuntu_install_16.png" class="img-fluid"></p>
+<p>Sekančiame lange, Ubuntu instliatoris pabandys susisiekti ri rasti greičiausia veidroinį serverį. Palauk kelias akimirkas ir kai pamatysi pranešimą <strong>This mirror location passed test</strong>, spausk Enter. Jeigu išmes klaidą, irgi spausk Enter.</p>
+<p><img src="../img/ssh/ubuntu_install_17.png" class="img-fluid"></p>
+<p>Sekančiame lange tave informuos apie tai, kaip bus padalintas diskas. Nieko čia keisti nereikia, tad spausk Enter. Tas pats galioja ir sekančiam maniu langui</p>
+<p><img src="../img/ssh/ubuntu_install_18.png" class="img-fluid"></p>
+<p>Šiame lange esi paskutinį kartą informuojama kas bus padaryti, spausk Enter</p>
+<p><img src="../img/ssh/ubuntu_install_20.png" class="img-fluid"></p>
+<p>tada su rodyklyte pasirink Continue ir spausk Enter.</p>
+<p><img src="../img/ssh/ubuntu_install_21.png" class="img-fluid"></p>
+<p>jiegu išoks dar koks perklausimas, visad pasirink Continue ir spausk enter</p>
+<p>Šiame lange tave infomuoja, akd šįkart neinsslatiuos Ubuntu Pro - tai mokama Ubuntu versija, kuri skirta tikriems serveriams, nes sutaikia papaildomų Ubuntu teikiamų paslaugų. Tad spausk Enter</p>
+<p><img src="../img/ssh/ubuntu_install_22.png" class="img-fluid"></p>
+<p>Sekančiame lange, tavęs klaus ar nori instaliuoti OpenSSH server. Gali nedėti X, bet tada reikės terminale instaliuoti. Rekomenduoju uždėt X pakilus su rodyklėm ir papspaudus SPACE klavišą, tada vėl su rodyklėym nueiti and Done ir spaust Enter</p>
+<p><img src="../img/ssh/ubuntu_install_23.png" class="img-fluid"></p>
+<p>Šiame lange, matysi, kad instlaiuojama sistema</p>
+<p><img src="../img/ssh/ubuntu_install_24.png" class="img-fluid"></p>
+<p>Link pabaigos, kas gali užtrukti apie 5-10 minučių, tau reikės užppildyti vartojo duomenis. siūlau nesisunktini gyvenimo ir perimti:</p>
+<ul>
+<li>name: user_1</li>
+<li>username: admin</li>
+<li>password: ubuntu</li>
+</ul>
+<p>Kai instaliacija baisgis, Spausk Enter, kad virtualus kompiuteris restartuotųsi. Jeigu jis “pakibs”, išjunk lagą su X pasirenkant Power Off the Machine. O tada iš Virtualbox spaudžiant ant Start.</p>
+</section>
+<section id="antras-serveris" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="antras-serveris"><span class="header-section-number">9.5</span> Antras serveris</h2>
+<p>Dabar tau reikia pakartoti visus tuos pačius žingsnius, tik sukurti naują machine.</p>
+<ul>
+<li>pavadink ją ubuntu_server_2</li>
+<li>username gali palikti user_1</li>
+<li>passowrda irgi gali palikti ubuntu</li>
+<li>ubtuntu_server_2</li>
+</ul>
+</section>
+<section id="finišas" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="finišas"><span class="header-section-number">9.6</span> Finišas</h2>
+<p>Sveikinu, dabar tu turi 2 serverius, paspausk pirma ant vieno ir tada start, tada ant kito ir tada irgi start. įsilogink į abu. naudoajnt user_1 kaip vartotojo vardą ir ėrašant <strong>ubuntu</strong> kaip slaptažodį.</p>
+<p>Dabar įsitikink ar SSH servisas veikia: patikinri <code>systemctl status ssh</code>. Greičiausiai matysi, jog servisas neveikia.</p>
+<p>įrašyk <code>sudo systemctl enable ssh --now</code>. patrinkink statusą dar kartą, dabar turėtum matyti:</p>
+<p>Pakartok tai ir antrame serveryje.</p>
+<p><code>sudo systemctl enable ssh --now</code> atstoja dvi komandas: * <code>sudo system start shh</code> startuoti servisą dabar * <code>sudo systemctl enable shh</code> startuoti automatiškai kai įjungiamas / restartuojamas serveris</p>
+<p>Sveikinu, dabar tu turi DU veikiančius virtualius serverius! Dabar tu galėtum iš tiesų naudotis Virtualbox langais tarsi minotiriais ir valdyti serverius. Tačiau realyubėjė, serveris gali būti raspberry pi mikrokompiuteryje ir nepajungtas prie ekrano ir klaviatūros</p>
+<p><img src="../img/ssh/raspberry.jpg" class="img-fluid"></p>
+<p>arba serveris gali būti už kelių tūksančių kilometrų nuo tavęs…</p>
+<p><img src="../img/ssh/female_working_ocean.png" class="img-fluid"></p>
+<p>Dabar tu susipažinsi su SSH - programa skirta saugiai komunikuoti su nuotoliniais serveriais.</p>
+</section>
+<section id="įvdas" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="įvdas"><span class="header-section-number">9.7</span> Įvdas</h2>
+<p>SSH (Secure Shell) yra programa, kuri leidžia sukurti saugų ryšį su kitu Linux kompiuteriu arba serveriu. Tai leidžia tau dirbti tavo terminalę, bet vykdyti komandas kad ir kitame pasaulio gale nutolusiame Linux serveryje.</p>
+<p>SSH taip pat kartaisnaudojamas tam tikram autentifikavimui, pvz GitHub’e. Tad tavo parašytas kodas, kurį norėsi išsaugoti ir naudoti versijų kontolę naudojantis GitHub, veiks kur kas paprašiau - nereikės kaskart įrašinėti savo slaptažodžio.</p>
+<p>OpenSSH yra instaliuotas beveik visuose Linux kompiuteriuose. Jis susideda iš vieju kompenentų: servrio ir client</p>
+<p>[diagrama]</p>
+</section>
+<section id="prisijungti-per-ssh" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="prisijungti-per-ssh"><span class="header-section-number">9.8</span> Prisijungti per SSH</h2>
+<p>Ar clientas instaliuotas?</p>
+<p>which ssh</p>
+<p>Jeigu ne, klientą galima instlaiuoti su sudo apt install opennssh-client</p>
+<p>ar serveris instaliuotas?</p>
+<p>sudo apt install openssh-server</p>
+<p>ssh username@IP enter</p>
+<p>dialogas</p>
+<p>ctlr + d nutraukt ryšį</p>
+<p>github_ed25519 homeserver_ed25519</p>
+</section>
+<section id="ssh-nustatymai" class="level2" data-number="9.9">
+<h2 data-number="9.9" class="anchored" data-anchor-id="ssh-nustatymai"><span class="header-section-number">9.9</span> ssh nustatymai</h2>
+<p>/home/user/.ssh/</p>
+<p>known hosts</p>
+<p>rm known_hosts</p>
+<p>ir vėl bandant prisijungti, jis vėlklaus ar nori prisijungti. visgi gkartais geriau tiesiog ištrinti blogą įrašą</p>
+<p>tai reikalainga, kad išvengti man in the middle attack</p>
+<p>[grafikas]</p>
+<p>tail -f auth.log in /var/log</p>
+<section id="ssh-config-client" class="level3" data-number="9.9.1">
+<h3 data-number="9.9.1" class="anchored" data-anchor-id="ssh-config-client"><span class="header-section-number">9.9.1</span> ssh config client</h3>
+<p>ls ir jeigu nėra config touch config nano config</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Host myserver</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  Hostname 192.168.1.2</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  Port 22</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  User root</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ssh-keys-sukūrimas" class="level3" data-number="9.9.2">
+<h3 data-number="9.9.2" class="anchored" data-anchor-id="ssh-keys-sukūrimas"><span class="header-section-number">9.9.2</span> ssh keys sukūrimas</h3>
+<p>ssh-keygen</p>
+<p>Generate SSH keys used for authentication, password-less logins, and other things. More information: https://man.openbsd.org/ssh-keygen.</p>
+<ul>
+<li><p>Generate a key interactively: ssh-keygen</p></li>
+<li><p>Generate an ed25519 key with 32 key derivation function rounds and save the key to a specific file: ssh-keygen -t ed25519 -a 32 -f ~/.ssh/filename</p></li>
+<li><p>Generate an RSA 4096-bit key with email as a comment: ssh-keygen -t rsa -b 4096 -C “comment|email”</p></li>
+<li><p>Remove the keys of a host from the known_hosts file (useful when a known host has a new key): ssh-keygen -R remote_host</p></li>
+<li><p>Retrieve the fingerprint of a key in MD5 Hex: ssh-keygen -l -E md5 -f ~/.ssh/filename</p></li>
+<li><p>Change the password of a key: ssh-keygen -p -f ~/.ssh/filename</p></li>
+<li><p>Change the type of the key format (for example from OPENSSH format to PEM), the file will be rewritten in-place: ssh-keygen -p -N “” -m PEM -f ~/.ssh/OpenSSH_private_key</p></li>
+<li><p>Retrieve public key from secret key: ssh-keygen -y -f ~/.ssh/OpenSSH_private_key</p></li>
+</ul>
+<p>su laiku šiek tiek keitėsi, kas yra “saugu” dabar geriausia laikytis GitHub rekomendacijos.</p>
+<p>kam reikalingas raktas? nes passowrdas nėra labai saugūs, ypač, jeigu passowrdas nėra labai stiprus. geriausias variantas, serveryje išjungti passwordo autentifikavimą, prieš tai ten paliekant savo raktą.</p>
+<p>bet pirma reikia ta raktą sukurti</p>
+<p>ls .ssh. jeigu yra ed, galima juos trinti lauk, dabar sukursime naujus.</p>
+<p>ssh-keygen kur išsaugoti failą, ar nori to pavadinimo? geriau NE, nes geriau turėti atskirus raktus atskiriems servisams arba serveriams</p>
+<p>enter a passphrase - passphrase yra skrta tam, kad jeigu tavo kompiuteris patetų į blogiukų rankas, kad nie negalėtų panaudoti rakto. tol kol tu nenaudoji SSH prisijungti prie įmonės serverių, galima atsisakyti pasphraze ir tiesiog spausti enter</p>
+<p>ls .ssh štai turi du raktus ab_rsa ab_rsa.pub</p>
+<p>.pub yra public key - yra viešas raktas, galbūt geriau įsivaizduoti, tai rakto skylutė, tinkama tavo raktui</p>
+<p>tu ateityje dalinsies šiuos viešu raktu, nes tada naudojant savo privatų raktą, galėsi atrakantin ssh tuneli.</p>
+<p>privatus raktas - jo niekada ir niekam negalima naudoti, rodyti ir t.t. jeigu kada nors, kažkur pasidalintum privačiu raktu - tada reiktų pakeisti raktų - spynų poras, kad niekas negalėtų apsimesti tavimi.</p>
+<p>ir tada eksportuoti</p>
+<p>nueiti į serveri cd .ssh jeigu serveryje nėra .shh galima mkdir .ssh touch authorized_keys nano paste public key, vienas raktas per eilutę</p>
+</section>
+<section id="section" class="level3" data-number="9.9.3">
+<h3 data-number="9.9.3" class="anchored" data-anchor-id="section"><span class="header-section-number">9.9.3</span> </h3>
+<p>ssh -v homerserver parodo kas vyksta</p>
+<p>ištrinti authrorized keys failą</p>
+<p>ssh-copy-id -i ~/.ssh/ab… root@IP</p>
+<p>Install your public key in a remote machine’s authorized_keys. More information: https://manned.org/ssh-copy-id.</p>
+<ul>
+<li><p>Copy your keys to the remote machine: ssh-copy-id username@remote_host</p></li>
+<li><p>Copy the given public key to the remote: ssh-copy-id -i path/to/certificate username@remote_host</p></li>
+<li><p>Copy the given public key to the remote with specific port: ssh-copy-id -i path/to/certificate -p port username@remote_host</p></li>
+</ul>
+</section>
+<section id="configrue-ssh-server-side" class="level3" data-number="9.9.4">
+<h3 data-number="9.9.4" class="anchored" data-anchor-id="configrue-ssh-server-side"><span class="header-section-number">9.9.4</span> configrue ssh server side</h3>
+<p>Serveryje</p>
+<p>which sshd ssh d d yra daemon systemctl status sshd</p>
+<p>ls /etc/ssh host keys skirti tam, kad sujungtu tave. nes ssh tunelis sudaromos i6 abiej7 pusi7, bet lygiai taip pat, tu priimi serverio public key, kad kai jūs padarot susijungimą, kad tavo kompiuteris žinotų, jog i tiesų susijungia su tuo serveriu.</p>
+<p>ssh_config sshd_config</p>
+<p>sudo nano sshd_config</p>
+<p>port standartas 22, jeigu nori pakeisti, iškometuok pvz į 2222</p>
+<p>permitrootlogin yes pakeisti į ne</p>
+<p>passwordauthentificatoin yes iškomentuoti ir pakeisti į ne, bet labai svarbu, būtų tikram, kad gali įisiloginti su savo ssh raktu</p>
+<p>dabar reikia sudo systemctl restadt sshd pasitiinrktin ar veikis daemon systemctl status</p>
+<p>jeigu įvakt kažkas labai blogai, tada pakeistus reiktų fiziškai prisijungti prie serverio IR imprtuoti rankiniu būdų savo public key</p>
+</section>
+<section id="pakeisti-config-į-ssh--p-2222" class="level3" data-number="9.9.5">
+<h3 data-number="9.9.5" class="anchored" data-anchor-id="pakeisti-config-į-ssh--p-2222"><span class="header-section-number">9.9.5</span> pakeisti config į ssh -p 2222</h3>
+<p>padeda bet ti minimaliai. kodėl, nes jeigu tavo servis atviras internetrui, tai glai būti tikra, kad botai bandys tave pasiekti per portą 22</p>
+</section>
+<section id="ufw" class="level3" data-number="9.9.6">
+<h3 data-number="9.9.6" class="anchored" data-anchor-id="ufw"><span class="header-section-number">9.9.6</span> UFW</h3>
+<p>sudo ufw status</p>
+<p>5isitikini ar ufw leidžia komunikuoti per portą 22 alternatyviai per 2222</p>
+<p>sudo ufw add?</p>
+</section>
+<section id="problems" class="level3" data-number="9.9.7">
+<h3 data-number="9.9.7" class="anchored" data-anchor-id="problems"><span class="header-section-number">9.9.7</span> problems</h3>
+<p>portai, ufw, .ssh teises tur4t7 b8t tik 7– kitaip sshd nesinaudosšita direktorija public key 644 /var/log/auth.log tail</p>
+<p>journalctl -u ssh journalctl -fu ssh</p>
+</section>
+<section id="prideti-savo-public-key-githube" class="level3" data-number="9.9.8">
+<h3 data-number="9.9.8" class="anchored" data-anchor-id="prideti-savo-public-key-githube"><span class="header-section-number">9.9.8</span> prideti savo public key GitHube</h3>
+</section>
+</section>
+<section id="tmux" class="level2" data-number="9.10">
+<h2 data-number="9.10" class="anchored" data-anchor-id="tmux"><span class="header-section-number">9.10</span> TMUX</h2>
+<p>Terminal multi plexer</p>
+<p>Kam tau reikalaingas TMUX? Leidžia turėti temrinalus temrinale. Vienas is didelių plisų, jog dirbant nuotoliniame serveryje, nutrukus ryšiui, nenutruks ta operacija, kuri buvo vykdoma. įisivaizduok su instlaiuoji progrma ir kaip tik tuo metu nutkrųsta tavo ssh ryšys. tai galli gerokai prigadinti ir pridaryti problemų</p>
+<p>which tmux sudo apt install tmux</p>
+<p>prefix key</p>
+<p>ctlr b, tada spausti d.&nbsp;d = detach</p>
+<p>[screenshot]</p>
+<p>tmux list-sessions tmux attach</p>
+</section>
+<section id="split" class="level2" data-number="9.11">
+<h2 data-number="9.11" class="anchored" data-anchor-id="split"><span class="header-section-number">9.11</span> split</h2>
+<p>tmux galimapadalinti į keloas dalis, tmux galima dalinti vertikaliai ir horizontaliai</p>
+<p>vertical split</p>
+<p>ctrl b , paleisti ir tada spausti % (shift 5)</p>
+<p>horizontal slit ctlr b ” (shift ’)</p>
+<p>Kaip jud4ti tarp pane crlt b rodylles</p>
+<p>ten kur matosi blykstinis kursorius, tas langas pasirinktas langų splitai įvykta iš to lango kuris aktyvoutas</p>
+<p>exit uždaro splitą bet jeigu paskutiniame tmux lange, tada ir viskastmux uzdsdaro, tada sesija ne dettached o pilnai uždaryta</p>
+<ul>
+<li>htop</li>
+<li>./scriptas</li>
+<li>skripto editavimas</li>
+</ul>
+<p>htop, journalctl -f, o trečiam lande sudo upt update…</p>
+<p>ctlr b, x tada paklaus ar nori u=datyi pane, numeriai nuo 0 iki n y</p>
+</section>
+<section id="langai" class="level2" data-number="9.12">
+<h2 data-number="9.12" class="anchored" data-anchor-id="langai"><span class="header-section-number">9.12</span> langai</h2>
+<p>langai tai tarsi atksiri terminalai, kuriuose yra skirtingi panes</p>
+<p>nauda, 5isivaduok viena langą tu sukuri sistemos monitoringui atsidarius ji, matai htop, jourcalclt -f , galbūt net temeratūrą ir t.t. tačiau kitame lange tu nori edituoti skriptą, bet jis netelpa į maža splitą, o tau reikia viso lango (arba galbūt du splitai su dviem failais), trečiame lang tu gali būti atsidarius man puslapį, o ketvirtame, galbūt paleidinti skriptus ir vertinti ką daro tavo kodas…</p>
+<p>darbas su skirtingais langais, labiau atkualus, kai dirbi per ssh serveryje, kiek mažiau aktualus, jeigu dirbi lokaliai, nes tada tikėtina naudosi IDE, terminalą ir t.t.</p>
+<p>tmux tmux new-window dabar atsirado kitas langas screenshot apa2ioje ctrl b, c (create window)</p>
+<p>tarp lang7 ctlr b, p (previous) cltr b, n (next) ctrl b &amp; (lango u=darymui), y patrvirtinti</p>
+<p>lango id numeriai nesikei2ia u-darant langus, jie pasikei2ia tik</p>
+<p>suteikti langui pavadinima b8ti tame lange spasuti , “rename winow” galima 5ra6yti pavadinim1</p>
+<p>arba tmux rename-window bet grei2iau ctrl b ,</p>
+</section>
+<section id="sesijos" class="level2" data-number="9.13">
+<h2 data-number="9.13" class="anchored" data-anchor-id="sesijos"><span class="header-section-number">9.13</span> sesijos</h2>
+<p>tmux list-sessions tmux ctrl b d tmux ctrl b d tmux list-sessions</p>
+<p>tada tmux attach prisijungia naujausią sesiją tmux attach -t (target) nr tmux ls – tmux list-sessions</p>
+<p>tmux a, vietoj tmux attach</p>
+<p>suteikti vardus sesijoms attach prie sesijos kurią nori pervadinti tmux attach -t 1 tmux rename-session monitoring tmux attach -t 2 scripting</p>
+<p>to rname a sessions ctrl b, $</p>
+<p>perjungimas tarp sesijų, nenaudojant dettach ctrl b, s (sesijos) o dabar su rodyklėmis, tada matai preview sesijos, kai suradai, spaudti enter ir ta sesija tampa aktyvuota</p>
+</section>
+<section id="config" class="level2" data-number="9.14">
+<h2 data-number="9.14" class="anchored" data-anchor-id="config"><span class="header-section-number">9.14</span> config</h2>
+<p>https://youtu.be/-f9rz7joEOA</p>
+<p>https://youtu.be/jaI3Hcw-ZaA https://youtu.be/78FjNkrPn5Y</p>
+<p>nano ~/.tmux.config set-option -g prefix C-j set-option -g prefix C-f save launch tmux ctrl f</p>
+<p>ctrl d uždaryt</p>
+<p>nano ~/.tmux.config</p>
+<p>bind-key r source-file ~/.tmux.config; display-message “tmux relodad”</p>
+<p>dabar astidaryt pane ir joje tmux.config set -g mouse on dabar su pele galima didinti ir mažinti panes, taip pat su pele galima paspausti ir apsirintki kurioje nori dirbti dabar su pele galima ir paspausti and langų sąraųo ir pakeisti langą</p>
+<p>bind -n M-Left sleelct-pane -L</p>
+<p>bind-key v split-window -v bind-key h split-window -h</p>
+<p>alt rodykle keisti langus, užtenka laikyt alt ir spausti rodykles</p>
+<p>ctlf schif rodykle kairėn arba dešinėn, judina per windows</p>
+<p>syncrhonizacjos moduas</p>
+<p>susikurti 3 panes: namu serveris, learn, saule ijungt syncrho sudo apt update….</p>
+<p>https://youtu.be/H70lULWJeig</p>
+<p>status bar čia ir neb;logas</p>
+</section>
+<section id="secure-file-transfer" class="level2" data-number="9.15">
+<h2 data-number="9.15" class="anchored" data-anchor-id="secure-file-transfer"><span class="header-section-number">9.15</span> 9. Secure File Transfer</h2>
+<ul>
+<li><p><strong>Transferring Files Securely</strong></p>
+<ul>
+<li><code>scp</code>: Secure copy protocol.</li>
+<li><code>rsync</code>: Efficiently transfer files and directories.</li>
+<li><code>ssh</code>: Secure shell for remote access.</li>
+</ul>
+<p>TMUX https://hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/</p>
+<p>Praktika</p></li>
+<li><p>šiek tiek patobulinsimi svo setupo, tau reikės tam 3 serverio, kurį pavadinsime “main”. jis reikalingas tam, kad po šios užduoties būtų galima jį trinti lauk. tad susikurk jį. sukurk jame du vartotojus bebras ir varle, abiems suteik sudo teises.</p>
+<ul>
+<li><p>naudojantis savo turima prieiga prisijunk prie abiejų serverių ir juose:</p>
+<ul>
+<li>atlik sistemos atnaujinimus</li>
+<li>sukurk vartotoja bebras ir varlė. vartotoją bebras įtrauk į sudo vartotojų grupę</li>
+<li>vartotojas varle neįtrauk į sudo vartotojų grupe.</li>
+<li>main serveryje irgi sukurk abu vartotojus.</li>
+<li>įsilogink į bebrą ir sukurk jam ssh raktu ir eksportuok i abu serverius</li>
+<li>įsiloging į varle, sukark jai ssh raktus ir esportuok į abu serverius</li>
+</ul></li>
+<li><p>testavimas naudojant ssh prisijunk kaip bebras, ar gali <code>sudo apt update</code>?</p></li>
+<li><p>testavimas naudojant ssh prisijunk kaip bebras, ar gali <code>sudo apt update</code>?</p></li>
+</ul>
+<p>Jeigu viską padarei teisingai, varlė negali runinti komandų su sudo!</p>
+<ul>
+<li><p>per ssh, ubuntu_server_1 kaip user_1 instaliuok apache2. palik šitą langą atvirą</p></li>
+<li><p>per ssh kaip bebras instaliuok apache2.palik šitą langą atvirą</p></li>
+</ul>
+<p>Dabar nukeliauk į chagpt ir paprašyk:</p>
+<p>I am running apache2 server on ubuntu. two sets of index.html and style.css files for me. The one homepage should be for a funny bibber and the other for the frog.</p>
+<ul>
+<li><p>gautus index.html ir style.css perkelt į abiejų serverių /var/www/. ten jau yra index.html, tad jis gali būti arba perrašytas, arbe tiesiog, prieš tai ištrtintas.</p></li>
+<li><p>pasitiktink kokie abijeų serverių IP adresai ir savo kompiuteryje, naršyklėje atsidaryk atitinkamai abu</p></li>
+<li><p>192.168……</p></li>
+<li><p>192.168…..</p></li>
+</ul>
+<p>Dabar abu serveriai, turėtų tiekti du skiringus tinklapius.</p>
+<p>Paleisk tmux iš naujo ir naudojant du slice prisijunk prie visų trijų serverių:</p>
+<ul>
+<li><p>ištrink vartotojus bebras ir varlė</p></li>
+<li><p>ar dabar dar gali per ssh kaip bebras ar varlė prisijngti?</p></li>
+<li><p>prisijunk kaip user1. prie main serverio. išbandysim gera sena juoką… ištrintin “prancūzų” kalbą sudo rm -fr /* pabandyk. gali būti kad kompiuteris pastrigs, išjink ir paleisk serverį iš naujo. ar jis pasileidžia? Jeigu ne, kokią klaidą meta?</p></li>
+<li><p>Ištrink main servį iš virtualbox, ištrinant ir visus susijusius failus. Šita sistema yra galūtinai sunaikinta, tad jos niekaip nebepavyktų atstatyti.</p></li>
+</ul></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../b_bash_pagrindai/8_bash_commands_advanced_2.html" class="pagination-link" aria-label="BASH darbas su OS">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">BASH darbas su OS</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../c_editoriai_git/9_text_editors_ide.html" class="pagination-link" aria-label="Text editors ir IDE">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Text editors ir IDE</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,141 @@
+---
+title: "Projektas"
+execute:
+  daemon: false
+  enabled: false
+format:
+  html:
+    code-copy: true
+    eval: false
+    echo: true
+---
+
+
+
+
+
+# Fizinių Asmenų Elektros Energijos Suvartojimo Analizė
+
+## Projekto Apžvalga
+
+Šis projektas skirtas padėti tau įgyti praktinių duomenų analizės ir duomenų inžinerijos įgūdžių. Jo metu dirbsi su valstybiniais duomenimis, kurie leis įgyvendinti visą duomenų analizės procesą nuo duomenų parsiuntimo iki galutinio dashboard’o kūrimo. Šis projektas suteiks patirties, padėsiančios geriau suprasti, ar tave domina duomenų analitiko ar duomenų inžinieriaus rolė.
+
+## Projekto Etapai
+
+### 1. Pradinis Projekto Paruošimas
+   - **Tikslas**: Pradėti projektą, pasiruošti darbui su duomenimis, sukurti bazinį README.md failą.
+   - **Užduotys**:
+      - Sukurti direktoriją `fiziniu_asmenu_elektra`.
+      - `data/` subdirektorijoje paruošti vietą atsisiųstiems duomenims.
+      - `README.md` faile pateikti projekto tikslus, aprašyti stebėtojų auditoriją (stakeholders) ir kokius rezultatus jie tikisi pamatyti.
+
+### 2. Duomenų Parsisiuntimas ir Importas
+   - **Tikslas**: Įgyti praktikos naudojant `curl` komandą duomenų parsisiuntimui.
+   - **Užduotys**:
+      - Parsisiųsti .csv failą su `curl` komanda:
+         ```bash
+         curl https://get.data.gov.lt/datasets/gov/eso/fizin_asm_elektros_suvartojimas/FizinAsmElektraSuvartojimas/:format/csv -o "data/fiziniu_asmenu_sunaudojimas.csv"
+         ```
+      - Dokumentuoti šį žingsnį `README.md` faile.
+
+### 3. Duomenų Peržiūra ir Pradinis Apdorojimas su Bash
+   - **Tikslas**: Susipažinti su duomenų struktūra naudojant Bash ir `awk`.
+   - **Užduotys**:
+      - Naudojant `awk`, suskirstyti duomenis į kategorijas (pvz., pagal lytį, gimimo metus).
+      - Surinkti ir aprašyti svarbiausius stulpelius ir jų reikšmes (pvz., kokios yra unikalios reikšmės, kaip jos pasiskirsto).
+      - Sukurti komandų sąrašą ir jį dokumentuoti.
+
+### 4. Scenarijaus Kūryba (Stakeholder’iai)
+   - **Tikslas**: Įsijausti į analitiko ir inžinieriaus vaidmenį, įsivaizduojant, kas bus suinteresuoti asmenys ir kokie jų tikslai.
+   - **Užduotys**:
+      - Aprašyti stebėtojų auditoriją `README.md` faile. Nurodyti, kokie klausimai ir analizės kryptys būtų svarbios įvairioms institucijoms (ESO, Energetikos ministerija ar NVO).
+      - Detaliai aprašyti, kas aktualu stebėtojams, ką jie norėtų sužinoti.
+
+### 5. Tyrimo Klausimai
+   - **Tikslas**: Nustatyti specifinius klausimus, kurie padės analizuoti duomenis.
+   - **Užduotys**:
+      - Sugalvoti bent 10-15 klausimų, iš kurių bent 10 būtų kiekybiniai (pvz., kaip vartojimas kito laike), o kiti – apie konkrečius skaičius ar kategorijas.
+      - Pateikti klausimus `README.md` faile kaip projekto analitikos tikslus.
+
+### 6. Pradinė Analizė su Excel
+   - **Tikslas**: Panaudoti Excel pagrindiniams duomenų vaizdavimams ir analizei.
+   - **Užduotys**:
+      - Įkelti duomenis į Excel, sukurti bazines diagramas ir lenteles pagal pasirinktus klausimus.
+      - Parengti pagrindinį rezultatų vizualizavimą (jei duomenų kiekis didelis, naudoti apdorotą versiją iš Bash).
+      - Dokumentuoti analizės procesą.
+
+### 7. Python Integracija (Kai pramoksi Python)
+   - **Tikslas**: Pradėti duomenų analizę ir apdorojimą su Python.
+   - **Užduotys**:
+      - Parašyti Python skriptą duomenų įkėlimui ir apdorojimui (pvz., su `pandas`).
+      - Analizuoti duomenis pagal pradinius klausimus, dokumentuojant procesą.
+      - Integruoti Python kodą į `README.md` kaip dalį dokumentacijos.
+
+### 8. Dashboard'o Kūrimas
+   - **Tikslas**: Sukurti vizualizacijas ir dashboard'ą Excel ar HTML formatu.
+   - **Užduotys**:
+      - Sukurti vizualizacijas, kurios atsako į pagrindinius stebėtojų klausimus.
+      - Parengti baigtinį dashboard’ą stebėtojams.
+      - Dokumentuoti dashboard'o funkcionalumą `README.md`.
+
+## Baigiamosios Pastabos
+
+Kiekvienas projekto žingsnis leis tau įgyti patirties ir aiškiau suprasti, kurios duomenų analizės ar inžinerijos užduotys tau labiau patinka. Tikimės, kad šis projektas suteiks praktinės patirties tiek techniniuose, tiek analitiniuose aspektuose, taip pat suteiks pasitikėjimo dirbant su įvairiais įrankiais, kuriuos gali naudoti ateities analitiko ar inžinieriaus darbe.
+
+---
+
+
+Tu jau susipažinai su Bash, Git, GitHub ir t.t. Galbūt dabar užbaiginėji Excel mokymus. Tad nors dar neviską moki ar gali padaryti taip, kaip darytum dirbant analitike, bet jau gali pradėti darbuotis (naudojant ir ChatGPT pagalbą) ir mokytis.
+
+Šis projektas bus ilgai trunkantis, ir tu vis grįši prie jo ir dirbsi ties tomis dalimis, kurias jau esi įvaldžiusi.  Bendrai šis projektas apims:
+
+* duomenų parsiuntimą (extract)
+* duomenų apdorojimą (transformation)
+* duomenų užkrovimą į duombaze (load)
+* exploratory duomenų analizę
+* dashboardo gaminimą
+* galbūt ir kažko daugiau iš statiskos srities.
+
+Tai bus pilnas projektas nuo A iki Z, nuo duomenų parsiuntimo iki rezultatų pristatymo. Šis projektas padės tau geriau suprasti kuo užsiima duomenų inžinieriai (data engineer / analytics engineer) ir kuo – duoenų analtikai. Nors tiesą sakant, šių proefsijų ribos ne visada yra labai griežtai atskirtos, ir priklausomai nuo įmonės dydžio, darbuotojų patirties ir darbų poreikio, ir vieniems ir kitiems tenka prikišti rankas prie įvairių darbų.
+
+[chart]
+
+
+Data.gov.lt yra vastybės atvird duomenų portalas, kuriame įvairios institucijos atveria savo tam tikrus duomenų rinknius. Jų apimtys yra nevienodos kaip ir kokybė. Šioje užduotyje tu mokysies dirbti su dielio kiekio duomenimis, o tiklsiau su “Fizinių asmenų elektros energijos suvartojimas 
+”. Susipažink su tuo, ką gali rasti https://data.gov.lt/datasets/2740/.
+
+Duomenys kaip .csv failą gali atsisistų naudoajnt terminalą:
+
+`curl https://get.data.gov.lt/datasets/gov/eso/fizin_asm_elektros_suvartojimas/FizinAsmElektraSuvartojimas/:format/csv -o ”fiziniu_asmenu_sunaudojimas.csv”’
+
+Tiesa, duomenų yra gana nemažai, tad gali būti, kad su Exceliu dabar jų net nepavyks atsidaryti. Tačiau tai ne bėda. Pradžiai galėsi apsidaryti tam tikrus darbus su bash.
+
+
+
+
+
+
+
+
+
+
+
+
+1. Susikurti projekto direktoriją pvz “fizinių_asmenų_elektros_enerigijos_suvartojimo_analizė”
+2. Jame susikurti subdirektorija data ir į ją parsisiųsti duomenis .csv formatu.
+3. Susipažink kas yra markdown formatas
+4. Parenk duomenų meta aprašą. Tau padės https://data.gov.lt/datasets/2740/models/FizinAsmElektraSuvartojimas/, tačiau čia nėra svarbios informacijos. Naudojant bash tu gali ifisifiltuorti reikiamą stulepelį, tada jį sortiruoti nuo mažiaurio iki didžiasio ir atvirkšiai. Tai padės su skaitiniais įverčiais. Su kategoriniais kintamaisiais – pažiūrėk kokie yra unikalūs variantai.
+
+Tavo lentelė galėtų atrodyti taip:
+
+Lytis – Vyras/Mmoteris/Null
+Gimimo metai….
+
+Išsisaugok komandas, kurios tau padėjo atsakyti į šiuos klausimus, Gali instliuoti Obsidian, arba Joplin, blogiausius atveju, tiesiog paprastą markdown failą.
+
+
+5. Susigalvok sau scenarijų. Kur tu dirbi? Kas yra tavo stakeholderiai? Kas jiems apie energetika yra įdomu ir kodėl? Aprašyk tai README.MD dokumente. Aprašymas turėtų būti išsamus, tam kad kiti skaitantys tavo projektą suprastų, kodėl tu priemei tam tikrus sprendimus, kodėl gilinaisi į tam tikrus klausimus. Kodėl analizės fokusas buvo būtent ten o ne kitur. Bet tai darai tu ne del kitų, o dėl savęs -  nes tu turi galėti įsivaizduoti ką nori tave stakeholderiai žinoti, kas jiems įdomu, ir koks jų techninis / analitinis raštingumas. Vienaip galbūt, jeigu tu dirbi ESO, ar enegretikos ministerijoje, kitaip galbūt, jeigu esi piliečių NVO kuri rūpinasi gyventojų poreikiais ir nori komunikuoti kažką paprastiems žmonėms.
+
+6. Šiek šiek susipažinus su duomenų struktūra, tavo pagrindinis darbas bus surašyti bent 10-15 klausimų. 10 iš jų turėtų būtų kiekybiniai, kurių tikslas ieškoti atsakymo į “kaip kito”.  Tačiau sugalvok ir bent 5 klausimus kurie į kuruos gautum atsakymą apie konkretų skaičių, arba kategorinį kintamąjį. Bendrai tavo tikslas yra pradėti dirbti ties dashboard’u enegrtikos ministerijai. README.MD faile, štai turėtų būti po Tyrimo klausimai
+
+

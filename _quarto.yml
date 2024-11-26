@@ -19,13 +19,13 @@ book:
         - b_bash_pagrindai/6_bash_comands_basic.qmd
         - b_bash_pagrindai/7_bash_comands_advanced_1.qmd
         - b_bash_pagrindai/8_bash_commands_advanced_2.qmd
+        - b_bash_pagrindai/12_ssh.qmd
     - part: "Editoriai ir Git"
       chapters:
         - c_editoriai_git/9_text_editors_ide.qmd
         - c_editoriai_git/10_git_github_1.qmd
         - c_editoriai_git/11_git_github_2.qmd
         - c_editoriai_git/12_git_github_2.qmd
-        - c_editoriai_git/12_ssh.qmd
     - part: "Bash Skriptai"
       chapters:
         - d_bash_skriptai/13_bash_scripts_1.qmd

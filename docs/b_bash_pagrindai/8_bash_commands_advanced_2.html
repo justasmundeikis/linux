@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; BASH advanced 2 – Linux ir programavimas</title>
+<title>8&nbsp; BASH darbas su OS – Linux ir programavimas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,7 +30,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../c_editoriai_git/9_text_editors_ide.html" rel="next">
+<link href="../b_bash_pagrindai/12_ssh.html" rel="next">
 <link href="../b_bash_pagrindai/7_bash_comands_advanced_1.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -115,7 +81,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../b_bash_pagrindai/5_bash_terminal_filesystem.html">Bash Pagrindai</a></li><li class="breadcrumb-item"><a href="../b_bash_pagrindai/8_bash_commands_advanced_2.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">BASH advanced 2</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../b_bash_pagrindai/5_bash_terminal_filesystem.html">Bash Pagrindai</a></li><li class="breadcrumb-item"><a href="../b_bash_pagrindai/8_bash_commands_advanced_2.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">BASH darbas su OS</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -205,13 +171,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../b_bash_pagrindai/7_bash_comands_advanced_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BASH advanced</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BASH pažengusiems</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../b_bash_pagrindai/8_bash_commands_advanced_2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">BASH advanced 2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">BASH darbas su OS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../b_bash_pagrindai/12_ssh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">SSH</span></span></a>
   </div>
 </li>
       </ul>
@@ -228,31 +200,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../c_editoriai_git/9_text_editors_ide.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Text editors ir IDE</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Text editors ir IDE</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../c_editoriai_git/10_git_github_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Git ir GitHub 1</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Git ir GitHub 1</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../c_editoriai_git/11_git_github_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Git ir GitHub 2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git ir GitHub 2</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../c_editoriai_git/12_git_github_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Git ir GitHub 1</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../c_editoriai_git/12_ssh.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">SSH</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Git ir GitHub 1</span></span></a>
   </div>
 </li>
       </ul>
@@ -432,24 +398,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#whoami" id="toc-whoami" class="nav-link active" data-scroll-target="#whoami"><span class="header-section-number">8.0.1</span> whoami</a></li>
-  <li><a href="#path" id="toc-path" class="nav-link" data-scroll-target="#path"><span class="header-section-number">8.0.2</span> $PATH</a></li>
-  <li><a href="#which" id="toc-which" class="nav-link" data-scroll-target="#which"><span class="header-section-number">8.0.3</span> which</a></li>
-  <li><a href="#locate" id="toc-locate" class="nav-link" data-scroll-target="#locate"><span class="header-section-number">8.1</span> locate</a></li>
-  <li><a href="#whereis" id="toc-whereis" class="nav-link" data-scroll-target="#whereis"><span class="header-section-number">8.2</span> whereis</a></li>
-  <li><a href="#path-1" id="toc-path-1" class="nav-link" data-scroll-target="#path-1"><span class="header-section-number">8.3</span> path</a></li>
-  <li><a href="#man" id="toc-man" class="nav-link" data-scroll-target="#man"><span class="header-section-number">8.4</span> man</a></li>
-  <li><a href="#help" id="toc-help" class="nav-link" data-scroll-target="#help"><span class="header-section-number">8.5</span> –help</a></li>
-  <li><a href="#tldr" id="toc-tldr" class="nav-link" data-scroll-target="#tldr"><span class="header-section-number">8.6</span> tldr</a></li>
+  <li><a href="#tail--f" id="toc-tail--f" class="nav-link active" data-scroll-target="#tail--f"><span class="header-section-number">8.1</span> tail -f</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../b_bash_pagrindai/5_bash_terminal_filesystem.html">Bash Pagrindai</a></li><li class="breadcrumb-item"><a href="../b_bash_pagrindai/8_bash_commands_advanced_2.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">BASH advanced 2</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../b_bash_pagrindai/5_bash_terminal_filesystem.html">Bash Pagrindai</a></li><li class="breadcrumb-item"><a href="../b_bash_pagrindai/8_bash_commands_advanced_2.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">BASH darbas su OS</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">BASH advanced 2</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">BASH darbas su OS</span></h1>
 </div>
 
 
@@ -466,65 +424,565 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="whoami" class="level3" data-number="8.0.1">
-<h3 data-number="8.0.1" class="anchored" data-anchor-id="whoami"><span class="header-section-number">8.0.1</span> whoami</h3>
-<p>Komanda <code>whoami</code> parodo dabartinio vartotojo (<strong>user</strong>) vardą, su kuriuo esate prisijungę prie sistemos. Tai paprastas ir naudingas būdas patikrinti, kokį vartotojo prisijungimą naudojate, ypač kai dirbate su keliais vartotojais toje pačioje sistemoje.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">whoami</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="img/shell/whoami.png" class="img-fluid"></p>
-</section>
-<section id="path" class="level3" data-number="8.0.2">
-<h3 data-number="8.0.2" class="anchored" data-anchor-id="path"><span class="header-section-number">8.0.2</span> $PATH</h3>
-<p>Persp4jimas ši tema kiek sudėtingesnė, bet ją pravartu žinoti.</p>
-<p>Kaip Shell žino, kokią programą startuoti, kai pvz tu įrašai <code>ls</code>? Juk negali Shell eiti per visus tavo failus ir ieškoti, ar yra tokia programa <code>ls</code>? Tai užtruktų labai ilgai ir būtų neefektyvu. Tavo Bash programa yra išsaugojusi visų direktorijų sąrašą, kurias ji tikrina. Tod4l pavyzdžiui įrašius</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">main-user@linux-mint:~$</span> <span class="va">$PATH</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">bash:</span> /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin: No such file or directory</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Ką visa tai reiškia? Kai vartotojas įrašo komanda <code>ls</code> Bah pirma tikrina <code>/usr/local/sbin/</code> jeigu ten neranda, eina į sekandią direktoriją <code>/usr/local/bin</code> ir t.t. Jeigu visame sąraše šios programos nebūtų, įrašius <code>ls</code> nieko neįvyktų, o terminale išvystum pranešimą, su siūlymų galbūt šią programą instaliuoti (jeigu <code>apt</code> programa apie šią komandą kažką žino).</p>
-<p>su komanda <code>which</code> galime pamayti, o tai kur būtent <code>ls</code> randasi</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">main-user@linux-mint:~$</span> which ls</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/bin/ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Taigi įrašius <code>ls</code> bash keliavo</p>
+<p>export: Nustato aplinkos kintamuosius</p>
+<p>Komanda export leidžia apibrėžti aplinkos kintamuosius, kurie tampa prieinami visiems procesams, paleistiems iš esamos terminalo sesijos. Sintaksė:</p>
+<p>export VARDAS=REIKŠMĖ</p>
+<p>Kaip veikia?</p>
+<pre><code>Sukuriamas aplinkos kintamasis VARDAS su reikšme REIKŠMĖ.
+Kintamasis tampa prieinamas ne tik dabartiniam apvalkalui (shell), bet ir visiems jo vaikiniams procesams.</code></pre>
+<p>Pavyzdžiai:</p>
+<pre><code>Nustatyti naują aplinkos kintamąjį:</code></pre>
+<p>export MY_VAR=“Labas pasauli!”</p>
+<p>Dabar MY_VAR bus pasiekiamas visur dabartinėje terminalo sesijoje.</p>
+<p>Naudoti kintamąjį programoje:</p>
+<p>echo $MY_VAR</p>
+<p>Rezultatas: Labas pasauli!</p>
+<p>Perduoti kintamąjį programai:</p>
+<pre><code>export API_KEY="abcdef12345"
+python my_script.py
+
+Šiame pavyzdyje Python skriptas galės naudoti API_KEY kintamąjį.</code></pre>
+<p>env: Rodo arba paleidžia programą su aplinkos kintamaisiais</p>
+<p>Komanda env leidžia:</p>
+<pre><code>Peržiūrėti visus aplinkos kintamuosius:</code></pre>
+<p>env</p>
+<p>Ji išspausdins visų kintamųjų sąrašą, pvz.:</p>
+<p>PATH=/usr/local/bin:/usr/bin HOME=/home/user SHELL=/bin/bash</p>
+<p>Paleisti komandą su tam tikrais aplinkos kintamaisiais: Jei norite laikinai nustatyti kintamąjį ir paleisti programą:</p>
+<pre><code>env MY_VAR="Taisyklė" python my_script.py
+
+Šis kintamasis bus pasiekiamas tik šiai komandai ir nebus įrašytas į esamą sesiją.</code></pre>
+<p>printenv: Parodo aplinkos kintamuosius</p>
+<p>Komanda printenv yra paprasta – ji tiesiog išveda konkrečius arba visus aplinkos kintamuosius. Sintaksė:</p>
+<pre><code>Norint išvesti konkretų kintamąjį:</code></pre>
+<p>printenv VARDAS</p>
+<p>Pvz.:</p>
+<p>printenv PATH</p>
+<p>Rezultatas: PATH=/usr/local/bin:/usr/bin:/bin</p>
+<p>Norint išvesti visus aplinkos kintamuosius:</p>
+<pre><code>printenv</code></pre>
+<p>Kada naudoti šias komandas? Programavime:</p>
+<pre><code>export: Naudojama, kai reikia nustatyti kintamąjį, kurį naudos skriptas ar programa.
+    Pvz., nustatyti API raktą arba prieigos duomenis duomenų bazei.
+
+env: Naudojama, kai reikia paleisti programą su laikinais kintamaisiais, nekeičiant globalios aplinkos.
+    Pvz., išbandyti programą su alternatyviu konfigūracijų failu.
+
+printenv: Naudojama, kai reikia patikrinti, ar tam tikras aplinkos kintamasis yra nustatytas.
+    Pvz., patikrinti, ar PATH yra tinkamai sukonfigūruotas.</code></pre>
+<p>Šios komandos yra naudingos tiek kasdieniniame darbe, tiek sudėtingose programavimo situacijose, kai reikia valdyti aplinkos konfigūracijas.</p>
+<ol type="1">
+<li><p>jobs: Peržiūri darbus (jobs) terminale</p>
+<p>Aprašymas: jobs komanda rodo visus procesus (darbus), kurie buvo paleisti dabartinėje terminalo sesijoje ir yra sustabdyti arba vykdomi fone. Sintaksė:</p></li>
+</ol>
+<p>jobs</p>
+<p>Pavyzdys: Jei paleisite programą ir sustabdysite ją (Ctrl+Z), galite pamatyti jos būseną:</p>
+<p>sleep 100 &amp; jobs</p>
+<p>Rezultatas:</p>
+<pre><code>[1]+ Running    sleep 100 &amp;</code></pre>
+<ol start="2" type="1">
+<li><p>bg: Tęsia sustabdytą darbą fone</p>
+<p>Aprašymas: Komanda bg atnaujina sustabdytą darbą (Ctrl+Z) ir paleidžia jį fone. Sintaksė:</p></li>
+</ol>
+<p>bg [darbo_nr]</p>
+<p>Kaip naudoti?</p>
+<pre><code>Sustabdykite darbą:</code></pre>
+<p>sleep 100</p>
+<p>Paspauskite Ctrl+Z (sustabdo programą). Patikrinkite sustabdytus darbus:</p>
+<p>jobs</p>
+<p>Rezultatas:</p>
+<p>[1]+ Stopped sleep 100</p>
+<p>Paleiskite darbą fone:</p>
+<p>bg 1</p>
+<p>Rezultatas:</p>
+<pre><code>    [1]+ sleep 100 &amp;</code></pre>
+<ol start="3" type="1">
+<li><p>fg: Tęsia sustabdytą darbą arba atveda foninį darbą į priekį</p>
+<p>Aprašymas: Komanda fg leidžia perkelti foninį arba sustabdytą darbą į priekį (foreground), kad galėtumėte su juo dirbti tiesiogiai. Sintaksė:</p></li>
+</ol>
+<p>fg [darbo_nr]</p>
+<p>Kaip naudoti?</p>
+<pre><code>Paleiskite ilgai trunkančią komandą fone:</code></pre>
+<p>sleep 100 &amp;</p>
+<p>Patikrinkite:</p>
+<p>jobs</p>
+<p>Rezultatas:</p>
+<p>[1]+ Running sleep 100 &amp;</p>
+<p>Atveskite ją į priekį:</p>
+<pre><code>    fg 1
+
+    Rezultatas: Procesas sleep 100 dabar bus vykdomas terminale, kol baigsis.</code></pre>
+<ol start="4" type="1">
+<li><p>kill: Užbaigia procesą</p>
+<p>Aprašymas: Komanda kill siunčia signalą procesui, paprastai norint jį užbaigti. Naudojama, kai procesą reikia priverstinai sustabdyti.</p>
+<p>Sintaksė:</p></li>
+</ol>
+<p>kill [signal] PID</p>
+<pre><code>Signalų tipai:
+    -15: (Default) Maloniai užbaigia procesą.
+    -9: Priverstinai nutraukia procesą.</code></pre>
+<p>Kaip naudoti?</p>
+<pre><code>Raskite proceso PID (Process ID):</code></pre>
+<p>ps aux | grep sleep</p>
+<p>Rezultatas:</p>
+<p>justas 1234 0.0 0.0 12345 5678 pts/0 S 10:00 0:00 sleep 100</p>
+<p>Užbaikite procesą:</p>
+<pre><code>kill 1234</code></pre>
+<p>Naudojant su jobs: Jei procesas yra sustabdytas ar veikia fone:</p>
+<pre><code>jobs
+kill %1</code></pre>
+<p>Scenarijai, kada naudoti šias komandas</p>
+<pre><code>Duomenų analitiko darbas:
+    Paleidote ilgą Python skriptą, bet reikia grįžti į terminalą kitiems veiksmams:
+        Sustabdykite skriptą su Ctrl+Z.
+        Paleiskite jį fone su bg.
+        Jei reikia vėl stebėti eigą, naudokite fg.
+
+Ištrinti nereikalingą procesą:
+    Jei procesas naudoja per daug išteklių:
+        Naudokite ps aux arba jobs rasti procesą.
+        Naudokite kill jį sustabdyti.
+
+Valdyti testavimo scenarijus:
+    Testuojate skriptą, sustabdote ir redaguojate jį naudodami fg ar kill.</code></pre>
+<p>Šios komandos leidžia efektyviai valdyti procesus ir pagerina produktyvumą dirbant su Linux sistemomis.</p>
+<p>Štai išsamus paaiškinimas apie komandas df, du, ir ncdu, kurios padeda analizuoti disko vietos naudojimą: 1. df: Ataskaita apie disko vietos naudojimą</p>
+<pre><code>Aprašymas: Komanda df pateikia informaciją apie failų sistemos disko vietos naudojimą ir likusią vietą.
+
+Sintaksė:</code></pre>
+<p>df [parinktys] [katalogas]</p>
+<p>Naudojimas:</p>
+<pre><code>Peržiūrėti visų prijungtų failų sistemų disko vietą:</code></pre>
+<p>df -h</p>
+<p>Rezultatas pateikiamas žmogui suprantamais dydžiais (MB, GB):</p>
+<p>Filesystem Size Used Avail Use% Mounted on /dev/sda1 50G 20G 30G 40% / /dev/sdb1 100G 80G 20G 80% /data</p>
+<p>Tikrinimas konkrečiam katalogui:</p>
+<pre><code>    df -h ~/Documents
+
+Naudingi variantai:
+    -h: Rodomi dydžiai su vienetais (MB, GB).
+    -T: Parodo failų sistemos tipą (pvz., ext4, xfs).</code></pre>
+<ol start="2" type="1">
+<li><p>du: Įvertina failų ir katalogų vietos naudojimą</p>
+<p>Aprašymas: Komanda du parodo kiek disko vietos užima failai ir katalogai. Ji padeda suprasti, kurie katalogai ar failai naudoja daugiausia vietos.</p>
+<p>Sintaksė:</p></li>
+</ol>
+<p>du [parinktys] [katalogas]</p>
+<p>Naudojimas:</p>
+<pre><code>Peržiūrėti, kiek vietos užima konkretus katalogas:</code></pre>
+<p>du -h ~/Downloads</p>
+<p>Rezultatas:</p>
+<p>20M ~/Downloads/photos 50M ~/Downloads/videos 70M ~/Downloads</p>
+<p>Norint matyti tik pagrindinius katalogus:</p>
+<p>du -sh *</p>
+<p>Rezultatas:</p>
+<pre><code>    2G    Documents
+    5G    Videos
+    1G    Downloads
+
+Naudingi variantai:
+    -h: Rodomi dydžiai su vienetais (MB, GB).
+    -s: Apibendrina bendrą katalogo dydį.
+    --max-depth=N: Rodo dydžius tik iki nurodyto katalogų gylio.</code></pre>
+<ol start="3" type="1">
+<li><p>ncdu: Disko vietos analizatorius su tekstine sąsaja</p>
+<p>Aprašymas: Komanda ncdu yra interaktyvus įrankis, kuris leidžia patogiai analizuoti disko vietos naudojimą. Ji pateikia rezultatą tekstinėje vartotojo sąsajoje, kur galite naršyti failus ir katalogus. Sintaksė:</p></li>
+</ol>
+<p>ncdu [parinktys] [katalogas]</p>
+<p>Naudojimas:</p>
+<pre><code>Įdiekite įrankį (jei dar neįdiegtas):</code></pre>
+<p>sudo apt install ncdu # Debian/Ubuntu sudo yum install ncdu # CentOS/RedHat</p>
+<p>Paleiskite analizę konkrečiame kataloge:</p>
+<p>ncdu /home/user</p>
+<p>Rezultatas bus tekstinė sąsaja, kurioje galėsite naršyti, pvz.:</p>
+<pre><code>    --- /home/user ---
+    20.0 GiB [##########] Videos
+    15.0 GiB [#######   ] Music
+     5.0 GiB [##        ] Documents
+     1.0 GiB [          ] Downloads
+
+    Pažymėtą failą ar katalogą galite ištrinti tiesiog iš sąsajos paspaudę d.</code></pre>
+<p>Kada naudoti šias komandas?</p>
+<pre><code>Disko vietos trūkumas:
+    Naudokite df -h, kad nustatytumėte, kuri failų sistema perpildyta.
+
+Didelių failų ir katalogų paieška:
+    Naudokite du -sh * arba ncdu, kad rastumėte katalogus ar failus, kurie užima daug vietos.
+
+Interaktyvi analizė:
+    Naudokite ncdu, jei norite lengviau naršyti ir šalinti nereikalingus failus.</code></pre>
+<p>Šios komandos yra būtinos administruojant Linux sistemą ir optimizuojant disko vietos naudojimą.</p>
+<p>eval: Komanda, vykdanti komandų eilutę kaip Bash komandą</p>
+<pre><code>Aprašymas: eval yra Bash komanda, kuri vykdo komandą arba komandų eilutę, kuri yra pateikta kaip tekstas. Tai leidžia dinamiškai sukurti komandas ir jas vykdyti. eval įvykdo tekstą kaip Bash komandą, tad galima sukurti labai lanksčius ir dinamiškus skriptus.
+
+Sintaksė:
+
+eval [komanda]
+
+eval paima argumentus ir įvykdo juos kaip komandų eilutę. Tai leidžia apdoroti komandų eiles, kurios buvo sukurtos arba modifikuotos kitų komandų.</code></pre>
+<p>Pavyzdžiai, kaip naudoti eval:</p>
+<pre><code>Dinamiškas kintamųjų ir komandų sujungimas:
+
+Tarkime, turite kintamąjį, kuriame yra komanda. eval leidžia šį kintamąjį vykdyti kaip komandą.
+    Pavyzdys:
+
+command="ls -l"
+eval $command
+
+Paaiškinimas: Komanda ls -l bus vykdoma, nes kintamasis command turi ją. Naudojant eval, Bash interpretuos kintamąjį kaip komandą.</code></pre>
+<p>Dinamiškas kintamųjų apdorojimas:</p>
+<p>Jei kintamieji yra susiję su failais ar kitais objektais, eval leidžia dinamiškai kurti ir vykdyti komandas.</p>
+<pre><code>Pavyzdys:
+
+dir="/home/user/Documents"
+eval ls $dir
+
+Paaiškinimas: Kintamasis $dir nurodo katalogą, o komanda eval ją vykdo kaip ls /home/user/Documents.</code></pre>
+<p>Sukurti ir vykdyti komandų eilutes su eval:</p>
+<p>Jeigu norite sukurti komandas ir jas atlikti remiantis sąlygomis ar kitais veiksniais, eval padeda dinamiškai modifikuoti ir vykdyti komandas.</p>
+<pre><code>Pavyzdys:
+
+    cmd="echo 'Hello, World!'"
+    eval $cmd
+
+    Paaiškinimas: Komanda echo 'Hello, World!' bus įvykdyta, nes eval interpretuos kintamąjį kaip Bash komandą.</code></pre>
+<p>Naudojimo atvejai ir scenarijai:</p>
+<pre><code>Dinamiškas kintamųjų apdorojimas: Jei skriptas priklauso nuo dinamiškai nustatomų kintamųjų, eval leidžia sukurti ir vykdyti komandas, priklausomai nuo to, kaip kintamieji yra modifikuojami.
+
+Komandų konstruavimas iš kitų komandų: Jeigu reikia sujungti kelias komandas arba sukurti komandą pagal dinamišką informaciją (pvz., pagal failų sąrašą ar vartotojo įvestį), eval gali padėti.
+
+Skriptuose su sudėtingomis sąlygomis: Kartais reikia, kad komandos veiktų skirtingais būdais priklausomai nuo įvesties, ir eval leidžia tai pasiekti.</code></pre>
+<p>UFW</p>
+<p>UFW (Uncomplicated Firewall): Komanda Linux sistemose</p>
+<p>UFW (Uncomplicated Firewall) yra paprasta ir lengva naudoti komanda, skirta tvarkyti “iptables” ugniasienę Linux sistemose. UFW yra skirtas padėti paprastai nustatyti ir valdyti ugniasienės taisykles, leidžiant arba blokuojant tam tikras paslaugas ar tinklo ryšius. Pagrindiniai UFW komandos naudojimo aspektai 1. UFW būsenos peržiūra:</p>
+<p>Norėdami patikrinti, ar UFW ugniasienė yra įjungta, galite naudoti šią komandą:</p>
+<p>sudo ufw status</p>
+<pre><code>Jei UFW yra įjungtas, rezultatas bus:</code></pre>
+<p>Status: active</p>
+<p>Jei UFW yra išjungtas, rezultatas bus:</p>
+<pre><code>Status: inactive</code></pre>
+<ol start="2" type="1">
+<li><p>UFW įjungimas ir išjungimas:</p>
+<p>Įjungti UFW:</p></li>
+</ol>
+<p>sudo ufw enable</p>
+<p>Tai įjungs ugniasienę ir pradės ją naudoti.</p>
+<p>Išjungti UFW:</p>
+<pre><code>sudo ufw disable
+
+Tai išjungs ugniasienę, tačiau nesunaikins esamų taisyklių, tad jas galėsite vėl įjungti vėliau.</code></pre>
+<ol start="3" type="1">
+<li>Leidimų ir blokavimo taisyklės:</li>
+</ol>
+<p>UFW leidžia lengvai nustatyti, kurioms programoms ar paslaugoms bus leidžiama arba draudžiama prieiga prie jūsų sistemos.</p>
+<pre><code>Leisti tam tikrą paslaugą (pvz., HTTP portą 80):</code></pre>
+<p>sudo ufw allow http</p>
+<p>Tai leis HTTP (80 prievado) srautą.</p>
+<p>Leisti paslaugą pagal prievadą (pvz., prievadą 8080):</p>
+<p>sudo ufw allow 8080</p>
+<p>Tai leis ryšius per prievadą 8080.</p>
+<p>Blokuoti tam tikrą paslaugą (pvz., SSH prievadą 22):</p>
+<p>sudo ufw deny ssh</p>
+<p>Blokuoti prievadą (pvz., prievadą 8000):</p>
+<pre><code>sudo ufw deny 8000</code></pre>
+<ol start="4" type="1">
+<li><p>Leidimo taisyklių nurodymas pagal IP adresą:</p>
+<p>Leisti srautą tik iš tam tikro IP adreso:</p></li>
+</ol>
+<p>sudo ufw allow from 192.168.1.100</p>
+<p>Tai leis tik 192.168.1.100 IP adresui prisijungti prie jūsų sistemos.</p>
+<p>Leisti srautą iš tam tikro IP per tam tikrą prievadą:</p>
+<pre><code>sudo ufw allow from 192.168.1.100 to any port 80</code></pre>
+<ol start="5" type="1">
+<li><p>Išimčių taisyklių kūrimas:</p>
+<p>Leisti visus ryšius tik iš vietinio tinklo (LAN):</p>
+<p>sudo ufw allow from 192.168.1.0/24</p></li>
+<li><p>UFW prievadų ir paslaugų sąrašai:</p>
+<p>Peržiūrėti prieinamas paslaugas:</p></li>
+</ol>
+<p>sudo ufw app list</p>
+<p>Tai parodys paslaugas, kurioms galite leisti arba blokuoti ryšius.</p>
+<p>Leisti tam tikrą paslaugą, naudodami jos pavadinimą (pvz., OpenSSH):</p>
+<pre><code>sudo ufw allow OpenSSH</code></pre>
+<ol start="7" type="1">
+<li><p>Atšaukti taisykles:</p>
+<p>Pašalinti taisyklę: Jei norite pašalinti taisyklę, naudojančią numeruotą taisyklę:</p>
+<p>sudo ufw delete allow 80</p>
+<p>Tai pašalins taisyklę, leidžiančią ryšius per prievadą 80.</p></li>
+<li><p>Išsamių žurnalų peržiūra:</p>
+<p>Peržiūrėti ugniasienės žurnalus:</p>
+<p>sudo less /var/log/ufw.log</p></li>
+</ol>
+<p>Pavyzdžiai su realiais scenarijais:</p>
+<pre><code>Leisti SSH prieigą:
+    Jei naudojate SSH prieigą, kad galėtumėte prisijungti prie serverio, įsitikinkite, kad prievadas 22 yra atidarytas:
+
+sudo ufw allow ssh</code></pre>
+<p>Užblokuoti HTTP prieigą:</p>
+<pre><code>Jei norite užblokuoti HTTP srautą (prievadas 80), galite tai atlikti taip:
+
+sudo ufw deny http</code></pre>
+<p>Tik tam tikras IP adresas gali prisijungti prie Jūsų serverio per SSH:</p>
+<pre><code>Jei norite, kad tik tam tikras IP adresas galėtų prisijungti prie jūsų serverio per SSH, galite sukurti tokią taisyklę:
+
+    sudo ufw allow from 192.168.1.100 to any port 22</code></pre>
+<p>Apibendrinimas:</p>
+<p>UFW (Uncomplicated Firewall) yra labai patogus ir paprastas įrankis Linux vartotojams, norintiems valdyti savo ugniasienę. Naudojant UFW galima lengvai leisti arba blokuoti paslaugas, nustatyti specifines taisykles pagal IP adresus ir prievadus, ir atlikti kitus veiksmus, kad užtikrintumėte savo sistemos saugumą. UFW yra puikus įrankis tiek pradedantiesiems, tiek pažengusiems vartotojams, kurie nori valdyti ugniasienę savo Linux sistemoje.</p>
+<p>UFW is the built in Software Firewall. If your web app or other service cannot be accessed by clients it might be because of UFW.</p>
+<p>Check Status of UFW sudo ufw status</p>
+<p>ufw</p>
+<p>Uncomplicated Firewall. Frontend for iptables aiming to make configuration of a firewall easier. More information: https://wiki.ubuntu.com/UncomplicatedFirewall.</p>
 <ul>
-<li>/usr/local/sbin &lt;- nerado <code>ls</code></li>
-<li>/usr/local/bin &lt;- nerado <code>ls</code></li>
-<li>/usr/sbin &lt;- nerado <code>ls</code></li>
-<li>/usr/bin &lt;- čia rado <code>ls</code></li>
+<li><p>Enable ufw: ufw enable</p></li>
+<li><p>Disable ufw: ufw disable</p></li>
+<li><p>Show ufw rules, along with their numbers: ufw status numbered</p></li>
+<li><p>Allow incoming traffic on port 5432 on this host with a comment identifying the service: ufw allow 5432 comment “Service”</p></li>
+<li><p>Allow only TCP traffic from 192.168.0.4 to any address on this host, on port 22: ufw allow proto tcp from 192.168.0.4 to any port 22</p></li>
+<li><p>Deny traffic on port 80 on this host: ufw deny 80</p></li>
+<li><p>Deny all UDP traffic to ports in range 8412:8500: ufw deny proto udp from any to any port 8412:8500</p></li>
+<li><p>Delete a particular rule. The rule number can be retrieved from the ufw status numbered command: ufw delete rule_number</p></li>
 </ul>
-<p>Retais atvejais, tau gali reikėti pridėti direktorijas prie $PATH, bet labai tikėtina, jog tik pradedant naudotis Linux CLI, tau to dar nereikės. Tačiau jeigu kada prireiks, tu žinosi, apie ką čia kalbama.</p>
-</section>
-<section id="which" class="level3" data-number="8.0.3">
-<h3 data-number="8.0.3" class="anchored" data-anchor-id="which"><span class="header-section-number">8.0.3</span> which</h3>
-<p>Komanda <code>which</code> naudojama norint sužinoti, kurioje vietoje (<strong>path</strong>) yra esanti tam tikra vykdomoji programa. Ji parodo visą vykdomojo failo kelią, nurodydama, kurioje direktorijoje sistema pirmiausiai ieškos šios programos pagal PATH aplinkos kintamąjį.</p>
-<p>Kartu ši komanda naudojama norint sužinoti, ar norima komanda yra įdiegta.</p>
-<p>parodo kurioje vietoje yra <code>ls</code> programa</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> ls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Taip pat galima pamatyti, ar pvz <code>neovim</code> programa yra instaliuota</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> neovim</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Kadangi Terminal negrąžino jokio kelio (path), tai pasako, jog šios programos nėra.</p>
-<p><img src="img/shell/which.png" class="img-fluid"></p>
-</section>
-<section id="locate" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="locate"><span class="header-section-number">8.1</span> locate</h2>
-</section>
-<section id="whereis" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="whereis"><span class="header-section-number">8.2</span> whereis</h2>
-</section>
-<section id="path-1" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="path-1"><span class="header-section-number">8.3</span> path</h2>
-</section>
-<section id="man" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="man"><span class="header-section-number">8.4</span> man</h2>
-</section>
-<section id="help" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="help"><span class="header-section-number">8.5</span> –help</h2>
-</section>
-<section id="tldr" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="tldr"><span class="header-section-number">8.6</span> tldr</h2>
-<p><code>man</code> puslapiai yra begalo išsamūs, tačiau jie ir ganėtinai ilgi. <code>&lt;command&gt; --help</code> arba <code>&lt;command&gt; -h</code> kartais būna gani trumpi ir aiškūs pagalbos puslpiai, tačiau jeigu komanda turi daug nustatymų ir argumentų, net <code>--help</code> puslapiai gali būti perdaug sudėtingi, ypač pačioje pradžioje naudojantis Linux.</p>
-<p>Instaliuok programa <code>yt-dlp</code> ir paleisk jos <code>--help</code> puslapį. Gana ilgas tiesa?</p>
-<p>Kita programa, kuri stengiasi padėti CLI naudotojams, yra <code>tldr</code> (akronimias reiškiantis “too long;didn’t read it” = santrauka)</p>
-<p>instaliuok programa <code>tldr</code> ir paleisk ją su argumentu <code>yt-dlp</code></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tldr</span> yt-dlp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Ši programa pateikia dažniausius komandos naudjimo scenarijus ir labai trumpą paaiškinimą apie komandą. Tad tai dar vienas instrumentas tavo arsenale, primiršus prismint kaip veikia komanda, ką ji daro ir kokie nustatymai ir argumentai yra galimi. 5. Pabandyk <code>tldr tldr</code></p>
+<p>watch</p>
+<p>watch Komanda Linux sistemoje</p>
+<p>watch yra komanda Linux sistemoje, kuri leidžia reguliariai vykdyti komandas ir rodyti jų išvestį tiesiogiai terminale. Tai yra naudinga, kai norite stebėti tam tikrų komandų rezultatus, kurie gali keistis laikui bėgant, be reikalo rankiniu būdu vėl ir vėl jas įvykdant. Sintaksė:</p>
+<p>watch [opcija] [komanda]</p>
+<p>Pavyzdžiai, kaip naudoti watch:</p>
+<pre><code>Paprastas watch naudojimas: Norėdami stebėti, kas vyksta su tam tikros komandos rezultatais (pvz., peržiūrėti laisvą vietą diske), galite naudoti šią komandą:</code></pre>
+<p>watch df -h</p>
+<pre><code>Paaiškinimas: df -h rodo disko naudojimo informaciją su žmogui patogia (human-readable) išvestimi. watch vykdys šią komandą kas 2 sekundes (numatytasis laiko intervalas) ir atnaujins išvestį.</code></pre>
+<p>Pakeisti atnaujinimo intervalą: Pagal nutylėjimą watch atnaujina komandos išvestį kas 2 sekundes. Jei norite pakeisti šį intervalą, galite naudoti -n parinktį:</p>
+<p>watch -n 5 ls -l</p>
+<pre><code>Paaiškinimas: Ši komanda atnaujins ls -l (sąrašas su failų detalėmis) kas 5 sekundes.</code></pre>
+<p>Rodyti tik pasikeitimus: Jei norite matyti tik tuos išvesties elementus, kurie pasikeitė, naudokite -d parinktį:</p>
+<p>watch -d df -h</p>
+<pre><code>Paaiškinimas: Ši komanda parodys tik pasikeitimus, kai disko naudojimo statistika keisis (tai ypač naudinga, kai tiksliai nenorite matyti visos išvesties).</code></pre>
+<p>Naudoti spalvas: Galite priversti watch rodyti išvestį su spalvomis, jei komanda natūraliai naudoja spalvas (pavyzdžiui, ls –color=auto):</p>
+<pre><code>watch --color ls --color=auto
+
+    Paaiškinimas: Tai rodo ls išvestį su spalvomis kas 2 sekundes.
+
+Sustabdyti stebėjimą: Norėdami nutraukti watch komandos vykdymą, tiesiog paspauskite Ctrl + C.</code></pre>
+<p>Scenarijai, kur watch yra naudingas:</p>
+<pre><code>Stebėti sistemos išteklius: Jei norite stebėti sistemos apkrovą (procesoriaus naudojimą, atminties naudojimą), galite naudoti komandas kaip top ar free su watch:</code></pre>
+<p>watch free -h</p>
+<p>Stebėti failų ar katalogų pasikeitimus: Norėdami matyti, kaip keičiasi tam tikras failas ar katalogas (pavyzdžiui, stebėti įrašus į log failą), galite naudoti ls:</p>
+<p>watch ls -l /path/to/directory</p>
+<p>Stebėti tinklo pralaidumą: Norėdami stebėti tinklo naudojimą, galite naudoti netstat arba ss:</p>
+<pre><code>watch netstat -tuln</code></pre>
+<p>Naudojimo atvejai:</p>
+<pre><code>Sistemos administravimas: Naudojamas siekiant stebėti sistemos išteklius, failų pasikeitimus, tinklo ryšius ir kitus parametrus realiu laiku.
+Tinklo stebėjimas: Norėdami stebėti atvirus tinklo prievadus ir ryšio statistiką.
+Logų analizė: Naudojamas log failų stebėjimui, kad greitai matytumėte bet kokius pasikeitimus ar klaidas.</code></pre>
+<p>Apibendrinimas:</p>
+<p>watch komanda yra labai naudinga, kai reikia stebėti tam tikrų komandų išvestį realiu laiku. Ji leidžia lengvai matyti, kaip keičiasi sistemos ar failų būklė be poreikio rankiniu būdu nuolat vykdyti komandas. Tai ypač naudinga stebint sistemas, tinklą ar failų struktūras.</p>
+<section id="tail--f" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="tail--f"><span class="header-section-number">8.1</span> tail -f</h2>
+<p>tail -f Komanda Linux sistemoje</p>
+<p>tail -f yra komanda, naudojama stebėti failų turinį realiu laiku. Paprastai ji naudojama stebint log failus arba bet kokius kitus failus, kuriuose įrašai nuolat pridedami. Tai labai naudinga stebint programas ar sistemos procesus, kurie generuoja žurnalus arba nuolat atnaujina savo išvestį. Sintaksė:</p>
+<p>tail -f [failo_pavadinimas]</p>
+<p>Pagrindiniai pavyzdžiai, kaip naudoti tail -f:</p>
+<pre><code>Stebėti log failą realiu laiku: Jei norite stebėti sistemos logus, pavyzdžiui, /var/log/syslog arba /var/log/auth.log, galite naudoti šią komandą:</code></pre>
+<p>tail -f /var/log/syslog</p>
+<pre><code>Paaiškinimas: Tai leis matyti naujausius įrašus, kurie pridedami prie syslog failo.</code></pre>
+<p>Stebėti žurnalo failą, kuris nuolat atnaujinamas: Jei turite programą, kuri generuoja žurnalą ir nuolat prideda naujus įrašus į failą, galite naudoti tail -f:</p>
+<p>tail -f /path/to/logfile.log</p>
+<p>Stebėti kelis failus vienu metu: Galite stebėti daugiau nei vieną failą, nurodydami kelis failus komandoje:</p>
+<p>tail -f /var/log/syslog /var/log/auth.log</p>
+<pre><code>Paaiškinimas: Tai leis stebėti abu failus realiu laiku.</code></pre>
+<p>Pakeisti atvaizduojamų eilučių skaičių: Norėdami rodyti ne tik paskutines 10 eilučių, galite naudoti -n parinktį ir nustatyti norimą eilučių skaičių:</p>
+<pre><code>tail -n 20 -f /var/log/syslog
+
+    Paaiškinimas: Tai parodys paskutines 20 eilučių iš syslog failo ir toliau stebės naujus įrašus.</code></pre>
+<p>Naudojimo atvejai ir scenarijai:</p>
+<pre><code>Sistemos administravimas:
+    Žurnalo stebėjimas: Stebėti sistemos logus, kad pastebėtumėte klaidas ar problemas. Pavyzdžiui, galite stebėti, kas vyksta su jūsų serveriu, stebėdami /var/log/syslog failą.
+Programų stebėjimas:
+    Programos žurnalo stebėjimas: Kai programa generuoja log failus (pvz., web serverio žurnalai), galite naudoti tail -f, kad matytumėte, kas vyksta realiu laiku.
+Tinklo klaidų ir užklausų stebėjimas:
+    Tinklo žurnalai: Jei dirbate su tinklo diagnostika, galite stebėti tinklo logus, kad matytumėte užklausas ir klaidas realiu laiku.</code></pre>
+<p>Papildomos parinktys:</p>
+<pre><code>-f (follow): Tai pagrindinė parinktis, kuri leidžia stebėti failo turinį realiu laiku.
+-n: Nustato, kiek eilučių turėtų būti rodomos iš karto, kai komanda pradeda.
+-s: Nustato atnaujinimo intervalą (sekundėmis). Pvz.:
+
+tail -f -s 2 /var/log/syslog
+
+Tai stebės syslog failą, atnaujindama išvestį kas 2 sekundes.</code></pre>
+<p>Apibendrinimas:</p>
+<p>tail -f yra komanda, leidžianti stebėti failo turinį realiu laiku. Tai ypač naudinga stebint log failus, kad galėtumėte matyti naujausius įrašus, kurie pridedami prie failo, pavyzdžiui, klaidas, įvykdytas operacijas arba įvykusius įvykius. Tai būtina komanda sistemų administratoriams ir kūrėjams, kurie dirba su realiu laiku atnaujinamais duomenimis.</p>
+<p>Services</p>
+<p>systemctl Komanda Linux sistemoje</p>
+<p>systemctl yra pagrindinė komanda, naudojama valdyti sisteminius paslaugų (services), procesus ir įrangą, kai naudojama systemd (dažniausiai pasitaikanti init sistema Linux distrose, pvz., Ubuntu, CentOS ir kt.). Su šia komanda galima valdyti, stebėti ir konfigūruoti paslaugas, užtikrinant, kad sistema veiktų sklandžiai. Pagrindiniai systemctl naudojimo atvejai:</p>
+<pre><code>Paslaugų valdymas (start, stop, restart, enable, disable):
+    Startuoti paslaugą:</code></pre>
+<p>sudo systemctl start [service_name]</p>
+<pre><code>Paaiškinimas: Ši komanda užtikrina, kad nurodyta paslauga pradėtų veikti (pvz., httpd, ssh).</code></pre>
+<p>Sustabdyti paslaugą:</p>
+<p>sudo systemctl stop [service_name]</p>
+<pre><code>Paaiškinimas: Sustabdo veikiančią paslaugą.</code></pre>
+<p>Iš naujo paleisti paslaugą:</p>
+<p>sudo systemctl restart [service_name]</p>
+<pre><code>Paaiškinimas: Atkūrimas po klaidos ar konfigūracijos pakeitimų. Tuo pačiu metu paslauga sustabdyta ir vėl paleidžiama.</code></pre>
+<p>Įjungti paslaugą, kad ji būtų paleista po sistemos paleidimo:</p>
+<p>sudo systemctl enable [service_name]</p>
+<pre><code>Paaiškinimas: Tai įgalina paslaugą automatiškai startuoti po sistemos paleidimo.</code></pre>
+<p>Išjungti paslaugą, kad ji nebeveiktų po sistemos paleidimo:</p>
+<pre><code>sudo systemctl disable [service_name]
+
+    Paaiškinimas: Tai sustabdo paslaugos automatinį paleidimą per kitą sistemos paleidimą.</code></pre>
+<p>Patikrinti paslaugos statusą:</p>
+<pre><code>Paslaugos būsenos peržiūra:
+
+systemctl status [service_name]
+
+    Paaiškinimas: Ši komanda parodo paslaugos būseną, įskaitant, ar ji veikia, klaidas, paskutines žinutes ir kt.</code></pre>
+<p>Peržiūrėti visas veikiančias paslaugas:</p>
+<pre><code>Visų paslaugų peržiūra:
+
+systemctl list-units --type=service
+
+    Paaiškinimas: Tai rodo visų aktyvių paslaugų sąrašą sistemoje.</code></pre>
+<p>Žiūrėti logus:</p>
+<pre><code>Žiūrėti sisteminius logus:
+
+journalctl
+
+    Paaiškinimas: Tai leidžia peržiūrėti sisteminius žurnalus, kurie apima įvykius ir klaidas, susijusias su paslaugomis, sistemomis ir įrenginiais. Galima naudoti įvairias parinktis, kad filtruotumėte informaciją.</code></pre>
+<p>Pakeisti sistemą:</p>
+<pre><code>Perkrauti sistemą:</code></pre>
+<p>sudo systemctl reboot</p>
+<pre><code>Paaiškinimas: Tai perrašo sistemą (dažnai naudojama po atnaujinimų).</code></pre>
+<p>Išjungti sistemą:</p>
+<pre><code>    sudo systemctl poweroff
+
+        Paaiškinimas: Tai išjungia sistemą.</code></pre>
+<p>Dažnai naudojamos systemctl parinktys:</p>
+<pre><code>--type=service: Tai leidžia tiksliai nurodyti, kad norite dirbti su paslaugomis (service).
+-a: Tai rodo visų paslaugų būseną (net ir paslaugų, kurios nėra aktyvios).
+--failed: Tai parodys tik tas paslaugas, kurios nepavyko paleisti.</code></pre>
+<p>Pavyzdžiai, kaip naudoti systemctl:</p>
+<pre><code>Patikrinti paslaugos būseną:</code></pre>
+<p>sudo systemctl status nginx</p>
+<pre><code>Tai parodys, ar nginx web serveris veikia, ar jis sustabdytas, ir paskutines klaidas.</code></pre>
+<p>Įjungti nginx serverį, kad jis automatiškai startuotų po sistemos paleidimo:</p>
+<p>sudo systemctl enable nginx</p>
+<p>Sustabdyti nginx paslaugą:</p>
+<p>sudo systemctl stop nginx</p>
+<p>Perkrauti paslaugą, pvz., po konfigūracijos pakeitimų:</p>
+<p>sudo systemctl restart nginx</p>
+<p>Peržiūrėti žurnalą, susijusį su paslauga:</p>
+<pre><code>journalctl -u nginx
+
+    Tai parodys visus įrašus, susijusius su nginx paslaugos žurnalu.</code></pre>
+<p>Naudojimo atvejai:</p>
+<pre><code>Sistemos administravimas: systemctl yra būtina komanda sistemos administratoriui, kad jis galėtų valdyti paslaugas, keisti jų būsenas ir peržiūrėti logus.
+Web serverių administravimas: Tai naudinga prižiūrint web serverius, tokius kaip nginx ar apache, ir užtikrinant, kad paslaugos būtų teisingai paleistos ir veiktų be trikdžių.
+Sistemos diagnostika: Naudojant systemctl status ir journalctl, galima greitai diagnozuoti problemas, susijusias su paslaugomis ir sistema.</code></pre>
+<p>Apibendrinimas:</p>
+<p>systemctl komanda yra galingas įrankis, skirtas valdyti sistemines paslaugas ir procesus, kai naudojama systemd. Tai leidžia startuoti, sustabdyti, atnaujinti, peržiūrėti ir konfigūruoti paslaugas bei sisteminius procesus. Tai būtina komanda tiek sistemos administratoriui, tiek kūrėjui, kuris dirba su serveriais ar kitomis Linux pagrindu veikiančiomis sistemomis.</p>
+<p>sudo systemctl status apache2</p>
+<p>sudo systemctl start apache2</p>
+<p>sudo systemctl stop apache2</p>
+<p>sudo systemctl restart apache2</p>
+<p>sudo systemctl enable apache2</p>
+<p>Security - Users and Groups</p>
+<p>Permissions are assigned based on “everyone”, users and groups.</p>
+<p>All resources are objects in Linux. So to give permission to the webcam you would add your user to the group that owns the video object.</p>
+<p>Certain resources reset their permissions at reboot such as video. You have to add your user to the group that owns it instead of simply making yourself owner.</p>
+<p>adduser, groupadd, usermod Komandos Linux sistemoje</p>
+<p>Šios komandos naudojamos valdyti vartotojus ir grupes Linux sistemoje. Jos leidžia kurti, redaguoti ir pašalinti vartotojus bei grupes, taip pat nustatyti leidimus ir konfigūruoti paskyras. Šios komandos yra naudingos sistemų administravimui, kai reikia valdyti prieigą prie sistemos. 1. adduser – Naujo vartotojo sukūrimas</p>
+<p>Komanda adduser naudojama sukurti naują vartotoją Linux sistemoje. Tai paprastai apima ir vartotojo namų katalogo sukūrimą, taip pat vartotojo paskyros konfigūravimą.</p>
+<p>Sintaksė:</p>
+<p>sudo adduser [vartotojo_vardas]</p>
+<p>Pavyzdys:</p>
+<p>sudo adduser jonas</p>
+<p>Paaiškinimas: Tai sukurs naują vartotoją „jonas“, sukurs jo namų katalogą /home/jonas, taip pat nustatys vartotojo slaptažodį ir kitus parametrus (pvz., pilną vardą, telefono numerį ir kt.). 2. groupadd – Naujos grupės sukūrimas</p>
+<p>Komanda groupadd naudojama kuriant naują grupę Linux sistemoje. Grupės leidžia grupuoti vartotojus ir priskirti jiems bendrus leidimus.</p>
+<p>Sintaksė:</p>
+<p>sudo groupadd [grupės_vardas]</p>
+<p>Pavyzdys:</p>
+<p>sudo groupadd admins</p>
+<p>Paaiškinimas: Tai sukurs grupę „admins“, kurią vėliau galima naudoti priskiriant vartotojus, kad jie turėtų bendrus leidimus (pvz., administravimo teises). 3. usermod – Vartotojo paskyros modifikavimas</p>
+<p>Komanda usermod leidžia modifikuoti esamą vartotojo paskyrą. Su šia komanda galima keisti vartotojo grupes, nustatyti ar pakeisti vartotojo namų katalogą, slaptažodį ir kitus parametrus.</p>
+<p>Sintaksė:</p>
+<p>sudo usermod [parinktys] [vartotojo_vardas]</p>
+<p>Dažniausiai naudojamos parinktys:</p>
+<pre><code>-aG: Pridėti vartotoją prie grupės.
+-d: Nustatyti vartotojo namų katalogą.
+-l: Pakeisti vartotojo vardą.</code></pre>
+<p>Pavyzdžiai:</p>
+<pre><code>Pridėti vartotoją prie grupės:</code></pre>
+<p>sudo usermod -aG admins jonas</p>
+<pre><code>Paaiškinimas: Tai pridės vartotoją „jonas“ prie grupės „admins“.</code></pre>
+<p>Pakeisti vartotojo vardą:</p>
+<p>sudo usermod -l petras jonas</p>
+<pre><code>Paaiškinimas: Tai pakeis vartotojo vardą iš „jonas“ į „petras“.</code></pre>
+<p>Pakeisti vartotojo namų katalogą:</p>
+<pre><code>sudo usermod -d /home/petras jonas
+
+    Paaiškinimas: Tai pakeis vartotojo „jonas“ namų katalogą į /home/petras.</code></pre>
+<p>Naudojimo atvejai ir scenarijai:</p>
+<pre><code>Sistemos administravimas:
+    Vartotojų kūrimas ir redagavimas: Naudojant adduser ir usermod, galima kurti naujus vartotojus ir pritaikyti jiems teises, kad jie galėtų prisijungti prie sistemos ir atlikti tam tikras užduotis.
+
+Grupių valdymas:
+    Grupių kūrimas ir priskyrimas: groupadd leidžia kurti grupes, kurias galima naudoti, norint grupuoti vartotojus pagal jų roles (pvz., administratorių grupės, vartotojų grupės) ir valdyti prieigą prie failų ir sistemų išteklių.
+
+Teisių suteikimas:
+    Pridėti vartotoją prie grupės: Su usermod -aG galima suteikti vartotojui papildomas teises pagal grupę. Tai ypač naudinga valdyti vartotojų prieigą prie tam tikrų paslaugų (pvz., administratorių teises ar prieigą prie specifinių resursų).</code></pre>
+<p>Apibendrinimas:</p>
+<pre><code>adduser yra naudinga, kai reikia sukurti naują vartotoją sistemoje.
+groupadd leidžia sukurti naujas grupes, kad vartotojai galėtų būti grupuojami pagal roles ir paskirtas teises.
+usermod suteikia galimybę redaguoti esamų vartotojų paskyras, pritaikant vartotojo vardą, grupes, namų katalogus ir kitas savybes.</code></pre>
+<p>Šios komandos yra būtinos sistemos administratoriui, kad galėtų valdyti vartotojus ir grupes, reguliuoti prieigą ir užtikrinti saugumą.</p>
+<p>What is a Service?</p>
+<p>A service is typically a background process (daemon) that starts when the system boots and provides ongoing functionality (e.g., web servers, databases, logging systems). Services are managed by init systems like systemd, which starts, stops, and supervises them. How Processes Relate to Services</p>
+<pre><code>Services Start Processes:
+    When you start a service with systemctl start &lt;service-name&gt;, systemd launches the associated process.
+    For example, starting the nginx service launches the nginx process.
+
+Processes Managed by systemd:
+    systemd supervises the lifecycle of service processes. If a process crashes, systemd can restart it automatically.
+    systemd tracks processes via cgroups (control groups), which help isolate resources and ensure the process hierarchy remains tied to the service.
+
+Parent-Child Relationship:
+    Processes started by a service often create child processes (e.g., worker processes for web servers). These child processes are also managed as part of the service by systemd.</code></pre>
+<p>Using systemd to Inspect Processes</p>
+<pre><code>Check Active Processes for a Service:</code></pre>
+<p>systemctl status <service-name></service-name></p>
+<p>This shows the service’s status, logs, and the active processes.</p>
+<p>Example for nginx:</p>
+<p>● nginx.service - A high performance web server Loaded: loaded (/lib/systemd/system/nginx.service; enabled) Active: active (running) since Mon 2024-11-25 10:00:00 Main PID: 1234 (nginx) Tasks: 3 (limit: 4915) Memory: 4.5M CGroup: /system.slice/nginx.service ├─1234 nginx: master process └─1235 nginx: worker process</p>
+<p>Find All Processes in a Service’s cgroup:</p>
+<p>systemd-cgls</p>
+<p>This command shows the hierarchy of processes, grouped by services.</p>
+<p>List All Processes Started by systemd:</p>
+<pre><code>ps -e --forest
+
+This shows a tree of all processes. Processes started by systemd will appear under its PID.</code></pre>
+<p>Examples of How Processes and Services Work Together</p>
+<pre><code>Web Server:
+    Starting apache2 as a service with systemctl start apache2 launches the apache2 process (and its worker threads).
+    If the main process crashes, systemd can automatically restart it.
+
+Database Server:
+    Starting mysql with systemctl start mysql launches the mysqld process.
+    Multiple helper processes may also spawn, all tied to the mysql.service.
+
+Scheduled Tasks:
+    A cron job managed by the cron service spawns processes (e.g., a Python script).
+    The cron service itself is managed by systemd.</code></pre>
+<p>When a Process Isn’t Connected to a Service</p>
+<pre><code>If you run a program manually (e.g., python script.py), it won't be tied to a systemd service unless explicitly configured.
+To make such a process a service, create a custom systemd service unit file for it.</code></pre>
+<p>Why Use systemd for Processes?</p>
+<pre><code>Reliability:
+    systemd ensures that critical services (and their processes) restart automatically if they fail.
+Resource Management:
+    Processes in a service can be limited in CPU, memory, or I/O usage using cgroups.
+Dependency Handling:
+    systemd starts services (and their processes) in the correct order, respecting dependencies.</code></pre>
+<p>By using tools like systemctl and understanding how services spawn and manage processes, you can efficiently control and troubleshoot system processes in Linux.</p>
 
 
 </section>
@@ -952,13 +1410,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../b_bash_pagrindai/7_bash_comands_advanced_1.html" class="pagination-link" aria-label="BASH advanced">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BASH advanced</span></span>
+      <a href="../b_bash_pagrindai/7_bash_comands_advanced_1.html" class="pagination-link" aria-label="BASH pažengusiems">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">BASH pažengusiems</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../c_editoriai_git/9_text_editors_ide.html" class="pagination-link" aria-label="Text editors ir IDE">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Text editors ir IDE</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../b_bash_pagrindai/12_ssh.html" class="pagination-link" aria-label="SSH">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">SSH</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

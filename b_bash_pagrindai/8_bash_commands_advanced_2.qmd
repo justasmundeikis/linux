@@ -1,5 +1,5 @@
 ---
-title: "BASH advanced 2"
+title: "BASH darbas su OS"
 execute:
   daemon: false
   enabled: false
@@ -11,91 +11,971 @@ format:
 ---
 
 
-### whoami
-
-Komanda `whoami` parodo dabartinio vartotojo (**user**) vardą, su kuriuo esate prisijungę prie sistemos. Tai paprastas ir naudingas būdas patikrinti, kokį vartotojo prisijungimą naudojate, ypač kai dirbate su keliais vartotojais toje pačioje sistemoje.
-
-```BASH
-whoami
-```
-
-![](img/shell/whoami.png)
-
-### $PATH
-
-Persp4jimas ši tema kiek sudėtingesnė, bet ją pravartu žinoti.
-
-Kaip Shell žino, kokią programą startuoti, kai pvz tu įrašai `ls`? Juk negali Shell eiti per visus tavo failus ir ieškoti, ar yra tokia programa `ls`? Tai užtruktų labai ilgai ir būtų neefektyvu. Tavo Bash programa yra išsaugojusi visų direktorijų sąrašą, kurias ji tikrina. Tod4l pavyzdžiui įrašius
 
 
-```BASH
-main-user@linux-mint:~$ $PATH
-bash: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin: No such file or directory
-```
-Ką visa tai reiškia? Kai vartotojas įrašo komanda `ls` Bah pirma tikrina `/usr/local/sbin/` jeigu ten neranda, eina į sekandią direktoriją `/usr/local/bin` ir t.t. Jeigu visame sąraše šios programos nebūtų, įrašius `ls` nieko neįvyktų, o terminale išvystum pranešimą, su siūlymų galbūt šią programą instaliuoti (jeigu `apt` programa apie šią komandą kažką žino).
-
-su komanda `which` galime pamayti, o tai kur būtent `ls` randasi
-
-```BASH
-main-user@linux-mint:~$ which ls
-/usr/bin/ls
-```
-
-Taigi įrašius `ls` bash keliavo
-
-* /usr/local/sbin <- nerado `ls`
-* /usr/local/bin <- nerado `ls`
-* /usr/sbin <- nerado `ls`
-* /usr/bin <- čia rado `ls`
-
-Retais atvejais, tau gali reikėti pridėti direktorijas prie $PATH, bet labai tikėtina, jog tik pradedant naudotis Linux CLI, tau to dar nereikės. Tačiau jeigu kada prireiks, tu žinosi, apie ką čia kalbama.
-
-### which
-
-Komanda `which` naudojama norint sužinoti, kurioje vietoje (**path**) yra esanti tam tikra vykdomoji programa. Ji parodo visą vykdomojo failo kelią, nurodydama, kurioje direktorijoje sistema pirmiausiai ieškos šios programos pagal PATH aplinkos kintamąjį.
-
-Kartu ši komanda naudojama norint sužinoti, ar norima komanda yra įdiegta.
-
-parodo kurioje vietoje yra `ls` programa
-```BASH
-which ls
-```
-
-Taip pat galima pamatyti, ar pvz `neovim` programa yra instaliuota
-
-```BASH
-which neovim
-```
-
-Kadangi Terminal negrąžino jokio kelio (path), tai pasako, jog šios programos nėra.
-
-![](img/shell/which.png)
 
 
-## locate
+export: Nustato aplinkos kintamuosius
 
-## whereis
+Komanda export leidžia apibrėžti aplinkos kintamuosius, kurie tampa prieinami visiems procesams, paleistiems iš esamos terminalo sesijos.
+Sintaksė:
 
-## path
+export VARDAS=REIKŠMĖ
+
+Kaip veikia?
+
+    Sukuriamas aplinkos kintamasis VARDAS su reikšme REIKŠMĖ.
+    Kintamasis tampa prieinamas ne tik dabartiniam apvalkalui (shell), bet ir visiems jo vaikiniams procesams.
+
+Pavyzdžiai:
+
+    Nustatyti naują aplinkos kintamąjį:
+
+export MY_VAR="Labas pasauli!"
+
+Dabar MY_VAR bus pasiekiamas visur dabartinėje terminalo sesijoje.
+
+Naudoti kintamąjį programoje:
+
+echo $MY_VAR
+
+Rezultatas: Labas pasauli!
+
+Perduoti kintamąjį programai:
+
+    export API_KEY="abcdef12345"
+    python my_script.py
+
+    Šiame pavyzdyje Python skriptas galės naudoti API_KEY kintamąjį.
+
+env: Rodo arba paleidžia programą su aplinkos kintamaisiais
+
+Komanda env leidžia:
+
+    Peržiūrėti visus aplinkos kintamuosius:
+
+env
+
+Ji išspausdins visų kintamųjų sąrašą, pvz.:
+
+PATH=/usr/local/bin:/usr/bin
+HOME=/home/user
+SHELL=/bin/bash
+
+Paleisti komandą su tam tikrais aplinkos kintamaisiais: Jei norite laikinai nustatyti kintamąjį ir paleisti programą:
+
+    env MY_VAR="Taisyklė" python my_script.py
+
+    Šis kintamasis bus pasiekiamas tik šiai komandai ir nebus įrašytas į esamą sesiją.
+
+printenv: Parodo aplinkos kintamuosius
+
+Komanda printenv yra paprasta – ji tiesiog išveda konkrečius arba visus aplinkos kintamuosius.
+Sintaksė:
+
+    Norint išvesti konkretų kintamąjį:
+
+printenv VARDAS
+
+Pvz.:
+
+printenv PATH
+
+Rezultatas: PATH=/usr/local/bin:/usr/bin:/bin
+
+Norint išvesti visus aplinkos kintamuosius:
+
+    printenv
+
+Kada naudoti šias komandas?
+Programavime:
+
+    export: Naudojama, kai reikia nustatyti kintamąjį, kurį naudos skriptas ar programa.
+        Pvz., nustatyti API raktą arba prieigos duomenis duomenų bazei.
+
+    env: Naudojama, kai reikia paleisti programą su laikinais kintamaisiais, nekeičiant globalios aplinkos.
+        Pvz., išbandyti programą su alternatyviu konfigūracijų failu.
+
+    printenv: Naudojama, kai reikia patikrinti, ar tam tikras aplinkos kintamasis yra nustatytas.
+        Pvz., patikrinti, ar PATH yra tinkamai sukonfigūruotas.
+
+Šios komandos yra naudingos tiek kasdieniniame darbe, tiek sudėtingose programavimo situacijose, kai reikia valdyti aplinkos konfigūracijas.
 
 
-## man
 
-## --help
 
-## tldr
 
-`man` puslapiai yra begalo išsamūs, tačiau jie ir ganėtinai ilgi. `<command> --help` arba `<command> -h` kartais būna gani trumpi ir aiškūs pagalbos puslpiai, tačiau jeigu komanda turi daug nustatymų ir argumentų, net `--help` puslapiai gali būti perdaug sudėtingi, ypač pačioje pradžioje naudojantis Linux.
+1. jobs: Peržiūri darbus (jobs) terminale
 
-Instaliuok programa `yt-dlp`  ir paleisk jos `--help` puslapį. Gana ilgas tiesa?
+    Aprašymas: jobs komanda rodo visus procesus (darbus), kurie buvo paleisti dabartinėje terminalo sesijoje ir yra sustabdyti arba vykdomi fone.
+    Sintaksė:
 
-Kita programa, kuri stengiasi padėti CLI naudotojams, yra `tldr` (akronimias reiškiantis "too long;didn't read it" = santrauka)
+jobs
 
-instaliuok programa `tldr` ir paleisk ją su argumentu `yt-dlp`
+Pavyzdys: Jei paleisite programą ir sustabdysite ją (Ctrl+Z), galite pamatyti jos būseną:
 
-```BASH
-tldr yt-dlp
-```
+sleep 100 &
+jobs
 
-Ši programa pateikia dažniausius komandos naudjimo scenarijus ir labai trumpą paaiškinimą apie komandą. Tad tai dar vienas instrumentas tavo arsenale, primiršus prismint kaip veikia komanda, ką ji daro ir kokie nustatymai ir argumentai yra galimi.
-5. Pabandyk `tldr tldr`
+Rezultatas:
+
+    [1]+ Running    sleep 100 &
+
+2. bg: Tęsia sustabdytą darbą fone
+
+    Aprašymas: Komanda bg atnaujina sustabdytą darbą (Ctrl+Z) ir paleidžia jį fone.
+    Sintaksė:
+
+bg [darbo_nr]
+
+Kaip naudoti?
+
+    Sustabdykite darbą:
+
+sleep 100
+
+Paspauskite Ctrl+Z (sustabdo programą).
+Patikrinkite sustabdytus darbus:
+
+jobs
+
+Rezultatas:
+
+[1]+ Stopped   sleep 100
+
+Paleiskite darbą fone:
+
+bg 1
+
+Rezultatas:
+
+        [1]+ sleep 100 &
+
+3. fg: Tęsia sustabdytą darbą arba atveda foninį darbą į priekį
+
+    Aprašymas: Komanda fg leidžia perkelti foninį arba sustabdytą darbą į priekį (foreground), kad galėtumėte su juo dirbti tiesiogiai.
+    Sintaksė:
+
+fg [darbo_nr]
+
+Kaip naudoti?
+
+    Paleiskite ilgai trunkančią komandą fone:
+
+sleep 100 &
+
+Patikrinkite:
+
+jobs
+
+Rezultatas:
+
+[1]+ Running   sleep 100 &
+
+Atveskite ją į priekį:
+
+        fg 1
+
+        Rezultatas: Procesas sleep 100 dabar bus vykdomas terminale, kol baigsis.
+
+4. kill: Užbaigia procesą
+
+    Aprašymas: Komanda kill siunčia signalą procesui, paprastai norint jį užbaigti. Naudojama, kai procesą reikia priverstinai sustabdyti.
+
+    Sintaksė:
+
+kill [signal] PID
+
+    Signalų tipai:
+        -15: (Default) Maloniai užbaigia procesą.
+        -9: Priverstinai nutraukia procesą.
+
+Kaip naudoti?
+
+    Raskite proceso PID (Process ID):
+
+ps aux | grep sleep
+
+Rezultatas:
+
+justas    1234  0.0  0.0  12345  5678 pts/0    S    10:00   0:00 sleep 100
+
+Užbaikite procesą:
+
+    kill 1234
+
+Naudojant su jobs: Jei procesas yra sustabdytas ar veikia fone:
+
+    jobs
+    kill %1
+
+Scenarijai, kada naudoti šias komandas
+
+    Duomenų analitiko darbas:
+        Paleidote ilgą Python skriptą, bet reikia grįžti į terminalą kitiems veiksmams:
+            Sustabdykite skriptą su Ctrl+Z.
+            Paleiskite jį fone su bg.
+            Jei reikia vėl stebėti eigą, naudokite fg.
+
+    Ištrinti nereikalingą procesą:
+        Jei procesas naudoja per daug išteklių:
+            Naudokite ps aux arba jobs rasti procesą.
+            Naudokite kill jį sustabdyti.
+
+    Valdyti testavimo scenarijus:
+        Testuojate skriptą, sustabdote ir redaguojate jį naudodami fg ar kill.
+
+Šios komandos leidžia efektyviai valdyti procesus ir pagerina produktyvumą dirbant su Linux sistemomis.
+
+Štai išsamus paaiškinimas apie komandas df, du, ir ncdu, kurios padeda analizuoti disko vietos naudojimą:
+1. df: Ataskaita apie disko vietos naudojimą
+
+    Aprašymas: Komanda df pateikia informaciją apie failų sistemos disko vietos naudojimą ir likusią vietą.
+
+    Sintaksė:
+
+df [parinktys] [katalogas]
+
+Naudojimas:
+
+    Peržiūrėti visų prijungtų failų sistemų disko vietą:
+
+df -h
+
+Rezultatas pateikiamas žmogui suprantamais dydžiais (MB, GB):
+
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda1        50G   20G   30G  40% /
+/dev/sdb1       100G   80G   20G  80% /data
+
+Tikrinimas konkrečiam katalogui:
+
+        df -h ~/Documents
+
+    Naudingi variantai:
+        -h: Rodomi dydžiai su vienetais (MB, GB).
+        -T: Parodo failų sistemos tipą (pvz., ext4, xfs).
+
+2. du: Įvertina failų ir katalogų vietos naudojimą
+
+    Aprašymas: Komanda du parodo kiek disko vietos užima failai ir katalogai. Ji padeda suprasti, kurie katalogai ar failai naudoja daugiausia vietos.
+
+    Sintaksė:
+
+du [parinktys] [katalogas]
+
+Naudojimas:
+
+    Peržiūrėti, kiek vietos užima konkretus katalogas:
+
+du -h ~/Downloads
+
+Rezultatas:
+
+20M    ~/Downloads/photos
+50M    ~/Downloads/videos
+70M    ~/Downloads
+
+Norint matyti tik pagrindinius katalogus:
+
+du -sh *
+
+Rezultatas:
+
+        2G    Documents
+        5G    Videos
+        1G    Downloads
+
+    Naudingi variantai:
+        -h: Rodomi dydžiai su vienetais (MB, GB).
+        -s: Apibendrina bendrą katalogo dydį.
+        --max-depth=N: Rodo dydžius tik iki nurodyto katalogų gylio.
+
+3. ncdu: Disko vietos analizatorius su tekstine sąsaja
+
+    Aprašymas: Komanda ncdu yra interaktyvus įrankis, kuris leidžia patogiai analizuoti disko vietos naudojimą. Ji pateikia rezultatą tekstinėje vartotojo sąsajoje, kur galite naršyti failus ir katalogus.
+    Sintaksė:
+
+ncdu [parinktys] [katalogas]
+
+Naudojimas:
+
+    Įdiekite įrankį (jei dar neįdiegtas):
+
+sudo apt install ncdu   # Debian/Ubuntu
+sudo yum install ncdu   # CentOS/RedHat
+
+Paleiskite analizę konkrečiame kataloge:
+
+ncdu /home/user
+
+Rezultatas bus tekstinė sąsaja, kurioje galėsite naršyti, pvz.:
+
+        --- /home/user ---
+        20.0 GiB [##########] Videos
+        15.0 GiB [#######   ] Music
+         5.0 GiB [##        ] Documents
+         1.0 GiB [          ] Downloads
+
+        Pažymėtą failą ar katalogą galite ištrinti tiesiog iš sąsajos paspaudę d.
+
+Kada naudoti šias komandas?
+
+    Disko vietos trūkumas:
+        Naudokite df -h, kad nustatytumėte, kuri failų sistema perpildyta.
+
+    Didelių failų ir katalogų paieška:
+        Naudokite du -sh * arba ncdu, kad rastumėte katalogus ar failus, kurie užima daug vietos.
+
+    Interaktyvi analizė:
+        Naudokite ncdu, jei norite lengviau naršyti ir šalinti nereikalingus failus.
+
+Šios komandos yra būtinos administruojant Linux sistemą ir optimizuojant disko vietos naudojimą.
+
+
+
+eval: Komanda, vykdanti komandų eilutę kaip Bash komandą
+
+    Aprašymas: eval yra Bash komanda, kuri vykdo komandą arba komandų eilutę, kuri yra pateikta kaip tekstas. Tai leidžia dinamiškai sukurti komandas ir jas vykdyti. eval įvykdo tekstą kaip Bash komandą, tad galima sukurti labai lanksčius ir dinamiškus skriptus.
+
+    Sintaksė:
+
+    eval [komanda]
+
+    eval paima argumentus ir įvykdo juos kaip komandų eilutę. Tai leidžia apdoroti komandų eiles, kurios buvo sukurtos arba modifikuotos kitų komandų.
+
+Pavyzdžiai, kaip naudoti eval:
+
+    Dinamiškas kintamųjų ir komandų sujungimas:
+
+    Tarkime, turite kintamąjį, kuriame yra komanda. eval leidžia šį kintamąjį vykdyti kaip komandą.
+        Pavyzdys:
+
+    command="ls -l"
+    eval $command
+
+    Paaiškinimas: Komanda ls -l bus vykdoma, nes kintamasis command turi ją. Naudojant eval, Bash interpretuos kintamąjį kaip komandą.
+
+Dinamiškas kintamųjų apdorojimas:
+
+Jei kintamieji yra susiję su failais ar kitais objektais, eval leidžia dinamiškai kurti ir vykdyti komandas.
+
+    Pavyzdys:
+
+    dir="/home/user/Documents"
+    eval ls $dir
+
+    Paaiškinimas: Kintamasis $dir nurodo katalogą, o komanda eval ją vykdo kaip ls /home/user/Documents.
+
+Sukurti ir vykdyti komandų eilutes su eval:
+
+Jeigu norite sukurti komandas ir jas atlikti remiantis sąlygomis ar kitais veiksniais, eval padeda dinamiškai modifikuoti ir vykdyti komandas.
+
+    Pavyzdys:
+
+        cmd="echo 'Hello, World!'"
+        eval $cmd
+
+        Paaiškinimas: Komanda echo 'Hello, World!' bus įvykdyta, nes eval interpretuos kintamąjį kaip Bash komandą.
+
+Naudojimo atvejai ir scenarijai:
+
+    Dinamiškas kintamųjų apdorojimas: Jei skriptas priklauso nuo dinamiškai nustatomų kintamųjų, eval leidžia sukurti ir vykdyti komandas, priklausomai nuo to, kaip kintamieji yra modifikuojami.
+
+    Komandų konstruavimas iš kitų komandų: Jeigu reikia sujungti kelias komandas arba sukurti komandą pagal dinamišką informaciją (pvz., pagal failų sąrašą ar vartotojo įvestį), eval gali padėti.
+
+    Skriptuose su sudėtingomis sąlygomis: Kartais reikia, kad komandos veiktų skirtingais būdais priklausomai nuo įvesties, ir eval leidžia tai pasiekti.
+
+UFW
+
+UFW (Uncomplicated Firewall): Komanda Linux sistemose
+
+UFW (Uncomplicated Firewall) yra paprasta ir lengva naudoti komanda, skirta tvarkyti "iptables" ugniasienę Linux sistemose. UFW yra skirtas padėti paprastai nustatyti ir valdyti ugniasienės taisykles, leidžiant arba blokuojant tam tikras paslaugas ar tinklo ryšius.
+Pagrindiniai UFW komandos naudojimo aspektai
+1. UFW būsenos peržiūra:
+
+Norėdami patikrinti, ar UFW ugniasienė yra įjungta, galite naudoti šią komandą:
+
+sudo ufw status
+
+    Jei UFW yra įjungtas, rezultatas bus:
+
+Status: active
+
+Jei UFW yra išjungtas, rezultatas bus:
+
+    Status: inactive
+
+2. UFW įjungimas ir išjungimas:
+
+    Įjungti UFW:
+
+sudo ufw enable
+
+Tai įjungs ugniasienę ir pradės ją naudoti.
+
+Išjungti UFW:
+
+    sudo ufw disable
+
+    Tai išjungs ugniasienę, tačiau nesunaikins esamų taisyklių, tad jas galėsite vėl įjungti vėliau.
+
+3. Leidimų ir blokavimo taisyklės:
+
+UFW leidžia lengvai nustatyti, kurioms programoms ar paslaugoms bus leidžiama arba draudžiama prieiga prie jūsų sistemos.
+
+    Leisti tam tikrą paslaugą (pvz., HTTP portą 80):
+
+sudo ufw allow http
+
+Tai leis HTTP (80 prievado) srautą.
+
+Leisti paslaugą pagal prievadą (pvz., prievadą 8080):
+
+sudo ufw allow 8080
+
+Tai leis ryšius per prievadą 8080.
+
+Blokuoti tam tikrą paslaugą (pvz., SSH prievadą 22):
+
+sudo ufw deny ssh
+
+Blokuoti prievadą (pvz., prievadą 8000):
+
+    sudo ufw deny 8000
+
+4. Leidimo taisyklių nurodymas pagal IP adresą:
+
+    Leisti srautą tik iš tam tikro IP adreso:
+
+sudo ufw allow from 192.168.1.100
+
+Tai leis tik 192.168.1.100 IP adresui prisijungti prie jūsų sistemos.
+
+Leisti srautą iš tam tikro IP per tam tikrą prievadą:
+
+    sudo ufw allow from 192.168.1.100 to any port 80
+
+5. Išimčių taisyklių kūrimas:
+
+    Leisti visus ryšius tik iš vietinio tinklo (LAN):
+
+    sudo ufw allow from 192.168.1.0/24
+
+6. UFW prievadų ir paslaugų sąrašai:
+
+    Peržiūrėti prieinamas paslaugas:
+
+sudo ufw app list
+
+Tai parodys paslaugas, kurioms galite leisti arba blokuoti ryšius.
+
+Leisti tam tikrą paslaugą, naudodami jos pavadinimą (pvz., OpenSSH):
+
+    sudo ufw allow OpenSSH
+
+7. Atšaukti taisykles:
+
+    Pašalinti taisyklę: Jei norite pašalinti taisyklę, naudojančią numeruotą taisyklę:
+
+    sudo ufw delete allow 80
+
+    Tai pašalins taisyklę, leidžiančią ryšius per prievadą 80.
+
+8. Išsamių žurnalų peržiūra:
+
+    Peržiūrėti ugniasienės žurnalus:
+
+    sudo less /var/log/ufw.log
+
+Pavyzdžiai su realiais scenarijais:
+
+    Leisti SSH prieigą:
+        Jei naudojate SSH prieigą, kad galėtumėte prisijungti prie serverio, įsitikinkite, kad prievadas 22 yra atidarytas:
+
+    sudo ufw allow ssh
+
+Užblokuoti HTTP prieigą:
+
+    Jei norite užblokuoti HTTP srautą (prievadas 80), galite tai atlikti taip:
+
+    sudo ufw deny http
+
+Tik tam tikras IP adresas gali prisijungti prie Jūsų serverio per SSH:
+
+    Jei norite, kad tik tam tikras IP adresas galėtų prisijungti prie jūsų serverio per SSH, galite sukurti tokią taisyklę:
+
+        sudo ufw allow from 192.168.1.100 to any port 22
+
+Apibendrinimas:
+
+UFW (Uncomplicated Firewall) yra labai patogus ir paprastas įrankis Linux vartotojams, norintiems valdyti savo ugniasienę. Naudojant UFW galima lengvai leisti arba blokuoti paslaugas, nustatyti specifines taisykles pagal IP adresus ir prievadus, ir atlikti kitus veiksmus, kad užtikrintumėte savo sistemos saugumą. UFW yra puikus įrankis tiek pradedantiesiems, tiek pažengusiems vartotojams, kurie nori valdyti ugniasienę savo Linux sistemoje.
+
+UFW is the built in Software Firewall. If your web app or other service cannot be accessed by clients it might be because of UFW.
+
+Check Status of UFW
+sudo ufw status
+
+
+ufw
+
+Uncomplicated Firewall.
+Frontend for iptables aiming to make configuration of a firewall easier.
+More information: https://wiki.ubuntu.com/UncomplicatedFirewall.
+
+ - Enable ufw:
+   ufw enable
+
+ - Disable ufw:
+   ufw disable
+
+ - Show ufw rules, along with their numbers:
+   ufw status numbered
+
+ - Allow incoming traffic on port 5432 on this host with a comment identifying the service:
+   ufw allow 5432 comment "Service"
+
+ - Allow only TCP traffic from 192.168.0.4 to any address on this host, on port 22:
+   ufw allow proto tcp from 192.168.0.4 to any port 22
+
+ - Deny traffic on port 80 on this host:
+   ufw deny 80
+
+ - Deny all UDP traffic to ports in range 8412:8500:
+   ufw deny proto udp from any to any port 8412:8500
+
+ - Delete a particular rule. The rule number can be retrieved from the ufw status numbered command:
+   ufw delete rule_number
+
+
+
+watch
+
+watch Komanda Linux sistemoje
+
+watch yra komanda Linux sistemoje, kuri leidžia reguliariai vykdyti komandas ir rodyti jų išvestį tiesiogiai terminale. Tai yra naudinga, kai norite stebėti tam tikrų komandų rezultatus, kurie gali keistis laikui bėgant, be reikalo rankiniu būdu vėl ir vėl jas įvykdant.
+Sintaksė:
+
+watch [opcija] [komanda]
+
+Pavyzdžiai, kaip naudoti watch:
+
+    Paprastas watch naudojimas: Norėdami stebėti, kas vyksta su tam tikros komandos rezultatais (pvz., peržiūrėti laisvą vietą diske), galite naudoti šią komandą:
+
+watch df -h
+
+    Paaiškinimas: df -h rodo disko naudojimo informaciją su žmogui patogia (human-readable) išvestimi. watch vykdys šią komandą kas 2 sekundes (numatytasis laiko intervalas) ir atnaujins išvestį.
+
+Pakeisti atnaujinimo intervalą: Pagal nutylėjimą watch atnaujina komandos išvestį kas 2 sekundes. Jei norite pakeisti šį intervalą, galite naudoti -n parinktį:
+
+watch -n 5 ls -l
+
+    Paaiškinimas: Ši komanda atnaujins ls -l (sąrašas su failų detalėmis) kas 5 sekundes.
+
+Rodyti tik pasikeitimus: Jei norite matyti tik tuos išvesties elementus, kurie pasikeitė, naudokite -d parinktį:
+
+watch -d df -h
+
+    Paaiškinimas: Ši komanda parodys tik pasikeitimus, kai disko naudojimo statistika keisis (tai ypač naudinga, kai tiksliai nenorite matyti visos išvesties).
+
+Naudoti spalvas: Galite priversti watch rodyti išvestį su spalvomis, jei komanda natūraliai naudoja spalvas (pavyzdžiui, ls --color=auto):
+
+    watch --color ls --color=auto
+
+        Paaiškinimas: Tai rodo ls išvestį su spalvomis kas 2 sekundes.
+
+    Sustabdyti stebėjimą: Norėdami nutraukti watch komandos vykdymą, tiesiog paspauskite Ctrl + C.
+
+Scenarijai, kur watch yra naudingas:
+
+    Stebėti sistemos išteklius: Jei norite stebėti sistemos apkrovą (procesoriaus naudojimą, atminties naudojimą), galite naudoti komandas kaip top ar free su watch:
+
+watch free -h
+
+Stebėti failų ar katalogų pasikeitimus: Norėdami matyti, kaip keičiasi tam tikras failas ar katalogas (pavyzdžiui, stebėti įrašus į log failą), galite naudoti ls:
+
+watch ls -l /path/to/directory
+
+Stebėti tinklo pralaidumą: Norėdami stebėti tinklo naudojimą, galite naudoti netstat arba ss:
+
+    watch netstat -tuln
+
+Naudojimo atvejai:
+
+    Sistemos administravimas: Naudojamas siekiant stebėti sistemos išteklius, failų pasikeitimus, tinklo ryšius ir kitus parametrus realiu laiku.
+    Tinklo stebėjimas: Norėdami stebėti atvirus tinklo prievadus ir ryšio statistiką.
+    Logų analizė: Naudojamas log failų stebėjimui, kad greitai matytumėte bet kokius pasikeitimus ar klaidas.
+
+Apibendrinimas:
+
+watch komanda yra labai naudinga, kai reikia stebėti tam tikrų komandų išvestį realiu laiku. Ji leidžia lengvai matyti, kaip keičiasi sistemos ar failų būklė be poreikio rankiniu būdu nuolat vykdyti komandas. Tai ypač naudinga stebint sistemas, tinklą ar failų struktūras.
+
+
+
+## tail -f
+
+tail -f Komanda Linux sistemoje
+
+tail -f yra komanda, naudojama stebėti failų turinį realiu laiku. Paprastai ji naudojama stebint log failus arba bet kokius kitus failus, kuriuose įrašai nuolat pridedami. Tai labai naudinga stebint programas ar sistemos procesus, kurie generuoja žurnalus arba nuolat atnaujina savo išvestį.
+Sintaksė:
+
+tail -f [failo_pavadinimas]
+
+Pagrindiniai pavyzdžiai, kaip naudoti tail -f:
+
+    Stebėti log failą realiu laiku: Jei norite stebėti sistemos logus, pavyzdžiui, /var/log/syslog arba /var/log/auth.log, galite naudoti šią komandą:
+
+tail -f /var/log/syslog
+
+    Paaiškinimas: Tai leis matyti naujausius įrašus, kurie pridedami prie syslog failo.
+
+Stebėti žurnalo failą, kuris nuolat atnaujinamas: Jei turite programą, kuri generuoja žurnalą ir nuolat prideda naujus įrašus į failą, galite naudoti tail -f:
+
+tail -f /path/to/logfile.log
+
+Stebėti kelis failus vienu metu: Galite stebėti daugiau nei vieną failą, nurodydami kelis failus komandoje:
+
+tail -f /var/log/syslog /var/log/auth.log
+
+    Paaiškinimas: Tai leis stebėti abu failus realiu laiku.
+
+Pakeisti atvaizduojamų eilučių skaičių: Norėdami rodyti ne tik paskutines 10 eilučių, galite naudoti -n parinktį ir nustatyti norimą eilučių skaičių:
+
+    tail -n 20 -f /var/log/syslog
+
+        Paaiškinimas: Tai parodys paskutines 20 eilučių iš syslog failo ir toliau stebės naujus įrašus.
+
+Naudojimo atvejai ir scenarijai:
+
+    Sistemos administravimas:
+        Žurnalo stebėjimas: Stebėti sistemos logus, kad pastebėtumėte klaidas ar problemas. Pavyzdžiui, galite stebėti, kas vyksta su jūsų serveriu, stebėdami /var/log/syslog failą.
+    Programų stebėjimas:
+        Programos žurnalo stebėjimas: Kai programa generuoja log failus (pvz., web serverio žurnalai), galite naudoti tail -f, kad matytumėte, kas vyksta realiu laiku.
+    Tinklo klaidų ir užklausų stebėjimas:
+        Tinklo žurnalai: Jei dirbate su tinklo diagnostika, galite stebėti tinklo logus, kad matytumėte užklausas ir klaidas realiu laiku.
+
+Papildomos parinktys:
+
+    -f (follow): Tai pagrindinė parinktis, kuri leidžia stebėti failo turinį realiu laiku.
+    -n: Nustato, kiek eilučių turėtų būti rodomos iš karto, kai komanda pradeda.
+    -s: Nustato atnaujinimo intervalą (sekundėmis). Pvz.:
+
+    tail -f -s 2 /var/log/syslog
+
+    Tai stebės syslog failą, atnaujindama išvestį kas 2 sekundes.
+
+Apibendrinimas:
+
+tail -f yra komanda, leidžianti stebėti failo turinį realiu laiku. Tai ypač naudinga stebint log failus, kad galėtumėte matyti naujausius įrašus, kurie pridedami prie failo, pavyzdžiui, klaidas, įvykdytas operacijas arba įvykusius įvykius. Tai būtina komanda sistemų administratoriams ir kūrėjams, kurie dirba su realiu laiku atnaujinamais duomenimis.
+
+
+
+Services
+
+systemctl Komanda Linux sistemoje
+
+systemctl yra pagrindinė komanda, naudojama valdyti sisteminius paslaugų (services), procesus ir įrangą, kai naudojama systemd (dažniausiai pasitaikanti init sistema Linux distrose, pvz., Ubuntu, CentOS ir kt.). Su šia komanda galima valdyti, stebėti ir konfigūruoti paslaugas, užtikrinant, kad sistema veiktų sklandžiai.
+Pagrindiniai systemctl naudojimo atvejai:
+
+    Paslaugų valdymas (start, stop, restart, enable, disable):
+        Startuoti paslaugą:
+
+sudo systemctl start [service_name]
+
+    Paaiškinimas: Ši komanda užtikrina, kad nurodyta paslauga pradėtų veikti (pvz., httpd, ssh).
+
+Sustabdyti paslaugą:
+
+sudo systemctl stop [service_name]
+
+    Paaiškinimas: Sustabdo veikiančią paslaugą.
+
+Iš naujo paleisti paslaugą:
+
+sudo systemctl restart [service_name]
+
+    Paaiškinimas: Atkūrimas po klaidos ar konfigūracijos pakeitimų. Tuo pačiu metu paslauga sustabdyta ir vėl paleidžiama.
+
+Įjungti paslaugą, kad ji būtų paleista po sistemos paleidimo:
+
+sudo systemctl enable [service_name]
+
+    Paaiškinimas: Tai įgalina paslaugą automatiškai startuoti po sistemos paleidimo.
+
+Išjungti paslaugą, kad ji nebeveiktų po sistemos paleidimo:
+
+    sudo systemctl disable [service_name]
+
+        Paaiškinimas: Tai sustabdo paslaugos automatinį paleidimą per kitą sistemos paleidimą.
+
+Patikrinti paslaugos statusą:
+
+    Paslaugos būsenos peržiūra:
+
+    systemctl status [service_name]
+
+        Paaiškinimas: Ši komanda parodo paslaugos būseną, įskaitant, ar ji veikia, klaidas, paskutines žinutes ir kt.
+
+Peržiūrėti visas veikiančias paslaugas:
+
+    Visų paslaugų peržiūra:
+
+    systemctl list-units --type=service
+
+        Paaiškinimas: Tai rodo visų aktyvių paslaugų sąrašą sistemoje.
+
+Žiūrėti logus:
+
+    Žiūrėti sisteminius logus:
+
+    journalctl
+
+        Paaiškinimas: Tai leidžia peržiūrėti sisteminius žurnalus, kurie apima įvykius ir klaidas, susijusias su paslaugomis, sistemomis ir įrenginiais. Galima naudoti įvairias parinktis, kad filtruotumėte informaciją.
+
+Pakeisti sistemą:
+
+    Perkrauti sistemą:
+
+sudo systemctl reboot
+
+    Paaiškinimas: Tai perrašo sistemą (dažnai naudojama po atnaujinimų).
+
+Išjungti sistemą:
+
+        sudo systemctl poweroff
+
+            Paaiškinimas: Tai išjungia sistemą.
+
+Dažnai naudojamos systemctl parinktys:
+
+    --type=service: Tai leidžia tiksliai nurodyti, kad norite dirbti su paslaugomis (service).
+    -a: Tai rodo visų paslaugų būseną (net ir paslaugų, kurios nėra aktyvios).
+    --failed: Tai parodys tik tas paslaugas, kurios nepavyko paleisti.
+
+Pavyzdžiai, kaip naudoti systemctl:
+
+    Patikrinti paslaugos būseną:
+
+sudo systemctl status nginx
+
+    Tai parodys, ar nginx web serveris veikia, ar jis sustabdytas, ir paskutines klaidas.
+
+Įjungti nginx serverį, kad jis automatiškai startuotų po sistemos paleidimo:
+
+sudo systemctl enable nginx
+
+Sustabdyti nginx paslaugą:
+
+sudo systemctl stop nginx
+
+Perkrauti paslaugą, pvz., po konfigūracijos pakeitimų:
+
+sudo systemctl restart nginx
+
+Peržiūrėti žurnalą, susijusį su paslauga:
+
+    journalctl -u nginx
+
+        Tai parodys visus įrašus, susijusius su nginx paslaugos žurnalu.
+
+Naudojimo atvejai:
+
+    Sistemos administravimas: systemctl yra būtina komanda sistemos administratoriui, kad jis galėtų valdyti paslaugas, keisti jų būsenas ir peržiūrėti logus.
+    Web serverių administravimas: Tai naudinga prižiūrint web serverius, tokius kaip nginx ar apache, ir užtikrinant, kad paslaugos būtų teisingai paleistos ir veiktų be trikdžių.
+    Sistemos diagnostika: Naudojant systemctl status ir journalctl, galima greitai diagnozuoti problemas, susijusias su paslaugomis ir sistema.
+
+Apibendrinimas:
+
+systemctl komanda yra galingas įrankis, skirtas valdyti sistemines paslaugas ir procesus, kai naudojama systemd. Tai leidžia startuoti, sustabdyti, atnaujinti, peržiūrėti ir konfigūruoti paslaugas bei sisteminius procesus. Tai būtina komanda tiek sistemos administratoriui, tiek kūrėjui, kuris dirba su serveriais ar kitomis Linux pagrindu veikiančiomis sistemomis.
+
+
+
+
+
+
+
+
+
+sudo systemctl status apache2
+
+sudo systemctl start apache2
+
+sudo systemctl stop apache2
+
+sudo systemctl restart apache2
+
+sudo systemctl enable apache2
+
+
+
+Security - Users and Groups
+
+Permissions are assigned based on "everyone", users and groups.
+
+All resources are objects in Linux.  So to give permission to the webcam you would add your user to the group that owns the video object.
+
+Certain resources reset their permissions at reboot such as video.  You have to add your user to the group that owns it instead of simply making yourself owner.
+
+
+adduser, groupadd, usermod Komandos Linux sistemoje
+
+Šios komandos naudojamos valdyti vartotojus ir grupes Linux sistemoje. Jos leidžia kurti, redaguoti ir pašalinti vartotojus bei grupes, taip pat nustatyti leidimus ir konfigūruoti paskyras. Šios komandos yra naudingos sistemų administravimui, kai reikia valdyti prieigą prie sistemos.
+1. adduser – Naujo vartotojo sukūrimas
+
+Komanda adduser naudojama sukurti naują vartotoją Linux sistemoje. Tai paprastai apima ir vartotojo namų katalogo sukūrimą, taip pat vartotojo paskyros konfigūravimą.
+
+Sintaksė:
+
+sudo adduser [vartotojo_vardas]
+
+Pavyzdys:
+
+sudo adduser jonas
+
+Paaiškinimas: Tai sukurs naują vartotoją „jonas“, sukurs jo namų katalogą /home/jonas, taip pat nustatys vartotojo slaptažodį ir kitus parametrus (pvz., pilną vardą, telefono numerį ir kt.).
+2. groupadd – Naujos grupės sukūrimas
+
+Komanda groupadd naudojama kuriant naują grupę Linux sistemoje. Grupės leidžia grupuoti vartotojus ir priskirti jiems bendrus leidimus.
+
+Sintaksė:
+
+sudo groupadd [grupės_vardas]
+
+Pavyzdys:
+
+sudo groupadd admins
+
+Paaiškinimas: Tai sukurs grupę „admins“, kurią vėliau galima naudoti priskiriant vartotojus, kad jie turėtų bendrus leidimus (pvz., administravimo teises).
+3. usermod – Vartotojo paskyros modifikavimas
+
+Komanda usermod leidžia modifikuoti esamą vartotojo paskyrą. Su šia komanda galima keisti vartotojo grupes, nustatyti ar pakeisti vartotojo namų katalogą, slaptažodį ir kitus parametrus.
+
+Sintaksė:
+
+sudo usermod [parinktys] [vartotojo_vardas]
+
+Dažniausiai naudojamos parinktys:
+
+    -aG: Pridėti vartotoją prie grupės.
+    -d: Nustatyti vartotojo namų katalogą.
+    -l: Pakeisti vartotojo vardą.
+
+Pavyzdžiai:
+
+    Pridėti vartotoją prie grupės:
+
+sudo usermod -aG admins jonas
+
+    Paaiškinimas: Tai pridės vartotoją „jonas“ prie grupės „admins“.
+
+Pakeisti vartotojo vardą:
+
+sudo usermod -l petras jonas
+
+    Paaiškinimas: Tai pakeis vartotojo vardą iš „jonas“ į „petras“.
+
+Pakeisti vartotojo namų katalogą:
+
+    sudo usermod -d /home/petras jonas
+
+        Paaiškinimas: Tai pakeis vartotojo „jonas“ namų katalogą į /home/petras.
+
+Naudojimo atvejai ir scenarijai:
+
+    Sistemos administravimas:
+        Vartotojų kūrimas ir redagavimas: Naudojant adduser ir usermod, galima kurti naujus vartotojus ir pritaikyti jiems teises, kad jie galėtų prisijungti prie sistemos ir atlikti tam tikras užduotis.
+
+    Grupių valdymas:
+        Grupių kūrimas ir priskyrimas: groupadd leidžia kurti grupes, kurias galima naudoti, norint grupuoti vartotojus pagal jų roles (pvz., administratorių grupės, vartotojų grupės) ir valdyti prieigą prie failų ir sistemų išteklių.
+
+    Teisių suteikimas:
+        Pridėti vartotoją prie grupės: Su usermod -aG galima suteikti vartotojui papildomas teises pagal grupę. Tai ypač naudinga valdyti vartotojų prieigą prie tam tikrų paslaugų (pvz., administratorių teises ar prieigą prie specifinių resursų).
+
+Apibendrinimas:
+
+    adduser yra naudinga, kai reikia sukurti naują vartotoją sistemoje.
+    groupadd leidžia sukurti naujas grupes, kad vartotojai galėtų būti grupuojami pagal roles ir paskirtas teises.
+    usermod suteikia galimybę redaguoti esamų vartotojų paskyras, pritaikant vartotojo vardą, grupes, namų katalogus ir kitas savybes.
+
+Šios komandos yra būtinos sistemos administratoriui, kad galėtų valdyti vartotojus ir grupes, reguliuoti prieigą ir užtikrinti saugumą.
+
+
+
+
+What is a Service?
+
+A service is typically a background process (daemon) that starts when the system boots and provides ongoing functionality (e.g., web servers, databases, logging systems). Services are managed by init systems like systemd, which starts, stops, and supervises them.
+How Processes Relate to Services
+
+    Services Start Processes:
+        When you start a service with systemctl start <service-name>, systemd launches the associated process.
+        For example, starting the nginx service launches the nginx process.
+
+    Processes Managed by systemd:
+        systemd supervises the lifecycle of service processes. If a process crashes, systemd can restart it automatically.
+        systemd tracks processes via cgroups (control groups), which help isolate resources and ensure the process hierarchy remains tied to the service.
+
+    Parent-Child Relationship:
+        Processes started by a service often create child processes (e.g., worker processes for web servers). These child processes are also managed as part of the service by systemd.
+
+Using systemd to Inspect Processes
+
+    Check Active Processes for a Service:
+
+systemctl status <service-name>
+
+This shows the service's status, logs, and the active processes.
+
+Example for nginx:
+
+● nginx.service - A high performance web server
+   Loaded: loaded (/lib/systemd/system/nginx.service; enabled)
+   Active: active (running) since Mon 2024-11-25 10:00:00
+ Main PID: 1234 (nginx)
+    Tasks: 3 (limit: 4915)
+   Memory: 4.5M
+   CGroup: /system.slice/nginx.service
+           ├─1234 nginx: master process
+           └─1235 nginx: worker process
+
+Find All Processes in a Service's cgroup:
+
+systemd-cgls
+
+This command shows the hierarchy of processes, grouped by services.
+
+List All Processes Started by systemd:
+
+    ps -e --forest
+
+    This shows a tree of all processes. Processes started by systemd will appear under its PID.
+
+Examples of How Processes and Services Work Together
+
+    Web Server:
+        Starting apache2 as a service with systemctl start apache2 launches the apache2 process (and its worker threads).
+        If the main process crashes, systemd can automatically restart it.
+
+    Database Server:
+        Starting mysql with systemctl start mysql launches the mysqld process.
+        Multiple helper processes may also spawn, all tied to the mysql.service.
+
+    Scheduled Tasks:
+        A cron job managed by the cron service spawns processes (e.g., a Python script).
+        The cron service itself is managed by systemd.
+
+When a Process Isn't Connected to a Service
+
+    If you run a program manually (e.g., python script.py), it won't be tied to a systemd service unless explicitly configured.
+    To make such a process a service, create a custom systemd service unit file for it.
+
+Why Use systemd for Processes?
+
+    Reliability:
+        systemd ensures that critical services (and their processes) restart automatically if they fail.
+    Resource Management:
+        Processes in a service can be limited in CPU, memory, or I/O usage using cgroups.
+    Dependency Handling:
+        systemd starts services (and their processes) in the correct order, respecting dependencies.
+
+By using tools like systemctl and understanding how services spawn and manage processes, you can efficiently control and troubleshoot system processes in Linux.
