@@ -252,17 +252,34 @@ Sveikinu, dabar tu turi DU veikiančius virtualius serverius! Dabar tu galėtum 
 
 Dabar tu susipažinsi su SSH - programa skirta saugiai komunikuoti su nuotoliniais serveriais.
 
+Start the VM:
+
+pc@pc:~$ VBoxManage startvm ubuntu_server_1 --type headless
+Waiting for VM "ubuntu_server_1" to power on...
+VM "ubuntu_server_1" has been successfully started.
+
+
+Stop the VM:
+
+VBoxManage controlvm "YourVMName" poweroff
+
+Pause the VM:
+
+VBoxManage controlvm "YourVMName" pause
+
+Reset the VM:
+
+VBoxManage controlvm "YourVMName" reset
 
 
 
 
 
 
+## ip
 
-
-
-
-
+ip komanda leidža
+`ip addr show` arba `ip a` parodo...
 
 
 
@@ -718,4 +735,7 @@ status bar čia ir neb;logas
 
     * Ištrink main servį iš virtualbox, ištrinant ir visus susijusius failus. Šita sistema yra galūtinai sunaikinta, tad jos niekaip nebepavyktų atstatyti.
     
-  
+
+
+    
+  užduotis, koks tinklapis tavo namų vartojimui būtų prasmingas? Namų susitarimai? kalendorius?

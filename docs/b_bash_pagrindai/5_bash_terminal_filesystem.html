@@ -491,14 +491,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Šiek tiek istorijos… Senais laikais kompiuteriai buvo milžiniški. Kad būtų patogiau (santykinai) su jais dirbti, žmonės prisėsdavo prie ekrano su klaviatūra, kuris buvo sujungtas su kompiuteriu. Ši instaliacija – ekranas su klaviatūra – buvo vadinama <strong>terminalu</strong>. Darbuotojai rašydavo komandas, o kompiuteris jas vykdydavo ir grąžindavo rezultatus. Tais laikais buvo rašomos komandos, nes kompiuteriai dar nebuvo tokie galingi ir neturėjo <strong>GUI</strong> (<strong>graphical user interface</strong>, lt - grafinės vartotojo sąsajos). Taigi, terminalas buvo <strong>CLI</strong> (<strong>command line interface</strong>, lt- komandų eilutės sąsaja), nes priimdavo komandas. Tai yra vartotojo sąsaja, kurioje komandos įvedamos (<strong>input</strong>) tekstu, o rezultatai rodomi kaip teksto išvestis (<strong>output</strong>). Skirtingai nuo GUI, kur naudojami vizualiniai elementai, tokie kaip langai ir mygtukai, CLI leidžia tiesiogiai rašyti instrukcijas, kurias vykdo sistema.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/shell/the-ibm-2741-terminal.jpg" class="img-fluid figure-img"></p>
+<p><img src="../img/shell/the-ibm-2741-terminal.jpg" class="img-fluid figure-img"></p>
 <figcaption>The IBM 2741 Terminal <a href="https://www.ibm.com/history/ibm100/images/icp/Z491903Y91074L07/us__en_us__ibm100__selectric__selectric_2__900x746.jpg">IBM</a></figcaption>
 </figure>
 </div>
 <p>Kiek vėliau, atsiradus ekranams…</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/shell/500px-IBM_2260.jpeg" class="img-fluid figure-img"></p>
+<p><img src="../img/shell/500px-IBM_2260.jpeg" class="img-fluid figure-img"></p>
 <figcaption>22.0 IBM Modell 360 / 370 <a href="https://digitaltmuseum.no/011015240147/22-0-ibm-modell-360-370">IBM</a></figcaption>
 </figure>
 </div>
@@ -515,7 +515,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Atsidaryk terminalo programą. Štai ką turėtum pamatyti:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/shell/cli_prompt.png" class="img-fluid figure-img"></p>
+<p><img src="../img/shell/cli_prompt.png" class="img-fluid figure-img"></p>
 <figcaption>Terminal su matomu prompt</figcaption>
 </figure>
 </div>
@@ -528,7 +528,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Štai pavyzdys, kai Shell yra užsiėmęs ir nėra pasirengęs priimti tavo komandos:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/shell/cli_busy.png" class="img-fluid figure-img"></p>
+<p><img src="../img/shell/cli_busy.png" class="img-fluid figure-img"></p>
 <figcaption>Terminal vykdo užduotį</figcaption>
 </figure>
 </div>
@@ -557,7 +557,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Pasirinkimas (angl. <strong>option</strong>) ir argumentas (angl. <strong>argument</strong>) yra papildomi parametrai, kurie gali būti pridėti prie komandos, siekiant tiksliau nurodyti, kaip komanda turėtų būti vykdoma.</p>
 <p>Pasirinkimas (<strong>option</strong>): Pasirinkimas modifikuoja komandos elgesį. Jis dažnai pridedamas prie komandos su brūkšneliu (<code>-</code>) arba dvigubu brūkšneliu (<code>--</code>). Pavyzdžiui, naudojant <code>ls -l</code>, <code>-l</code> yra pasirinkimas, kuris rodo failų sąrašą ilgąja forma. Naudojant sutrumpintus pasirinkimus, naudojamas vienas brūkšnys <code>-</code>, o išrašant pilną pavadinimą – dvigubas brūkšnys <code>--</code>.</p>
 <p>Argumentas (<strong>argument</strong>): Argumentas yra papildoma informacija, kurią komanda naudoja veikimui. Pvz., <code>ls Documents</code> nurodo, kad komanda <code>ls</code> turėtų parodyti direktorijos <code>Documents</code> turinį. Šiuo atveju <code>Documents</code> yra argumentas.</p>
-<p><img src="img/shell/cli_full.png" class="img-fluid"></p>
+<p><img src="../img/shell/cli_full.png" class="img-fluid"></p>
 <section id="praktika" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="praktika"><span class="header-section-number">5.2.1</span> Praktika</h3>
 <ol type="1">
@@ -571,11 +571,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="2" type="1">
 <li>Surask būdą, kaip sukurti skirtukus (<strong>tabs</strong>) terminalo lange. Kartais yra labai patogu turėti kelis skirtingus terminalo skirtukus. Pavyzdžiui, viename galite stebėti kompiuterio temperatūrą, kitame valdyti ir paleisti programas, o trečiame - stebėti, ar sistema nefiksuoja kokių nors klaidų. Bet kaip atidaryti skirtukus? Koks yra klaviatūros trumpinys? Jei norėtumėte paleisti ne skirtuką, o atskirą langą, koks trumpinys tai padarytų?</li>
 </ol>
-<p><img src="img/shell/3_tabs.png" class="img-fluid"></p>
+<p><img src="../img/shell/3_tabs.png" class="img-fluid"></p>
 <ol start="3" type="1">
 <li>Susirask terminalo grafinius nustatymus ir pakeisk foną, teksto spalvą ir kitus stiliaus elementus. Rask tau patinkantį stilių. Nebijok eksperimentuoti!</li>
 </ol>
-<p><img src="img/shell/cli_colors.png" class="img-fluid"></p>
+<p><img src="../img/shell/cli_colors.png" class="img-fluid"></p>
 <ol start="4" type="1">
 <li>Nors dažniausiai žymeklis yra blyksintis kvadratėlis, surask, kaip jį pakeisti į <code>|</code>?</li>
 </ol>
@@ -613,7 +613,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Windows operacinėje sistemoje turbūt matei diskus, pažymėtus raidėmis, pavyzdžiui, C:, D:, E:. Tai nereiškia, kad kompiuteryje yra keli fiziniai kietieji diskai. Dažniausiai tai yra vienas kietasis diskas, padalytas į logines dalis.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/shell/windows_drives.png" class="img-fluid figure-img"></p>
+<p><img src="../img/shell/windows_drives.png" class="img-fluid figure-img"></p>
 <figcaption>Šaltinis <a href="https://www.youtube.com/watch?v=xWtaNbx6nJ0">OnlineComputerTips</a></figcaption>
 </figure>
 </div>
@@ -622,7 +622,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Root direktorija</strong> yra failų sistemos viršūnė, žymima <strong>/</strong>. Visi kiti failai ir direktorijos yra šios šakninės direktorijos pavaldiniai. Tai atitinka Windows C:&nbsp;diską.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="img/shell/root_dir.jpg" class="img-fluid figure-img"></p>
+<p><img src="../img/shell/root_dir.jpg" class="img-fluid figure-img"></p>
 <figcaption><a href="https://blog.bytebytego.com/p/ep63-linux-file-system-explained">Šaltinis</a></figcaption>
 </figure>
 </div>
@@ -640,9 +640,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>/
 └── home
     ├── user name</code></pre>
-<p><img src="img/shell/user_home_dir.png" class="img-fluid"></p>
+<p><img src="../img/shell/user_home_dir.png" class="img-fluid"></p>
 <p>Visada gali pasitikrinti savo buvimo vietą, paspaudžiant ant „Toggle Location Entry“:</p>
-<p><img src="img/shell/user_home_dir_path.png" class="img-fluid"></p>
+<p><img src="../img/shell/user_home_dir_path.png" class="img-fluid"></p>
 </section>
 <section id="praktika-1" class="level3" data-number="5.3.3">
 <h3 data-number="5.3.3" class="anchored" data-anchor-id="praktika-1"><span class="header-section-number">5.3.3</span> Praktika</h3>
@@ -650,13 +650,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Atsidaryk <a href="https://excalidraw.com/">excalidraw</a> naršyklėje ir nupiešk <code>/</code>, <code>/home/</code>, <code>/media/</code> struktūros diagramą. Įsivaizduok, kad kompiuteryje yra trys vartotojai: <code>justas</code>, <code>ruprechtas</code> ir <code>slibinas</code>. Nupiešk jų namų direktorijas.</p></li>
 <li><p>Įkišk USB laikmeną į kompiuterį, atidaryk failų naršyklę (Nemo). Turėtum pamatyti kažką panašaus. Paspausk ant USB laikmenos, tada spustelėk „Toggle Location Entry“ ir identifikuok, kurioje failų sistemos vietoje yra USB laikmena. Pridėk tai prie diagramos, kurią piešei.</p></li>
 </ol>
-<p><img src="img/shell/nemo_usb_drive.png" class="img-fluid"></p>
+<p><img src="../img/shell/nemo_usb_drive.png" class="img-fluid"></p>
 </section>
 </section>
 <section id="keliavimas-failų-sistema" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="keliavimas-failų-sistema"><span class="header-section-number">5.4</span> Keliavimas failų sistema</h2>
 <p>Jau šiek tiek susipažinai su Linux failų sistemos struktūra. Kai atsidarai failų naršyklę (Nemo), matai šias direktorijas:</p>
-<p><img src="img/shell/user_home_dir.png" class="img-fluid"></p>
+<p><img src="../img/shell/user_home_dir.png" class="img-fluid"></p>
 <p>Direktorijų medyje tai atrodytų taip:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>/</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>└── home</span>
@@ -706,7 +706,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="5.4.4" class="anchored" data-anchor-id="pwd"><span class="header-section-number">5.4.4</span> pwd</h3>
 <p>Jau kelis kartus minėjome darbinę direktoriją. Kas tai? Darbinė direktorija yra ta direktorija, kurioje šiuo metu “gyvena” shell. Įsijunk terminalą, įrašyk komandą <code>pwd</code> ir paspausk Enter, kad ją įvykdytum. Komanda <code>pwd</code> (angl. “<strong>print working directory</strong>”) parodo dabartinės darbinės direktorijos pilną kelią (<strong>path</strong>).</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="img/shell/pwd.png" class="img-fluid"></p>
+<p><img src="../img/shell/pwd.png" class="img-fluid"></p>
 <p>Šiuo atveju darbinė direktorija yra <code>/home/justas</code>.</p>
 <p>Taigi, iš mano darbinės direktorijos, <code>Downloads</code> subdirektorijoje esantis failas <code>data.csv</code> man būtų pasiekiamas <code>Downloads/data.csv</code> keliu. Tačiau aš galiu pakeisti savo darbinę direktoriją pereidamas į kitas direktorijas su komanda <code>cd</code>.</p>
 </section>
@@ -716,14 +716,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Įvedęs komandą:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Downloads</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Aš pereinu į <code>Downloads</code> subdirektoriją. Kadangi <code>Downloads</code> yra mano namų direktorijoje, galėjau pasinaudoti relatyviu keliu. Atkreipk dėmesį, kaip pasikeičia terminalo prompt: vietoj <code>~</code> (jau žinai, ką jis reiškia), dabar matosi <code>~/Downloads</code>.</p>
-<p><img src="img/shell/pwd_downloads.png" class="img-fluid"></p>
+<p><img src="../img/shell/pwd_downloads.png" class="img-fluid"></p>
 <p>Dabar failas <code>Downloads/data.csv</code> tampa pasiekiamas tiesiog kaip <code>data.csv</code>.</p>
 <p>Komandai <code>cd</code> gali duoti absoliutų kelią, ir tada <code>cd</code> pakeis darbinę direktoriją, nesvarbu, kur tuo metu esi:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /home/justas/Documents</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Ši komanda perkelia mane iš <code>Downloads</code> tiesiai į <code>Documents</code>.</p>
-<p><img src="img/shell/cd_absolute.png" class="img-fluid"></p>
+<p><img src="../img/shell/cd_absolute.png" class="img-fluid"></p>
 <p>Tačiau <code>cd</code> komandai gali nurodyti ir relatyvų kelią, svarbu, kad jis egzistuotų. Pavyzdžiui, aš galiu pereiti iš savo namų direktorijos į <code>Downloads</code> su <code>cd Downloads/</code>, tačiau negaliu pereiti į <code>Documents</code>, jei esu <code>Downloads</code> direktorijoje, nes <code>Documents</code> ten nėra. Tada gaunu klaidos pranešimą: <code>bash: cd: Documents/: No such file or directory</code>.</p>
-<p><img src="img/shell/cd_relative.png" class="img-fluid"></p>
+<p><img src="../img/shell/cd_relative.png" class="img-fluid"></p>
 <p>Priminimui:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>/</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>└── home</span>
@@ -738,11 +738,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    │   └── Videos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Kaip jau minėjau, taškas <code>.</code> reiškia “čia”. Pvz., iš namų direktorijos galėčiau pereiti į <code>Downloads</code> su <code>cd ./Downloads</code>.</p>
 <p>Yra ir <code>..</code>, du taškai, kurie reiškia direktoriją esančią aukščiau už dabartinę (<code>.</code>) direktoriją. Ji dažnai vadinama <strong>parent directory</strong>. Taigi, su komanda <code>cd ./Downloads</code> nuėjęs į <code>Downloads</code>, galiu vėl pakilti į viršų su <code>cd ..</code>.</p>
-<p><img src="img/shell/cd_dot_dot.png" class="img-fluid"></p>
+<p><img src="../img/shell/cd_dot_dot.png" class="img-fluid"></p>
 <p><code>..</code> taip pat gali būti naudojama pereiti relatyviai, pvz., iš <code>Downloads</code> į <code>Documents</code>. Būdamas <code>Downloads</code> direktorijoje, galiu naudoti komandą <code>cd ../Documents</code>, kad pakilčiau vienu lygiu aukščiau ir tada pereičiau į <code>Documents</code>.</p>
-<p><img src="img/shell/cd_dot_dot_travel.png" class="img-fluid"></p>
+<p><img src="../img/shell/cd_dot_dot_travel.png" class="img-fluid"></p>
 <p><code>..</code> gali būti naudojama ir kelis kartus iš eilės, pvz., iš <code>Downloads</code> galima pakilti į <code>home</code>, naudojant <code>cd ../..</code>.</p>
-<p><img src="img/shell/cli_dot_dot_home.png" class="img-fluid"></p>
+<p><img src="../img/shell/cli_dot_dot_home.png" class="img-fluid"></p>
 <p>Priminimui</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>/</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>└── home</span>
@@ -751,43 +751,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    │   ├── Documents</span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    │   ├── Downloads</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Komandą <code>cd</code> gali naudoti ir be jokių argumentų, kad grįžtum į namų direktoriją, pvz., <code>cd</code> arba su <code>cd ~</code>.</p>
-<p><img src="img/shell/cd_alone.png" class="img-fluid"></p>
+<p><img src="../img/shell/cd_alone.png" class="img-fluid"></p>
 <p>Pereiti į ankstesnę direktoriją gali su komanda <code>cd -</code>. Tarkime, buvau <code>home/justas/Downloads</code>, perėjau į <code>home/justas/Documents</code>, bet supratau, kad padariau klaidą - norėčiau likti Downloads. Galiu grįžti atgal su <code>cd -</code>.</p>
-<p><img src="img/shell/cd_minus.png" class="img-fluid"></p>
+<p><img src="../img/shell/cd_minus.png" class="img-fluid"></p>
 <p>Sveikinu! Dabar jau moki naršyti po direktorijas naudojant terminalą. Nors tai gali atrodyti sudėtinga iš pradžių, laikui bėgant pastebėsi, kad paleisti terminalą su klaviatūros trumpiniu <code>Ctrl-Alt-T</code> ir, naudojant TAB greitesniam komandų ir argumentų užpildymui, greitai nueiti į norimą direktoriją bei redaguoti failus bus daug greičiau nei tai daryti su grafinės sąsajos (GUI) įrankiais.</p>
 <p>Pvz., iš savo namų direktorijos pereinu į <code>Documents</code>, tada į <code>project</code>, tada į <code>documentation</code>, atspausdinu failų sąrašą su <code>ls</code> ir redaguoju failą su <code>nano</code> programa.</p>
-<p><video src="img/shell/navigation_edit.mp4" class="img-fluid" controls=""><a href="img/shell/navigation_edit.mp4">Video</a></video></p>
+<p><video src="../img/shell/navigation_edit.mp4" class="img-fluid" controls=""><a href="../img/shell/navigation_edit.mp4">Video</a></video></p>
 <p>Bet kas ta <code>ls</code> komanda?</p>
 </section>
 <section id="ls" class="level3" data-number="5.4.6">
 <h3 data-number="5.4.6" class="anchored" data-anchor-id="ls"><span class="header-section-number">5.4.6</span> ls</h3>
 <p>Komanda <code>ls</code> (angl. <strong>list storage</strong>) naudojama norint peržiūrėti failų ir katalogų sąrašą dabartinėje arba nurodytoje direktorijoje. Tai viena dažniausiai naudojamų komandų, naviguojant failų sistemoje.</p>
 <p>Jei atidarytum failų naršyklę, pavyzdžiui, <strong>Nemo</strong>, matytum kažką panašaus:</p>
-<p><img src="img/shell/nemo_simple.png" class="img-fluid"></p>
+<p><img src="../img/shell/nemo_simple.png" class="img-fluid"></p>
 <p>Lygiai taip pat failų sąrašą gali parodyti ir terminale, įvedant komandą <code>ls</code>:</p>
-<p><img src="img/shell/ls.png" class="img-fluid"></p>
+<p><img src="../img/shell/ls.png" class="img-fluid"></p>
 <p>Komanda <code>ls</code> gali priimti argumentą – direktorijos kelią, kurio turinį norima parodyti. Šis kelias gali būti tiek absoliutus, tiek relatyvus. Pavyzdžiui, <code>ls /home/justas/Downloads</code> parodys <code>Downloads</code> katalogo turinį. Atkreipk dėmesį į spalvas: failai yra balti, o katalogai – mėlyni.</p>
-<p><img src="img/shell/ls_dir.png" class="img-fluid"></p>
+<p><img src="../img/shell/ls_dir.png" class="img-fluid"></p>
 <p>Kartais pamatyti tik failų pavadinimus gali būti nepakankama. Galbūt norisi matyti daugiau informacijos, pvz., kada failai sukurti, kas turi teises juos valdyti ar matyti, ar kam jie priklauso.</p>
-<p><img src="img/shell/nemo_list_view.png" class="img-fluid"></p>
+<p><img src="../img/shell/nemo_list_view.png" class="img-fluid"></p>
 <p>Kaip ir failų naršyklėje, kur gali perjungti į “List View”, terminale gali naudoti komandos ls nustatymą <code>-l</code>, kuris išveda išsamų (ilgą) failų sąrašą su papildoma informacija: teisėmis, savininku, dydžiu ir paskutinio modifikavimo data.</p>
-<p><img src="img/shell/ls_l.png" class="img-fluid"></p>
+<p><img src="../img/shell/ls_l.png" class="img-fluid"></p>
 <p>Pavyzdžiui ką tokią eilutė reikšia, paaikšinsiu netrukus.</p>
 <pre><code>drwxr-xr-x 2 justas justas 4096 Sep 15 10:19 Desktop</code></pre>
 <p>Norint pamatyti visus failus, įskaitant paslėptus (failai, kurių pavadinimai prasideda tašku), gali naudoti <code>-a</code> arba <code>--all</code>:</p>
-<p><img src="img/shell/ls_a.png" class="img-fluid"></p>
+<p><img src="../img/shell/ls_a.png" class="img-fluid"></p>
 <p><em>Nemo</em> failų naršyklėje taip pat gali pamatyti paslėptus failus, jei aktyvuosi šią funkciją.</p>
-<p><video src="img/shell/nemo_hiden.mp4" class="img-fluid" controls=""><a href="img/shell/nemo_hiden.mp4">Video</a></video></p>
+<p><video src="../img/shell/nemo_hiden.mp4" class="img-fluid" controls=""><a href="../img/shell/nemo_hiden.mp4">Video</a></video></p>
 <p>Kai paleidi <code>ls -l</code>, failų dydžiai nurodomi baitais. Kartais naudingiau matyti dydžius, išreikštus žmonėms suprantamesniais vienetais, kaip kilobaitai (1000 baitų), megabaitai (1000 kilobaitų) ir t.t. Tam gali naudoti nustatymą <code>--human-readable</code> arba trumpinį <code>-h</code> - <code>ls -lh</code></p>
 <p>Šios abi komandos <code>ls -all -l --human-readable</code> ir <code>ls -alh</code> yra teisingos, tačiau dažniau naudojamas trumpesnis variantas. Panaudojant <code>ls -alh</code>, galėsi matyti paslėptus failus, o failų dydžiai bus išreikšti žmonėms labiau suprantama forma.</p>
-<p><img src="img/shell/ls_lah.png" class="img-fluid"></p>
+<p><img src="../img/shell/ls_lah.png" class="img-fluid"></p>
 <p>Kartais gali prireikti rekursyvaus katalogo turinio peržiūros. Komanda <code>ls -R</code> arba <code>ls --recursive</code> parodys ne tik pasirinktos direktorijos, bet ir visų jos subdirektorijų turinį.</p>
-<p><img src="img/shell/ls_R.png" class="img-fluid"></p>
+<p><img src="../img/shell/ls_R.png" class="img-fluid"></p>
 </section>
 <section id="teisės-ir-tipai" class="level3" data-number="5.4.7">
 <h3 data-number="5.4.7" class="anchored" data-anchor-id="teisės-ir-tipai"><span class="header-section-number">5.4.7</span> Teisės ir tipai</h3>
 <p>Ši eilutė rodo failų arba direktorijų sąrašą su jų detalėmis:</p>
-<p><img src="img/shell/ls_l_details.png" class="img-fluid"></p>
+<p><img src="../img/shell/ls_l_details.png" class="img-fluid"></p>
 <p>Pirmas stulpelis parodo, kokio tipo failas ar direktorija tai yra, ir kokias teises turi skirtingi vartotojai.</p>
 <p>Pirmoji raidė gali būti:</p>
 <ul>
@@ -827,17 +827,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="history" class="level3" data-number="5.4.9">
 <h3 data-number="5.4.9" class="anchored" data-anchor-id="history"><span class="header-section-number">5.4.9</span> history</h3>
 <p>Komanda <code>history</code> (liet. „istorija“) naudojama norint parodyti visų anksčiau įvestų komandų sąrašą dabartinėje terminalo sesijoje. Tai suteikia patogų būdą sekti ir kartoti anksčiau vykdytas komandas.</p>
-<p><img src="img/shell/history.png" class="img-fluid"></p>
+<p><img src="../img/shell/history.png" class="img-fluid"></p>
 <p>Jei nori parodyti tik paskutines <code>n</code> komandų, gali naudoti <code>history n</code>. Pvz., parodyti paskutines 10 komandų <code>history 10</code>:</p>
-<p><img src="img/shell/history_n.png" class="img-fluid"></p>
+<p><img src="../img/shell/history_n.png" class="img-fluid"></p>
 <p>Kartoti konkrečią komandą pagal numerį galima įrašius <code>!</code> ir komandos numerį. Pavyzdžiui, jei nori pakartoti komandą, kurios numeris yra 99:</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">history</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">!99</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="img/shell/history_bang.png" class="img-fluid"></p>
+<p><img src="../img/shell/history_bang.png" class="img-fluid"></p>
 <p>Ištrinti komandų istoriją galima su <code>history -c</code>.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">history</span> <span class="at">-c</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">hisotry</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img src="img/shell/history_c.png" class="img-fluid"></p>
+<p><img src="../img/shell/history_c.png" class="img-fluid"></p>
 </section>
 <section id="clear" class="level3" data-number="5.4.10">
 <h3 data-number="5.4.10" class="anchored" data-anchor-id="clear"><span class="header-section-number">5.4.10</span> clear</h3>
@@ -857,7 +857,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Perkelk kursorių į eilutės pradžią naudodamas rodyklę į kairę ⬅️.</li>
 <li>Prirašyk <code>echo</code> ir pakartok komandą paspaudus Enter ⏎.</li>
 </ul>
-<p><video src="img/shell/up.mp4" class="img-fluid" controls=""><a href="img/shell/up.mp4">Video</a></video></p>
+<p><video src="../img/shell/up.mp4" class="img-fluid" controls=""><a href="../img/shell/up.mp4">Video</a></video></p>
 <p>Kartais eilutės būna gana ilgos:</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sud</span> apt update <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt full-upgrade <span class="at">-y</span> <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> apt autoremove <span class="at">-y</span> <span class="kw">&amp;&amp;</span> <span class="ex">flatpak</span> update</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Jei praleidai raidę, pavyzdžiui, pirmame sudo truksta o, nereikia viską iš naujo rašyti</p>
@@ -867,7 +867,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>➡️ ➡️ ➡️ ir pridėti o raidę.</li>
 <li>pabaigus taisymą tiesiog paspausti Enter ⏎ (nebūtina nueiti į eilutės pabaigą)</li>
 </ul>
-<p><video src="img/shell/ctrl-a.mp4" class="img-fluid" controls=""><a href="img/shell/ctrl-a.mp4">Video</a></video></p>
+<p><video src="../img/shell/ctrl-a.mp4" class="img-fluid" controls=""><a href="../img/shell/ctrl-a.mp4">Video</a></video></p>
 <p>Tavo žiniai:</p>
 <ul>
 <li><code>Ctrl-A</code>: perkelia kursorių į eilutės pradžią</li>
