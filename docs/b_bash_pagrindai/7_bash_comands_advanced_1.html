@@ -75,6 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -104,6 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -477,19 +480,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#procesų-valdymas" id="toc-procesų-valdymas" class="nav-link" data-scroll-target="#procesų-valdymas"><span class="header-section-number">7.8</span> Procesų Valdymas</a>
   <ul class="collapse">
-  <li><a href="#ps-procesų-sąrašas" id="toc-ps-procesų-sąrašas" class="nav-link" data-scroll-target="#ps-procesų-sąrašas"><span class="header-section-number">7.8.1</span> <code>ps</code> – Procesų Sąrašas</a></li>
+  <li><a href="#ps---procesų-sąrašas" id="toc-ps---procesų-sąrašas" class="nav-link" data-scroll-target="#ps---procesų-sąrašas"><span class="header-section-number">7.8.1</span> <code>ps</code> - Procesų Sąrašas</a></li>
   <li><a href="#kill-komanda" id="toc-kill-komanda" class="nav-link" data-scroll-target="#kill-komanda"><span class="header-section-number">7.8.2</span> <code>kill</code> komanda</a></li>
   <li><a href="#top" id="toc-top" class="nav-link" data-scroll-target="#top"><span class="header-section-number">7.8.3</span> <code>top</code></a></li>
   <li><a href="#htop" id="toc-htop" class="nav-link" data-scroll-target="#htop"><span class="header-section-number">7.8.4</span> <code>htop</code></a></li>
   </ul></li>
   <li><a href="#nano-tekstinio-redaktoriaus-naudojimas" id="toc-nano-tekstinio-redaktoriaus-naudojimas" class="nav-link" data-scroll-target="#nano-tekstinio-redaktoriaus-naudojimas"><span class="header-section-number">7.9</span> <code>nano</code> Tekstinio Redaktoriaus Naudojimas</a></li>
   <li><a href="#alias" id="toc-alias" class="nav-link" data-scroll-target="#alias"><span class="header-section-number">7.10</span> Alias</a></li>
-  <li><a href="#projektas-1" id="toc-projektas-1" class="nav-link" data-scroll-target="#projektas-1"><span class="header-section-number">7.11</span> Projektas 1</a>
+  <li><a href="#projektai" id="toc-projektai" class="nav-link" data-scroll-target="#projektai"><span class="header-section-number">7.11</span> Projektai</a>
   <ul class="collapse">
-  <li><a href="#projekto-pradžia" id="toc-projekto-pradžia" class="nav-link" data-scroll-target="#projekto-pradžia"><span class="header-section-number">7.11.1</span> Projekto Pradžia</a></li>
-  <li><a href="#duomenų-apdorojimas" id="toc-duomenų-apdorojimas" class="nav-link" data-scroll-target="#duomenų-apdorojimas"><span class="header-section-number">7.11.2</span> Duomenų Apdorojimas</a></li>
-  <li><a href="#orų-prognozės-gavimo-procesas" id="toc-orų-prognozės-gavimo-procesas" class="nav-link" data-scroll-target="#orų-prognozės-gavimo-procesas"><span class="header-section-number">7.11.3</span> Orų Prognozės Gavimo Procesas</a></li>
-  <li><a href="#estetiniai-pataisymai" id="toc-estetiniai-pataisymai" class="nav-link" data-scroll-target="#estetiniai-pataisymai"><span class="header-section-number">7.11.4</span> Estetiniai Pataisymai</a></li>
+  <li><a href="#projektas-1-orų-prognozė-terminal-lange" id="toc-projektas-1-orų-prognozė-terminal-lange" class="nav-link" data-scroll-target="#projektas-1-orų-prognozė-terminal-lange"><span class="header-section-number">7.11.1</span> Projektas 1: Orų prognozė Terminal lange</a></li>
+  <li><a href="#projektas-2-šeškinės-poliklinos-radiologiniai-tyrimai" id="toc-projektas-2-šeškinės-poliklinos-radiologiniai-tyrimai" class="nav-link" data-scroll-target="#projektas-2-šeškinės-poliklinos-radiologiniai-tyrimai"><span class="header-section-number">7.11.2</span> Projektas 2 Šeškinės poliklinos radiologiniai tyrimai</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -535,22 +536,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="chatgpt-naudojimas" class="level3" data-number="7.1.2">
 <h3 data-number="7.1.2" class="anchored" data-anchor-id="chatgpt-naudojimas"><span class="header-section-number">7.1.2</span> ChatGPT Naudojimas</h3>
-<p>Šiame skyriuje vis dažniau bus pateikiamos nuorodos naudotis ChatGPT. Svarbiausia – išmokti naudotis šiuo įrankiu ne tam, kad jis už tave spręstų problemas, bet kad padėtų greičiau rasti tinkamiausią sprendimą. Štai keletas patarimų:</p>
+<p>Šiame skyriuje vis dažniau bus pateikiamos nuorodos naudotis ChatGPT. Svarbiausia - išmokti naudotis šiuo įrankiu ne tam, kad jis už tave spręstų problemas, bet kad padėtų greičiau rasti tinkamiausią sprendimą. Štai keletas patarimų:</p>
 <ul>
-<li><strong>Konsultantas ir patarėjas</strong> – naudok ChatGPT kaip priemonę savo idėjų ir sprendimų tikrinimui.</li>
-<li><strong>Tikslūs klausimai</strong> – suformuluok aiškius ir tikslius klausimus, kurie padės greičiau rasti atsakymą.</li>
-<li><strong>Eksperimentavimas</strong> – nebijok išbandyti skirtingus užklausų formatus, jei atsakymas neaiškus ar nepakankamas.</li>
-<li><strong>Mokymasis per tobulinimą</strong> – naudok ChatGPT kaip pagalbininką tobulinant savo darbo rezultatus ir įgyjant naujų žinių.</li>
+<li><strong>Konsultantas ir patarėjas</strong> - naudok ChatGPT kaip priemonę savo idėjų ir sprendimų tikrinimui.</li>
+<li><strong>Tikslūs klausimai</strong> - suformuluok aiškius ir tikslius klausimus, kurie padės greičiau rasti atsakymą.</li>
+<li><strong>Eksperimentavimas</strong> - nebijok išbandyti skirtingus užklausų formatus, jei atsakymas neaiškus ar nepakankamas.</li>
+<li><strong>Mokymasis per tobulinimą</strong> - naudok ChatGPT kaip pagalbininką tobulinant savo darbo rezultatus ir įgyjant naujų žinių.</li>
 </ul>
 </section>
 <section id="refleksijos-metodika" class="level3" data-number="7.1.3">
 <h3 data-number="7.1.3" class="anchored" data-anchor-id="refleksijos-metodika"><span class="header-section-number">7.1.3</span> Refleksijos Metodika</h3>
 <p>Po kiekvienos dalies perskaitymo atlik šiuos veiksmus:</p>
 <ul>
-<li><strong>Užrašyk, ką išmokai</strong> – pasistenk glaustai užfiksuoti pagrindinius aspektus.</li>
-<li><strong>Pritaikymas praktikoje</strong> – sugalvok, kur galėtum pritaikyti šias žinias realiose situacijose.</li>
-<li><strong>Analizuok sunkumus</strong> – užfiksuok, kas buvo sudėtinga, ir galvok, kaip tai galėtum įveikti ateityje.</li>
-<li><strong>Konspektuok</strong> – pradėk kurti savo mokymosi užrašus patogiame įrankyje, pvz., Obsidian. Suskirstyk juos pagal temas ir pateik konkrečius komandų pavyzdžius. Tai padės tau greičiau rasti reikalingą informaciją.</li>
+<li><strong>Užrašyk, ką išmokai</strong> - pasistenk glaustai užfiksuoti pagrindinius aspektus.</li>
+<li><strong>Pritaikymas praktikoje</strong> - sugalvok, kur galėtum pritaikyti šias žinias realiose situacijose.</li>
+<li><strong>Analizuok sunkumus</strong> - užfiksuok, kas buvo sudėtinga, ir galvok, kaip tai galėtum įveikti ateityje.</li>
+<li><strong>Konspektuok</strong> - pradėk kurti savo mokymosi užrašus patogiame įrankyje, pvz., Obsidian. Suskirstyk juos pagal temas ir pateik konkrečius komandų pavyzdžius. Tai padės tau greičiau rasti reikalingą informaciją.</li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
 <div class="callout-header d-flex align-content-center">
@@ -571,12 +572,12 @@ Praktika
 <h2 data-number="7.2" class="anchored" data-anchor-id="pagalbos-komandos-help-man-ir-tldr"><span class="header-section-number">7.2</span> Pagalbos Komandos: <code>help</code>, <code>man</code> ir <code>tldr</code></h2>
 <p>Naudojant Linux, komandos gali turėti daugybę nustatymų bei opcijų, kurių kartais sunku prisiminti. Pavyzdžiui, gali kilti klausimas, ar <code>sort</code> komandai reikia naudoti <code>-d</code> ar <code>-t</code> flagą, arba norisi prisiminti, kuo <code>sed</code> skiriasi nuo <code>grep</code>. Šiame skyriuje išmoksi, kaip efektyviai naudotis pagalbos įrankiais, kurie padės greitai rasti informaciją apie komandas ir jų naudojimo būdus, kai kyla klausimų.</p>
 <p><strong>Kodėl svarbu mokėti rasti informaciją?</strong></p>
-<p>Net patyrę Linux vartotojai retai kada iškart prisimena visus flagus ar argumentus. Mokėjimas greitai rasti informaciją – vienas svarbiausių įgūdžių dirbant su terminalu. Šiame skyriuje išmoksi naudotis pagalbos įrankiais, kad greitai rastum informaciją apie komandas ir jų naudojimo būdus. Tai apims:</p>
+<p>Net patyrę Linux vartotojai retai kada iškart prisimena visus flagus ar argumentus. Mokėjimas greitai rasti informaciją - vienas svarbiausių įgūdžių dirbant su terminalu. Šiame skyriuje išmoksi naudotis pagalbos įrankiais, kad greitai rastum informaciją apie komandas ir jų naudojimo būdus. Tai apims:</p>
 <ul>
-<li><code>--help</code> – greita pagalba komandai: santrauka apie dažniausiai naudojamus nustatymus ir sintaksę.</li>
-<li><code>man</code> – išsamus komandų vadovas su skyriais, struktūruotais pagal oficialią dokumentaciją.</li>
-<li><code>tldr</code> – paprasti pavyzdžiai ir scenarijai, pateikiantys svarbiausias komandos savybes.</li>
-<li><strong>ChatGPT</strong> – kaip naudoti jį sudėtingesnėms problemoms aiškintis.</li>
+<li><code>--help</code> - greita pagalba komandai: santrauka apie dažniausiai naudojamus nustatymus ir sintaksę.</li>
+<li><code>man</code> - išsamus komandų vadovas su skyriais, struktūruotais pagal oficialią dokumentaciją.</li>
+<li><code>tldr</code> - paprasti pavyzdžiai ir scenarijai, pateikiantys svarbiausias komandos savybes.</li>
+<li><strong>ChatGPT</strong> - kaip naudoti jį sudėtingesnėms problemoms aiškintis.</li>
 </ul>
 <p><strong>Scenarijus</strong></p>
 <p>Šioje dalyje pasikartosi prieš tai išmoktas komandas analizuojant fizinių asmenų elektros suvartojimo duomenis naudojant bash.</p>
@@ -585,7 +586,7 @@ Praktika
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://get.data.gov.lt/datasets/gov/eso/fizin_asm_elektros_suvartojimas/FizinAsmElektraSuvartojimas/:format/csv <span class="at">-o</span> raw_data_hh_customers.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li>Failas yra apie 2 GB – tai prilygsta maždaug 130 000 puslapių Word dokumentų. Tad kantreybė tavo sąjungininkė. Pasidaryk ☕</li>
+<li>Failas yra apie 2 GB - tai prilygsta maždaug 130 000 puslapių Word dokumentų. Tad kantreybė tavo sąjungininkė. Pasidaryk ☕</li>
 </ul>
 <p><img src="../img/bash_advanced/5_min_later.jpg" class="img-fluid"></p>
 <ul>
@@ -616,11 +617,11 @@ Praktika
 <p>Kartais reikia daugiau informacijos, kad suprastum, kaip kas veikia. Būtent šią funkciją atlieka <code>man</code> komanda. Jos pagalba gali peržiūrėti išsamius komandų aprašymus. Kadangi <code>man</code> puslapiai yra ilgesni nei <code>--help</code>, jie atspausdinami naudojant <code>less</code>, kurį jau pažįsti iš ankstesnio skyriaus. Keisti puslapius gali su <code>space</code> klavišu, o išeiti su <code>q</code>.</p>
 <p><code>man</code> puslapis įprastai turi tokią struktūrą:</p>
 <ul>
-<li>NAME – komandos pavadinimas ir trumpas aprašymas.</li>
-<li>SYNOPSIS – pagrindinė komandos sintaksė, įskaitant flagus ir argumentus.</li>
-<li>DESCRIPTION – detali informacija apie naudojimą.</li>
-<li>OPTIONS – visų galimų flagų paaiškinimai.</li>
-<li>EXAMPLES – kartais pateikiami praktiniai pavyzdžiai.</li>
+<li>NAME - komandos pavadinimas ir trumpas aprašymas.</li>
+<li>SYNOPSIS - pagrindinė komandos sintaksė, įskaitant flagus ir argumentus.</li>
+<li>DESCRIPTION - detali informacija apie naudojimą.</li>
+<li>OPTIONS - visų galimų flagų paaiškinimai.</li>
+<li>EXAMPLES - kartais pateikiami praktiniai pavyzdžiai.</li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> ls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="../img/bash_advanced/man_ls.png" class="img-fluid"></p>
@@ -635,7 +636,7 @@ Praktika
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Prisimeni, jog su <code>head</code> ir <code>tail</code> galėjai nurodyti kiek eilučių spausdinti? Pvz., <code>head -n 15</code> atspausdina pirmas 15 eilučių. Atsiversk <code>man head</code> ir susirask <code>-n</code>. Ten aprašytas naudojimas <code>–</code> skaičiaus. Dabar pažiūrėk man <code>tail</code> ir rask <code>-n</code> su <code>+</code> naudojimu.</li>
+<li>Prisimeni, jog su <code>head</code> ir <code>tail</code> galėjai nurodyti kiek eilučių spausdinti? Pvz., <code>head -n 15</code> atspausdina pirmas 15 eilučių. Atsiversk <code>man head</code> ir susirask <code>-n</code>. Ten aprašytas naudojimas <code>-</code> skaičiaus. Dabar pažiūrėk man <code>tail</code> ir rask <code>-n</code> su <code>+</code> naudojimu.</li>
 <li>Dabar tavo failas <strong>raw_data_hh_customers.csv</strong> turi antraštes (header) ir duomenis. Pasinaudojus <code>head</code> arba <code>tail</code> (pagalvok, kuri čia labiau tinka) bei išmoktais flagais, sukurk naują failą <strong>pure_data.csv</strong>, kuriame būtų visos originalaus failo eilutės, bet ne antraštė.</li>
 <li>Palygink su <code>wc</code> eilučių skaičių viename ir kitame faile ir įsitikink, jog skirtumas tik 1 eilutė.</li>
 <li>Su <code>ls -lh</code> arba <code>ls -l</code> palygink, kiek sutaupei vietos, atsisakius vienos eilutės “duomenų”.</li>
@@ -646,7 +647,7 @@ Praktika
 </section>
 <section id="tldr" class="level3" data-number="7.2.3">
 <h3 data-number="7.2.3" class="anchored" data-anchor-id="tldr"><span class="header-section-number">7.2.3</span> <code>tldr</code></h3>
-<p><code>man</code> puslapiai yra labai išsamūs, tačiau kartais jie gali pasirodyti per ilgi. <code>--help</code> gali suteikti trumpą ir aiškią informaciją, tačiau net ir šie puslapiai gali būti per daug sudėtingi pradedantiesiems. Čia į pagalbą ateina <code>tldr</code> – programa, kuri pateikia dažniausiai naudojamus scenarijus ir labai trumpą paaiškinimą apie komandą. Tai dar viena priemonė tavo arsenale, jei pamiršai, kaip veikia komanda.</p>
+<p><code>man</code> puslapiai yra labai išsamūs, tačiau kartais jie gali pasirodyti per ilgi. <code>--help</code> gali suteikti trumpą ir aiškią informaciją, tačiau net ir šie puslapiai gali būti per daug sudėtingi pradedantiesiems. Čia į pagalbą ateina <code>tldr</code> - programa, kuri pateikia dažniausiai naudojamus scenarijus ir labai trumpą paaiškinimą apie komandą. Tai dar viena priemonė tavo arsenale, jei pamiršai, kaip veikia komanda.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -742,13 +743,13 @@ Praktika
 </section>
 <section id="konspektavimas" class="level3" data-number="7.2.5">
 <h3 data-number="7.2.5" class="anchored" data-anchor-id="konspektavimas"><span class="header-section-number">7.2.5</span> Konspektavimas</h3>
-<p>Galbūt jau pastebi, kad prisiminti visas komandas nėra lengva. Kai kurios taps įprasta ir nuolat naudojama atmintimi, tačiau kitos gali pranykti iš atminties. Dirbant analitikoje ar programavime, niekada neprisiminsi visko. Tiesiog reikia įprasti naudotis savo “antrinėmis smegenimis” – konspektuotis viską taip, kad prireikus galėtum greitai rasti reikiamą informaciją.</p>
+<p>Galbūt jau pastebi, kad prisiminti visas komandas nėra lengva. Kai kurios taps įprasta ir nuolat naudojama atmintimi, tačiau kitos gali pranykti iš atminties. Dirbant analitikoje ar programavime, niekada neprisiminsi visko. Tiesiog reikia įprasti naudotis savo “antrinėmis smegenimis” - konspektuotis viską taip, kad prireikus galėtum greitai rasti reikiamą informaciją.</p>
 <p>Pavyzdžiui, analitikai dažnai išsisaugo ilgus duomenų užklausų kodų gabalus (<strong>code chunks</strong>), ypač jei jų prireikia reguliariai. Programuotojai taip pat dažnai naudoja įrankius kaip Obsidian ar Joplin konspektams.</p>
 <p>Aš dažnai naudoju Obsidian arba Joplin, kad konspektuočiausi apie kilusias problemas, kaip jas sprendžiau, kas veikė ir kas ne. Konspektavimas prasideda dar tebesitęsiant problemai. Pvz., kai mano kompiuteris negalėjo sukurti VPN tunelio, kartu su ChatGPT bandžiau spręsti kilusias problemas. Visa šį procesą aš užfiksavau, kad ateityje galėčiau greičiau rasti sprendimus.</p>
-<p>Kitas scenarijus – kaip aš įdiegiu savo Linux sistemą. Kadangi mano kompiuteris naudojamas tiek darbo, tiek asmeniniais tikslais, man svarbu turėti gerai aprašytą procesą, ką turiu instaliuoti, po ko ir kodėl. Po instaliavimo proceso, nuolat pridedu naujas programas į šį dokumentą, kad visada turėčiau aktualiausią jo versiją. Nedarydamas to, sukuriu techninę skolą (<strong>tech debt</strong>) – terminą, naudojamą IT pasaulyje, kai kažkas padaroma greitai, paliekant problemas ateičiai. Visada venk <em>tech debt</em>, nes dažnai sutaupai tuo metu 5 minutes, kurios paskui tau kainuos 55.</p>
+<p>Kitas scenarijus - kaip aš įdiegiu savo Linux sistemą. Kadangi mano kompiuteris naudojamas tiek darbo, tiek asmeniniais tikslais, man svarbu turėti gerai aprašytą procesą, ką turiu instaliuoti, po ko ir kodėl. Po instaliavimo proceso, nuolat pridedu naujas programas į šį dokumentą, kad visada turėčiau aktualiausią jo versiją. Nedarydamas to, sukuriu techninę skolą (<strong>tech debt</strong>) - terminą, naudojamą IT pasaulyje, kai kažkas padaroma greitai, paliekant problemas ateičiai. Visada venk <em>tech debt</em>, nes dažnai sutaupai tuo metu 5 minutes, kurios paskui tau kainuos 55.</p>
 <ol type="1">
 <li>Peržiūrėk <a href="https://help.obsidian.md/Home">Getting Started</a> pirmus 4 skyrius apie Obsidian.</li>
-<li>Įdiek Obsidian naudojant Flatpak. Susikurk “vault” (direktoriją, kurioje bus visi Obsidian užrašai, idealu – į savo namų serverį Nextcloud).</li>
+<li>Įdiek Obsidian naudojant Flatpak. Susikurk “vault” (direktoriją, kurioje bus visi Obsidian užrašai, idealu - į savo namų serverį Nextcloud).</li>
 <li>Perkelk savo konspektus kaip naujus užrašus. Pagalvok, kokia būtų geriausia aplankų ir failų struktūra. Nebijok, ji keisis ateityje.</li>
 </ol>
 <p>Obsidian naudoja Markdown formatą. Peržiūrėk šį <a href="https://www.markdownguide.org/cheat-sheet/">Cheat Sheet</a>, kaip jis naudojamas.</p>
@@ -756,9 +757,7 @@ Praktika
 <ul>
 <li><p><a href="https://youtu.be/Rvey9g0VgY0">I learned a system for remembering everything</a></p></li>
 <li><p><a href="https://youtu.be/0_44XEVOwek">I learned a productivity system for organizing life</a></p></li>
-<li><p><a href="https://youtube.com/playlist?list=PLVNXAaej57W52x2VpcEk8mA7k5yu_UCLe">TF kanale: Įvadas - 4 video</a></p></li>
 <li><p><a href="https://youtube.com/playlist?list=PLVNXAaej57W6qCYoMb_hbzDhX9et_GVlj">TF kanale: PARA metdas- 4 video</a></p></li>
-<li><p><a href="https://www.knygos.lt/lt/knygos/forte--t--building-a-second-brain-8cjaa/">Tiago Forte knyga - “Building a Second Brain”</a></p></li>
 </ul>
 </section>
 </section>
@@ -768,7 +767,8 @@ Praktika
 <section id="ping-komanda" class="level3" data-number="7.3.1">
 <h3 data-number="7.3.1" class="anchored" data-anchor-id="ping-komanda"><span class="header-section-number">7.3.1</span> <code>ping</code> komanda</h3>
 <p>Filmuose apie povandeninius laivus dažnai girdime sonarų “<strong>ping</strong>” garsą, kuris naudojamas sekant objektus po vandeniu. Panašiai ir tu gali naudoti <code>ping</code> komandą, kuri padeda patikrinti, ar turi prieigą prie interneto, ir ar tavo norimas pasiekti serveris yra pasiekiamas.</p>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/UeO4SV-wghs" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="../img/bash_advanced/OP2.mp4"></video></div>
+<p>Jeigu nėra garso, originalas <a href="https://www.youtube.com/watch?v=UeO4SV-wghs">Youtube</a></p>
 <p>Linux sistemoje komanda <code>ping &lt;host&gt;</code> leidžia nurodyti norimą URL ar IP adresą. Skirtingai nei Windows sistemoje, Linux ping komanda nesustoja automatiškai, todėl rekomenduojama naudoti <code>-c</code> (count) flagą, kad nurodytum, kiek ping signalų turėtų būti siunčiama, pvz., 5.</p>
 <p>Pabandyk</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ping</span> <span class="at">-c</span> 5 infraplanas.lt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -777,13 +777,13 @@ Praktika
 <p>Ping išvestis</p>
 <ul>
 <li>ping nurodo, kokį adresą pingina, ir pateikia IP adresą (pvz., 65.108.247.94).</li>
-<li>Turėtum gauti 5 eilutes ping’ų atgal su meta duomenimis, tarp jų – kiek laiko užtruko signalui nueiti ir grįžti.</li>
+<li>Turėtum gauti 5 eilutes ping’ų atgal su meta duomenimis, tarp jų - kiek laiko užtruko signalui nueiti ir grįžti.</li>
 <li>ping komanda sustos po 5 kartų</li>
 </ul>
 <p>Dabar tu gali pabandyti naudoti šį adresą norint atsidaryti tinklapį:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brave-browser</span> 65.108.247.94</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Gali <code>brave-browser</code> pakeisti <code>firefox</code> ar kita sistemoje įdiegta interneto naršykle.</p>
-<p><video src="../img/bash_advanced/open_ping.mp4" class="img-fluid" controls=""><a href="../img/bash_advanced/open_ping.mp4">Video</a></video></p>
+<div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="../img/bash_advanced/open_ping.mp4"></video></div>
 <p>Kaip matai, tai veikia. Bet taip nebus visada. Pateiksiu trumpą paaiškinimą po praktikos.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
 <div class="callout-header d-flex align-content-center">
@@ -831,7 +831,7 @@ Praktika
 <p><code>curl</code> ir <code>wget</code> yra įrankiai darbui su tinklo užklausomis, tačiau jų paskirtis skiriasi. <code>wget</code> yra orientuotas į failų atsisiuntimą, palaiko rekursyvų atsisiuntimą ir automatiškai atnaujina nutrauktus parsisiuntimus. <code>curl</code> yra universalesnis ir tinka ne tik failų atsisiuntimui, bet ir duomenų siuntimui (pvz., <strong>API</strong> užklausoms). Pagal nutylėjimą, <code>curl</code> išveda duomenis į terminalą.</p>
 <section id="wget" class="level4" data-number="7.4.0.1">
 <h4 data-number="7.4.0.1" class="anchored" data-anchor-id="wget"><span class="header-section-number">7.4.0.1</span> wget</h4>
-<p>Atsidaryk <a href="https://data.gov.lt/datasets/2749/">https://data.gov.lt/datasets/2749/</a> ir surask “Transporto priemonių valstybiniai numeriai pagal markę ir modelį” duomenis.</p>
+<p>Atsidaryk <a href="https://data.gov.lt">https://data.gov.lt/</a> ir surask “Transporto priemonių valstybiniai numeriai pagal markę ir modelį” duomenis.</p>
 <p>Papaudus ant “Duomenys” ir “Atsiųsti”, tu suprantama gali atsisiųsti duomenis. Bet toks būdas nebūtų automatizuojamas ateityje, kai norėsi atnaujinti duomenis.</p>
 <p><img src="../img/bash_advanced/get_data.png" class="img-fluid"></p>
 <p>Nueik į API skiltį, nusikopijuok adresą esančios užklausos adrese.</p>
@@ -857,7 +857,7 @@ Praktika
 <p>Kaip matai, ji nedaug tesiskiria nuo tos kurią turėjai:</p>
 <p><code>https://get.data.gov.lt/datasets/gov/regitra/ktpr/ValstybinisNumeris</code></p>
 <p>Matomas skirtumas yra <code>/:format/csv</code> dalelė URL adrese, kuri nurodo, jog duomenys turi būti parsiunčiami CSV formatu. Šis papildymas užtikrina teisingą duomenų formatą tavo naudojimui.</p>
-<p>Tai užtikrins, kad naudojant <code>wget</code> komandą, gausi duomenis būtent CSV formatu – tokiu, kuris yra lengvai analizuojamas ir atidaromas su įprastinėmis programomis, tokiomis kaip LibreOffice Calc ar Excel.</p>
+<p>Tai užtikrins, kad naudojant <code>wget</code> komandą, gausi duomenis būtent CSV formatu - tokiu, kuris yra lengvai analizuojamas ir atidaromas su įprastinėmis programomis, tokiomis kaip LibreOffice Calc ar Excel.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -919,7 +919,7 @@ Praktika
 <p><img src="../img/bash_advanced/uniq_3.png" class="img-fluid"></p>
 <p>Kur kas praktiškesnis yra flagas <code>-c</code>, kuris suskaičiuoja, kiek yra vienodų eilučių.</p>
 <p><img src="../img/bash_advanced/uniq_4.png" class="img-fluid"></p>
-<p>Kaip matai, turime problemą – stulpelio antraštė (header) figūruoja kaip duomenys. Jei tau tik reikia grubiai įvertinti duomenų teisingumą ir juos geriau suprasti, tai gali netrukdyti. Bet galima ir išsivalyti.</p>
+<p>Kaip matai, turime problemą - stulpelio antraštė (header) figūruoja kaip duomenys. Jei tau tik reikia grubiai įvertinti duomenų teisingumą ir juos geriau suprasti, tai gali netrukdyti. Bet galima ir išsivalyti.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1087,10 +1087,10 @@ Praktika
 <p>Pakeisk savo darbinę direktoriją į namų su <code>cd ~</code> arba tiesiog <code>cd</code>.</p>
 <p>Komandai <code>find</code> pirmasis argumentas yra <strong>kur</strong> ieškoti. Dažniausiai tai gali būti:</p>
 <ul>
-<li><code>find .</code> – ieškoti aktyvioje direktorijoje</li>
-<li><code>find ~</code> – ieškoti namų direktorijoje</li>
-<li><code>find /</code> – ieškoti root direktorijoje (t.y. visame kompiuteryje)</li>
-<li><code>find ~/Downloads</code> – ieškoti vartotojo Downloads direktorijoje arba kitoje konkrečiai nurodytoje direktorijoje</li>
+<li><code>find .</code> - ieškoti aktyvioje direktorijoje</li>
+<li><code>find ~</code> - ieškoti namų direktorijoje</li>
+<li><code>find /</code> - ieškoti root direktorijoje (t.y. visame kompiuteryje)</li>
+<li><code>find ~/Downloads</code> - ieškoti vartotojo Downloads direktorijoje arba kitoje konkrečiai nurodytoje direktorijoje</li>
 </ul>
 <p><code>find</code> priima daug skirtingų nustatymų (flagų), vienas pagrindinių yra <code>-name</code>.</p>
 <p>Pavyzdžiui, suraskime, kur yra failas su registracijomis į Žalgirio kliniką. Tarkime, prisimeni tik, kad ten buvo “<strong>zalgiris</strong>” pavadinime. Pirmoji komanda negražina jokio failo, nes jo nerado. <code>find</code>, kaip ir dauguma bash komandų, gali veikti su “wildcards” (pakaitos simboliais):</p>
@@ -1107,7 +1107,7 @@ Praktika
 <p>Kartais gali norėti, kad <code>find</code> grąžintų ne tik rastų failų adresus, bet ir daugiau informacijos. Tada gali panaudoti <code>-ls</code> flagą. Jis iš esmės panašus tau įprastą <code>ls</code> komandą.</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> bash_advanced/ <span class="at">-ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="../img/bash_advanced/find_ls.png" class="img-fluid"></p>
-<p>Gali apriboti paiešką pagal tai, ko ieškai: ar tai yra failas (<code>f</code>), direktorija (<code>d</code>), ar nuoroda (<code>l</code>). Ši komanda ieško tipo – direktorijos, kurios pavadinime yra žodis prasidedantis “Do”.</p>
+<p>Gali apriboti paiešką pagal tai, ko ieškai: ar tai yra failas (<code>f</code>), direktorija (<code>d</code>), ar nuoroda (<code>l</code>). Ši komanda ieško tipo - direktorijos, kurios pavadinime yra žodis prasidedantis “Do”.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-type</span> d <span class="at">-name</span> <span class="st">"Do*"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Kaip matai <code>find</code> grąžina ir direktorijas, kurios yra paslėptos.</p>
 <p><img src="../img/bash_advanced/find_type.png" class="img-fluid"></p>
@@ -1163,8 +1163,7 @@ Praktika
 <div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/copy</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-iname</span> <span class="st">"*.csv"</span> <span class="at">-ok</span> cp {} ~/copy/ <span class="dt">\;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Kaip matai, prieš kiekvieną operaciją, terminalas reikalauja patvirtinimo, kurį turi įrašyti kaip <code>y</code> arba <code>yes</code>, kad patvritinti. Įrašius <code>n</code>, <code>no</code> , arba tiesiog paspaudus Enter, tai atitiks <strong>no</strong> ir komanda tam failui nebus įvykdyta.</p>
-<p>Kaip matai, prieš kiekvieną operą, temrinalas reikalauja patvirtinmo, kuri turi įrašyti <code>y</code> arba <code>yes</code> arba <code>n</code> <code>no</code>. jeigu spausi enter, tada tai aititks <code>no</code>.</p>
-<p><video src="../img/bash_advanced/find_ok_copy.mkv" class="img-fluid" controls=""><a href="../img/bash_advanced/find_ok_copy.mkv">Video</a></video></p>
+<div class="quarto-video"><video id="video_shortcode_videojs_video3" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="../img/bash_advanced/find_ok_copy.mp4"></video></div>
 <p>Vykdant šią operaciją, <code>find</code> rado tuos pačius failus dar kartą, ten, kur jie jau buvo nukopijuoti, t.y., pačioje <strong>copy</strong> direktorijoje. Kad išvengtum to, gali find nurodyti, kur neieškoti su <code>-not -path "/home/justas/copy/*"</code> arba <code>! -path "/home/justas/copy/*"</code>. Atkreipk dėmesį į tai, kad nurodant <code>-not -path</code>, reikia <strong>absoliutaus adreso</strong> ir <strong>*</strong>, kad ten rasti failai (jų adresai) nebūtų įtraukti.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
 <div class="callout-header d-flex align-content-center">
@@ -1277,7 +1276,7 @@ Praktika
 <li>Neatnaujintų failų rodymas: <code>locate</code> nerodo neseniai sukurtų arba pervadintų failų, kol nėra atnaujinama failų duomenų bazė. Duomenų bazės atnaujinimui naudok komandą <code>updatedb</code>.</li>
 <li>Paieškos kriterijų trūkumas: <code>locate</code> nesuteikia galimybės naudoti paieškos kriterijų, tokių kaip failo dydis, amžius ir kt., kuriuos siūlo find.</li>
 </ul>
-<p><video src="../img/bash_advanced/updatedb.mkv" class="img-fluid" controls=""><a href="../img/bash_advanced/updatedb.mkv">Video</a></video></p>
+<div class="quarto-video"><video id="video_shortcode_videojs_video4" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="../img/bash_advanced/updatedb.mp4"></video></div>
 </section>
 <section id="whereis" class="level3" data-number="7.6.3">
 <h3 data-number="7.6.3" class="anchored" data-anchor-id="whereis"><span class="header-section-number">7.6.3</span> whereis</h3>
@@ -1302,7 +1301,7 @@ Praktika
 <section id="intarpas-kas-yra-path" class="level3" data-number="7.6.5">
 <h3 data-number="7.6.5" class="anchored" data-anchor-id="intarpas-kas-yra-path"><span class="header-section-number">7.6.5</span> Intarpas: Kas yra PATH?</h3>
 <p>Ši tema gali pasirodyti šiek tiek sudėtingesnė, bet ją pravartu žinoti norint geriau suprasti, kaip veikia Linux komandinė eilutė (CLI).</p>
-<p>Kai tu įvedi komandą, pvz., <code>ls</code>, kaip Shell žino, kokią programą paleisti? Shell negali peržiūrėti visų tavo failų ieškodama programos <code>ls</code> – tai būtų neefektyvu ir užtruktų labai ilgai. Vietoje to, Bash naudoja <strong>aplinkos kintamąjį</strong>, vadinamą <strong>PATH</strong>, kuris yra saugomas visų direktorijų sąrašas, kurias Bash tikrina ieškodama vykdomųjų programų.</p>
+<p>Kai tu įvedi komandą, pvz., <code>ls</code>, kaip Shell žino, kokią programą paleisti? Shell negali peržiūrėti visų tavo failų ieškodama programos <code>ls</code> - tai būtų neefektyvu ir užtruktų labai ilgai. Vietoje to, Bash naudoja <strong>aplinkos kintamąjį</strong>, vadinamą <strong>PATH</strong>, kuris yra saugomas visų direktorijų sąrašas, kurias Bash tikrina ieškodama vykdomųjų programų.</p>
 <p>Kai tu įvedi <code>ls</code>, Bash tikrina šias direktorijas pagal eiliškumą:</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/local/sbin</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/local/bin</span></span>
@@ -1333,22 +1332,22 @@ Praktika
 <span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxrwxr-x</span> 2 justas justas 4096 Sep 28 18:34 text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Kiekviena eilutė parodo failo teises:</p>
 <ul>
-<li><code>r</code> – skaitymo teisė</li>
-<li><code>w</code> – rašymo teisė</li>
-<li><code>x</code> – vykdymo teisė</li>
-<li><code>-</code> – nėra teisių</li>
+<li><code>r</code> - skaitymo teisė</li>
+<li><code>w</code> - rašymo teisė</li>
+<li><code>x</code> - vykdymo teisė</li>
+<li><code>-</code> - nėra teisių</li>
 </ul>
-<p>Pirmoji tripleto grupė priklauso savininkui, antroji – grupei, trečioji – kitiems vartotojams. Suprantama pirmas ženklas (<code>d</code>, <code>-</code>, <code>l</code>) indikuoja ar tai direktorija, failas ar nuoroda.</p>
+<p>Pirmoji tripleto grupė priklauso savininkui, antroji - grupei, trečioji - kitiems vartotojams. Suprantama pirmas ženklas (<code>d</code>, <code>-</code>, <code>l</code>) indikuoja ar tai direktorija, failas ar nuoroda.</p>
 </section>
 <section id="keisti-failo-teises-su-chmod" class="level3" data-number="7.7.2">
 <h3 data-number="7.7.2" class="anchored" data-anchor-id="keisti-failo-teises-su-chmod"><span class="header-section-number">7.7.2</span> Keisti Failo Teises su chmod</h3>
-<p><code>chmod</code> komanda leidžia keisti failo teises. Naudojami du būdai – skaitmeninis ir simbolinis.</p>
+<p><code>chmod</code> komanda leidžia keisti failo teises. Naudojami du būdai - skaitmeninis ir simbolinis.</p>
 <p><strong>Skaitmeninis Būdas</strong></p>
 <p>Kiekvienai teisei priskiriama skaitinė reikšmė:</p>
 <ul>
-<li><code>4</code> – skaityti (read)</li>
-<li><code>2</code> – rašyti (write)</li>
-<li><code>1</code> – vykdyti (execute)</li>
+<li><code>4</code> - skaityti (read)</li>
+<li><code>2</code> - rašyti (write)</li>
+<li><code>1</code> - vykdyti (execute)</li>
 <li><code>0</code> - jokių teisių (<code>-</code>)</li>
 </ul>
 <p>Norint nustatyti teises, skaičiuoji reikšmes, pvz:</p>
@@ -1359,7 +1358,7 @@ Praktika
 </ul>
 <p>Pavyzdys, kaip nustatyti teises su chmod:</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 754 failas.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Šios komandos rezultatas – <strong>user</strong> gali skaityti, rašyti, vykdyti; <strong>grupė</strong> gali tik skaityti ir vykdyti, o kiti tik skaityti.</p>
+<p>Šios komandos rezultatas - <strong>user</strong> gali skaityti, rašyti, vykdyti; <strong>grupė</strong> gali tik skaityti ir vykdyti, o kiti tik skaityti.</p>
 <p><strong>Simbolinis Būdas</strong></p>
 <p>Simboliniame būde naudoji raides ir simbolius:</p>
 <ul>
@@ -1378,10 +1377,10 @@ Praktika
 <h3 data-number="7.7.3" class="anchored" data-anchor-id="keisti-savininką-su-chown-ir-grupę-su-chgrp"><span class="header-section-number">7.7.3</span> Keisti Savininką su chown ir Grupę su chgrp</h3>
 <p>Nors dažniausiai šių komandų nereikia naudoti, mokėti jomis naudotis gali būti naudinga:</p>
 <ul>
-<li><code>chown &lt;user&gt; &lt;file&gt;</code> – keičia failo savininką.</li>
-<li><code>chgrp &lt;group&gt; &lt;file&gt;</code> – keičia failo grupę.</li>
-<li><code>chown &lt;user&gt;:&lt;group&gt; &lt;file&gt;</code>– keičia tiek savininką, tiek grupę.</li>
-<li><code>chown -R &lt;user&gt;:&lt;group&gt; &lt;directory&gt;</code> – keičia visų failų nurodytoje direktorijoje savininką ir grupę <strong>rekursyviai</strong>.</li>
+<li><code>chown &lt;user&gt; &lt;file&gt;</code> - keičia failo savininką.</li>
+<li><code>chgrp &lt;group&gt; &lt;file&gt;</code> - keičia failo grupę.</li>
+<li><code>chown &lt;user&gt;:&lt;group&gt; &lt;file&gt;</code>- keičia tiek savininką, tiek grupę.</li>
+<li><code>chown -R &lt;user&gt;:&lt;group&gt; &lt;directory&gt;</code> - keičia visų failų nurodytoje direktorijoje savininką ir grupę <strong>rekursyviai</strong>.</li>
 </ul>
 <p>Svarbu: Jei keiti sisteminių failų savininką ar grupę, gali prireikti administratoriaus teisių (sudo).</p>
 </section>
@@ -1400,7 +1399,7 @@ Praktika
 <p>kaip matai, failas neturi executbale teisių.</p>
 <p><img src="../img/bash_advanced/appimage_2.png" class="img-fluid">.</p>
 <p>Norint paleisti failą, reiktų susirasti failą per failų naršyklę, o tada pasirenkant “Properties” &gt; “Permissions” ir pažymėti “Allow executing file as program”.</p>
-<p><video src="../img/bash_advanced/chmod_free.mkv" class="img-fluid" controls=""><a href="../img/bash_advanced/chmod_free.mkv">Video</a></video></p>
+<div class="quarto-video"><video id="video_shortcode_videojs_video5" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="../img/bash_advanced/chmod_free.mp4"></video></div>
 <p>Arba sutieki tokias pat teises su <code>chmod</code> naudojant terminalą:</p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 774 freetube_0.22.0_amd64.AppImage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
@@ -1408,8 +1407,8 @@ Praktika
 <section id="procesų-valdymas" class="level2" data-number="7.8">
 <h2 data-number="7.8" class="anchored" data-anchor-id="procesų-valdymas"><span class="header-section-number">7.8</span> Procesų Valdymas</h2>
 <p>Norint efektyviai valdyti kompiuterio išteklius, svarbu suprasti, kokie procesai veikia tavo sistemoje. Tai ypač svarbu sistemų administravime ir duomenų analitikoje. Šiame skyriuje susipažinsi su pagrindinėmis komandomis, kurios padės tau stebėti veikiančius procesus ir identifikuoti galimas problemas.</p>
-<section id="ps-procesų-sąrašas" class="level3" data-number="7.8.1">
-<h3 data-number="7.8.1" class="anchored" data-anchor-id="ps-procesų-sąrašas"><span class="header-section-number">7.8.1</span> <code>ps</code> – Procesų Sąrašas</h3>
+<section id="ps---procesų-sąrašas" class="level3" data-number="7.8.1">
+<h3 data-number="7.8.1" class="anchored" data-anchor-id="ps---procesų-sąrašas"><span class="header-section-number">7.8.1</span> <code>ps</code> - Procesų Sąrašas</h3>
 <p><code>ps</code> komanda leidžia pamatyti veikiančių procesų sąrašą statiniu vaizdu. Tai reiškia, kad ji parodo procesų būseną tam tikru momentu. Ši komanda ypač naudinga, kai reikia sužinoti, kas vyksta tavo sistemoje, arba rasti konkretaus proceso informaciją. Pagrindinės <code>ps</code> subkomandos:</p>
 <ul>
 <li><code>a</code>: Parodo visus procesus su terminalais.</li>
@@ -1419,7 +1418,7 @@ Praktika
 <p>Ką Parodo ps Išvestis?</p>
 <ul>
 <li><strong>USER</strong>: Kas paleido procesą (pvz., justas, root).</li>
-<li><strong>PID</strong>: Proceso identifikatorius – unikalus skaičius, skirtas kiekvienam procesui.</li>
+<li><strong>PID</strong>: Proceso identifikatorius - unikalus skaičius, skirtas kiekvienam procesui.</li>
 <li><strong>%CPU</strong>: Kiek procesoriaus resursų naudoja procesas.</li>
 <li><strong>%MEM</strong>: Kiek RAM atminties naudoja procesas.</li>
 <li><strong>COMMAND</strong>: Proceso paleidimo komanda (pvz., python analysis.py).</li>
@@ -1590,7 +1589,7 @@ Praktika
 <p><img src="../img/bash_advanced/alias.jpg" class="img-fluid"></p>
 <p>Tu išmokai ieškoti didelių video failų ir tavo komanda atrodė taip:</p>
 <div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~/Downloads/ ~/dwhelper/ <span class="at">-type</span> f <span class="at">-iname</span> <span class="st">"*.mp4"</span> <span class="at">-size</span> +100M <span class="at">-atime</span> +14</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Jei tau reikėtų šią komandą įrašyti kaskart, tai užimtų daug laiko. Nors automatinis skriptų paleidimas, pvz., kompiuterio įjungimo metu, yra sprendimas, tačiau paprastesnis būdas yra sukurti <strong>alias</strong> – tai leidžia greitai paleisti ilgas komandas, naudojant trumpinius.</p>
+<p>Jei tau reikėtų šią komandą įrašyti kaskart, tai užimtų daug laiko. Nors automatinis skriptų paleidimas, pvz., kompiuterio įjungimo metu, yra sprendimas, tačiau paprastesnis būdas yra sukurti <strong>alias</strong> - tai leidžia greitai paleisti ilgas komandas, naudojant trumpinius.</p>
 <p><strong>Alias Apibrėžimas</strong></p>
 <p>Norint sukurti alias, turi redaguoti savo namų direktorijoje esantį <strong>.bashrc</strong> failą. Štai kaip tai padaryti:</p>
 <ul>
@@ -1613,8 +1612,10 @@ Praktika
 <p>Alias leidžia greitai ir efektyviai valdyti kasdieninių užduočių komandas, sutaupant laiko ir pastangų. Tai nedidelis, bet labai naudingas “programavimo” elementas, kurį gali pritaikyti įvairiose situacijose, norint optimizuoti savo darbo eigą terminale.</p>
 <p>Jeigu pastebėsi, kad tam tikro alias nebereikia - visada gali jį ištrinti ir atnaujinus perkrauk bash panaudojant <code>source ~/.bashrc</code></p>
 </section>
-<section id="projektas-1" class="level2" data-number="7.11">
-<h2 data-number="7.11" class="anchored" data-anchor-id="projektas-1"><span class="header-section-number">7.11</span> Projektas 1</h2>
+<section id="projektai" class="level2" data-number="7.11">
+<h2 data-number="7.11" class="anchored" data-anchor-id="projektai"><span class="header-section-number">7.11</span> Projektai</h2>
+<section id="projektas-1-orų-prognozė-terminal-lange" class="level3" data-number="7.11.1">
+<h3 data-number="7.11.1" class="anchored" data-anchor-id="projektas-1-orų-prognozė-terminal-lange"><span class="header-section-number">7.11.1</span> Projektas 1: Orų prognozė Terminal lange</h3>
 <p>Sveikinu tapus junior software developer’e nedidelėje kompanijoje, kuri specializuojasi kurdama bash skriptus Linux vartotojams. Paprastai tokia kompanija dirba su įvairiais projektais, kuriuose reikia kūrybingumo ir techninių įgūdžių.</p>
 <p><img src="../img/bash_advanced/sd.jpg" class="img-fluid"></p>
 <p>Tavo komandos produkto vadovas (product manager - PM) pasidalino pastebėjimu:</p>
@@ -1625,26 +1626,26 @@ Praktika
 <blockquote class="blockquote">
 <p>“Ar galėtum sukurti programą, kuri terminale rodytų artimiausių 12 valandų orų prognozę?“.</p>
 </blockquote>
-<p>PM’as tau pateikė idėjų eskizą, o tavo užduotis – sukurti pirmąją programos versiją, vadinamą MVP (Minimum Viable Product). Kaip dažnai nutinka programuotojų darbe, pagrindinė tavo užduotis yra paversti idėjas į veikiančius sprendimus, naudojant technologijas ir kūrybingumą.</p>
+<p>PM’as tau pateikė idėjų eskizą, o tavo užduotis - sukurti pirmąją programos versiją, vadinamą MVP (Minimum Viable Product). Kaip dažnai nutinka programuotojų darbe, pagrindinė tavo užduotis yra paversti idėjas į veikiančius sprendimus, naudojant technologijas ir kūrybingumą.</p>
 <p><img src="../img/bash_advanced/mvp.png" class="img-fluid"></p>
-<section id="projekto-pradžia" class="level3" data-number="7.11.1">
-<h3 data-number="7.11.1" class="anchored" data-anchor-id="projekto-pradžia"><span class="header-section-number">7.11.1</span> Projekto Pradžia</h3>
+<section id="projekto-pradžia" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="projekto-pradžia">Projekto Pradžia</h4>
 <p>Pradėk nuo projekto aplanko sukūrimo, kad galėtum patogiai struktūrizuoti savo darbą. Tai padės išlaikyti tvarką, kadangi, kaip žinome, programuotojai linkę eksperimentuoti ir generuoti daugybę tarpinio kodo.</p>
-<p>Keliauk į Lietuvos hidrometeorologijos tarnybos svetainę (<a href="https://www.meteo.lt/">https://www.meteo.lt/</a>), kur gali rasti API dokumentaciją. Pirmiausia, sukurk užklausą, kuri atsiųs visas galimas vietoves. Atsispausdink pirmąją vietovę, kad suprastum, kaip yra struktūrizuoti duomenys. Tai yra svarbus žingsnis, kai dirbi su naujais duomenimis arba API – suprasti jų struktūrą ir galimybes.</p>
+<p>Keliauk į Lietuvos hidrometeorologijos tarnybos svetainę (<a href="https://www.meteo.lt/">https://www.meteo.lt/</a>), kur gali rasti API dokumentaciją. Pirmiausia, sukurk užklausą, kuri atsiųs visas galimas vietoves. Atsispausdink pirmąją vietovę, kad suprastum, kaip yra struktūrizuoti duomenys. Tai yra svarbus žingsnis, kai dirbi su naujais duomenimis arba API - suprasti jų struktūrą ir galimybes.</p>
 <p><img src="../img/bash_advanced/wf_1.png" class="img-fluid"></p>
 </section>
-<section id="duomenų-apdorojimas" class="level3" data-number="7.11.2">
-<h3 data-number="7.11.2" class="anchored" data-anchor-id="duomenų-apdorojimas"><span class="header-section-number">7.11.2</span> Duomenų Apdorojimas</h3>
+<section id="duomenų-apdorojimas" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="duomenų-apdorojimas">Duomenų Apdorojimas</h4>
 <p>Kadangi tave domina tik Lietuvos vietovės, reikės filtruoti duomenis. Naudok JSON apdorojimo įrankius, kaip <code>jq</code>, susiaurink duomenų masyvą tik į Lietuvą ir išsaugok rezultatus kaip TSV failą su vietovių pavadinimais bei kodais, pavadintą <strong>lt_places.tsv</strong>. Kiek iš viso yra vietovių, kurių pavadinimas prasideda „Viln“? Suradus atsakymą, nusprendei savo MVP naudoti Vilniaus rajoną <strong>Lazdynus</strong>. Sužinok, koks yra šios vietovės kodas, nes jis bus būtinas tolimesniam darbui su API.</p>
 <p><img src="../img/bash_advanced/wf_2.png" class="img-fluid"></p>
 </section>
-<section id="orų-prognozės-gavimo-procesas" class="level3" data-number="7.11.3">
-<h3 data-number="7.11.3" class="anchored" data-anchor-id="orų-prognozės-gavimo-procesas"><span class="header-section-number">7.11.3</span> Orų Prognozės Gavimo Procesas</h3>
+<section id="orų-prognozės-gavimo-procesas" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="orų-prognozės-gavimo-procesas">Orų Prognozės Gavimo Procesas</h4>
 <p>Grįžk prie API dokumentacijos ir sužinok, kaip parašyti užklausą orų prognozei gauti. Parsisiųsk duomenis ir išsaugok juos kaip <strong>data_forecast.json</strong>. Naudojant JSON apdorojimo įrankius, atspausdink prognozę gražiu JSON formatu ir pasirink tinkamą masyvą bei submasyvus, kurie pateiks reikalingą informaciją apie orą. Išrink šiuos elementus: <strong>.forecastTimeUtc</strong>, <strong>.airTemperature</strong>, <strong>.conditionCode</strong>, ir suformatuok juos kaip CSV failą, pavadindamu <strong>filtered_data_forecast.csv</strong>.</p>
 <p><img src="../img/bash_advanced/wf_3.png" class="img-fluid"></p>
 </section>
-<section id="estetiniai-pataisymai" class="level3" data-number="7.11.4">
-<h3 data-number="7.11.4" class="anchored" data-anchor-id="estetiniai-pataisymai"><span class="header-section-number">7.11.4</span> Estetiniai Pataisymai</h3>
+<section id="estetiniai-pataisymai" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="estetiniai-pataisymai">Estetiniai Pataisymai</h4>
 <p>Kad galutinis produktas būtų vizualiai patrauklus, naudok įrankius kaip <code>column</code> išlyginimui. Jei dar nežinai šios komandos - gali pasinaudoti ChatGPT ar kitais šaltiniais, kad sužinotum, kaip ji veikia. Tavo pristatomas failas vadinsis <strong>final_output</strong>.</p>
 <p><img src="../img/bash_advanced/wf_4.png" class="img-fluid"></p>
 <p>PM pamatęs tavo MVP, tiesiog negalėjo sulaikyti džiaugsmo:</p>
@@ -1652,13 +1653,314 @@ Praktika
 <p>Jis paprašė pakeisti terminą „Debesuotumas“ į „Oro sąlygos“ ir pridėti emodžius, kad išvestis būtų žaismingesnė. Tu nusprendei grįžti į API puslapį ieškoti visų galimų orų sąlygų ir paprašyti ChatGPT sukurti <code>sed</code> komandas, kurios pakeis orų sąlygas emodžiais. Galiausiai, produktą pristatei vadovui:</p>
 <p><img src="../img/bash_advanced/wf_5.png" class="img-fluid"></p>
 <p>Ir PM’as buvo sužavėtas:</p>
-<p><img src="../img/bash_advanced/giphy-106588401.gif" class="img-fluid"></p>
+<p><img src="../img/bash_advanced/giphy-106588401.webp" class="img-fluid"></p>
 <p>Dabar tau beliko sudėti visas komandas į vieną skriptą, kuris veiktų tik atmintyje, nesukuriant fizinių failų. Stenkis jungti kuo daugiau su pipes <code>|</code>. Gali būti kad su kokiu <code>sublime-text</code> editoriumi taudirbti būtų papraščiau. Nors ne terminalo lange, o papildoma programa, bet ji palengvins darbą.</p>
 <p>Išsaugok skriptą kaip <strong>lazdynai_temp.sh</strong>, patikrink failo teises, suteik vykdymo leidimą ir paleisk skriptą, kad įsitikintum, ar jis generuoja atitinkamą prognozę.</p>
-<p>skriptą paleisti gali su <code>./lazdynai_temp.sh</code></p>
+<p>Skriptą paleisti gali su <code>./lazdynai_temp.sh</code></p>
 <p>Tai yra ne tik naudinga programa, bet ir puikus pavyzdys, kaip kūrybingas programuotojas gali prisidėti prie kasdienio gyvenimo patogumo!</p>
+<p>Skyriuose apie bash skriptų rašymą išmoksi naudotis bash logika, užduoti klausimus vartotojams ir pritaikyti šio skripto logiką priklausomai nuo gautų atsakymų.</p>
+<p>p.S. metei.lt tinklpayje prie API dokumentacijos yra aprašyta licenzija. Kokia ji būtent? Susipažink su CC licenzijomis <a href="https://creativecommons.org/">https://creativecommons.org/</a>. Ir atsakyk į šiuos klausimus:</p>
+<ul>
+<li>ar tavo įmonė gali naudoti šiuos duomenis kuriant komercinius produktus?</li>
+<li>ar sukūrus produktą, tu turi nurodyti, kas yra duomenų šalintinis?</li>
+<li>ar tu gali pakeisti licenciją į kitokią? ką tai reiškia šiam produktui?</li>
+</ul>
+<hr>
+<p><a href="https://data.gov.lt/datasets/2762/data/SeskinesPoliklinika">data.gov.lt</a></p>
+</section>
+</section>
+<section id="projektas-2-šeškinės-poliklinos-radiologiniai-tyrimai" class="level3" data-number="7.11.2">
+<h3 data-number="7.11.2" class="anchored" data-anchor-id="projektas-2-šeškinės-poliklinos-radiologiniai-tyrimai"><span class="header-section-number">7.11.2</span> Projektas 2 Šeškinės poliklinos radiologiniai tyrimai</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../img/bash_advanced/moira-seskines-poliklinika-moira-post-14.jpg" class="img-fluid figure-img"></p>
+<figcaption>moira.lt</figcaption>
+</figure>
+</div>
+<p>Buvo gražus rytas, kai Šeškinės poliklinikos CTO, Ruprechtas, sukruto spręsti svarbių klausimų. Poliklinika buvo užimta kaip niekada, o radiologinių tyrimų kiekis augo kasdien. Ruprechtas žinojo, kad norint užtikrinti sklandų poliklinikos darbą, reikia rasti būdą, kaip efektyviai stebėti ir analizuoti šiuos tyrimus. Tad kreipėsi į “Linux consulting UAB” pagalbos.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../img/bash_advanced/cat_cto.webp" class="img-fluid figure-img"></p>
+<figcaption>Dall-E</figcaption>
+</figure>
+</div>
+<p>Justina,produktų vadovė (PM) turėjo viziją, kaip automatizuoti kasdienines ataskaitas, ir nedelsiant susitiko su tavimi suderinti darbo eigos.</p>
+<blockquote class="blockquote">
+<p>„Klausyk, mums reikia, kad kasdien būtų pateikiama ataskaita apie atliktus tyrimus pagal kūno dalis,“ - sako Justina, tvirtai traukdama tave į projektą. „Reikia panaudoti duomenis iš data.gov.lt. Galėsi tai padaryti?“</p>
+</blockquote>
+<p>Tu žvilgtelėjai į pateiktą informaciją ir iš karto susidėliojai galvoje planą.</p>
+<blockquote class="blockquote">
+<p>„Taip, Justina, aš tuo pasirūpinsiu. Bus įdomus projektas.“</p>
+</blockquote>
+<p>Pasiruošei kibti į darbus, žinant, kad šis projektas padės poliklinikai ne tik optimizuoti kasdienius procesus, bet ir pagerinti ligonių priežiūrą. Be to šis projektas - puiki galimybė parodyti savo sugebėjimus ir prisidėti prie Ruprecht’o naujovių poliklinikoje.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../img/bash_advanced/meeting.webp" class="img-fluid figure-img"></p>
+<figcaption>Dall-E</figcaption>
+</figure>
+</div>
+<hr>
+<ul>
+<li><strong>Duomenų šaltinis</strong>: <a href="https://data.gov.lt/datasets/2762/data/SeskinesPoliklinika">data.gov.lt</a></li>
+<li><strong>Duomenų struktūra</strong>:</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 52%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Kodas</th>
+<th>Reikšmė</th>
+<th>Formatas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>vda_id</td>
+<td>Valstybės Duomenų Agentūros įrašo identifikatorius</td>
+<td>string</td>
+</tr>
+<tr class="even">
+<td>paciento_asm_k</td>
+<td>Nuasmenintas paciento asmens kodas</td>
+<td>string</td>
+</tr>
+<tr class="odd">
+<td>tyrimo_studijos_uuid</td>
+<td>Tyrimo studijos identifikatorius</td>
+<td>string</td>
+</tr>
+<tr class="even">
+<td>tyrimo_studijos_data</td>
+<td>Tyrimo studijos data</td>
+<td>date (ref: D)</td>
+</tr>
+<tr class="odd">
+<td>paciento_gimimo_metai</td>
+<td>Paciento gimimo metai</td>
+<td>date (ref: Y)</td>
+</tr>
+<tr class="even">
+<td>paciento_lytis</td>
+<td>Paciento lytis</td>
+<td>string</td>
+</tr>
+<tr class="odd">
+<td>paciento_svoris</td>
+<td>Paciento kūno svoris kilogramais</td>
+<td>number (ref: kg)</td>
+</tr>
+<tr class="even">
+<td>paciento_ugis</td>
+<td>Paciento ūgis metrais</td>
+<td>number (ref: m)</td>
+</tr>
+<tr class="odd">
+<td>tyrimo_serijos_uuid</td>
+<td>Tyrimo serijos identifikatorius</td>
+<td>string</td>
+</tr>
+<tr class="even">
+<td>tirta_kuno_dalis</td>
+<td>Tirta kūno dalis</td>
+<td>string</td>
+</tr>
+<tr class="odd">
+<td>tyrimo_serijos_modalumas</td>
+<td>Tyrimo serijos modalumas</td>
+<td>string</td>
+</tr>
+<tr class="even">
+<td>tyrimo_serijos_aprasymas</td>
+<td>Tyrimo serijos aprašymas</td>
+<td>string</td>
+</tr>
+<tr class="odd">
+<td>atvaizdo_uuid</td>
+<td>Atvaizdo unikalus identifikatorius</td>
+<td>string</td>
+</tr>
+<tr class="even">
+<td>apsvita</td>
+<td>Apšvita arksekundėmis</td>
+<td>number (ref: ″)</td>
+</tr>
+<tr class="odd">
+<td>spinduliuote</td>
+<td>Spinduliuotė decigrėjais kvadratiniame centimetre</td>
+<td>number (ref: dGy/cm²)</td>
+</tr>
+<tr class="even">
+<td>fotometrine_interpretacija</td>
+<td>Fotometrinė interpretacija</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Tiskslas</strong>: Galėti kasdien Terminale gauti naujausius duomenis apie altiktų radiologinių tyrimų skaičių pagal kūno vietos.</li>
+</ul>
+<section id="sprendimo-gairės" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="sprendimo-gairės">Sprendimo gairės</h4>
+<p>Šie klausimai ir žingsniai padės tau sėkmingai atlikti užduotį. Nepamiršk, kad tai tik orientyrai, tad skirk laiko ir savarankiškai gilinkis į temą.</p>
+</section>
+<section id="gilinkis-į-data.gov.lt" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="gilinkis-į-data.gov.lt">Gilinkis į data.gov.lt</h4>
+<ol type="1">
+<li>API pasirinkimai:
+<ul>
+<li>Eik į API puslapį ir ištyrinėk <code>getall</code>, <code>getone</code>, <code>changes</code>.</li>
+<li>Suprask, kaip kiekvienas variantas keičia JSON struktūrą. Apmastyk, ką jie kiekvienas reiškia tau ir ar ir kaip gali būti pritaikomi tavo projekte.</li>
+</ul></li>
+<li>Duomenų Filtravimas:
+<ul>
+<li>Eik į „Duomenys“ lapą ir panaudok filtrą (select(*)).</li>
+<li>Pasirink keletą tau reikalingų stulpelių ir pažiūrėk, kaip tai paveikia užklausas</li>
+<li>Patikrink, kaip pasikeičia URL struktūra, kai pasirenki konkretų filtrą.</li>
+</ul></li>
+<li>Duomenų tyrinėjimas ir analizė:
+<ul>
+<li>Naudok galimybę rūšiuoti ir filtruoti lentelės duomenis „Duomenys“ lape</li>
+<li>Atsakyk sau į šiuos klausimus:
+<ul>
+<li>Kokia yra seniausia ir naujausia tyrimų data?</li>
+<li>Ar yra tuščių reikšmių?</li>
+<li>Ar yra skirtumas parsiuntimo greityje, priklausomai nuo mano padarytų pasirinkimų?</li>
+</ul></li>
+<li>Užbaigus filtravimą, grįžk į API lapą ir analizuok, kaip keitėsi užklausa.</li>
+<li>Naudok tekstinį redaktorių pvz. Sublime, kad galėtum geriau pamatyti URL tvarką ir surpasti sistemą.</li>
+</ul></li>
+</ol>
+</section>
+<section id="programavimo-etapas" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="programavimo-etapas">Programavimo etapas</h4>
+<ul>
+<li>Sukurk projekto direktoriją</li>
+<li>Sukurk README.md failą, kuriame aprašyk projekto informaciją ir tikslus.</li>
+<li>Sukurk skriptą <code>recent_radiological_seskines_pol.sh</code>:
+<ul>
+<li>Skriptas turi atsisiųsti duomenis JSON formatu.</li>
+<li>Pasirinkti reikalingus stulpelius: Tyrimo studijos data ir Tirta kūno dalis</li>
+<li>Filtruoti duomenis pagal nustatytą datą, pvz., 2024-11-28. arba datos intervalą</li>
+<li>Suskaičiuoti tyrimų skaičių pagal kūno dalis.</li>
+<li>Suplokštinti duomenis į TSV formatą.</li>
+</ul></li>
+</ul>
+<p><strong>Pastaba</strong>: Kol dirbi su sintakse ir lygiavimu, sukurk laikinus failus, kad galėtum pamatyti, kur yra tabai ar tarpai. Tai padės teisingai supaprastinti duomenų apdorojimą ir išvengti klaidų. Vėliau tuos failus ištrinsi.</p>
+</section>
+<section id="mvp-vertinimas" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="mvp-vertinimas">MVP vertinimas</h4>
+<p>Dienos pabaigoje, kai PM Justina grįžta, tu su nerimu ir pasididžiavimu parodai savo atliktą darbą. Justina, garsėjanti savo atidumu detalėms ir griežtumu, kritiškai apžvelgia rodmenis. Laikui bėgant, jos veide atsiranda šypsena.</p>
+<blockquote class="blockquote">
+<p>„Puiku, man labai patinka, ką padarei“, - pagiria ji, nuleisdamažiūrėjusi į tavo kruopščiai parengtą rezultatą. „Tačiau, žinodama Ruprechtą, norėčiau, kad galėtume į projektą įtraukti daugiau aiškumo ir paprastumo. Gal gali parengti:</p>
+</blockquote>
+<blockquote class="blockquote">
+<ul>
+<li>Išsami README.md failo versiją: Aprašyk jame kiekvieną projekto dalį - nuo duomenų gavimo iki galutinio rezultato pateikimo. Būtų puiku, jei įtrauktum ir pastebėtas prielaidas bei pasiūlymus tobulinimui.</li>
+</ul>
+</blockquote>
+<blockquote class="blockquote">
+<ul>
+<li>Vienos eilutės komandą (Oneliner): Tokio tipo komanda turėtų tiesiog terminale pateikti vienos pasirinktos dienos rezultatus, kad mūsų techninis personalas galėtų greitai ir patogiai gauti reikiamą informaciją.</li>
+</ul>
+</blockquote>
+<blockquote class="blockquote">
+<ul>
+<li>Pilną skriptą: Jis turėtų būti išsamus, kad galėtų išgauti ir išfiltruoti duomenis už tam tikrą laikotarpį ir išsaugoti juos formatu, tinkamu atidaryti su libreoffice. Tai leis mūsų komandai lengvai tvarkytis su duomenimis ir rengti ataskaitas.“</li>
+</ul>
+</blockquote>
+</section>
+<section id="pratęsimas" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="pratęsimas">Pratęsimas</h4>
+<p>Pamąstyk, kaip iš esamos darbo atlikimo strategijos sukurti: * Skriptą, kuris išsaugo duomenis, kuriuos galima atsidaryti su libreoffice –calc <failas>. * Vienos eilutės komandą, skirtą rezultatais naudotis terminale.</failas></p>
+<p>Detaliai aprašyk atliktus veiksmus README.MD faile.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Pagalba">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Pagalba
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Kai mokeisi apie redirektorius <code>&gt;</code>, <code>&gt;&gt;</code>, buvo paminėtas ir atgalinis redirektorius <code>&lt;</code>. ChatGPT arba interneto pagalba išsiakink, ką daro ši komanda ir pagalvok, kaip jos sintaksę galėtum pritaikyti savo projekte.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"labas rytas"</span> <span class="kw">|</span> <span class="fu">cat</span> <span class="at">-</span> <span class="op">&lt;(</span><span class="bu">echo</span> <span class="st">"labas vakaras"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>ką reiškia <code>-</code>?</li>
+<li>kodėl ir kam panaudojamas <code>&lt;</code></li>
+</ul>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-default callout-important callout-titled" title="PagalbaL kaip alėtų atrodyti README.MD">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+PagalbaL kaip alėtų atrodyti README.MD
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>&lt;!-- --&gt;</code> Žymi komentarus. Juos reiktų ištrintiir vietoj jų užpildyti tavo turiniu.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Šeškinės Poliklinikos Radiologinių Tyrimų Ataskaita</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Projekto Aprašymas</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Aprašykite pagrindinį projekto tikslą ir ką jis daro. Tai svarbu, kad skaitytojai suprastų, apie ką yra projektas. --&gt;</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pradžia</span></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a><span class="fu">### Reikalavimai</span></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Išvardinkite būtiną programinę įrangą ir jų versijas. Tai padės užtikrinti, kad projektas veiks skirtinguose įrenginiuose. --&gt;</span></span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a><span class="fu">### Diegimas</span></span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Aprašykite diegimo instrukcijas, kaip naudotojas gali klonuoti ir pradėti naudotis projektu. Aiškios instrukcijos padės vartotojams lengviau pradėti. --&gt;</span></span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Klonuokite projektą:</span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a>   <span class="in">`git clone &lt;repo-url&gt; &amp;&amp; cd &lt;repo&gt;`</span> </span>
+<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Naudojimas</span></span>
+<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Vienos Eilutės Komanda</span></span>
+<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-24"><a href="#cb50-24" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Įrašykite vienos eilutės komandos sintaksę. Ši dalis svarbi, kad vartotojai galėtų greitai išbandyti pagrindines funkcijas. --&gt;</span></span>
+<span id="cb50-25"><a href="#cb50-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-26"><a href="#cb50-26" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Pilnas Skriptas</span></span>
+<span id="cb50-27"><a href="#cb50-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-28"><a href="#cb50-28" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Pateikite skripto sintaksę. Tai svarbu, kad būtų galima atlikti išsamesnę analizę ar duomenų tvarkymą. --&gt;</span></span>
+<span id="cb50-29"><a href="#cb50-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-30"><a href="#cb50-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## Struktūra</span></span>
+<span id="cb50-31"><a href="#cb50-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-32"><a href="#cb50-32" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Aprašykite projekto failų struktūrą. Tai padės naudotojams geriau suprasti projekto organizaciją ir rasti reikiamus failus. --&gt;</span></span>
+<span id="cb50-33"><a href="#cb50-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-34"><a href="#cb50-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`README.md`</span>: Dokumentacija</span>
+<span id="cb50-35"><a href="#cb50-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`recent_radiological_seskines_pol.sh`</span>: Skriptas</span>
+<span id="cb50-36"><a href="#cb50-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-37"><a href="#cb50-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## Prielaidos</span></span>
+<span id="cb50-38"><a href="#cb50-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-39"><a href="#cb50-39" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Nurodykite visas prielaidas, kuriomis remiasi projektas. Tai svarbu, kad vartotojai žinotų, kas yra numatyta ir ką jie turi turėti ar atlikti prieš naudojant projektą. --&gt;</span></span>
+<span id="cb50-40"><a href="#cb50-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-41"><a href="#cb50-41" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tolesni Plėtros Tikslai</span></span>
+<span id="cb50-42"><a href="#cb50-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-43"><a href="#cb50-43" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Apibūdinkite galimus ateities atnaujinimus ir plėtros kryptis. Tai gali įtraukti naujas funkcijas ar planuojamus patobulinimus. Padeda pateikti ilgalaikę projekto viziją. --&gt;</span></span>
+<span id="cb50-44"><a href="#cb50-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-45"><a href="#cb50-45" aria-hidden="true" tabindex="-1"></a><span class="fu">## Papildomi Ištekliai</span></span>
+<span id="cb50-46"><a href="#cb50-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-47"><a href="#cb50-47" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Pateikite nuorodas į papildomus išteklius, pavyzdžiui, naudojimo dokumentaciją ar technologijų, kurias naudavote, vadovus. Tai naudinga papildomai informacijai gauti. --&gt;</span></span>
+<span id="cb50-48"><a href="#cb50-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-49"><a href="#cb50-49" aria-hidden="true" tabindex="-1"></a>Daugiau informacijos apie Markdown: <span class="co">[</span><span class="ot">Markdown Guide</span><span class="co">](https://www.markdownguide.org/basic-syntax/)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
 
 
+</section>
 </section>
 </section>
 
@@ -2096,6 +2398,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
+<script>videojs(video_shortcode_videojs_video1);</script>
+<script>videojs(video_shortcode_videojs_video2);</script>
+<script>videojs(video_shortcode_videojs_video3);</script>
+<script>videojs(video_shortcode_videojs_video4);</script>
+<script>videojs(video_shortcode_videojs_video5);</script>
 
 
 

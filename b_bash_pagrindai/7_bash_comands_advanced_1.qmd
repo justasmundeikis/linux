@@ -8,6 +8,7 @@ format:
     code-copy: true
     eval: false
     echo: true
+    css: ../styles.css
 ---
 
 ## Įvadas
@@ -30,21 +31,21 @@ Praėjusiame skyriuje susipažinai su įvairiomis CLI (**command line interface*
 
 ### ChatGPT Naudojimas
 
-Šiame skyriuje vis dažniau bus pateikiamos nuorodos naudotis ChatGPT. Svarbiausia – išmokti naudotis šiuo įrankiu ne tam, kad jis už tave spręstų problemas, bet kad padėtų greičiau rasti tinkamiausią sprendimą. Štai keletas patarimų:
+Šiame skyriuje vis dažniau bus pateikiamos nuorodos naudotis ChatGPT. Svarbiausia - išmokti naudotis šiuo įrankiu ne tam, kad jis už tave spręstų problemas, bet kad padėtų greičiau rasti tinkamiausią sprendimą. Štai keletas patarimų:
 
-*   **Konsultantas ir patarėjas** – naudok ChatGPT kaip priemonę savo idėjų ir sprendimų tikrinimui.
-*   **Tikslūs klausimai** – suformuluok aiškius ir tikslius klausimus, kurie padės greičiau rasti atsakymą.
-*   **Eksperimentavimas** – nebijok išbandyti skirtingus užklausų formatus, jei atsakymas neaiškus ar nepakankamas.
-*   **Mokymasis per tobulinimą** – naudok ChatGPT kaip pagalbininką tobulinant savo darbo rezultatus ir įgyjant naujų žinių.
+*   **Konsultantas ir patarėjas** - naudok ChatGPT kaip priemonę savo idėjų ir sprendimų tikrinimui.
+*   **Tikslūs klausimai** - suformuluok aiškius ir tikslius klausimus, kurie padės greičiau rasti atsakymą.
+*   **Eksperimentavimas** - nebijok išbandyti skirtingus užklausų formatus, jei atsakymas neaiškus ar nepakankamas.
+*   **Mokymasis per tobulinimą** - naudok ChatGPT kaip pagalbininką tobulinant savo darbo rezultatus ir įgyjant naujų žinių.
 
 ### Refleksijos Metodika
 
 Po kiekvienos dalies perskaitymo atlik šiuos veiksmus:
 
-*   **Užrašyk, ką išmokai** – pasistenk glaustai užfiksuoti pagrindinius aspektus.
-*   **Pritaikymas praktikoje** – sugalvok, kur galėtum pritaikyti šias žinias realiose situacijose.
-*   **Analizuok sunkumus** – užfiksuok, kas buvo sudėtinga, ir galvok, kaip tai galėtum įveikti ateityje.
-*   **Konspektuok** – pradėk kurti savo mokymosi užrašus patogiame įrankyje, pvz., Obsidian. Suskirstyk juos pagal temas ir pateik konkrečius komandų pavyzdžius. Tai padės tau greičiau rasti reikalingą informaciją.
+*   **Užrašyk, ką išmokai** - pasistenk glaustai užfiksuoti pagrindinius aspektus.
+*   **Pritaikymas praktikoje** - sugalvok, kur galėtum pritaikyti šias žinias realiose situacijose.
+*   **Analizuok sunkumus** - užfiksuok, kas buvo sudėtinga, ir galvok, kaip tai galėtum įveikti ateityje.
+*   **Konspektuok** - pradėk kurti savo mokymosi užrašus patogiame įrankyje, pvz., Obsidian. Suskirstyk juos pagal temas ir pateik konkrečius komandų pavyzdžius. Tai padės tau greičiau rasti reikalingą informaciją.
 
 ::: {.callout-tip title="Praktika"}
 Savo namų direktorijoje susikurk mokymuisi skirtą subdirektoriją, pvz., **bash_advanced**. Pereik į ją ir visus šiame skyriuje reikalingus failus ir duomenis laikyk joje.
@@ -57,12 +58,12 @@ Naudojant Linux, komandos gali turėti daugybę nustatymų bei opcijų, kurių k
 
 **Kodėl svarbu mokėti rasti informaciją?**
 
-Net patyrę Linux vartotojai retai kada iškart prisimena visus flagus ar argumentus. Mokėjimas greitai rasti informaciją – vienas svarbiausių įgūdžių dirbant su terminalu. Šiame skyriuje išmoksi naudotis pagalbos įrankiais, kad greitai rastum informaciją apie komandas ir jų naudojimo būdus. Tai apims:
+Net patyrę Linux vartotojai retai kada iškart prisimena visus flagus ar argumentus. Mokėjimas greitai rasti informaciją - vienas svarbiausių įgūdžių dirbant su terminalu. Šiame skyriuje išmoksi naudotis pagalbos įrankiais, kad greitai rastum informaciją apie komandas ir jų naudojimo būdus. Tai apims:
 
-* `--help` – greita pagalba komandai: santrauka apie dažniausiai naudojamus nustatymus ir sintaksę.
-* `man` –  išsamus komandų vadovas su skyriais, struktūruotais pagal oficialią dokumentaciją.
-* `tldr` – paprasti pavyzdžiai ir scenarijai, pateikiantys svarbiausias komandos savybes.
-* **ChatGPT** – kaip naudoti jį sudėtingesnėms problemoms aiškintis.
+* `--help` - greita pagalba komandai: santrauka apie dažniausiai naudojamus nustatymus ir sintaksę.
+* `man` -  išsamus komandų vadovas su skyriais, struktūruotais pagal oficialią dokumentaciją.
+* `tldr` - paprasti pavyzdžiai ir scenarijai, pateikiantys svarbiausias komandos savybes.
+* **ChatGPT** - kaip naudoti jį sudėtingesnėms problemoms aiškintis.
 
 **Scenarijus**
 
@@ -74,7 +75,7 @@ Net patyrę Linux vartotojai retai kada iškart prisimena visus flagus ar argume
 curl https://get.data.gov.lt/datasets/gov/eso/fizin_asm_elektros_suvartojimas/FizinAsmElektraSuvartojimas/:format/csv -o raw_data_hh_customers.csv
 ```
 
-* Failas yra apie 2 GB – tai prilygsta maždaug 130 000 puslapių Word dokumentų. Tad kantreybė tavo sąjungininkė. Pasidaryk ☕
+* Failas yra apie 2 GB - tai prilygsta maždaug 130 000 puslapių Word dokumentų. Tad kantreybė tavo sąjungininkė. Pasidaryk ☕
 
 ![](../img/bash_advanced/5_min_later.jpg)
 
@@ -100,11 +101,11 @@ Kartais reikia daugiau informacijos, kad suprastum, kaip kas veikia. Būtent ši
 
 `man` puslapis įprastai turi tokią struktūrą: 
 
-* NAME – komandos pavadinimas ir trumpas aprašymas.
-* SYNOPSIS – pagrindinė komandos sintaksė, įskaitant flagus ir argumentus.
-* DESCRIPTION – detali informacija apie naudojimą.
-* OPTIONS – visų galimų flagų paaiškinimai.
-* EXAMPLES – kartais pateikiami praktiniai pavyzdžiai.
+* NAME - komandos pavadinimas ir trumpas aprašymas.
+* SYNOPSIS - pagrindinė komandos sintaksė, įskaitant flagus ir argumentus.
+* DESCRIPTION - detali informacija apie naudojimą.
+* OPTIONS - visų galimų flagų paaiškinimai.
+* EXAMPLES - kartais pateikiami praktiniai pavyzdžiai.
 
 
 ```bash
@@ -115,7 +116,7 @@ man ls
 
 
 ::: {.callout-tip title="Praktika"}
-* Prisimeni, jog su `head` ir `tail` galėjai nurodyti kiek eilučių spausdinti? Pvz., `head -n 15` atspausdina pirmas 15 eilučių. Atsiversk `man head` ir susirask `-n`. Ten aprašytas naudojimas `–` skaičiaus. Dabar pažiūrėk man `tail` ir rask `-n` su `+` naudojimu.
+* Prisimeni, jog su `head` ir `tail` galėjai nurodyti kiek eilučių spausdinti? Pvz., `head -n 15` atspausdina pirmas 15 eilučių. Atsiversk `man head` ir susirask `-n`. Ten aprašytas naudojimas `-` skaičiaus. Dabar pažiūrėk man `tail` ir rask `-n` su `+` naudojimu.
 * Dabar tavo failas **raw_data_hh_customers.csv** turi antraštes (header) ir duomenis. Pasinaudojus `head` arba `tail` (pagalvok, kuri čia labiau tinka) bei išmoktais flagais, sukurk naują failą **pure_data.csv**, kuriame būtų visos originalaus failo eilutės, bet ne antraštė.
 * Palygink su `wc` eilučių skaičių viename ir kitame faile ir įsitikink, jog skirtumas tik 1 eilutė.
 * Su `ls -lh` arba `ls -l` palygink, kiek sutaupei vietos, atsisakius vienos eilutės “duomenų”.
@@ -125,7 +126,7 @@ man ls
 
 ### `tldr`
 
-`man` puslapiai yra labai išsamūs, tačiau kartais jie gali pasirodyti per ilgi. `--help` gali suteikti trumpą ir aiškią informaciją, tačiau net ir šie puslapiai gali būti per daug sudėtingi pradedantiesiems. Čia į pagalbą ateina `tldr` – programa, kuri pateikia dažniausiai naudojamus scenarijus ir labai trumpą paaiškinimą apie komandą. Tai dar viena priemonė tavo arsenale, jei pamiršai, kaip veikia komanda.
+`man` puslapiai yra labai išsamūs, tačiau kartais jie gali pasirodyti per ilgi. `--help` gali suteikti trumpą ir aiškią informaciją, tačiau net ir šie puslapiai gali būti per daug sudėtingi pradedantiesiems. Čia į pagalbą ateina `tldr` - programa, kuri pateikia dažniausiai naudojamus scenarijus ir labai trumpą paaiškinimą apie komandą. Tai dar viena priemonė tavo arsenale, jei pamiršai, kaip veikia komanda.
 
 ::: {.callout-tip title="Praktika"}
 * Pasitikrink, ar turi `tldr` naudodant `which tldr`.
@@ -199,17 +200,17 @@ Yra žingsniai, kurie padės efektyviau dirbti.
 
 ### Konspektavimas
 
-Galbūt jau pastebi, kad prisiminti visas komandas nėra lengva. Kai kurios taps įprasta ir nuolat naudojama atmintimi, tačiau kitos gali pranykti iš atminties. Dirbant analitikoje ar programavime, niekada neprisiminsi visko. Tiesiog reikia įprasti naudotis savo "antrinėmis smegenimis" – konspektuotis viską taip, kad prireikus galėtum greitai rasti reikiamą informaciją.
+Galbūt jau pastebi, kad prisiminti visas komandas nėra lengva. Kai kurios taps įprasta ir nuolat naudojama atmintimi, tačiau kitos gali pranykti iš atminties. Dirbant analitikoje ar programavime, niekada neprisiminsi visko. Tiesiog reikia įprasti naudotis savo "antrinėmis smegenimis" - konspektuotis viską taip, kad prireikus galėtum greitai rasti reikiamą informaciją.
 
 Pavyzdžiui, analitikai dažnai išsisaugo ilgus duomenų užklausų kodų gabalus (**code chunks**), ypač jei jų prireikia reguliariai. Programuotojai taip pat dažnai naudoja įrankius kaip Obsidian ar Joplin konspektams.
 
 Aš dažnai naudoju Obsidian arba Joplin, kad konspektuočiausi apie kilusias problemas, kaip jas sprendžiau, kas veikė ir kas ne. Konspektavimas prasideda dar tebesitęsiant problemai. Pvz., kai mano kompiuteris negalėjo sukurti VPN tunelio, kartu su ChatGPT bandžiau spręsti kilusias problemas. Visa šį procesą aš užfiksavau, kad ateityje galėčiau greičiau rasti sprendimus.
 
-Kitas scenarijus – kaip aš įdiegiu savo Linux sistemą. Kadangi mano kompiuteris naudojamas tiek darbo, tiek asmeniniais tikslais, man svarbu turėti gerai aprašytą procesą, ką turiu instaliuoti, po ko ir kodėl. Po instaliavimo proceso, nuolat pridedu naujas programas į šį dokumentą, kad visada turėčiau aktualiausią jo versiją. Nedarydamas to, sukuriu techninę skolą (**tech debt**) – terminą, naudojamą IT pasaulyje, kai kažkas padaroma greitai, paliekant problemas ateičiai. Visada venk *tech debt*, nes dažnai sutaupai tuo metu 5 minutes, kurios paskui tau kainuos 55.
+Kitas scenarijus - kaip aš įdiegiu savo Linux sistemą. Kadangi mano kompiuteris naudojamas tiek darbo, tiek asmeniniais tikslais, man svarbu turėti gerai aprašytą procesą, ką turiu instaliuoti, po ko ir kodėl. Po instaliavimo proceso, nuolat pridedu naujas programas į šį dokumentą, kad visada turėčiau aktualiausią jo versiją. Nedarydamas to, sukuriu techninę skolą (**tech debt**) - terminą, naudojamą IT pasaulyje, kai kažkas padaroma greitai, paliekant problemas ateičiai. Visada venk *tech debt*, nes dažnai sutaupai tuo metu 5 minutes, kurios paskui tau kainuos 55.
 
 
 1. Peržiūrėk [Getting Started](https://help.obsidian.md/Home) pirmus 4 skyrius apie Obsidian.
-1. Įdiek Obsidian naudojant Flatpak. Susikurk "vault" (direktoriją, kurioje bus visi Obsidian užrašai, idealu – į savo namų serverį Nextcloud).
+1. Įdiek Obsidian naudojant Flatpak. Susikurk "vault" (direktoriją, kurioje bus visi Obsidian užrašai, idealu - į savo namų serverį Nextcloud).
 1. Perkelk savo konspektus kaip naujus užrašus. Pagalvok, kokia būtų geriausia aplankų ir failų struktūra. Nebijok, ji keisis ateityje.
 
 Obsidian naudoja Markdown formatą. Peržiūrėk šį [Cheat Sheet](https://www.markdownguide.org/cheat-sheet/), kaip jis naudojamas.
@@ -222,11 +223,8 @@ Taip pat rekomenduoju peržiūrėti / skaityti:
 * [I learned a productivity system for organizing life
 ](https://youtu.be/0_44XEVOwek)
 
-* [TF kanale: Įvadas - 4 video](https://youtube.com/playlist?list=PLVNXAaej57W52x2VpcEk8mA7k5yu_UCLe)
-
 * [TF kanale: PARA metdas- 4 video](https://youtube.com/playlist?list=PLVNXAaej57W6qCYoMb_hbzDhX9et_GVlj)
 
-* [Tiago Forte knyga  - "Building a Second Brain"](https://www.knygos.lt/lt/knygos/forte--t--building-a-second-brain-8cjaa/)
 
 
 ## Tinklo komandos
@@ -237,7 +235,10 @@ Taip pat rekomenduoju peržiūrėti / skaityti:
 
 Filmuose apie povandeninius laivus dažnai girdime sonarų "**ping**" garsą, kuris naudojamas sekant objektus po vandeniu. Panašiai ir tu gali naudoti `ping` komandą, kuri padeda patikrinti, ar turi prieigą prie interneto, ir ar tavo norimas pasiekti serveris yra pasiekiamas.
 
-{{< video https://youtu.be/UeO4SV-wghs >}}
+{{< video ../img/bash_advanced/OP2.mp4 >}}
+
+Jeigu nėra garso, originalas [Youtube](https://www.youtube.com/watch?v=UeO4SV-wghs)
+
 
 Linux sistemoje komanda `ping <host>` leidžia nurodyti norimą URL ar IP adresą. Skirtingai nei Windows sistemoje, Linux ping komanda nesustoja automatiškai, todėl rekomenduojama naudoti `-c` (count) flagą, kad nurodytum, kiek ping signalų turėtų būti siunčiama, pvz., 5.
 
@@ -254,7 +255,7 @@ Tu turėtum pamatyti panašią išvestį:
 Ping išvestis
 
 * ping nurodo, kokį adresą pingina, ir pateikia IP adresą (pvz., 65.108.247.94).
-* Turėtum gauti 5 eilutes ping'ų atgal su meta duomenimis, tarp jų – kiek laiko užtruko signalui nueiti ir grįžti.
+* Turėtum gauti 5 eilutes ping'ų atgal su meta duomenimis, tarp jų - kiek laiko užtruko signalui nueiti ir grįžti.
 * ping komanda sustos po 5 kartų
 
 Dabar tu gali pabandyti naudoti šį adresą norint atsidaryti tinklapį:
@@ -266,7 +267,7 @@ brave-browser 65.108.247.94
 
 Gali `brave-browser` pakeisti `firefox` ar kita sistemoje įdiegta interneto naršykle.
 
-![](../img/bash_advanced/open_ping.mp4)
+{{< video ../img/bash_advanced/open_ping.mp4 >}}
 
 Kaip matai, tai veikia. Bet taip nebus visada. Pateiksiu trumpą paaiškinimą po praktikos.
 
@@ -302,7 +303,7 @@ Kai kurie tinklapiai, kaip infraplanas.lt, gali būti pasiekiami tiesiogiai per 
 
 #### wget
 
-Atsidaryk [https://data.gov.lt/datasets/2749/](https://data.gov.lt/datasets/2749/) ir surask "Transporto priemonių valstybiniai numeriai pagal markę ir modelį" duomenis. 
+Atsidaryk [https://data.gov.lt/](https://data.gov.lt) ir surask "Transporto priemonių valstybiniai numeriai pagal markę ir modelį" duomenis. 
 
 Papaudus ant "Duomenys" ir "Atsiųsti", tu suprantama gali atsisiųsti duomenis. Bet toks būdas nebūtų automatizuojamas ateityje, kai norėsi atnaujinti duomenis.
 
@@ -361,7 +362,7 @@ Kaip matai, ji nedaug tesiskiria nuo tos kurią turėjai:
 
 Matomas skirtumas yra `/:format/csv` dalelė URL adrese, kuri nurodo, jog duomenys turi būti parsiunčiami CSV formatu. Šis papildymas užtikrina teisingą duomenų formatą tavo naudojimui.
 
-Tai užtikrins, kad naudojant `wget` komandą, gausi duomenis būtent CSV formatu – tokiu, kuris yra lengvai analizuojamas ir atidaromas su įprastinėmis programomis, tokiomis kaip LibreOffice Calc ar Excel.
+Tai užtikrins, kad naudojant `wget` komandą, gausi duomenis būtent CSV formatu - tokiu, kuris yra lengvai analizuojamas ir atidaromas su įprastinėmis programomis, tokiomis kaip LibreOffice Calc ar Excel.
 
 ::: {.callout-tip title="Praktika"}
 * Naudojant `rm` išsivalyk darbo direktoriją nuo nereikalingų failų.
@@ -435,7 +436,7 @@ Kur kas praktiškesnis yra flagas `-c`, kuris suskaičiuoja, kiek yra vienodų e
 
 ![](../img/bash_advanced/uniq_4.png)
 
-Kaip matai, turime problemą – stulpelio antraštė (header) figūruoja kaip duomenys. Jei tau tik reikia grubiai įvertinti duomenų teisingumą ir juos geriau suprasti, tai gali netrukdyti. Bet galima ir išsivalyti.
+Kaip matai, turime problemą - stulpelio antraštė (header) figūruoja kaip duomenys. Jei tau tik reikia grubiai įvertinti duomenų teisingumą ir juos geriau suprasti, tai gali netrukdyti. Bet galima ir išsivalyti.
 
 ::: {.callout-tip title="Praktika"}
 1. Kokias 2 strategijas (komandas) **reg_zalgiris.csv** turi savo arsenale, kad neįtrauktum eilutės su gydytojo_specialybe į tolimesnius veiksmus? Prisimink, ką išmokai `--help` dalyje, bei prisimink komandą, kuri filtruoja eilutes - `grep`.
@@ -646,10 +647,10 @@ Pakeisk savo darbinę direktoriją į namų su `cd ~` arba tiesiog `cd`.
 
 Komandai `find` pirmasis argumentas yra **kur** ieškoti. Dažniausiai tai gali būti:
 
-* `find .` – ieškoti aktyvioje direktorijoje
-* `find ~` – ieškoti namų direktorijoje
-* `find /` – ieškoti root direktorijoje (t.y. visame kompiuteryje)
-* `find ~/Downloads` – ieškoti vartotojo Downloads direktorijoje arba kitoje konkrečiai nurodytoje direktorijoje
+* `find .` - ieškoti aktyvioje direktorijoje
+* `find ~` - ieškoti namų direktorijoje
+* `find /` - ieškoti root direktorijoje (t.y. visame kompiuteryje)
+* `find ~/Downloads` - ieškoti vartotojo Downloads direktorijoje arba kitoje konkrečiai nurodytoje direktorijoje
  
 
 `find` priima daug skirtingų nustatymų (flagų), vienas pagrindinių yra `-name`.
@@ -689,7 +690,7 @@ find bash_advanced/ -ls
 
 ![](../img/bash_advanced/find_ls.png)
 
-Gali apriboti paiešką pagal tai, ko ieškai: ar tai yra failas (`f`), direktorija (`d`), ar nuoroda (`l`). Ši komanda ieško tipo – direktorijos, kurios pavadinime yra žodis prasidedantis "Do".
+Gali apriboti paiešką pagal tai, ko ieškai: ar tai yra failas (`f`), direktorija (`d`), ar nuoroda (`l`). Ši komanda ieško tipo - direktorijos, kurios pavadinime yra žodis prasidedantis "Do".
 
 ```bash
 find ~ -type d -name "Do*"
@@ -798,9 +799,7 @@ find ~ -iname "*.csv" -ok cp {} ~/copy/ \;
 ```
 Kaip matai, prieš kiekvieną operaciją, terminalas reikalauja patvirtinimo, kurį turi įrašyti kaip `y` arba `yes`, kad patvritinti. Įrašius `n`, `no` , arba tiesiog paspaudus Enter, tai atitiks **no** ir komanda tam failui nebus įvykdyta.
 
-Kaip matai, prieš kiekvieną operą, temrinalas reikalauja patvirtinmo, kuri turi įrašyti `y` arba `yes` arba `n` `no`. jeigu spausi enter, tada tai aititks `no`.
-
-![](../img/bash_advanced/find_ok_copy.mkv)
+{{< video ../img/bash_advanced/find_ok_copy.mp4 >}}
 
 Vykdant šią operaciją, `find` rado tuos pačius failus dar kartą, ten, kur jie jau buvo nukopijuoti, t.y., pačioje **copy** direktorijoje. Kad išvengtum to, gali find nurodyti, kur neieškoti su `-not -path "/home/justas/copy/*"` arba `! -path "/home/justas/copy/*"`. 
 Atkreipk dėmesį į tai, kad nurodant `-not -path`, reikia **absoliutaus adreso** ir **\***, kad ten rasti failai (jų adresai) nebūtų įtraukti.
@@ -850,7 +849,7 @@ Keli `locate` trūkumai:
 * Neatnaujintų failų rodymas: `locate` nerodo neseniai sukurtų arba pervadintų failų, kol nėra atnaujinama failų duomenų bazė. Duomenų bazės atnaujinimui naudok komandą `updatedb`.
 * Paieškos kriterijų trūkumas: `locate` nesuteikia galimybės naudoti paieškos kriterijų, tokių kaip failo dydis, amžius ir kt., kuriuos siūlo find.
 
-![](../img/bash_advanced/updatedb.mkv)
+{{< video ../img/bash_advanced/updatedb.mp4 >}}
 
 
 ### whereis
@@ -880,7 +879,7 @@ Jei reikia sužinoti visas vietas, kur yra vykdomasis failas ir susiję failai (
 
 Ši tema gali pasirodyti šiek tiek sudėtingesnė, bet ją pravartu žinoti norint geriau suprasti, kaip veikia Linux komandinė eilutė (CLI).
 
-Kai tu įvedi komandą, pvz., `ls`, kaip Shell žino, kokią programą paleisti? Shell negali peržiūrėti visų tavo failų ieškodama programos `ls` – tai būtų neefektyvu ir užtruktų labai ilgai. Vietoje to, Bash naudoja **aplinkos kintamąjį**, vadinamą **PATH**, kuris yra saugomas visų direktorijų sąrašas, kurias Bash tikrina ieškodama vykdomųjų programų.
+Kai tu įvedi komandą, pvz., `ls`, kaip Shell žino, kokią programą paleisti? Shell negali peržiūrėti visų tavo failų ieškodama programos `ls` - tai būtų neefektyvu ir užtruktų labai ilgai. Vietoje to, Bash naudoja **aplinkos kintamąjį**, vadinamą **PATH**, kuris yra saugomas visų direktorijų sąrašas, kurias Bash tikrina ieškodama vykdomųjų programų.
 
 Kai tu įvedi `ls`, Bash tikrina šias direktorijas pagal eiliškumą:
 
@@ -926,24 +925,24 @@ drwxrwxr-x 2 justas justas 4096 Sep 28 18:34 text
 
 Kiekviena eilutė parodo failo teises:
 
-* `r` – skaitymo teisė
-* `w` – rašymo teisė
-* `x` – vykdymo teisė
-* `-` – nėra teisių
+* `r` - skaitymo teisė
+* `w` - rašymo teisė
+* `x` - vykdymo teisė
+* `-` - nėra teisių
 
-Pirmoji tripleto grupė priklauso savininkui, antroji – grupei, trečioji – kitiems vartotojams. Suprantama pirmas ženklas (`d`, `-`, `l`) indikuoja ar tai direktorija, failas ar nuoroda.
+Pirmoji tripleto grupė priklauso savininkui, antroji - grupei, trečioji - kitiems vartotojams. Suprantama pirmas ženklas (`d`, `-`, `l`) indikuoja ar tai direktorija, failas ar nuoroda.
 
 ### Keisti Failo Teises su chmod
 
-`chmod` komanda leidžia keisti failo teises. Naudojami du būdai – skaitmeninis ir simbolinis.
+`chmod` komanda leidžia keisti failo teises. Naudojami du būdai - skaitmeninis ir simbolinis.
 
 **Skaitmeninis Būdas**
 
 Kiekvienai teisei priskiriama skaitinė reikšmė:
 
-* `4` – skaityti (read)
-* `2` – rašyti (write)
-* `1` – vykdyti (execute)
+* `4` - skaityti (read)
+* `2` - rašyti (write)
+* `1` - vykdyti (execute)
 * `0` - jokių teisių (`-`)
 
 Norint nustatyti teises, skaičiuoji reikšmes, pvz:
@@ -958,7 +957,7 @@ Pavyzdys, kaip nustatyti teises su chmod:
 chmod 754 failas.txt
 ```
 
-Šios komandos rezultatas – **user** gali skaityti, rašyti, vykdyti; **grupė** gali tik skaityti ir vykdyti, o kiti tik skaityti.
+Šios komandos rezultatas - **user** gali skaityti, rašyti, vykdyti; **grupė** gali tik skaityti ir vykdyti, o kiti tik skaityti.
 
 **Simbolinis Būdas**
 
@@ -982,10 +981,10 @@ chmod u+x failas.txt
 
 Nors dažniausiai šių komandų nereikia naudoti, mokėti jomis naudotis gali būti naudinga:
 
-* `chown <user> <file>` – keičia failo savininką.
-* `chgrp <group> <file>` – keičia failo grupę.
-* `chown <user>:<group> <file> `– keičia tiek savininką, tiek grupę.
-* `chown -R <user>:<group> <directory>` – keičia visų failų nurodytoje direktorijoje savininką ir grupę **rekursyviai**.
+* `chown <user> <file>` - keičia failo savininką.
+* `chgrp <group> <file>` - keičia failo grupę.
+* `chown <user>:<group> <file> `- keičia tiek savininką, tiek grupę.
+* `chown -R <user>:<group> <directory>` - keičia visų failų nurodytoje direktorijoje savininką ir grupę **rekursyviai**.
 
 Svarbu: Jei keiti sisteminių failų savininką ar grupę, gali prireikti administratoriaus teisių (sudo).
 
@@ -1023,8 +1022,7 @@ kaip matai, failas neturi executbale teisių.
 
 Norint paleisti failą, reiktų susirasti failą per failų naršyklę, o tada pasirenkant "Properties" > "Permissions" ir pažymėti "Allow executing file as program".
 
-![](../img/bash_advanced/chmod_free.mkv)
-
+{{< video ../img/bash_advanced/chmod_free.mp4 >}}
 
 Arba sutieki tokias pat teises su `chmod` naudojant terminalą:
 
@@ -1036,7 +1034,7 @@ chmod 774 freetube_0.22.0_amd64.AppImage
 
 Norint efektyviai valdyti kompiuterio išteklius, svarbu suprasti, kokie procesai veikia tavo sistemoje. Tai ypač svarbu sistemų administravime ir duomenų analitikoje. Šiame skyriuje susipažinsi su pagrindinėmis komandomis, kurios padės tau stebėti veikiančius procesus ir identifikuoti galimas problemas.
 
-### `ps` – Procesų Sąrašas
+### `ps` - Procesų Sąrašas
 
 `ps` komanda leidžia pamatyti veikiančių procesų sąrašą statiniu vaizdu. Tai reiškia, kad ji parodo procesų būseną tam tikru momentu. Ši komanda ypač naudinga, kai reikia sužinoti, kas vyksta tavo sistemoje, arba rasti konkretaus proceso informaciją. Pagrindinės `ps` subkomandos:
 
@@ -1047,7 +1045,7 @@ Norint efektyviai valdyti kompiuterio išteklius, svarbu suprasti, kokie procesa
 Ką Parodo ps Išvestis?
 
 * **USER**: Kas paleido procesą (pvz., justas, root).
-* **PID**: Proceso identifikatorius – unikalus skaičius, skirtas kiekvienam procesui.
+* **PID**: Proceso identifikatorius - unikalus skaičius, skirtas kiekvienam procesui.
 * **%CPU**: Kiek procesoriaus resursų naudoja procesas.
 * **%MEM**: Kiek RAM atminties naudoja procesas.
 * **COMMAND**: Proceso paleidimo komanda (pvz., python analysis.py).
@@ -1233,7 +1231,7 @@ Tu išmokai ieškoti didelių video failų ir tavo komanda atrodė taip:
 find ~/Downloads/ ~/dwhelper/ -type f -iname "*.mp4" -size +100M -atime +14
 ```
 
-Jei tau reikėtų šią komandą įrašyti kaskart, tai užimtų daug laiko. Nors automatinis skriptų paleidimas, pvz., kompiuterio įjungimo metu, yra sprendimas, tačiau paprastesnis būdas yra sukurti **alias** – tai leidžia greitai paleisti ilgas komandas, naudojant trumpinius.
+Jei tau reikėtų šią komandą įrašyti kaskart, tai užimtų daug laiko. Nors automatinis skriptų paleidimas, pvz., kompiuterio įjungimo metu, yra sprendimas, tačiau paprastesnis būdas yra sukurti **alias** - tai leidžia greitai paleisti ilgas komandas, naudojant trumpinius.
 
 **Alias Apibrėžimas**
 
@@ -1271,7 +1269,9 @@ Jeigu pastebėsi, kad tam tikro alias nebereikia - visada gali jį ištrinti ir 
 
 
 
-## Projektas 1
+## Projektai
+
+### Projektas 1: Orų prognozė Terminal lange
 
 Sveikinu tapus junior software developer'e nedidelėje kompanijoje, kuri specializuojasi kurdama bash skriptus Linux vartotojams. Paprastai tokia kompanija dirba su įvairiais projektais, kuriuose reikia kūrybingumo ir techninių įgūdžių. 
 
@@ -1285,31 +1285,33 @@ Tavo komandos produkto vadovas (product manager - PM) pasidalino pastebėjimu:
 
 > "Ar galėtum sukurti programą, kuri terminale rodytų artimiausių 12 valandų orų prognozę?“.
 
-PM'as tau pateikė idėjų eskizą, o tavo užduotis – sukurti pirmąją programos versiją, vadinamą MVP (Minimum Viable Product). Kaip dažnai nutinka programuotojų darbe, pagrindinė tavo užduotis yra paversti idėjas į veikiančius sprendimus, naudojant technologijas ir kūrybingumą.
+PM'as tau pateikė idėjų eskizą, o tavo užduotis - sukurti pirmąją programos versiją, vadinamą MVP (Minimum Viable Product). Kaip dažnai nutinka programuotojų darbe, pagrindinė tavo užduotis yra paversti idėjas į veikiančius sprendimus, naudojant technologijas ir kūrybingumą.
 
 ![](../img/bash_advanced/mvp.png)
 
-### Projekto Pradžia
+#### Projekto Pradžia  {.unnumbered}
 
 Pradėk nuo projekto aplanko sukūrimo, kad galėtum patogiai struktūrizuoti savo darbą. Tai padės išlaikyti tvarką, kadangi, kaip žinome, programuotojai linkę eksperimentuoti ir generuoti daugybę tarpinio kodo.
 
-Keliauk į Lietuvos hidrometeorologijos tarnybos svetainę ([https://www.meteo.lt/](https://www.meteo.lt/)), kur gali rasti API dokumentaciją. Pirmiausia, sukurk užklausą, kuri atsiųs visas galimas vietoves. Atsispausdink pirmąją vietovę, kad suprastum, kaip yra struktūrizuoti duomenys. Tai yra svarbus žingsnis, kai dirbi su naujais duomenimis arba API – suprasti jų struktūrą ir galimybes.
+Keliauk į Lietuvos hidrometeorologijos tarnybos svetainę ([https://www.meteo.lt/](https://www.meteo.lt/)), kur gali rasti API dokumentaciją. Pirmiausia, sukurk užklausą, kuri atsiųs visas galimas vietoves. Atsispausdink pirmąją vietovę, kad suprastum, kaip yra struktūrizuoti duomenys. Tai yra svarbus žingsnis, kai dirbi su naujais duomenimis arba API - suprasti jų struktūrą ir galimybes.
 
 ![](../img/bash_advanced/wf_1.png)
 
-### Duomenų Apdorojimas
+
+#### Duomenų Apdorojimas {.unnumbered}
 
 Kadangi tave domina tik Lietuvos vietovės, reikės filtruoti duomenis. Naudok JSON apdorojimo įrankius, kaip `jq`, susiaurink duomenų masyvą tik į Lietuvą ir išsaugok rezultatus kaip TSV failą su vietovių pavadinimais bei kodais, pavadintą **lt_places.tsv**. Kiek iš viso yra vietovių, kurių pavadinimas prasideda „Viln“? Suradus atsakymą, nusprendei savo MVP naudoti Vilniaus rajoną **Lazdynus**. Sužinok, koks yra šios vietovės kodas, nes jis bus būtinas tolimesniam darbui su API.
 
 ![](../img/bash_advanced/wf_2.png)
 
-### Orų Prognozės Gavimo Procesas
+
+#### Orų Prognozės Gavimo Procesas  {.unnumbered}
 
 Grįžk prie API dokumentacijos ir sužinok, kaip parašyti užklausą orų prognozei gauti. Parsisiųsk duomenis ir išsaugok juos kaip **data_forecast.json**. Naudojant JSON apdorojimo įrankius, atspausdink prognozę gražiu JSON formatu ir pasirink tinkamą masyvą bei submasyvus, kurie pateiks reikalingą informaciją apie orą. Išrink šiuos elementus: **.forecastTimeUtc**, **.airTemperature**, **.conditionCode**, ir suformatuok juos kaip CSV failą, pavadindamu **filtered_data_forecast.csv**.
 
 ![](../img/bash_advanced/wf_3.png)
 
-### Estetiniai Pataisymai
+#### Estetiniai Pataisymai {.unnumbered}
 
 Kad galutinis produktas būtų vizualiai patrauklus, naudok įrankius kaip `column` išlyginimui. Jei dar nežinai šios komandos - gali pasinaudoti ChatGPT ar kitais šaltiniais, kad sužinotum, kaip ji veikia. Tavo pristatomas failas vadinsis **final_output**.
 
@@ -1325,13 +1327,212 @@ Jis paprašė pakeisti terminą „Debesuotumas“ į „Oro sąlygos“ ir prid
 
 Ir PM'as buvo sužavėtas:
 
-![](../img/bash_advanced/giphy-106588401.gif)
+![](../img/bash_advanced/giphy-106588401.webp)
 
 Dabar tau beliko sudėti visas komandas į vieną skriptą, kuris veiktų tik atmintyje, nesukuriant fizinių failų. Stenkis jungti kuo daugiau su pipes `|`. Gali būti kad su kokiu `sublime-text` editoriumi taudirbti būtų papraščiau. Nors ne terminalo lange, o papildoma programa, bet ji palengvins darbą.
 
 Išsaugok skriptą kaip **lazdynai_temp.sh**, patikrink failo teises, suteik vykdymo leidimą ir paleisk skriptą, kad įsitikintum, ar jis generuoja atitinkamą prognozę. 
 
-skriptą paleisti gali su `./lazdynai_temp.sh`
+Skriptą paleisti gali su `./lazdynai_temp.sh`
 
 Tai yra ne tik naudinga programa, bet ir puikus pavyzdys, kaip kūrybingas programuotojas gali prisidėti prie kasdienio gyvenimo patogumo!
 
+Skyriuose apie bash skriptų rašymą išmoksi naudotis bash logika, užduoti klausimus vartotojams ir pritaikyti šio skripto logiką priklausomai nuo gautų atsakymų.
+
+
+p.S. metei.lt tinklpayje prie API dokumentacijos yra aprašyta licenzija. Kokia ji būtent? 
+Susipažink su CC licenzijomis [https://creativecommons.org/](https://creativecommons.org/). Ir atsakyk į šiuos klausimus:
+
+* ar tavo įmonė gali naudoti šiuos duomenis kuriant komercinius produktus?
+* ar sukūrus produktą, tu turi nurodyti, kas yra duomenų šalintinis?
+* ar tu gali pakeisti licenciją į kitokią? ką tai reiškia šiam produktui?
+
+
+---
+
+
+[data.gov.lt](https://data.gov.lt/datasets/2762/data/SeskinesPoliklinika)
+
+
+
+### Projektas 2 Šeškinės poliklinos radiologiniai tyrimai
+
+![moira.lt](../img/bash_advanced/moira-seskines-poliklinika-moira-post-14.jpg)
+
+Buvo gražus rytas, kai Šeškinės poliklinikos CTO, Ruprechtas, sukruto spręsti svarbių klausimų. Poliklinika buvo užimta kaip niekada, o radiologinių tyrimų kiekis augo kasdien. Ruprechtas žinojo, kad norint užtikrinti sklandų poliklinikos darbą, reikia rasti būdą, kaip efektyviai stebėti ir analizuoti šiuos tyrimus. Tad kreipėsi į "Linux consulting UAB" pagalbos.
+
+![Dall-E](../img/bash_advanced/cat_cto.webp)
+
+Justina,produktų vadovė (PM) turėjo viziją, kaip automatizuoti kasdienines ataskaitas, ir nedelsiant susitiko su tavimi suderinti darbo eigos.
+
+>„Klausyk, mums reikia, kad kasdien būtų pateikiama ataskaita apie atliktus tyrimus pagal kūno dalis,“ - sako Justina, tvirtai traukdama tave į projektą. „Reikia panaudoti duomenis iš data.gov.lt. Galėsi tai padaryti?“
+
+Tu žvilgtelėjai į pateiktą informaciją ir iš karto susidėliojai galvoje planą. 
+
+>„Taip, Justina, aš tuo pasirūpinsiu. Bus įdomus projektas.“
+
+Pasiruošei kibti į darbus, žinant, kad šis projektas padės poliklinikai ne tik optimizuoti kasdienius procesus, bet ir pagerinti ligonių priežiūrą. Be to šis projektas - puiki galimybė parodyti savo sugebėjimus ir prisidėti prie Ruprecht'o naujovių poliklinikoje.
+
+![Dall-E](../img/bash_advanced/meeting.webp)
+
+---
+
+
+* **Duomenų šaltinis**: [data.gov.lt](https://data.gov.lt/datasets/2762/data/SeskinesPoliklinika)
+* **Duomenų struktūra**:
+
+| Kodas                      | Reikšmė                                                  | Formatas                |
+|----------------------------|----------------------------------------------------------|-------------------------|
+| vda_id                     | Valstybės Duomenų Agentūros įrašo identifikatorius       | string                  |
+| paciento_asm_k             | Nuasmenintas paciento asmens kodas                       | string                  |
+| tyrimo_studijos_uuid       | Tyrimo studijos identifikatorius                         | string                  |
+| tyrimo_studijos_data       | Tyrimo studijos data                                     | date (ref: D)           |
+| paciento_gimimo_metai      | Paciento gimimo metai                                    | date (ref: Y)           |
+| paciento_lytis             | Paciento lytis                                           | string                  |
+| paciento_svoris            | Paciento kūno svoris kilogramais                         | number (ref: kg)        |
+| paciento_ugis              | Paciento ūgis metrais                                    | number (ref: m)         |
+| tyrimo_serijos_uuid        | Tyrimo serijos identifikatorius                          | string                  |
+| tirta_kuno_dalis           | Tirta kūno dalis                                         | string                  |
+| tyrimo_serijos_modalumas   | Tyrimo serijos modalumas                                 | string                  |
+| tyrimo_serijos_aprasymas   | Tyrimo serijos aprašymas                                 | string                  |
+| atvaizdo_uuid              | Atvaizdo unikalus identifikatorius                       | string                  |
+| apsvita                    | Apšvita arksekundėmis                                    | number (ref: ″)         |
+| spinduliuote               | Spinduliuotė decigrėjais kvadratiniame centimetre        | number (ref: dGy/cm²)   |
+| fotometrine_interpretacija | Fotometrinė interpretacija                               | string                  |
+
+* **Tiskslas**: Galėti kasdien Terminale gauti naujausius duomenis apie altiktų radiologinių tyrimų skaičių pagal kūno vietos.
+
+####  Sprendimo gairės {.unnumbered}
+
+Šie klausimai ir žingsniai padės tau sėkmingai atlikti užduotį. Nepamiršk, kad tai tik orientyrai, tad skirk laiko ir savarankiškai gilinkis į temą.
+
+#### Gilinkis į data.gov.lt {.unnumbered}
+
+1. API pasirinkimai:
+    * Eik į API puslapį ir ištyrinėk `getall`, `getone`, `changes`.
+    * Suprask, kaip kiekvienas variantas keičia JSON struktūrą. Apmastyk, ką jie kiekvienas reiškia tau ir ar ir kaip gali būti pritaikomi tavo projekte.
+1. Duomenų Filtravimas:
+    * Eik į „Duomenys“ lapą ir panaudok filtrą (select(*)).
+    * Pasirink keletą tau reikalingų stulpelių ir pažiūrėk, kaip tai paveikia užklausas
+    * Patikrink, kaip pasikeičia URL struktūra, kai pasirenki konkretų filtrą.
+
+1. Duomenų tyrinėjimas ir analizė:
+    * Naudok galimybę rūšiuoti ir filtruoti lentelės duomenis „Duomenys“ lape
+    * Atsakyk sau į šiuos klausimus:
+        * Kokia yra seniausia ir naujausia tyrimų data?
+        * Ar yra tuščių reikšmių?
+        * Ar yra skirtumas parsiuntimo greityje, priklausomai nuo mano padarytų pasirinkimų?
+    * Užbaigus filtravimą, grįžk į API lapą ir analizuok, kaip keitėsi užklausa. 
+    * Naudok tekstinį redaktorių pvz. Sublime, kad galėtum geriau pamatyti URL tvarką ir surpasti sistemą.
+
+
+
+#### Programavimo etapas {.unnumbered}
+
+* Sukurk projekto direktoriją
+* Sukurk README.md failą, kuriame aprašyk projekto informaciją ir tikslus.
+* Sukurk skriptą `recent_radiological_seskines_pol.sh`:
+    * Skriptas turi atsisiųsti duomenis JSON formatu.
+    * Pasirinkti reikalingus stulpelius: Tyrimo studijos data ir Tirta kūno dalis
+    * Filtruoti duomenis pagal nustatytą datą, pvz., 2024-11-28. arba datos intervalą
+    * Suskaičiuoti tyrimų skaičių pagal kūno dalis.
+    * Suplokštinti duomenis į TSV formatą.
+
+
+**Pastaba**: Kol dirbi su sintakse ir lygiavimu, sukurk laikinus failus, kad galėtum pamatyti, kur yra tabai ar tarpai. Tai padės teisingai supaprastinti duomenų apdorojimą ir išvengti klaidų. Vėliau tuos failus ištrinsi.
+
+
+#### MVP vertinimas {.unnumbered}
+
+Dienos pabaigoje, kai PM Justina grįžta, tu su nerimu ir pasididžiavimu parodai savo atliktą darbą. Justina, garsėjanti savo atidumu detalėms ir griežtumu, kritiškai apžvelgia rodmenis. Laikui bėgant, jos veide atsiranda šypsena.
+
+>„Puiku, man labai patinka, ką padarei“, - pagiria ji, nuleisdamažiūrėjusi į tavo kruopščiai parengtą rezultatą. „Tačiau, žinodama Ruprechtą, norėčiau, kad galėtume į projektą įtraukti daugiau aiškumo ir paprastumo. Gal gali parengti:
+
+>* Išsami README.md failo versiją: Aprašyk jame kiekvieną projekto dalį - nuo duomenų gavimo iki galutinio rezultato pateikimo. Būtų puiku, jei įtrauktum ir pastebėtas prielaidas bei pasiūlymus tobulinimui.
+
+>* Vienos eilutės komandą (Oneliner): Tokio tipo komanda turėtų tiesiog terminale pateikti vienos pasirinktos dienos rezultatus, kad mūsų techninis personalas galėtų greitai ir patogiai gauti reikiamą informaciją.
+
+>* Pilną skriptą: Jis turėtų būti išsamus, kad galėtų išgauti ir išfiltruoti duomenis už tam tikrą laikotarpį ir išsaugoti juos formatu, tinkamu atidaryti su libreoffice. Tai leis mūsų komandai lengvai tvarkytis su duomenimis ir rengti ataskaitas.“
+
+
+#### Pratęsimas {.unnumbered}
+
+Pamąstyk, kaip iš esamos darbo atlikimo strategijos sukurti:
+* Skriptą, kuris išsaugo duomenis, kuriuos galima atsidaryti su libreoffice --calc <failas>.
+* Vienos eilutės komandą, skirtą rezultatais naudotis terminale.
+
+Detaliai aprašyk atliktus veiksmus README.MD faile.
+
+
+
+::: {.callout-important title="Pagalba"}
+
+Kai mokeisi apie redirektorius `>`, `>>`, buvo paminėtas ir atgalinis redirektorius `<`.  ChatGPT arba interneto pagalba išsiakink, ką daro ši komanda ir pagalvok, kaip jos sintaksę galėtum pritaikyti savo projekte.
+
+```bash
+echo "labas rytas" | cat - <(echo "labas vakaras")
+```
+
+* ką reiškia `-`?
+* kodėl ir kam panaudojamas `<`
+:::
+
+
+---
+
+::: {.callout-important title="PagalbaL kaip alėtų atrodyti README.MD"}
+
+`<!-- -->` Žymi komentarus. Juos reiktų ištrintiir vietoj jų užpildyti tavo turiniu.
+
+```md
+# Šeškinės Poliklinikos Radiologinių Tyrimų Ataskaita
+
+## Projekto Aprašymas
+
+<!-- Aprašykite pagrindinį projekto tikslą ir ką jis daro. Tai svarbu, kad skaitytojai suprastų, apie ką yra projektas. -->
+
+## Pradžia
+
+### Reikalavimai
+
+<!-- Išvardinkite būtiną programinę įrangą ir jų versijas. Tai padės užtikrinti, kad projektas veiks skirtinguose įrenginiuose. -->
+
+### Diegimas
+
+<!-- Aprašykite diegimo instrukcijas, kaip naudotojas gali klonuoti ir pradėti naudotis projektu. Aiškios instrukcijos padės vartotojams lengviau pradėti. -->
+
+1. Klonuokite projektą:
+   `git clone <repo-url> && cd <repo>` 
+
+## Naudojimas
+
+#### Vienos Eilutės Komanda
+
+<!-- Įrašykite vienos eilutės komandos sintaksę. Ši dalis svarbi, kad vartotojai galėtų greitai išbandyti pagrindines funkcijas. -->
+
+#### Pilnas Skriptas
+
+<!-- Pateikite skripto sintaksę. Tai svarbu, kad būtų galima atlikti išsamesnę analizę ar duomenų tvarkymą. -->
+
+## Struktūra
+
+<!-- Aprašykite projekto failų struktūrą. Tai padės naudotojams geriau suprasti projekto organizaciją ir rasti reikiamus failus. -->
+
+- `README.md`: Dokumentacija
+- `recent_radiological_seskines_pol.sh`: Skriptas
+
+## Prielaidos
+
+<!-- Nurodykite visas prielaidas, kuriomis remiasi projektas. Tai svarbu, kad vartotojai žinotų, kas yra numatyta ir ką jie turi turėti ar atlikti prieš naudojant projektą. -->
+
+## Tolesni Plėtros Tikslai
+
+<!-- Apibūdinkite galimus ateities atnaujinimus ir plėtros kryptis. Tai gali įtraukti naujas funkcijas ar planuojamus patobulinimus. Padeda pateikti ilgalaikę projekto viziją. -->
+
+## Papildomi Ištekliai
+
+<!-- Pateikite nuorodas į papildomus išteklius, pavyzdžiui, naudojimo dokumentaciją ar technologijų, kurias naudavote, vadovus. Tai naudinga papildomai informacijai gauti. -->
+
+Daugiau informacijos apie Markdown: [Markdown Guide](https://www.markdownguide.org/basic-syntax/)
+```
+:::
