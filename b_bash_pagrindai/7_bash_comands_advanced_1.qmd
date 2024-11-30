@@ -395,23 +395,6 @@ pamatytum, kaip duomenys skrieja terminale:
 :::
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Failų Redagavimas ir Apdorojimas
 
 Praeitame skyriuje tu jau išmokai naudotis komanda sed, kuri yra labai galinga apdorojant raw duomenis. Dabar dar praplėsi savo supratimą, kaip gali išnaudoti uniq, kad geriau susipažintum su failo struktūra ar netgi atliktum mini analizes. Taip pat susipažinsi su JSON formatu, nes ne visada gali pavykti jo išvengti, o apdoroti JSON duomenis nėra labai sudėtinga net ir naudojant bash. Tiesa, Python tai padaryti lengviau.
@@ -450,17 +433,244 @@ Kaip matai, rezultatas nėra tobulas, nes dabar turi 6622 "Ortodontė" ir 6727 "
 :::
 
 
-### JSON Duomenų Formatas
+### JSON
 
-JSON (JavaScript Object Notation) yra duomenų formatas, kuris yra lengvai skaitomas žmonėms ir lengvai apdorojamas kompiuteriams. JSON dažnai naudojamas duomenų perdavimui tarp kliento ir serverio, nes jis yra palaikomas daugelio programavimo kalbų. Todėl su šiuo formatu susiduria tiek back-end inžinieriai, kurie turi paimti duomenis tokiu formatu ir gebėti patalpinti juos į duomenų bazes, tiek front-end inžinieriai kurdami tinklapių atvaizdavimą, tiek dažnai ir duomenų analitikai, kurie turi mokėti paversti (angl. **parse**) šiuos duomenis į tabuliarinius duomenis.
+#### JSON Duomenų Formatas
 
-JSON struktūros pagrindinės savybės:
 
-* JSON duomenys yra organizuojami kaip „raktas-vertė“ (**key:value**) poros.
-* Palaiko paprastas duomenų struktūras, tokias kaip masyvai ir objektai.
-* JSON pateikia duomenis aiškiai struktūrizuotu formatu.
+JSON (JavaScript Object Notation) yra dažnai naudojamas duomenų formatas IT pasaulyje, nes jis leidžia hierarchiškai organizuoti duomenis viename tekstiniame dokumente su `.json` plėtiniu. Tai ypač naudinga, kai pavieniai objektai gali turėti skirtingą atributų kiekį.
 
-Štai nedidelis JSON pavyzdys, kuriame pateikiami keli asmens duomenys:
+Pavyzdžiui, JSON struktūroje galėtume turėti tokius duomenis:
+
+```json
+{
+  "Tėtis": {
+    "amžius": 30,
+    "lytis": "V"
+  },
+  "Mama": {
+    "amžius": 30,
+    "lytis": "V",
+    "profesija": "IT analitikė",
+    "buvusios_darbovietės": {
+      "AUDI": {"profesija": "IT testuotoja"},
+      "BMW": {"profesija": "Inžinierė"}
+    }
+  },
+  "Vaikas": {
+    "amžius": 3,
+    "lytis": "M"
+  }
+}
+```
+
+Jeigu bandytum tokią hierarchinę struktūrą perkelti į tabuliarinę lentelę, tai būtų gana sudėtinga. Analitikoje tai vyksta su duomenų bazėmis, kur tam tikri atributai yra tam tikrose atskirose lentelėse. Tačiau interneto platformose kartais reikia paprasto ir greito būdo atvaizduoti panašius hierarchinius duomenis.
+
+JSON dažnai naudojamas duomenų perdavimui tarp kliento ir serverio, nes jis yra plačiai palaikomas daugelyje programavimo kalbų. Todėl su šiuo formatu susiduria tiek „back-end“ inžinieriai, turintys jį integruoti į duomenų bazes, tiek „front-end“ kūrėjai, kurie šį formatą naudoja tinklapių atvaizdavimui, tiek dažnai ir duomenų analitikai, kurie turi mokėti konvertuoti (angl. **parse**) šiuos duomenis į tabuliarinius duomenis analizei.
+
+#### JSON Struktūros Pagrindinės Savybės
+
+* JSON duomenys organizuojami „raktas:vertė“ (key:value) poromis, pvz., "amžius": 30, "lytis": "V".
+* JSON palaiko paprastas ir sudėtingas duomenų struktūras, tokias kaip objektai ir masyvai.
+* Aiškiai struktūrizuota forma leidžia lengvai suprasti duomenis ir jų kontekstą, padedant vizualizuoti hierarchiją, kaip panašu žemiau aprašytuose pavyzdžiuose.
+
+
+JSON Reikšmių Tipai
+
+* **Tekstas** (**string**): "Ruprechtas"
+* **Skaičius** (**number**): pvz., 10, 55, 99
+* **Loginė reikšmė** (**boolean**): `true`, `false`
+* **Jokia reikšmė**: `null`
+* **Objektas** - prasideda ir baigiasi `{}`, viduje turinčios key-value poras (dar vadinama dictionary kai kuriose kalbose, pvz., Python).
+* **Masyvas** - prasideda ir baigiasi `[]`, angliškai vadinamas **array** arba **list**; tai yra sąrašas su bet kokio tipo duomenimis, įskaitant objektus, skaičius ir tekstą.
+
+
+**JSON Objektas**
+
+* Tai struktūra, kuri sudaryta iš raktų ir reikšmių porų.
+* Kiekvienas raktas (**key**) yra unikalus ir turi susietą reikšmę (**value**).
+* JSON objektas naudojamas apibūdinti vieną dalyką arba vieną įrašą (pvz., žmogų, knygą, įmonę ir t.t.).
+* Tai panašu į "laukai ir reikšmės" formą lentelėje.
+* Puikiai tinka, kai reikia saugoti susijusią informaciją (pvz., žmogaus vardas, amžius, el. paštas).
+
+```json
+{
+  "name": "Jonas",
+  "age": 30,
+  "email": "jonas@example.com"
+}
+```
+
+**JSON Masyvas**
+
+* Struktūra, sudaryta iš reikšmių sąrašo (reikšmės gali būti objektai, skaičiai, tekstai ir kt.).
+* Reikšmės masyve nėra unikalios, bet turi tvarką (indeksus).
+
+```json
+[
+  {"name": "Jonas", "age": 30},
+  {"name": "Petras", "age": 25},
+  {"name": "Ona", "age": 28}
+]
+```
+
+**JSON Objekto ir Masyvo Naudojimas Kartu**
+
+JSON dažnai jungia objektus ir masyvus, kad galėtų lanksčiai aprašyti struktūras, pvz., studentų sąrašą:
+
+```json
+{
+  "students": [
+    {"name": "Jonas", "age": 30, "food": ["Ledai", "Lazanija"]},
+    {"name": "Petras", "age": 25, "food": ["Vištiena"]},
+    {"name": "Ona", "age": 28, "food": ["Vištiena", "Suši"]}
+  ]
+}
+```
+
+JSON Naudojimas API
+
+Su JSON formatu tu susidursi tada, kai dirbsi su front-end ir back-end, o taip pat, jeigu turėsi komunikuoti duomenis per API (An application programming interface).
+
+API yra įrankių ir protokolų rinkinys, leidžiantis skirtingoms programoms bendrauti vienai su kita. Tai kaip „tiltas“, leidžiantis vienai programai naudoti kitos funkcijas arba duomenis, nesigilinant į jų vidinį veikimą.
+
+Pvz., programa gali bendrauti su meteorologine tarnyba ir gauti orų prognozes. API nurodo, kaip siųsti užklausas ir kaip bus pateikiami atsakymai. Programai nesvarbu, kaip tarnyba suranda informaciją duomenų bazėje. Svarbiausia, kad ji supranta API taisykles.
+
+Populiarūs API stiliai:
+
+* REST (Representational State Transfer) – dažno naudojimo API dizaino stilius, naudojantis HTTP protokolą dėl savo paprastumo ir flexibilumo.
+* SOAP (Simple Object Access Protocol)
+* GraphQL
+WebSocket
+
+
+
+### `jq` 
+
+`jq` yra galingas komandinės eilutės įrankis, skirtas JSON duomenų apdorojimui Linux aplinkoje. Šis įrankis leidžia lengvai analizuoti, filtruoti, modifikuoti ir formatuoti JSON duomenis tiesiogiai terminale. Tai ypač naudinga dirbant su API atsakymais arba duomenų failais, pateiktais JSON formatu.
+
+Pirmiausia įsitikink, kad `jq` yra įdiegtas tavo sistemoje. Jei ne,  instaliuok su `sudo apt install jq`.
+
+
+`jq` komandos sintaksė yra paprasta:
+
+```bash
+jq <filtras> <failas>
+```
+Čia <filtras> nurodo, kurie duomenys ir kaip turėtų būti apdorojami, o <failas> – tai JSON failo pavadinimas, kuriuo dirbi.
+
+Jei JSON duomenys ateina iš kitos komandos:
+
+```bash
+komanda | jq <filtras>
+```
+
+JSON Duomenų Gražinimas
+
+JSON objekto duomenis galima išvesti gražiai suformatuotus. Paprasčiausias filtras yra `.` - jis išveda `visą` JSON struktūrą. Verta prisiminti, kad `jq` filtrų tekstą reikia įdėti į viengubas kabutes `'<filtras>'`, kad išvengtum sintaksės konfliktų su komanda.
+
+
+#### Darbas su JSON Objektais
+
+
+JSON objektas dažniausiai sudarytas iš raktų (key) ir verčių (value) porų.
+
+Pavyzdinis JSON objektas: Sukurk failą `user.json`.
+
+
+```bash
+echo '{
+  "name": "Jonas",
+  "age": 30,
+  "email": "jonas@example.com"
+}' > user.json
+```
+
+**Gražus Atvaizdavimas**
+
+Naudojant `jq .`, gali išvesti visą JSON turinį suformuotą skaitymui. `.` čia reiškia visą objektą, ir `jq` jį „gražina" su lygiavimo tarpais, kad būtų lengviau perskaityti.
+
+```bash
+jq '.' user.json
+```
+
+
+**Pavienių Verčių Gavimo Technika**
+
+Norint ištraukti konkrečią informaciją, galime nurodyti konkretų raktą. Tai išspausdina tik to rakto vertę, šiuo atveju - "Jonas".
+
+```bash
+jq '.name' user.json
+```
+
+**Kelių Rakčių Vertės**
+
+Jei nori gauti kelias reikšmes, gali jas atskirti kableliais. Ši komanda atspausdina vardą ir amžių kaip dvi atskiras eilutes.
+
+```bash
+jq '.name, .age' user.json
+```
+
+**Raktų ir Reikšmių Poros Atrinkimas**
+
+Kai nori išvesti ne tik vertę, bet ir raktą su verte, gali suformuoti naują objektą. Tai sukuria JSON objektą tik su pasirinktais raktais, šiuo atveju name arba name ir age.
+
+```bash
+jq '. | {name}' user.json
+jq '. | {name, age}' user.json
+```
+
+#### Darbas su JSON Masyvais
+
+JSON masyvas leidžia sukaupti kelis objektus arba vertes į vieną struktūrą.
+
+Sukurk JSON masyvą `students.json`, apimantį kelis žmonių objektus.
+
+```bash
+echo '[
+  {"name": "Jonas", "age": 30},
+  {"name": "Petras", "age": 25},
+  {"name": "Ona", "age": 28}
+]' > students.json
+```
+
+**Viso Masyvo Atvaizdavimas**
+
+Norint gražiai peržiūrėti masyvą, naudok:
+
+```bash
+jq '.' students.json
+```
+
+Tai pateikia visą JSON failo turinį, tinkamu formatu.
+
+**Atskirų Elementų Atrinkimas**
+
+Pasirink pirmą masyvo objektą (atkreipk dėmesį į nulio indeksavimą). Tai duoda pirmąją masyvo vertę, kuris yra Jonas objektas.
+
+```bash
+jq '.[0]' students.json
+```
+Gali apsirinkti ir kelis objektus
+
+```bash
+jq '.[0,1]' students.json
+```
+
+**Visų Elementų Iteracija**
+
+Norint atspausdinti visus name elementus:
+
+```
+jq '.[] | .name' students.json
+```
+
+`.` ir `[]` nurodo, kad nori peržvelgti (iteruoti) per visus masyvo elementus.
+
+
+::: {.callout-tip title="Praktika"}
+
+Šioje užduotyje dirbsi su JSON objektu, kuriame yra raktų ir reikšmių poros, taip pat masyvas ir objektas kaip reikšmė. Sukurk failą `info.json` ir dirbk su juo atliekant užduotis pateiktas žemiau.
 
 ```json
 {
@@ -481,117 +691,141 @@ JSON struktūros pagrindinės savybės:
 }
 ```
 
-Šiame JSON pavyzdyje:
+1. **Surask JSON objekte esantį rakto „name“ vertę ir atspausdink ją terminale.**
+   - Turėtum gauti: `"Jonas"`
 
-* „name“, „age“, „email“, ir „isStudent“ yra paprastos "raktas-vertė" poros.
-* „courses“ yra masyvas (sąrašas) su keliomis vertėmis.
-* „address“ yra sudėtinis objektas, kuriame yra kitos "raktas-vertė" poros.
+2. **Grąžink vardo rakto ir reikšmės porą kaip JSON objektą.**
+   - Tikimasi gauti: `{"name": "Jonas"}`
 
+3. **Išvesk masyvą su vardo ir amžiaus reikšmėmis.**
+   - Kaip rezultatą turėtum matyti masyvą: `["Jonas", 30]`
 
-### `jq` 
+4. **Grąžink objektą su vardo ir amžiaus raktais bei reikšmėmis.**
+   - Rezultatas turi būti: `{"name": "Jonas", "age": 30}`
 
-`jq` yra galingas komandinės eilutės įrankis, skirtas dirbti su JSON duomenimis Linux aplinkoje. Naudojant `jq` tu gali lengvai analizuoti, filtruoti, modifikuoti ir formatuoti JSON duomenis tiesiogiai terminale. Tai ypač naudinga dirbant su API atsakymais arba duomenų failais JSON formatu.
+5. **Atvaizduok visą „courses” masyvą.**
+   - Turėtum gauti masyvą: `["Matematika", "Informatika", "Fizika"]`
 
-Pasitikrink, ar `jq` įdiegta, ir jei ne, prisimink, kaip įdiegti programas naudojant terminalą, ir įsidiek `jq`.
+6. **Išvesk pirmąjį „courses“ masyvo elementą.**
+   - Tikimasi pamatyti pirmą kursą: `"Matematika"`
 
-Kadangi tavo parsiųsti failai yra dideli, su `jq` susipažink naudojant failą zverys.json, kurį susikurk terminale paleidus šią komandą:
+7. **Išvesk „address“ objektą.**
+   - Rezultatas: `{"street": "Gedimino pr. 1", "city": "Vilnius", "country": "Lietuva"}`
 
-```bash
-echo '[{"species":"Elnias","age":5,"weight":150,"location":"Miškas A"},{"species":"Briedis","age":8,"weight":600,"location":"Miškas B"},{"species":"Lūšis","age":3,"weight":20,"location":"Miškas C"},{"species":"Lapas","age":4,"weight":35,"location":"Miškas D"},{"species":"Lapė","age":6,"weight":15,"location":"Miškas E"}]' > zverys.json
+8. **Gauk „street” reikšmę iš „address“ objekto.**
+   - Turėtum matyti adresą: `"Gedimino pr. 1"`
+
+9. **Sukurk objektą su „city” ir „country“ iš „address“ objekto.**
+   - Rezultatas turi būti: `{"city": "Vilnius", "country": "Lietuva"}`
+:::
+
+#### JSON Filtravimas
+
+Grįžkime prie įrašo `students.json`. JSON filtravimo dažnai reikia tam, kad atrinktum specifines duomenų dalis, atitinkančias tam tikras sąlygas. Naudodjant `jq`, gali pritaikyti filtrus tiesiogiai JSON masyvuose.
+
+```json
+[
+  {"name": "Jonas", "age": 30},
+  {"name": "Petras", "age": 25},
+  {"name": "Ona", "age": 28}
+]
 ```
 
-Kaip matai, dabar viskas yra vienoje eilutėje, panašiai kaip ir su ValstybiniuNumeriu duomenų failu.
 
-Naudojant `jq`, tu gali išvesti jį gražiai suformatuotą, kad būtų lengviau skaityti. `jq` komandos struktūra yra tokia: `jq <filteris> <failas>`. Paprasčiausias filtras (jokio) yra `.`. Čia `.` operatorius nurodo visą JSON duomenų struktūrą. Kai naudoji `jq .`, tu sakai, kad nori išvesti visą JSON turinį, koks jis yra, tik galbūt gražiai suformatuotą, kad būtų lengviau skaityti.
-
-```bash
-jq . zverys.json
-```
-Rezultatas atrodo taip:
-
-![](../img/bash_advanced/jq_1.png)
-
-
-Jei nori išgauti tik visų žvėrių rūšis ("species"), t. y., pasirinkti vieną stulpelį, gali **filtruoti** juos:
-
-* `.` operatorius viduje: Kaip ir ankstesniame pavyzdyje, tai yra pradinis taškas, nuo kurio pradedama navigacija per JSON struktūrą.
-* `[]` operatorius: Tai yra masyvo operatorius, kuris nurodo `jq`, kad turi būti iteruojama per kiekvieną JSON masyvo elementą. Kiekvienas elementas masyve yra laikomas JSON objektu. Šiuo atveju, kiekvienas žvėris.
-* species raktas: Tai yra specifinio lauko pavadinimas kiekviename masyvo objekte. Šiuo atveju tai reiškia, kad iš kiekvieno masyvo elemento (kuris yra objektas) bus išimta vertė po raktu "species".
-
-```bash
-jq '.[].species' zverys.json
-```
-Rezultatas:
-
-![](../img/bash_advanced/jq_2.png)
-
-
-Jei nori pasirinkti pirmą masyvą (žvėrį) iš sąrašo:
-
-
-* Masyvo operatoriaus viduje `[]` reikia įrašyti konkretų numerį (**indeksą**), kuris prasideda nuo 0.
-
-```bash
-jq '.[0]' zverys.json
-```
-Rezultatas:
-
-![](../img/bash_advanced/jq_3.png)
-
-
-**Filtravimas pagal sąlygą**: Jei nori pasirinkti tik tuos žvėris, kurių svoris ("weight") yra didesnis nei 100:
-
-```bash
-jq '.[] | select(.weight > 100)' zverys.json
-```
-
-* `.` operatorius: Tai nurodo visą JSON duomenų struktūrą, pradedant nuo šaknies.
-* `[]` operatorius: Šis operatorius nurodo jq, kad jis turėtų iteruoti per kiekvieną JSON masyvo elementą. Kiekvienas elementas yra JSON objektas.
-* `|` operatorius: Tai yra **pipe** operatorius, kuris leidžia peradresuoti praeinantį elementą į sekančią komandos dalį. Tai veikia panašiai kaip shell komandose, leidžiant sujungti operacijas.
-* `select(.weight > 100)`:
-    * `select(...)` funkcija: Ji naudojama filtruoti elementus pagal tam tikrą sąlygą. Tik tie elementai, kurie atitinka sąlygą, yra išvedami į rezultatą.
-    * `.weight > 100` sąlyga: Šioje vietoje, kiekvieno masyvo elemento "weight" laukas tikrinamas, ar jo vertė yra daugiau nei 100. Tik tie objektai, kurių "weight" yra didesnis nei 100, bus palikti rezultate.
-
-![](../img/bash_advanced/jq_4.png)
-
-Jeigu nori JSON duomenis paversti į .csv formatą, gali naudoti:
+Kai nori atrinkti tik tuos studentus, kurių amžius yra didesnis nei 26, naudok `select` funkciją. `select` leidžia taikyti sąlygas, atrenkančias tik tas masyvo dalis, kurios atitinka nustatytą kriterijų. Atkreipk dėmesį, kad `select` funkcija veikia tik masyvo elementuose, todėl rezultatą reikia apdirbti iš masyvo konteksto.
 
 
 ```bash
-jq -r '.[] | [.species, .age, .weight, .location] | @csv' zverys.json 
+jq '.[] | select(.age > 26)' students.json
+```
+Ši komanda:
+
+* Naudoja `.[]`, kad pasiektų (iteruotų per) kiekvieną masyvo elementą.
+* Naudoja `select(.age > 26)` vidinėje komandoje, kad pasirinktų tik tuos objektus, kurių age yra didesnis nei 26.
+
+
+**Kombinuoti Filtrai**
+
+Kelių sąlygų derinimas leidžia atlikti išsamesnę analizę ir atrinkti dar tikslesnius duomenis. Pavyzdžiui, pasirink studentus, kurie yra vyresni nei 26 metai ir kurių vardas yra Ona:
+
+```bash
+jq '.[] | select(.age > 26 and .name == "Ona")' students.json
+```
+Naudojant `and`, `or`, tu gali derinti kelias sąlygas. Kiekvienas masyvo elementas bus filtruojamas pagal abi nurodytas sąlygas.
+
+
+#### JSON Plošktinimas
+
+Po filtro pritaikymo dažnai reikia JSON duomenis supaprastinti (suplokštinti) iš JSON struktūros į paprastesnį formatą, pavyzdžiui, `CSV` ar `TSV`. Tai yra naudinga, jei nori duomenis pateikti lenteliniu formatu, kuris yra lengviau interpretuojamas ar eksportuojamas į kitas sistemas.
+
+Plokštinimas taikomas tik masyvams `[]`, ne atskiriems objektams `{}`. Kai duomenys yra objekto formatu, reikia fiksuoti specifines reikšmes, kurias nori paversti plokščiu formatu. Pavertus objekto reikšmes į masyvą, galima tiksliai nurodyti, kas bus įtraukta į galutinį rezultatą:
+
+
+Vieno objekto pavertimas į masyvą:
+
+```bash
+jq '[.name, .age, .email] | @csv' user.json
 ```
 
-* `jq -r`: Naudojant `-r` (arba `--raw-output`) flagą, `jq` išveda neapdorotą išvestį, kuri pašalina kabutes aplink JSON reikšmes. Tai ypač naudinga, jei išvestyje norime gauti paprastą tekstą, kurio formatas nebus sutrikdytas dvigubomis kabutėmis.
-* `.` operatorius: Tai nurodo JSON šaknį ir suteikia kontekstą, nuo kurio pradedame veikti.
-* `[]` operatorius: Jis nurodo, kad dirbame su JSON masyvu ir iteruojame per kiekvieną masyvo elementą. Kiekvienas elementas yra JSON objektas.
-* `|` operatorius: Tai yra pipe operatorius, kurį naudojame perduoti esamą išvestį į kitą operaciją. Šioje komandoje jis naudojamas du kartus, kad kiekvienas masyvo elementas (žvėris) būtų transformuotas į specifinį formatą ir po to paverstas CSV.
-* `[.species, .age, .weight, .location]`: Ši dalis suformuoja kiekvieno masyvo elemento laukus, kuriuos norime išgauti, kaip JSON masyvą. Kiekvienas elementas masyve yra paimamas iš atitinkamo JSON objekto lauko (species, age, weight, location). Tai leidžia pasirinkti tik konkrečius laukus, kuriuos norime paversti į CSV formatą.
-* `@csv`: Tai yra jq operatorius, skirtas paversti JSON masyvus į CSV formatu atvaizduotas eilutes. Šis operatorius paverčia JSON masyvus į kableliu atskirtas reikšmes, t.y., CSV formatą, ir pasirūpina, kad kiekviena reikšmė būtų atitinkamai pabėgta (escaped) pagal CSV standartus.
+**Masyvo** duomenų pavertimas CSV formatu
+Tai suformuos lentelę, kurioje bus pateikti studentų vardai ir amžiai atskirti kableliais.
 
-![](../img/bash_advanced/jq_5.png)
 
-Dabar rezultatą galima išvesti nukreipiant į failą su `>` arba naudoti tolimesniame apdorojime su kitomis bash komandomis.
+```bash
+jq '.[] | [.name, .age] | @csv' students.json
+```
 
+**Vidinio masyvo plokštinimas**
+
+Kartais gali turėti masyvą JSON objekte ir nori jį paversti CSV formatu:
+
+```bash
+echo '{
+  "courses": ["Matematika", "Informatika", "Fizika"]
+}' | jq '.courses | @csv'
+```
+
+**Sudėtingo objekto masyvinimas prieš plokštinimą**
+
+Jei turi JSON struktūrą su vidiniu objektu, pirmiausia suformuok masyvą iš reikšmių, o tuomet įvykdyk plokštinimą:
+
+```bash
+echo '{
+  "address": {
+    "street": "Gedimino pr. 1",
+    "city": "Vilnius",
+    "country": "Lietuva"
+  }
+}' | jq '.address | [.street, .city, .country] | @csv'
+```
+
+**Kada rinktis @csv ir kada @tsv?**
+
+* Eksportui ir duomenų mainams tarp programų: @csv yra dažniausiai pasirenkamas dėl jo suderinamumo su daugeliu programų.
+* Tiesioginiam naudojimui terminale ir skriptams: @tsv dažnai pranašesnis, ypač kai dirbama su duomenimis, kuriuose gali būti daug kablelių.
+
+
+#### -r
+
+Dažnai norėsi, kad tekstinės reikšmės nebūtų apgaubtos dvigubomis kabutėmis CSV ar TSV formatuose. Flagas `-r` leidžia gauti "raw" arba neapdorotą tekstą be papildomų kabučių.
+
+Palygink:
+
+* Be `-r` flag'o tekstinės reikšmės bus su kabutėmis.
+* Su `-r` flag'o bus grąžintas tikrasis tekstas.
+
+```bash
+| jq '.courses | @csv'         # Išsaugotų kabutės
+| jq -r '.courses | @csv'      # Neįtrauks kabučių
+| jq '.courses | @tsv'         # Išsaugotų kabutės TSV formatu
+| jq -r '.courses | @tsv'      # Neįtrauks kabučių
+```
 
 ::: {.callout-tip title="Praktika"}
-1. Su `curl` arba `wget` parsisiųsk `https://get.data.gov.lt/datasets/gov/vulzk/registracija/Registracija`, kaip išvesties failo pavadinimą pasirink **reg_zalgiris.json**. Jei reikia, prisimink `curl` flagus su `--help` arba `tldr`.
 
-2. Išfiltruok visus duomenis, kur registracija buvo pas **"Ortopedas"**. Pasiimk tik **gydytojo_id** ir **gydytojo_specialybe** kaip stulpelius, tada paversk filtruotą masyvą į .csv formatą ir su `sort` bei `uniq` atsakyk, pas kiek skirtingų Ortopedų buvo registracijos?
+1. Su `curl` arba `wget` parsisiųsk `https://get.data.gov.lt/datasets/gov/vulzk/registracija/Registracija`. Išvesties failo pavadinimą nurodyk kaip **reg_zalgiris.json**. Jei reikia pagalbos su komandų sintakse, naudok `curl --help` arba `tldr curl`.
 
-Atkeipk dėmesį, šis JSON objektas turi kelis laukus (**_data**, **_page**). 
-    * **_data** yra masyvas, kuriame yra vienas ar daugiau JSON objektų, ir tavo norima informacija yra būtent čia.
-    * **_page** yra kitas masyvas, kurio nenori.
-    * Kadangi gydytojo_specialybe yra masyvo elemente po **_data** raktu, reikia iš pradžių patekti į šį masyvą, o tada atlikti filtravimą.
-
-![](../img/bash_advanced/jq_6.png)
-
-3. Identifikuok, kurie laukai iš galimų būtų prasmingi tolimesnei analizei. Paversk **reg_zalgiris.json** į csv formatą visiems pasirinktiems stulpeliams ir perleisk duomenis į failą **reg_zalgiris_from_json_to_csv.csv**.
-
-4. Jei dabar naudosi `head`, pamatysi, jog trūksta lentelės antraščių (header). Atsidaryk ChatGPT ir suformuok, ką bandai daryti, ką gauti. Kaip atrodo tavo duomenys. Perrašyk komandas ir perkurk  **reg_zalgiris_from_json_to_csv.csv** failą.
-
-5. Susikonspektuok pagrindinę informaciją!
-
-Tau labai praverstų prieš akis turėti .json struktūrą:
+Duomenų formatas:
 
 ```json
 {
@@ -616,9 +850,27 @@ Tau labai praverstų prieš akis turėti .json struktūrą:
     "next": "WyIzNTU1NDkiLCAiZDNjZjIxMzItZGQ3Mi00NTlhLTk2MjQtZTE3ZTYyNDE5MDUwIl0="
   }
 }
-
 ```
+1. Filtruok registracijas pagal gydytojo specialybę:
+  * Filtruok tik tas registracijas, kur gydytojo_specialybe yra "Ortopedas".
+  * Išrink tik du laukus: gydytojo_id ir gydytojo_specialybe.
+  * Filtruotus duomenis išsaugok CSV formatu.
+  * Galiausiai, su sort ir uniq nustatyk, kiek skirtingų ortopedų (pagal gydytojo_id) buvo.
+
+![](../img/bash_advanced/jq_6.png)
+
+1. Identifikuok reikšmingus laukus analizei
+  * Peržiūrėk JSON struktūrą, nuspręsk, kurie laukai yra naudingi tolesnei analizei (pvz., registracijos datos, paciento lytis, gimimo metai, gydytojo specialybė ir kt.).
+  * Konvertuok visus pasirinktus laukus į CSV formatą.
+
+5. Pridėk antraštes į CSV failą:
+  * Jei po `head` pastebi, kad CSV faile trūksta antraščių, jas galima pridėti rankiniu būdu arba sujungiant `echo` ir `cat`. Praktikuokis bendravimą su ChatGPT ir rask sprendimą.
+
 :::
+
+
+
+
 
 
 ##  Failų Paieška

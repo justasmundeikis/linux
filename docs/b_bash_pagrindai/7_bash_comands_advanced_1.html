@@ -460,7 +460,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#failų-redagavimas-ir-apdorojimas" id="toc-failų-redagavimas-ir-apdorojimas" class="nav-link" data-scroll-target="#failų-redagavimas-ir-apdorojimas"><span class="header-section-number">7.5</span> Failų Redagavimas ir Apdorojimas</a>
   <ul class="collapse">
   <li><a href="#uniq" id="toc-uniq" class="nav-link" data-scroll-target="#uniq"><span class="header-section-number">7.5.1</span> uniq</a></li>
-  <li><a href="#json-duomenų-formatas" id="toc-json-duomenų-formatas" class="nav-link" data-scroll-target="#json-duomenų-formatas"><span class="header-section-number">7.5.2</span> JSON Duomenų Formatas</a></li>
+  <li><a href="#json" id="toc-json" class="nav-link" data-scroll-target="#json"><span class="header-section-number">7.5.2</span> JSON</a></li>
   <li><a href="#jq" id="toc-jq" class="nav-link" data-scroll-target="#jq"><span class="header-section-number">7.5.3</span> <code>jq</code></a></li>
   </ul></li>
   <li><a href="#failų-paieška" id="toc-failų-paieška" class="nav-link" data-scroll-target="#failų-paieška"><span class="header-section-number">7.6</span> Failų Paieška</a>
@@ -940,91 +940,278 @@ Praktika
 </div>
 </div>
 </section>
-<section id="json-duomenų-formatas" class="level3" data-number="7.5.2">
-<h3 data-number="7.5.2" class="anchored" data-anchor-id="json-duomenų-formatas"><span class="header-section-number">7.5.2</span> JSON Duomenų Formatas</h3>
-<p>JSON (JavaScript Object Notation) yra duomenų formatas, kuris yra lengvai skaitomas žmonėms ir lengvai apdorojamas kompiuteriams. JSON dažnai naudojamas duomenų perdavimui tarp kliento ir serverio, nes jis yra palaikomas daugelio programavimo kalbų. Todėl su šiuo formatu susiduria tiek back-end inžinieriai, kurie turi paimti duomenis tokiu formatu ir gebėti patalpinti juos į duomenų bazes, tiek front-end inžinieriai kurdami tinklapių atvaizdavimą, tiek dažnai ir duomenų analitikai, kurie turi mokėti paversti (angl. <strong>parse</strong>) šiuos duomenis į tabuliarinius duomenis.</p>
-<p>JSON struktūros pagrindinės savybės:</p>
-<ul>
-<li>JSON duomenys yra organizuojami kaip „raktas-vertė“ (<strong>key:value</strong>) poros.</li>
-<li>Palaiko paprastas duomenų struktūras, tokias kaip masyvai ir objektai.</li>
-<li>JSON pateikia duomenis aiškiai struktūrizuotu formatu.</li>
-</ul>
-<p>Štai nedidelis JSON pavyzdys, kuriame pateikiami keli asmens duomenys:</p>
+<section id="json" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="json"><span class="header-section-number">7.5.2</span> JSON</h3>
+<section id="json-duomenų-formatas" class="level4" data-number="7.5.2.1">
+<h4 data-number="7.5.2.1" class="anchored" data-anchor-id="json-duomenų-formatas"><span class="header-section-number">7.5.2.1</span> JSON Duomenų Formatas</h4>
+<p>JSON (JavaScript Object Notation) yra dažnai naudojamas duomenų formatas IT pasaulyje, nes jis leidžia hierarchiškai organizuoti duomenis viename tekstiniame dokumente su <code>.json</code> plėtiniu. Tai ypač naudinga, kai pavieniai objektai gali turėti skirtingą atributų kiekį.</p>
+<p>Pavyzdžiui, JSON struktūroje galėtume turėti tokius duomenis:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Jonas"</span><span class="fu">,</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"age"</span><span class="fu">:</span> <span class="dv">30</span><span class="fu">,</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"email"</span><span class="fu">:</span> <span class="st">"jonas@example.com"</span><span class="fu">,</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"isStudent"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"courses"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Matematika"</span><span class="ot">,</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Informatika"</span><span class="ot">,</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Fizika"</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"address"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"street"</span><span class="fu">:</span> <span class="st">"Gedimino pr. 1"</span><span class="fu">,</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"city"</span><span class="fu">:</span> <span class="st">"Vilnius"</span><span class="fu">,</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"country"</span><span class="fu">:</span> <span class="st">"Lietuva"</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Šiame JSON pavyzdyje:</p>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"Tėtis"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"amžius"</span><span class="fu">:</span> <span class="dv">30</span><span class="fu">,</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"lytis"</span><span class="fu">:</span> <span class="st">"V"</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"Mama"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"amžius"</span><span class="fu">:</span> <span class="dv">30</span><span class="fu">,</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"lytis"</span><span class="fu">:</span> <span class="st">"V"</span><span class="fu">,</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"profesija"</span><span class="fu">:</span> <span class="st">"IT analitikė"</span><span class="fu">,</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"buvusios_darbovietės"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"AUDI"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"profesija"</span><span class="fu">:</span> <span class="st">"IT testuotoja"</span><span class="fu">},</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"BMW"</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">"profesija"</span><span class="fu">:</span> <span class="st">"Inžinierė"</span><span class="fu">}</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"Vaikas"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"amžius"</span><span class="fu">:</span> <span class="dv">3</span><span class="fu">,</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"lytis"</span><span class="fu">:</span> <span class="st">"M"</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Jeigu bandytum tokią hierarchinę struktūrą perkelti į tabuliarinę lentelę, tai būtų gana sudėtinga. Analitikoje tai vyksta su duomenų bazėmis, kur tam tikri atributai yra tam tikrose atskirose lentelėse. Tačiau interneto platformose kartais reikia paprasto ir greito būdo atvaizduoti panašius hierarchinius duomenis.</p>
+<p>JSON dažnai naudojamas duomenų perdavimui tarp kliento ir serverio, nes jis yra plačiai palaikomas daugelyje programavimo kalbų. Todėl su šiuo formatu susiduria tiek „back-end“ inžinieriai, turintys jį integruoti į duomenų bazes, tiek „front-end“ kūrėjai, kurie šį formatą naudoja tinklapių atvaizdavimui, tiek dažnai ir duomenų analitikai, kurie turi mokėti konvertuoti (angl. <strong>parse</strong>) šiuos duomenis į tabuliarinius duomenis analizei.</p>
+</section>
+<section id="json-struktūros-pagrindinės-savybės" class="level4" data-number="7.5.2.2">
+<h4 data-number="7.5.2.2" class="anchored" data-anchor-id="json-struktūros-pagrindinės-savybės"><span class="header-section-number">7.5.2.2</span> JSON Struktūros Pagrindinės Savybės</h4>
 <ul>
-<li>„name“, „age“, „email“, ir „isStudent“ yra paprastos “raktas-vertė” poros.</li>
-<li>„courses“ yra masyvas (sąrašas) su keliomis vertėmis.</li>
-<li>„address“ yra sudėtinis objektas, kuriame yra kitos “raktas-vertė” poros.</li>
+<li>JSON duomenys organizuojami „raktas:vertė“ (key:value) poromis, pvz., “amžius”: 30, “lytis”: “V”.</li>
+<li>JSON palaiko paprastas ir sudėtingas duomenų struktūras, tokias kaip objektai ir masyvai.</li>
+<li>Aiškiai struktūrizuota forma leidžia lengvai suprasti duomenis ir jų kontekstą, padedant vizualizuoti hierarchiją, kaip panašu žemiau aprašytuose pavyzdžiuose.</li>
 </ul>
+<p>JSON Reikšmių Tipai</p>
+<ul>
+<li><strong>Tekstas</strong> (<strong>string</strong>): “Ruprechtas”</li>
+<li><strong>Skaičius</strong> (<strong>number</strong>): pvz., 10, 55, 99</li>
+<li><strong>Loginė reikšmė</strong> (<strong>boolean</strong>): <code>true</code>, <code>false</code></li>
+<li><strong>Jokia reikšmė</strong>: <code>null</code></li>
+<li><strong>Objektas</strong> - prasideda ir baigiasi <code>{}</code>, viduje turinčios key-value poras (dar vadinama dictionary kai kuriose kalbose, pvz., Python).</li>
+<li><strong>Masyvas</strong> - prasideda ir baigiasi <code>[]</code>, angliškai vadinamas <strong>array</strong> arba <strong>list</strong>; tai yra sąrašas su bet kokio tipo duomenimis, įskaitant objektus, skaičius ir tekstą.</li>
+</ul>
+<p><strong>JSON Objektas</strong></p>
+<ul>
+<li>Tai struktūra, kuri sudaryta iš raktų ir reikšmių porų.</li>
+<li>Kiekvienas raktas (<strong>key</strong>) yra unikalus ir turi susietą reikšmę (<strong>value</strong>).</li>
+<li>JSON objektas naudojamas apibūdinti vieną dalyką arba vieną įrašą (pvz., žmogų, knygą, įmonę ir t.t.).</li>
+<li>Tai panašu į “laukai ir reikšmės” formą lentelėje.</li>
+<li>Puikiai tinka, kai reikia saugoti susijusią informaciją (pvz., žmogaus vardas, amžius, el. paštas).</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Jonas"</span><span class="fu">,</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"age"</span><span class="fu">:</span> <span class="dv">30</span><span class="fu">,</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"email"</span><span class="fu">:</span> <span class="st">"jonas@example.com"</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>JSON Masyvas</strong></p>
+<ul>
+<li>Struktūra, sudaryta iš reikšmių sąrašo (reikšmės gali būti objektai, skaičiai, tekstai ir kt.).</li>
+<li>Reikšmės masyve nėra unikalios, bet turi tvarką (indeksus).</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span><span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Jonas"</span><span class="fu">,</span> <span class="dt">"age"</span><span class="fu">:</span> <span class="dv">30</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span><span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Petras"</span><span class="fu">,</span> <span class="dt">"age"</span><span class="fu">:</span> <span class="dv">25</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span><span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Ona"</span><span class="fu">,</span> <span class="dt">"age"</span><span class="fu">:</span> <span class="dv">28</span><span class="fu">}</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>JSON Objekto ir Masyvo Naudojimas Kartu</strong></p>
+<p>JSON dažnai jungia objektus ir masyvus, kad galėtų lanksčiai aprašyti struktūras, pvz., studentų sąrašą:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"students"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Jonas"</span><span class="fu">,</span> <span class="dt">"age"</span><span class="fu">:</span> <span class="dv">30</span><span class="fu">,</span> <span class="dt">"food"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"Ledai"</span><span class="ot">,</span> <span class="st">"Lazanija"</span><span class="ot">]</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Petras"</span><span class="fu">,</span> <span class="dt">"age"</span><span class="fu">:</span> <span class="dv">25</span><span class="fu">,</span> <span class="dt">"food"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"Vištiena"</span><span class="ot">]</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Ona"</span><span class="fu">,</span> <span class="dt">"age"</span><span class="fu">:</span> <span class="dv">28</span><span class="fu">,</span> <span class="dt">"food"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"Vištiena"</span><span class="ot">,</span> <span class="st">"Suši"</span><span class="ot">]</span><span class="fu">}</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>JSON Naudojimas API</p>
+<p>Su JSON formatu tu susidursi tada, kai dirbsi su front-end ir back-end, o taip pat, jeigu turėsi komunikuoti duomenis per API (An application programming interface).</p>
+<p>API yra įrankių ir protokolų rinkinys, leidžiantis skirtingoms programoms bendrauti vienai su kita. Tai kaip „tiltas“, leidžiantis vienai programai naudoti kitos funkcijas arba duomenis, nesigilinant į jų vidinį veikimą.</p>
+<p>Pvz., programa gali bendrauti su meteorologine tarnyba ir gauti orų prognozes. API nurodo, kaip siųsti užklausas ir kaip bus pateikiami atsakymai. Programai nesvarbu, kaip tarnyba suranda informaciją duomenų bazėje. Svarbiausia, kad ji supranta API taisykles.</p>
+<p>Populiarūs API stiliai:</p>
+<ul>
+<li>REST (Representational State Transfer) – dažno naudojimo API dizaino stilius, naudojantis HTTP protokolą dėl savo paprastumo ir flexibilumo.</li>
+<li>SOAP (Simple Object Access Protocol)</li>
+<li>GraphQL WebSocket</li>
+</ul>
+</section>
 </section>
 <section id="jq" class="level3" data-number="7.5.3">
 <h3 data-number="7.5.3" class="anchored" data-anchor-id="jq"><span class="header-section-number">7.5.3</span> <code>jq</code></h3>
-<p><code>jq</code> yra galingas komandinės eilutės įrankis, skirtas dirbti su JSON duomenimis Linux aplinkoje. Naudojant <code>jq</code> tu gali lengvai analizuoti, filtruoti, modifikuoti ir formatuoti JSON duomenis tiesiogiai terminale. Tai ypač naudinga dirbant su API atsakymais arba duomenų failais JSON formatu.</p>
-<p>Pasitikrink, ar <code>jq</code> įdiegta, ir jei ne, prisimink, kaip įdiegti programas naudojant terminalą, ir įsidiek <code>jq</code>.</p>
-<p>Kadangi tavo parsiųsti failai yra dideli, su <code>jq</code> susipažink naudojant failą zverys.json, kurį susikurk terminale paleidus šią komandą:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'[{"species":"Elnias","age":5,"weight":150,"location":"Miškas A"},{"species":"Briedis","age":8,"weight":600,"location":"Miškas B"},{"species":"Lūšis","age":3,"weight":20,"location":"Miškas C"},{"species":"Lapas","age":4,"weight":35,"location":"Miškas D"},{"species":"Lapė","age":6,"weight":15,"location":"Miškas E"}]'</span> <span class="op">&gt;</span> zverys.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Kaip matai, dabar viskas yra vienoje eilutėje, panašiai kaip ir su ValstybiniuNumeriu duomenų failu.</p>
-<p>Naudojant <code>jq</code>, tu gali išvesti jį gražiai suformatuotą, kad būtų lengviau skaityti. <code>jq</code> komandos struktūra yra tokia: <code>jq &lt;filteris&gt; &lt;failas&gt;</code>. Paprasčiausias filtras (jokio) yra <code>.</code>. Čia <code>.</code> operatorius nurodo visą JSON duomenų struktūrą. Kai naudoji <code>jq .</code>, tu sakai, kad nori išvesti visą JSON turinį, koks jis yra, tik galbūt gražiai suformatuotą, kad būtų lengviau skaityti.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jq</span> . zverys.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Rezultatas atrodo taip:</p>
-<p><img src="../img/bash_advanced/jq_1.png" class="img-fluid"></p>
-<p>Jei nori išgauti tik visų žvėrių rūšis (“species”), t. y., pasirinkti vieną stulpelį, gali <strong>filtruoti</strong> juos:</p>
+<p><code>jq</code> yra galingas komandinės eilutės įrankis, skirtas JSON duomenų apdorojimui Linux aplinkoje. Šis įrankis leidžia lengvai analizuoti, filtruoti, modifikuoti ir formatuoti JSON duomenis tiesiogiai terminale. Tai ypač naudinga dirbant su API atsakymais arba duomenų failais, pateiktais JSON formatu.</p>
+<p>Pirmiausia įsitikink, kad <code>jq</code> yra įdiegtas tavo sistemoje. Jei ne, instaliuok su <code>sudo apt install jq</code>.</p>
+<p><code>jq</code> komandos sintaksė yra paprasta:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jq</span> <span class="op">&lt;</span>filtras<span class="op">&gt;</span> <span class="op">&lt;</span>failas<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Čia <filtras> nurodo, kurie duomenys ir kaip turėtų būti apdorojami, o <failas> – tai JSON failo pavadinimas, kuriuo dirbi.</failas></filtras></p>
+<p>Jei JSON duomenys ateina iš kitos komandos:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">komanda</span> <span class="kw">|</span> <span class="ex">jq</span> <span class="op">&lt;</span>filtras<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>JSON Duomenų Gražinimas</p>
+<p>JSON objekto duomenis galima išvesti gražiai suformatuotus. Paprasčiausias filtras yra <code>.</code> - jis išveda <code>visą</code> JSON struktūrą. Verta prisiminti, kad <code>jq</code> filtrų tekstą reikia įdėti į viengubas kabutes <code>'&lt;filtras&gt;'</code>, kad išvengtum sintaksės konfliktų su komanda.</p>
+<section id="darbas-su-json-objektais" class="level4" data-number="7.5.3.1">
+<h4 data-number="7.5.3.1" class="anchored" data-anchor-id="darbas-su-json-objektais"><span class="header-section-number">7.5.3.1</span> Darbas su JSON Objektais</h4>
+<p>JSON objektas dažniausiai sudarytas iš raktų (key) ir verčių (value) porų.</p>
+<p>Pavyzdinis JSON objektas: Sukurk failą <code>user.json</code>.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'{</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="st">  "name": "Jonas",</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="st">  "age": 30,</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="st">  "email": "jonas@example.com"</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="st">}'</span> <span class="op">&gt;</span> user.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Gražus Atvaizdavimas</strong></p>
+<p>Naudojant <code>jq .</code>, gali išvesti visą JSON turinį suformuotą skaitymui. <code>.</code> čia reiškia visą objektą, ir <code>jq</code> jį „gražina” su lygiavimo tarpais, kad būtų lengviau perskaityti.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jq</span> <span class="st">'.'</span> user.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pavienių Verčių Gavimo Technika</strong></p>
+<p>Norint ištraukti konkrečią informaciją, galime nurodyti konkretų raktą. Tai išspausdina tik to rakto vertę, šiuo atveju - “Jonas”.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jq</span> <span class="st">'.name'</span> user.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Kelių Rakčių Vertės</strong></p>
+<p>Jei nori gauti kelias reikšmes, gali jas atskirti kableliais. Ši komanda atspausdina vardą ir amžių kaip dvi atskiras eilutes.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jq</span> <span class="st">'.name, .age'</span> user.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Raktų ir Reikšmių Poros Atrinkimas</strong></p>
+<p>Kai nori išvesti ne tik vertę, bet ir raktą su verte, gali suformuoti naują objektą. Tai sukuria JSON objektą tik su pasirinktais raktais, šiuo atveju name arba name ir age.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jq</span> <span class="st">'. | {name}'</span> user.json</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">jq</span> <span class="st">'. | {name, age}'</span> user.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="darbas-su-json-masyvais" class="level4" data-number="7.5.3.2">
+<h4 data-number="7.5.3.2" class="anchored" data-anchor-id="darbas-su-json-masyvais"><span class="header-section-number">7.5.3.2</span> Darbas su JSON Masyvais</h4>
+<p>JSON masyvas leidžia sukaupti kelis objektus arba vertes į vieną struktūrą.</p>
+<p>Sukurk JSON masyvą <code>students.json</code>, apimantį kelis žmonių objektus.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'[</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="st">  {"name": "Jonas", "age": 30},</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="st">  {"name": "Petras", "age": 25},</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="st">  {"name": "Ona", "age": 28}</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="st">]'</span> <span class="op">&gt;</span> students.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Viso Masyvo Atvaizdavimas</strong></p>
+<p>Norint gražiai peržiūrėti masyvą, naudok:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jq</span> <span class="st">'.'</span> students.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Tai pateikia visą JSON failo turinį, tinkamu formatu.</p>
+<p><strong>Atskirų Elementų Atrinkimas</strong></p>
+<p>Pasirink pirmą masyvo objektą (atkreipk dėmesį į nulio indeksavimą). Tai duoda pirmąją masyvo vertę, kuris yra Jonas objektas.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jq</span> <span class="st">'.[0]'</span> students.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Gali apsirinkti ir kelis objektus</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jq</span> <span class="st">'.[0,1]'</span> students.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Visų Elementų Iteracija</strong></p>
+<p>Norint atspausdinti visus name elementus:</p>
+<pre><code>jq '.[] | .name' students.json</code></pre>
+<p><code>.</code> ir <code>[]</code> nurodo, kad nori peržvelgti (iteruoti) per visus masyvo elementus.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praktika
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Šioje užduotyje dirbsi su JSON objektu, kuriame yra raktų ir reikšmių poros, taip pat masyvas ir objektas kaip reikšmė. Sukurk failą <code>info.json</code> ir dirbk su juo atliekant užduotis pateiktas žemiau.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Jonas"</span><span class="fu">,</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"age"</span><span class="fu">:</span> <span class="dv">30</span><span class="fu">,</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"email"</span><span class="fu">:</span> <span class="st">"jonas@example.com"</span><span class="fu">,</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"isStudent"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"courses"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Matematika"</span><span class="ot">,</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Informatika"</span><span class="ot">,</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Fizika"</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"address"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"street"</span><span class="fu">:</span> <span class="st">"Gedimino pr. 1"</span><span class="fu">,</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"city"</span><span class="fu">:</span> <span class="st">"Vilnius"</span><span class="fu">,</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"country"</span><span class="fu">:</span> <span class="st">"Lietuva"</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li><strong>Surask JSON objekte esantį rakto „name“ vertę ir atspausdink ją terminale.</strong>
 <ul>
-<li><code>.</code> operatorius viduje: Kaip ir ankstesniame pavyzdyje, tai yra pradinis taškas, nuo kurio pradedama navigacija per JSON struktūrą.</li>
-<li><code>[]</code> operatorius: Tai yra masyvo operatorius, kuris nurodo <code>jq</code>, kad turi būti iteruojama per kiekvieną JSON masyvo elementą. Kiekvienas elementas masyve yra laikomas JSON objektu. Šiuo atveju, kiekvienas žvėris.</li>
-<li>species raktas: Tai yra specifinio lauko pavadinimas kiekviename masyvo objekte. Šiuo atveju tai reiškia, kad iš kiekvieno masyvo elemento (kuris yra objektas) bus išimta vertė po raktu “species”.</li>
-</ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jq</span> <span class="st">'.[].species'</span> zverys.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Rezultatas:</p>
-<p><img src="../img/bash_advanced/jq_2.png" class="img-fluid"></p>
-<p>Jei nori pasirinkti pirmą masyvą (žvėrį) iš sąrašo:</p>
-<ul>
-<li>Masyvo operatoriaus viduje <code>[]</code> reikia įrašyti konkretų numerį (<strong>indeksą</strong>), kuris prasideda nuo 0.</li>
-</ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jq</span> <span class="st">'.[0]'</span> zverys.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Rezultatas:</p>
-<p><img src="../img/bash_advanced/jq_3.png" class="img-fluid"></p>
-<p><strong>Filtravimas pagal sąlygą</strong>: Jei nori pasirinkti tik tuos žvėris, kurių svoris (“weight”) yra didesnis nei 100:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jq</span> <span class="st">'.[] | select(.weight &gt; 100)'</span> zverys.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li><code>.</code> operatorius: Tai nurodo visą JSON duomenų struktūrą, pradedant nuo šaknies.</li>
-<li><code>[]</code> operatorius: Šis operatorius nurodo jq, kad jis turėtų iteruoti per kiekvieną JSON masyvo elementą. Kiekvienas elementas yra JSON objektas.</li>
-<li><code>|</code> operatorius: Tai yra <strong>pipe</strong> operatorius, kuris leidžia peradresuoti praeinantį elementą į sekančią komandos dalį. Tai veikia panašiai kaip shell komandose, leidžiant sujungti operacijas.</li>
-<li><code>select(.weight &gt; 100)</code>:
-<ul>
-<li><code>select(...)</code> funkcija: Ji naudojama filtruoti elementus pagal tam tikrą sąlygą. Tik tie elementai, kurie atitinka sąlygą, yra išvedami į rezultatą.</li>
-<li><code>.weight &gt; 100</code> sąlyga: Šioje vietoje, kiekvieno masyvo elemento “weight” laukas tikrinamas, ar jo vertė yra daugiau nei 100. Tik tie objektai, kurių “weight” yra didesnis nei 100, bus palikti rezultate.</li>
+<li>Turėtum gauti: <code>"Jonas"</code></li>
 </ul></li>
-</ul>
-<p><img src="../img/bash_advanced/jq_4.png" class="img-fluid"></p>
-<p>Jeigu nori JSON duomenis paversti į .csv formatą, gali naudoti:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jq</span> <span class="at">-r</span> <span class="st">'.[] | [.species, .age, .weight, .location] | @csv'</span> zverys.json </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<li><strong>Grąžink vardo rakto ir reikšmės porą kaip JSON objektą.</strong>
 <ul>
-<li><code>jq -r</code>: Naudojant <code>-r</code> (arba <code>--raw-output</code>) flagą, <code>jq</code> išveda neapdorotą išvestį, kuri pašalina kabutes aplink JSON reikšmes. Tai ypač naudinga, jei išvestyje norime gauti paprastą tekstą, kurio formatas nebus sutrikdytas dvigubomis kabutėmis.</li>
-<li><code>.</code> operatorius: Tai nurodo JSON šaknį ir suteikia kontekstą, nuo kurio pradedame veikti.</li>
-<li><code>[]</code> operatorius: Jis nurodo, kad dirbame su JSON masyvu ir iteruojame per kiekvieną masyvo elementą. Kiekvienas elementas yra JSON objektas.</li>
-<li><code>|</code> operatorius: Tai yra pipe operatorius, kurį naudojame perduoti esamą išvestį į kitą operaciją. Šioje komandoje jis naudojamas du kartus, kad kiekvienas masyvo elementas (žvėris) būtų transformuotas į specifinį formatą ir po to paverstas CSV.</li>
-<li><code>[.species, .age, .weight, .location]</code>: Ši dalis suformuoja kiekvieno masyvo elemento laukus, kuriuos norime išgauti, kaip JSON masyvą. Kiekvienas elementas masyve yra paimamas iš atitinkamo JSON objekto lauko (species, age, weight, location). Tai leidžia pasirinkti tik konkrečius laukus, kuriuos norime paversti į CSV formatą.</li>
-<li><code>@csv</code>: Tai yra jq operatorius, skirtas paversti JSON masyvus į CSV formatu atvaizduotas eilutes. Šis operatorius paverčia JSON masyvus į kableliu atskirtas reikšmes, t.y., CSV formatą, ir pasirūpina, kad kiekviena reikšmė būtų atitinkamai pabėgta (escaped) pagal CSV standartus.</li>
+<li>Tikimasi gauti: <code>{"name": "Jonas"}</code></li>
+</ul></li>
+<li><strong>Išvesk masyvą su vardo ir amžiaus reikšmėmis.</strong>
+<ul>
+<li>Kaip rezultatą turėtum matyti masyvą: <code>["Jonas", 30]</code></li>
+</ul></li>
+<li><strong>Grąžink objektą su vardo ir amžiaus raktais bei reikšmėmis.</strong>
+<ul>
+<li>Rezultatas turi būti: <code>{"name": "Jonas", "age": 30}</code></li>
+</ul></li>
+<li><strong>Atvaizduok visą „courses” masyvą.</strong>
+<ul>
+<li>Turėtum gauti masyvą: <code>["Matematika", "Informatika", "Fizika"]</code></li>
+</ul></li>
+<li><strong>Išvesk pirmąjį „courses“ masyvo elementą.</strong>
+<ul>
+<li>Tikimasi pamatyti pirmą kursą: <code>"Matematika"</code></li>
+</ul></li>
+<li><strong>Išvesk „address“ objektą.</strong>
+<ul>
+<li>Rezultatas: <code>{"street": "Gedimino pr. 1", "city": "Vilnius", "country": "Lietuva"}</code></li>
+</ul></li>
+<li><strong>Gauk „street” reikšmę iš „address“ objekto.</strong>
+<ul>
+<li>Turėtum matyti adresą: <code>"Gedimino pr. 1"</code></li>
+</ul></li>
+<li><strong>Sukurk objektą su „city” ir „country“ iš „address“ objekto.</strong>
+<ul>
+<li>Rezultatas turi būti: <code>{"city": "Vilnius", "country": "Lietuva"}</code></li>
+</ul></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="json-filtravimas" class="level4" data-number="7.5.3.3">
+<h4 data-number="7.5.3.3" class="anchored" data-anchor-id="json-filtravimas"><span class="header-section-number">7.5.3.3</span> JSON Filtravimas</h4>
+<p>Grįžkime prie įrašo <code>students.json</code>. JSON filtravimo dažnai reikia tam, kad atrinktum specifines duomenų dalis, atitinkančias tam tikras sąlygas. Naudodjant <code>jq</code>, gali pritaikyti filtrus tiesiogiai JSON masyvuose.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span><span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Jonas"</span><span class="fu">,</span> <span class="dt">"age"</span><span class="fu">:</span> <span class="dv">30</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span><span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Petras"</span><span class="fu">,</span> <span class="dt">"age"</span><span class="fu">:</span> <span class="dv">25</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span><span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Ona"</span><span class="fu">,</span> <span class="dt">"age"</span><span class="fu">:</span> <span class="dv">28</span><span class="fu">}</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Kai nori atrinkti tik tuos studentus, kurių amžius yra didesnis nei 26, naudok <code>select</code> funkciją. <code>select</code> leidžia taikyti sąlygas, atrenkančias tik tas masyvo dalis, kurios atitinka nustatytą kriterijų. Atkreipk dėmesį, kad <code>select</code> funkcija veikia tik masyvo elementuose, todėl rezultatą reikia apdirbti iš masyvo konteksto.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jq</span> <span class="st">'.[] | select(.age &gt; 26)'</span> students.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ši komanda:</p>
+<ul>
+<li>Naudoja <code>.[]</code>, kad pasiektų (iteruotų per) kiekvieną masyvo elementą.</li>
+<li>Naudoja <code>select(.age &gt; 26)</code> vidinėje komandoje, kad pasirinktų tik tuos objektus, kurių age yra didesnis nei 26.</li>
 </ul>
-<p><img src="../img/bash_advanced/jq_5.png" class="img-fluid"></p>
-<p>Dabar rezultatą galima išvesti nukreipiant į failą su <code>&gt;</code> arba naudoti tolimesniame apdorojime su kitomis bash komandomis.</p>
+<p><strong>Kombinuoti Filtrai</strong></p>
+<p>Kelių sąlygų derinimas leidžia atlikti išsamesnę analizę ir atrinkti dar tikslesnius duomenis. Pavyzdžiui, pasirink studentus, kurie yra vyresni nei 26 metai ir kurių vardas yra Ona:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jq</span> <span class="st">'.[] | select(.age &gt; 26 and .name == "Ona")'</span> students.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Naudojant <code>and</code>, <code>or</code>, tu gali derinti kelias sąlygas. Kiekvienas masyvo elementas bus filtruojamas pagal abi nurodytas sąlygas.</p>
+</section>
+<section id="json-plošktinimas" class="level4" data-number="7.5.3.4">
+<h4 data-number="7.5.3.4" class="anchored" data-anchor-id="json-plošktinimas"><span class="header-section-number">7.5.3.4</span> JSON Plošktinimas</h4>
+<p>Po filtro pritaikymo dažnai reikia JSON duomenis supaprastinti (suplokštinti) iš JSON struktūros į paprastesnį formatą, pavyzdžiui, <code>CSV</code> ar <code>TSV</code>. Tai yra naudinga, jei nori duomenis pateikti lenteliniu formatu, kuris yra lengviau interpretuojamas ar eksportuojamas į kitas sistemas.</p>
+<p>Plokštinimas taikomas tik masyvams <code>[]</code>, ne atskiriems objektams <code>{}</code>. Kai duomenys yra objekto formatu, reikia fiksuoti specifines reikšmes, kurias nori paversti plokščiu formatu. Pavertus objekto reikšmes į masyvą, galima tiksliai nurodyti, kas bus įtraukta į galutinį rezultatą:</p>
+<p>Vieno objekto pavertimas į masyvą:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jq</span> <span class="st">'[.name, .age, .email] | @csv'</span> user.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Masyvo</strong> duomenų pavertimas CSV formatu Tai suformuos lentelę, kurioje bus pateikti studentų vardai ir amžiai atskirti kableliais.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jq</span> <span class="st">'.[] | [.name, .age] | @csv'</span> students.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Vidinio masyvo plokštinimas</strong></p>
+<p>Kartais gali turėti masyvą JSON objekte ir nori jį paversti CSV formatu:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'{</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="st">  "courses": ["Matematika", "Informatika", "Fizika"]</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="st">}'</span> <span class="kw">|</span> <span class="ex">jq</span> <span class="st">'.courses | @csv'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Sudėtingo objekto masyvinimas prieš plokštinimą</strong></p>
+<p>Jei turi JSON struktūrą su vidiniu objektu, pirmiausia suformuok masyvą iš reikšmių, o tuomet įvykdyk plokštinimą:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'{</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="st">  "address": {</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="st">    "street": "Gedimino pr. 1",</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="st">    "city": "Vilnius",</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="st">    "country": "Lietuva"</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="st">  }</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="st">}'</span> <span class="kw">|</span> <span class="ex">jq</span> <span class="st">'.address | [.street, .city, .country] | @csv'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Kada rinktis <span class="citation" data-cites="csv">@csv</span> ir kada <span class="citation" data-cites="tsv">@tsv</span>?</strong></p>
+<ul>
+<li>Eksportui ir duomenų mainams tarp programų: <span class="citation" data-cites="csv">@csv</span> yra dažniausiai pasirenkamas dėl jo suderinamumo su daugeliu programų.</li>
+<li>Tiesioginiam naudojimui terminale ir skriptams: <span class="citation" data-cites="tsv">@tsv</span> dažnai pranašesnis, ypač kai dirbama su duomenimis, kuriuose gali būti daug kablelių.</li>
+</ul>
+</section>
+<section id="r" class="level4" data-number="7.5.3.5">
+<h4 data-number="7.5.3.5" class="anchored" data-anchor-id="r"><span class="header-section-number">7.5.3.5</span> -r</h4>
+<p>Dažnai norėsi, kad tekstinės reikšmės nebūtų apgaubtos dvigubomis kabutėmis CSV ar TSV formatuose. Flagas <code>-r</code> leidžia gauti “raw” arba neapdorotą tekstą be papildomų kabučių.</p>
+<p>Palygink:</p>
+<ul>
+<li>Be <code>-r</code> flag’o tekstinės reikšmės bus su kabutėmis.</li>
+<li>Su <code>-r</code> flag’o bus grąžintas tikrasis tekstas.</li>
+</ul>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">jq</span> <span class="st">'.courses | @csv'</span>         <span class="co"># Išsaugotų kabutės</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">jq</span> <span class="at">-r</span> <span class="st">'.courses | @csv'</span>      <span class="co"># Neįtrauks kabučių</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">jq</span> <span class="st">'.courses | @tsv'</span>         <span class="co"># Išsaugotų kabutės TSV formatu</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">jq</span> <span class="at">-r</span> <span class="st">'.courses | @tsv'</span>      <span class="co"># Neįtrauks kabučių</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Praktika">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1036,41 +1223,57 @@ Praktika
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li><p>Su <code>curl</code> arba <code>wget</code> parsisiųsk <code>https://get.data.gov.lt/datasets/gov/vulzk/registracija/Registracija</code>, kaip išvesties failo pavadinimą pasirink <strong>reg_zalgiris.json</strong>. Jei reikia, prisimink <code>curl</code> flagus su <code>--help</code> arba <code>tldr</code>.</p></li>
-<li><p>Išfiltruok visus duomenis, kur registracija buvo pas <strong>“Ortopedas”</strong>. Pasiimk tik <strong>gydytojo_id</strong> ir <strong>gydytojo_specialybe</strong> kaip stulpelius, tada paversk filtruotą masyvą į .csv formatą ir su <code>sort</code> bei <code>uniq</code> atsakyk, pas kiek skirtingų Ortopedų buvo registracijos?</p></li>
+<li>Su <code>curl</code> arba <code>wget</code> parsisiųsk <code>https://get.data.gov.lt/datasets/gov/vulzk/registracija/Registracija</code>. Išvesties failo pavadinimą nurodyk kaip <strong>reg_zalgiris.json</strong>. Jei reikia pagalbos su komandų sintakse, naudok <code>curl --help</code> arba <code>tldr curl</code>.</li>
 </ol>
-<p>Atkeipk dėmesį, šis JSON objektas turi kelis laukus (**_data<strong>, </strong>_page<strong>). * </strong>_data** yra masyvas, kuriame yra vienas ar daugiau JSON objektų, ir tavo norima informacija yra būtent čia. * **_page** yra kitas masyvas, kurio nenori. * Kadangi gydytojo_specialybe yra masyvo elemente po **_data** raktu, reikia iš pradžių patekti į šį masyvą, o tada atlikti filtravimą.</p>
+<p>Duomenų formatas:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"_data"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"_type"</span><span class="fu">:</span> <span class="st">"datasets/gov/vulzk/registracija/Registracija"</span><span class="fu">,</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"_id"</span><span class="fu">:</span> <span class="st">"d3cf2132-dd72-459a-9624-e17e62419050"</span><span class="fu">,</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"_revision"</span><span class="fu">:</span> <span class="st">"f77c9ebd-f2d3-483b-ae76-fd3c6a1f91d8"</span><span class="fu">,</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"_base"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"registracijos_id"</span><span class="fu">:</span> <span class="st">"355549"</span><span class="fu">,</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"gydymo_registracijos_data"</span><span class="fu">:</span> <span class="st">"2013-11-28T08:00:00"</span><span class="fu">,</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"registracijos_iraso_sukurimo_data"</span><span class="fu">:</span> <span class="st">"2013-07-02T00:00:00"</span><span class="fu">,</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"registracijos_iraso_keitimo_data"</span><span class="fu">:</span> <span class="st">"2013-11-27T13:11:00"</span><span class="fu">,</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"paciento_id"</span><span class="fu">:</span> <span class="st">"1978fdae338a6ca"</span><span class="fu">,</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"paciento_lytis"</span><span class="fu">:</span> <span class="st">"V"</span><span class="fu">,</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"paciento_gimimo_metai"</span><span class="fu">:</span> <span class="st">"1977-01-01T00:00:00"</span><span class="fu">,</span></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"gydytojo_id"</span><span class="fu">:</span> <span class="st">"99"</span><span class="fu">,</span></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"gydytojo_specialybe"</span><span class="fu">:</span> <span class="st">"Endotontologė"</span></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"_page"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"next"</span><span class="fu">:</span> <span class="st">"WyIzNTU1NDkiLCAiZDNjZjIxMzItZGQ3Mi00NTlhLTk2MjQtZTE3ZTYyNDE5MDUwIl0="</span></span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li>Filtruok registracijas pagal gydytojo specialybę:</li>
+</ol>
+<ul>
+<li>Filtruok tik tas registracijas, kur gydytojo_specialybe yra “Ortopedas”.</li>
+<li>Išrink tik du laukus: gydytojo_id ir gydytojo_specialybe.</li>
+<li>Filtruotus duomenis išsaugok CSV formatu.</li>
+<li>Galiausiai, su sort ir uniq nustatyk, kiek skirtingų ortopedų (pagal gydytojo_id) buvo.</li>
+</ul>
 <p><img src="../img/bash_advanced/jq_6.png" class="img-fluid"></p>
-<ol start="3" type="1">
-<li><p>Identifikuok, kurie laukai iš galimų būtų prasmingi tolimesnei analizei. Paversk <strong>reg_zalgiris.json</strong> į csv formatą visiems pasirinktiems stulpeliams ir perleisk duomenis į failą <strong>reg_zalgiris_from_json_to_csv.csv</strong>.</p></li>
-<li><p>Jei dabar naudosi <code>head</code>, pamatysi, jog trūksta lentelės antraščių (header). Atsidaryk ChatGPT ir suformuok, ką bandai daryti, ką gauti. Kaip atrodo tavo duomenys. Perrašyk komandas ir perkurk <strong>reg_zalgiris_from_json_to_csv.csv</strong> failą.</p></li>
-<li><p>Susikonspektuok pagrindinę informaciją!</p></li>
+<ol type="1">
+<li>Identifikuok reikšmingus laukus analizei</li>
 </ol>
-<p>Tau labai praverstų prieš akis turėti .json struktūrą:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"_data"</span><span class="fu">:</span> <span class="ot">[</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"_type"</span><span class="fu">:</span> <span class="st">"datasets/gov/vulzk/registracija/Registracija"</span><span class="fu">,</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"_id"</span><span class="fu">:</span> <span class="st">"d3cf2132-dd72-459a-9624-e17e62419050"</span><span class="fu">,</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"_revision"</span><span class="fu">:</span> <span class="st">"f77c9ebd-f2d3-483b-ae76-fd3c6a1f91d8"</span><span class="fu">,</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"_base"</span><span class="fu">:</span> <span class="kw">null</span><span class="fu">,</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"registracijos_id"</span><span class="fu">:</span> <span class="st">"355549"</span><span class="fu">,</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"gydymo_registracijos_data"</span><span class="fu">:</span> <span class="st">"2013-11-28T08:00:00"</span><span class="fu">,</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"registracijos_iraso_sukurimo_data"</span><span class="fu">:</span> <span class="st">"2013-07-02T00:00:00"</span><span class="fu">,</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"registracijos_iraso_keitimo_data"</span><span class="fu">:</span> <span class="st">"2013-11-27T13:11:00"</span><span class="fu">,</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"paciento_id"</span><span class="fu">:</span> <span class="st">"1978fdae338a6ca"</span><span class="fu">,</span></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"paciento_lytis"</span><span class="fu">:</span> <span class="st">"V"</span><span class="fu">,</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"paciento_gimimo_metai"</span><span class="fu">:</span> <span class="st">"1977-01-01T00:00:00"</span><span class="fu">,</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"gydytojo_id"</span><span class="fu">:</span> <span class="st">"99"</span><span class="fu">,</span></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"gydytojo_specialybe"</span><span class="fu">:</span> <span class="st">"Endotontologė"</span></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"_page"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"next"</span><span class="fu">:</span> <span class="st">"WyIzNTU1NDkiLCAiZDNjZjIxMzItZGQ3Mi00NTlhLTk2MjQtZTE3ZTYyNDE5MDUwIl0="</span></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Peržiūrėk JSON struktūrą, nuspręsk, kurie laukai yra naudingi tolesnei analizei (pvz., registracijos datos, paciento lytis, gimimo metai, gydytojo specialybė ir kt.).</li>
+<li>Konvertuok visus pasirinktus laukus į CSV formatą.</li>
+</ul>
+<ol start="5" type="1">
+<li>Pridėk antraštes į CSV failą:</li>
+</ol>
+<ul>
+<li>Jei po <code>head</code> pastebi, kad CSV faile trūksta antraščių, jas galima pridėti rankiniu būdu arba sujungiant <code>echo</code> ir <code>cat</code>. Praktikuokis bendravimą su ChatGPT ir rask sprendimą.</li>
+</ul>
 </div>
 </div>
+</section>
 </section>
 </section>
 <section id="failų-paieška" class="level2" data-number="7.6">
@@ -1080,7 +1283,7 @@ Praktika
 <h3 data-number="7.6.1" class="anchored" data-anchor-id="find"><span class="header-section-number">7.6.1</span> find</h3>
 <p>Komanda <code>find</code> yra naudojama ieškoti failų ir direktorijų pagal pavadinimą, dydį, datą, teises ir kitus kriterijus.</p>
 <p>Bazinė <code>find</code> komanda atrodo taip:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> /path/to/search <span class="at">-options</span> criteria <span class="at">-options</span> criteria</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> /path/to/search <span class="at">-options</span> criteria <span class="at">-options</span> criteria</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Pažiūrėk savo dabartinę darbinę direktoriją. Kokius failus joje turi, ir kokie yra jų dydžiai.</p>
 <p>Kadangi šiuo atveju tik keli failai, tai gali pasirodyti ne itin įdomu. Patikrink, ar turi <strong>shell_part_2</strong> savo namų direktorijoje. Jei ne, paleisk skriptą, kad ji vėl būtų sukurta (žr. praėjusio skyriaus pradžią).</p>
 <p>Ieškoti failų esamoje darbinėje direktorijoje (t.y. “čia”) galima naudojant taško notaciją <code>.</code>. Tačiau dažniau dirbsi su <code>~</code>, t.y. nuoroda į savo namų direktoriją. Tavo ir mano terminalo išvestys gali skirtis, tad nenustebk, jei matysi daugiau ar mažiau failų.</p>
@@ -1094,28 +1297,28 @@ Praktika
 </ul>
 <p><code>find</code> priima daug skirtingų nustatymų (flagų), vienas pagrindinių yra <code>-name</code>.</p>
 <p>Pavyzdžiui, suraskime, kur yra failas su registracijomis į Žalgirio kliniką. Tarkime, prisimeni tik, kad ten buvo “<strong>zalgiris</strong>” pavadinime. Pirmoji komanda negražina jokio failo, nes jo nerado. <code>find</code>, kaip ir dauguma bash komandų, gali veikti su “wildcards” (pakaitos simboliais):</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-name</span> zalgiris</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-name</span> <span class="pp">*</span>zalgiris<span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-name</span> zalgiris</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-name</span> <span class="pp">*</span>zalgiris<span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="../img/bash_advanced/find_wildcard.png" class="img-fluid"></p>
 <p>Dabar, jei nori surasti failą su valstybiniais numeriais, tačiau <code>find ~ -name *valstyb*</code> nieko negrąžina, tai yra todėl, kad find yra “case-sensitive”, kaip ir visa BASH aplinka. Panašiai kaip ir su kitomis komandomis, gali pasinaudoti <code>-iname</code>, kad paieška nebūtų jautri raidžių dydžiui:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-name</span> <span class="pp">*</span>valstyb<span class="pp">*</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-iname</span> <span class="pp">*</span>valstyb<span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-name</span> <span class="pp">*</span>valstyb<span class="pp">*</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-iname</span> <span class="pp">*</span>valstyb<span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="../img/bash_advanced/find_iname.png" class="img-fluid"></p>
 <p>Jei nenurodysi <code>-name &lt;pavadinimas&gt;</code>, tada find komanda ieškos visų failų ar direktorijų, atitinkančių kitus nurodytus kriterijus; jei nebus jokio kriterijaus, tada ji suras tiesiog visus failus ir direktorijas bei nuorodas. Sekančioje komandoje <code>find</code> ieško visų failų, direktorijų ir nuorodų <strong>bash_advanced</strong> dirkeotrijos viduje.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> bash_advanced/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> bash_advanced/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="../img/bash_advanced/find_noargs.png" class="img-fluid"></p>
 <p>Kartais gali norėti, kad <code>find</code> grąžintų ne tik rastų failų adresus, bet ir daugiau informacijos. Tada gali panaudoti <code>-ls</code> flagą. Jis iš esmės panašus tau įprastą <code>ls</code> komandą.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> bash_advanced/ <span class="at">-ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> bash_advanced/ <span class="at">-ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="../img/bash_advanced/find_ls.png" class="img-fluid"></p>
 <p>Gali apriboti paiešką pagal tai, ko ieškai: ar tai yra failas (<code>f</code>), direktorija (<code>d</code>), ar nuoroda (<code>l</code>). Ši komanda ieško tipo - direktorijos, kurios pavadinime yra žodis prasidedantis “Do”.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-type</span> d <span class="at">-name</span> <span class="st">"Do*"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-type</span> d <span class="at">-name</span> <span class="st">"Do*"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Kaip matai <code>find</code> grąžina ir direktorijas, kurios yra paslėptos.</p>
 <p><img src="../img/bash_advanced/find_type.png" class="img-fluid"></p>
 <p>Jei tave domina rasti failus, kurie užima daug arba labai mažai vietos, šiuo atveju tau padės <code>-size</code> flagas. Jis priima skaičius žmonėms suprantamu formatu, pvz., 10M = 10 megabaitų, 1G = 1 gigabaitas ir t.t. Norint nurodyti failų dydį, gali naudoti <code>-</code> arba <code>+</code> prieš skaičių, kad sakytum “mažesnis nei” arba “didesnis nei”.</p>
 <p>Jei nurodysi skaičių be pliuso ar minuso, <code>find</code> ieškos failų, kurių dydis lygus nurodytam skaičiui.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> <span class="at">-type</span> f <span class="at">-size</span> <span class="at">-300M</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> <span class="at">-type</span> f <span class="at">-size</span> 300M</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> <span class="at">-type</span> f <span class="at">-size</span> +300M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> <span class="at">-type</span> f <span class="at">-size</span> <span class="at">-300M</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> <span class="at">-type</span> f <span class="at">-size</span> 300M</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> <span class="at">-type</span> f <span class="at">-size</span> +300M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>[]</p>
 <p>Gali norėti ieškoti failų pagal jų:</p>
 <ul>
@@ -1124,26 +1327,26 @@ Praktika
 <li>Prieigos datą <code>a</code></li>
 </ul>
 <p>Tokiu atveju turėtum naudoti flagus -<code>[acm]time</code> (pasirink reikiamą raidę) ir nurodyti dienas. <code>-n</code> reikš per paskutines n dienų, <code>+n</code> reikš “daugiau kaip n dienų”. Turėk omenyje, jog dienas find vertina kaip kalendorines. Taip pat, jei nori, gali sujungti kelis reikalavimus į vieną, pavyzdžiui: ieškoti failų, kurie buvo sukurti daugiau kaip prieš 2 dienas <code>-ctime +2</code>, bet (ir) mažiau kaip prieš 7 dienas <code>-ctime -7</code>.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-type</span> f <span class="at">-ctime</span> +2 <span class="at">-ctime</span> <span class="at">-7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-type</span> f <span class="at">-ctime</span> +2 <span class="at">-ctime</span> <span class="at">-7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Paleidus šią komandą, pamatysi, kad tikėtina, turi nemažai failų, ir galbūt norėsi apriboti, kaip “giliai” <code>find</code> turėtų ieškoti. Pabandyk panaudoti <code>-maxdepth</code> arba <code>-mindepth</code>. Šie argumentai yra globalus, todėl juos turėtum rašyti iškart po <code>find ~</code>.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-maxdepth</span> 1 <span class="at">-type</span> f <span class="at">-ctime</span> +2 <span class="at">-ctime</span> <span class="at">-7</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-maxdepth</span> 1 <span class="at">-type</span> f <span class="at">-ctime</span> +2 <span class="at">-ctime</span> <span class="at">-7</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>[]</p>
 <p>Komanda <code>find</code> priima ir loginius operatorius: <code>-and</code>, <code>-or</code>, ir <code>!</code> (šauktukas, kuris reiškia “ne”). Nenustebk, jei kartais pamatysi trumpinius <code>-a</code> ir <code>-o</code>.</p>
 <p>Štai komandos, kurios ieško failų, kurie yra sukurti daugiau nei prieš 2, bet mažiau nei prieš 7 dienas, ARBA ir IR kai jų dydis yra daugiau nei 300MB.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-maxdepth</span> 2 <span class="at">-type</span> d <span class="at">-ctime</span> +2 <span class="at">-ctime</span> <span class="at">-7</span> <span class="at">-or</span> <span class="at">-size</span> +300M</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-maxdepth</span> 2 <span class="at">-type</span> d <span class="at">-ctime</span> +2 <span class="at">-ctime</span> <span class="at">-7</span> <span class="at">-and</span> <span class="at">-size</span> +300M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-maxdepth</span> 2 <span class="at">-type</span> d <span class="at">-ctime</span> +2 <span class="at">-ctime</span> <span class="at">-7</span> <span class="at">-or</span> <span class="at">-size</span> +300M</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-maxdepth</span> 2 <span class="at">-type</span> d <span class="at">-ctime</span> +2 <span class="at">-ctime</span> <span class="at">-7</span> <span class="at">-and</span> <span class="at">-size</span> +300M</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Kaip matai, <code>-or</code> leidžia rasti daugiau, nes užtenka, kad bent viena sąlyga būtų patenkinta, tuo tarpu <code>-and</code> reikalauja, kad visos sąlygos būtų patenkintos.</p>
 <p><img src="../img/bash_advanced/find_and_or.png" class="img-fluid">_</p>
 <p>Ką daryti, jei nori sujungti daugiau sąlygų arba sukurti sudėtingesnį loginį algoritmą? Tam gali išnaudoti skliaustus. Tačiau juos turėsi pabėgti su ( ir ), kad <code>find</code> ieškotų ne skliaustelių pavadinime.</p>
 <p>Štai kaip galima ieškoti failų, kurie yra didesni nei 2M <strong>ir</strong> mažesni nei 100M <strong>IR ARBA</strong> .csv, arba .txt formato:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-size</span> +2M <span class="at">-size</span> <span class="at">-100M</span> <span class="dt">\(</span> <span class="at">-iname</span> <span class="pp">*</span>.txt <span class="at">-or</span> <span class="at">-iname</span> <span class="pp">*</span>.csv <span class="dt">\)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-size</span> +2M <span class="at">-size</span> <span class="at">-100M</span> <span class="dt">\(</span> <span class="at">-iname</span> <span class="pp">*</span>.txt <span class="at">-or</span> <span class="at">-iname</span> <span class="pp">*</span>.csv <span class="dt">\)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Svarbu paminėti, kad <strong>būtina turėti tarpus aplink skliaustus</strong>! Jei sujungi kelis reikalavimus, kaip <code>-size +2M</code>, <code>-size -100M</code>, jie sujungiami pagal nulytijimą su <code>-and</code>, todėl nebūtina jo nurodyti aiškiai.</p>
 <p>Dabar prieikime prie pavojingesnių komandų!</p>
 <p><code>find</code> turi nustatymą <code>-delete</code>, kuris visus surastus failus, rastus pagal nurodytus parametrus, ištrins. Naudok <code>-delete</code> tik tada, kai esi visiškai tikras, kad viskas, kas randama, gali būti trinama.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-name</span> <span class="st">"*.txt"</span> <span class="at">-delete</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-name</span> <span class="st">"*.txt"</span> <span class="at">-delete</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="../img/bash_advanced/find_delete.png" class="img-fluid"></p>
 <p><code>find</code> komanda jau yra labai galinga, bet dar nežinai jos stipriausios pusės! Su <code>find</code> gali perduoti rastus failus tolesniam apdorojimui. Tiesa, tai neveikia taip, kaip su pipe <code>|</code>. Sintaksė yra tokia:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ... <span class="at">-exec</span> <span class="op">&lt;</span>komanda<span class="op">&gt;</span> {} <span class="dt">\;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ... <span class="at">-exec</span> <span class="op">&lt;</span>komanda<span class="op">&gt;</span> {} <span class="dt">\;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><code>-exec</code> nurodo, kad su tuo, ką radai, dabar vykdysi kitą komandą.</li>
 <li><code>&lt;komanda&gt;</code> gali būti bet kuri, tik turi būti tinkama pasirinktiems failams.</li>
@@ -1151,7 +1354,7 @@ Praktika
 <li>Kad baigi komandą, nurodai su <code>\;</code>.</li>
 </ul>
 <p>Įsivaizduok, kad nori atspausdinti visas eilutes, kuriose yra žodis “apie”. Bet nepameni, kuriame būtent faile, tik žinai, kad tas failas buvo .txt formato.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-type</span> f <span class="at">-iname</span> <span class="st">"*.txt"</span> <span class="at">-exec</span> grep <span class="at">-iH</span> <span class="st">"apie"</span> {} <span class="dt">\;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-type</span> f <span class="at">-iname</span> <span class="st">"*.txt"</span> <span class="at">-exec</span> grep <span class="at">-iH</span> <span class="st">"apie"</span> {} <span class="dt">\;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>taigi <code>find</code> suranda visus tekstinius failus, tiklsiau tuos failus, kurių pavadinimas baigiasi <strong>.txt</strong></li>
 <li><code>-exec</code> perleidžia juos <code>grep</code> komandai</li>
@@ -1160,8 +1363,8 @@ Praktika
 <p><img src="../img/bash_advanced/find_exec.png" class="img-fluid"></p>
 <p>Taip, galima perduoti rastus failus ir kitoms komandoms, pvz., <code>rm</code>, <code>cp</code>, <code>mv</code>.</p>
 <p>Kaip matai, perduoti failus <code>-exec</code> gali būti pavojinga. Alternatyva, kur tavęs prašys patvirtinti kiekvienam failui taikomą komandą, yra <code>-ok</code>. Štai komanda, kuri suras visus failus, kurių pavadinime yra .csv ir padarys jų kopiją į aplanką <strong>~/copy.</strong></p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/copy</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-iname</span> <span class="st">"*.csv"</span> <span class="at">-ok</span> cp {} ~/copy/ <span class="dt">\;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/copy</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-iname</span> <span class="st">"*.csv"</span> <span class="at">-ok</span> cp {} ~/copy/ <span class="dt">\;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Kaip matai, prieš kiekvieną operaciją, terminalas reikalauja patvirtinimo, kurį turi įrašyti kaip <code>y</code> arba <code>yes</code>, kad patvritinti. Įrašius <code>n</code>, <code>no</code> , arba tiesiog paspaudus Enter, tai atitiks <strong>no</strong> ir komanda tam failui nebus įvykdyta.</p>
 <div class="quarto-video"><video id="video_shortcode_videojs_video3" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="../img/bash_advanced/find_ok_copy.mp4"></video></div>
 <p>Vykdant šią operaciją, <code>find</code> rado tuos pačius failus dar kartą, ten, kur jie jau buvo nukopijuoti, t.y., pačioje <strong>copy</strong> direktorijoje. Kad išvengtum to, gali find nurodyti, kur neieškoti su <code>-not -path "/home/justas/copy/*"</code> arba <code>! -path "/home/justas/copy/*"</code>. Atkreipk dėmesį į tai, kad nurodant <code>-not -path</code>, reikia <strong>absoliutaus adreso</strong> ir <strong>*</strong>, kad ten rasti failai (jų adresai) nebūtų įtraukti.</p>
@@ -1303,19 +1506,19 @@ Praktika
 <p>Ši tema gali pasirodyti šiek tiek sudėtingesnė, bet ją pravartu žinoti norint geriau suprasti, kaip veikia Linux komandinė eilutė (CLI).</p>
 <p>Kai tu įvedi komandą, pvz., <code>ls</code>, kaip Shell žino, kokią programą paleisti? Shell negali peržiūrėti visų tavo failų ieškodama programos <code>ls</code> - tai būtų neefektyvu ir užtruktų labai ilgai. Vietoje to, Bash naudoja <strong>aplinkos kintamąjį</strong>, vadinamą <strong>PATH</strong>, kuris yra saugomas visų direktorijų sąrašas, kurias Bash tikrina ieškodama vykdomųjų programų.</p>
 <p>Kai tu įvedi <code>ls</code>, Bash tikrina šias direktorijas pagal eiliškumą:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/local/sbin</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/local/bin</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/sbin</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/bin</span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="ex">/sbin</span></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="ex">/bin</span></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/games</span></span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/local/games</span></span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="ex">/snap/bin</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/local/sbin</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/local/bin</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/sbin</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/bin</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="ex">/sbin</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="ex">/bin</span></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/games</span></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="ex">/usr/local/games</span></span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a><span class="ex">/snap/bin</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Šis tikrinimo procesas vyksta taip: jei programa nerandama pirmojoje direktorijoje, tikrinama kita iš eilės, kol galiausiai programa randama. Jei programa nerandama visame PATH sąraše, terminalas išveda pranešimą, kuris gali siūlyti šią programą įdiegti.</p>
 <p>Retais atvejais tau gali reikėti pridėti naujų direktorijų prie <strong>PATH</strong> kintamojo, tačiau tai yra pažangesnė tema, ir pradedančiajam Linux naudotojui dažniausiai to nereikės. Dabar žinai, kaip Bash naudoja PATH norėdama greitai surasti ir paleisti programas.</p>
 <p>Nori sužinoti kaip atrodo tavo PATH? Pabandyk:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$PATH</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$PATH</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="failo-teisių-valdymas" class="level2" data-number="7.7">
@@ -1324,12 +1527,12 @@ Praktika
 <section id="failo-teisių-struktūra" class="level3" data-number="7.7.1">
 <h3 data-number="7.7.1" class="anchored" data-anchor-id="failo-teisių-struktūra"><span class="header-section-number">7.7.1</span> Failo Teisių Struktūra</h3>
 <p>Failų teises galima pamatyti, naudojant <code>ls -l</code> komandą, kuri išveda informaciją apie failus, įskaitant jų teises:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxrwxr-x</span> 4 justas justas 4096 Sep 27 18:28 backup</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxrwxr-x</span> 2 justas justas 4096 Sep 28 18:45 data</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-rw-r--</span> 1 justas justas   45 Sep 28 16:28 list_du_home.sh</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-rw-r--</span> 1 justas justas  635 Sep 28 13:33 list.txt</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxrwxr-x</span> 2 justas justas 4096 Sep 27 21:42 mix</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxrwxr-x</span> 2 justas justas 4096 Sep 28 18:34 text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxrwxr-x</span> 4 justas justas 4096 Sep 27 18:28 backup</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxrwxr-x</span> 2 justas justas 4096 Sep 28 18:45 data</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-rw-r--</span> 1 justas justas   45 Sep 28 16:28 list_du_home.sh</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="ex">-rw-rw-r--</span> 1 justas justas  635 Sep 28 13:33 list.txt</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxrwxr-x</span> 2 justas justas 4096 Sep 27 21:42 mix</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="ex">drwxrwxr-x</span> 2 justas justas 4096 Sep 28 18:34 text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Kiekviena eilutė parodo failo teises:</p>
 <ul>
 <li><code>r</code> - skaitymo teisė</li>
@@ -1357,7 +1560,7 @@ Praktika
 <li>Kitiems: skaityti (4+0+0 = 4)</li>
 </ul>
 <p>Pavyzdys, kaip nustatyti teises su chmod:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 754 failas.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 754 failas.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Šios komandos rezultatas - <strong>user</strong> gali skaityti, rašyti, vykdyti; <strong>grupė</strong> gali tik skaityti ir vykdyti, o kiti tik skaityti.</p>
 <p><strong>Simbolinis Būdas</strong></p>
 <p>Simboliniame būde naudoji raides ir simbolius:</p>
@@ -1371,7 +1574,7 @@ Praktika
 <li><code>=</code>: nustatyti tikslias teises</li>
 </ul>
 <p>Ši komanda prideda vykdymo teisę savininkui.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u+x failas.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u+x failas.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="keisti-savininką-su-chown-ir-grupę-su-chgrp" class="level3" data-number="7.7.3">
 <h3 data-number="7.7.3" class="anchored" data-anchor-id="keisti-savininką-su-chown-ir-grupę-su-chgrp"><span class="header-section-number">7.7.3</span> Keisti Savininką su chown ir Grupę su chgrp</h3>
@@ -1389,7 +1592,7 @@ Praktika
 <p>Yra kelios situacijos, kai gali reikėti keisti failo teises:</p>
 <p><strong>Skriptų Paleidimas </strong></p>
 <p>Jei sukuri skriptą, pavyzdžiui, <code>senu_video_valymas.sh</code>, ir nori jį paleisti, gali reikėti suteikti sau vykdymo teisės:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 744 senu_video_valymas.sheet</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 744 senu_video_valymas.sheet</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Failas tapęs skriptu pakeičia spalvą į žalią.</p>
 <p><img src="../img/bash_advanced/chmod.png" class="img-fluid"></p>
 <p><strong>AppImage Programų Paleidimas </strong></p>
@@ -1401,7 +1604,7 @@ Praktika
 <p>Norint paleisti failą, reiktų susirasti failą per failų naršyklę, o tada pasirenkant “Properties” &gt; “Permissions” ir pažymėti “Allow executing file as program”.</p>
 <div class="quarto-video"><video id="video_shortcode_videojs_video5" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="../img/bash_advanced/chmod_free.mp4"></video></div>
 <p>Arba sutieki tokias pat teises su <code>chmod</code> naudojant terminalą:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 774 freetube_0.22.0_amd64.AppImage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 774 freetube_0.22.0_amd64.AppImage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="procesų-valdymas" class="level2" data-number="7.8">
@@ -1427,9 +1630,9 @@ Praktika
 <h4 data-number="7.8.1.1" class="anchored" data-anchor-id="tipiniai-scenarijai"><span class="header-section-number">7.8.1.1</span> Tipiniai Scenarijai</h4>
 <p><strong>Ieškoti Konkretaus Proceso</strong></p>
 <p>Jei dirbi su dideliu Python skriptu, kuris užstringa, ir tau reikia jį sustabdyti:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> aux <span class="kw">|</span> <span class="fu">grep</span> python</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> aux <span class="kw">|</span> <span class="fu">grep</span> python</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Ši komanda parodys visus procesus, susijusius su python. Suradus proceso <strong>PID</strong>, jį gali sustabdyti su komanda <code>kill</code>:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="bu">kill</span> <span class="op">&lt;</span>PID<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="bu">kill</span> <span class="op">&lt;</span>PID<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="kill-komanda" class="level3" data-number="7.8.2">
@@ -1449,10 +1652,10 @@ Praktika
 </ul>
 <p><strong>Rūšiuoti Pagal Procesoriaus Naudojimą</strong></p>
 <p>Jei kompiuteris veikia lėtai, gali išsiaiškinti, kuris procesas labiausiai apkrauna CPU:</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> aux <span class="at">--sort</span><span class="op">=</span>-%cpu <span class="kw">|</span> <span class="fu">head</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> aux <span class="at">--sort</span><span class="op">=</span>-%cpu <span class="kw">|</span> <span class="fu">head</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Atminties Naudojimo Analizė</strong></p>
 <p>Jei RAM greitai užsipildo analizuojant didelius duomenis:</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> aux <span class="at">--sort</span><span class="op">=</span>-%mem <span class="kw">|</span> <span class="fu">head</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> aux <span class="at">--sort</span><span class="op">=</span>-%mem <span class="kw">|</span> <span class="fu">head</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="top" class="level3" data-number="7.8.3">
 <h3 data-number="7.8.3" class="anchored" data-anchor-id="top"><span class="header-section-number">7.8.3</span> <code>top</code></h3>
@@ -1518,12 +1721,12 @@ Praktika
 <ul>
 <li>Atidaryti esamą arba sukurti naują failą:</li>
 </ul>
-<div class="sourceCode" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> <span class="op">&lt;</span>failas<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> <span class="op">&lt;</span>failas<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Jei failas egzistuoja, jis bus atidarytas redagavimui. Jei failo nėra, jį išsaugant bus sukurtas naujas failas.</p>
 <ul>
 <li>Redaguoti <strong>sisteminius</strong> failus su administracinėmis teisėmis:</li>
 </ul>
-<div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nano <span class="op">&lt;</span>failas<span class="op">&gt;</span><span class="kw">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nano <span class="op">&lt;</span>failas<span class="op">&gt;</span><span class="kw">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Jeigu paleisi <code>nano</code> be failo, jis sukurs naują buferį. Gali pradėti rašyti tekstą iš karto. Naudok rodyklių klavišus, kad judėtum tekste.Išsaugant, bus sukurtas failas tuo pavadinimu, kurį nurodysi.</p>
 <p><strong>Keli naudingi flagai:</strong></p>
 <ul>
@@ -1588,7 +1791,7 @@ Praktika
 <p>Užbaikime šį skyrių pasitelkę nedidelį “programavimą”. Nors tai dar nėra pilnai skriptų rašymas, tačiau toks metodas padės palengvinti kasdienį darbą terminale, sukuriant trumpinius dažnai naudojamoms komandoms. Trumpniai vadinamai <strong>alias</strong>.</p>
 <p><img src="../img/bash_advanced/alias.jpg" class="img-fluid"></p>
 <p>Tu išmokai ieškoti didelių video failų ir tavo komanda atrodė taip:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~/Downloads/ ~/dwhelper/ <span class="at">-type</span> f <span class="at">-iname</span> <span class="st">"*.mp4"</span> <span class="at">-size</span> +100M <span class="at">-atime</span> +14</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~/Downloads/ ~/dwhelper/ <span class="at">-type</span> f <span class="at">-iname</span> <span class="st">"*.mp4"</span> <span class="at">-size</span> +100M <span class="at">-atime</span> +14</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Jei tau reikėtų šią komandą įrašyti kaskart, tai užimtų daug laiko. Nors automatinis skriptų paleidimas, pvz., kompiuterio įjungimo metu, yra sprendimas, tačiau paprastesnis būdas yra sukurti <strong>alias</strong> - tai leidžia greitai paleisti ilgas komandas, naudojant trumpinius.</p>
 <p><strong>Alias Apibrėžimas</strong></p>
 <p>Norint sukurti alias, turi redaguoti savo namų direktorijoje esantį <strong>.bashrc</strong> failą. Štai kaip tai padaryti:</p>
@@ -1596,9 +1799,9 @@ Praktika
 <li>Atidaryk .bashrc failą: <code>nano ~/.bashrc</code></li>
 <li>Failo pabaigoje pridėk naują alias naudojant šią sintaksę:</li>
 </ul>
-<div class="sourceCode" id="cb46"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> alias_name=<span class="st">'command'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> alias_name=<span class="st">'command'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Pavyzdžiui, sukurk alias komandai, kuri ieško didelių video failų:</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> lnuf=<span class="st">'find ~/Downloads/ ~/dwhelper/ -type f -iname "*.mp4" -size +100M -atime +14'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="bu">alias</span> lnuf=<span class="st">'find ~/Downloads/ ~/dwhelper/ -type f -iname "*.mp4" -size +100M -atime +14'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Išsaugok ir išeik iš redaktoriaus (naudok Ctrl + O, Enter, Ctrl + X).</li>
 </ul>
@@ -1607,7 +1810,7 @@ Praktika
 <ul>
 <li>Atnaujink Bash Shell nustatymus: Naudok <code>source</code> komandą, kad iš naujo užkrautum <strong>.bashrc</strong> nustatymus, neperkraunant visos terminalo programos.</li>
 </ul>
-<div class="sourceCode" id="cb48"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Dabar tu gali tiesiog naudoti komandą <code>lnuf</code>, kad paleistum visą ilgąją komandą.</p>
 <p>Alias leidžia greitai ir efektyviai valdyti kasdieninių užduočių komandas, sutaupant laiko ir pastangų. Tai nedidelis, bet labai naudingas “programavimo” elementas, kurį gali pritaikyti įvairiose situacijose, norint optimizuoti savo darbo eigą terminale.</p>
 <p>Jeigu pastebėsi, kad tam tikro alias nebereikia - visada gali jį ištrinti ir atnaujinus perkrauk bash panaudojant <code>source ~/.bashrc</code></p>
@@ -1888,7 +2091,7 @@ Pagalba
 </div>
 <div class="callout-body-container callout-body">
 <p>Kai mokeisi apie redirektorius <code>&gt;</code>, <code>&gt;&gt;</code>, buvo paminėtas ir atgalinis redirektorius <code>&lt;</code>. ChatGPT arba interneto pagalba išsiakink, ką daro ši komanda ir pagalvok, kaip jos sintaksę galėtum pritaikyti savo projekte.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"labas rytas"</span> <span class="kw">|</span> <span class="fu">cat</span> <span class="at">-</span> <span class="op">&lt;(</span><span class="bu">echo</span> <span class="st">"labas vakaras"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"labas rytas"</span> <span class="kw">|</span> <span class="fu">cat</span> <span class="at">-</span> <span class="op">&lt;(</span><span class="bu">echo</span> <span class="st">"labas vakaras"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>ką reiškia <code>-</code>?</li>
 <li>kodėl ir kam panaudojamas <code>&lt;</code></li>
@@ -1907,55 +2110,55 @@ PagalbaL kaip alėtų atrodyti README.MD
 </div>
 <div class="callout-body-container callout-body">
 <p><code>&lt;!-- --&gt;</code> Žymi komentarus. Juos reiktų ištrintiir vietoj jų užpildyti tavo turiniu.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Šeškinės Poliklinikos Radiologinių Tyrimų Ataskaita</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Projekto Aprašymas</span></span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Aprašykite pagrindinį projekto tikslą ir ką jis daro. Tai svarbu, kad skaitytojai suprastų, apie ką yra projektas. --&gt;</span></span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pradžia</span></span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a><span class="fu">### Reikalavimai</span></span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Išvardinkite būtiną programinę įrangą ir jų versijas. Tai padės užtikrinti, kad projektas veiks skirtinguose įrenginiuose. --&gt;</span></span>
-<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a><span class="fu">### Diegimas</span></span>
-<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Aprašykite diegimo instrukcijas, kaip naudotojas gali klonuoti ir pradėti naudotis projektu. Aiškios instrukcijos padės vartotojams lengviau pradėti. --&gt;</span></span>
-<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Klonuokite projektą:</span>
-<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a>   <span class="in">`git clone &lt;repo-url&gt; &amp;&amp; cd &lt;repo&gt;`</span> </span>
-<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Naudojimas</span></span>
-<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Vienos Eilutės Komanda</span></span>
-<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-24"><a href="#cb50-24" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Įrašykite vienos eilutės komandos sintaksę. Ši dalis svarbi, kad vartotojai galėtų greitai išbandyti pagrindines funkcijas. --&gt;</span></span>
-<span id="cb50-25"><a href="#cb50-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-26"><a href="#cb50-26" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Pilnas Skriptas</span></span>
-<span id="cb50-27"><a href="#cb50-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-28"><a href="#cb50-28" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Pateikite skripto sintaksę. Tai svarbu, kad būtų galima atlikti išsamesnę analizę ar duomenų tvarkymą. --&gt;</span></span>
-<span id="cb50-29"><a href="#cb50-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-30"><a href="#cb50-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## Struktūra</span></span>
-<span id="cb50-31"><a href="#cb50-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-32"><a href="#cb50-32" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Aprašykite projekto failų struktūrą. Tai padės naudotojams geriau suprasti projekto organizaciją ir rasti reikiamus failus. --&gt;</span></span>
-<span id="cb50-33"><a href="#cb50-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-34"><a href="#cb50-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`README.md`</span>: Dokumentacija</span>
-<span id="cb50-35"><a href="#cb50-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`recent_radiological_seskines_pol.sh`</span>: Skriptas</span>
-<span id="cb50-36"><a href="#cb50-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-37"><a href="#cb50-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## Prielaidos</span></span>
-<span id="cb50-38"><a href="#cb50-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-39"><a href="#cb50-39" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Nurodykite visas prielaidas, kuriomis remiasi projektas. Tai svarbu, kad vartotojai žinotų, kas yra numatyta ir ką jie turi turėti ar atlikti prieš naudojant projektą. --&gt;</span></span>
-<span id="cb50-40"><a href="#cb50-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-41"><a href="#cb50-41" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tolesni Plėtros Tikslai</span></span>
-<span id="cb50-42"><a href="#cb50-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-43"><a href="#cb50-43" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Apibūdinkite galimus ateities atnaujinimus ir plėtros kryptis. Tai gali įtraukti naujas funkcijas ar planuojamus patobulinimus. Padeda pateikti ilgalaikę projekto viziją. --&gt;</span></span>
-<span id="cb50-44"><a href="#cb50-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-45"><a href="#cb50-45" aria-hidden="true" tabindex="-1"></a><span class="fu">## Papildomi Ištekliai</span></span>
-<span id="cb50-46"><a href="#cb50-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-47"><a href="#cb50-47" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Pateikite nuorodas į papildomus išteklius, pavyzdžiui, naudojimo dokumentaciją ar technologijų, kurias naudavote, vadovus. Tai naudinga papildomai informacijai gauti. --&gt;</span></span>
-<span id="cb50-48"><a href="#cb50-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-49"><a href="#cb50-49" aria-hidden="true" tabindex="-1"></a>Daugiau informacijos apie Markdown: <span class="co">[</span><span class="ot">Markdown Guide</span><span class="co">](https://www.markdownguide.org/basic-syntax/)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Šeškinės Poliklinikos Radiologinių Tyrimų Ataskaita</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Projekto Aprašymas</span></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Aprašykite pagrindinį projekto tikslą ir ką jis daro. Tai svarbu, kad skaitytojai suprastų, apie ką yra projektas. --&gt;</span></span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pradžia</span></span>
+<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a><span class="fu">### Reikalavimai</span></span>
+<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Išvardinkite būtiną programinę įrangą ir jų versijas. Tai padės užtikrinti, kad projektas veiks skirtinguose įrenginiuose. --&gt;</span></span>
+<span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-13"><a href="#cb68-13" aria-hidden="true" tabindex="-1"></a><span class="fu">### Diegimas</span></span>
+<span id="cb68-14"><a href="#cb68-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-15"><a href="#cb68-15" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Aprašykite diegimo instrukcijas, kaip naudotojas gali klonuoti ir pradėti naudotis projektu. Aiškios instrukcijos padės vartotojams lengviau pradėti. --&gt;</span></span>
+<span id="cb68-16"><a href="#cb68-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-17"><a href="#cb68-17" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Klonuokite projektą:</span>
+<span id="cb68-18"><a href="#cb68-18" aria-hidden="true" tabindex="-1"></a>   <span class="in">`git clone &lt;repo-url&gt; &amp;&amp; cd &lt;repo&gt;`</span> </span>
+<span id="cb68-19"><a href="#cb68-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-20"><a href="#cb68-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Naudojimas</span></span>
+<span id="cb68-21"><a href="#cb68-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-22"><a href="#cb68-22" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Vienos Eilutės Komanda</span></span>
+<span id="cb68-23"><a href="#cb68-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-24"><a href="#cb68-24" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Įrašykite vienos eilutės komandos sintaksę. Ši dalis svarbi, kad vartotojai galėtų greitai išbandyti pagrindines funkcijas. --&gt;</span></span>
+<span id="cb68-25"><a href="#cb68-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-26"><a href="#cb68-26" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Pilnas Skriptas</span></span>
+<span id="cb68-27"><a href="#cb68-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-28"><a href="#cb68-28" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Pateikite skripto sintaksę. Tai svarbu, kad būtų galima atlikti išsamesnę analizę ar duomenų tvarkymą. --&gt;</span></span>
+<span id="cb68-29"><a href="#cb68-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-30"><a href="#cb68-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## Struktūra</span></span>
+<span id="cb68-31"><a href="#cb68-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-32"><a href="#cb68-32" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Aprašykite projekto failų struktūrą. Tai padės naudotojams geriau suprasti projekto organizaciją ir rasti reikiamus failus. --&gt;</span></span>
+<span id="cb68-33"><a href="#cb68-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-34"><a href="#cb68-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`README.md`</span>: Dokumentacija</span>
+<span id="cb68-35"><a href="#cb68-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`recent_radiological_seskines_pol.sh`</span>: Skriptas</span>
+<span id="cb68-36"><a href="#cb68-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-37"><a href="#cb68-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## Prielaidos</span></span>
+<span id="cb68-38"><a href="#cb68-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-39"><a href="#cb68-39" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Nurodykite visas prielaidas, kuriomis remiasi projektas. Tai svarbu, kad vartotojai žinotų, kas yra numatyta ir ką jie turi turėti ar atlikti prieš naudojant projektą. --&gt;</span></span>
+<span id="cb68-40"><a href="#cb68-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-41"><a href="#cb68-41" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tolesni Plėtros Tikslai</span></span>
+<span id="cb68-42"><a href="#cb68-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-43"><a href="#cb68-43" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Apibūdinkite galimus ateities atnaujinimus ir plėtros kryptis. Tai gali įtraukti naujas funkcijas ar planuojamus patobulinimus. Padeda pateikti ilgalaikę projekto viziją. --&gt;</span></span>
+<span id="cb68-44"><a href="#cb68-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-45"><a href="#cb68-45" aria-hidden="true" tabindex="-1"></a><span class="fu">## Papildomi Ištekliai</span></span>
+<span id="cb68-46"><a href="#cb68-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-47"><a href="#cb68-47" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Pateikite nuorodas į papildomus išteklius, pavyzdžiui, naudojimo dokumentaciją ar technologijų, kurias naudavote, vadovus. Tai naudinga papildomai informacijai gauti. --&gt;</span></span>
+<span id="cb68-48"><a href="#cb68-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-49"><a href="#cb68-49" aria-hidden="true" tabindex="-1"></a>Daugiau informacijos apie Markdown: <span class="co">[</span><span class="ot">Markdown Guide</span><span class="co">](https://www.markdownguide.org/basic-syntax/)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 
