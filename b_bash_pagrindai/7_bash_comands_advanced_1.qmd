@@ -296,7 +296,7 @@ Kai kurie tinklapiai, kaip infraplanas.lt, gali būti pasiekiami tiesiogiai per 
 ![](../img/bash_advanced/ping_failed.png)
 :::
 
-## curl ir wget
+### curl ir wget
 
 `curl` ir `wget` yra įrankiai darbui su tinklo užklausomis, tačiau jų paskirtis skiriasi. `wget` yra orientuotas į failų atsisiuntimą, palaiko rekursyvų atsisiuntimą ir automatiškai atnaujina nutrauktus parsisiuntimus. `curl` yra universalesnis ir tinka ne tik failų atsisiuntimui, bet ir duomenų siuntimui (pvz., **API** užklausoms). Pagal nutylėjimą, `curl` išveda duomenis į terminalą.
 
@@ -1407,7 +1407,7 @@ Vykdant sudėtingus skaičiavimus (pvz., mokant mašininio mokymosi modelį), st
 
 
 
-## `nano` Tekstinio Redaktoriaus Naudojimas
+## `nano`
 
 `nano` yra patogus teksto redaktorius, skirtas tiek pradedantiesiems, tiek pažengusiems Linux naudotojams. 
 
