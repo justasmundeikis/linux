@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -398,7 +432,50 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#tail--f" id="toc-tail--f" class="nav-link active" data-scroll-target="#tail--f"><span class="header-section-number">8.1</span> tail -f</a></li>
+  <li><a href="#aplinkos-kintamieji-ir-jų-valdymas" id="toc-aplinkos-kintamieji-ir-jų-valdymas" class="nav-link active" data-scroll-target="#aplinkos-kintamieji-ir-jų-valdymas"><span class="header-section-number">8.1</span> Aplinkos Kintamieji ir Jų Valdymas</a>
+  <ul class="collapse">
+  <li><a href="#kas-yra-aplinkos-kintamieji" id="toc-kas-yra-aplinkos-kintamieji" class="nav-link" data-scroll-target="#kas-yra-aplinkos-kintamieji"><span class="header-section-number">8.1.1</span> Kas yra aplinkos kintamieji?</a></li>
+  <li><a href="#kintamųjų-kūrimas-ir-valdymas" id="toc-kintamųjų-kūrimas-ir-valdymas" class="nav-link" data-scroll-target="#kintamųjų-kūrimas-ir-valdymas"><span class="header-section-number">8.1.2</span> Kintamųjų kūrimas ir valdymas</a></li>
+  <li><a href="#naudojimas-programose" id="toc-naudojimas-programose" class="nav-link" data-scroll-target="#naudojimas-programose"><span class="header-section-number">8.1.3</span> Naudojimas programose</a></li>
+  <li><a href="#peržiūrėti-esamus-kintamuosius" id="toc-peržiūrėti-esamus-kintamuosius" class="nav-link" data-scroll-target="#peržiūrėti-esamus-kintamuosius"><span class="header-section-number">8.1.4</span> Peržiūrėti esamus kintamuosius</a></li>
+  <li><a href="#kintamųjų-pašalinimas" id="toc-kintamųjų-pašalinimas" class="nav-link" data-scroll-target="#kintamųjų-pašalinimas"><span class="header-section-number">8.1.5</span> Kintamųjų pašalinimas</a></li>
+  <li><a href="#praktiniai-naudojimo-scenarijai" id="toc-praktiniai-naudojimo-scenarijai" class="nav-link" data-scroll-target="#praktiniai-naudojimo-scenarijai"><span class="header-section-number">8.1.6</span> Praktiniai naudojimo scenarijai</a></li>
+  </ul></li>
+  <li><a href="#disko-tvarkymas-ir-optimizavimas" id="toc-disko-tvarkymas-ir-optimizavimas" class="nav-link" data-scroll-target="#disko-tvarkymas-ir-optimizavimas"><span class="header-section-number">8.2</span> Disko Tvarkymas ir Optimizavimas</a>
+  <ul class="collapse">
+  <li><a href="#df" id="toc-df" class="nav-link" data-scroll-target="#df"><span class="header-section-number">8.2.1</span> <code>df</code></a></li>
+  <li><a href="#du" id="toc-du" class="nav-link" data-scroll-target="#du"><span class="header-section-number">8.2.2</span> <code>du</code></a></li>
+  <li><a href="#ncdu" id="toc-ncdu" class="nav-link" data-scroll-target="#ncdu"><span class="header-section-number">8.2.3</span> <code>ncdu</code></a></li>
+  <li><a href="#papildomos-naudojimo-scenarijai" id="toc-papildomos-naudojimo-scenarijai" class="nav-link" data-scroll-target="#papildomos-naudojimo-scenarijai"><span class="header-section-number">8.2.4</span> Papildomos Naudojimo Scenarijai</a></li>
+  </ul></li>
+  <li><a href="#vartotojų-ir-grupių-administravimas" id="toc-vartotojų-ir-grupių-administravimas" class="nav-link" data-scroll-target="#vartotojų-ir-grupių-administravimas"><span class="header-section-number">8.3</span> Vartotojų ir Grupių Administravimas</a>
+  <ul class="collapse">
+  <li><a href="#adduser" id="toc-adduser" class="nav-link" data-scroll-target="#adduser"><span class="header-section-number">8.3.1</span> <code>adduser</code></a></li>
+  <li><a href="#usermod" id="toc-usermod" class="nav-link" data-scroll-target="#usermod"><span class="header-section-number">8.3.2</span> <code>usermod</code></a></li>
+  <li><a href="#passwd" id="toc-passwd" class="nav-link" data-scroll-target="#passwd"><span class="header-section-number">8.3.3</span> <code>passwd</code></a></li>
+  <li><a href="#userdel" id="toc-userdel" class="nav-link" data-scroll-target="#userdel"><span class="header-section-number">8.3.4</span> <code>userdel</code></a></li>
+  <li><a href="#groupadd" id="toc-groupadd" class="nav-link" data-scroll-target="#groupadd"><span class="header-section-number">8.3.5</span> <code>groupadd</code></a></li>
+  <li><a href="#groupdel" id="toc-groupdel" class="nav-link" data-scroll-target="#groupdel"><span class="header-section-number">8.3.6</span> <code>groupdel</code></a></li>
+  <li><a href="#chown" id="toc-chown" class="nav-link" data-scroll-target="#chown"><span class="header-section-number">8.3.7</span> <code>chown</code></a></li>
+  <li><a href="#chmod" id="toc-chmod" class="nav-link" data-scroll-target="#chmod"><span class="header-section-number">8.3.8</span> <code>chmod</code></a></li>
+  <li><a href="#papildomos-komandos" id="toc-papildomos-komandos" class="nav-link" data-scroll-target="#papildomos-komandos"><span class="header-section-number">8.3.9</span> Papildomos Komandos</a></li>
+  <li><a href="#praktiniai-pavyzdžiai-ir-saugumo-praktikos" id="toc-praktiniai-pavyzdžiai-ir-saugumo-praktikos" class="nav-link" data-scroll-target="#praktiniai-pavyzdžiai-ir-saugumo-praktikos"><span class="header-section-number">8.3.10</span> Praktiniai Pavyzdžiai ir Saugumo Praktikos</a></li>
+  </ul></li>
+  <li><a href="#ugniasienės-ir-tinklo-saugumo-valdymas" id="toc-ugniasienės-ir-tinklo-saugumo-valdymas" class="nav-link" data-scroll-target="#ugniasienės-ir-tinklo-saugumo-valdymas"><span class="header-section-number">8.4</span> Ugniasienės ir Tinklo Saugumo Valdymas</a>
+  <ul class="collapse">
+  <li><a href="#kas-yra-ugniasienė" id="toc-kas-yra-ugniasienė" class="nav-link" data-scroll-target="#kas-yra-ugniasienė"><span class="header-section-number">8.4.1</span> Kas yra Ugniasienė?</a></li>
+  <li><a href="#ufw-uncomplicated-firewall" id="toc-ufw-uncomplicated-firewall" class="nav-link" data-scroll-target="#ufw-uncomplicated-firewall"><span class="header-section-number">8.4.2</span> <code>ufw</code> (Uncomplicated Firewall)</a></li>
+  <li><a href="#netstat" id="toc-netstat" class="nav-link" data-scroll-target="#netstat"><span class="header-section-number">8.4.3</span> <code>netstat</code></a></li>
+  <li><a href="#ss" id="toc-ss" class="nav-link" data-scroll-target="#ss"><span class="header-section-number">8.4.4</span> <code>ss</code></a></li>
+  <li><a href="#tinklo-saugumo-geriausios-praktikos" id="toc-tinklo-saugumo-geriausios-praktikos" class="nav-link" data-scroll-target="#tinklo-saugumo-geriausios-praktikos"><span class="header-section-number">8.4.5</span> Tinklo Saugumo Geriausios Praktikos</a></li>
+  </ul></li>
+  <li><a href="#sisteminės-paslaugos-ir-automatizavimas" id="toc-sisteminės-paslaugos-ir-automatizavimas" class="nav-link" data-scroll-target="#sisteminės-paslaugos-ir-automatizavimas"><span class="header-section-number">8.5</span> Sisteminės Paslaugos ir Automatizavimas</a>
+  <ul class="collapse">
+  <li><a href="#systemd-ir-systemctl" id="toc-systemd-ir-systemctl" class="nav-link" data-scroll-target="#systemd-ir-systemctl"><span class="header-section-number">8.5.1</span> <code>systemd</code> ir <code>systemctl</code></a></li>
+  <li><a href="#automatizavimas-su-cron-ir-at" id="toc-automatizavimas-su-cron-ir-at" class="nav-link" data-scroll-target="#automatizavimas-su-cron-ir-at"><span class="header-section-number">8.5.2</span> Automatizavimas su <code>cron</code> ir <code>at</code></a></li>
+  <li><a href="#logų-ir-klaidos-tvarkymas" id="toc-logų-ir-klaidos-tvarkymas" class="nav-link" data-scroll-target="#logų-ir-klaidos-tvarkymas"><span class="header-section-number">8.5.3</span> Logų ir Klaidos Tvarkymas</a></li>
+  <li><a href="#papildomi-įrankiai-ir-geriausios-praktikos" id="toc-papildomi-įrankiai-ir-geriausios-praktikos" class="nav-link" data-scroll-target="#papildomi-įrankiai-ir-geriausios-praktikos"><span class="header-section-number">8.5.4</span> Papildomi Įrankiai ir Geriausios Praktikos</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -424,567 +501,374 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>export: Nustato aplinkos kintamuosius</p>
-<p>Komanda export leidžia apibrėžti aplinkos kintamuosius, kurie tampa prieinami visiems procesams, paleistiems iš esamos terminalo sesijos. Sintaksė:</p>
-<p>export VARDAS=REIKŠMĖ</p>
-<p>Kaip veikia?</p>
-<pre><code>Sukuriamas aplinkos kintamasis VARDAS su reikšme REIKŠMĖ.
-Kintamasis tampa prieinamas ne tik dabartiniam apvalkalui (shell), bet ir visiems jo vaikiniams procesams.</code></pre>
-<p>Pavyzdžiai:</p>
-<pre><code>Nustatyti naują aplinkos kintamąjį:</code></pre>
-<p>export MY_VAR=“Labas pasauli!”</p>
-<p>Dabar MY_VAR bus pasiekiamas visur dabartinėje terminalo sesijoje.</p>
-<p>Naudoti kintamąjį programoje:</p>
-<p>echo $MY_VAR</p>
-<p>Rezultatas: Labas pasauli!</p>
-<p>Perduoti kintamąjį programai:</p>
-<pre><code>export API_KEY="abcdef12345"
-python my_script.py
-
-Šiame pavyzdyje Python skriptas galės naudoti API_KEY kintamąjį.</code></pre>
-<p>env: Rodo arba paleidžia programą su aplinkos kintamaisiais</p>
-<p>Komanda env leidžia:</p>
-<pre><code>Peržiūrėti visus aplinkos kintamuosius:</code></pre>
-<p>env</p>
-<p>Ji išspausdins visų kintamųjų sąrašą, pvz.:</p>
-<p>PATH=/usr/local/bin:/usr/bin HOME=/home/user SHELL=/bin/bash</p>
-<p>Paleisti komandą su tam tikrais aplinkos kintamaisiais: Jei norite laikinai nustatyti kintamąjį ir paleisti programą:</p>
-<pre><code>env MY_VAR="Taisyklė" python my_script.py
-
-Šis kintamasis bus pasiekiamas tik šiai komandai ir nebus įrašytas į esamą sesiją.</code></pre>
-<p>printenv: Parodo aplinkos kintamuosius</p>
-<p>Komanda printenv yra paprasta – ji tiesiog išveda konkrečius arba visus aplinkos kintamuosius. Sintaksė:</p>
-<pre><code>Norint išvesti konkretų kintamąjį:</code></pre>
-<p>printenv VARDAS</p>
-<p>Pvz.:</p>
-<p>printenv PATH</p>
-<p>Rezultatas: PATH=/usr/local/bin:/usr/bin:/bin</p>
-<p>Norint išvesti visus aplinkos kintamuosius:</p>
-<pre><code>printenv</code></pre>
-<p>Kada naudoti šias komandas? Programavime:</p>
-<pre><code>export: Naudojama, kai reikia nustatyti kintamąjį, kurį naudos skriptas ar programa.
-    Pvz., nustatyti API raktą arba prieigos duomenis duomenų bazei.
-
-env: Naudojama, kai reikia paleisti programą su laikinais kintamaisiais, nekeičiant globalios aplinkos.
-    Pvz., išbandyti programą su alternatyviu konfigūracijų failu.
-
-printenv: Naudojama, kai reikia patikrinti, ar tam tikras aplinkos kintamasis yra nustatytas.
-    Pvz., patikrinti, ar PATH yra tinkamai sukonfigūruotas.</code></pre>
-<p>Šios komandos yra naudingos tiek kasdieniniame darbe, tiek sudėtingose programavimo situacijose, kai reikia valdyti aplinkos konfigūracijas.</p>
-<ol type="1">
-<li><p>jobs: Peržiūri darbus (jobs) terminale</p>
-<p>Aprašymas: jobs komanda rodo visus procesus (darbus), kurie buvo paleisti dabartinėje terminalo sesijoje ir yra sustabdyti arba vykdomi fone. Sintaksė:</p></li>
-</ol>
-<p>jobs</p>
-<p>Pavyzdys: Jei paleisite programą ir sustabdysite ją (Ctrl+Z), galite pamatyti jos būseną:</p>
-<p>sleep 100 &amp; jobs</p>
-<p>Rezultatas:</p>
-<pre><code>[1]+ Running    sleep 100 &amp;</code></pre>
-<ol start="2" type="1">
-<li><p>bg: Tęsia sustabdytą darbą fone</p>
-<p>Aprašymas: Komanda bg atnaujina sustabdytą darbą (Ctrl+Z) ir paleidžia jį fone. Sintaksė:</p></li>
-</ol>
-<p>bg [darbo_nr]</p>
-<p>Kaip naudoti?</p>
-<pre><code>Sustabdykite darbą:</code></pre>
-<p>sleep 100</p>
-<p>Paspauskite Ctrl+Z (sustabdo programą). Patikrinkite sustabdytus darbus:</p>
-<p>jobs</p>
-<p>Rezultatas:</p>
-<p>[1]+ Stopped sleep 100</p>
-<p>Paleiskite darbą fone:</p>
-<p>bg 1</p>
-<p>Rezultatas:</p>
-<pre><code>    [1]+ sleep 100 &amp;</code></pre>
-<ol start="3" type="1">
-<li><p>fg: Tęsia sustabdytą darbą arba atveda foninį darbą į priekį</p>
-<p>Aprašymas: Komanda fg leidžia perkelti foninį arba sustabdytą darbą į priekį (foreground), kad galėtumėte su juo dirbti tiesiogiai. Sintaksė:</p></li>
-</ol>
-<p>fg [darbo_nr]</p>
-<p>Kaip naudoti?</p>
-<pre><code>Paleiskite ilgai trunkančią komandą fone:</code></pre>
-<p>sleep 100 &amp;</p>
-<p>Patikrinkite:</p>
-<p>jobs</p>
-<p>Rezultatas:</p>
-<p>[1]+ Running sleep 100 &amp;</p>
-<p>Atveskite ją į priekį:</p>
-<pre><code>    fg 1
-
-    Rezultatas: Procesas sleep 100 dabar bus vykdomas terminale, kol baigsis.</code></pre>
-<ol start="4" type="1">
-<li><p>kill: Užbaigia procesą</p>
-<p>Aprašymas: Komanda kill siunčia signalą procesui, paprastai norint jį užbaigti. Naudojama, kai procesą reikia priverstinai sustabdyti.</p>
-<p>Sintaksė:</p></li>
-</ol>
-<p>kill [signal] PID</p>
-<pre><code>Signalų tipai:
-    -15: (Default) Maloniai užbaigia procesą.
-    -9: Priverstinai nutraukia procesą.</code></pre>
-<p>Kaip naudoti?</p>
-<pre><code>Raskite proceso PID (Process ID):</code></pre>
-<p>ps aux | grep sleep</p>
-<p>Rezultatas:</p>
-<p>justas 1234 0.0 0.0 12345 5678 pts/0 S 10:00 0:00 sleep 100</p>
-<p>Užbaikite procesą:</p>
-<pre><code>kill 1234</code></pre>
-<p>Naudojant su jobs: Jei procesas yra sustabdytas ar veikia fone:</p>
-<pre><code>jobs
-kill %1</code></pre>
-<p>Scenarijai, kada naudoti šias komandas</p>
-<pre><code>Duomenų analitiko darbas:
-    Paleidote ilgą Python skriptą, bet reikia grįžti į terminalą kitiems veiksmams:
-        Sustabdykite skriptą su Ctrl+Z.
-        Paleiskite jį fone su bg.
-        Jei reikia vėl stebėti eigą, naudokite fg.
-
-Ištrinti nereikalingą procesą:
-    Jei procesas naudoja per daug išteklių:
-        Naudokite ps aux arba jobs rasti procesą.
-        Naudokite kill jį sustabdyti.
-
-Valdyti testavimo scenarijus:
-    Testuojate skriptą, sustabdote ir redaguojate jį naudodami fg ar kill.</code></pre>
-<p>Šios komandos leidžia efektyviai valdyti procesus ir pagerina produktyvumą dirbant su Linux sistemomis.</p>
-<p>Štai išsamus paaiškinimas apie komandas df, du, ir ncdu, kurios padeda analizuoti disko vietos naudojimą: 1. df: Ataskaita apie disko vietos naudojimą</p>
-<pre><code>Aprašymas: Komanda df pateikia informaciją apie failų sistemos disko vietos naudojimą ir likusią vietą.
-
-Sintaksė:</code></pre>
-<p>df [parinktys] [katalogas]</p>
-<p>Naudojimas:</p>
-<pre><code>Peržiūrėti visų prijungtų failų sistemų disko vietą:</code></pre>
-<p>df -h</p>
-<p>Rezultatas pateikiamas žmogui suprantamais dydžiais (MB, GB):</p>
-<p>Filesystem Size Used Avail Use% Mounted on /dev/sda1 50G 20G 30G 40% / /dev/sdb1 100G 80G 20G 80% /data</p>
-<p>Tikrinimas konkrečiam katalogui:</p>
-<pre><code>    df -h ~/Documents
-
-Naudingi variantai:
-    -h: Rodomi dydžiai su vienetais (MB, GB).
-    -T: Parodo failų sistemos tipą (pvz., ext4, xfs).</code></pre>
-<ol start="2" type="1">
-<li><p>du: Įvertina failų ir katalogų vietos naudojimą</p>
-<p>Aprašymas: Komanda du parodo kiek disko vietos užima failai ir katalogai. Ji padeda suprasti, kurie katalogai ar failai naudoja daugiausia vietos.</p>
-<p>Sintaksė:</p></li>
-</ol>
-<p>du [parinktys] [katalogas]</p>
-<p>Naudojimas:</p>
-<pre><code>Peržiūrėti, kiek vietos užima konkretus katalogas:</code></pre>
-<p>du -h ~/Downloads</p>
-<p>Rezultatas:</p>
-<p>20M ~/Downloads/photos 50M ~/Downloads/videos 70M ~/Downloads</p>
-<p>Norint matyti tik pagrindinius katalogus:</p>
-<p>du -sh *</p>
-<p>Rezultatas:</p>
-<pre><code>    2G    Documents
-    5G    Videos
-    1G    Downloads
-
-Naudingi variantai:
-    -h: Rodomi dydžiai su vienetais (MB, GB).
-    -s: Apibendrina bendrą katalogo dydį.
-    --max-depth=N: Rodo dydžius tik iki nurodyto katalogų gylio.</code></pre>
-<ol start="3" type="1">
-<li><p>ncdu: Disko vietos analizatorius su tekstine sąsaja</p>
-<p>Aprašymas: Komanda ncdu yra interaktyvus įrankis, kuris leidžia patogiai analizuoti disko vietos naudojimą. Ji pateikia rezultatą tekstinėje vartotojo sąsajoje, kur galite naršyti failus ir katalogus. Sintaksė:</p></li>
-</ol>
-<p>ncdu [parinktys] [katalogas]</p>
-<p>Naudojimas:</p>
-<pre><code>Įdiekite įrankį (jei dar neįdiegtas):</code></pre>
-<p>sudo apt install ncdu # Debian/Ubuntu sudo yum install ncdu # CentOS/RedHat</p>
-<p>Paleiskite analizę konkrečiame kataloge:</p>
-<p>ncdu /home/user</p>
-<p>Rezultatas bus tekstinė sąsaja, kurioje galėsite naršyti, pvz.:</p>
-<pre><code>    --- /home/user ---
-    20.0 GiB [##########] Videos
-    15.0 GiB [#######   ] Music
-     5.0 GiB [##        ] Documents
-     1.0 GiB [          ] Downloads
-
-    Pažymėtą failą ar katalogą galite ištrinti tiesiog iš sąsajos paspaudę d.</code></pre>
-<p>Kada naudoti šias komandas?</p>
-<pre><code>Disko vietos trūkumas:
-    Naudokite df -h, kad nustatytumėte, kuri failų sistema perpildyta.
-
-Didelių failų ir katalogų paieška:
-    Naudokite du -sh * arba ncdu, kad rastumėte katalogus ar failus, kurie užima daug vietos.
-
-Interaktyvi analizė:
-    Naudokite ncdu, jei norite lengviau naršyti ir šalinti nereikalingus failus.</code></pre>
-<p>Šios komandos yra būtinos administruojant Linux sistemą ir optimizuojant disko vietos naudojimą.</p>
-<p>eval: Komanda, vykdanti komandų eilutę kaip Bash komandą</p>
-<pre><code>Aprašymas: eval yra Bash komanda, kuri vykdo komandą arba komandų eilutę, kuri yra pateikta kaip tekstas. Tai leidžia dinamiškai sukurti komandas ir jas vykdyti. eval įvykdo tekstą kaip Bash komandą, tad galima sukurti labai lanksčius ir dinamiškus skriptus.
-
-Sintaksė:
-
-eval [komanda]
-
-eval paima argumentus ir įvykdo juos kaip komandų eilutę. Tai leidžia apdoroti komandų eiles, kurios buvo sukurtos arba modifikuotos kitų komandų.</code></pre>
-<p>Pavyzdžiai, kaip naudoti eval:</p>
-<pre><code>Dinamiškas kintamųjų ir komandų sujungimas:
-
-Tarkime, turite kintamąjį, kuriame yra komanda. eval leidžia šį kintamąjį vykdyti kaip komandą.
-    Pavyzdys:
-
-command="ls -l"
-eval $command
-
-Paaiškinimas: Komanda ls -l bus vykdoma, nes kintamasis command turi ją. Naudojant eval, Bash interpretuos kintamąjį kaip komandą.</code></pre>
-<p>Dinamiškas kintamųjų apdorojimas:</p>
-<p>Jei kintamieji yra susiję su failais ar kitais objektais, eval leidžia dinamiškai kurti ir vykdyti komandas.</p>
-<pre><code>Pavyzdys:
-
-dir="/home/user/Documents"
-eval ls $dir
-
-Paaiškinimas: Kintamasis $dir nurodo katalogą, o komanda eval ją vykdo kaip ls /home/user/Documents.</code></pre>
-<p>Sukurti ir vykdyti komandų eilutes su eval:</p>
-<p>Jeigu norite sukurti komandas ir jas atlikti remiantis sąlygomis ar kitais veiksniais, eval padeda dinamiškai modifikuoti ir vykdyti komandas.</p>
-<pre><code>Pavyzdys:
-
-    cmd="echo 'Hello, World!'"
-    eval $cmd
-
-    Paaiškinimas: Komanda echo 'Hello, World!' bus įvykdyta, nes eval interpretuos kintamąjį kaip Bash komandą.</code></pre>
-<p>Naudojimo atvejai ir scenarijai:</p>
-<pre><code>Dinamiškas kintamųjų apdorojimas: Jei skriptas priklauso nuo dinamiškai nustatomų kintamųjų, eval leidžia sukurti ir vykdyti komandas, priklausomai nuo to, kaip kintamieji yra modifikuojami.
-
-Komandų konstruavimas iš kitų komandų: Jeigu reikia sujungti kelias komandas arba sukurti komandą pagal dinamišką informaciją (pvz., pagal failų sąrašą ar vartotojo įvestį), eval gali padėti.
-
-Skriptuose su sudėtingomis sąlygomis: Kartais reikia, kad komandos veiktų skirtingais būdais priklausomai nuo įvesties, ir eval leidžia tai pasiekti.</code></pre>
-<p>UFW</p>
-<p>UFW (Uncomplicated Firewall): Komanda Linux sistemose</p>
-<p>UFW (Uncomplicated Firewall) yra paprasta ir lengva naudoti komanda, skirta tvarkyti “iptables” ugniasienę Linux sistemose. UFW yra skirtas padėti paprastai nustatyti ir valdyti ugniasienės taisykles, leidžiant arba blokuojant tam tikras paslaugas ar tinklo ryšius. Pagrindiniai UFW komandos naudojimo aspektai 1. UFW būsenos peržiūra:</p>
-<p>Norėdami patikrinti, ar UFW ugniasienė yra įjungta, galite naudoti šią komandą:</p>
-<p>sudo ufw status</p>
-<pre><code>Jei UFW yra įjungtas, rezultatas bus:</code></pre>
-<p>Status: active</p>
-<p>Jei UFW yra išjungtas, rezultatas bus:</p>
-<pre><code>Status: inactive</code></pre>
-<ol start="2" type="1">
-<li><p>UFW įjungimas ir išjungimas:</p>
-<p>Įjungti UFW:</p></li>
-</ol>
-<p>sudo ufw enable</p>
-<p>Tai įjungs ugniasienę ir pradės ją naudoti.</p>
-<p>Išjungti UFW:</p>
-<pre><code>sudo ufw disable
-
-Tai išjungs ugniasienę, tačiau nesunaikins esamų taisyklių, tad jas galėsite vėl įjungti vėliau.</code></pre>
-<ol start="3" type="1">
-<li>Leidimų ir blokavimo taisyklės:</li>
-</ol>
-<p>UFW leidžia lengvai nustatyti, kurioms programoms ar paslaugoms bus leidžiama arba draudžiama prieiga prie jūsų sistemos.</p>
-<pre><code>Leisti tam tikrą paslaugą (pvz., HTTP portą 80):</code></pre>
-<p>sudo ufw allow http</p>
-<p>Tai leis HTTP (80 prievado) srautą.</p>
-<p>Leisti paslaugą pagal prievadą (pvz., prievadą 8080):</p>
-<p>sudo ufw allow 8080</p>
-<p>Tai leis ryšius per prievadą 8080.</p>
-<p>Blokuoti tam tikrą paslaugą (pvz., SSH prievadą 22):</p>
-<p>sudo ufw deny ssh</p>
-<p>Blokuoti prievadą (pvz., prievadą 8000):</p>
-<pre><code>sudo ufw deny 8000</code></pre>
-<ol start="4" type="1">
-<li><p>Leidimo taisyklių nurodymas pagal IP adresą:</p>
-<p>Leisti srautą tik iš tam tikro IP adreso:</p></li>
-</ol>
-<p>sudo ufw allow from 192.168.1.100</p>
-<p>Tai leis tik 192.168.1.100 IP adresui prisijungti prie jūsų sistemos.</p>
-<p>Leisti srautą iš tam tikro IP per tam tikrą prievadą:</p>
-<pre><code>sudo ufw allow from 192.168.1.100 to any port 80</code></pre>
-<ol start="5" type="1">
-<li><p>Išimčių taisyklių kūrimas:</p>
-<p>Leisti visus ryšius tik iš vietinio tinklo (LAN):</p>
-<p>sudo ufw allow from 192.168.1.0/24</p></li>
-<li><p>UFW prievadų ir paslaugų sąrašai:</p>
-<p>Peržiūrėti prieinamas paslaugas:</p></li>
-</ol>
-<p>sudo ufw app list</p>
-<p>Tai parodys paslaugas, kurioms galite leisti arba blokuoti ryšius.</p>
-<p>Leisti tam tikrą paslaugą, naudodami jos pavadinimą (pvz., OpenSSH):</p>
-<pre><code>sudo ufw allow OpenSSH</code></pre>
-<ol start="7" type="1">
-<li><p>Atšaukti taisykles:</p>
-<p>Pašalinti taisyklę: Jei norite pašalinti taisyklę, naudojančią numeruotą taisyklę:</p>
-<p>sudo ufw delete allow 80</p>
-<p>Tai pašalins taisyklę, leidžiančią ryšius per prievadą 80.</p></li>
-<li><p>Išsamių žurnalų peržiūra:</p>
-<p>Peržiūrėti ugniasienės žurnalus:</p>
-<p>sudo less /var/log/ufw.log</p></li>
-</ol>
-<p>Pavyzdžiai su realiais scenarijais:</p>
-<pre><code>Leisti SSH prieigą:
-    Jei naudojate SSH prieigą, kad galėtumėte prisijungti prie serverio, įsitikinkite, kad prievadas 22 yra atidarytas:
-
-sudo ufw allow ssh</code></pre>
-<p>Užblokuoti HTTP prieigą:</p>
-<pre><code>Jei norite užblokuoti HTTP srautą (prievadas 80), galite tai atlikti taip:
-
-sudo ufw deny http</code></pre>
-<p>Tik tam tikras IP adresas gali prisijungti prie Jūsų serverio per SSH:</p>
-<pre><code>Jei norite, kad tik tam tikras IP adresas galėtų prisijungti prie jūsų serverio per SSH, galite sukurti tokią taisyklę:
-
-    sudo ufw allow from 192.168.1.100 to any port 22</code></pre>
-<p>Apibendrinimas:</p>
-<p>UFW (Uncomplicated Firewall) yra labai patogus ir paprastas įrankis Linux vartotojams, norintiems valdyti savo ugniasienę. Naudojant UFW galima lengvai leisti arba blokuoti paslaugas, nustatyti specifines taisykles pagal IP adresus ir prievadus, ir atlikti kitus veiksmus, kad užtikrintumėte savo sistemos saugumą. UFW yra puikus įrankis tiek pradedantiesiems, tiek pažengusiems vartotojams, kurie nori valdyti ugniasienę savo Linux sistemoje.</p>
-<p>UFW is the built in Software Firewall. If your web app or other service cannot be accessed by clients it might be because of UFW.</p>
-<p>Check Status of UFW sudo ufw status</p>
-<p>ufw</p>
-<p>Uncomplicated Firewall. Frontend for iptables aiming to make configuration of a firewall easier. More information: https://wiki.ubuntu.com/UncomplicatedFirewall.</p>
+<p>Žinoma, čia yra peržiūrėtas ir perrašytas poskyris, skirtas besimokančiam Linux vartotojui, pateikiant jį iš mokytojo perspektyvos:</p>
+<section id="aplinkos-kintamieji-ir-jų-valdymas" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="aplinkos-kintamieji-ir-jų-valdymas"><span class="header-section-number">8.1</span> Aplinkos Kintamieji ir Jų Valdymas</h2>
+<p>Sveiki atvykę į Linux aplinkos kintamųjų pasaulį! Šiame skyriuje išmoksime, kaip aplinkos kintamieji padeda programoms ir procesams bendrauti Linux sistemoje. Suprasdami, kaip veikia kintamieji, galėsite efektyviau valdyti savo darbo aplinką, pritaikydami įvairias konfigūracijas ir automatizuodami užduotis. Tai yra būtini įgūdžiai tiek programuotojams, tiek sistemų administratoriams.</p>
+<section id="kas-yra-aplinkos-kintamieji" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="kas-yra-aplinkos-kintamieji"><span class="header-section-number">8.1.1</span> Kas yra aplinkos kintamieji?</h3>
+<p>Aplinkos kintamieji yra pavadintos reikšmės, saugomos operacinėje sistemoje. Jie naudojami perduoti informaciją tarp skirtingų procesų. Kai kuriais atvejais jie nurodo, kaip programos turėtų veikti. Pavyzdžiui:</p>
 <ul>
-<li><p>Enable ufw: ufw enable</p></li>
-<li><p>Disable ufw: ufw disable</p></li>
-<li><p>Show ufw rules, along with their numbers: ufw status numbered</p></li>
-<li><p>Allow incoming traffic on port 5432 on this host with a comment identifying the service: ufw allow 5432 comment “Service”</p></li>
-<li><p>Allow only TCP traffic from 192.168.0.4 to any address on this host, on port 22: ufw allow proto tcp from 192.168.0.4 to any port 22</p></li>
-<li><p>Deny traffic on port 80 on this host: ufw deny 80</p></li>
-<li><p>Deny all UDP traffic to ports in range 8412:8500: ufw deny proto udp from any to any port 8412:8500</p></li>
-<li><p>Delete a particular rule. The rule number can be retrieved from the ufw status numbered command: ufw delete rule_number</p></li>
+<li><code>PATH</code>: nurodo katalogus, kuriuose shell ieško vykdomųjų failų.</li>
+<li><code>HOME</code>: dabartinio vartotojo namų katalogas.</li>
+<li><code>USER</code>: prisijungusio vartotojo vardas.</li>
 </ul>
-<p>watch</p>
-<p>watch Komanda Linux sistemoje</p>
-<p>watch yra komanda Linux sistemoje, kuri leidžia reguliariai vykdyti komandas ir rodyti jų išvestį tiesiogiai terminale. Tai yra naudinga, kai norite stebėti tam tikrų komandų rezultatus, kurie gali keistis laikui bėgant, be reikalo rankiniu būdu vėl ir vėl jas įvykdant. Sintaksė:</p>
-<p>watch [opcija] [komanda]</p>
-<p>Pavyzdžiai, kaip naudoti watch:</p>
-<pre><code>Paprastas watch naudojimas: Norėdami stebėti, kas vyksta su tam tikros komandos rezultatais (pvz., peržiūrėti laisvą vietą diske), galite naudoti šią komandą:</code></pre>
-<p>watch df -h</p>
-<pre><code>Paaiškinimas: df -h rodo disko naudojimo informaciją su žmogui patogia (human-readable) išvestimi. watch vykdys šią komandą kas 2 sekundes (numatytasis laiko intervalas) ir atnaujins išvestį.</code></pre>
-<p>Pakeisti atnaujinimo intervalą: Pagal nutylėjimą watch atnaujina komandos išvestį kas 2 sekundes. Jei norite pakeisti šį intervalą, galite naudoti -n parinktį:</p>
-<p>watch -n 5 ls -l</p>
-<pre><code>Paaiškinimas: Ši komanda atnaujins ls -l (sąrašas su failų detalėmis) kas 5 sekundes.</code></pre>
-<p>Rodyti tik pasikeitimus: Jei norite matyti tik tuos išvesties elementus, kurie pasikeitė, naudokite -d parinktį:</p>
-<p>watch -d df -h</p>
-<pre><code>Paaiškinimas: Ši komanda parodys tik pasikeitimus, kai disko naudojimo statistika keisis (tai ypač naudinga, kai tiksliai nenorite matyti visos išvesties).</code></pre>
-<p>Naudoti spalvas: Galite priversti watch rodyti išvestį su spalvomis, jei komanda natūraliai naudoja spalvas (pavyzdžiui, ls –color=auto):</p>
-<pre><code>watch --color ls --color=auto
+</section>
+<section id="kintamųjų-kūrimas-ir-valdymas" class="level3" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="kintamųjų-kūrimas-ir-valdymas"><span class="header-section-number">8.1.2</span> Kintamųjų kūrimas ir valdymas</h3>
+<section id="sukurti-lokalų-kintamąjį" class="level4" data-number="8.1.2.1">
+<h4 data-number="8.1.2.1" class="anchored" data-anchor-id="sukurti-lokalų-kintamąjį"><span class="header-section-number">8.1.2.1</span> Sukurti lokalų kintamąjį</h4>
+<p>Galite sukurti kintamąjį, kuris galioja tik dabartinėje shell sesijoje. Tai puikus būdas pernešti reikšmes nesukuriant ilgalaikių pakeitimų:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">MY_VAR</span><span class="op">=</span><span class="st">"Hello, world!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="export-aplinkos-kintamojo-sukūrimas" class="level4" data-number="8.1.2.2">
+<h4 data-number="8.1.2.2" class="anchored" data-anchor-id="export-aplinkos-kintamojo-sukūrimas"><span class="header-section-number">8.1.2.2</span> <code>export</code>: aplinkos kintamojo sukūrimas</h4>
+<p>Norėdami, kad kintamasis būtų prieinamas visiems vaikiniams procesams, naudokite <code>export</code>. Tai leidžia perduoti reikšmes programoms, kurios vykdomos iš esamos sesijos:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">MY_VAR</span><span class="op">=</span><span class="st">"Hello, world!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="naudojimas-programose" class="level3" data-number="8.1.3">
+<h3 data-number="8.1.3" class="anchored" data-anchor-id="naudojimas-programose"><span class="header-section-number">8.1.3</span> Naudojimas programose</h3>
+<p>Naudojant aplinkos kintamuosius, jų reikšmes galima lengvai pasiekti ir naudoti programose ar skriptuose:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$MY_VAR</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="peržiūrėti-esamus-kintamuosius" class="level3" data-number="8.1.4">
+<h3 data-number="8.1.4" class="anchored" data-anchor-id="peržiūrėti-esamus-kintamuosius"><span class="header-section-number">8.1.4</span> Peržiūrėti esamus kintamuosius</h3>
+<section id="env-visų-kintamųjų-peržiūra" class="level4" data-number="8.1.4.1">
+<h4 data-number="8.1.4.1" class="anchored" data-anchor-id="env-visų-kintamųjų-peržiūra"><span class="header-section-number">8.1.4.1</span> <code>env</code>: visų kintamųjų peržiūra</h4>
+<p>Komanda <code>env</code> leidžia peržiūrėti visus esamus aplinkos kintamuosius arba laikinai paleisti programą su tam tikrais kintamaisiais, suteikiant jums lankstumo ir kontrolės:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">env</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">env</span> MY_VAR=<span class="st">"Temporary value"</span> python my_script.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="printenv-specifinių-kintamųjų-rodymas" class="level4" data-number="8.1.4.2">
+<h4 data-number="8.1.4.2" class="anchored" data-anchor-id="printenv-specifinių-kintamųjų-rodymas"><span class="header-section-number">8.1.4.2</span> <code>printenv</code>: specifinių kintamųjų rodymas</h4>
+<p><code>printenv</code> komanda leidžia pamatyti specifinius kintamuosius. Tai naudinga, kai reikia greitai tikrinti, ar kintamieji nustatyti tinkamai:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">printenv</span> PATH</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="kintamųjų-pašalinimas" class="level3" data-number="8.1.5">
+<h3 data-number="8.1.5" class="anchored" data-anchor-id="kintamųjų-pašalinimas"><span class="header-section-number">8.1.5</span> Kintamųjų pašalinimas</h3>
+<section id="unset-kintamojo-pašalinimas" class="level4" data-number="8.1.5.1">
+<h4 data-number="8.1.5.1" class="anchored" data-anchor-id="unset-kintamojo-pašalinimas"><span class="header-section-number">8.1.5.1</span> <code>unset</code>: kintamojo pašalinimas</h4>
+<p>Jei kintamasis nebereikalingas, galite jį pašalinti naudodami <code>unset</code>, taip išvalydami aplinką nuo nereikalingų reikšmių:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">unset</span> <span class="va">MY_VAR</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="praktiniai-naudojimo-scenarijai" class="level3" data-number="8.1.6">
+<h3 data-number="8.1.6" class="anchored" data-anchor-id="praktiniai-naudojimo-scenarijai"><span class="header-section-number">8.1.6</span> Praktiniai naudojimo scenarijai</h3>
+<ul>
+<li><strong>Aplinka ir konfigūracija</strong>: Aplinkos kintamieji leidžia nustatyti, kaip turėtų veikti jūsų programos - nuo sistemos kelio iki duomenų bazių prisijungimų.</li>
+<li><strong>Skriptai ir automatizavimas</strong>: Kintamieji leidžia skriptams tapti lankstesniais ir pritaikomais, perduodant reikšmes tarp jų dalių.</li>
+<li><strong>Problemos sprendimas</strong>: Naudodami <code>env</code> ir <code>printenv</code>, galite greitai rasti klaidų priežastis ir sužinoti, kokios reikšmės yra nustatytos.</li>
+</ul>
+<p>Žinoma, pateikiu peržiūrėtą ir reikšmingai papildytą poskyrį apie disko tvarkymą ir optimizavimą, pritaikytą besimokančiam Linux vartotojui, su pavyzdžiais ir skirtingais flagais.</p>
+</section>
+</section>
+<section id="disko-tvarkymas-ir-optimizavimas" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="disko-tvarkymas-ir-optimizavimas"><span class="header-section-number">8.2</span> Disko Tvarkymas ir Optimizavimas</h2>
+<p>Sveiki atvykę į skyriaus apie disko tvarkymą ir optimizavimą Linux sistemoje! Šiame poskyryje išmoksite, kaip naudoti įvairius įrankius, padedančius analizuoti ir optimizuoti disko vietos naudojimą. Disko vietos valdymas yra gyvybiškai svarbus, kad resursai būtų efektyviai naudojami ir sisteminė veikla nebūtų trikdoma dėl vietos trūkumo. Šios komandos dažnai naudojamos, kai reikia atlaisvinti vietą diske arba analizuoti, kurie katalogai užima daugiausia vietos.</p>
+<section id="df" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="df"><span class="header-section-number">8.2.1</span> <code>df</code></h3>
+<p>Komanda <code>df</code> (disk free) leidžia peržiūrėti informaciją apie disko vietą visose prijungtose failų sistemose. Ji parodo, kiek vietos užimta, kiek laisvos vietos dar liko, ir kur yra prijungiamos direktorijos.</p>
+<ul>
+<li><p><strong>Naudojimas</strong>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">df</span> <span class="at">-h</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong>-h</strong>: Parodo dydžius žmogui suprantamais vienetais (pvz., GB, MB), kas padeda geriau suprasti disko vietos naudojimą.</li>
+</ul></li>
+<li><p><strong>Išvesties pavyzdys</strong>:</p>
+<pre><code>Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda1        50G   20G   30G  40% /
+/dev/sdb1       100G   80G   20G  80% /data</code></pre></li>
+<li><p><strong>Papildomi Flagai</strong>:</p>
+<ul>
+<li><strong>-T</strong>: Rodo failų sistemos tipą (pvz., ext4, xfs).</li>
+<li><strong>-i</strong>: Išveda informaciją apie inode, naudojama kai failų sistema susiduria su inodų stygiumi.</li>
+</ul></li>
+</ul>
+</section>
+<section id="du" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="du"><span class="header-section-number">8.2.2</span> <code>du</code></h3>
+<p>Komanda <code>du</code> (disk usage) padeda įvertinti, kiek vietos užima konkrečios direktorijos ir jų failai. Ji naudinga norint susekti, kurie failai ar katalogai naudoja daugiausia vietos.</p>
+<ul>
+<li><p><strong>Naudojimas</strong>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">du</span> <span class="at">-sh</span> <span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong>-s</strong>: Išveda tik apibendrintą bendrą katalogo dydį.</li>
+<li><strong>-h</strong>: Parodo dydžius žmogui suprantamais vienetais.</li>
+</ul></li>
+<li><p><strong>Išvesties pavyzdys</strong>:</p>
+<pre><code>2.1G    Movies
+1.4G    Music
+500M    Documents</code></pre></li>
+<li><p><strong>Papildomi Flagai</strong>:</p>
+<ul>
+<li><strong>–max-depth=N</strong>: Rodo dydžius tik iki nurodyto katalogų gylio. Pvz., <code>du --max-depth=1 /home/user</code> parodys tik pirmo lygio katalogus.</li>
+<li><strong>-c</strong>: Prideda bendrą dydžių suvestinę, naudinga norint pamatyti viso katalogo dydį.</li>
+</ul></li>
+</ul>
+</section>
+<section id="ncdu" class="level3" data-number="8.2.3">
+<h3 data-number="8.2.3" class="anchored" data-anchor-id="ncdu"><span class="header-section-number">8.2.3</span> <code>ncdu</code></h3>
+<p><code>ncdu</code> (NCurses Disk Usage) yra interaktyvus disko vietos analizatorius, leidžiantis lengvai naršyti ir įvertinti, kurios direktorijos ar failai užima daugiausiai vietos. Tai puikus įrankis, norint vizualiai pamatyti ir valdyti disko naudojimą.</p>
+<ul>
+<li><p><strong>Naudojimas</strong>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ncdu</span> /home/user</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Leidžia naršyti po katalogus interaktyvioje aplinkoje, kur galite matyti kiekvieno katalogo dydį ir lengvai naviguoti, kad rastumėte daugiausia vietos užimančius failus.</p></li>
+<li><p><strong>Papildomi Patarimai</strong>:</p>
+<ul>
+<li><strong>d</strong>: Ištrinti pasirinktą failą ar katalogą (būkite atsargūs!).</li>
+<li><strong>q</strong>: Išeiti iš <code>ncdu</code>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="papildomos-naudojimo-scenarijai" class="level3" data-number="8.2.4">
+<h3 data-number="8.2.4" class="anchored" data-anchor-id="papildomos-naudojimo-scenarijai"><span class="header-section-number">8.2.4</span> Papildomos Naudojimo Scenarijai</h3>
+<ul>
+<li><strong>Sistemos Priežiūra</strong>: Naudodamiesi <code>df</code>, galite greitai patikrinti, kiek vietos liko kiekviename diske, ir numatyti, kada reikės atlaisvinti vietos.</li>
+<li><strong>Didelių Failų Identifikavimas</strong>: Naudodami <code>du</code> kartu su <code>sort -h</code>, galite surūšiuoti katalogus ir failus pagal dydį, lengviau identifikuodami, kurie failai reikalauja dėmesio.</li>
+<li><strong>Vizualinis Analizavimas</strong>: <code>ncdu</code> suteikia vizualų būdą naršyti po disko struktūrą ir iš karto pamatyti, kurie katalogai yra per dideli, o tai leidžia imtis veiksmų efektyviau.</li>
+</ul>
+<p>Naudodami šiuos įrankius, galėsite lengviau valdyti disko vietą ir užtikrinti, kad jūsų sistema veiktų sklandžiai ir efektyviai. Eksperimentuokite su šiomis komandomis, kad išmoktumėte optimizuoti disko naudojimą pagal savo poreikius!</p>
+<p>Žinoma, peržiūrėkime ir perrašykime visą poskyrį apie vartotojų ir grupių administravimą, įtraukiant papildomas komandas ir praktinius patarimus, kad besimokantis Linux vartotojas galėtų visapusiškai suprasti šią svarbią temą.</p>
+</section>
+</section>
+<section id="vartotojų-ir-grupių-administravimas" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="vartotojų-ir-grupių-administravimas"><span class="header-section-number">8.3</span> Vartotojų ir Grupių Administravimas</h2>
+<p>Vartotojų ir grupių administravimas yra esminė Linux sistemos dalis, leidžianti valdyti prieigą prie sistemos resursų bei užtikrinti saugumą. Ši tema apima komandų rinkinį, skirtą kurti, modifikuoti ir valdyti vartotojus bei grupes. Tai leidžia administratoriui užtikrinti, kad tinkami vartotojai turėtų reikiamas teises ir prieigą prie sistemos resursų. Šios komandos dažnai naudojamos diegiant naujas sistemas, konfigūruojant vartotojo aplinkas ar atliekant saugumo auditą.</p>
+<section id="adduser" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="adduser"><span class="header-section-number">8.3.1</span> <code>adduser</code></h3>
+<p>Komanda <code>adduser</code> naudojama kurti naują vartotoją sistemoje. Ji automatiškai sukuria vartotojo namų katalogą ir leidžia nustatyti pradinius vartotojo parametrus, pvz., slaptažodį.</p>
+<p><strong>Pavyzdys</strong>:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> adduser jonas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Tai sukurs naują vartotoją „jonas“ su namų katalogu <code>/home/jonas</code>.</p>
+</section>
+<section id="usermod" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="usermod"><span class="header-section-number">8.3.2</span> <code>usermod</code></h3>
+<p><code>usermod</code> leidžia modifikuoti esamų vartotojų paskyras. Naudojama priskirti vartotojui naujas grupes, keisti jo slaptažodį ar atnaujinti vartotojo duomenis, tokius kaip namų katalogas ar login vardas.</p>
+<p><strong>Papildomi Flagai</strong>: - <strong><code>-aG</code></strong>: Prideda vartotoją prie nurodytos grupės. <code>bash   sudo usermod -aG sudo jonas</code> - <strong><code>-d</code></strong>: Keičia vartotojo namų katalogą. <code>bash   sudo usermod -d /home/newjonas jonas</code></p>
+</section>
+<section id="passwd" class="level3" data-number="8.3.3">
+<h3 data-number="8.3.3" class="anchored" data-anchor-id="passwd"><span class="header-section-number">8.3.3</span> <code>passwd</code></h3>
+<p>Komanda <code>passwd</code> naudojama vartotojo slaptažodžio keitimui, užtikrinant saugią prieigą prie paskyros.</p>
+<p><strong>Pavyzdys</strong>:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> passwd jonas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Tai leis jums pakeisti „jonas“ paskyros slaptažodį.</p>
+</section>
+<section id="userdel" class="level3" data-number="8.3.4">
+<h3 data-number="8.3.4" class="anchored" data-anchor-id="userdel"><span class="header-section-number">8.3.4</span> <code>userdel</code></h3>
+<p><code>userdel</code> leidžia pašalinti vartotoją iš sistemos. Tai gali būti būtina, kai reikia panaikinti pasenusias paskyras.</p>
+<p><strong>Pavyzdys</strong>:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> userdel jonas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p><strong><code>-r</code></strong>: Pašalina vartotoją ir jo namų katalogą.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> userdel <span class="at">-r</span> jonas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+</section>
+<section id="groupadd" class="level3" data-number="8.3.5">
+<h3 data-number="8.3.5" class="anchored" data-anchor-id="groupadd"><span class="header-section-number">8.3.5</span> <code>groupadd</code></h3>
+<p><code>groupadd</code> komanda leidžia kurti naujas grupes, kad vartotojai galėtų būti grupuojami pagal jų roles ar teises.</p>
+<p><strong>Pavyzdys</strong>:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> groupadd developers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Sukuria naują grupę „developers“.</p>
+</section>
+<section id="groupdel" class="level3" data-number="8.3.6">
+<h3 data-number="8.3.6" class="anchored" data-anchor-id="groupdel"><span class="header-section-number">8.3.6</span> <code>groupdel</code></h3>
+<p><code>groupdel</code> leidžia pašalinti grupę iš sistemos, kai jos nebereikia.</p>
+<p><strong>Pavyzdys</strong>:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> groupdel developers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="chown" class="level3" data-number="8.3.7">
+<h3 data-number="8.3.7" class="anchored" data-anchor-id="chown"><span class="header-section-number">8.3.7</span> <code>chown</code></h3>
+<p>Komanda <code>chown</code> skirta keisti failo ar katalogo savininką, užtikrinant tinkamą prieigą.</p>
+<p><strong>Pavyzdys</strong>:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown jonas:developers /home/jonas/file.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="chmod" class="level3" data-number="8.3.8">
+<h3 data-number="8.3.8" class="anchored" data-anchor-id="chmod"><span class="header-section-number">8.3.8</span> <code>chmod</code></h3>
+<p><code>chmod</code> naudojama keisti failo ar katalogo teises, leidžiančias tiksliai kontroliuoti prieigą.</p>
+<p><strong>Papildomi Flagai</strong>: - <strong>Simbolinis rėžimas</strong>: <code>bash   chmod u+rwx,go-rwx file.txt</code> - <strong>Skaitmeninis rėžimas</strong>: <code>bash   chmod 755 file.txt</code></p>
+</section>
+<section id="papildomos-komandos" class="level3" data-number="8.3.9">
+<h3 data-number="8.3.9" class="anchored" data-anchor-id="papildomos-komandos"><span class="header-section-number">8.3.9</span> Papildomos Komandos</h3>
+<ul>
+<li><p><strong><code>id</code></strong>: Parodo vartotojo ID, grupės ID ir papildomas grupes.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">id</span> jonas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong><code>groups</code></strong>: Parodo grupių sąrašą, kurioms vartotojas priklauso.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">groups</span> jonas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+</section>
+<section id="praktiniai-pavyzdžiai-ir-saugumo-praktikos" class="level3" data-number="8.3.10">
+<h3 data-number="8.3.10" class="anchored" data-anchor-id="praktiniai-pavyzdžiai-ir-saugumo-praktikos"><span class="header-section-number">8.3.10</span> Praktiniai Pavyzdžiai ir Saugumo Praktikos</h3>
+<ul>
+<li><strong>Vartotojų Auditas</strong>: Naudodami <code>id</code> ir <code>groups</code>, galite patikrinti, kam priklauso tam tikri vartotojai, kad užtikrintumėte tinkamą prieigą ir teises.</li>
+<li><strong>Sistemos Saugumas</strong>: Reguliariai peržiūrėkite vartotojų ir grupių sąrašus, kad išvengtumėte pasenusių paskyrų.</li>
+<li><strong>Administracinės Prieigos Valdymas</strong>: Naudokite <code>adduser</code> ir <code>passwd</code>, kad kasdien atnaujintumėte paskyras ir slaptažodžius.</li>
+</ul>
+<p>Naudodami šias komandas, galėsite veiksmingai administruoti vartotojus ir grupes, užtikrindami, kad jūsų Linux sistema būtų saugi ir efektyviai valdoma. Eksperimentuokite su šiomis komandomis, kad įgytumėte dar daugiau praktinės patirties!</p>
+<p>Puiku! Štai atnaujintas poskyris apie ugniasienės ir tinklo saugumo valdymą, įtraukiant papildomus paaiškinimus, pavyzdžius ir geriausias praktikas, pritaikytas besimokančiam Linux vartotojui.</p>
+</section>
+</section>
+<section id="ugniasienės-ir-tinklo-saugumo-valdymas" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="ugniasienės-ir-tinklo-saugumo-valdymas"><span class="header-section-number">8.4</span> Ugniasienės ir Tinklo Saugumo Valdymas</h2>
+<p>Ugniasienė ir tinklo saugumo valdymas yra esminiai komponentai siekiant užtikrinti, kad jūsų Linux sistema būtų apsaugota nuo neteisėtos prieigos ir kenkėjiškų atakų. Ugniasienė veikia kaip filtras, kuris kontroliuoja srautą, leidžiamą į jūsų sistemą ir iš jos, blokuodamas nepageidaujamus ryšius. Šiame skyriuje išmoksime, kaip naudoti įvairius įrankius tinklo saugumui užtikrinti.</p>
+<section id="kas-yra-ugniasienė" class="level3" data-number="8.4.1">
+<h3 data-number="8.4.1" class="anchored" data-anchor-id="kas-yra-ugniasienė"><span class="header-section-number">8.4.1</span> Kas yra Ugniasienė?</h3>
+<p>Ugniasienė yra saugumo sistema, stebinti ir kontroliuojanti atvykstančius ir išvykstančius tinklo srautus pagal iš anksto nustatytas saugumo taisykles. Linux sistemoje dažniausiai naudojama programinė ugniasienė, tokia kaip <code>ufw</code> (Uncomplicated Firewall), kuri palengvina taisyklių konfigūravimą.</p>
+</section>
+<section id="ufw-uncomplicated-firewall" class="level3" data-number="8.4.2">
+<h3 data-number="8.4.2" class="anchored" data-anchor-id="ufw-uncomplicated-firewall"><span class="header-section-number">8.4.2</span> <code>ufw</code> (Uncomplicated Firewall)</h3>
+<p><code>ufw</code> yra paprastas įrankis, skirtas ugniasienės taisyklėms kurti ir valdyti. Jis leidžia lengvai leisti arba drausti srautą tam tikrais prievadais arba IP adresais.</p>
+<ul>
+<li><strong>Pagrindinės Komandos</strong>:
+<ul>
+<li><p><strong>Įjungti ugniasienę</strong>:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw enable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Išjungti ugniasienę</strong>:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw disable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Leisti srautą per konkretų prievadą</strong> (pvz., SSH prievadas 22):</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw allow 22</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Drausti srautą per konkretų prievadą</strong>:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw deny 80</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Peržiūrėti visas ugniasienės taisykles</strong>:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Pašalinti taisyklę pagal numerį</strong>:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw status numbered</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw delete <span class="op">&lt;</span>rule_number<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+<li><strong>Svarbios Sąvokos</strong>:
+<ul>
+<li><strong>Prievadas (Port)</strong>: Tai yra virtualus taškas, kuris leidžia skirtingoms aplikacijoms bendrauti per tinklą.</li>
+<li><strong>Taisyklės Vykdymo Tvarka</strong>: <code>ufw</code> tvarko taisykles seka, leidžiančią arba blokuojančią srautą pagal pirmą atitiktį.</li>
+</ul></li>
+<li><strong>Praktiniai Pavyzdžiai</strong>:
+<ul>
+<li><p>Leisti tik vietiniam tinklui prisijungti prie serverio:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw allow from 192.168.1.0/24</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Riboti SSH ryšius, siekiant apsaugoti nuo „brute-force“ atakų:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ufw limit ssh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+</ul>
+</section>
+<section id="netstat" class="level3" data-number="8.4.3">
+<h3 data-number="8.4.3" class="anchored" data-anchor-id="netstat"><span class="header-section-number">8.4.3</span> <code>netstat</code></h3>
+<p><code>netstat</code> yra įrankis, naudojamas tinklo statistikos peržiūrai. Jis teikia informaciją apie tinklo ryšius, maršrutizavimo lenteles ir tinklo sąsajų būklę.</p>
+<ul>
+<li><strong>Naudojimas</strong>:
+<ul>
+<li><p><strong>Rodyti visas tinklo jungtis</strong>:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">netstat</span> <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Rodyti tik veikiančias TCP jungtis</strong>:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">netstat</span> <span class="at">-at</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Rodyti tinklo sąsajos statistiką</strong>:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">netstat</span> <span class="at">-i</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+</ul>
+</section>
+<section id="ss" class="level3" data-number="8.4.4">
+<h3 data-number="8.4.4" class="anchored" data-anchor-id="ss"><span class="header-section-number">8.4.4</span> <code>ss</code></h3>
+<p><code>ss</code> yra modernus įrankis tinklo ryšių stebėsenai, pateikiantis detalesnę informaciją nei <code>netstat</code>.</p>
+<ul>
+<li><strong>Naudojimas</strong>:
+<ul>
+<li><p><strong>Rodyti visas TCP jungtis</strong>:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ss</span> <span class="at">-t</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Rodyti visas klausymosi (listening) jungtis</strong>:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ss</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Rodyti visas UDP jungtis</strong>:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ss</span> <span class="at">-u</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+<li><strong>Privalumai</strong>: <code>ss</code> gali būti greitesnis ir teikti išsamesnę informaciją apie tinklo ryšius.</li>
+</ul>
+</section>
+<section id="tinklo-saugumo-geriausios-praktikos" class="level3" data-number="8.4.5">
+<h3 data-number="8.4.5" class="anchored" data-anchor-id="tinklo-saugumo-geriausios-praktikos"><span class="header-section-number">8.4.5</span> Tinklo Saugumo Geriausios Praktikos</h3>
+<ul>
+<li><strong>Reguliarus Taisyklių Peržiūrėjimas</strong>: Nuolat peržiūrėkite ir atnaujinkite ugniasienės taisykles, kad išvengtumėte nesaugios prieigos.</li>
+<li><strong>Nuolatinis Tinklo Ryšių Stebėjimas</strong>: Naudokite <code>netstat</code> ir <code>ss</code> tinklo ryšių būklės stebėjimui ir diagnostikai, greitai aptikdami neįprastą veiklą.</li>
+<li><strong>Saugumo Patikros</strong>: Pasirūpinkite, kad tik būtini prievadai būtų atidaryti ir prieinami iš išorės.</li>
+</ul>
+<p>Šios komandos ir praktikos suteiks jums reikiamus įrankius tinklo saugumui administruoti, leidžiančius efektyviai valdyti ir stebėti tinklo srautus bei apsaugoti savo Linux sistemą. Eksperimentuokite su šiomis komandomis ir pritaikykite geriausias praktikas, kad užtikrintumėte savo tinklo saugumą!</p>
+<p>Žinoma, išplėsiu poskyrį apie sistemines paslaugas ir automatizavimą, kad jis būtų išsamesnis ir labiau pritaikytas naujokams, naudodamas <code>apache</code> kaip pavyzdį.</p>
+</section>
+</section>
+<section id="sisteminės-paslaugos-ir-automatizavimas" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="sisteminės-paslaugos-ir-automatizavimas"><span class="header-section-number">8.5</span> Sisteminės Paslaugos ir Automatizavimas</h2>
+<p>Linux sistemų administravimas reikalauja efektyvaus paslaugų valdymo ir užduočių automatizavimo. Šios dvi sritys yra esminės, siekiant užtikrinti, kad sistemos veiktų patikimai ir efektyviai. Paslaugų valdymas leidžia užtikrinti, kad serveriai ir programos veiktų taip, kaip numatyta, o automatizavimas leidžia sutaupyti laiko pasikartojančioms užduotims atlikti.</p>
+<section id="systemd-ir-systemctl" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="systemd-ir-systemctl"><span class="header-section-number">8.5.1</span> <code>systemd</code> ir <code>systemctl</code></h3>
+<p><code>systemd</code> yra naujausias ir plačiai naudojamas init sistema Linux sistemoje, kuri valdo paslaugų paleidimą, sustabdymą ir būklės tikrinimą. Ši sistema pakeitė senesnes init sistemas daugelyje šiuolaikinių distribucijų dėl savo lankstumo ir funkcionalumo.</p>
+<p><code>systemctl</code> yra pagrindinė komanda, naudojama sąveikai su <code>systemd</code>. Ji suteikia galimybę valdyti paslaugas, stebėti jų būklę ir konfigūruoti, kada ir kaip jos turėtų būti vykdomos.</p>
+<section id="pagrindinės-systemctl-komandos" class="level4" data-number="8.5.1.1">
+<h4 data-number="8.5.1.1" class="anchored" data-anchor-id="pagrindinės-systemctl-komandos"><span class="header-section-number">8.5.1.1</span> Pagrindinės <code>systemctl</code> Komandos</h4>
+<ul>
+<li><p><strong>Paleisti paslaugą</strong>: Naudojama paleisti nurodytą paslaugą. Tai dažnai daroma po paslaugos konfigūracijos pakeitimų.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl start apache2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Sustabdyti paslaugą</strong>: Sustabdo veikiančią paslaugą. Tai naudinga, kai paslauga turi būti laikinai išjungta dėl priežiūros ar kitos priežasties.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl stop apache2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Perkrauti paslaugą</strong>: Atlieka paslaugos perkrovimą, kas gali būti būtina po konfigūracijos pakeitimų, kai paslauga turi atsinaujinti su naujais nustatymais.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl restart apache2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Patikrinti paslaugos būseną</strong>: Rodo dabartinę paslaugos būseną, įskaitant, ar ji veikia, ar yra sustabdyta, ir ar yra kokių nors klaidų ar įspėjimų.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl status apache2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Įjungti paslaugą automatiškai paleidžiant sistemą</strong>: Leidžia paslaugai automatiškai paleisti, kai sistema įjungta. Tai naudinga serveriams, kurie turi būti prieinami visada.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl enable apache2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Išjungti automatinį paslaugos paleidimą</strong>: Išjungia automatinį paslaugos paleidimą, pvz., jei paslauga nebereikalinga.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> systemctl disable apache2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+</section>
+<section id="praktinis-pavyzdys" class="level4" data-number="8.5.1.2">
+<h4 data-number="8.5.1.2" class="anchored" data-anchor-id="praktinis-pavyzdys"><span class="header-section-number">8.5.1.2</span> Praktinis Pavyzdys</h4>
+<p>Kai sukonfigūruosite <code>apache2</code> ir paleisite jį kaip paslaugą, galite pasiekti savo vietinį web serverį naršyklėje, įvedę <code>http://localhost</code>. Tai leis jums patikrinti, kaip veikia jūsų web serveris ir ar teisingai sukonfigūravote viską.</p>
+</section>
+</section>
+<section id="automatizavimas-su-cron-ir-at" class="level3" data-number="8.5.2">
+<h3 data-number="8.5.2" class="anchored" data-anchor-id="automatizavimas-su-cron-ir-at"><span class="header-section-number">8.5.2</span> Automatizavimas su <code>cron</code> ir <code>at</code></h3>
+<p>Automatizavimas yra svarbus aspektas efektyviam Linux administravimui, nes jis leidžia automatizuoti kasdienes užduotis, užtikrinant, kad jos būtų atliktos laiku ir tiksliai.</p>
+<section id="cron" class="level4" data-number="8.5.2.1">
+<h4 data-number="8.5.2.1" class="anchored" data-anchor-id="cron"><span class="header-section-number">8.5.2.1</span> <code>cron</code></h4>
+<p><code>cron</code> - tai paslauga, leidžianti planuoti reguliarias užduotis. Ji veikia kaip laikrodis, kuris laukia nustatyto laiko ir tada vykdo užduotį.</p>
+<ul>
+<li><p><strong>Crontab Įrašų Redagavimas</strong>: Naudodami <code>crontab</code> redaguokite savo užduotis:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">crontab</span> <span class="at">-e</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Crontab Sintaksė</strong>: Sintaksė susideda iš penkių laukų, žyminčių laiką, ir užduoties, kurią reikia atlikti.</p>
+<pre><code>* * * * * /komanda/kelias</code></pre>
+<p>Kur „*“ reiškia minutės, valandos, dienos, mėnesiai ir savaitės dienos. Tai leidžia atlikti užduotis konkrečiu metu.</p></li>
+<li><p><strong>Pavyzdys</strong>:</p>
+<ul>
+<li><p>Kasdien 3:00 val. ryte vykdyti atsarginės kopijos skriptą:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span> 3 <span class="pp">*</span> <span class="pp">*</span> <span class="pp">*</span> /usr/local/bin/backup.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+</ul>
+</section>
+<section id="at" class="level4" data-number="8.5.2.2">
+<h4 data-number="8.5.2.2" class="anchored" data-anchor-id="at"><span class="header-section-number">8.5.2.2</span> <code>at</code></h4>
+<p><code>at</code> leidžia planuoti vienkartines užduotis, kurios turi būti įvykdytos tam tikru laiku ateityje. Tai patogu, kai reikia atlikti vienkartinį veiksmą.</p>
+<ul>
+<li><p><strong>Pavyzdys</strong>:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"/kelias/į/skriptą"</span> <span class="kw">|</span> <span class="ex">at</span> 14:00</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Peržiūrėti suplanuotas užduotis</strong>:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="ex">atq</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+</section>
+</section>
+<section id="logų-ir-klaidos-tvarkymas" class="level3" data-number="8.5.3">
+<h3 data-number="8.5.3" class="anchored" data-anchor-id="logų-ir-klaidos-tvarkymas"><span class="header-section-number">8.5.3</span> Logų ir Klaidos Tvarkymas</h3>
+<ul>
+<li><p><strong>Paslaugų Logų Stebėjimas</strong>: Naudokite <code>journalctl</code>, kad galėtumėte stebėti ir tikrinti paslaugų veikimą bei diagnozuoti problemas.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> journalctl <span class="at">-u</span> apache2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+</section>
+<section id="papildomi-įrankiai-ir-geriausios-praktikos" class="level3" data-number="8.5.4">
+<h3 data-number="8.5.4" class="anchored" data-anchor-id="papildomi-įrankiai-ir-geriausios-praktikos"><span class="header-section-number">8.5.4</span> Papildomi Įrankiai ir Geriausios Praktikos</h3>
+<ul>
+<li><p><strong>Ansible ir Kiti Įrankiai</strong>: Norint didesnio masto automatizacijos, galima naudotis įrankiais kaip <code>Ansible</code>, kurie padeda konfigūruoti ir valdyti daugybę sistemų vienu metu.</p></li>
+<li><p><strong>Saugumo Praktikos</strong>: Užtikrinkite, kad prieiga prie <code>crontab</code> ir <code>at</code> būtų apribota, naudojant <code>/etc/cron.allow</code> ir <code>/etc/cron.deny</code>.</p></li>
+<li><p><strong>Reguliarus Planavimas ir Auditavimas</strong>: Nuolat peržiūrėkite ir optimizuokite savo automatizavimo užduotis ir paslaugų konfigūraciją, užtikrindami, kad jos būtų veiksmingos ir saugios.</p></li>
+</ul>
+<p>Šis skyrius padės jums valdyti sistemines paslaugas ir automatizuoti užduotis, suteikdamas reikiamus įrankius, kad jūsų Linux sistema veiktų sklandžiai ir efektyviai. Praktikuokite naudoti šias komandas ir geriausias praktikas, kad taptumėte tikru sistemų automatikos meistru!</p>
 
-    Paaiškinimas: Tai rodo ls išvestį su spalvomis kas 2 sekundes.
 
-Sustabdyti stebėjimą: Norėdami nutraukti watch komandos vykdymą, tiesiog paspauskite Ctrl + C.</code></pre>
-<p>Scenarijai, kur watch yra naudingas:</p>
-<pre><code>Stebėti sistemos išteklius: Jei norite stebėti sistemos apkrovą (procesoriaus naudojimą, atminties naudojimą), galite naudoti komandas kaip top ar free su watch:</code></pre>
-<p>watch free -h</p>
-<p>Stebėti failų ar katalogų pasikeitimus: Norėdami matyti, kaip keičiasi tam tikras failas ar katalogas (pavyzdžiui, stebėti įrašus į log failą), galite naudoti ls:</p>
-<p>watch ls -l /path/to/directory</p>
-<p>Stebėti tinklo pralaidumą: Norėdami stebėti tinklo naudojimą, galite naudoti netstat arba ss:</p>
-<pre><code>watch netstat -tuln</code></pre>
-<p>Naudojimo atvejai:</p>
-<pre><code>Sistemos administravimas: Naudojamas siekiant stebėti sistemos išteklius, failų pasikeitimus, tinklo ryšius ir kitus parametrus realiu laiku.
-Tinklo stebėjimas: Norėdami stebėti atvirus tinklo prievadus ir ryšio statistiką.
-Logų analizė: Naudojamas log failų stebėjimui, kad greitai matytumėte bet kokius pasikeitimus ar klaidas.</code></pre>
-<p>Apibendrinimas:</p>
-<p>watch komanda yra labai naudinga, kai reikia stebėti tam tikrų komandų išvestį realiu laiku. Ji leidžia lengvai matyti, kaip keičiasi sistemos ar failų būklė be poreikio rankiniu būdu nuolat vykdyti komandas. Tai ypač naudinga stebint sistemas, tinklą ar failų struktūras.</p>
-<section id="tail--f" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="tail--f"><span class="header-section-number">8.1</span> tail -f</h2>
-<p>tail -f Komanda Linux sistemoje</p>
-<p>tail -f yra komanda, naudojama stebėti failų turinį realiu laiku. Paprastai ji naudojama stebint log failus arba bet kokius kitus failus, kuriuose įrašai nuolat pridedami. Tai labai naudinga stebint programas ar sistemos procesus, kurie generuoja žurnalus arba nuolat atnaujina savo išvestį. Sintaksė:</p>
-<p>tail -f [failo_pavadinimas]</p>
-<p>Pagrindiniai pavyzdžiai, kaip naudoti tail -f:</p>
-<pre><code>Stebėti log failą realiu laiku: Jei norite stebėti sistemos logus, pavyzdžiui, /var/log/syslog arba /var/log/auth.log, galite naudoti šią komandą:</code></pre>
-<p>tail -f /var/log/syslog</p>
-<pre><code>Paaiškinimas: Tai leis matyti naujausius įrašus, kurie pridedami prie syslog failo.</code></pre>
-<p>Stebėti žurnalo failą, kuris nuolat atnaujinamas: Jei turite programą, kuri generuoja žurnalą ir nuolat prideda naujus įrašus į failą, galite naudoti tail -f:</p>
-<p>tail -f /path/to/logfile.log</p>
-<p>Stebėti kelis failus vienu metu: Galite stebėti daugiau nei vieną failą, nurodydami kelis failus komandoje:</p>
-<p>tail -f /var/log/syslog /var/log/auth.log</p>
-<pre><code>Paaiškinimas: Tai leis stebėti abu failus realiu laiku.</code></pre>
-<p>Pakeisti atvaizduojamų eilučių skaičių: Norėdami rodyti ne tik paskutines 10 eilučių, galite naudoti -n parinktį ir nustatyti norimą eilučių skaičių:</p>
-<pre><code>tail -n 20 -f /var/log/syslog
-
-    Paaiškinimas: Tai parodys paskutines 20 eilučių iš syslog failo ir toliau stebės naujus įrašus.</code></pre>
-<p>Naudojimo atvejai ir scenarijai:</p>
-<pre><code>Sistemos administravimas:
-    Žurnalo stebėjimas: Stebėti sistemos logus, kad pastebėtumėte klaidas ar problemas. Pavyzdžiui, galite stebėti, kas vyksta su jūsų serveriu, stebėdami /var/log/syslog failą.
-Programų stebėjimas:
-    Programos žurnalo stebėjimas: Kai programa generuoja log failus (pvz., web serverio žurnalai), galite naudoti tail -f, kad matytumėte, kas vyksta realiu laiku.
-Tinklo klaidų ir užklausų stebėjimas:
-    Tinklo žurnalai: Jei dirbate su tinklo diagnostika, galite stebėti tinklo logus, kad matytumėte užklausas ir klaidas realiu laiku.</code></pre>
-<p>Papildomos parinktys:</p>
-<pre><code>-f (follow): Tai pagrindinė parinktis, kuri leidžia stebėti failo turinį realiu laiku.
--n: Nustato, kiek eilučių turėtų būti rodomos iš karto, kai komanda pradeda.
--s: Nustato atnaujinimo intervalą (sekundėmis). Pvz.:
-
-tail -f -s 2 /var/log/syslog
-
-Tai stebės syslog failą, atnaujindama išvestį kas 2 sekundes.</code></pre>
-<p>Apibendrinimas:</p>
-<p>tail -f yra komanda, leidžianti stebėti failo turinį realiu laiku. Tai ypač naudinga stebint log failus, kad galėtumėte matyti naujausius įrašus, kurie pridedami prie failo, pavyzdžiui, klaidas, įvykdytas operacijas arba įvykusius įvykius. Tai būtina komanda sistemų administratoriams ir kūrėjams, kurie dirba su realiu laiku atnaujinamais duomenimis.</p>
-<p>Services</p>
-<p>systemctl Komanda Linux sistemoje</p>
-<p>systemctl yra pagrindinė komanda, naudojama valdyti sisteminius paslaugų (services), procesus ir įrangą, kai naudojama systemd (dažniausiai pasitaikanti init sistema Linux distrose, pvz., Ubuntu, CentOS ir kt.). Su šia komanda galima valdyti, stebėti ir konfigūruoti paslaugas, užtikrinant, kad sistema veiktų sklandžiai. Pagrindiniai systemctl naudojimo atvejai:</p>
-<pre><code>Paslaugų valdymas (start, stop, restart, enable, disable):
-    Startuoti paslaugą:</code></pre>
-<p>sudo systemctl start [service_name]</p>
-<pre><code>Paaiškinimas: Ši komanda užtikrina, kad nurodyta paslauga pradėtų veikti (pvz., httpd, ssh).</code></pre>
-<p>Sustabdyti paslaugą:</p>
-<p>sudo systemctl stop [service_name]</p>
-<pre><code>Paaiškinimas: Sustabdo veikiančią paslaugą.</code></pre>
-<p>Iš naujo paleisti paslaugą:</p>
-<p>sudo systemctl restart [service_name]</p>
-<pre><code>Paaiškinimas: Atkūrimas po klaidos ar konfigūracijos pakeitimų. Tuo pačiu metu paslauga sustabdyta ir vėl paleidžiama.</code></pre>
-<p>Įjungti paslaugą, kad ji būtų paleista po sistemos paleidimo:</p>
-<p>sudo systemctl enable [service_name]</p>
-<pre><code>Paaiškinimas: Tai įgalina paslaugą automatiškai startuoti po sistemos paleidimo.</code></pre>
-<p>Išjungti paslaugą, kad ji nebeveiktų po sistemos paleidimo:</p>
-<pre><code>sudo systemctl disable [service_name]
-
-    Paaiškinimas: Tai sustabdo paslaugos automatinį paleidimą per kitą sistemos paleidimą.</code></pre>
-<p>Patikrinti paslaugos statusą:</p>
-<pre><code>Paslaugos būsenos peržiūra:
-
-systemctl status [service_name]
-
-    Paaiškinimas: Ši komanda parodo paslaugos būseną, įskaitant, ar ji veikia, klaidas, paskutines žinutes ir kt.</code></pre>
-<p>Peržiūrėti visas veikiančias paslaugas:</p>
-<pre><code>Visų paslaugų peržiūra:
-
-systemctl list-units --type=service
-
-    Paaiškinimas: Tai rodo visų aktyvių paslaugų sąrašą sistemoje.</code></pre>
-<p>Žiūrėti logus:</p>
-<pre><code>Žiūrėti sisteminius logus:
-
-journalctl
-
-    Paaiškinimas: Tai leidžia peržiūrėti sisteminius žurnalus, kurie apima įvykius ir klaidas, susijusias su paslaugomis, sistemomis ir įrenginiais. Galima naudoti įvairias parinktis, kad filtruotumėte informaciją.</code></pre>
-<p>Pakeisti sistemą:</p>
-<pre><code>Perkrauti sistemą:</code></pre>
-<p>sudo systemctl reboot</p>
-<pre><code>Paaiškinimas: Tai perrašo sistemą (dažnai naudojama po atnaujinimų).</code></pre>
-<p>Išjungti sistemą:</p>
-<pre><code>    sudo systemctl poweroff
-
-        Paaiškinimas: Tai išjungia sistemą.</code></pre>
-<p>Dažnai naudojamos systemctl parinktys:</p>
-<pre><code>--type=service: Tai leidžia tiksliai nurodyti, kad norite dirbti su paslaugomis (service).
--a: Tai rodo visų paslaugų būseną (net ir paslaugų, kurios nėra aktyvios).
---failed: Tai parodys tik tas paslaugas, kurios nepavyko paleisti.</code></pre>
-<p>Pavyzdžiai, kaip naudoti systemctl:</p>
-<pre><code>Patikrinti paslaugos būseną:</code></pre>
-<p>sudo systemctl status nginx</p>
-<pre><code>Tai parodys, ar nginx web serveris veikia, ar jis sustabdytas, ir paskutines klaidas.</code></pre>
-<p>Įjungti nginx serverį, kad jis automatiškai startuotų po sistemos paleidimo:</p>
-<p>sudo systemctl enable nginx</p>
-<p>Sustabdyti nginx paslaugą:</p>
-<p>sudo systemctl stop nginx</p>
-<p>Perkrauti paslaugą, pvz., po konfigūracijos pakeitimų:</p>
-<p>sudo systemctl restart nginx</p>
-<p>Peržiūrėti žurnalą, susijusį su paslauga:</p>
-<pre><code>journalctl -u nginx
-
-    Tai parodys visus įrašus, susijusius su nginx paslaugos žurnalu.</code></pre>
-<p>Naudojimo atvejai:</p>
-<pre><code>Sistemos administravimas: systemctl yra būtina komanda sistemos administratoriui, kad jis galėtų valdyti paslaugas, keisti jų būsenas ir peržiūrėti logus.
-Web serverių administravimas: Tai naudinga prižiūrint web serverius, tokius kaip nginx ar apache, ir užtikrinant, kad paslaugos būtų teisingai paleistos ir veiktų be trikdžių.
-Sistemos diagnostika: Naudojant systemctl status ir journalctl, galima greitai diagnozuoti problemas, susijusias su paslaugomis ir sistema.</code></pre>
-<p>Apibendrinimas:</p>
-<p>systemctl komanda yra galingas įrankis, skirtas valdyti sistemines paslaugas ir procesus, kai naudojama systemd. Tai leidžia startuoti, sustabdyti, atnaujinti, peržiūrėti ir konfigūruoti paslaugas bei sisteminius procesus. Tai būtina komanda tiek sistemos administratoriui, tiek kūrėjui, kuris dirba su serveriais ar kitomis Linux pagrindu veikiančiomis sistemomis.</p>
-<p>sudo systemctl status apache2</p>
-<p>sudo systemctl start apache2</p>
-<p>sudo systemctl stop apache2</p>
-<p>sudo systemctl restart apache2</p>
-<p>sudo systemctl enable apache2</p>
-<p>Security - Users and Groups</p>
-<p>Permissions are assigned based on “everyone”, users and groups.</p>
-<p>All resources are objects in Linux. So to give permission to the webcam you would add your user to the group that owns the video object.</p>
-<p>Certain resources reset their permissions at reboot such as video. You have to add your user to the group that owns it instead of simply making yourself owner.</p>
-<p>adduser, groupadd, usermod Komandos Linux sistemoje</p>
-<p>Šios komandos naudojamos valdyti vartotojus ir grupes Linux sistemoje. Jos leidžia kurti, redaguoti ir pašalinti vartotojus bei grupes, taip pat nustatyti leidimus ir konfigūruoti paskyras. Šios komandos yra naudingos sistemų administravimui, kai reikia valdyti prieigą prie sistemos. 1. adduser – Naujo vartotojo sukūrimas</p>
-<p>Komanda adduser naudojama sukurti naują vartotoją Linux sistemoje. Tai paprastai apima ir vartotojo namų katalogo sukūrimą, taip pat vartotojo paskyros konfigūravimą.</p>
-<p>Sintaksė:</p>
-<p>sudo adduser [vartotojo_vardas]</p>
-<p>Pavyzdys:</p>
-<p>sudo adduser jonas</p>
-<p>Paaiškinimas: Tai sukurs naują vartotoją „jonas“, sukurs jo namų katalogą /home/jonas, taip pat nustatys vartotojo slaptažodį ir kitus parametrus (pvz., pilną vardą, telefono numerį ir kt.). 2. groupadd – Naujos grupės sukūrimas</p>
-<p>Komanda groupadd naudojama kuriant naują grupę Linux sistemoje. Grupės leidžia grupuoti vartotojus ir priskirti jiems bendrus leidimus.</p>
-<p>Sintaksė:</p>
-<p>sudo groupadd [grupės_vardas]</p>
-<p>Pavyzdys:</p>
-<p>sudo groupadd admins</p>
-<p>Paaiškinimas: Tai sukurs grupę „admins“, kurią vėliau galima naudoti priskiriant vartotojus, kad jie turėtų bendrus leidimus (pvz., administravimo teises). 3. usermod – Vartotojo paskyros modifikavimas</p>
-<p>Komanda usermod leidžia modifikuoti esamą vartotojo paskyrą. Su šia komanda galima keisti vartotojo grupes, nustatyti ar pakeisti vartotojo namų katalogą, slaptažodį ir kitus parametrus.</p>
-<p>Sintaksė:</p>
-<p>sudo usermod [parinktys] [vartotojo_vardas]</p>
-<p>Dažniausiai naudojamos parinktys:</p>
-<pre><code>-aG: Pridėti vartotoją prie grupės.
--d: Nustatyti vartotojo namų katalogą.
--l: Pakeisti vartotojo vardą.</code></pre>
-<p>Pavyzdžiai:</p>
-<pre><code>Pridėti vartotoją prie grupės:</code></pre>
-<p>sudo usermod -aG admins jonas</p>
-<pre><code>Paaiškinimas: Tai pridės vartotoją „jonas“ prie grupės „admins“.</code></pre>
-<p>Pakeisti vartotojo vardą:</p>
-<p>sudo usermod -l petras jonas</p>
-<pre><code>Paaiškinimas: Tai pakeis vartotojo vardą iš „jonas“ į „petras“.</code></pre>
-<p>Pakeisti vartotojo namų katalogą:</p>
-<pre><code>sudo usermod -d /home/petras jonas
-
-    Paaiškinimas: Tai pakeis vartotojo „jonas“ namų katalogą į /home/petras.</code></pre>
-<p>Naudojimo atvejai ir scenarijai:</p>
-<pre><code>Sistemos administravimas:
-    Vartotojų kūrimas ir redagavimas: Naudojant adduser ir usermod, galima kurti naujus vartotojus ir pritaikyti jiems teises, kad jie galėtų prisijungti prie sistemos ir atlikti tam tikras užduotis.
-
-Grupių valdymas:
-    Grupių kūrimas ir priskyrimas: groupadd leidžia kurti grupes, kurias galima naudoti, norint grupuoti vartotojus pagal jų roles (pvz., administratorių grupės, vartotojų grupės) ir valdyti prieigą prie failų ir sistemų išteklių.
-
-Teisių suteikimas:
-    Pridėti vartotoją prie grupės: Su usermod -aG galima suteikti vartotojui papildomas teises pagal grupę. Tai ypač naudinga valdyti vartotojų prieigą prie tam tikrų paslaugų (pvz., administratorių teises ar prieigą prie specifinių resursų).</code></pre>
-<p>Apibendrinimas:</p>
-<pre><code>adduser yra naudinga, kai reikia sukurti naują vartotoją sistemoje.
-groupadd leidžia sukurti naujas grupes, kad vartotojai galėtų būti grupuojami pagal roles ir paskirtas teises.
-usermod suteikia galimybę redaguoti esamų vartotojų paskyras, pritaikant vartotojo vardą, grupes, namų katalogus ir kitas savybes.</code></pre>
-<p>Šios komandos yra būtinos sistemos administratoriui, kad galėtų valdyti vartotojus ir grupes, reguliuoti prieigą ir užtikrinti saugumą.</p>
-<p>What is a Service?</p>
-<p>A service is typically a background process (daemon) that starts when the system boots and provides ongoing functionality (e.g., web servers, databases, logging systems). Services are managed by init systems like systemd, which starts, stops, and supervises them. How Processes Relate to Services</p>
-<pre><code>Services Start Processes:
-    When you start a service with systemctl start &lt;service-name&gt;, systemd launches the associated process.
-    For example, starting the nginx service launches the nginx process.
-
-Processes Managed by systemd:
-    systemd supervises the lifecycle of service processes. If a process crashes, systemd can restart it automatically.
-    systemd tracks processes via cgroups (control groups), which help isolate resources and ensure the process hierarchy remains tied to the service.
-
-Parent-Child Relationship:
-    Processes started by a service often create child processes (e.g., worker processes for web servers). These child processes are also managed as part of the service by systemd.</code></pre>
-<p>Using systemd to Inspect Processes</p>
-<pre><code>Check Active Processes for a Service:</code></pre>
-<p>systemctl status <service-name></service-name></p>
-<p>This shows the service’s status, logs, and the active processes.</p>
-<p>Example for nginx:</p>
-<p>● nginx.service - A high performance web server Loaded: loaded (/lib/systemd/system/nginx.service; enabled) Active: active (running) since Mon 2024-11-25 10:00:00 Main PID: 1234 (nginx) Tasks: 3 (limit: 4915) Memory: 4.5M CGroup: /system.slice/nginx.service ├─1234 nginx: master process └─1235 nginx: worker process</p>
-<p>Find All Processes in a Service’s cgroup:</p>
-<p>systemd-cgls</p>
-<p>This command shows the hierarchy of processes, grouped by services.</p>
-<p>List All Processes Started by systemd:</p>
-<pre><code>ps -e --forest
-
-This shows a tree of all processes. Processes started by systemd will appear under its PID.</code></pre>
-<p>Examples of How Processes and Services Work Together</p>
-<pre><code>Web Server:
-    Starting apache2 as a service with systemctl start apache2 launches the apache2 process (and its worker threads).
-    If the main process crashes, systemd can automatically restart it.
-
-Database Server:
-    Starting mysql with systemctl start mysql launches the mysqld process.
-    Multiple helper processes may also spawn, all tied to the mysql.service.
-
-Scheduled Tasks:
-    A cron job managed by the cron service spawns processes (e.g., a Python script).
-    The cron service itself is managed by systemd.</code></pre>
-<p>When a Process Isn’t Connected to a Service</p>
-<pre><code>If you run a program manually (e.g., python script.py), it won't be tied to a systemd service unless explicitly configured.
-To make such a process a service, create a custom systemd service unit file for it.</code></pre>
-<p>Why Use systemd for Processes?</p>
-<pre><code>Reliability:
-    systemd ensures that critical services (and their processes) restart automatically if they fail.
-Resource Management:
-    Processes in a service can be limited in CPU, memory, or I/O usage using cgroups.
-Dependency Handling:
-    systemd starts services (and their processes) in the correct order, respecting dependencies.</code></pre>
-<p>By using tools like systemctl and understanding how services spawn and manage processes, you can efficiently control and troubleshoot system processes in Linux.</p>
-
-
+</section>
 </section>
 
 </main> <!-- /main -->
