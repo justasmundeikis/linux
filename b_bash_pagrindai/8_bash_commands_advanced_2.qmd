@@ -1,5 +1,5 @@
 ---
-title: "BASH darbas su OS"
+title: "BASH Sistemos Valdymas"
 execute:
   daemon: false
   enabled: false
