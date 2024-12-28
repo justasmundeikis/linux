@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,10 +71,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c6533a2954f9c7095b9413cd3d0d7241.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/videojs/video.min.js"></script>
 <link href="../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -1302,7 +1302,7 @@ Praktika
 <div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-name</span> <span class="pp">*</span>valstyb<span class="pp">*</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> ~ <span class="at">-iname</span> <span class="pp">*</span>valstyb<span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="../img/bash_advanced/find_iname.png" class="img-fluid"></p>
-<p>Jei nenurodysi <code>-name &lt;pavadinimas&gt;</code>, tada find komanda ieškos visų failų ar direktorijų, atitinkančių kitus nurodytus kriterijus; jei nebus jokio kriterijaus, tada ji suras tiesiog visus failus ir direktorijas bei nuorodas. Sekančioje komandoje <code>find</code> ieško visų failų, direktorijų ir nuorodų <strong>bash_advanced</strong> dirkeotrijos viduje.</p>
+<p>Jei nenurodysi <code>-name &lt;pavadinimas&gt;</code>, tada find komanda ieškos visų failų ar direktorijų, atitinkančių kitus nurodytus kriterijus; jei nebus jokio kriterijaus, tada ji suras tiesiog visus failus ir direktorijas bei nuorodas. Sekančioje komandoje <code>find</code> ieško visų failų, direktorijų ir nuorodų <strong>bash_advanced</strong> direktorijos viduje, nes <code>find</code> paduodamas tik argumentas KUR ieškoti failų, direktorijų ir nuorodų.</p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> bash_advanced/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img src="../img/bash_advanced/find_noargs.png" class="img-fluid"></p>
 <p>Kartais gali norėti, kad <code>find</code> grąžintų ne tik rastų failų adresus, bet ir daugiau informacijos. Tada gali panaudoti <code>-ls</code> flagą. Jis iš esmės panašus tau įprastą <code>ls</code> komandą.</p>
@@ -1630,7 +1630,7 @@ Praktika
 <p>Jei dirbi su dideliu Python skriptu, kuris užstringa, ir tau reikia jį sustabdyti:</p>
 <div class="sourceCode" id="cb57"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> aux <span class="kw">|</span> <span class="fu">grep</span> python</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Ši komanda parodys visus procesus, susijusius su python. Suradus proceso <strong>PID</strong>, jį gali sustabdyti su komanda <code>kill</code>:</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="bu">kill</span> <span class="op">&lt;</span>PID<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="bu">kill</span> PID_numeris</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="kill-komanda" class="level3" data-number="7.7.2">
@@ -1724,7 +1724,7 @@ Praktika
 <ul>
 <li>Redaguoti <strong>sisteminius</strong> failus su administracinėmis teisėmis:</li>
 </ul>
-<div class="sourceCode" id="cb62"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nano <span class="op">&lt;</span>failas<span class="op">&gt;</span><span class="kw">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nano <span class="op">&lt;</span>failas<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Jeigu paleisi <code>nano</code> be failo, jis sukurs naują buferį. Gali pradėti rašyti tekstą iš karto. Naudok rodyklių klavišus, kad judėtum tekste.Išsaugant, bus sukurtas failas tuo pavadinimu, kurį nurodysi.</p>
 <p><strong>Keli naudingi flagai:</strong></p>
 <ul>
@@ -1832,6 +1832,11 @@ Praktika
 <section id="projekto-pradžia" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="projekto-pradžia">Projekto Pradžia</h4>
 <p>Pradėk nuo projekto aplanko sukūrimo, kad galėtum patogiai struktūrizuoti savo darbą. Tai padės išlaikyti tvarką, kadangi, kaip žinome, programuotojai linkę eksperimentuoti ir generuoti daugybę tarpinio kodo.</p>
+<p>Keli patarimai:</p>
+<ul>
+<li><strong>Documents</strong> direktorioje susikurk direktoriją <strong>projektai</strong>, o joje šį projektą, pvz., <strong>terminal_weather_display</strong> ir dirbk joje.</li>
+<li>tavo projekto tikslas bus turėti <strong>lazdynai_temp.sh</strong> failą, kurį paleidus gausi norimą rezultatą, tad sukurk šį failą ir pvz., su Sublime editorium atsidaryk jį ir rašyk ten komandas kurias darai. Kartu ten bus lengviau išsisaugoti ilgas komandas ir jas edituoti.</li>
+</ul>
 <p>Keliauk į Lietuvos hidrometeorologijos tarnybos svetainę (<a href="https://www.meteo.lt/">https://www.meteo.lt/</a>), kur gali rasti API dokumentaciją. Pirmiausia, sukurk užklausą, kuri atsiųs visas galimas vietoves. Atsispausdink pirmąją vietovę, kad suprastum, kaip yra struktūrizuoti duomenys. Tai yra svarbus žingsnis, kai dirbi su naujais duomenimis arba API - suprasti jų struktūrą ir galimybes.</p>
 <p><img src="../img/bash_advanced/wf_1.png" class="img-fluid"></p>
 </section>
@@ -1855,7 +1860,7 @@ Praktika
 <p><img src="../img/bash_advanced/wf_5.png" class="img-fluid"></p>
 <p>Ir PM’as buvo sužavėtas:</p>
 <p><img src="../img/bash_advanced/giphy-106588401.webp" class="img-fluid"></p>
-<p>Dabar tau beliko sudėti visas komandas į vieną skriptą, kuris veiktų tik atmintyje, nesukuriant fizinių failų. Stenkis jungti kuo daugiau su pipes <code>|</code>. Gali būti kad su kokiu <code>sublime-text</code> editoriumi taudirbti būtų papraščiau. Nors ne terminalo lange, o papildoma programa, bet ji palengvins darbą.</p>
+<p>Dabar tau beliko sudėti visas komandas į vieną skriptą, kuris veiktų tik atmintyje, nesukuriant fizinių failų. Stenkis jungti kuo daugiau su pipes <code>|</code>. Gali būti kad su kokiu <code>sublime-text</code> editoriumi tau dirbti būtų papraščiau. Nors ne terminalo lange, o papildoma programa, bet ji palengvins darbą.</p>
 <p>Išsaugok skriptą kaip <strong>lazdynai_temp.sh</strong>, patikrink failo teises, suteik vykdymo leidimą ir paleisk skriptą, kad įsitikintum, ar jis generuoja atitinkamą prognozę.</p>
 <p>Skriptą paleisti gali su <code>./lazdynai_temp.sh</code></p>
 <p>Tai yra ne tik naudinga programa, bet ir puikus pavyzdys, kaip kūrybingas programuotojas gali prisidėti prie kasdienio gyvenimo patogumo!</p>
@@ -2248,8 +2253,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -2360,7 +2363,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

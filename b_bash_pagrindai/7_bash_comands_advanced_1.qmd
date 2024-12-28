@@ -926,7 +926,7 @@ find ~ -iname *valstyb*
 ![](../img/bash_advanced/find_iname.png)
 
 
-Jei nenurodysi `-name <pavadinimas>`, tada find komanda ieškos visų failų ar direktorijų, atitinkančių kitus nurodytus kriterijus; jei nebus jokio kriterijaus, tada ji suras tiesiog visus failus ir direktorijas bei nuorodas. Sekančioje komandoje `find` ieško visų failų, direktorijų ir nuorodų **bash_advanced** dirkeotrijos viduje.
+Jei nenurodysi `-name <pavadinimas>`, tada find komanda ieškos visų failų ar direktorijų, atitinkančių kitus nurodytus kriterijus; jei nebus jokio kriterijaus, tada ji suras tiesiog visus failus ir direktorijas bei nuorodas. Sekančioje komandoje `find` ieško visų failų, direktorijų ir nuorodų **bash_advanced** direktorijos viduje, nes `find` paduodamas tik argumentas KUR ieškoti failų, direktorijų ir nuorodų.
 
 ```bash
 find bash_advanced/
@@ -1315,7 +1315,7 @@ ps aux | grep python
 Ši komanda parodys visus procesus, susijusius su python. Suradus proceso **PID**, jį gali sustabdyti su komanda `kill`:
 
 ```bash
-kill <PID>
+kill PID_numeris
 ```
 
 ### `kill` komanda
@@ -1421,7 +1421,7 @@ Jei failas egzistuoja, jis bus atidarytas redagavimui. Jei failo nėra, jį išs
 * Redaguoti **sisteminius** failus su administracinėmis teisėmis: 
 
 ```bash
-sudo nano <failas>`
+sudo nano <failas>
 ```
 
 Jeigu paleisi `nano` be failo, jis sukurs naują buferį. Gali pradėti rašyti tekstą iš karto. Naudok rodyklių klavišus, kad judėtum tekste.Išsaugant, bus sukurtas failas tuo pavadinimu, kurį nurodysi.
@@ -1519,8 +1519,6 @@ Alias leidžia greitai ir efektyviai valdyti kasdieninių užduočių komandas, 
 Jeigu pastebėsi, kad tam tikro alias nebereikia - visada gali jį ištrinti ir atnaujinus perkrauk bash panaudojant `source ~/.bashrc`
 
 
-
-
 ## Projektai
 
 ### Projektas 1: Orų prognozė Terminal lange
@@ -1543,7 +1541,13 @@ PM'as tau pateikė idėjų eskizą, o tavo užduotis - sukurti pirmąją program
 
 #### Projekto Pradžia  {.unnumbered}
 
-Pradėk nuo projekto aplanko sukūrimo, kad galėtum patogiai struktūrizuoti savo darbą. Tai padės išlaikyti tvarką, kadangi, kaip žinome, programuotojai linkę eksperimentuoti ir generuoti daugybę tarpinio kodo.
+Pradėk nuo projekto aplanko sukūrimo, kad galėtum patogiai struktūrizuoti savo darbą. Tai padės išlaikyti tvarką, kadangi, kaip žinome, programuotojai linkę eksperimentuoti ir generuoti daugybę tarpinio kodo. 
+
+Keli patarimai:
+
+* **Documents** direktorioje susikurk direktoriją **projektai**, o joje šį projektą, pvz., **terminal_weather_display** ir dirbk joje.
+* tavo projekto tikslas bus turėti **lazdynai_temp.sh** failą, kurį paleidus gausi norimą rezultatą, tad sukurk šį failą ir pvz., su Sublime editorium atsidaryk jį ir rašyk ten komandas kurias darai. Kartu ten bus lengviau išsisaugoti ilgas komandas ir jas edituoti.
+
 
 Keliauk į Lietuvos hidrometeorologijos tarnybos svetainę ([https://www.meteo.lt/](https://www.meteo.lt/)), kur gali rasti API dokumentaciją. Pirmiausia, sukurk užklausą, kuri atsiųs visas galimas vietoves. Atsispausdink pirmąją vietovę, kad suprastum, kaip yra struktūrizuoti duomenys. Tai yra svarbus žingsnis, kai dirbi su naujais duomenimis arba API - suprasti jų struktūrą ir galimybes.
 
@@ -1581,7 +1585,7 @@ Ir PM'as buvo sužavėtas:
 
 ![](../img/bash_advanced/giphy-106588401.webp)
 
-Dabar tau beliko sudėti visas komandas į vieną skriptą, kuris veiktų tik atmintyje, nesukuriant fizinių failų. Stenkis jungti kuo daugiau su pipes `|`. Gali būti kad su kokiu `sublime-text` editoriumi taudirbti būtų papraščiau. Nors ne terminalo lange, o papildoma programa, bet ji palengvins darbą.
+Dabar tau beliko sudėti visas komandas į vieną skriptą, kuris veiktų tik atmintyje, nesukuriant fizinių failų. Stenkis jungti kuo daugiau su pipes `|`. Gali būti kad su kokiu `sublime-text` editoriumi tau dirbti būtų papraščiau. Nors ne terminalo lange, o papildoma programa, bet ji palengvins darbą.
 
 Išsaugok skriptą kaip **lazdynai_temp.sh**, patikrink failo teises, suteik vykdymo leidimą ir paleisk skriptą, kad įsitikintum, ar jis generuoja atitinkamą prognozę. 
 
