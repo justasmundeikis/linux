@@ -54,6 +54,9 @@ book:
         - f_pažangios_temos/32_home_server.qmd
         - f_pažangios_temos/33_docker_1.qmd
         - f_pažangios_temos/34_docker_2.qmd
+    - part: "Projektai"
+      chapters:
+        - g_projects/35_food_prices.qmd
 
 format:
   html:

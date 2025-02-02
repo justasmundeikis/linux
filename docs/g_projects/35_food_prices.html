@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>35&nbsp; Docker 2 – Linux ir programavimas</title>
+<title>36&nbsp; Maisto produktų kainų analizė – Linux ir programavimas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../g_projects/35_food_prices.html" rel="next">
-<link href="../f_pažangios_temos/33_docker_1.html" rel="prev">
+<link href="../f_pažangios_temos/34_docker_2.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../f_pažangios_temos/30_TCP_IP.html">Pažangios Temos</a></li><li class="breadcrumb-item"><a href="../f_pažangios_temos/34_docker_2.html"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Docker 2</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../g_projects/35_food_prices.html">Projektai</a></li><li class="breadcrumb-item"><a href="../g_projects/35_food_prices.html"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Maisto produktų kainų analizė</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -382,7 +381,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../f_pažangios_temos/34_docker_2.html" class="sidebar-item-text sidebar-link active">
+  <a href="../f_pažangios_temos/34_docker_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Docker 2</span></span></a>
   </div>
 </li>
@@ -399,7 +398,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../g_projects/35_food_prices.html" class="sidebar-item-text sidebar-link">
+  <a href="../g_projects/35_food_prices.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Maisto produktų kainų analizė</span></span></a>
   </div>
 </li>
@@ -410,15 +409,33 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#fao-food-price-index" id="toc-fao-food-price-index" class="nav-link active" data-scroll-target="#fao-food-price-index"><span class="header-section-number">37</span> FAO Food Price Index</a>
+  <ul class="collapse">
+  <li><a href="#intro" id="toc-intro" class="nav-link" data-scroll-target="#intro"><span class="header-section-number">37.1</span> Intro</a></li>
+  <li><a href="#grafikai" id="toc-grafikai" class="nav-link" data-scroll-target="#grafikai"><span class="header-section-number">37.2</span> 1. Grafikai</a></li>
+  <li><a href="#duomenys" id="toc-duomenys" class="nav-link" data-scroll-target="#duomenys"><span class="header-section-number">37.3</span> 2. Duomenys</a></li>
+  <li><a href="#analitiniai-klausimai" id="toc-analitiniai-klausimai" class="nav-link" data-scroll-target="#analitiniai-klausimai"><span class="header-section-number">37.4</span> 3. Analitiniai klausimai</a></li>
+  <li><a href="#rezultatas" id="toc-rezultatas" class="nav-link" data-scroll-target="#rezultatas"><span class="header-section-number">37.5</span> 4. Rezultatas</a>
+  <ul class="collapse">
+  <li><a href="#word-dokumentas-.docx" id="toc-word-dokumentas-.docx" class="nav-link" data-scroll-target="#word-dokumentas-.docx"><span class="header-section-number">37.5.1</span> 4.1 Word dokumentas (.docx)</a></li>
+  <li><a href="#powerpoint-skaidrės-.pptx" id="toc-powerpoint-skaidrės-.pptx" class="nav-link" data-scroll-target="#powerpoint-skaidrės-.pptx"><span class="header-section-number">37.5.2</span> 4.2 PowerPoint skaidrės (.pptx)</a></li>
+  </ul></li>
+  <li><a href="#papildomos-vizualizacijos-rekomendacijos" id="toc-papildomos-vizualizacijos-rekomendacijos" class="nav-link" data-scroll-target="#papildomos-vizualizacijos-rekomendacijos"><span class="header-section-number">37.6</span> 5. Papildomos vizualizacijos rekomendacijos</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../f_pažangios_temos/30_TCP_IP.html">Pažangios Temos</a></li><li class="breadcrumb-item"><a href="../f_pažangios_temos/34_docker_2.html"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Docker 2</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../g_projects/35_food_prices.html">Projektai</a></li><li class="breadcrumb-item"><a href="../g_projects/35_food_prices.html"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Maisto produktų kainų analizė</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Docker 2</span></h1>
+<h1 class="title"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Maisto produktų kainų analizė</span></h1>
 </div>
 
 
@@ -435,8 +452,149 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="fao-food-price-index" class="level1" data-number="37">
+<h1 data-number="37"><span class="header-section-number">37</span> FAO Food Price Index</h1>
+<section id="intro" class="level2" data-number="37.1">
+<h2 data-number="37.1" class="anchored" data-anchor-id="intro"><span class="header-section-number">37.1</span> Intro</h2>
+<p>Tu dirbi analitike Žemės ūkio ministerijoje, ir šiandien gavai svarbią užduotį. Ministrė paprašė parengti trumpą, iki 6 puslapių apžvalgą apie pasaulines maisto kainas. Ji nori gauti aiškią ir struktūruotą analizę apie pasaulines maisto kainų tendencijas ir ilgalaikius pokyčius. Ministrės lūkesčiai – tai ne tik skaičiai ir duomenys, bet ir aiškios, lengvai interpretuojamos įžvalgos, padėsiančios suprasti, kokios yra pagrindinės pasaulinių maisto kainų raidos tendencijos.</p>
+<p>Kad tai padarytum, nusprendei pasinaudoti FAO (Maisto ir žemės ūkio organizacijos) duomenimis. Tavo tikslas – objektyviai analizuoti agreguotus pasaulinius maisto kainų indeksus, o ne šalių duomenis. Taigi koncentruosi dėmesį į bendrus pasaulinius indeksus, tokius kaip bendras maisto kainų indeksas, mėsos, pieno, grūdų ir kitų kategorijų kainų indeksai. Tokiu būdu galėsi aiškiai pristatyti pasaulines tendencijas, nes šie duomenys suteiks išsamesnį ir objektyvesnį vaizdą apie maisto kainų svyravimus.</p>
+<p>Ši užduotis nėra tik apie duomenų pateikimą – tai ir galimybė parodyti, kaip svarbu, kad tavo darbas būtų lengvai atkuriamas. Tai reiškia, kad kiekvienas žingsnis turi būti aiškiai struktūruotas, o duomenų analizė turi būti atlikta pagal metodus, kurie gali būti lengvai atkartojami. Tai užtikrins, kad tavo tyrimas būtų patikimas ir galėtų būti tiksliai pakartotas ateityje, jei prireiktų papildomos analizės ar patikslinimų. Reikia laikytis reproducible research principų, kad, jei duomenys keistųsi, visi skaičiavimai ir analizės galėtų būti greitai atnaujinti.</p>
+<p>Norint atlikti šį darbą, teks atlikti šiuos žingsnius:</p>
+<ul>
+<li>Atsisiųsti ir paruošti duomenis iš FAO.</li>
+<li>Išanalizuoti maisto kainų pokyčius ir išryškinti svarbiausius aspektus.</li>
+<li>Sukurti vizualizacijas, kurios aiškiai perteiks duomenų tendencijas.</li>
+</ul>
+<p>Ministrė prašė, kad šis darbas būtų pateiktas dviem formatais:</p>
+<ul>
+<li><p><strong>Word dokumentas</strong> su išsamiais analitiniais atsakymais ir paaiškinimais. Tai bus pagrindinis dokumentas, kuriame išsamiai pristatysi savo analizę, atsakysi į svarbiausius klausimus ir pateiksi duomenų lenteles, grafikus bei skaičiavimus. Šis dokumentas turės būti išsamus ir struktūruotas, kad būtų galima gerai suprasti visą analizę.</p></li>
+<li><p><strong>PowerPoint prezentacija</strong> – šis formatas bus naudojamas pristatymui. Tai turėtų būti trumpas, aiškus ir vizualus dokumentas, kuriame pateiksi pagrindines išvadas ir analizės rezultatus. Prezentacijoje bus mažai teksto, tačiau daug grafinės informacijos, leidžiančios auditorijai greitai ir aiškiai suprasti pagrindines tendencijas ir išvadas. PowerPoint skaidrės turės būti parengtos taip, kad pateikiamos įžvalgos būtų lengvai įsimenamos.</p></li>
+</ul>
+<p>Tavo tikslas – ne tik pristatyti skaičius, bet ir parengti analizę, kuri būtų naudinga ir suprantama tiek politikams, tiek kitiems suinteresuotiems asmenims. Išsiaiškinus šias tendencijas, ministerija galės geriau planuoti savo strategijas ir prisitaikyti prie besikeičiančių pasaulinių maisto rinkų.</p>
+</section>
+<section id="grafikai" class="level2" data-number="37.2">
+<h2 data-number="37.2" class="anchored" data-anchor-id="grafikai"><span class="header-section-number">37.2</span> 1. Grafikai</h2>
+<p>Tavo pirmoji užduotis – atkurti šiuos grafikus, naudojant pateiktus duomenis ir Excel priemones:</p>
+<p><img src="https://www.fao.org/images/worldfoodsituationlibraries/default-album/home_graph_1_jan25.jpg?sfvrsn=4dcedd86_283" class="img-fluid"></p>
+<p><img src="https://www.fao.org/images/worldfoodsituationlibraries/default-album/home_graph_2_jan25.jpg?sfvrsn=d0e1a022_271" class="img-fluid"></p>
+<p><img src="https://www.fao.org/images/worldfoodsituationlibraries/default-album/home_graph_3_jan25.jpg?Status=Master&amp;sfvrsn=ba07d6c5_268" class="img-fluid"></p>
+<p><strong>Kaip tai padaryti?</strong></p>
+<ol type="1">
+<li>Atsisiųsk duomenis (žiūrėti skyrių „Duomenys“).</li>
+<li><strong>Importuok</strong> juos į Excel.</li>
+<li>Atlik duomenų valymą (pvz., pašalink nereikalingus tuščius langelius, konvertuok datas į teisingą formatą). Naudokis <strong>PowerQuery</strong> pagalba.</li>
+<li>Naudok Pivot Tables arba Excel formulėmis apdorok duomenis, kad galėtum sukurti norimus grafikus.</li>
+<li>Palygink savo grafikus su pateiktais paveikslėliais ir įsitikink, kad jie vizualiai atitinka originalus.</li>
+</ol>
+<hr>
+</section>
+<section id="duomenys" class="level2" data-number="37.3">
+<h2 data-number="37.3" class="anchored" data-anchor-id="duomenys"><span class="header-section-number">37.3</span> 2. Duomenys</h2>
+<p>Duomenis rasi šiame <a href="https://www.fao.org/docs/worldfoodsituationlibraries/default-document-library/food_price_indices_data_jan.xls?sfvrsn=63809b16_32">Excel faile</a>. Arba jeigu reikis <a href="https://www.fao.org/worldfoodsituation/foodpricesindex/en/">čia</a>. Jame yra:</p>
+<ul>
+<li><strong>Mėnesiniai nominalūs kainų indeksai</strong> – rodo, kaip kito kainų indeksai kiekvieną mėnesį, neatsižvelgiant į infliaciją.</li>
+<li><strong>Metiniai nominalūs kainų indeksai</strong> – pateikia metinius vidurkius.</li>
+<li><strong>Mėnesiniai realūs kainų indeksai</strong> – indeksai, pakoreguoti pagal infliaciją.</li>
+<li><strong>Metiniai realūs kainų indeksai</strong> – pateikia infliaciją įvertinančius metinius vidurkius.</li>
+</ul>
+<p><strong>Ką reikia padaryti?</strong> - Suprasti, kaip nominalūs indeksai skiriasi nuo realių (infliaciją įvertinančių) indeksų. - Naudoti nominalius indeksus, kaip nurodyta klausimuose.</p>
+<hr>
+</section>
+<section id="analitiniai-klausimai" class="level2" data-number="37.4">
+<h2 data-number="37.4" class="anchored" data-anchor-id="analitiniai-klausimai"><span class="header-section-number">37.4</span> 3. Analitiniai klausimai</h2>
+<p>Paruošus grafikus, atsakyk į šiuos klausimus naudodojant papildomus grafikus, lenteles ir skaičiavimus:</p>
+<ol type="1">
+<li><strong>Kaip keitėsi vidutinė maisto produktų kaina per pastaruosius metus?</strong>
+<ul>
+<li><p>Palygink 2024 gruodį su:</p>
+<ul>
+<li>2024 lapkričiu</li>
+<li>2023 gruodžiu</li>
+</ul></li>
+<li><p>Lygink šiuos indeksus:</p>
+<ul>
+<li>Bendras maisto kainų indeksas (Food Price Index)</li>
+<li>Atskirų sudedamųjų dalių indeksai:
+<ul>
+<li>Meat Price Index</li>
+<li>Dairy Price Index</li>
+<li>Cereals Price Index</li>
+<li>Oils Price Index</li>
+<li>Sugar Price Index</li>
+</ul></li>
+<li>Naudok nominalius indeksus</li>
+</ul></li>
+<li><p>Pateik du palyginimo būdus:</p>
+<ul>
+<li>Absoliutų skirtumą (indekso punktus)</li>
+<li>Relatyvų pokytį (procentais)</li>
+</ul></li>
+<li><p><strong>Excel formulės pavyzdys:</strong> Jei <code>B1</code> yra 2023 gruodžio indeksas, o <code>B2</code> yra 2024 gruodžio indeksas, procentinis pokytis būtų apskaičiuojamas taip:</p>
+<pre class="excel"><code>=(B2-B1)/B1</code></pre></li>
+</ul></li>
+<li><strong>Kokios maisto produktų grupės labiausiai prisidėjo prie kainų pokyčio?</strong>
+<ul>
+<li>Kurios grupės kilo labiausiai? Kurios krito?</li>
+<li>Ar yra ryšys tarp tam tikrų produktų grupių pokyčių? Pvz., ar sumažėjus cukraus kainai keitėsi aliejaus kaina?</li>
+</ul></li>
+<li><strong>Ar tam tikrų produktų indeksai rodo ilgalaikes augimo ar kritimo tendencijas?</strong>
+<ul>
+<li>Naudok vidurkius ir tendencijų linijas.</li>
+<li>Ar yra aiškiai pastebimos ilgalaikės augimo/kritimo kryptys?</li>
+</ul></li>
+<li><strong>Kaip FAO indeksas kito per ekonomines krizes (pvz., 2008, 2020 COVID pandemija)?</strong>
+<ul>
+<li>Išskirk laikotarpius, kai buvo staigūs šuoliai ar kritimai.</li>
+<li>Ar buvo atsigavimo laikotarpiai po kritimų?</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+<section id="rezultatas" class="level2" data-number="37.5">
+<h2 data-number="37.5" class="anchored" data-anchor-id="rezultatas"><span class="header-section-number">37.5</span> 4. Rezultatas</h2>
+<section id="word-dokumentas-.docx" class="level3" data-number="37.5.1">
+<h3 data-number="37.5.1" class="anchored" data-anchor-id="word-dokumentas-.docx"><span class="header-section-number">37.5.1</span> 4.1 Word dokumentas (.docx)</h3>
+<p>Word dokumente turi būti išsamūs atsakymai ir analizės aprašymai, įskaitant:</p>
+<ol type="1">
+<li><strong>FAO Food Price Index pristatymas</strong>
+<ul>
+<li>Kas tai per indeksas?</li>
+<li>Kaip jis apskaičiuojamas?</li>
+<li>Kokios jo pagrindinės sudedamosios dalys?</li>
+</ul></li>
+<li><strong>Tavo įžvalgos apie bendrą indeksą ir jo sudedamąsias dalis</strong>
+<ul>
+<li>Atsakymai į visus klausimus.</li>
+<li>Lentelės ir skaičiavimai.</li>
+<li>Grafinės iliustracijos.</li>
+</ul></li>
+</ol>
+</section>
+<section id="powerpoint-skaidrės-.pptx" class="level3" data-number="37.5.2">
+<h3 data-number="37.5.2" class="anchored" data-anchor-id="powerpoint-skaidrės-.pptx"><span class="header-section-number">37.5.2</span> 4.2 PowerPoint skaidrės (.pptx)</h3>
+<p>PowerPoint skaidrės turėtų būti vizualus dokumento pristatymas, tinkamas auditorijai:</p>
+<ul>
+<li>Pagrindinės įžvalgos trumpai ir aiškiai.</li>
+<li>Vizualizacijos (grafikai, diagramos, iliustracijos).</li>
+<li>Kiekvienoje skaidrėje turi būti mažai teksto, bet aiškios išvados.</li>
+<li>Skaidres galima naudoti kaip pagrindą žodiniam pristatymui.</li>
+</ul>
+<p><strong>Skaidrių struktūra:</strong> 1. Įžanga – Kas yra FAO indeksas? 2. Pagrindinės kainų tendencijos. 3. Kainų pokyčių palyginimas (absoliutūs ir procentiniai). 4. Produktų grupių įtaka bendram indeksui. 5. Istoriniai ekonominiai sukrėtimai ir FAO indekso reakcija. 6. Išvados.</p>
+<hr>
+</section>
+</section>
+<section id="papildomos-vizualizacijos-rekomendacijos" class="level2" data-number="37.6">
+<h2 data-number="37.6" class="anchored" data-anchor-id="papildomos-vizualizacijos-rekomendacijos"><span class="header-section-number">37.6</span> 5. Papildomos vizualizacijos rekomendacijos</h2>
+<ul>
+<li><strong>Scatter plot analizė</strong> – ar yra ryšys tarp dviejų indeksų?</li>
+<li><strong>Linijinės tendencijos</strong> – ilgalaikės pokyčių kryptys.</li>
+<li><strong>Moving average (judantis vidurkis)</strong> – triukšmo mažinimas ir tendencijų stebėjimas.</li>
+</ul>
+<hr>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -858,14 +1016,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../f_pažangios_temos/33_docker_1.html" class="pagination-link" aria-label="Docker 1">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Docker 1</span></span>
+      <a href="../f_pažangios_temos/34_docker_2.html" class="pagination-link" aria-label="Docker 2">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Docker 2</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../g_projects/35_food_prices.html" class="pagination-link" aria-label="Maisto produktų kainų analizė">
-        <span class="nav-page-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Maisto produktų kainų analizė</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

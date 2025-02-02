@@ -1,0 +1,152 @@
+---
+title: "Maisto produktų kainų analizė"
+execute:
+  daemon: false
+  enabled: false
+format:
+  html:
+    code-copy: true
+    eval: false
+    echo: true
+---
+
+# FAO Food Price Index
+
+## Intro
+
+Tu dirbi analitike Žemės ūkio ministerijoje, ir šiandien gavai svarbią užduotį. Ministrė paprašė parengti trumpą, iki 6 puslapių apžvalgą apie pasaulines maisto kainas. Ji nori gauti aiškią ir struktūruotą analizę apie pasaulines maisto kainų tendencijas ir ilgalaikius pokyčius. Ministrės lūkesčiai – tai ne tik skaičiai ir duomenys, bet ir aiškios, lengvai interpretuojamos įžvalgos, padėsiančios suprasti, kokios yra pagrindinės pasaulinių maisto kainų raidos tendencijos.
+
+Kad tai padarytum, nusprendei pasinaudoti FAO (Maisto ir žemės ūkio organizacijos) duomenimis. Tavo tikslas – objektyviai analizuoti agreguotus pasaulinius maisto kainų indeksus, o ne šalių duomenis. Taigi koncentruosi dėmesį į bendrus pasaulinius indeksus, tokius kaip bendras maisto kainų indeksas, mėsos, pieno, grūdų ir kitų kategorijų kainų indeksai. Tokiu būdu galėsi aiškiai pristatyti pasaulines tendencijas, nes šie duomenys suteiks išsamesnį ir objektyvesnį vaizdą apie maisto kainų svyravimus.
+
+Ši užduotis nėra tik apie duomenų pateikimą – tai ir galimybė parodyti, kaip svarbu, kad tavo darbas būtų lengvai atkuriamas. Tai reiškia, kad kiekvienas žingsnis turi būti aiškiai struktūruotas, o duomenų analizė turi būti atlikta pagal metodus, kurie gali būti lengvai atkartojami. Tai užtikrins, kad tavo tyrimas būtų patikimas ir galėtų būti tiksliai pakartotas ateityje, jei prireiktų papildomos analizės ar patikslinimų. Reikia laikytis reproducible research principų, kad, jei duomenys keistųsi, visi skaičiavimai ir analizės galėtų būti greitai atnaujinti.
+
+Norint atlikti šį darbą, teks atlikti šiuos žingsnius:
+
+* Atsisiųsti ir paruošti duomenis iš FAO.
+* Išanalizuoti maisto kainų pokyčius ir išryškinti svarbiausius aspektus.
+* Sukurti vizualizacijas, kurios aiškiai perteiks duomenų tendencijas.
+
+Ministrė prašė, kad šis darbas būtų pateiktas dviem formatais:
+
+* **Word dokumentas** su išsamiais analitiniais atsakymais ir paaiškinimais. Tai bus pagrindinis dokumentas, kuriame išsamiai pristatysi savo analizę, atsakysi į svarbiausius klausimus ir pateiksi duomenų lenteles, grafikus bei skaičiavimus. Šis dokumentas turės būti išsamus ir struktūruotas, kad būtų galima gerai suprasti visą analizę.
+
+* **PowerPoint prezentacija** – šis formatas bus naudojamas pristatymui. Tai turėtų būti trumpas, aiškus ir vizualus dokumentas, kuriame pateiksi pagrindines išvadas ir analizės rezultatus. Prezentacijoje bus mažai teksto, tačiau daug grafinės informacijos, leidžiančios auditorijai greitai ir aiškiai suprasti pagrindines tendencijas ir išvadas. PowerPoint skaidrės turės būti parengtos taip, kad pateikiamos įžvalgos būtų lengvai įsimenamos.
+
+Tavo tikslas – ne tik pristatyti skaičius, bet ir parengti analizę, kuri būtų naudinga ir suprantama tiek politikams, tiek kitiems suinteresuotiems asmenims. Išsiaiškinus šias tendencijas, ministerija galės geriau planuoti savo strategijas ir prisitaikyti prie besikeičiančių pasaulinių maisto rinkų.
+
+## 1. Grafikai
+
+Tavo pirmoji užduotis – atkurti šiuos grafikus, naudojant pateiktus duomenis ir Excel priemones:
+
+![](https://www.fao.org/images/worldfoodsituationlibraries/default-album/home_graph_1_jan25.jpg?sfvrsn=4dcedd86_283)
+
+![](https://www.fao.org/images/worldfoodsituationlibraries/default-album/home_graph_2_jan25.jpg?sfvrsn=d0e1a022_271)
+
+![](https://www.fao.org/images/worldfoodsituationlibraries/default-album/home_graph_3_jan25.jpg?Status=Master&sfvrsn=ba07d6c5_268)
+
+**Kaip tai padaryti?**
+
+1. Atsisiųsk duomenis (žiūrėti skyrių „Duomenys“).
+2. **Importuok** juos į Excel.
+3. Atlik duomenų valymą (pvz., pašalink nereikalingus tuščius langelius, konvertuok datas į teisingą formatą). Naudokis **PowerQuery** pagalba.
+4. Naudok Pivot Tables arba Excel formulėmis apdorok duomenis, kad galėtum sukurti norimus grafikus.
+5. Palygink savo grafikus su pateiktais paveikslėliais ir įsitikink, kad jie vizualiai atitinka originalus.
+
+---
+
+## 2. Duomenys
+
+Duomenis rasi šiame [Excel faile](https://www.fao.org/docs/worldfoodsituationlibraries/default-document-library/food_price_indices_data_jan.xls?sfvrsn=63809b16_32). Arba jeigu reikis [čia](https://www.fao.org/worldfoodsituation/foodpricesindex/en/). Jame yra:
+
+- **Mėnesiniai nominalūs kainų indeksai** – rodo, kaip kito kainų indeksai kiekvieną mėnesį, neatsižvelgiant į infliaciją.
+- **Metiniai nominalūs kainų indeksai** – pateikia metinius vidurkius.
+- **Mėnesiniai realūs kainų indeksai** – indeksai, pakoreguoti pagal infliaciją.
+- **Metiniai realūs kainų indeksai** – pateikia infliaciją įvertinančius metinius vidurkius.
+
+**Ką reikia padaryti?**
+- Suprasti, kaip nominalūs indeksai skiriasi nuo realių (infliaciją įvertinančių) indeksų.
+- Naudoti nominalius indeksus, kaip nurodyta klausimuose.
+
+---
+
+## 3. Analitiniai klausimai
+
+Paruošus grafikus, atsakyk į šiuos klausimus naudodojant papildomus grafikus, lenteles ir skaičiavimus:
+
+1. **Kaip keitėsi vidutinė maisto produktų kaina per pastaruosius metus?**
+   - Palygink 2024 gruodį su:
+     - 2024 lapkričiu
+     - 2023 gruodžiu
+   - Lygink šiuos indeksus:
+     - Bendras maisto kainų indeksas (Food Price Index)
+     - Atskirų sudedamųjų dalių indeksai:
+       - Meat Price Index
+       - Dairy Price Index
+       - Cereals Price Index
+       - Oils Price Index
+       - Sugar Price Index
+     - Naudok nominalius indeksus
+   - Pateik du palyginimo būdus:
+     - Absoliutų skirtumą (indekso punktus)
+     - Relatyvų pokytį (procentais)
+   - **Excel formulės pavyzdys:** Jei `B1` yra 2023 gruodžio indeksas, o `B2` yra 2024 gruodžio indeksas, procentinis pokytis būtų apskaičiuojamas taip:
+     
+     ```excel
+     =(B2-B1)/B1
+     ```
+2. **Kokios maisto produktų grupės labiausiai prisidėjo prie kainų pokyčio?**
+   - Kurios grupės kilo labiausiai? Kurios krito?
+   - Ar yra ryšys tarp tam tikrų produktų grupių pokyčių? Pvz., ar sumažėjus cukraus kainai keitėsi aliejaus kaina?
+
+3. **Ar tam tikrų produktų indeksai rodo ilgalaikes augimo ar kritimo tendencijas?**
+   - Naudok vidurkius ir tendencijų linijas.
+   - Ar yra aiškiai pastebimos ilgalaikės augimo/kritimo kryptys?
+
+4. **Kaip FAO indeksas kito per ekonomines krizes (pvz., 2008, 2020 COVID pandemija)?**
+   - Išskirk laikotarpius, kai buvo staigūs šuoliai ar kritimai.
+   - Ar buvo atsigavimo laikotarpiai po kritimų?
+
+---
+
+## 4. Rezultatas
+
+### 4.1 Word dokumentas (.docx)
+
+Word dokumente turi būti išsamūs atsakymai ir analizės aprašymai, įskaitant:
+
+1. **FAO Food Price Index pristatymas**
+   - Kas tai per indeksas?
+   - Kaip jis apskaičiuojamas?
+   - Kokios jo pagrindinės sudedamosios dalys?
+2. **Tavo įžvalgos apie bendrą indeksą ir jo sudedamąsias dalis**
+   - Atsakymai į visus klausimus.
+   - Lentelės ir skaičiavimai.
+   - Grafinės iliustracijos.
+
+### 4.2 PowerPoint skaidrės (.pptx)
+
+PowerPoint skaidrės turėtų būti vizualus dokumento pristatymas, tinkamas auditorijai:
+
+- Pagrindinės įžvalgos trumpai ir aiškiai.
+- Vizualizacijos (grafikai, diagramos, iliustracijos).
+- Kiekvienoje skaidrėje turi būti mažai teksto, bet aiškios išvados.
+- Skaidres galima naudoti kaip pagrindą žodiniam pristatymui.
+
+**Skaidrių struktūra:**
+1. Įžanga – Kas yra FAO indeksas?
+2. Pagrindinės kainų tendencijos.
+3. Kainų pokyčių palyginimas (absoliutūs ir procentiniai).
+4. Produktų grupių įtaka bendram indeksui.
+5. Istoriniai ekonominiai sukrėtimai ir FAO indekso reakcija.
+6. Išvados.
+
+---
+
+## 5. Papildomos vizualizacijos rekomendacijos
+
+- **Scatter plot analizė** – ar yra ryšys tarp dviejų indeksų?
+- **Linijinės tendencijos** – ilgalaikės pokyčių kryptys.
+- **Moving average (judantis vidurkis)** – triukšmo mažinimas ir tendencijų stebėjimas.
+
+---
+
