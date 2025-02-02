@@ -10,8 +10,6 @@ format:
     echo: true
 ---
 
-# FAO Food Price Index
-
 ## Intro
 
 Tu dirbi analitike Žemės ūkio ministerijoje, ir šiandien gavai svarbią užduotį. Ministrė paprašė parengti trumpą, iki 6 puslapių apžvalgą apie pasaulines maisto kainas. Ji nori gauti aiškią ir struktūruotą analizę apie pasaulines maisto kainų tendencijas ir ilgalaikius pokyčius. Ministrės lūkesčiai – tai ne tik skaičiai ir duomenys, bet ir aiškios, lengvai interpretuojamos įžvalgos, padėsiančios suprasti, kokios yra pagrindinės pasaulinių maisto kainų raidos tendencijos.
